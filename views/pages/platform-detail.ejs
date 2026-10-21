@@ -1,0 +1,85 @@
+<%- include("../partials/head", { title }) %>
+<%- include("../partials/header", { navActive }) %>
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="breadcrumb"><a href="/platforms">Platforms</a> <span aria-hidden="true">/</span> <%= platform.name %></p>
+        <h1 class="page-hero-title reveal"><%= platform.name %> Support</h1>
+        <p class="page-hero-sub reveal"><%= platform.tagline %></p>
+        <div class="hero-actions reveal">
+          <a href="/contact" class="btn btn-primary">Get in touch <span aria-hidden="true">➔</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="platform-detail">
+      <div class="container">
+        <div class="plat-what reveal">
+          <div class="platform-badge platform-badge--<%= platform.tint %> platform-badge--big" aria-hidden="true"><%= platform.short %></div>
+          <div>
+            <h2>What is <%= platform.name %> support, maintenance &amp; hosting?</h2>
+            <p><%= platform.intro %></p>
+          </div>
+        </div>
+
+        <div class="ps-grid">
+          <article class="ps-card ps-card--problem reveal">
+            <h2>Your problem</h2>
+            <p><%= platform.problem %></p>
+          </article>
+          <article class="ps-card ps-card--solution reveal">
+            <h2>Our solution</h2>
+            <p><%= platform.solution %></p>
+          </article>
+        </div>
+
+        <div class="feature-section">
+          <h2 class="section-title reveal">Why teams trust us with <%= platform.name %></h2>
+          <div class="feature-grid">
+            <% platform.features.forEach(function (f) { %>
+              <article class="feature-card reveal">
+                <h3><%= f.title %></h3>
+                <p><%= f.text %></p>
+              </article>
+            <% }) %>
+          </div>
+        </div>
+
+        <div class="packages-band reveal">
+          <div>
+            <h2>Our service packages</h2>
+            <p>Every platform we support is covered by one of three packages — pick the lightest one that genuinely covers you.</p>
+          </div>
+          <a href="/support" class="btn btn-primary">Compare packages <span aria-hidden="true">➔</span></a>
+        </div>
+
+        <div class="faq-section">
+          <h2 class="section-title reveal">FAQ</h2>
+          <div class="faq-list reveal">
+            <% platform.faqs.forEach(function (f) { %>
+              <details class="faq-item">
+                <summary><%= f.q %><span class="faq-chevron" aria-hidden="true"></span></summary>
+                <p><%= f.a %></p>
+              </details>
+            <% }) %>
+          </div>
+          <p class="faq-more reveal">More questions? <a href="/contact">Ask us anything</a> — we answer quickly, even at strange hours.</p>
+        </div>
+
+        <div class="other-platforms">
+          <h2 class="section-title reveal">We also support</h2>
+          <div class="other-platform-grid">
+            <% otherPlatforms.forEach(function (p) { %>
+              <a class="other-platform-chip reveal" href="/platforms/<%= p.slug %>">
+                <span class="platform-badge platform-badge--<%= p.tint %>" aria-hidden="true"><%= p.short %></span>
+                <%= p.name %>
+              </a>
+            <% }) %>
+            <a class="other-platform-chip other-platform-chip--all reveal" href="/platforms">All platforms <span aria-hidden="true">➔</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<%- include("../partials/latest-insights") %>
+<%- include("../partials/foot", { year }) %>

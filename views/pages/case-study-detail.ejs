@@ -1,0 +1,71 @@
+<%- include("../partials/head", { title }) %>
+<%- include("../partials/header", { navActive }) %>
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="breadcrumb"><a href="/case-studies">Case Studies</a> <span aria-hidden="true">/</span> <%= study.client %></p>
+        <h1 class="page-hero-title reveal"><%= study.headline %></h1>
+        <p class="page-hero-sub reveal"><%= study.challenge %></p>
+      </div>
+    </section>
+
+    <section class="case-detail">
+      <div class="container case-detail-grid">
+        <div class="case-detail-main">
+          <div class="prose reveal">
+            <h2>The challenge</h2>
+            <p><%= study.challenge %></p>
+            <h2>What we did</h2>
+            <ul class="approach-list">
+              <% study.approach.forEach(function (step) { %>
+                <li><%= step %></li>
+              <% }) %>
+            </ul>
+          </div>
+        </div>
+        <aside class="case-detail-side">
+          <div class="outcome-card reveal">
+            <h2>Outcomes</h2>
+            <ul>
+              <% study.outcomes.forEach(function (o) { %>
+                <li><span class="tick" aria-hidden="true">✓</span><%= o %></li>
+              <% }) %>
+            </ul>
+          </div>
+          <div class="outcome-card outcome-card--navy reveal">
+            <h2>Want results like these?</h2>
+            <p>Tell us what keeps paging your team — we'll map it to the lightest package that genuinely covers you.</p>
+            <a href="/contact" class="btn btn-primary">Start the conversation <span aria-hidden="true">➔</span></a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="case-more">
+      <div class="container">
+        <h2 class="section-title reveal">More of our work</h2>
+        <div class="case-grid">
+          <% others.forEach(function (s) { %>
+            <article class="case-card reveal">
+              <div class="case-art case-art--<%= s.theme %>" aria-hidden="true">
+                <% if (s.theme === 'spotlight') { %>
+                  <svg viewBox="0 0 200 100"><circle cx="100" cy="38" r="20" fill="#00E8F0"/><path d="M68 96a34 34 0 0 1 64 0" fill="none" stroke="#00E8F0" stroke-width="10" stroke-linecap="round"/></svg>
+                <% } else if (s.theme === 'incident') { %>
+                  <svg viewBox="0 0 200 100"><rect x="88" y="34" width="24" height="34" rx="6" fill="#123044"/><path d="M100 18a18 18 0 0 1 18 18h-36a18 18 0 0 1 18-18z" fill="#00E8F0"/><rect x="64" y="44" width="5" height="18" rx="2.5" fill="#B6F5FA"/><rect x="132" y="44" width="5" height="18" rx="2.5" fill="#B6F5FA"/></svg>
+                <% } else { %>
+                  <svg viewBox="0 0 200 100"><circle cx="100" cy="50" r="26" fill="none" stroke="#00E8F0" stroke-width="3"/><ellipse cx="100" cy="50" rx="44" ry="16" fill="none" stroke="#B6F5FA" stroke-width="2.5"/></svg>
+                <% } %>
+              </div>
+              <div class="case-body">
+                <p class="case-meta"><span class="tag tag-<%= s.theme === 'spotlight' ? 'orange' : (s.theme === 'incident' ? 'purple' : 'navy') %>"><%= s.industry %></span></p>
+                <h2><%= s.headline %></h2>
+                <a class="text-link" href="/case-studies/<%= s.slug %>">Read the case study <span aria-hidden="true">➔</span></a>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+
+<%- include("../partials/latest-insights") %>
+<%- include("../partials/foot", { year }) %>

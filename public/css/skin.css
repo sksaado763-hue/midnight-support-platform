@@ -1,0 +1,321 @@
+/* ============================================================
+   Midnight — dark skin
+   Sampled from the Stitch "Cloud Support Website Redesign"
+   screens: ink surfaces (#0a0e17 / #181b25), electric cyan
+   accent (#00f0ff), mint secondary. Loaded after style.css.
+   ============================================================ */
+
+html { color-scheme: dark; }
+
+body {
+  background: var(--bg);
+  font-weight: 400;
+}
+
+::selection { background: rgba(0, 232, 240, 0.26); color: #ffffff; }
+
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #050810; }
+::-webkit-scrollbar-thumb { background: #1e2b3d; border-radius: 99px; border: 3px solid #050810; }
+::-webkit-scrollbar-thumb:hover { background: #2b4356; }
+
+/* ---------- Header: floating glass bar ---------- */
+.site-header {
+  background: rgba(5, 8, 16, 0.82);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible { background: rgba(0, 232, 240, 0.12); color: var(--accent-bright); }
+
+.nav-link.is-current { color: var(--accent-bright); }
+
+.nav-toggle span { background: var(--text); }
+
+.sub-menu {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.66);
+}
+
+.sub-heading { color: var(--text); }
+.sub-label { color: var(--amber-soft); }
+.sub-col a { color: var(--navy-text-muted); }
+.sub-col a:hover { color: var(--accent-bright); }
+
+/* ---------- Buttons ---------- */
+.btn { font-weight: 600; letter-spacing: 0.005em; }
+
+.btn-primary {
+  background: var(--amber);
+  color: var(--accent-ink);
+  box-shadow: var(--glow-cyan);
+}
+
+.btn-primary:hover {
+  background: var(--accent-bright);
+  box-shadow: 0 14px 36px rgba(0, 232, 240, 0.36);
+}
+
+.btn-outline { border-color: var(--line-strong); color: var(--text); }
+
+.btn-outline:hover {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--accent-ink);
+}
+
+.btn-ghost { border-color: var(--line-strong); color: var(--text); background: transparent; }
+
+.btn-ghost:hover {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--accent-ink);
+}
+
+.text-link { color: var(--accent-bright); }
+
+/* ---------- Hero + page hero: cyan bloom over ink ---------- */
+.homepage-hero {
+  background:
+    radial-gradient(820px 460px at 76% 4%, rgba(0, 232, 240, 0.16), transparent 62%),
+    radial-gradient(680px 420px at 10% 88%, rgba(0, 208, 140, 0.10), transparent 60%),
+    linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 68%, #050810 100%);
+}
+
+.hero-title { letter-spacing: -0.02em; }
+
+.hero-title::after { box-shadow: 0 0 20px rgba(0, 232, 240, 0.65); }
+
+.page-hero {
+  background:
+    radial-gradient(700px 380px at 82% 0%, rgba(0, 232, 240, 0.14), transparent 64%),
+    linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+}
+
+.breadcrumb, .breadcrumb a { color: var(--accent-bright); }
+
+.trust-logo { color: rgba(232, 240, 248, 0.5); }
+
+/* ---------- Surfaces: hairlines instead of drop shadows ---------- */
+.service-card,
+.insight-card,
+.price-card,
+.industry-card,
+.provider-card,
+.consult-card,
+.case-card,
+.value-card,
+.team-card,
+.platform-card,
+.feature-card,
+.ps-card,
+.faq-item,
+.outcome-card,
+.admin-panel,
+.contact-form,
+.contact-map,
+.packages-band,
+.message-item,
+.subscriber-item,
+.report-card,
+.devops-feature { border: 1px solid var(--line); }
+
+.service-card:hover,
+.insight-card:hover,
+.price-card:hover,
+.industry-card:hover,
+.provider-card:hover,
+.consult-card:hover,
+.case-card:hover,
+.value-card:hover,
+.team-card:hover,
+.platform-card:hover,
+.feature-card:hover,
+.other-platform-chip:hover {
+  border-color: rgba(0, 232, 240, 0.42);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.6), 0 0 22px rgba(0, 232, 240, 0.12);
+}
+
+/* Cards that sit inside a raised band need to lift one more step */
+.insights .insight-card,
+.case-list .case-card,
+.team-section .team-card,
+.industries .industry-card,
+.admin-panel .message-item,
+.admin-panel .subscriber-item { background: var(--surface-2); }
+
+.admin-panel { background: var(--surface); }
+
+/* Media panels: dark plates with cyan line art */
+.insight-media--spotlight,
+.case-art--spotlight { background: linear-gradient(135deg, #0a1a2b 0%, #10303f 100%); }
+
+.insight-media--incident,
+.case-art--incident { background: linear-gradient(135deg, #050810 0%, #123044 100%); }
+
+.insight-media--observability,
+.case-art--observability { background: linear-gradient(135deg, #0e1522 0%, #1e3e55 100%); }
+
+/* ---------- Accent fills: dark ink on cyan ---------- */
+.tag-orange,
+.tag-purple,
+.price-flag,
+.tab.is-active,
+.admin-count,
+.platform-badge--amber,
+.platform-badge--purple,
+.provider-badge strong,
+.new-badge,
+.social-links a:hover,
+.other-platform-chip--all:hover,
+.filter-chip.is-active { color: var(--accent-ink); }
+
+.team-avatar--amber,
+.team-avatar--purple { color: var(--accent-ink); }
+
+.team-avatar--navy { background: var(--surface-2); border: 1px solid var(--line-strong); }
+
+.new-badge { background: var(--amber); box-shadow: 0 0 18px rgba(0, 232, 240, 0.4); }
+
+.tab.is-active { border-color: var(--amber); }
+
+.stat-value { color: var(--accent-bright); }
+
+.tick,
+.industry-card li::before { color: var(--mint); }
+
+.price-card.is-featured {
+  background: linear-gradient(170deg, #101c2e 0%, var(--navy) 100%);
+  border-color: rgba(0, 232, 240, 0.34);
+  box-shadow: 0 0 44px rgba(0, 232, 240, 0.12);
+}
+
+.price-card.is-featured .btn-ghost { border-color: var(--amber); color: var(--accent-bright); }
+
+.price-card.is-featured .btn-ghost:hover { background: var(--amber); color: var(--accent-ink); }
+
+.filter-chip { background: var(--surface); border-color: var(--line-strong); color: var(--navy-text-muted); }
+
+.filter-chip:hover { border-color: var(--amber); color: var(--accent-bright); }
+
+.filter-chip.is-active { background: var(--amber); border-color: var(--amber); }
+
+/* ---------- Report band ---------- */
+.report-card { background: linear-gradient(120deg, var(--amber) 0%, #0e9aa8 100%); }
+
+.report-copy { color: var(--accent-ink); }
+
+.report-copy .btn {
+  background: var(--bg-deep);
+  color: var(--text);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Forms ---------- */
+.form-row label,
+.contact-label { color: var(--text); }
+
+.form-row input,
+.form-row textarea,
+.form-row select,
+.newsletter-form input {
+  background: var(--surface-2);
+  border: 1.5px solid var(--line-strong);
+  color: var(--text);
+}
+
+.form-row input::placeholder,
+.form-row textarea::placeholder,
+.newsletter-form input::placeholder { color: rgba(232, 240, 248, 0.38); }
+
+.form-row input:focus,
+.form-row textarea:focus,
+.form-row select:focus,
+.newsletter-form input:focus {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px rgba(0, 232, 240, 0.2);
+  outline: none;
+}
+
+.form-status.is-error { color: #ff8080; }
+.form-status.is-ok { color: var(--mint); }
+
+/* ---------- Footer: deepest ink ---------- */
+.site-footer {
+  background:
+    radial-gradient(760px 320px at 88% 0%, rgba(0, 232, 240, 0.08), transparent 62%),
+    var(--bg-deep);
+  color: var(--text);
+}
+
+.footer-contact,
+.footer-ways,
+.footer-legal { border-color: var(--line); }
+
+.footer-contact-copy p,
+.footer-ways,
+.footer-col-list a,
+.footer-legal,
+.contact-address { color: var(--navy-text-muted); }
+
+.footer-col-toggle,
+.footer-col-heading,
+.footer-ways a,
+.footer-contact-copy h2 { color: var(--text); }
+
+.footer-col-list a:hover,
+.footer-ways a:hover { color: var(--accent-bright); }
+
+.social-links a { background: var(--surface); border: 1px solid var(--line-strong); color: var(--text); }
+
+.social-links a:hover { border-color: var(--amber); }
+
+/* ---------- Platform detail bits ---------- */
+.faq-item { background: var(--surface-2); }
+
+.faq-item summary { color: var(--text); }
+
+.faq-chevron { border-color: var(--accent-bright); }
+
+.other-platform-chip { background: var(--surface); border-color: var(--line-strong); }
+
+.other-platform-chip:hover { border-color: rgba(0, 232, 240, 0.5); }
+
+.other-platform-chip--all { background: var(--surface-2); border-color: var(--line-strong); color: var(--text); }
+
+.other-platform-chip--all:hover { background: var(--amber); border-color: var(--amber); }
+
+.packages-band {
+  background:
+    radial-gradient(520px 260px at 84% 10%, rgba(0, 232, 240, 0.14), transparent 66%),
+    var(--navy);
+}
+
+.ps-card--problem { background: linear-gradient(160deg, #123044 0%, #0a1a2b 100%); }
+
+.feature-card { background: var(--surface-2); }
+
+.faq-more a { color: var(--accent-bright); }
+
+/* ---------- Admin ---------- */
+.message-delete { color: var(--navy-text-muted); }
+
+.message-delete:hover { background: #b3261e; color: #ffffff; }
+
+.message-meta a { border-bottom-color: var(--amber); }
+
+/* ---------- Mobile: keep the drawer readable ---------- */
+@media (max-width: 860px) {
+  .main-navigation { background: #050810; }
+
+  .sub-menu {
+    background: rgba(255, 255, 255, 0.04);
+    border: none;
+    box-shadow: none;
+  }
+
+  .nav-link { border-bottom-color: var(--line); }
+}

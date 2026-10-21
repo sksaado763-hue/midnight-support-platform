@@ -1,0 +1,59 @@
+<%- include("../partials/head", { title }) %>
+<%- include("../partials/header", { navActive }) %>
+
+    <section class="page-hero page-hero--admin">
+      <div class="container">
+        <h1 class="page-hero-title reveal">Admin Inbox</h1>
+        <p class="page-hero-sub reveal">Messages and newsletter signups submitted through the site land here. Demo tooling — no auth in front by design.</p>
+      </div>
+    </section>
+
+    <section class="admin-section">
+      <div class="container">
+        <div class="admin-grid">
+          <div class="admin-panel reveal">
+            <div class="admin-panel-head">
+              <h2>Messages <span class="admin-count"><%= messages.length %></span></h2>
+            </div>
+            <% if (!messages.length) { %>
+              <p class="empty-note">No messages yet. Submit the contact form and it'll appear here.</p>
+            <% } else { %>
+              <ul class="message-list" id="message-list">
+                <% messages.forEach(function (m) { %>
+                  <li class="message-item" data-id="<%= m.id %>">
+                    <div class="message-head">
+                      <div>
+                        <p class="message-name"><%= m.name %><% if (m.company) { %> <span class="message-company">· <%= m.company %></span><% } %></p>
+                        <p class="message-meta"><a href="mailto:<%= m.email %>"><%= m.email %></a> · <time datetime="<%= m.createdAt %>"><%= new Date(m.createdAt).toLocaleString("en-GB") %></time></p>
+                      </div>
+                      <button class="message-delete" data-id="<%= m.id %>" title="Delete message" aria-label="Delete message from <%= m.name %>">✕</button>
+                    </div>
+                    <p class="message-body"><%= m.message %></p>
+                  </li>
+                <% }) %>
+              </ul>
+            <% } %>
+          </div>
+
+          <div class="admin-panel reveal">
+            <div class="admin-panel-head">
+              <h2>Newsletter subscribers <span class="admin-count"><%= subscribers.length %></span></h2>
+            </div>
+            <% if (!subscribers.length) { %>
+              <p class="empty-note">No subscribers yet.</p>
+            <% } else { %>
+              <ul class="subscriber-list">
+                <% subscribers.forEach(function (s) { %>
+                  <li class="subscriber-item">
+                    <span><%= s.email %></span>
+                    <time datetime="<%= s.createdAt %>"><%= new Date(s.createdAt).toLocaleDateString("en-GB") %></time>
+                  </li>
+                <% }) %>
+              </ul>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<%- include("../partials/foot", { year }) %>

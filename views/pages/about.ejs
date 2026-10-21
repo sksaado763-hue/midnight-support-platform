@@ -1,0 +1,72 @@
+<%- include("../partials/head", { title }) %>
+<%- include("../partials/header", { navActive }) %>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-hero-title reveal">About Us</h1>
+        <p class="page-hero-sub reveal">We're a support-first engineering company. That order matters: everything we build — tooling, rotations, runbooks — exists so that when things break, someone calm and competent is already on it.</p>
+      </div>
+    </section>
+
+    <section class="stats-strip stats-strip--alt">
+      <div class="container stats-grid">
+        <% stats.forEach(function (s) { %>
+          <div class="stat reveal">
+            <p class="stat-value"><%= s.value %></p>
+            <p class="stat-label"><%= s.label %></p>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <section class="about-values">
+      <div class="container">
+        <h2 class="section-title reveal">What we believe</h2>
+        <div class="value-grid">
+          <article class="value-card reveal">
+            <h3>Uptime is a promise</h3>
+            <p>Support isn't a ticket queue — it's the promise your product makes at 3am. We take that promise personally, which is why our engineers own incidents end to end.</p>
+          </article>
+          <article class="value-card reveal">
+            <h3>Boring is beautiful</h3>
+            <p>The best infrastructure work is uneventful. We optimise for quiet weeks and predictable releases, and we get suspicious when a system is only held together by heroics.</p>
+          </article>
+          <article class="value-card reveal">
+            <h3>Share what we learn</h3>
+            <p>Every incident makes us smarter, and that knowledge shouldn't stay in a private channel. We write things down — honestly — and publish what we can.</p>
+          </article>
+          <article class="value-card reveal">
+            <h3>Humans first</h3>
+            <p>Sustainable on-call, blameless reviews and no hero culture. Systems don't burn out; people do, and burned-out people miss things.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section" id="team">
+      <div class="container">
+        <h2 class="section-title reveal">The people on the other end of the phone</h2>
+        <div class="team-grid">
+          <% team.forEach(function (m) { %>
+            <article class="team-card reveal">
+              <div class="team-avatar team-avatar--<%= m.tint %>" aria-hidden="true"><%= m.initials %></div>
+              <h3><%= m.name %></h3>
+              <p><%= m.role %></p>
+            </article>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement">
+      <div class="container statement-inner">
+        <h2 class="statement-title reveal">Sound like your kind of team?</h2>
+        <p class="statement-text reveal">Whether you need cover for your platform or want to join ours — we'd love to hear from you.</p>
+        <div class="hero-actions reveal" style="justify-content:center">
+          <a href="/contact" class="btn btn-primary">Get in touch <span aria-hidden="true">➔</span></a>
+        </div>
+      </div>
+    </section>
+
+<%- include("../partials/latest-insights") %>
+<%- include("../partials/foot", { year }) %>

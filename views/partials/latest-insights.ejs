@@ -1,0 +1,60 @@
+<section class="insights insights--shared" aria-label="Latest insights">
+  <div class="container">
+    <div class="insights-head reveal">
+      <h2 class="section-title">Latest Insights from JAM</h2>
+      <a href="/insights" class="text-link">See more articles <span aria-hidden="true">➔</span></a>
+    </div>
+    <div class="insights-grid">
+      <% latestArticles.forEach(function (a) { %>
+        <article class="insight-card reveal">
+          <a class="insight-card-link" href="/insights/<%= a.slug %>">
+            <div class="insight-media insight-media--<%= a.theme %>" aria-hidden="true">
+              <% if (a.isNew) { %><span class="new-badge">New</span><% } %>
+              <% if (a.theme === 'spotlight') { %>
+                <svg viewBox="0 0 320 170">
+                  <circle cx="160" cy="150" r="46" fill="#00E8F0"/>
+                  <circle cx="160" cy="86" r="30" fill="#00E8F0"/>
+                  <g stroke="#6E8FAD" stroke-width="3" stroke-linecap="round">
+                    <path d="M118 158h84M126 176h68"/>
+                  </g>
+                  <circle cx="228" cy="40" r="3" fill="#B6F5FA"/>
+                  <circle cx="64" cy="52" r="2.4" fill="#B6F5FA"/>
+                  <path d="M84 30l8 8m0-8l-8 8" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              <% } else if (a.theme === 'incident') { %>
+                <svg viewBox="0 0 320 170">
+                  <rect x="140" y="88" width="40" height="52" rx="10" fill="#123044"/>
+                  <rect x="132" y="72" width="56" height="22" rx="8" fill="#00A6B8"/>
+                  <path d="M160 56a26 26 0 0 1 26 26h-14a12 12 0 0 0-24 0h-14a26 26 0 0 1 26-26z" fill="#00E8F0"/>
+                  <g fill="#B6F5FA">
+                    <rect x="86" y="96" width="6" height="26" rx="3"/>
+                    <rect x="100" y="86" width="6" height="46" rx="3"/>
+                    <rect x="114" y="100" width="6" height="18" rx="3"/>
+                    <rect x="200" y="92" width="6" height="34" rx="3"/>
+                    <rect x="214" y="100" width="6" height="18" rx="3"/>
+                    <rect x="228" y="86" width="6" height="46" rx="3"/>
+                  </g>
+                </svg>
+              <% } else { %>
+                <svg viewBox="0 0 320 170">
+                  <ellipse cx="160" cy="105" rx="52" ry="30" fill="none" stroke="#00E8F0" stroke-width="3"/>
+                  <ellipse cx="160" cy="105" rx="52" ry="30" fill="none" stroke="#00E8F0" stroke-width="3" transform="rotate(60 160 105)"/>
+                  <ellipse cx="160" cy="105" rx="52" ry="30" fill="none" stroke="#00E8F0" stroke-width="3" transform="rotate(-60 160 105)"/>
+                  <circle cx="160" cy="105" r="14" fill="#B6F5FA"/>
+                  <circle cx="252" cy="46" r="3" fill="#B6F5FA"/>
+                  <circle cx="70" cy="140" r="2.4" fill="#00E8F0"/>
+                </svg>
+              <% } %>
+            </div>
+            <div class="insight-body">
+              <p class="insight-meta"><span class="tag <%= a.tagClass %>"><%= a.tag %></span><time datetime="<%= a.date %>"><%= a.dateLabel %></time></p>
+              <h3><%= a.title %></h3>
+              <p><%= a.excerpt %></p>
+              <span class="text-link">Read more <span aria-hidden="true">➔</span></span>
+            </div>
+          </a>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>

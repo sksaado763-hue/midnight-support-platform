@@ -1,0 +1,79 @@
+<%- include("../partials/head", { title }) %>
+<%- include("../partials/header", { navActive }) %>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-hero-title reveal">24/7 Support Packages</h1>
+        <p class="page-hero-sub reveal">Pick the level of cover that matches how much downtime hurts. Every package is backed by the same engineers, tooling and obsession with uptime — only the response commitments and extras change.</p>
+      </div>
+    </section>
+
+    <section class="pricing" id="compare">
+      <div class="container">
+        <div class="pricing-grid">
+          <% packages.forEach(function (p) { %>
+            <article class="price-card reveal<%= p.featured ? ' is-featured' : '' %>">
+              <% if (p.featured) { %><p class="price-flag">Most popular</p><% } %>
+              <h2 class="price-name"><%= p.name %></h2>
+              <p class="price-tagline"><%= p.tagline %></p>
+              <p class="price-amount"><%= p.price %><span><%= p.period %></span></p>
+              <ul class="price-features">
+                <% p.features.forEach(function (f) { %>
+                  <li><span class="tick" aria-hidden="true">✓</span><%= f %></li>
+                <% }) %>
+              </ul>
+              <a href="/contact?package=<%= encodeURIComponent(p.name) %>" class="btn <%= p.featured ? 'btn-primary' : 'btn-ghost' %>"><%= p.cta %> <span aria-hidden="true">➔</span></a>
+            </article>
+          <% }) %>
+        </div>
+        <p class="pricing-note reveal">All prices ex-VAT. Response times are contractual commitments, not best-effort promises — ask us for the SLA document.</p>
+      </div>
+    </section>
+
+    <section class="industries" id="industries">
+      <div class="container">
+        <h2 class="section-title reveal">Support shaped around your world</h2>
+        <div class="industry-grid">
+          <article class="industry-card reveal">
+            <h3>Digital Agencies</h3>
+            <p>White-label cover for every client site you build. We stay invisible, your clients stay happy, and Monday mornings stop starting with an outage report.</p>
+            <ul>
+              <li>Cover for your whole client portfolio under one agreement</li>
+              <li>Updates in your brand voice, not ours</li>
+              <li>CMS specialists across Sitecore, Umbraco, WordPress &amp; more</li>
+            </ul>
+          </article>
+          <article class="industry-card reveal">
+            <h3>SaaS Platforms</h3>
+            <p>Your SLA is our SLA. We operate as your outsourced SRE function, monitoring user journeys rather than just host metrics.</p>
+            <ul>
+              <li>Journey-level monitoring tied to your uptime promises</li>
+              <li>Follow-the-sun rotations so no one carries the night alone</li>
+              <li>Deploy support, rollback drills and pre-release checks</li>
+            </ul>
+          </article>
+          <article class="industry-card reveal">
+            <h3>eCommerce</h3>
+            <p>Every minute of downtime is abandoned baskets. Peak trading is where we earn our keep.</p>
+            <ul>
+              <li>Peak-season war rooms and pre-peak load testing</li>
+              <li>Checkout and payment flow monitoring, end to end</li>
+              <li>Fast paths to fix for platform and plugin regressions</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement">
+      <div class="container statement-inner">
+        <h2 class="statement-title reveal">Not sure which tier fits?</h2>
+        <p class="statement-text reveal">Tell us what breaks and when it hurts most — we'll recommend the lightest package that genuinely covers you. No upselling.</p>
+        <div class="hero-actions reveal" style="justify-content:center">
+          <a href="/contact" class="btn btn-primary">Get a recommendation <span aria-hidden="true">➔</span></a>
+        </div>
+      </div>
+    </section>
+
+<%- include("../partials/latest-insights") %>
+<%- include("../partials/foot", { year }) %>

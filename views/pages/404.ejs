@@ -1,0 +1,22 @@
+<%- include("../partials/head", { title }) %>
+<%- include("../partials/header", { navActive }) %>
+
+    <section class="page-hero">
+      <div class="container notfound">
+        <svg class="notfound-art" viewBox="0 0 200 160" aria-hidden="true">
+          <circle cx="100" cy="80" r="56" fill="none" stroke="#00E8F0" stroke-width="5"/>
+          <path d="M100 44v40" stroke="#B6F5FA" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="100" cy="108" r="4.5" fill="#B6F5FA"/>
+          <circle cx="30" cy="30" r="2.5" fill="#B6F5FA"/>
+          <circle cx="178" cy="126" r="3" fill="#00E8F0"/>
+        </svg>
+        <h1 class="page-hero-title reveal">404 — this page is having a lie-down</h1>
+        <p class="page-hero-sub reveal">The page you're after doesn't exist (or got moved while nobody was watching). Unlike your infrastructure, we let this one go down.</p>
+        <div class="hero-actions reveal" style="justify-content:center">
+          <a href="/" class="btn btn-primary">Back to homepage <span aria-hidden="true">➔</span></a>
+          <a href="/contact" class="btn btn-outline">Report a problem <span aria-hidden="true">➔</span></a>
+        </div>
+      </div>
+    </section>
+
+<%- include("../partials/foot", { year }) %>
