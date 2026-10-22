@@ -36,14 +36,25 @@ body {
 
 .sub-menu {
   background: var(--surface);
-  border: 1px solid var(--line);
+  border-color: var(--line);
   box-shadow: 0 28px 64px rgba(0, 0, 0, 0.66);
 }
 
-.sub-heading { color: var(--text); }
+.sub-heading { color: var(--text-muted); }
 .sub-label { color: var(--amber-soft); }
-.sub-col a { color: var(--navy-text-muted); }
-.sub-col a:hover { color: var(--accent-bright); }
+.sub-item { color: var(--navy-text-muted); }
+.sub-item:hover,
+.sub-item:focus-visible { color: var(--accent-bright); background: rgba(0, 232, 240, 0.09); }
+.sub-icon { background: var(--panel); border-color: var(--line); color: var(--purple); }
+.sub-item:hover .sub-icon,
+.sub-item:focus-visible .sub-icon {
+  background: rgba(0, 232, 240, 0.13);
+  border-color: rgba(0, 232, 240, 0.34);
+  color: var(--accent-bright);
+}
+.sub-menu::-webkit-scrollbar { width: 8px; }
+.sub-menu::-webkit-scrollbar-thumb { background: var(--line-strong); border: none; }
+.sub-menu::-webkit-scrollbar-track { background: transparent; }
 
 /* ---------- Buttons ---------- */
 .btn { font-weight: 600; letter-spacing: 0.005em; }

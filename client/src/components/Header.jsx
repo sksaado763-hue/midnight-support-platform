@@ -1,36 +1,36 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Icon from "./Icons";
 
 const SUBMENUS = {
   support: {
     label: "24/7 Support",
     key: "support",
     heading: "Our Support Services",
-    cols: [
-      { label: "What we offer", links: [["Support Packages", "/support"], ["Compare Packages", "/support#compare"]] },
-      { label: "By industry", links: [["Agencies", "/support#industries"], ["SaaS Platforms", "/support#industries"], ["eCommerce", "/support#industries"]] },
-      { label: "By cloud provider", links: [["24/7 Support for AWS", "/cloud#aws"], ["24/7 Support for Azure", "/cloud#azure"], ["24/7 Support for GCP", "/cloud#gcp"]] },
+    groups: [
+      { label: "What we offer", links: [["Support Packages", "/support", "layers"], ["Compare Packages", "/support#compare", "sliders"]] },
+      { label: "By industry", links: [["Agencies", "/support#industries", "building"], ["SaaS Platforms", "/support#industries", "window"], ["eCommerce", "/support#industries", "cart"]] },
+      { label: "By cloud provider", links: [["24/7 Support for AWS", "/cloud#aws", "aws"], ["24/7 Support for Azure", "/cloud#azure", "azure"], ["24/7 Support for GCP", "/cloud#gcp", "gcp"]] },
     ],
   },
   cloud: {
     label: "Cloud & DevOps",
     key: "cloud",
     heading: "Cloud Services",
-    cols: [
-      { label: "Managed Cloud", links: [["AWS", "/cloud#aws"], ["Azure", "/cloud#azure"], ["GCP", "/cloud#gcp"]] },
-      { label: "Cloud consulting", links: [["Cost Optimisation", "/cloud#consulting"], ["Well-Architected Review", "/cloud#consulting"], ["Solution Architecture", "/cloud#consulting"], ["Cloud Migration", "/cloud#consulting"]] },
-      { label: "DevOps", links: [["DevOps Consulting", "/cloud#devops"], ["Delivery & Automation", "/cloud#devops"], ["Application Modernisation", "/cloud#devops"]] },
+    groups: [
+      { label: "Managed Cloud", links: [["AWS", "/cloud#aws", "aws"], ["Azure", "/cloud#azure", "azure"], ["GCP", "/cloud#gcp", "gcp"]] },
+      { label: "Cloud consulting", links: [["Cost Optimisation", "/cloud#consulting", "cost"], ["Well-Architected Review", "/cloud#consulting", "shield-check"], ["Solution Architecture", "/cloud#consulting", "nodes"], ["Cloud Migration", "/cloud#consulting", "migration"]] },
+      { label: "DevOps", links: [["DevOps Consulting", "/cloud#devops", "cycle"], ["Delivery & Automation", "/cloud#devops", "bolt"], ["Application Modernisation", "/cloud#devops", "code"]] },
     ],
   },
   platforms: {
     label: "Platforms",
     key: "platforms",
     heading: "Support for Platforms & Tools",
-    wide: true,
-    cols: [
-      { label: "Experience platforms", links: [["Sitecore", "/platforms/sitecore"], ["Kentico", "/platforms/kentico"], ["Umbraco", "/platforms/umbraco"], ["AEM", "/platforms/aem"]] },
-      { label: "Commerce & content", links: [["Magento", "/platforms/magento"], ["Optimizely", "/platforms/optimizely"], ["WordPress", "/platforms/wordpress"]] },
-      { label: "Everything else", links: [["Cloudflare", "/platforms/cloudflare"], ["Custom Applications", "/platforms/custom-applications"], ["All platforms", "/platforms"]] },
+    groups: [
+      { label: "Experience platforms", links: [["Sitecore", "/platforms/sitecore", "sitemap"], ["Kentico", "/platforms/kentico", "blocks"], ["Umbraco", "/platforms/umbraco", "cube"], ["AEM", "/platforms/aem", "spark"]] },
+      { label: "Commerce & content", links: [["Magento", "/platforms/magento", "bag"], ["Optimizely", "/platforms/optimizely", "flask"], ["WordPress", "/platforms/wordpress", "doc"]] },
+      { label: "Everything else", links: [["Cloudflare", "/platforms/cloudflare", "globe"], ["Custom Applications", "/platforms/custom-applications", "terminal"], ["All platforms", "/platforms", "grid"]] },
     ],
   },
 };
@@ -91,17 +91,22 @@ export default function Header() {
                 >
                   {menu.label}
                 </button>
-                <div className={`sub-menu${menu.wide ? " sub-menu--wide" : ""}`} id={`sub-${menu.key}`}>
+                <div className="sub-menu" id={`sub-${menu.key}`}>
                   <p className="sub-heading">{menu.heading}</p>
-                  <div className={`sub-cols${menu.wide ? " sub-cols--platforms" : ""}`}>
-                    {menu.cols.map((col) => (
-                      <div className="sub-col" key={col.label}>
-                        <p className="sub-label">{col.label}</p>
-                        {col.links.map(([label, to]) => (
-                          <Link key={`${to}-${label}`} to={to} onClick={closeMobile}>
-                            {label}
-                          </Link>
-                        ))}
+                  <div className="sub-groups">
+                    {menu.groups.map((group) => (
+                      <div className="sub-group" key={group.label}>
+                        <p className="sub-label">{group.label}</p>
+                        <ul className="sub-items">
+                          {group.links.map(([label, to, icon]) => (
+                            <li key={`${to}-${label}`}>
+                              <Link className="sub-item" to={to} onClick={closeMobile}>
+                                <span className="sub-icon"><Icon name={icon} /></span>
+                                <span className="sub-item-label">{label}</span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     ))}
                   </div>
