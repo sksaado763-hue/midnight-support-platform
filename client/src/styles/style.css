@@ -541,13 +541,23 @@ ul { list-style: none; }
 .footer-form { display: grid; gap: 0.9rem; }
 .form-row { display: grid; gap: 0.3rem; }
 .form-row label {
+  display: block;
   font-family: var(--font-head);
   font-weight: 600;
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
+.form-row label .req { color: var(--amber); }
+.form-row label .opt {
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
 .form-row input, .form-row textarea {
+  display: block;
+  width: 100%;
   font-family: var(--font-body);
   font-size: 0.95rem;
   padding: 0.7em 0.9em;
@@ -1092,6 +1102,8 @@ ul { list-style: none; }
 .contact-form h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.4rem; }
 .form-row--split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-row select {
+  display: block;
+  width: 100%;
   font-family: var(--font-body);
   font-size: 0.95rem;
   padding: 0.7em 0.9em;

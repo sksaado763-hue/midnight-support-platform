@@ -47,16 +47,16 @@ export function ContactForm({ withTopic = false, presetPackage = "" }) {
       {withTopic && <h2>Send us a message</h2>}
       <div className="form-row form-row--split">
         <div>
-          <label htmlFor={`${idPrefix}-name`}>Name{withTopic ? <span aria-hidden="true"> *</span> : ""}</label>
+          <label htmlFor={`${idPrefix}-name`}>Name<span className="req" aria-hidden="true"> *</span></label>
           <input type="text" id={`${idPrefix}-name`} name="name" required autoComplete="name" value={values.name} onChange={update("name")} />
         </div>
         <div>
-          <label htmlFor={`${idPrefix}-company`}>{withTopic ? "Company" : "Company (optional)"}</label>
+          <label htmlFor={`${idPrefix}-company`}>Company<span className="opt"> (optional)</span></label>
           <input type="text" id={`${idPrefix}-company`} name="company" autoComplete="organization" value={values.company} onChange={update("company")} />
         </div>
       </div>
       <div className="form-row">
-        <label htmlFor={`${idPrefix}-email`}>Email{withTopic && <span aria-hidden="true"> *</span>}</label>
+        <label htmlFor={`${idPrefix}-email`}>Email<span className="req" aria-hidden="true"> *</span></label>
         <input type="email" id={`${idPrefix}-email`} name="email" required autoComplete="email" value={values.email} onChange={update("email")} />
       </div>
       {withTopic && (
@@ -72,7 +72,7 @@ export function ContactForm({ withTopic = false, presetPackage = "" }) {
         </div>
       )}
       <div className="form-row">
-        <label htmlFor={`${idPrefix}-message`}>Message{withTopic && <span aria-hidden="true"> *</span>}</label>
+        <label htmlFor={`${idPrefix}-message`}>Message<span className="req" aria-hidden="true"> *</span></label>
         <textarea
           id={`${idPrefix}-message`}
           name="message"
