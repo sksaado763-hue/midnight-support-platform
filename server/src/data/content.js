@@ -159,7 +159,7 @@ const caseStudies = [
 const packages = [
   {
     name: "Essentials",
-    price: "£1,450",
+    price: "Rs 145,000",
     period: "/ month",
     tagline: "Out-of-hours cover for platforms that mostly behave.",
     features: [
@@ -174,7 +174,7 @@ const packages = [
   },
   {
     name: "Growth",
-    price: "£3,200",
+    price: "Rs 320,000",
     period: "/ month",
     tagline: "Round-the-clock response for revenue-critical platforms.",
     features: [

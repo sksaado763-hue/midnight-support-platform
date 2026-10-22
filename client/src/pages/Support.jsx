@@ -66,7 +66,7 @@ export default function Support() {
               </article>
             ))}
           </div>
-          <p className="pricing-note reveal">All prices ex-VAT. Response times are contractual commitments, not best-effort promises — ask us for the SLA document.</p>
+          <p className="pricing-note reveal">All prices ex-GST. Response times are contractual commitments, not best-effort promises — ask us for the SLA document.</p>
         </div>
       </section>
 
