@@ -1,19 +1,24 @@
 {
   "name": "midnight-support-platform",
-  "version": "1.0.0",
-  "description": "Full-stack rebuild of a 24/7 support and managed cloud agency site — Express + EJS, JSON persistence, working forms and an admin inbox.",
-  "main": "server.js",
+  "version": "2.0.0",
+  "description": "MERN rebuild of a 24/7 support and managed cloud agency site — MongoDB-backed Express API, React (Vite) front end, working forms and an admin inbox.",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev --workspace server",
+    "dev:web": "npm run dev --workspace client",
+    "build": "npm run build --workspace client",
+    "start": "npm run start --workspace server",
+    "seed": "npm run seed --workspace server",
+    "db:start": "docker run -d --name midnight-mongo -p 27017:27017 -v midnight_mongo:/data/db mongo:7"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "ejs": "^7.0.2",
-    "express": "^5.3.0"
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }
