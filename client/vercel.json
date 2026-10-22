@@ -1,0 +1,186 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/api/articles",
+      "has": [
+        {
+          "type": "query",
+          "key": "tag",
+          "value": "Employee Spotlight"
+        }
+      ],
+      "destination": "/api/articles/by-tag/employee-spotlight.json"
+    },
+    {
+      "source": "/api/articles",
+      "has": [
+        {
+          "type": "query",
+          "key": "tag",
+          "value": "Incident Management"
+        }
+      ],
+      "destination": "/api/articles/by-tag/incident-management.json"
+    },
+    {
+      "source": "/api/articles",
+      "has": [
+        {
+          "type": "query",
+          "key": "tag",
+          "value": "Industry Commentary"
+        }
+      ],
+      "destination": "/api/articles/by-tag/industry-commentary.json"
+    },
+    {
+      "source": "/api/articles",
+      "has": [
+        {
+          "type": "query",
+          "key": "tag",
+          "value": "Observability"
+        }
+      ],
+      "destination": "/api/articles/by-tag/observability.json"
+    },
+    {
+      "source": "/api/articles",
+      "has": [
+        {
+          "type": "query",
+          "key": "tag",
+          "value": "Site Reliability Engineering"
+        }
+      ],
+      "destination": "/api/articles/by-tag/site-reliability-engineering.json"
+    },
+    {
+      "source": "/api/articles",
+      "has": [
+        {
+          "type": "query",
+          "key": "tag",
+          "value": "Tech Guides"
+        }
+      ],
+      "destination": "/api/articles/by-tag/tech-guides.json"
+    },
+    {
+      "source": "/api/articles",
+      "destination": "/api/articles.json"
+    },
+    {
+      "source": "/api/platforms",
+      "destination": "/api/platforms.json"
+    },
+    {
+      "source": "/api/case-studies",
+      "destination": "/api/case-studies.json"
+    },
+    {
+      "source": "/api/articles/tags",
+      "destination": "/api/articles/tags.json"
+    },
+    {
+      "source": "/api/articles/latest",
+      "destination": "/api/articles/latest.json"
+    },
+    {
+      "source": "/api/packages",
+      "destination": "/api/packages.json"
+    },
+    {
+      "source": "/api/team",
+      "destination": "/api/team.json"
+    },
+    {
+      "source": "/api/stats",
+      "destination": "/api/stats.json"
+    },
+    {
+      "source": "/api/articles/employee-spotlight-angela",
+      "destination": "/api/articles/employee-spotlight-angela.json"
+    },
+    {
+      "source": "/api/articles/keeping-incidents-small",
+      "destination": "/api/articles/keeping-incidents-small.json"
+    },
+    {
+      "source": "/api/articles/seeing-clearly-across-your-system",
+      "destination": "/api/articles/seeing-clearly-across-your-system.json"
+    },
+    {
+      "source": "/api/articles/cost-optimisation-without-regret",
+      "destination": "/api/articles/cost-optimisation-without-regret.json"
+    },
+    {
+      "source": "/api/articles/saas-oncall-rotation",
+      "destination": "/api/articles/saas-oncall-rotation.json"
+    },
+    {
+      "source": "/api/articles/agency-support-partnership",
+      "destination": "/api/articles/agency-support-partnership.json"
+    },
+    {
+      "source": "/api/platforms/sitecore",
+      "destination": "/api/platforms/sitecore.json"
+    },
+    {
+      "source": "/api/platforms/kentico",
+      "destination": "/api/platforms/kentico.json"
+    },
+    {
+      "source": "/api/platforms/umbraco",
+      "destination": "/api/platforms/umbraco.json"
+    },
+    {
+      "source": "/api/platforms/aem",
+      "destination": "/api/platforms/aem.json"
+    },
+    {
+      "source": "/api/platforms/magento",
+      "destination": "/api/platforms/magento.json"
+    },
+    {
+      "source": "/api/platforms/optimizely",
+      "destination": "/api/platforms/optimizely.json"
+    },
+    {
+      "source": "/api/platforms/wordpress",
+      "destination": "/api/platforms/wordpress.json"
+    },
+    {
+      "source": "/api/platforms/cloudflare",
+      "destination": "/api/platforms/cloudflare.json"
+    },
+    {
+      "source": "/api/platforms/custom-applications",
+      "destination": "/api/platforms/custom-applications.json"
+    },
+    {
+      "source": "/api/case-studies/absolute-software",
+      "destination": "/api/case-studies/absolute-software.json"
+    },
+    {
+      "source": "/api/case-studies/paylocity",
+      "destination": "/api/case-studies/paylocity.json"
+    },
+    {
+      "source": "/api/case-studies/structureflow",
+      "destination": "/api/case-studies/structureflow.json"
+    },
+    {
+      "source": "/api/case-studies/the-body-coach-app",
+      "destination": "/api/case-studies/the-body-coach-app.json"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

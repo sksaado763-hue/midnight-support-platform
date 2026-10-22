@@ -14,6 +14,7 @@
     "build": "npm run build --workspace client",
     "start": "npm run start --workspace server",
     "seed": "npm run seed --workspace server",
+    "snapshot": "node scripts/snapshot-api.mjs",
     "db:start": "docker run -d --name midnight-mongo -p 27017:27017 -v midnight_mongo:/data/db mongo:7"
   },
   "author": "",
