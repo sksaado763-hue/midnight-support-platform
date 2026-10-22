@@ -81,8 +81,8 @@ export default function Footer() {
 
         <div className="footer-ways">
           <p>Other ways to contact us:</p>
-          <p>Email us: <a href="mailto:hello@example.test">hello@example.test</a></p>
-          <p>Call us: <a href="tel:+442030000247">+44 20 3000 0247</a></p>
+          <p>Email us: <a href="mailto:havitgrowth@gmail.com">havitgrowth@gmail.com</a></p>
+          <p>Call us: <a href="tel:+923000000000">+92 300 0000000</a></p>
         </div>
 
         <div className="footer-columns">

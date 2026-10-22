@@ -24,22 +24,21 @@ export default function Contact() {
             <ul className="contact-list">
               <li>
                 <span className="contact-label">Email us</span>
-                <a href="mailto:hello@example.test">hello@example.test</a>
+                <a href="mailto:havitgrowth@gmail.com">havitgrowth@gmail.com</a>
               </li>
               <li>
                 <span className="contact-label">Call us (24/7)</span>
-                <a href="tel:+442030000247">+44 20 3000 0247</a>
+                <a href="tel:+923000000000">+92 300 0000000</a>
               </li>
               <li>
                 <span className="contact-label">Existing client, live incident?</span>
-                <a href="tel:+442030000247">Use the emergency line — it pages a human</a>
+                <a href="tel:+923000000000">Use the emergency line — it pages a human</a>
               </li>
             </ul>
             <h2>Office</h2>
             <p className="contact-address">
-              Unit 12, The Old Printworks<br />
-              128 Nightingale Road<br />
-              London, UK
+              Lahore, Punjab<br />
+              Pakistan
             </p>
             <div className="contact-map" aria-hidden="true">
               <svg viewBox="0 0 400 220">
