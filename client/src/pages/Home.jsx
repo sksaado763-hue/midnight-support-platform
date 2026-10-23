@@ -10,6 +10,14 @@ const TABS = [
   { key: "agencies", label: "Agencies", logos: ["PIXEL&MORE", "STUDIO NORTH", "FRAMECRAFT", "THE ATELIER", "MOSAIC CO", "BOLDTYPE", "FIELDNOTES", "HARLOW"] },
 ];
 
+function Arrow() {
+  return (
+    <svg className="hero-card-arrow" viewBox="0 0 18 16" aria-hidden="true">
+      <path d="M1 8h13m-5-6 6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export default function Home() {
   useTitle("Just After Midnight | 24/7 Support, Managed Cloud & DevOps");
   const [tab, setTab] = useState("brands");
@@ -29,12 +37,23 @@ export default function Home() {
             </g>
           </svg>
         </div>
+        <div className="hero-clouds" aria-hidden="true">
+          <svg className="hero-cloud hero-cloud-a" viewBox="0 0 200 90">
+            <path d="M40 88c-22 0-38-14-38-32S20 22 40 24C46 8 64 0 82 6c14-16 40-14 52 4 24-2 42 12 42 30s-18 30-42 30z" />
+          </svg>
+          <svg className="hero-cloud hero-cloud-b" viewBox="0 0 200 90">
+            <path d="M40 88c-22 0-38-14-38-32S20 22 40 24C46 8 64 0 82 6c14-16 40-14 52 4 24-2 42 12 42 30s-18 30-42 30z" />
+          </svg>
+        </div>
+        <svg className="hero-moon" viewBox="0 0 96 96" aria-hidden="true">
+          <path d="M58 6a42 42 0 1 0 27 75A46 46 0 0 1 58 6z" fill="#FABD14" />
+        </svg>
         <div className="container hero-inner">
           <h1 className="hero-title reveal">24/7 support, cloud &amp; DevOps for brands, agencies and digital products</h1>
           <p className="hero-subtitle reveal">Keeping your revenue, reputation and digital estate protected — every hour, every day of the year.</p>
           <div className="hero-actions reveal">
             <Link to="/support" className="btn btn-primary">View support packages <span aria-hidden="true">➔</span></Link>
-            <Link to="/contact" className="btn btn-outline">Speak to us <span aria-hidden="true">➔</span></Link>
+            <Link to="/contact" className="btn btn-primary">Speak to us <span aria-hidden="true">➔</span></Link>
           </div>
           <div className="hero-trust reveal">
             <p className="trust-label">Trusted by:</p>
@@ -43,7 +62,35 @@ export default function Home() {
               <li className="trust-logo">HELIOS&nbsp;BANK</li>
               <li className="trust-logo">NORTHBANK</li>
               <li className="trust-logo">ARCADIA</li>
+              <li className="trust-logo">VOLTA</li>
+              <li className="trust-logo">BLUEPINE</li>
+              <li className="trust-logo">MERIDIAN</li>
             </ul>
+          </div>
+          <div className="hero-cards reveal">
+            <Link to="/support" className="hero-card">
+              <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" strokeWidth="2.4" /><path d="M24 13v11l7 5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
+              <h3>24/7 Support <Arrow /></h3>
+              <p>Full-stack monitoring, triage and resolution, every hour of every day.</p>
+            </Link>
+
+            <Link to="/cloud" className="hero-card">
+              <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 30a8 8 0 0 1 .6-15.9A10 10 0 0 1 34 17a7 7 0 0 1-1 13H14z" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" /><path d="M17 37l4-5m5 5l-3-4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
+              <h3>Managed Cloud <Arrow /></h3>
+              <p>Consulting, architecture and delivery across AWS, Azure and Google Cloud.</p>
+            </Link>
+
+            <Link to="/cloud#devops" className="hero-card">
+              <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34l6-6 6 4 7-10 6 6 7-12" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" /><circle cx="40" cy="12" r="3" fill="currentColor" /></svg>
+              <h3>DevOps <Arrow /></h3>
+              <p>Helping teams ship faster without trading away reliability or quality.</p>
+            </Link>
+
+            <Link to="/platforms" className="hero-card">
+              <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="9" width="34" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="2.4" /><path d="M17 41h14M24 33v8" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /><path d="M16 20l5 4-5 4M25 28h7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
+              <h3>Platform Support <Arrow /></h3>
+              <p>Care and maintenance for SaaS products, CMS platforms and custom apps.</p>
+            </Link>
           </div>
         </div>
       </section>
@@ -109,13 +156,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="statement" id="statement">
-        <div className="container statement-inner">
-          <svg className="statement-arrow" viewBox="0 0 64 64" aria-hidden="true">
-            <path d="M32 56V14M16 30l16-16 16 16" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <h2 className="statement-title reveal">We're the experts in uptime.</h2>
-          <p className="statement-text reveal">We build, run and look after your infrastructure, applications and services through a world-class 24/7 support operation — and we step in fast when things go wrong, so your team can sleep at night.</p>
+      <section className="uptime-block" id="statement">
+        <div className="container">
+          <h2 className="uptime-title reveal">We're the experts in uptime.</h2>
+          <p className="uptime-text reveal">We build, run and look after your infrastructure, applications and services through a world-class 24/7 support operation.</p>
+          <p className="uptime-text reveal">And we step in fast when things go wrong, so your team can sleep at night.</p>
         </div>
       </section>
 
@@ -151,12 +196,12 @@ export default function Home() {
           <div className="partners-cta reveal">
             <Link to="/contact" className="btn btn-primary">Find out more about partnerships <span aria-hidden="true">➔</span></Link>
             <svg className="partners-illustration" viewBox="0 0 220 200" aria-hidden="true">
-              <circle cx="120" cy="110" r="62" fill="#123044" />
-              <circle cx="120" cy="110" r="62" fill="none" stroke="#00A6B8" strokeWidth="2" opacity=".5" />
-              <path d="M120 48a62 62 0 0 1 0 124 78 78 0 0 0 0-124z" fill="#00E8F0" />
-              <circle cx="150" cy="78" r="5" fill="#B6F5FA" />
-              <line x1="150" y1="73" x2="150" y2="58" stroke="#B6F5FA" strokeWidth="2.5" strokeLinecap="round" />
-              <circle cx="150" cy="55" r="3.5" fill="#B6F5FA" />
+              <circle cx="120" cy="110" r="62" fill="#1F2C49" />
+              <circle cx="120" cy="110" r="62" fill="none" stroke="#243F88" strokeWidth="2" opacity=".5" />
+              <path d="M120 48a62 62 0 0 1 0 124 78 78 0 0 0 0-124z" fill="#FABD14" />
+              <circle cx="150" cy="78" r="5" fill="#A2CCE4" />
+              <line x1="150" y1="73" x2="150" y2="58" stroke="#A2CCE4" strokeWidth="2.5" strokeLinecap="round" />
+              <circle cx="150" cy="55" r="3.5" fill="#A2CCE4" />
               <circle cx="42" cy="46" r="2" fill="#ffffff" opacity=".7" />
               <circle cx="196" cy="160" r="2.4" fill="#ffffff" opacity=".6" />
               <circle cx="60" cy="170" r="1.8" fill="#ffffff" opacity=".5" />
@@ -174,7 +219,7 @@ export default function Home() {
           <div className="case-teaser-grid">
             <Link className="case-teaser reveal" to="/case-studies">
               <div className="case-teaser-art case-teaser-art--a" aria-hidden="true">
-                <svg viewBox="0 0 200 90"><path d="M30 74h140" stroke="#6E8FAD" strokeWidth="4" strokeLinecap="round" /><path d="M44 74V48l24-16 24 14 24-24v52" fill="none" stroke="#00E8F0" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <svg viewBox="0 0 200 90"><path d="M30 74h140" stroke="#BFBFBF" strokeWidth="4" strokeLinecap="round" /><path d="M44 74V48l24-16 24 14 24-24v52" fill="none" stroke="#FABD14" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </div>
               <p className="case-teaser-copy"><strong>40+ platforms</strong> kept online through peak campaigns, payroll windows and 3am surprises. See how.</p>
             </Link>
@@ -187,10 +232,10 @@ export default function Home() {
           <div className="report-card reveal">
             <div className="report-art" aria-hidden="true">
               <svg viewBox="0 0 200 160">
-                <path d="M40 132h120" stroke="#6E8FAD" strokeWidth="4" strokeLinecap="round" />
-                <path d="M52 132V84l32-24 32 20 32-36v88" fill="none" stroke="#00E8F0" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="116" cy="44" r="6" fill="#00A6B8" />
-                <rect x="146" y="52" width="10" height="80" rx="4" fill="#123044" transform="rotate(18 151 92)" />
+                <path d="M40 132h120" stroke="#BFBFBF" strokeWidth="4" strokeLinecap="round" />
+                <path d="M52 132V84l32-24 32 20 32-36v88" fill="none" stroke="#FABD14" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="116" cy="44" r="6" fill="#243F88" />
+                <rect x="146" y="52" width="10" height="80" rx="4" fill="#1F2C49" transform="rotate(18 151 92)" />
               </svg>
             </div>
             <div className="report-copy">

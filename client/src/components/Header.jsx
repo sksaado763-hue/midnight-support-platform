@@ -72,11 +72,16 @@ export default function Header() {
     <header className="site-header" id="masthead">
       <div className="header-inner">
         <Link to="/" className="brand" aria-label="Just After Midnight — home" onClick={closeMobile}>
-          <svg className="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="16" cy="16" r="16" fill="#00E8F0" />
-            <path d="M20 5a11.5 11.5 0 1 0 7 20.5A12.6 12.6 0 0 1 20 5z" fill="#04222A" />
-          </svg>
-          <span className="brand-name">JUST<br />AFTER<br />MIDNIGHT</span>
+          <span className="brand-name">
+            <span className="brand-top">JUST AFTER</span>
+            <span className="brand-main">
+              MIDNI
+              <svg className="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M19 3a13.5 13.5 0 1 0 8.5 24A14.8 14.8 0 0 1 19 3z" fill="#FABD14" />
+              </svg>
+              HT
+            </span>
+          </span>
         </Link>
 
         <nav className={`main-navigation${mobileOpen ? " is-open" : ""}`} id="site-navigation" aria-label="Main navigation">
@@ -128,7 +133,7 @@ export default function Header() {
           className={`btn btn-primary header-cta${navActive === "contact" ? " is-current" : ""}`}
           onClick={closeMobile}
         >
-          Contact Us
+          Get in touch <span aria-hidden="true">➔</span>
         </Link>
 
         <button

@@ -98,26 +98,26 @@ export default function Cloud() {
             </div>
             <div className="pipeline-art" aria-hidden="true">
               <svg viewBox="0 0 360 220">
-                <g fontFamily="Space Grotesk, sans-serif" fontSize="12" fontWeight="700">
-                  <rect x="10" y="20" width="88" height="34" rx="17" fill="#3E5C78" />
+                <g fontFamily="Montserrat, sans-serif" fontSize="12" fontWeight="700">
+                  <rect x="10" y="20" width="88" height="34" rx="17" fill="#243F88" />
                   <text x="54" y="41" fill="#fff" textAnchor="middle">commit</text>
-                  <rect x="122" y="20" width="88" height="34" rx="17" fill="#1E3E55" />
+                  <rect x="122" y="20" width="88" height="34" rx="17" fill="#1F2C49" />
                   <text x="166" y="41" fill="#fff" textAnchor="middle">build</text>
-                  <rect x="234" y="20" width="88" height="34" rx="17" fill="#00A6B8" />
+                  <rect x="234" y="20" width="88" height="34" rx="17" fill="#243F88" />
                   <text x="278" y="41" fill="#fff" textAnchor="middle">test</text>
-                  <rect x="122" y="100" width="88" height="34" rx="17" fill="#123044" />
+                  <rect x="122" y="100" width="88" height="34" rx="17" fill="#1F2C49" />
                   <text x="166" y="121" fill="#fff" textAnchor="middle">staging</text>
-                  <rect x="234" y="100" width="88" height="34" rx="17" fill="#00E8F0" />
-                  <text x="278" y="121" fill="#04222A" textAnchor="middle">deploy</text>
+                  <rect x="234" y="100" width="88" height="34" rx="17" fill="#FABD14" />
+                  <text x="278" y="121" fill="#132140" textAnchor="middle">deploy</text>
                 </g>
-                <g stroke="#00E8F0" strokeWidth="2.5" fill="none" strokeLinecap="round">
+                <g stroke="#FABD14" strokeWidth="2.5" fill="none" strokeLinecap="round">
                   <path d="M98 37h16" />
                   <path d="M210 37h16" />
                   <path d="M278 54v22c0 12-10 20-22 20h-58" />
                   <path d="M210 117h16" />
                   <path d="M166 54v30c0 10 8 16 18 16h-14" />
                 </g>
-                <g fill="#B6F5FA">
+                <g fill="#A2CCE4">
                   <circle cx="166" cy="160" r="4" />
                   <circle cx="278" cy="160" r="4" />
                 </g>

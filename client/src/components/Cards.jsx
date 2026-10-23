@@ -5,13 +5,13 @@ export function ArticleArt({ theme }) {
   if (theme === "spotlight") {
     return (
       <svg viewBox="0 0 320 170">
-        <circle cx="160" cy="150" r="46" fill="#00E8F0" />
-        <circle cx="160" cy="86" r="30" fill="#00E8F0" />
-        <g stroke="#6E8FAD" strokeWidth="3" strokeLinecap="round">
+        <circle cx="160" cy="150" r="46" fill="#FABD14" />
+        <circle cx="160" cy="86" r="30" fill="#FABD14" />
+        <g stroke="#BFBFBF" strokeWidth="3" strokeLinecap="round">
           <path d="M118 158h84M126 176h68" />
         </g>
-        <circle cx="228" cy="40" r="3" fill="#B6F5FA" />
-        <circle cx="64" cy="52" r="2.4" fill="#B6F5FA" />
+        <circle cx="228" cy="40" r="3" fill="#A2CCE4" />
+        <circle cx="64" cy="52" r="2.4" fill="#A2CCE4" />
         <path d="M84 30l8 8m0-8l-8 8" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
       </svg>
     );
@@ -19,10 +19,10 @@ export function ArticleArt({ theme }) {
   if (theme === "incident") {
     return (
       <svg viewBox="0 0 320 170">
-        <rect x="140" y="88" width="40" height="52" rx="10" fill="#123044" />
-        <rect x="132" y="72" width="56" height="22" rx="8" fill="#00A6B8" />
-        <path d="M160 56a26 26 0 0 1 26 26h-14a12 12 0 0 0-24 0h-14a26 26 0 0 1 26-26z" fill="#00E8F0" />
-        <g fill="#B6F5FA">
+        <rect x="140" y="88" width="40" height="52" rx="10" fill="#1F2C49" />
+        <rect x="132" y="72" width="56" height="22" rx="8" fill="#243F88" />
+        <path d="M160 56a26 26 0 0 1 26 26h-14a12 12 0 0 0-24 0h-14a26 26 0 0 1 26-26z" fill="#FABD14" />
+        <g fill="#A2CCE4">
           <rect x="86" y="96" width="6" height="26" rx="3" />
           <rect x="100" y="86" width="6" height="46" rx="3" />
           <rect x="114" y="100" width="6" height="18" rx="3" />
@@ -35,12 +35,12 @@ export function ArticleArt({ theme }) {
   }
   return (
     <svg viewBox="0 0 320 170">
-      <ellipse cx="160" cy="105" rx="52" ry="30" fill="none" stroke="#00E8F0" strokeWidth="3" />
-      <ellipse cx="160" cy="105" rx="52" ry="30" fill="none" stroke="#00E8F0" strokeWidth="3" transform="rotate(60 160 105)" />
-      <ellipse cx="160" cy="105" rx="52" ry="30" fill="none" stroke="#00E8F0" strokeWidth="3" transform="rotate(-60 160 105)" />
-      <circle cx="160" cy="105" r="14" fill="#B6F5FA" />
-      <circle cx="252" cy="46" r="3" fill="#B6F5FA" />
-      <circle cx="70" cy="140" r="2.4" fill="#00E8F0" />
+      <ellipse cx="160" cy="105" rx="52" ry="30" fill="none" stroke="#FABD14" strokeWidth="3" />
+      <ellipse cx="160" cy="105" rx="52" ry="30" fill="none" stroke="#FABD14" strokeWidth="3" transform="rotate(60 160 105)" />
+      <ellipse cx="160" cy="105" rx="52" ry="30" fill="none" stroke="#FABD14" strokeWidth="3" transform="rotate(-60 160 105)" />
+      <circle cx="160" cy="105" r="14" fill="#A2CCE4" />
+      <circle cx="252" cy="46" r="3" fill="#A2CCE4" />
+      <circle cx="70" cy="140" r="2.4" fill="#FABD14" />
     </svg>
   );
 }
@@ -71,25 +71,25 @@ export function CaseArt({ theme }) {
   if (theme === "spotlight") {
     return (
       <svg viewBox="0 0 200 100">
-        <circle cx="100" cy="38" r="20" fill="#00E8F0" />
-        <path d="M68 96a34 34 0 0 1 64 0" fill="none" stroke="#00E8F0" strokeWidth="10" strokeLinecap="round" />
+        <circle cx="100" cy="38" r="20" fill="#FABD14" />
+        <path d="M68 96a34 34 0 0 1 64 0" fill="none" stroke="#FABD14" strokeWidth="10" strokeLinecap="round" />
       </svg>
     );
   }
   if (theme === "incident") {
     return (
       <svg viewBox="0 0 200 100">
-        <rect x="88" y="34" width="24" height="34" rx="6" fill="#123044" />
-        <path d="M100 18a18 18 0 0 1 18 18h-36a18 18 0 0 1 18-18z" fill="#00E8F0" />
-        <rect x="64" y="44" width="5" height="18" rx="2.5" fill="#B6F5FA" />
-        <rect x="132" y="44" width="5" height="18" rx="2.5" fill="#B6F5FA" />
+        <rect x="88" y="34" width="24" height="34" rx="6" fill="#1F2C49" />
+        <path d="M100 18a18 18 0 0 1 18 18h-36a18 18 0 0 1 18-18z" fill="#FABD14" />
+        <rect x="64" y="44" width="5" height="18" rx="2.5" fill="#A2CCE4" />
+        <rect x="132" y="44" width="5" height="18" rx="2.5" fill="#A2CCE4" />
       </svg>
     );
   }
   return (
     <svg viewBox="0 0 200 100">
-      <circle cx="100" cy="50" r="26" fill="none" stroke="#00E8F0" strokeWidth="3" />
-      <ellipse cx="100" cy="50" rx="44" ry="16" fill="none" stroke="#B6F5FA" strokeWidth="2.5" />
+      <circle cx="100" cy="50" r="26" fill="none" stroke="#FABD14" strokeWidth="3" />
+      <ellipse cx="100" cy="50" rx="44" ry="16" fill="none" stroke="#A2CCE4" strokeWidth="2.5" />
     </svg>
   );
 }

@@ -48,8 +48,8 @@ export default function Contact() {
                     <stop offset="1" stopColor="#0a1320" />
                   </linearGradient>
                   <radialGradient id="pinGlow">
-                    <stop offset="0" stopColor="#00f0ff" stopOpacity="0.5" />
-                    <stop offset="1" stopColor="#00f0ff" stopOpacity="0" />
+                    <stop offset="0" stopColor="#fabd14" stopOpacity="0.5" />
+                    <stop offset="1" stopColor="#fabd14" stopOpacity="0" />
                   </radialGradient>
                 </defs>
 
@@ -77,7 +77,7 @@ export default function Contact() {
                 <path d="M46 214 150 56" fill="none" stroke="#fff6e6" strokeWidth="1.4" strokeDasharray="7 9" opacity="0.65" />
                 <path d="M236 216 206 66" fill="none" stroke="#34e39f" strokeWidth="6" strokeLinecap="round" />
                 <path d="M262 44 340 152" fill="none" stroke="#b57cff" strokeWidth="6" strokeLinecap="round" />
-                <path d="M292 40 356 126" fill="none" stroke="#00e8f0" strokeWidth="4" strokeLinecap="round" opacity="0.85" />
+                <path d="M292 40 356 126" fill="none" stroke="#fabd14" strokeWidth="4" strokeLinecap="round" opacity="0.85" />
 
                 <path d="M162 52 214 46 228 82 196 100 160 88Z" fill="#f2c14e" fillOpacity="0.16" stroke="#f2c14e" strokeWidth="1.6" strokeDasharray="5 4" strokeOpacity="0.75" />
 
@@ -87,11 +87,11 @@ export default function Contact() {
                 </g>
 
                 <circle cx="250" cy="138" r="34" fill="url(#pinGlow)" />
-                <circle cx="250" cy="138" r="13" fill="none" stroke="#00f0ff" strokeWidth="2" opacity="0.75" />
-                <path d="M250 121a11.5 11.5 0 0 1 11.5 11.5c0 8-11.5 18-11.5 18s-11.5-10-11.5-18A11.5 11.5 0 0 1 250 121z" fill="#00f0ff" />
+                <circle cx="250" cy="138" r="13" fill="none" stroke="#fabd14" strokeWidth="2" opacity="0.75" />
+                <path d="M250 121a11.5 11.5 0 0 1 11.5 11.5c0 8-11.5 18-11.5 18s-11.5-10-11.5-18A11.5 11.5 0 0 1 250 121z" fill="#fabd14" />
                 <circle cx="250" cy="132.5" r="4.2" fill="#06222b" />
 
-                <g fill="#8fa8c3" fontFamily="Space Grotesk, sans-serif" fontSize="9" fontWeight="600" letterSpacing="1.4">
+                <g fill="#A2CCE4" fontFamily="Montserrat, sans-serif" fontSize="9" fontWeight="600" letterSpacing="1.4">
                   <text x="16" y="48">RAVI</text>
                   <text x="150" y="118">OLD CITY</text>
                   <text x="104" y="200">MALL RD</text>
