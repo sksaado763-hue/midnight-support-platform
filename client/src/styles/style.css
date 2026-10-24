@@ -171,6 +171,32 @@ ul { list-style: none; }
 }
 .text-link:hover { gap: 0.9em; }
 
+/* ---------- Lights-out ----------
+   Hovering a menu dims the page behind it. The two custom properties are
+   registered so the vignette and blur can be tweened instead of snapping. */
+@property --darkness { syntax: "<number>"; inherits: false; initial-value: 0; }
+@property --blur { syntax: "<length>"; inherits: false; initial-value: 0px; }
+
+.lights-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 90;
+  pointer-events: none;
+  --darkness: 0;
+  --blur: 0px;
+  background: radial-gradient(ellipse at center, transparent 15%, rgba(16, 26, 58, calc(var(--darkness) * 0.85)) 85%);
+  backdrop-filter: brightness(calc(1 - var(--darkness) * 0.6)) blur(var(--blur));
+  transition: --darkness 0.6s cubic-bezier(0.4, 0, 0.2, 1), --blur 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 1024px) {
+  body:has(.nav-item.has-sub:hover) .lights-out,
+  body:has(.nav-item.has-sub.is-open) .lights-out { --darkness: 1; --blur: 1px; }
+}
+
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;
@@ -180,6 +206,7 @@ ul { list-style: none; }
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .header-inner {
+  position: relative;
   width: min(1320px, 100%);
   margin-inline: auto;
   padding-inline: 30px;
@@ -214,18 +241,32 @@ ul { list-style: none; }
 .nav-list { display: flex; align-items: center; gap: 28px; }
 .nav-link {
   font-family: var(--font-head);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 15px;
+  line-height: 1;
+  white-space: nowrap;
   color: #ffffff;
   background: none;
   border: none;
+  border-bottom: 2px solid transparent;
   cursor: pointer;
-  padding: 0.65em 0.9em;
-  border-radius: 8px;
+  padding: 0.9em 0.9em;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: border-bottom-color 1s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* The reference nav at 15px/28px gaps already fills the 1320px header row on its own,
+   so bold labels plus the search control only fit one step down — at every width. */
+@media (min-width: 1024px) {
+  .header-inner { gap: 1.2rem; }
+  .brand-main { font-size: 21px; }
+  .brand-top { font-size: 11px; letter-spacing: 0.28em; }
+  .nav-list { gap: 10px; }
+  .nav-link { font-size: 13px; padding: 0.9em 0.6em; gap: 6px; }
+  .nav-item.has-sub > .nav-link::after { width: 6px; height: 6px; }
+  .header-cta { padding: 12px 14px; }
 }
 .nav-item.has-sub > .nav-link::after {
   content: "";
@@ -236,9 +277,121 @@ ul { list-style: none; }
   transform: rotate(45deg) translateY(-2px);
   transition: transform 0.3s ease-in-out;
 }
-.nav-link:hover, .nav-link:focus-visible { background: rgba(255, 255, 255, 0.1); }
+.nav-link:hover, .nav-link:focus-visible { border-bottom-color: currentColor; }
 
-.header-cta { margin-left: auto; }
+.header-cta { flex: none; }
+
+/* ---------- Header search ---------- */
+.header-search { margin-left: auto; flex: none; }.search-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 44px;
+  padding: 12px 15px;
+  background: none;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+.search-toggle svg { width: 14px; height: 14px; flex: none; }
+/* Below 1440 the row has no room for the word, but the button still needs a name. */
+.search-toggle-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (min-width: 1440px) {
+  .search-toggle-label {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}
+.search-panel {
+  /* Theirs hangs full-bleed under the header; capped to the header container so
+     opening the panel can never introduce a horizontal scrollbar. */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 1320px);
+  max-height: calc(100vh - var(--header-h) - 20px);
+  overflow-y: auto;
+  background: var(--bg);
+  border-radius: 0 0 12px 12px;
+  box-shadow: var(--shadow-card);
+  padding: 26px 30px 30px;
+  z-index: 120;
+}
+.search-field { position: relative; }
+.search-input {
+  display: block;
+  width: 100%;
+  height: 54px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid #f5f5f5;
+  border-radius: 4px;
+  padding: 12px 46px 12px 12px;
+}
+.search-field-icon {
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--navy);
+  pointer-events: none;
+}
+.search-note {
+  margin: 12px 2px 2px;
+  font-size: var(--fs-md);
+  line-height: var(--lh-md);
+  color: var(--text-muted);
+}
+.search-results { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 4px 22px; }
+.search-results a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0 0.8rem;
+  padding: 9px 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+}
+.search-kind {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  white-space: nowrap;
+  font-family: var(--font-head);
+  font-size: var(--fs-label);
+  line-height: var(--lh-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.search-title { font-weight: 700; font-size: var(--fs-body); line-height: 22px; }
+.search-meta { font-size: var(--fs-md); line-height: var(--lh-md); }
 
 .nav-toggle {
   display: none;
@@ -294,7 +447,7 @@ ul { list-style: none; }
   transform: translateX(-50%) translateY(0);
 }
 /* Invisible bridge so the pointer can cross the gap without closing the menu. */
-@media (min-width: 861px) {
+@media (min-width: 1024px) {
   .nav-item.has-sub::after {
     content: "";
     position: absolute;
@@ -374,6 +527,20 @@ ul { list-style: none; }
 .hero-cloud-a { width: 190px; top: 150px; right: 5%; }
 .hero-cloud-b { width: 120px; top: 330px; left: -34px; }
 .hero-moon { position: absolute; display: none; left: 2%; top: 100px; width: 72px; height: 72px; z-index: 0; }
+/* The hero ends in the same wave the reference clips into its dark slabs: the
+   page colour rises through the bottom 10% of the band, deepest left of centre. */
+.homepage-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10%;
+  background: var(--hero-cut, var(--bg));
+  clip-path: polygon(0 5%, 10% 2.1%, 20% 0.3%, 29% 0.3%, 40% 2%, 60% 7.8%, 69% 9.5%, 75% 9.8%, 82% 9.4%, 89% 8%, 100% 5%, 100% 100%, 0 100%);
+  pointer-events: none;
+  z-index: 3;
+}
 .hero-inner {
   position: relative;
   z-index: 1;
@@ -453,7 +620,7 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(245, 161, 29, 0.04), rgba(162, 204, 228, 0.04));
+  background: linear-gradient(135deg, rgba(242, 161, 29, 0.02), rgba(162, 204, 228, 0.02));
   opacity: 0;
 }
 .hero-card-icon { flex: none; width: auto; height: 40px; color: var(--amber-deep); }
@@ -503,8 +670,59 @@ ul { list-style: none; }
   .hero-card p { font-size: 16px; line-height: 22px; }
 }
 
+/* ---------- Wavy bands ----------
+   The reference clips each band's colour layer with a polygon whose sag is a
+   percentage of the band's own height, so the wave scales with the section.
+   Colours come from skin.css; the shapes stay here. */
+.full-services,
+.insights,
+.report-download-cta { position: relative; }
+.full-services > .container,
+.insights > .container,
+.report-download-cta > .container { position: relative; z-index: 1; }
+
+.full-services::before,
+.insights::before,
+.report-download-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--band-fill, transparent);
+}
+
+/* Grey bands: wave along the top edge, apex left of centre for services,
+   right of centre for insights so the two waves mirror each other. */
+.full-services::before {
+  clip-path: polygon(100% 0, 85% 5.5%, 75% 8%, 70% 8.5%, 64% 9%, 53% 8.5%, 43% 7%, 13% 2%, 0 0, 0 100%, 100% 100%);
+}
+.insights::before {
+  clip-path: polygon(0 0, 15% 5.5%, 25% 8%, 30% 8.5%, 36% 9%, 47% 8.5%, 57% 7%, 87% 2%, 100% 0, 100% 100%, 0 100%);
+}
+/* The report band is a starfield slab floating in the page: wavy on both edges. */
+.report-download-cta::before {
+  clip-path: polygon(0 5%, 11% 2%, 18% 0.6%, 25% 0.2%, 31% 0.5%, 40% 2.2%, 60% 8%, 71% 9.7%, 80% 9.7%, 90% 7.9%, 100% 5%, 100% 95%, 89% 98%, 82% 99.4%, 75% 99.8%, 69% 99.5%, 60% 97.8%, 40% 92%, 29% 90.3%, 20% 90.3%, 10% 92.1%, 0 95%);
+}
+
+@media (max-width: 1199.98px) {
+  .full-services::before {
+    clip-path: polygon(100% 0, 85% 2%, 75% 3%, 70% 3.5%, 64% 4%, 53% 3.5%, 43% 3%, 13% 1%, 0 0, 0 100%, 100% 100%);
+  }
+  .report-download-cta::before {
+    clip-path: polygon(0 1%, 11% 0.6%, 18% 0.3%, 25% 0.2%, 31% 0.2%, 40% 0.6%, 60% 2%, 69% 2.3%, 79% 2.3%, 90% 1.9%, 100% 1%, 100% 95%, 92% 95.4%, 82% 95.9%, 75% 96%, 68% 96.2%, 60% 95.7%, 40% 94%, 29% 93.7%, 20% 94%, 10% 94.1%, 0 95%);
+  }
+}
+@media (max-width: 991.98px) {
+  .full-services::before {
+    clip-path: polygon(0 0, 5% 0.1%, 10% 0.2%, 15% 0.4%, 20% 0.6%, 25% 0.8%, 30% 1.1%, 35% 1.3%, 42% 1.6%, 47% 1.9%, 52% 2.1%, 56% 2.2%, 62% 2.1%, 67% 1.9%, 72% 1.7%, 77% 1.4%, 82% 1.1%, 87% 0.8%, 92% 0.5%, 96% 0.3%, 98% 0.1%, 100% 0, 100% 100%, 0 100%);
+  }
+  .insights::before {
+    clip-path: polygon(0 0, 15% 1.5%, 25% 2.7%, 36% 4%, 47% 5%, 57% 5.5%, 70% 5%, 87% 2.7%, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
 /* ---------- Services ---------- */
-.full-services { background: var(--bg); padding: var(--section-pad) 0; }
+.full-services { --band-fill: var(--paper); background: none; padding: calc(var(--section-pad) + 56px) 0 var(--section-pad); }
 .section-title {
   font-size: var(--fs-h2);
   line-height: var(--lh-h2);
@@ -642,7 +860,7 @@ ul { list-style: none; }
 .partners-illustration { width: 180px; height: auto; flex: none; }
 
 /* ---------- Insights ---------- */
-.insights { background: var(--paper); padding: var(--section-pad) 0; }
+.insights { --band-fill: var(--paper); background: none; padding: calc(var(--section-pad) + 56px) 0 var(--section-pad); }
 .insights-head {
   display: flex;
   align-items: baseline;
@@ -698,7 +916,7 @@ ul { list-style: none; }
 .insight-body > p:not(.insight-meta) { font-size: var(--fs-body); line-height: var(--lh-body); color: var(--navy-text-muted); flex: 1; }
 
 /* ---------- Report CTA ---------- */
-.report-download-cta { background: var(--bg); padding: var(--section-pad) 0 100px; }
+.report-download-cta { --band-fill: var(--navy); background: none; padding: calc(var(--section-pad) + 60px) 0; }
 .report-card {
   background: linear-gradient(120deg, var(--amber) 0%, #243f88 100%);
   border-radius: var(--radius-lg);
@@ -716,8 +934,20 @@ ul { list-style: none; }
 .report-copy .btn { margin-top: 1.6rem; background: var(--navy); color: var(--white); box-shadow: var(--shadow-card); }
 .report-copy .btn:hover { box-shadow: 0 12px 28px rgba(19, 33, 64, 0.22); }
 
-/* ---------- Footer ---------- */
-.site-footer { background: var(--paper); color: var(--text); padding: 80px 0 2rem; }
+/* ---------- Footer ----------
+   A midnight slab whose top edge is clipped into the same sag the reference
+   uses, with a darker legal band running full-width underneath the columns. */
+.site-footer { position: relative; overflow: hidden; background: none; color: var(--white); padding: 80px 0 0; }
+.site-footer > .container { position: relative; z-index: 1; }
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--footer-fill, var(--navy));
+  clip-path: polygon(0 0, 15% 1.2%, 30% 2.5%, 45% 3.7%, 55% 4.5%, 65% 4.7%, 70% 4.5%, 75% 4.1%, 80% 3.5%, 88% 2.2%, 100% 0, 100% 100%, 0 100%);
+}
+.footer-bottom { position: relative; z-index: 1; background: var(--footer-deep); padding: 36px 0; margin-top: 2rem; }
 .footer-contact {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -789,47 +1019,64 @@ ul { list-style: none; }
   font-family: var(--font-head);
   font-weight: 700;
   font-size: var(--fs-h3);
-  line-height: 22px;
+  line-height: var(--lh-h3);
   width: 100%;
   text-align: left;
   background: none;
   border: none;
-  color: var(--text);
+  color: var(--white);
   cursor: pointer;
   padding: 0.3em 0;
+  position: relative;
 }
 .footer-col-list { margin-top: 0.7rem; display: grid; gap: 0.15rem; }
 .footer-col-list a {
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: var(--fs-foot);
-  line-height: var(--lh-foot);
-  color: var(--navy-text-muted);
-  padding: 0.3em 0;
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  color: var(--paper);
+  padding: 0;
+  margin-bottom: 16px;
   display: inline-block;
 }
+.footer-col-list li:last-child a { margin-bottom: 0; }
 .footer-col-list a:hover { color: var(--amber); }
 
-.social-links { display: flex; gap: 0.7rem; margin-top: 0.8rem; }
+/* The reference lifts each column title under a short canary rule, desktop only. */
+@media (min-width: 1200px) {
+  .footer-col-toggle, .footer-col-heading { margin-bottom: 36px; }
+  .footer-col-toggle::before, .footer-col-heading::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -36px;
+    width: 40px;
+    height: 1px;
+    background: var(--amber);
+  }
+  .footer-col-list a { margin-bottom: 24px; }
+}
+
+.social-links { display: flex; gap: 10px; margin-top: 0.8rem; flex-wrap: wrap; }
 .social-links a {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--navy);
-  color: var(--white);
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  background: none;
+  border: 1px solid #404b5f;
+  color: #ffffff;
   display: grid;
   place-items: center;
 }
-.social-links a:hover { background: var(--amber); color: var(--text); }
+.social-links a:hover { background: #ffffff; color: var(--navy); }
 
 .footer-legal {
-  border-top: 1px solid var(--line);
-  padding-top: 1.6rem;
   font-size: var(--fs-label);
   line-height: var(--lh-label);
   font-weight: 400;
   letter-spacing: 0;
-  color: var(--navy-text-muted);
+  color: var(--text-muted);
   text-align: center;
 }
 
@@ -848,9 +1095,11 @@ ul { list-style: none; }
   .logo-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1023.98px) {
   :root { --header-h: 68px; }
-  .nav-toggle { display: flex; }
+  .nav-toggle { display: flex; margin-left: 0; }
+  /* Full-width sheet on phones; pinned to the icon it would hang off-screen at 390px. */
+  .search-panel { width: calc(100% - 32px); border-radius: 12px; padding: 20px 16px 22px; z-index: 130; }
   .main-navigation {
     position: fixed;
     top: var(--header-h);
@@ -892,7 +1141,9 @@ ul { list-style: none; }
   .sub-heading { color: var(--amber); border-color: var(--amber); }
   .sub-label { color: var(--amber-soft); }
   .sub-item { color: var(--text-muted); }
+}
 
+@media (max-width: 860px) {
   .footer-contact { grid-template-columns: 1fr; }
   .report-card { grid-template-columns: 1fr; text-align: center; }
   .report-copy p { margin-inline: auto; }
@@ -1134,22 +1385,23 @@ ul { list-style: none; }
 .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .case-card {
   background: var(--bg);
-  border-radius: var(--radius-lg);
+  border-radius: 5px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s ease;
+  padding: 36px 46px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .case-more .case-card { background: var(--paper); }
-.case-card:hover { box-shadow: var(--shadow-card); }
-.case-art { aspect-ratio: 16 / 7; display: grid; place-items: center; }
+.case-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-card); }
+.case-art { aspect-ratio: 16 / 7; display: grid; place-items: center; border-radius: 8px; overflow: hidden; margin-bottom: 24px; }
 .case-art svg { width: 55%; height: auto; }
 .case-art--spotlight { background: linear-gradient(135deg, var(--amber) 0%, #243f88 100%); }
 .case-art--incident { background: linear-gradient(135deg, var(--plum) 0%, var(--purple) 100%); }
 .case-art--observability { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); }
-.case-body { padding: 1.5rem 1.6rem 1.7rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+.case-body { padding: 0; display: flex; flex-direction: column; gap: 12px; flex: 1; }
 .case-meta { display: flex; gap: 0.8rem; align-items: center; }
-.case-body h2 { font-size: var(--fs-h3); line-height: 24px; font-weight: 700; }
+.case-body h2 { font-size: var(--fs-h3); line-height: 28px; font-weight: 600; }
 .case-body > p:not(.case-meta) { font-size: var(--fs-body); line-height: var(--lh-body); color: var(--navy-text-muted); flex: 1; }
 
 .case-detail { background: var(--bg); padding: 60px 0 var(--section-pad); }
@@ -1595,19 +1847,45 @@ ul { list-style: none; }
   top: 12px;
   left: 12px;
   z-index: 2;
+  min-width: 75px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
   background: var(--navy);
   color: var(--white);
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: var(--fs-h3);
-  line-height: var(--lh-h3);
+  font-size: var(--fs-md);
+  line-height: var(--lh-md);
   letter-spacing: 0;
-  padding: 11px 20px;
+  padding: 6px 14px;
   border-radius: 12px 0;
 }
 .insight-media { position: relative; }
 
-.insights--shared { background: var(--paper); }
+/* Two card shapes, matching the reference's split: the teaser cards are midnight
+   slabs with the artwork carried inline at 120px, the archive cards are white
+   with a thick white border. Same lift on hover for both. */
+.insights--shared .insight-card {
+  padding: 36px 46px;
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.insights--shared .insight-card:hover { transform: translateY(-8px); }
+.insights--shared .insight-media { aspect-ratio: auto; height: 120px; margin-bottom: 24px; border-radius: 8px; }
+.insights--shared .insight-media svg { width: auto; max-width: 100%; height: 120px; }
+.insights--shared .insight-media svg:hover { transform: scale(1.05); }
+.insights--shared .insight-media svg { transition: transform 0.3s ease; }
+.insights--shared .insight-body { padding: 0; gap: 12px; }
+.insights--shared .insight-body h3 { font-size: 20px; line-height: 28px; font-weight: 600; }
+.insights--shared .insight-body > p:not(.insight-meta) { margin-bottom: 20px; }
+.insights--shared .new-badge { top: 0; left: 0; border-radius: 12px 0 12px 0; }
+.insights--page .insight-card { border: 5px solid #ffffff; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.insights--page .insight-card:hover { transform: translateY(-8px); }
+.insights--page .insight-media { border-radius: 8px; }
+@media (max-width: 767.98px) {
+  .insights--shared .insight-card { padding: 24px 22px; }
+}
 
 @media (max-width: 1024px) {
   .platform-grid, .feature-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1628,6 +1906,11 @@ ul { list-style: none; }
 @keyframes fadeDrop {
   from { opacity: 0; transform: translateY(-12px); }
   to   { opacity: 1; transform: none; }
+}
+/* The panel keeps its centring shift while it drops. */
+@keyframes searchDrop {
+  from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
+  to   { opacity: 1; transform: translateX(-50%); }
 }
 @keyframes arrowBounce {
   0%, 100% { transform: translateY(0); }
@@ -1714,8 +1997,8 @@ ul { list-style: none; }
 .social-links a:hover { transform: translateY(-2px) scale(1.05); }
 
 /* Navigation: submenu drops into place. Desktop only — the
-   <=860px drawer renders submenus statically. */
-@media (min-width: 861px) {
+   <=1023px drawer renders submenus statically. */
+@media (min-width: 1024px) {
   .sub-menu {
     transform: translateX(-50%) translateY(-12px);
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
@@ -1735,6 +2018,9 @@ ul { list-style: none; }
 /* Tab panels and admin rows arrive with the same drop. */
 .tab-panel.is-active { animation: fadeDrop 0.3s ease-in-out; }
 .message-item { animation: fadeDrop 0.3s ease-in-out; }
+.search-panel { animation: searchDrop 0.22s ease-in-out; }
+.search-toggle { transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out; }
+.search-results a { transition: background-color 0.25s ease-in-out; }
 
 /* Ambient motion on the artwork already in the page. */
 .hero-stars circle { animation: twinkle 3s ease-in-out infinite; }
@@ -1760,6 +2046,7 @@ ul { list-style: none; }
   .social-links a:hover, .footer-col-list a:hover, .service-links a:hover,
   .hero-card:hover, .hero-card:hover .hero-card-arrow { transform: none; }
   .insight-card:hover .insight-media svg, .case-card:hover .case-art svg { transform: none; }
+  .search-panel { animation: none; }
   .hero-stars circle, .brand-mark, .partners-illustration, .report-art svg,
   .notfound-art, .hero-cloud-a, .hero-cloud-b, .hero-moon,
   .hero-actions:has(.btn:hover) .btn span[aria-hidden="true"] { animation: none; }

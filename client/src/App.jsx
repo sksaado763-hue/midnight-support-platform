@@ -47,6 +47,7 @@ export default function App() {
   return (
     <>
       <ScrollManager />
+      <div className="lights-out" aria-hidden="true" />
       <Header />
       <main>
         <Routes>

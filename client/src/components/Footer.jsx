@@ -106,7 +106,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="footer-legal">© {new Date().getFullYear()} JUST AFTER MIDNIGHT. All rights reserved.</p>
+      </div>
+
+      <div className="footer-bottom">
+        <div className="container">
+          <p className="footer-legal">© {new Date().getFullYear()} JUST AFTER MIDNIGHT. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );
