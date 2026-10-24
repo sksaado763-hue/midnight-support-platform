@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Icon from "./Icons";
+import { getJson } from "../lib/api";
 
 const SUBMENUS = {
   support: {
@@ -41,6 +42,24 @@ const FLAT_LINKS = [
   ["Insights", "/insights", "insights"],
 ];
 
+const SOURCES = [
+  { url: "/api/articles", kind: "Insight", to: (x) => `/insights/${x.slug}`, title: (x) => x.title, meta: (x) => x.tag, text: (x) => `${x.title} ${x.tag} ${x.excerpt}` },
+  { url: "/api/platforms", kind: "Platform", to: (x) => `/platforms/${x.slug}`, title: (x) => x.name, meta: () => "Platform support", text: (x) => `${x.name} ${x.tagline} ${x.intro}` },
+  { url: "/api/case-studies", kind: "Case study", to: (x) => `/case-studies/${x.slug}`, title: (x) => x.client, meta: (x) => x.industry, text: (x) => `${x.client} ${x.industry} ${x.headline}` },
+];
+
+function buildIndex(lists) {
+  return lists.flatMap((list, i) =>
+    (Array.isArray(list) ? list : []).map((item) => ({
+      kind: SOURCES[i].kind,
+      to: SOURCES[i].to(item),
+      title: SOURCES[i].title(item),
+      meta: SOURCES[i].meta(item),
+      text: SOURCES[i].text(item).toLowerCase(),
+    })),
+  );
+}
+
 function navActiveFor(pathname) {
   if (pathname === "/") return "home";
   if (pathname.startsWith("/support")) return "support";
@@ -58,6 +77,41 @@ export default function Header() {
   const navActive = navActiveFor(pathname);
   const [openMenus, setOpenMenus] = useState({});
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [index, setIndex] = useState(null);
+  const searchInput = useRef(null);
+
+  function closeSearch() {
+    setSearchOpen(false);
+    setQuery("");
+  }
+
+  useEffect(() => {
+    if (!searchOpen || index) return undefined;
+    let active = true;
+    Promise.all(SOURCES.map((s) => getJson(s.url).catch(() => [])))
+      .then((lists) => { if (active) setIndex(buildIndex(lists)); });
+    return () => { active = false; };
+  }, [searchOpen, index]);
+
+  useEffect(() => {
+    if (searchOpen) searchInput.current?.focus();
+  }, [searchOpen]);
+
+  useEffect(() => {
+    if (!searchOpen) return undefined;
+    function onKey(event) { if (event.key === "Escape") closeSearch(); }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [searchOpen]);
+
+  useEffect(closeSearch, [pathname]);
+
+  const needle = query.trim().toLowerCase();
+  const results = index && needle.length > 1
+    ? index.filter((entry) => entry.text.includes(needle)).slice(0, 8)
+    : [];
 
   function toggleMenu(key) {
     setOpenMenus((current) => ({ ...current, [key]: !current[key] }));
@@ -128,6 +182,61 @@ export default function Header() {
           </ul>
         </nav>
 
+        <div className="header-search">
+          <button
+            type="button"
+            className="search-toggle"
+            aria-expanded={String(searchOpen)}
+            aria-controls="site-search"
+            onClick={() => { setMobileOpen(false); setSearchOpen((open) => !open); }}
+          >
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" strokeWidth="2" />
+              <path d="M13.6 13.6 18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+            <span className="search-toggle-label">Search</span>
+          </button>
+
+          {searchOpen && (
+            <div className="search-panel" id="site-search" role="dialog" aria-label="Search this site">
+              <div className="search-field">
+                <input
+                  ref={searchInput}
+                  type="search"
+                  className="search-input"
+                  placeholder="Search insights, platforms, case studies"
+                  aria-label="Search insights, platforms, case studies"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                />
+                <svg className="search-field-icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" strokeWidth="2" />
+                  <path d="M13.6 13.6 18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              {index === null ? (
+                <p className="search-note">Loading&hellip;</p>
+              ) : needle.length < 2 ? (
+                <p className="search-note">Type at least two characters.</p>
+              ) : results.length === 0 ? (
+                <p className="search-note">Nothing matched &ldquo;{query}&rdquo;.</p>
+              ) : (
+                <ul className="search-results">
+                  {results.map((entry) => (
+                    <li key={entry.to}>
+                      <Link to={entry.to} onClick={closeSearch}>
+                        <span className="search-kind">{entry.kind}</span>
+                        <span className="search-title">{entry.title}</span>
+                        <span className="search-meta">{entry.meta}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
+        </div>
+
         <Link
           to="/contact"
           className={`btn btn-primary header-cta${navActive === "contact" ? " is-current" : ""}`}
@@ -142,7 +251,7 @@ export default function Header() {
           aria-expanded={String(mobileOpen)}
           aria-controls="site-navigation"
           aria-label="Toggle menu"
-          onClick={() => setMobileOpen((open) => !open)}
+          onClick={() => { closeSearch(); setMobileOpen((open) => !open); }}
         >
           <span></span><span></span><span></span>
         </button>
