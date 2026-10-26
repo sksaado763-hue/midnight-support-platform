@@ -334,13 +334,11 @@ body {
 .report-download-cta .btn:hover { background: var(--amber-hover); color: var(--accent-ink); box-shadow: none; }
 
 /* ---------- Case study links ---------- */
-/* Their ink: black heading, navy client, cobalt description, black summary. */
+/* Their ink: black heading and summary, navy client name. */
 .work-title,
 .work-summary { color: #000000; }
 
 .work-client { color: var(--navy); }
-
-.work-description { color: var(--purple); }
 
 .work-arrow { color: var(--navy); }
 

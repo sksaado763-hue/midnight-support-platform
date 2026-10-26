@@ -195,7 +195,7 @@ function WorkSlider() {
   function step(direction) {
     const track = trackRef.current;
     if (!track) return;
-    const card = track.querySelector(".work-card");
+    const card = track.querySelector(".work-slide");
     const width = card ? card.getBoundingClientRect().width + 30 : track.clientWidth;
     track.scrollBy({ left: direction * width, behavior: "smooth" });
   }
@@ -218,16 +218,19 @@ function WorkSlider() {
             }}
           >
             {studies.map((study) => (
-              <Link className="work-card" key={study.slug} to={`/case-studies/${study.slug}`}>
-                <div className="work-image" aria-hidden="true">
-                  <CaseArt theme={study.theme} />
-                </div>
-                <div className="work-content">
-                  <p className="work-client">{study.client}</p>
-                  <p className="work-description">{study.headline}</p>
-                  <p className="work-summary">{study.outcomes?.[0] || study.industry}</p>
-                </div>
-              </Link>
+              <div className="work-slide" key={study.slug}>
+                <Link className="work-card" to={`/case-studies/${study.slug}`}>
+                  <div className="work-image" aria-hidden="true">
+                    <CaseArt theme={study.theme} />
+                  </div>
+                  <div className="work-content">
+                    <div className="work-text">
+                      <h4 className="work-client">{study.client}</h4>
+                    </div>
+                    <p className="work-summary">{study.headline}</p>
+                  </div>
+                </Link>
+              </div>
             ))}
           </div>
           <button
@@ -365,9 +368,9 @@ export default function Home() {
         </div>
       </section>
 
-      <StatsStrip />
-
       <WorkSlider />
+
+      <StatsStrip />
 
       <section className="full-services" id="services">
         <div className="container">

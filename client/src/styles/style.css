@@ -772,15 +772,18 @@ ul { list-style: none; }
   scrollbar-width: none;
 }
 .work-slider::-webkit-scrollbar { display: none; }
+.work-slide { scroll-snap-align: start; outline: none; }
 .work-card {
   display: flex;
   flex-direction: column;
-  scroll-snap-align: start;
+  height: 100%;
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .work-card:hover { color: inherit; text-decoration: none; transform: translateY(-4px); }
+.work-card:hover .work-client { text-decoration: underline; }
 .work-card:focus-visible { outline: 2px solid var(--navy-soft); outline-offset: 2px; }
 .work-image {
   display: flex;
@@ -791,20 +794,15 @@ ul { list-style: none; }
 }
 .work-image svg { display: block; width: 100%; max-height: 155px; }
 .work-content { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.work-text { margin-bottom: 4px; }
 .work-client {
   font-family: var(--font-head);
   font-weight: 600;
   font-size: 17px;
   line-height: 24px;
   letter-spacing: 0;
-  margin: 0;
-}
-.work-description {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 18px;
-  margin: 0;
+  margin: 0 0 4px;
+  transition: text-decoration 0.3s ease;
 }
 .work-summary {
   font-family: var(--font-body);
@@ -828,7 +826,7 @@ ul { list-style: none; }
 }
 .work-arrow svg { display: block; width: 25px; height: 50px; }
 .work-arrow-left { left: 0; rotate: 180deg; }
-.work-arrow-right { right: 0; }
+.work-arrow-right { right: -3px; }
 .work-arrow:hover { transform: scale(1.1); opacity: 0.8; }
 .work-arrow:active { transform: scale(0.95); }
 .work-arrow.disabled { opacity: 0.3; cursor: default; pointer-events: none; }
@@ -838,11 +836,10 @@ ul { list-style: none; }
   .work-slider { grid-auto-columns: calc((100% - 30px) / 2); }
   .work-content { margin-top: 16px; }
   .work-title { font-size: 16px; line-height: 22px; }
-  .work-client,
-  .work-description { font-size: 14px; line-height: 18px; }
+  .work-client { font-size: 14px; line-height: 18px; }
 }
 @media (max-width: 767.98px) {
-  .work-slider { grid-auto-columns: 100%; }
+  .work-slider { grid-auto-columns: 100%; gap: 20px; }
   .work-arrow-left { left: 0; }
 }
 
