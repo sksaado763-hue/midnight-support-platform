@@ -168,7 +168,6 @@ body {
 .breadcrumb, .breadcrumb a { color: var(--sky); }
 
 /* ---------- Surfaces: light cards, grey bands ---------- */
-.service-card,
 .insight-card,
 .price-card,
 .industry-card,
@@ -188,10 +187,8 @@ body {
 .packages-band,
 .message-item,
 .subscriber-item,
-.report-card,
 .devops-feature { border: 1px solid var(--line); }
 
-.service-card,
 .insight-card,
 .price-card,
 .industry-card,
@@ -210,7 +207,6 @@ body {
 .subscriber-item,
 .platform-detail-card { background: var(--panel); }
 
-.service-card:hover,
 .insight-card:hover,
 .price-card:hover,
 .industry-card:hover,
@@ -276,7 +272,6 @@ body {
 .tag-orange,
 .tag-purple,
 .price-flag,
-.tab.is-active,
 .admin-count,
 .platform-badge--amber,
 .platform-badge--purple,
@@ -292,8 +287,6 @@ body {
 .team-avatar--navy { background: var(--surface-2); border: 1px solid var(--line-strong); color: var(--navy); }
 
 .new-badge { background: var(--amber); box-shadow: none; }
-
-.tab.is-active { border-color: transparent; }
 
 .stat-value { color: var(--navy); }
 
@@ -328,19 +321,63 @@ body {
 /* ---------- Report band: a starfield slab, not a cream card ---------- */
 .report-download-cta { --band-fill: linear-gradient(180deg, #132140 0%, #243f88 100%); }
 
-.report-card { background: none; border: none; box-shadow: none; padding: 0; }
+.report-download-cta .content h2 { color: #ffffff; }
 
-.report-copy { color: #ffffff; }
+.report-download-cta .content p { color: rgba(255, 255, 255, 0.82); }
 
-.report-copy p { color: rgba(255, 255, 255, 0.82); }
-
-.report-copy .btn {
+.report-download-cta .btn {
   background: var(--amber);
   color: var(--accent-ink);
   box-shadow: none;
 }
 
-.report-copy .btn:hover { background: var(--amber-hover); color: var(--accent-ink); box-shadow: none; }
+.report-download-cta .btn:hover { background: var(--amber-hover); color: var(--accent-ink); box-shadow: none; }
+
+/* ---------- Case study links ---------- */
+/* Their ink: black heading, navy client, cobalt description, black summary. */
+.work-title,
+.work-summary { color: #000000; }
+
+.work-client { color: var(--navy); }
+
+.work-description { color: var(--purple); }
+
+.work-arrow { color: var(--navy); }
+
+/* ---------- Services: midnight headings, cobalt sub-links ---------- */
+.service-title,
+.service-title a { color: #12203f; }
+
+.service-content p { color: #757575; }
+
+.service-content { border-bottom-color: #bfbfbf; }
+
+.service-link h4,
+.service-link a { color: #12203f; }
+
+.child-services-list a,
+.link-chevron { color: #243f88; }
+
+/* Their CTA panel is a dark starfield image; we carry the same ink gradient. */
+.full-services .cta {
+  background: linear-gradient(135deg, #101828 0%, #1f2c49 100%);
+  color: #ffffff;
+}
+
+.full-services .cta h2,
+.full-services .cta h3 { color: #ffffff; }
+
+/* ---------- Partners & clients: cobalt tabs on a grey tile field ---------- */
+.partners-title { color: var(--navy); }
+
+.partners-and-clients .partners-tab { color: var(--purple); }
+
+.partners-and-clients .partners-tab.active,
+.partners-and-clients .partners-tab:hover { color: var(--navy); }
+
+.nav-line-active { background-color: var(--navy); }
+
+.partner-logo { background-color: #eeeeee; color: var(--navy); }
 
 /* ---------- Forms ---------- */
 .form-row label,

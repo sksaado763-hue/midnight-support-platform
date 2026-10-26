@@ -1,13 +1,156 @@
 import { Link } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
-import LatestInsights from "../components/Cards";
+import LatestInsights, { CaseArt } from "../components/Cards";
 import StatsStrip from "../components/StatsStrip";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useApi } from "../lib/api";
 
 const TABS = [
   { key: "brands", label: "Brands", logos: ["TESSERA", "NORTHBANK", "ARCADIA", "VOLTA", "MERIDIAN", "HALCYON", "ORCHARD&CO", "BLUEPINE"] },
   { key: "technology", label: "Technology", logos: ["CLOUDVEIL", "STACKFORGE", "QUANTA", "NIMBUS9", "COREWIRE", "BYTEHARBOR", "LATTICE", "SIGNALWORKS"] },
   { key: "agencies", label: "Agencies", logos: ["PIXEL&MORE", "STUDIO NORTH", "FRAMECRAFT", "THE ATELIER", "MOSAIC CO", "BOLDTYPE", "FIELDNOTES", "HARLOW"] },
+];
+
+const HERO_CARDS = [
+  {
+    to: "/support",
+    title: "24/7 Support",
+    copy: "Full-stack monitoring, triage and resolution, every hour of every day.",
+    icon: (
+      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" strokeWidth="2.4" /><path d="M24 13v11l7 5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
+    ),
+  },
+  {
+    to: "/cloud",
+    title: "Managed Cloud",
+    copy: "Consulting, architecture and delivery across AWS, Azure and Google Cloud.",
+    icon: (
+      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 30a8 8 0 0 1 .6-15.9A10 10 0 0 1 34 17a7 7 0 0 1-1 13H14z" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" /><path d="M17 37l4-5m5 5l-3-4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
+    ),
+  },
+  {
+    to: "/cloud#devops",
+    title: "DevOps",
+    copy: "Helping teams ship faster without trading away reliability or quality.",
+    icon: (
+      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34l6-6 6 4 7-10 6 6 7-12" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" /><circle cx="40" cy="12" r="3" fill="currentColor" /></svg>
+    ),
+  },
+  {
+    to: "/platforms",
+    title: "SaaS Support",
+    copy: "Care and maintenance for SaaS products, CMS platforms and custom apps.",
+    icon: (
+      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="9" width="34" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="2.4" /><path d="M17 41h14M24 33v8" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /><path d="M16 20l5 4-5 4M25 28h7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
+    ),
+  },
+];
+
+const SERVICES = [
+  {
+    title: "24/7 Support",
+    to: "/support",
+    copy: "Supporting your full stack, 24 hours a day, 365 days a year.",
+    icon: <circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" strokeWidth="2.4" />,
+    iconExtra: <path d="M24 13v11l7 5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />,
+    groups: [
+      {
+        label: "Support Packages",
+        to: "/support",
+        children: [
+          { label: "Silver", to: "/support" },
+          { label: "Gold", to: "/support" },
+          { label: "Platinum", to: "/support" },
+        ],
+      },
+      {
+        label: "By Industry",
+        to: "/support#industries",
+        children: [
+          { label: "Agencies", to: "/support#industries" },
+          { label: "SaaS", to: "/support#industries" },
+          { label: "eCommerce", to: "/support#industries" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Managed Cloud",
+    to: "/cloud",
+    copy: "Specialist consulting, design and delivery on AWS, Azure and GCP.",
+    icon: <path d="M14 30a8 8 0 0 1 .6-15.9A10 10 0 0 1 34 17a7 7 0 0 1-1 13H14z" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />,
+    iconExtra: <path d="M17 37l4-5m5 5l-3-4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />,
+    groups: [
+      {
+        label: "By Cloud Provider",
+        to: "/cloud",
+        children: [
+          { label: "AWS", to: "/cloud#aws" },
+          { label: "Azure", to: "/cloud#aws" },
+          { label: "GCP", to: "/cloud#aws" },
+        ],
+      },
+      {
+        label: "Cloud Consulting",
+        to: "/cloud#consulting",
+        children: [
+          { label: "Cost Optimisation", to: "/cloud#consulting" },
+          { label: "Well-Architected Review", to: "/cloud#consulting" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "DevOps",
+    to: "/cloud#devops",
+    copy: "Helping teams ship faster without trading away reliability or quality.",
+    icon: <path d="M8 34l6-6 6 4 7-10 6 6 7-12" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />,
+    iconExtra: <circle cx="40" cy="12" r="3" fill="currentColor" />,
+    groups: [
+      {
+        label: "DevOps Delivery",
+        to: "/cloud#devops",
+        children: [
+          { label: "CI/CD Pipelines", to: "/cloud#devops" },
+          { label: "Infrastructure as Code", to: "/cloud#devops" },
+        ],
+      },
+      {
+        label: "Application Modernisation",
+        to: "/cloud#devops",
+        children: [
+          { label: "Platform Engineering", to: "/cloud#devops" },
+          { label: "Observability", to: "/cloud#devops" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "SaaS Support",
+    to: "/platforms",
+    copy: "Care and maintenance for SaaS products, CMS platforms and custom apps.",
+    icon: <rect x="7" y="9" width="34" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="2.4" />,
+    iconExtra: <path d="M17 41h14M24 33v8" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />,
+    groups: [
+      {
+        label: "By Platform",
+        to: "/platforms",
+        children: [
+          { label: "Sitecore", to: "/platforms" },
+          { label: "Umbraco", to: "/platforms" },
+          { label: "WordPress", to: "/platforms" },
+        ],
+      },
+      {
+        label: "Custom Applications",
+        to: "/support#industries",
+        children: [
+          { label: "SaaS Application Support", to: "/support#industries" },
+          { label: "Legacy Modernisation", to: "/support#industries" },
+        ],
+      },
+    ],
+  },
 ];
 
 function Arrow() {
@@ -18,12 +161,128 @@ function Arrow() {
   );
 }
 
+function Chevron() {
+  return (
+    <svg className="link-chevron" viewBox="0 0 9 16" aria-hidden="true">
+      <path d="M1 1l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function WorkSlider() {
+  const { data: studies } = useApi("/api/case-studies");
+  const trackRef = useRef(null);
+  const [arrows, setArrows] = useState({ start: true, end: true });
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return undefined;
+
+    function measure() {
+      const max = track.scrollWidth - track.clientWidth;
+      setArrows({ start: track.scrollLeft <= 2, end: track.scrollLeft >= max - 2 });
+    }
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [studies]);
+
+  if (!studies || studies.length === 0) return null;
+
+  const { start: atStart, end: atEnd } = arrows;
+
+  function step(direction) {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.querySelector(".work-card");
+    const width = card ? card.getBoundingClientRect().width + 30 : track.clientWidth;
+    track.scrollBy({ left: direction * width, behavior: "smooth" });
+  }
+
+  return (
+    <section className="case-study-examples" id="work">
+      <div className="container">
+        <h2 className="work-title reveal">Some of the teams we back up:</h2>
+        <div className="work-slider-container">
+          <div
+            className="work-slider"
+            ref={trackRef}
+            tabIndex="-1"
+            onScroll={(event) => {
+              const track = event.currentTarget;
+              setArrows({
+                start: track.scrollLeft <= 2,
+                end: track.scrollLeft >= track.scrollWidth - track.clientWidth - 2,
+              });
+            }}
+          >
+            {studies.map((study) => (
+              <Link className="work-card" key={study.slug} to={`/case-studies/${study.slug}`}>
+                <div className="work-image" aria-hidden="true">
+                  <CaseArt theme={study.theme} />
+                </div>
+                <div className="work-content">
+                  <p className="work-client">{study.client}</p>
+                  <p className="work-description">{study.headline}</p>
+                  <p className="work-summary">{study.outcomes?.[0] || study.industry}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <button
+            type="button"
+            className={`work-arrow work-arrow-left${atStart ? " disabled" : ""}`}
+            aria-label="Previous work"
+            disabled={atStart}
+            onClick={() => step(-1)}
+          >
+            <svg viewBox="0 0 25 50" aria-hidden="true"><path d="M20 3L4 25l16 22" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+          <button
+            type="button"
+            className={`work-arrow work-arrow-right${atEnd ? " disabled" : ""}`}
+            aria-label="Next work"
+            disabled={atEnd}
+            onClick={() => step(1)}
+          >
+            <svg viewBox="0 0 25 50" aria-hidden="true"><path d="M20 3L4 25l16 22" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   useTitle("Just After Midnight | 24/7 Support, Managed Cloud & DevOps");
   const [tab, setTab] = useState("brands");
+  const navRef = useRef(null);
+  const [lineStyle, setLineStyle] = useState({});
+
+  /* The reference slides a fixed 76px bar under the active tab; measuring the
+     button keeps it aligned however the labels wrap. */
+  useEffect(() => {
+    const nav = navRef.current;
+    const active = nav?.querySelector(".partners-tab.active");
+    if (!nav || !active) return undefined;
+
+    function move() {
+      const navBox = nav.getBoundingClientRect();
+      const activeBox = active.getBoundingClientRect();
+      setLineStyle({
+        transform: `translateX(${activeBox.left - navBox.left}px)`,
+        width: `${activeBox.width}px`,
+      });
+    }
+
+    move();
+    window.addEventListener("resize", move);
+    return () => window.removeEventListener("resize", move);
+  }, [tab]);
 
   function scrollToNext() {
-    document.getElementById("stats")?.scrollIntoView({ block: "start" });
+    document.getElementById("statement")?.scrollIntoView({ block: "start" });
   }
 
   return (
@@ -71,30 +330,14 @@ export default function Home() {
               <li className="trust-logo">MERIDIAN</li>
             </ul>
           </div>
-          <div className="hero-cards reveal">
-            <Link to="/support" className="hero-card">
-              <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" strokeWidth="2.4" /><path d="M24 13v11l7 5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
-              <h3>24/7 Support <Arrow /></h3>
-              <p>Full-stack monitoring, triage and resolution, every hour of every day.</p>
-            </Link>
-
-            <Link to="/cloud" className="hero-card">
-              <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 30a8 8 0 0 1 .6-15.9A10 10 0 0 1 34 17a7 7 0 0 1-1 13H14z" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" /><path d="M17 37l4-5m5 5l-3-4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
-              <h3>Managed Cloud <Arrow /></h3>
-              <p>Consulting, architecture and delivery across AWS, Azure and Google Cloud.</p>
-            </Link>
-
-            <Link to="/cloud#devops" className="hero-card">
-              <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34l6-6 6 4 7-10 6 6 7-12" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" /><circle cx="40" cy="12" r="3" fill="currentColor" /></svg>
-              <h3>DevOps <Arrow /></h3>
-              <p>Helping teams ship faster without trading away reliability or quality.</p>
-            </Link>
-
-            <Link to="/platforms" className="hero-card">
-              <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="9" width="34" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="2.4" /><path d="M17 41h14M24 33v8" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /><path d="M16 20l5 4-5 4M25 28h7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
-              <h3>Platform Support <Arrow /></h3>
-              <p>Care and maintenance for SaaS products, CMS platforms and custom apps.</p>
-            </Link>
+          <div className="hero-cards card-links reveal">
+            {HERO_CARDS.map((card) => (
+              <Link to={card.to} className="hero-card card-link" key={card.to}>
+                {card.icon}
+                <h2 className="h3">{card.title} <Arrow /></h2>
+                <p className="md">{card.copy}</p>
+              </Link>
+            ))}
           </div>
         </div>
 
@@ -104,7 +347,7 @@ export default function Home() {
           </svg>
         </div>
 
-        <button type="button" className="scroll-down" aria-label="Go to the next section" onClick={scrollToNext}>
+        <button type="button" className="scroll-down" aria-label="Scroll down" onClick={scrollToNext}>
           <svg viewBox="0 0 70 70" aria-hidden="true">
             <circle className="scroll-disc" cx="35" cy="35" r="35" />
             <path className="scroll-arrow" d="M35 21v24m-10-10 10 10 10-10" fill="none" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -112,68 +355,7 @@ export default function Home() {
         </button>
       </section>
 
-      <StatsStrip />
-
-      <section className="full-services" id="services">
-        <div className="container">
-          <h2 className="section-title reveal">Our Services</h2>
-          <div className="services-grid">
-            <article className="service-card reveal">
-              <div className="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" strokeWidth="2.4" /><path d="M24 13v11l7 5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
-              </div>
-              <h3>24/7 Support</h3>
-              <p>Full-stack monitoring, triage and resolution — every hour of every day, all year round.</p>
-              <ul className="service-links">
-                <li><Link to="/support">Support Packages</Link></li>
-                <li><Link to="/support#industries">By Industry <span aria-hidden="true">·</span> Agencies · SaaS · eCommerce</Link></li>
-                <li><Link to="/cloud">By Cloud Provider <span aria-hidden="true">·</span> AWS · Azure · GCP</Link></li>
-              </ul>
-            </article>
-
-            <article className="service-card reveal">
-              <div className="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48"><path d="M14 30a8 8 0 0 1 .6-15.9A10 10 0 0 1 34 17a7 7 0 0 1-1 13H14z" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" /><path d="M17 37l4-5m5 5l-3-4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
-              </div>
-              <h3>Managed Cloud</h3>
-              <p>Consulting, architecture and delivery across AWS, Azure and Google Cloud.</p>
-              <ul className="service-links">
-                <li><Link to="/cloud#aws">AWS · Azure · GCP · Alibaba Cloud</Link></li>
-                <li><Link to="/cloud#consulting">Cloud Consulting &amp; Cost Optimisation</Link></li>
-                <li><Link to="/cloud#consulting">Cloud Migration &amp; Managed Hosting</Link></li>
-              </ul>
-            </article>
-
-            <article className="service-card reveal">
-              <div className="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48"><path d="M8 34l6-6 6 4 7-10 6 6 7-12" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" /><circle cx="40" cy="12" r="3" fill="currentColor" /></svg>
-              </div>
-              <h3>DevOps</h3>
-              <p>Helping teams ship faster without trading away reliability or quality.</p>
-              <ul className="service-links">
-                <li><Link to="/cloud#devops">DevOps Delivery &amp; Automation</Link></li>
-                <li><Link to="/cloud#devops">DevOps Consulting</Link></li>
-                <li><Link to="/cloud#devops">Application Modernisation</Link></li>
-              </ul>
-            </article>
-
-            <article className="service-card reveal">
-              <div className="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48"><rect x="7" y="9" width="34" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="2.4" /><path d="M17 41h14M24 33v8" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /><path d="M16 20l5 4-5 4M25 28h7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
-              </div>
-              <h3>Platform Support</h3>
-              <p>Care and maintenance for SaaS products, CMS platforms and custom applications.</p>
-              <ul className="service-links">
-                <li><Link to="/support#industries">SaaS Application Support</Link></li>
-                <li><Link to="/support#industries">Custom Applications</Link></li>
-                <li><Link to="/platforms">Platforms <span aria-hidden="true">·</span> Sitecore · Umbraco · WordPress</Link></li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="uptime-block" id="statement">
+      <section className="uptime-block seo-text-block" id="statement">
         <div className="container">
           <div className="uptime-content">
             <h2 className="uptime-title reveal">We're the experts in uptime.</h2>
@@ -183,85 +365,125 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="partners-and-clients">
+      <StatsStrip />
+
+      <WorkSlider />
+
+      <section className="full-services" id="services">
         <div className="container">
-          <h2 className="section-title reveal">A few of our partners &amp; clients</h2>
-
-          <div className="tabs reveal" role="tablist" aria-label="Client types">
-            {TABS.map((item) => (
-              <button
-                key={item.key}
-                className={`tab${tab === item.key ? " is-active" : ""}`}
-                role="tab"
-                aria-selected={String(tab === item.key)}
-                data-tab={item.key}
-                onClick={() => setTab(item.key)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          {TABS.map((item) => (
-            <div key={item.key} className={`tab-panel${tab === item.key ? " is-active" : ""}`} data-panel={item.key} hidden={tab !== item.key}>
-              <ul className="logo-grid">
-                {item.logos.map((logo) => (
-                  <li className="logo-cell" key={logo}>{logo}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          <div className="partners-cta reveal">
-            <Link to="/contact" className="btn btn-primary">Find out more about partnerships <span aria-hidden="true">➔</span></Link>
-            <svg className="partners-illustration" viewBox="0 0 220 200" aria-hidden="true">
-              <circle cx="120" cy="110" r="62" fill="#1F2C49" />
-              <circle cx="120" cy="110" r="62" fill="none" stroke="#243F88" strokeWidth="2" opacity=".5" />
-              <path d="M120 48a62 62 0 0 1 0 124 78 78 0 0 0 0-124z" fill="#FABD14" />
-              <circle cx="150" cy="78" r="5" fill="#A2CCE4" />
-              <line x1="150" y1="73" x2="150" y2="58" stroke="#A2CCE4" strokeWidth="2.5" strokeLinecap="round" />
-              <circle cx="150" cy="55" r="3.5" fill="#A2CCE4" />
-              <circle cx="42" cy="46" r="2" fill="#ffffff" opacity=".7" />
-              <circle cx="196" cy="160" r="2.4" fill="#ffffff" opacity=".6" />
-              <circle cx="60" cy="170" r="1.8" fill="#ffffff" opacity=".5" />
-            </svg>
+          <h2 className="section-title reveal">Our Services</h2>
+          <div className="services-wrapper">
+              {SERVICES.map((service) => (
+                <div className="service-item reveal" key={service.title}>
+                  <div className="service-wrap">
+                    <div className="service-icon" aria-hidden="true">
+                      <svg viewBox="0 0 48 48">{service.icon}{service.iconExtra}</svg>
+                    </div>
+                    <h3 className="service-title">
+                      <Link to={service.to}>{service.title} <Chevron /></Link>
+                    </h3>
+                    <div className="service-content">
+                      <p>{service.copy}</p>
+                    </div>
+                  </div>
+                  <div className="title-and-service-wrapper">
+                    {service.groups.map((group) => (
+                      <div className="title-service-item" key={group.label}>
+                        <div className="service-link">
+                          <h4>
+                            <Link to={group.to}>{group.label} <Chevron /></Link>
+                          </h4>
+                        </div>
+                        <div className="links-of-service-wrapper">
+                          <ul className="child-services-list">
+                            {group.children.map((child) => (
+                              <li key={child.label}>
+                                <Link to={child.to}>{child.label} <Chevron /></Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
-      </section>
-
-      <section className="cases-teaser">
         <div className="container">
-          <div className="insights-head reveal">
-            <h2 className="section-title">Proof, not promises</h2>
-            <Link to="/case-studies" className="text-link">All case studies <span aria-hidden="true">➔</span></Link>
-          </div>
-          <div className="case-teaser-grid">
-            <Link className="case-teaser reveal" to="/case-studies">
-              <div className="case-teaser-art case-teaser-art--a" aria-hidden="true">
-                <svg viewBox="0 0 200 90"><path d="M30 74h140" stroke="#BFBFBF" strokeWidth="4" strokeLinecap="round" /><path d="M44 74V48l24-16 24 14 24-24v52" fill="none" stroke="#FABD14" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              </div>
-              <p className="case-teaser-copy"><strong>40+ platforms</strong> kept online through peak campaigns, payroll windows and 3am surprises. See how.</p>
-            </Link>
+          <div className="cta reveal">
+            <h2>Tell us what your queue looks like.</h2>
+            <h3>Our engineers are on shift around the clock.</h3>
+            <Link to="/contact" className="btn filled">Talk to our team <span aria-hidden="true">➔</span></Link>
           </div>
         </div>
       </section>
 
       <section className="report-download-cta">
+        <div className="stars-bg">
+          <div className="wrapper">
+            <div className="container">
+              <div className="report-grid">
+                <div className="report-col">
+                  <div className="content">
+                    <h2>What does real 24/7 cover actually look like?</h2>
+                    <p>A night shift is more than someone awake at 3am. This short guide walks through the escalation ladder, the handover notes, and the response targets we hold every queue to &mdash; across cloud, DevOps and SaaS support.</p>
+                  </div>
+                  <div className="btns">
+                    <Link to="/contact" className="btn btn-outline">Download the report <span aria-hidden="true">➔</span></Link>
+                  </div>
+                </div>
+                <div className="report-media">
+                  <div className="report-art" aria-hidden="true">
+                    <svg viewBox="0 0 200 160">
+                      <path d="M40 132h120" stroke="#BFBFBF" strokeWidth="4" strokeLinecap="round" />
+                      <path d="M52 132V84l32-24 32 20 32-36v88" fill="none" stroke="#FABD14" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                      <circle cx="116" cy="44" r="6" fill="#243F88" />
+                      <rect x="146" y="52" width="10" height="80" rx="4" fill="#1F2C49" transform="rotate(18 151 92)" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="partners-and-clients">
         <div className="container">
-          <div className="report-card reveal">
-            <div className="report-art" aria-hidden="true">
-              <svg viewBox="0 0 200 160">
-                <path d="M40 132h120" stroke="#BFBFBF" strokeWidth="4" strokeLinecap="round" />
-                <path d="M52 132V84l32-24 32 20 32-36v88" fill="none" stroke="#FABD14" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="116" cy="44" r="6" fill="#243F88" />
-                <rect x="146" y="52" width="10" height="80" rx="4" fill="#1F2C49" transform="rotate(18 151 92)" />
-              </svg>
+          <div className="partners-header">
+            <h2 className="partners-title reveal">A few of our partners &amp; clients</h2>
+            <div className="partners-nav reveal" ref={navRef}>
+              <div className="nav-tabs" role="tablist" aria-label="Client types">
+                {TABS.map((item) => (
+                  <button
+                    key={item.key}
+                    className={`partners-tab${tab === item.key ? " active" : ""}`}
+                    role="tab"
+                    aria-selected={String(tab === item.key)}
+                    onClick={() => setTab(item.key)}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+              <div className="nav-underline" aria-hidden="true">
+                <span className="nav-line-full" />
+                <span className="nav-line-active" style={lineStyle} />
+              </div>
             </div>
-            <div className="report-copy">
-              <h2>What does a "perfect" AWS setup look like for SaaS?</h2>
-              <p>Perfection may not exist — but seeing how experts approach it is the next best thing. Four frontline perspectives on hyperscale, developer-first architecture, and balancing next-gen tech with what's proven and comfy.</p>
-              <Link to="/contact" className="btn btn-primary">Download the report <span aria-hidden="true">➔</span></Link>
+          </div>
+
+          {TABS.map((item) => (
+            <div key={item.key} className={`partners-grid${tab === item.key ? " active" : ""}`} hidden={tab !== item.key}>
+              {item.logos.map((logo) => (
+                <div className="partner-logo" key={logo}>{logo}</div>
+              ))}
             </div>
+          ))}
+
+          <div className="buttons reveal">
+            <Link to="/contact" className="btn btn-primary">Find out more about partnership <span aria-hidden="true">➔</span></Link>
           </div>
         </div>
       </section>

@@ -121,9 +121,9 @@ export default function LatestInsights() {
   return (
     <section className="insights insights--shared" aria-label="Latest insights">
       <div className="container">
-        <div className="insights-head reveal">
-          <h2 className="section-title">Latest Insights from JAM</h2>
-          <Link to="/insights" className="text-link">See more articles <span aria-hidden="true">➔</span></Link>
+        <div className="insights-header reveal">
+          <h2 className="insights-title">Latest Insights</h2>
+          <Link to="/insights" className="btn btn-tertiary">See more articles <span aria-hidden="true">➔</span></Link>
         </div>
         <div className="insights-grid">
           {articles.map((article) => (
