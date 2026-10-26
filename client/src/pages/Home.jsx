@@ -22,6 +22,10 @@ export default function Home() {
   useTitle("Just After Midnight | 24/7 Support, Managed Cloud & DevOps");
   const [tab, setTab] = useState("brands");
 
+  function scrollToNext() {
+    document.getElementById("stats")?.scrollIntoView({ block: "start" });
+  }
+
   return (
     <>
       <section className="homepage-hero">
@@ -93,6 +97,19 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
+        <div className="hero-divider" aria-hidden="true">
+          <svg className="hero-wave" viewBox="0 0 1920 124" preserveAspectRatio="none">
+            <path className="hero-wave__fill" d="M0 24 C150 20 310 25 470 30 C660 36 820 62 960 62 C1080 62 1240 42 1420 46 C1600 50 1740 62 1920 58 V124 H0 Z" />
+          </svg>
+        </div>
+
+        <button type="button" className="scroll-down" aria-label="Go to the next section" onClick={scrollToNext}>
+          <svg viewBox="0 0 70 70" aria-hidden="true">
+            <circle className="scroll-disc" cx="35" cy="35" r="35" />
+            <path className="scroll-arrow" d="M35 21v24m-10-10 10 10 10-10" fill="none" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
       </section>
 
       <StatsStrip />
@@ -158,9 +175,11 @@ export default function Home() {
 
       <section className="uptime-block" id="statement">
         <div className="container">
-          <h2 className="uptime-title reveal">We're the experts in uptime.</h2>
-          <p className="uptime-text reveal">We build, run and look after your infrastructure, applications and services through a world-class 24/7 support operation.</p>
-          <p className="uptime-text reveal">And we step in fast when things go wrong, so your team can sleep at night.</p>
+          <div className="uptime-content">
+            <h2 className="uptime-title reveal">We're the experts in uptime.</h2>
+            <p className="uptime-text reveal">We build, run and look after your infrastructure, applications and services through a world-class 24/7 support operation.</p>
+            <p className="uptime-text reveal">And we step in fast when things go wrong, so your team can sleep at night.</p>
+          </div>
         </div>
       </section>
 

@@ -147,6 +147,17 @@ body {
 
 .hero-title { letter-spacing: 0; }
 
+/* The wave paints the section below the hero, so it has to be that section's
+   colour; the disc is the hero's own tail colour, so it reads as the navy
+   dipping through the wave. */
+.hero-wave__fill { fill: var(--hero-cut, var(--bg)); }
+.scroll-disc { fill: #1f2c49; }
+.scroll-arrow { stroke: #ffffff; }
+
+/* Reference `.seo-text-block`: amber heading, grey body. */
+.uptime-title { color: var(--amber-deep); }
+.uptime-text { color: var(--text-muted); }
+
 .page-hero {
   background: linear-gradient(135deg, #0e1a33 0%, #132140 100%);
   color: #ffffff;

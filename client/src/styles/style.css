@@ -520,6 +520,7 @@ ul { list-style: none; }
   background: var(--navy);
   color: #ffffff;
   overflow: hidden;
+  --hero-divider-h: clamp(64px, 6.46vw, 124px);
 }
 .hero-stars { position: absolute; inset: 0; opacity: 0.9; }
 .hero-clouds { position: absolute; inset: 0; pointer-events: none; display: none; }
@@ -527,20 +528,39 @@ ul { list-style: none; }
 .hero-cloud-a { width: 190px; top: 150px; right: 5%; }
 .hero-cloud-b { width: 120px; top: 330px; left: -34px; }
 .hero-moon { position: absolute; display: none; left: 2%; top: 100px; width: 72px; height: 72px; z-index: 0; }
-/* The hero ends in the same wave the reference clips into its dark slabs: the
-   page colour rises through the bottom 10% of the band, deepest left of centre. */
-.homepage-hero::after {
-  content: "";
+/* The hero hands off to the page through a wave whose centre dips into a round
+   navy tongue; the scroll button sits exactly over that tongue. Reference
+   divider is 1920x124 with a 70px disc, so the band is 6.46% of the viewport. */
+.hero-divider {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 10%;
-  background: var(--hero-cut, var(--bg));
-  clip-path: polygon(0 5%, 10% 2.1%, 20% 0.3%, 29% 0.3%, 40% 2%, 60% 7.8%, 69% 9.5%, 75% 9.8%, 82% 9.4%, 89% 8%, 100% 5%, 100% 100%, 0 100%);
-  pointer-events: none;
+  height: var(--hero-divider-h);
   z-index: 3;
+  line-height: 0;
+  pointer-events: none;
 }
+.hero-wave { display: block; width: 100%; height: 100%; }
+.scroll-down {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 4;
+  width: 70px;
+  height: 70px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  line-height: 0;
+  cursor: pointer;
+}
+.scroll-down svg { display: block; width: 70px; height: 70px; }
+.scroll-down:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
+.scroll-down:hover .scroll-arrow,
+.scroll-down:focus-visible .scroll-arrow { animation: arrowBounce 0.6s ease-in-out infinite; }
 .hero-inner {
   position: relative;
   z-index: 1;
@@ -598,7 +618,9 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
-  margin: 24px 0 60px;
+  /* Bottom space tracks the wave: its white half reaches ~81% of the divider's
+     height at the left edge, and the cards need clear air above that. */
+  margin: 24px 0 calc(var(--hero-divider-h) * 0.81 + 50px);
 }
 .hero-card {
   position: relative;
@@ -647,7 +669,6 @@ ul { list-style: none; }
 }
 
 @media (max-width: 480px) {
-  .hero-cards { margin-bottom: 40px; }
   .hero-card { padding: 18px 16px; gap: 8px; }
   .hero-card h3 { font-size: 15px; line-height: 22px; gap: 8px; }
   .hero-card-arrow { width: 12px; height: 10px; }
@@ -655,7 +676,7 @@ ul { list-style: none; }
 }
 
 @media (min-width: 768px) {
-  .hero-cards { grid-template-columns: repeat(2, 1fr); gap: 36px 40px; margin-bottom: 80px; }
+  .hero-cards { grid-template-columns: repeat(2, 1fr); gap: 36px 40px; }
   .hero-card { padding: 24px 20px; gap: 8px; }
   .hero-card h3 { font-size: 18px; line-height: 26px; gap: 12px; }
   .hero-card-arrow { width: 16px; height: 14px; }
@@ -663,7 +684,7 @@ ul { list-style: none; }
 }
 
 @media (min-width: 992px) {
-  .hero-cards { grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 128px; }
+  .hero-cards { grid-template-columns: repeat(4, 1fr); gap: 40px; }
   .hero-card { padding: 28px 23px; gap: 10px; }
   .hero-card h3 { font-size: 20px; line-height: 28px; gap: 16px; }
   .hero-card-arrow { width: 18px; height: 16px; }
@@ -783,10 +804,17 @@ ul { list-style: none; }
 }
 
 /* ---------- Uptime text block (homepage) ---------- */
+/* Their `.seo-text-block` puts the copy in a half-width, vertically centred
+   column: 40px band padding, 24px under the heading, 20px between paragraphs. */
 .uptime-block { background: var(--bg); color: var(--text); padding: 40px 0; }
+.uptime-content { display: flex; flex-direction: column; justify-content: center; }
 .uptime-title { font-size: var(--fs-h2); line-height: 1.15; font-weight: 500; margin-bottom: 24px; }
 .uptime-text { font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text); margin-bottom: 10px; }
 .uptime-text:last-child { margin-bottom: 0; }
+
+@media (min-width: 768px) {
+  .uptime-content { flex: 0 0 50%; max-width: 50%; }
+}
 
 @media (min-width: 992px) {
   .uptime-text { margin-bottom: 20px; }
@@ -2047,6 +2075,7 @@ ul { list-style: none; }
   .hero-card:hover, .hero-card:hover .hero-card-arrow { transform: none; }
   .insight-card:hover .insight-media svg, .case-card:hover .case-art svg { transform: none; }
   .search-panel { animation: none; }
+  .scroll-down:hover .scroll-arrow, .scroll-down:focus-visible .scroll-arrow { animation: none; }
   .hero-stars circle, .brand-mark, .partners-illustration, .report-art svg,
   .notfound-art, .hero-cloud-a, .hero-cloud-b, .hero-moon,
   .hero-actions:has(.btn:hover) .btn span[aria-hidden="true"] { animation: none; }

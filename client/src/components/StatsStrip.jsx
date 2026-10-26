@@ -4,7 +4,7 @@ export default function StatsStrip({ alt = false }) {
   const { data: stats } = useApi("/api/stats");
   if (!stats) return null;
   return (
-    <section className={`stats-strip${alt ? " stats-strip--alt" : ""}`} aria-label="Key numbers">
+    <section id="stats" className={`stats-strip${alt ? " stats-strip--alt" : ""}`} aria-label="Key numbers">
       <div className="container stats-grid">
         {stats.map((stat) => (
           <div className="stat reveal" key={stat.label}>
