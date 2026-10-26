@@ -79,7 +79,7 @@ export function CaseArt({ theme }) {
   if (theme === "incident") {
     return (
       <svg viewBox="0 0 200 100">
-        <rect x="88" y="34" width="24" height="34" rx="6" fill="#1F2C49" />
+        <rect x="88" y="34" width="24" height="34" rx="6" fill="#ffffff" />
         <path d="M100 18a18 18 0 0 1 18 18h-36a18 18 0 0 1 18-18z" fill="#FABD14" />
         <rect x="64" y="44" width="5" height="18" rx="2.5" fill="#A2CCE4" />
         <rect x="132" y="44" width="5" height="18" rx="2.5" fill="#A2CCE4" />
