@@ -584,14 +584,14 @@ ul { list-style: none; }
 .hero-actions .btn { padding: var(--pad-btn-lg); }
 
 @media (min-width: 992px) {
-  .hero-moon { display: block; }
+  .hero-moon { display: block; top: 46px; }
   .hero-clouds { display: block; }
   .hero-cloud-a { width: 230px; }
   /* The reference drops the hero copy into `col-12 col-lg-9`, so the headline
      breaks early instead of running the full 1110px container. */
   .hero-copy { max-width: 70%; }
   .hero-subtitle { font-size: 20px; line-height: 28px; }
-  .hero-inner { padding-block: 180px 40px; }
+  .hero-inner { padding-block: 126px 40px; }
 }
 
 .hero-trust { margin-top: 48px; }
