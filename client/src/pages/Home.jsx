@@ -315,11 +315,13 @@ export default function Home() {
           <path d="M58 6a42 42 0 1 0 27 75A46 46 0 0 1 58 6z" fill="#FABD14" />
         </svg>
         <div className="container hero-inner">
-          <h1 className="hero-title reveal">24/7 support, cloud &amp; DevOps for brands, agencies and digital products</h1>
-          <p className="hero-subtitle reveal">Keeping your revenue, reputation and digital estate protected — every hour, every day of the year.</p>
-          <div className="hero-actions reveal">
-            <Link to="/support" className="btn btn-primary">View support packages <span aria-hidden="true">➔</span></Link>
-            <Link to="/contact" className="btn btn-primary">Speak to us <span aria-hidden="true">➔</span></Link>
+          <div className="hero-copy">
+            <h1 className="hero-title reveal">24/7 support, cloud &amp; DevOps for brands, agencies and digital products</h1>
+            <p className="hero-subtitle reveal">Keeping your revenue, reputation and digital estate protected — every hour, every day of the year.</p>
+            <div className="hero-actions reveal">
+              <Link to="/support" className="btn btn-primary">View support packages <span aria-hidden="true">➔</span></Link>
+              <Link to="/contact" className="btn btn-primary">Speak to us <span aria-hidden="true">➔</span></Link>
+            </div>
           </div>
           <div className="hero-trust reveal">
             <p className="trust-label">Trusted by:</p>

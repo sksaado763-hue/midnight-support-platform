@@ -587,7 +587,9 @@ ul { list-style: none; }
   .hero-moon { display: block; }
   .hero-clouds { display: block; }
   .hero-cloud-a { width: 230px; }
-  .hero-title, .hero-subtitle { text-align: justify; }
+  /* The reference drops the hero copy into `col-12 col-lg-9`, so the headline
+     breaks early instead of running the full 1110px container. */
+  .hero-copy { max-width: 70%; }
   .hero-subtitle { font-size: 20px; line-height: 28px; }
   .hero-inner { padding-block: 180px 40px; }
 }
