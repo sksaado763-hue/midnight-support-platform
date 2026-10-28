@@ -205,11 +205,9 @@ ul { list-style: none; }
   background: var(--navy);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-/* Same measure as .container, not the wider 1320px band: the brand and the
-   CTA have to line up with the page content below them. */
 .header-inner {
   position: relative;
-  width: min(1170px, 100%);
+  width: min(1320px, 100%);
   margin-inline: auto;
   padding-inline: 30px;
   min-height: var(--header-h);
