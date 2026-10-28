@@ -205,9 +205,10 @@ ul { list-style: none; }
   background: var(--navy);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+/* Match .container so the brand, nav and CTA share the page copy's edges. */
 .header-inner {
   position: relative;
-  width: min(1320px, 100%);
+  width: min(1170px, 100%);
   margin-inline: auto;
   padding-inline: 30px;
   min-height: var(--header-h);
