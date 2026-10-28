@@ -1353,8 +1353,11 @@ ul { list-style: none; }
 
 @media (min-width: 992px) {
   .report-download-cta { text-align: left; overflow: visible; padding: 100px 0; }
-  .report-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 30px; }
-  .report-download-cta .content { margin: 0; padding-top: 60px; max-width: none; }
+  /* The copy column is shorter than the A4 sheet, so centring it left the text
+     floating beside the middle of the cover. Start-align puts its top against
+     the sheet's top, and the 10px below is the only offset. */
+  .report-grid { grid-template-columns: 1fr 1fr; align-items: start; gap: 30px; }
+  .report-download-cta .content { margin: 0; padding-top: 10px; max-width: none; }
   .report-download-cta .btns { justify-content: flex-start; }
   .report-cover { width: 100%; max-width: 420px; }
   .report-cover-frame { inset: 18px; padding: 30px 24px 22px; }
