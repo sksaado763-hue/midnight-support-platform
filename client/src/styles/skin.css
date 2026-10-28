@@ -412,6 +412,14 @@ body {
 .full-services .cta h2,
 .full-services .cta h3 { color: #ffffff; }
 
+/* The shared canary hover reads as a flash of amber on this dark panel, so the
+   button inverts to the panel's own white instead. */
+.full-services .cta .btn:hover,
+.full-services .cta .btn:focus {
+  background: #ffffff;
+  color: var(--navy);
+}
+
 /* ---------- Partners & clients: cobalt tabs on a grey tile field ---------- */
 .partners-title { color: var(--navy); }
 
