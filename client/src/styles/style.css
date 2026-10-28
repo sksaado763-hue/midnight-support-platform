@@ -28,7 +28,7 @@
   --white: #132140;
   --text: #132140;
   --accent-bright: #243f88;
-  --accent-ink: #132140;
+  --accent-ink: #000000;
   --mint: #004242;
   --sky: #a2cce4;
   --text-muted: #737373;
@@ -118,7 +118,7 @@ ul { list-style: none; }
 .container { width: min(1170px, 100%); margin-inline: auto; padding-inline: 30px; }
 
 /* ---------- Buttons ---------- */
-/* Reference `.btn`: 14px/600 Ubuntu, canary fill, midnight ink, 5px radius,
+/* Reference `.btn`: 14px/600 Ubuntu, canary fill, black ink, 5px radius,
    12px 18px, 2px transparent border, colour-only hover. */
 .btn {
   display: inline-flex;
