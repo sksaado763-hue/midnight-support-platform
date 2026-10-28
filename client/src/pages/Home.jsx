@@ -170,10 +170,18 @@ function Chevron() {
   );
 }
 
+const WORK_FALLBACK = [
+  { slug: "absolute-software", client: "Absolute Software", headline: "24/7 coverage for a global endpoint platform", theme: "spotlight" },
+  { slug: "paylocity", client: "Paylocity", headline: "Hardened payroll infrastructure for peak windows", theme: "observability" },
+  { slug: "structureflow", client: "StructureFlow", headline: "Managed cloud migration with zero downtime", theme: "incident" },
+  { slug: "the-body-coach-app", client: "The Body Coach App", headline: "Keeping a consumer app stable through demand spikes", theme: "spotlight" },
+];
+
 function WorkSlider() {
   const { data: studies } = useApi("/api/case-studies");
   const trackRef = useRef(null);
   const [arrows, setArrows] = useState({ start: true, end: true });
+  const cards = studies && studies.length > 0 ? studies : WORK_FALLBACK;
 
   useEffect(() => {
     const track = trackRef.current;
@@ -188,8 +196,6 @@ function WorkSlider() {
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, [studies]);
-
-  if (!studies || studies.length === 0) return null;
 
   const { start: atStart, end: atEnd } = arrows;
 
@@ -218,7 +224,7 @@ function WorkSlider() {
               });
             }}
           >
-            {studies.map((study) => (
+            {cards.map((study) => (
               <div className="work-slide" key={study.slug}>
                 <Link className="work-card" to={`/case-studies/${study.slug}`}>
                   <div className="work-image" aria-hidden="true">
