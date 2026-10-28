@@ -1128,8 +1128,9 @@ ul { list-style: none; }
 
 /* ---------- Partners & clients ---------- */
 /* Reference: white band, centred title, three tabs over a sliding 2px rule,
-   then 90px tiles (148px from 992px up), each a #eeeeee plate holding a
-   full-colour mark above its wordmark. */
+   then 90px tiles (148px from 992px up), each holding a full-colour mark above
+   its wordmark. The tiles keep their plate box for spacing but sit bare on the
+   white band. */
 .partners-and-clients { background: var(--bg); color: var(--text); padding: 40px 0 70px; }
 .partners-header { text-align: center; margin-bottom: 24px; }
 .partners-title {
