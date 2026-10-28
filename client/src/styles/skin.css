@@ -432,25 +432,47 @@ body {
 
 .site-footer .form-row label { color: #ffffff; }
 
-/* The footer form borrows the button's canary fill, so its fields read as the
-   same object as "Send message" sitting under them. Ink and border stay black
-   for the same reason. The focus ring goes amber-on-amber because the navy one
-   used elsewhere disappears against the midnight slab behind it. */
+/* ---------- The contact block: one canary panel on the midnight slab ---------- */
+/* The copy and the form share a single surface here, so everything that was
+   white-on-navy in this corner flips to midnight. The selectors are prefixed
+   with .site-footer on purpose: the plain rules further down set the footer's
+   text white, and reordering them would drag the newsletter column along. */
+.footer-contact {
+  background: var(--amber);
+  border-bottom: 0;
+  border-radius: 24px;
+  padding: clamp(1.8rem, 4vw, 3.25rem);
+}
+
+.site-footer .footer-contact-copy h2,
+.site-footer .footer-contact-copy p,
+.site-footer .footer-contact .form-row label,
+.site-footer .footer-contact .form-status { color: var(--navy); }
+
+.site-footer .footer-contact .form-row label .opt { color: rgba(19, 33, 64, 0.62); }
+
+/* The fields stay near-white: the panel carries the colour, the inputs stay
+   the quiet ones. No border, because the tone change already separates them. */
 .footer-form .form-row input,
 .footer-form .form-row textarea {
-  background: var(--amber);
-  border-color: #000000;
-  color: #000000;
+  background: #f4f4f6;
+  border-color: transparent;
+  color: var(--navy);
 }
 
 .footer-form .form-row input::placeholder,
-.footer-form .form-row textarea::placeholder { color: rgba(0, 0, 0, 0.55); }
+.footer-form .form-row textarea::placeholder { color: #8a8a93; font-weight: 500; }
 
 .footer-form .form-row input:focus,
 .footer-form .form-row textarea:focus {
-  border-color: #000000;
-  box-shadow: 0 0 0 3px rgba(250, 189, 20, 0.4);
+  background: #ffffff;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(19, 33, 64, 0.16);
 }
+
+/* A canary button on a canary panel has no edge left to read by, so it borrows
+   the black ink for an outline instead of changing colour. */
+.footer-form .btn { border-color: #000000; }
 
 .footer-contact,
 .footer-ways { border-color: rgba(255, 255, 255, 0.16); }
