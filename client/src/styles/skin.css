@@ -470,9 +470,20 @@ body {
   box-shadow: 0 0 0 3px rgba(19, 33, 64, 0.16);
 }
 
-/* A canary button on a canary panel has no edge left to read by, so it borrows
-   the black ink for an outline instead of changing colour. */
-.footer-form .btn { border-color: #000000; }
+/* Canary on canary left the submit button with no edge to read by, so it drops
+   to midnight instead of keeping an outline. --white is inverted to navy in
+   this palette, hence the literal here. */
+.footer-form .btn {
+  background: var(--navy);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.footer-form .btn:hover,
+.footer-form .btn:focus {
+  background: var(--navy-soft);
+  color: #ffffff;
+}
 
 .footer-contact,
 .footer-ways { border-color: rgba(255, 255, 255, 0.16); }
