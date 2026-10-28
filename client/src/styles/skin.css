@@ -528,6 +528,10 @@ body {
 
 .footer-legal { color: rgba(255, 255, 255, 0.6); }
 
+/* White tiles on the deep navy band, same as the reference's certificate row. */
+.assurance { background: #ffffff; color: var(--navy); }
+.assurance-sub { color: rgba(19, 33, 64, 0.66); }
+
 .footer-col-toggle,
 .footer-col-heading,
 .footer-contact-copy h2 { color: #ffffff; }

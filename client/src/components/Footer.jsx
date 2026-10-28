@@ -49,6 +49,79 @@ const SOCIALS = [
   },
 ];
 
+/* Assurance tiles for the legal band. Each line restates something the site
+   already claims about how the studio works — none of them is a third-party
+   certificate, and they must not be swapped for real accreditation marks
+   (ISO, Cyber Essentials, a partner badge) unless the business holds them. */
+const ASSURANCES = [
+  {
+    key: "ism",
+    title: "Midnight Assured",
+    sub: "Information security management",
+    mark: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M7.5 12.3l3 3 6-6.6" stroke="#FABD14" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    key: "cover",
+    title: "24·7·365",
+    sub: "On-call cover, every day",
+    mark: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M12 6.5V12l4 2.4" stroke="#FABD14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    key: "ladder",
+    title: "Escalation ladder",
+    sub: "Four tiers, named owners",
+    mark: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 20h4v-5h4v-5h4V5h4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="8" cy="20" r="1.8" fill="#FABD14" />
+      </svg>
+    ),
+  },
+  {
+    key: "handover",
+    title: "Handover logged",
+    sub: "Every shift, every queue",
+    mark: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 6h14M5 12h14M5 18h9" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        <circle cx="18.5" cy="18" r="2" fill="#FABD14" />
+      </svg>
+    ),
+  },
+  {
+    key: "cloud",
+    title: "Cloud & DevOps",
+    sub: "Managed cover across stacks",
+    mark: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.5 18h11a3.5 3.5 0 0 0 .3-6.98A5 5 0 0 0 8.2 9.4 3.8 3.8 0 0 0 6.5 18z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+        <circle cx="12" cy="14" r="1.7" fill="#FABD14" />
+      </svg>
+    ),
+  },
+  {
+    key: "whitelabel",
+    title: "White-label cover",
+    sub: "Invisible behind your brand",
+    mark: (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3l7.5 3.4v5.2c0 4.3-3.1 7.9-7.5 9-4.4-1.1-7.5-4.7-7.5-9V6.4L12 3z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+        <path d="M9 12.2l2.2 2.2 4.3-4.6" stroke="#FABD14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+];
+
 function FooterColumn({ column }) {
   const [open, setOpen] = useState(false);
   return (
@@ -109,8 +182,17 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <div className="container">
+        <div className="container footer-bottom-row">
           <p className="footer-legal">© {new Date().getFullYear()} JUST AFTER MIDNIGHT. All rights reserved.</p>
+          <ul className="footer-assurances" aria-label="How we work">
+            {ASSURANCES.map((item) => (
+              <li className={`assurance assurance--${item.key}`} key={item.key}>
+                {item.mark}
+                <span className="assurance-title">{item.title}</span>
+                <span className="assurance-sub">{item.sub}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>
