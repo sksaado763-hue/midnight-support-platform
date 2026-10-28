@@ -423,6 +423,7 @@ body {
 .nav-line-active { background-color: var(--navy); }
 
 .partner-logo { background-color: #eeeeee; color: var(--navy); }
+.partner-name .pn-light { opacity: 0.62; }
 
 /* ---------- Forms ---------- */
 .form-row label,

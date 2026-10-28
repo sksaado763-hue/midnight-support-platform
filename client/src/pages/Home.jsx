@@ -3,13 +3,14 @@ import { useTitle } from "../lib/useReveal";
 import LatestInsights, { CaseArt } from "../components/Cards";
 import StatsStrip from "../components/StatsStrip";
 import TrustLogos from "../components/TrustLogos";
+import { PartnerLogo } from "../components/PartnerLogos";
 import { useEffect, useRef, useState } from "react";
 import { useApi } from "../lib/api";
 
 const TABS = [
-  { key: "brands", label: "Brands", logos: ["TESSERA", "NORTHBANK", "ARCADIA", "VOLTA", "MERIDIAN", "HALCYON", "ORCHARD&CO", "BLUEPINE"] },
-  { key: "technology", label: "Technology", logos: ["CLOUDVEIL", "STACKFORGE", "QUANTA", "NIMBUS9", "COREWIRE", "BYTEHARBOR", "LATTICE", "SIGNALWORKS"] },
-  { key: "agencies", label: "Agencies", logos: ["PIXEL&MORE", "STUDIO NORTH", "FRAMECRAFT", "THE ATELIER", "MOSAIC CO", "BOLDTYPE", "FIELDNOTES", "HARLOW"] },
+  { key: "brands", label: "Brands", logos: ["tessera", "northbank", "arcadia", "volta", "meridian", "halcyon", "orchardco", "bluepine"] },
+  { key: "technology", label: "Technology", logos: ["cloudveil", "stackforge", "quanta", "nimbus9", "corewire", "byteharbor", "lattice", "signalworks"] },
+  { key: "agencies", label: "Agencies", logos: ["pixelmore", "studionorth", "framecraft", "atelier", "mosaicco", "boldtype", "fieldnotes", "harlow"] },
 ];
 
 const HERO_CARDS = [
@@ -509,8 +510,8 @@ export default function Home() {
 
           {TABS.map((item) => (
             <div key={item.key} className={`partners-grid${tab === item.key ? " active" : ""}`} hidden={tab !== item.key}>
-              {item.logos.map((logo) => (
-                <div className="partner-logo" key={logo}>{logo}</div>
+              {item.logos.map((slug) => (
+                <PartnerLogo slug={slug} key={slug} />
               ))}
             </div>
           ))}

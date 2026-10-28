@@ -1125,7 +1125,8 @@ ul { list-style: none; }
 
 /* ---------- Partners & clients ---------- */
 /* Reference: white band, centred title, three tabs over a sliding 2px rule,
-   then 90px logo tiles (148px from 992px up) on a #e8e8e8 field. */
+   then 90px tiles (148px from 992px up), each a #eeeeee plate holding a
+   full-colour mark above its wordmark. */
 .partners-and-clients { background: var(--bg); color: var(--text); padding: 40px 0 70px; }
 .partners-header { text-align: center; margin-bottom: 24px; }
 .partners-title {
@@ -1170,8 +1171,10 @@ ul { list-style: none; }
   height: 90px;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   text-align: center;
   padding: 8px;
   font-family: var(--font-head);
@@ -1180,6 +1183,10 @@ ul { list-style: none; }
   line-height: 14px;
   letter-spacing: 0;
 }
+.partner-mark { width: 34px; height: 34px; flex: none; display: block; }
+/* A few marks use a lighter second word; letter-spaced names set their own rhythm. */
+.partner-name .pn-light { font-weight: 500; }
+.partner-name.is-wide { font-weight: 500; letter-spacing: 0.12em; }
 .partners-and-clients .buttons { display: flex; align-items: center; margin-top: 48px; justify-content: center; }
 
 @media (min-width: 992px) {
@@ -1190,7 +1197,8 @@ ul { list-style: none; }
   .nav-tabs { gap: 48px; margin-bottom: 19px; }
   .partners-and-clients .partners-tab { font-size: 20px; line-height: 28px; }
   .partners-grid { gap: 50px; }
-  .partner-logo { width: 148px; height: 148px; font-size: 14px; line-height: 18px; padding: 14px; }
+  .partner-logo { width: 148px; height: 148px; font-size: 14px; line-height: 18px; padding: 14px; gap: 12px; }
+  .partner-mark { width: 56px; height: 56px; }
 }
 
 /* ---------- Insights ---------- */
