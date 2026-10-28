@@ -1,7 +1,7 @@
 /* ============================================================
    Midnight — colour layer
    Values taken directly from justaftermidnight247.com's theme:
-   midnight blue #132140, cobalt #243F88, canary #FABD14 (hover
+   midnight blue #111A2B, cobalt #243F88, canary #FABD14 (hover
    #E0AB17), deep purple #3E1740 / magenta #92278F, sky #A2CCE4,
    off-white #FAF9FA, band grey #F0F0F0, hairline #BFBFBF,
    focus teal #004242. Loaded after style.css.
@@ -15,11 +15,11 @@ body {
   font-weight: 300;
 }
 
-::selection { background: rgba(250, 189, 20, 0.45); color: #132140; }
+::selection { background: rgba(250, 189, 20, 0.45); color: var(--navy); }
 
 ::-webkit-scrollbar { width: 11px; height: 11px; }
-::-webkit-scrollbar-track { background: linear-gradient(180deg, #132140, #243f88); }
-::-webkit-scrollbar-thumb { background: #fabd14; border-radius: 10px; border: 2px solid #132140; }
+::-webkit-scrollbar-track { background: linear-gradient(180deg, var(--navy), var(--navy-soft)); }
+::-webkit-scrollbar-thumb { background: #fabd14; border-radius: 10px; border: 2px solid var(--navy); }
 ::-webkit-scrollbar-thumb:hover { background: #fabd14; }
 
 /* ---------- Header: midnight-blue bar over the page ---------- */
@@ -138,7 +138,7 @@ body {
 
 /* ---------- Hero + page hero: midnight gradients, starfield underneath ---------- */
 .homepage-hero {
-  background: linear-gradient(180deg, #101828 0%, #1f2c49 100%);
+  background: linear-gradient(180deg, var(--navy) 0%, #1f2c49 100%);
   color: #ffffff;
   --tint: rgba(255, 255, 255, 0.08);
   --tint-strong: rgba(255, 255, 255, 0.14);
@@ -159,7 +159,7 @@ body {
 .uptime-text { color: var(--text-muted); }
 
 .page-hero {
-  background: linear-gradient(135deg, #0e1a33 0%, #132140 100%);
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
   color: #ffffff;
 }
 
@@ -294,7 +294,7 @@ body {
 .industry-card li::before { color: var(--navy-soft); }
 
 .price-card.is-featured {
-  background: linear-gradient(170deg, #101828 0%, #1f2c49 100%);
+  background: linear-gradient(170deg, var(--navy) 0%, #1f2c49 100%);
   border-color: var(--navy);
   box-shadow: 0 14px 34px rgba(19, 33, 64, 0.22);
   --line: rgba(255, 255, 255, 0.18);
@@ -329,7 +329,7 @@ body {
     radial-gradient(1.6px 1.6px at 96px 160px, rgba(255, 255, 255, 0.8) 50%, transparent 52%),
     radial-gradient(1px 1px at 190px 200px, rgba(255, 255, 255, 0.55) 50%, transparent 52%),
     radial-gradient(1.2px 1.2px at 60px 108px, rgba(255, 255, 255, 0.65) 50%, transparent 52%),
-    linear-gradient(180deg, #132140 0%, #243f88 100%);
+    linear-gradient(180deg, var(--navy) 0%, var(--navy-soft) 100%);
 }
 
 .report-download-cta::before {
@@ -378,34 +378,34 @@ body {
 /* Their work cards put the logo on a navy star field, so the block carries
    the backdrop rather than the artwork. */
 .work-image {
-  background-color: #132140;
+  background-color: var(--navy);
   background-image:
     radial-gradient(1.4px 1.4px at 22% 30%, rgba(255, 255, 255, 0.75) 50%, transparent 51%),
     radial-gradient(1.2px 1.2px at 68% 18%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
     radial-gradient(1.6px 1.6px at 84% 62%, rgba(255, 255, 255, 0.6) 50%, transparent 51%),
     radial-gradient(1.1px 1.1px at 38% 78%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
     radial-gradient(1.3px 1.3px at 12% 64%, rgba(255, 255, 255, 0.45) 50%, transparent 51%),
-    linear-gradient(135deg, #101828 0%, #1f2c49 100%);
+    linear-gradient(135deg, var(--navy) 0%, #1f2c49 100%);
   background-repeat: no-repeat;
 }
 
 /* ---------- Services: midnight headings, cobalt sub-links ---------- */
 .service-title,
-.service-title a { color: #12203f; }
+.service-title a { color: var(--navy); }
 
 .service-content p { color: #757575; }
 
 .service-content { border-bottom-color: #bfbfbf; }
 
 .service-link h4,
-.service-link a { color: #12203f; }
+.service-link a { color: var(--navy); }
 
 .child-services-list a,
 .link-chevron { color: #243f88; }
 
 /* Their CTA panel is a dark starfield image; we carry the same ink gradient. */
 .full-services .cta {
-  background: linear-gradient(135deg, #101828 0%, #1f2c49 100%);
+  background: linear-gradient(135deg, var(--navy) 0%, #1f2c49 100%);
   color: #ffffff;
 }
 
@@ -460,7 +460,9 @@ body {
 .site-footer {
   --line: rgba(255, 255, 255, 0.16);
   --footer-fill: var(--navy);
-  --footer-deep: #0e1a33;
+  /* #0e1a33 sat at the same lightness as the new midnight, which flattened the
+     slab and its legal band into one colour, so the band steps further down. */
+  --footer-deep: #0b1322;
   color: #ffffff;
 }
 

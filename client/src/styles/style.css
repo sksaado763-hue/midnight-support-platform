@@ -1,6 +1,6 @@
 /* ---------- Design tokens ---------- */
 /* Sampled px-by-px from justaftermidnight247.com's theme stylesheet:
-   Montserrat headings / Ubuntu body, midnight-blue ink (#132140) on white,
+   Montserrat headings / Ubuntu body, midnight-blue ink (#111A2B) on white,
    canary-yellow CTAs (#FABD14), cobalt secondary (#243F88).
    Type scale is mobile-first with the reference's own 992px step. */
 :root {
@@ -15,7 +15,7 @@
   --tint: rgba(19, 33, 64, 0.05);
   --tint-strong: rgba(19, 33, 64, 0.1);
 
-  --navy: #132140;
+  --navy: #111a2b;
   --navy-deep: #101828;
   --navy-soft: #243f88;
   --amber: #fabd14;
@@ -25,8 +25,8 @@
   --purple: #243f88;
   --plum: #3e1740;
   --pink: #92278f;
-  --white: #132140;
-  --text: #132140;
+  --white: #111a2b;
+  --text: #111a2b;
   --accent-bright: #243f88;
   --accent-ink: #000000;
   --mint: #004242;
@@ -1569,7 +1569,7 @@ ul { list-style: none; }
     bottom: auto;
     max-height: calc(100vh - var(--header-h));
     overflow-y: auto;
-    background: var(--navy-deep);
+    background: var(--navy);
     padding: 1rem 5% 2rem;
     transform: translateY(-8px);
     opacity: 0;
@@ -1656,7 +1656,7 @@ ul { list-style: none; }
   color: #ffffff;
   padding: var(--section-pad) 0;
 }
-.page-hero--admin { background: linear-gradient(180deg, #101828 0%, #1f2c49 100%); }
+.page-hero--admin { background: linear-gradient(180deg, var(--navy) 0%, #1f2c49 100%); }
 .page-hero-title { font-size: var(--fs-h1); line-height: var(--lh-h1); font-weight: var(--fw-h1); max-width: 22ch; }
 .page-hero-sub { margin-top: 1.1rem; font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-muted); max-width: 62ch; }
 .page-hero .hero-actions { margin-top: 2rem; }
