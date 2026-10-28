@@ -432,13 +432,48 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="report-media">
-                  <div className="report-art" aria-hidden="true">
-                    <svg viewBox="0 0 200 160">
-                      <path d="M40 132h120" stroke="#BFBFBF" strokeWidth="4" strokeLinecap="round" />
-                      <path d="M52 132V84l32-24 32 20 32-36v88" fill="none" stroke="#FABD14" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                      <circle cx="116" cy="44" r="6" fill="#243F88" />
-                      <rect x="146" y="52" width="10" height="80" rx="4" fill="#1F2C49" transform="rotate(18 151 92)" />
-                    </svg>
+                  <div className="report-cover" aria-hidden="true">
+                    <div className="report-cover-frame">
+                      <span className="report-cover-kicker">Just After</span>
+                      <span className="report-cover-wordmark">
+                        MIDNI<svg viewBox="0 0 32 32"><path d="M19 3a13.5 13.5 0 1 0 8.5 24A14.8 14.8 0 0 1 19 3z" fill="#FABD14" /></svg>HT
+                      </span>
+                      <span className="report-cover-rule" />
+                      <span className="report-cover-title">Real 24/7 cover, written down</span>
+                      <span className="report-cover-sub">The escalation ladder, the handover notes and the response targets behind every queue</span>
+                      <svg className="report-cover-art" viewBox="0 0 220 116" fill="none">
+                        <path d="M18 104h184" stroke="rgba(162,204,228,0.3)" strokeWidth="1.5" />
+                        <path d="M60 104V86h48V64h44v40" stroke="rgba(162,204,228,0.34)" strokeWidth="1.5" />
+                        <circle cx="60" cy="104" r="3" fill="#A2CCE4" />
+                        <circle cx="152" cy="104" r="3" fill="#A2CCE4" />
+                        <g fill="#A2CCE4" opacity="0.85">
+                          <ellipse cx="52" cy="34" rx="15" ry="8" />
+                          <ellipse cx="64" cy="30" rx="11" ry="9" />
+                        </g>
+                        <g fill="#ffffff" opacity="0.72">
+                          <ellipse cx="168" cy="26" rx="13" ry="7" />
+                          <ellipse cx="178" cy="23" rx="9" ry="7" />
+                        </g>
+                        <g transform="translate(30 56)">
+                          <path d="M0 12 L21 0 L42 12 L21 24 Z" fill="#2f52a0" />
+                          <path d="M0 12 L0 21 L21 33 L21 24 Z" fill="#182a52" />
+                          <path d="M42 12 L42 21 L21 33 L21 24 Z" fill="#22396e" />
+                          <path d="M9 12 L21 5.5 L33 12 L21 18.5 Z" fill="#A2CCE4" opacity="0.9" />
+                        </g>
+                        <g transform="translate(96 30)">
+                          <path d="M0 12 L21 0 L42 12 L21 24 Z" fill="#2f52a0" />
+                          <path d="M0 12 L0 21 L21 33 L21 24 Z" fill="#182a52" />
+                          <path d="M42 12 L42 21 L21 33 L21 24 Z" fill="#22396e" />
+                          <path d="M9 12 L21 5.5 L33 12 L21 18.5 Z" fill="#FABD14" opacity="0.92" />
+                        </g>
+                        <g transform="translate(152 62)">
+                          <path d="M0 12 L21 0 L42 12 L21 24 Z" fill="#2f52a0" />
+                          <path d="M0 12 L0 21 L21 33 L21 24 Z" fill="#182a52" />
+                          <path d="M42 12 L42 21 L21 33 L21 24 Z" fill="#22396e" />
+                          <path d="M9 12 L21 5.5 L33 12 L21 18.5 Z" fill="#A2CCE4" opacity="0.9" />
+                        </g>
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>

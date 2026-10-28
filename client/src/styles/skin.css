@@ -319,19 +319,52 @@ body {
 .tab { background: var(--surface-2); border-color: transparent; color: var(--navy); }
 
 /* ---------- Report band: a starfield slab, not a cream card ---------- */
-.report-download-cta { --band-fill: linear-gradient(180deg, #132140 0%, #243f88 100%); }
+/* Five sparse dots tiled over the navy, same treatment the footer slab uses.
+   background-size is restated here because style.css sets the band with the
+   `background` shorthand, which would otherwise wipe it back to auto. */
+.report-download-cta {
+  --band-fill:
+    radial-gradient(1.4px 1.4px at 28px 34px, rgba(255, 255, 255, 0.85) 50%, transparent 52%),
+    radial-gradient(1.1px 1.1px at 150px 76px, rgba(255, 255, 255, 0.6) 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 96px 160px, rgba(255, 255, 255, 0.8) 50%, transparent 52%),
+    radial-gradient(1px 1px at 190px 200px, rgba(255, 255, 255, 0.55) 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 60px 108px, rgba(255, 255, 255, 0.65) 50%, transparent 52%),
+    linear-gradient(180deg, #132140 0%, #243f88 100%);
+}
 
-.report-download-cta .content h2 { color: #ffffff; }
+.report-download-cta::before {
+  background-size: 220px 220px, 220px 220px, 220px 220px, 220px 220px, 220px 220px, 100% 100%;
+}
 
-.report-download-cta .content p { color: rgba(255, 255, 255, 0.82); }
+.report-download-cta .content h2 {
+  color: #ffffff;
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+}
 
+.report-download-cta .content p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.62;
+}
+
+/* The band's only button sits on midnight next to a bright cover, so it stays
+   a white outline rather than joining the canary buttons elsewhere. */
 .report-download-cta .btn {
-  background: var(--amber);
-  color: var(--accent-ink);
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
   box-shadow: none;
 }
 
-.report-download-cta .btn:hover { background: var(--amber-hover); color: var(--accent-ink); box-shadow: none; }
+.report-download-cta .btn:hover,
+.report-download-cta .btn:focus {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--navy);
+  box-shadow: none;
+}
 
 /* ---------- Case study links ---------- */
 /* Their ink: black heading and summary, navy client name. */

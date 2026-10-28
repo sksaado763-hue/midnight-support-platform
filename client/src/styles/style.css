@@ -1276,15 +1276,79 @@ ul { list-style: none; }
 .report-download-cta .content h2 { margin-bottom: 15px; }
 .report-download-cta .btns { display: flex; align-items: center; justify-content: center; margin-top: 24px; }
 .report-media { display: grid; place-items: center; }
-.report-art { width: 100%; }
-.report-art svg { display: block; width: 100%; max-width: 234px; transform: rotate(7deg); }
+
+/* The sheet is portrait A4 and leans 7 degrees. Everything on it lives inside
+   the tilted box, so the frame inset, the type and the artwork all lean with
+   it rather than being rotated individually. */
+.report-cover {
+  position: relative;
+  width: min(280px, 84%);
+  aspect-ratio: 210 / 297;
+  transform: rotate(7deg);
+  border-radius: 4px;
+  background: linear-gradient(158deg, #23445c 0%, #17324b 52%, #122a44 100%);
+  box-shadow: 0 26px 54px rgba(4, 10, 26, 0.45);
+}
+.report-cover-frame {
+  position: absolute;
+  inset: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 18px 14px 14px;
+}
+.report-cover-kicker {
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+}
+.report-cover-wordmark {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+.report-cover-wordmark svg { width: 0.78em; height: 0.78em; flex: none; }
+.report-cover-rule { width: 34px; height: 2px; background: var(--amber); margin: 12px 0 14px; }
+.report-cover-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.26;
+  color: #ffffff;
+  max-width: 19ch;
+}
+.report-cover-sub {
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 30ch;
+}
+/* Pushed to the foot of the sheet so the artwork reads as the cover picture
+   rather than a band of decoration under the title. */
+.report-cover-art { margin-top: auto; width: 100%; display: block; }
 
 @media (min-width: 992px) {
   .report-download-cta { text-align: left; overflow: visible; padding: 100px 0; }
   .report-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 30px; }
   .report-download-cta .content { margin: 0; padding-top: 60px; max-width: none; }
   .report-download-cta .btns { justify-content: flex-start; }
-  .report-art svg { max-width: 100%; }
+  .report-cover { width: 100%; max-width: 420px; }
+  .report-cover-frame { inset: 18px; padding: 30px 24px 22px; }
+  .report-cover-kicker { font-size: 11px; }
+  .report-cover-wordmark { font-size: 23px; }
+  .report-cover-title { font-size: 27px; max-width: 17ch; }
+  .report-cover-sub { font-size: 14px; }
 }
 
 /* ---------- Footer ----------
@@ -2400,7 +2464,7 @@ ul { list-style: none; }
   .insight-card:hover .insight-media svg, .case-card:hover .case-art svg { transform: none; }
   .search-panel { animation: none; }
   .scroll-down:hover .scroll-arrow, .scroll-down:focus-visible .scroll-arrow { animation: none; }
-  .hero-stars circle, .brand-mark, .partners-illustration, .report-art svg,
+  .hero-stars circle, .brand-mark, .partners-illustration,
   .notfound-art, .hero-cloud-a, .hero-cloud-b, .hero-moon,
   .hero-actions:has(.btn:hover) .btn span[aria-hidden="true"] { animation: none; }
   .trust-logo, .trust-logos, .trust-mark-base > *, .trust-word { animation: none; }
