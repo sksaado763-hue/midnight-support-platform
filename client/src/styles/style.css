@@ -785,7 +785,10 @@ ul { list-style: none; }
   background: linear-gradient(135deg, rgba(242, 161, 29, 0.02), rgba(162, 204, 228, 0.02));
   opacity: 0;
 }
-.hero-card-icon { flex: none; width: auto; height: 40px; color: var(--amber-deep); }
+/* Without align-self the card's column flex stretches this box to the full
+   card width, and the SVG's default xMidYMid meet then paints the 40px art
+   dead centre — which reads as a centred icon. */
+.hero-card-icon { flex: none; align-self: flex-start; width: auto; height: 40px; color: var(--amber-deep); }
 .hero-card .h3 {
   display: flex;
   align-items: center;
