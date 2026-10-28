@@ -605,8 +605,8 @@ ul { list-style: none; }
   margin-bottom: 16px;
 }
 .trust-logos {
-  --cycle: 5.6s;
-  --step: 0.5s;
+  --cycle: 2.6s;
+  --step: 0.26s;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -628,7 +628,7 @@ ul { list-style: none; }
   position: absolute;
   inset: -7px -11px;
   border-radius: 999px;
-  background: radial-gradient(58% 130% at 50% 50%, rgba(250, 189, 20, 0.18), transparent 72%);
+  background: radial-gradient(58% 130% at 50% 50%, rgba(250, 189, 20, 0.34), transparent 72%);
   opacity: 0;
   pointer-events: none;
   animation: trust-halo var(--cycle) ease-in-out infinite;
@@ -654,14 +654,15 @@ ul { list-style: none; }
   animation: trust-draw 900ms ease-out both;
   animation-delay: calc(var(--i) * 90ms + 300ms);
 }
-/* A 30% arc running round the mark forever. pathLength="1" makes the dash
+/* A 20% comet running round the mark forever. pathLength="1" makes the dash
    period exactly one lap, so offset 0 -> -1 loops with no visible seam.
    The `g` prefix is load-bearing: `.trust-mark g` sets stroke to currentColor
    at (0,1,1), so an unprefixed class here would lose and render white-on-white. */
 .trust-mark g.trust-mark-trace {
   stroke: var(--amber);
-  stroke-width: 2.2;
-  stroke-dasharray: 0.3 0.7;
+  stroke-width: 2.8;
+  stroke-dasharray: 0.2 0.8;
+  filter: drop-shadow(0 0 1.6px rgba(250, 189, 20, 0.9));
   opacity: 0;
   animation:
     trust-run var(--cycle) linear infinite,
