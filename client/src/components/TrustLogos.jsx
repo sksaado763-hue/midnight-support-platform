@@ -83,9 +83,12 @@ const BRANDS = [
   },
 ];
 
-export function TrustLogos() {
+/* Renders the brand set twice: the clone is what lets the track scroll
+   infinitely and hand off seamlessly. It is aria-hidden so screen readers
+   still hear each name exactly once. */
+function BrandSet({ hidden }) {
   return (
-    <ul className="trust-logos" aria-label="Selected clients">
+    <ul className="trust-set" aria-label={hidden ? undefined : "Selected clients"} aria-hidden={hidden || undefined}>
       {BRANDS.map((brand, i) => (
         <li className={`trust-logo trust-${brand.key}`} key={brand.key} style={{ "--i": i }}>
           <svg className="trust-mark" viewBox="0 0 24 24" role="img" aria-label={brand.name}>
@@ -97,6 +100,17 @@ export function TrustLogos() {
         </li>
       ))}
     </ul>
+  );
+}
+
+export function TrustLogos() {
+  return (
+    <div className="trust-marquee">
+      <div className="trust-logos">
+        <BrandSet />
+        <BrandSet hidden />
+      </div>
+    </div>
   );
 }
 
