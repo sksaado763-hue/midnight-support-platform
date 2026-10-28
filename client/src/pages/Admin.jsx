@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useTitle } from "../lib/useReveal";
 import { deleteJson, getJson } from "../lib/api";
+import { SOURCES, TIME_ZONES } from "../components/Forms";
+
+/* The form stores slugs, so read them back through the same tables that built
+   the dropdowns rather than duplicating the wording here. */
+const labelFor = (rows, value) => (rows.find(([v]) => v === value) || [])[1] || "";
 
 export default function Admin() {
   useTitle("Admin Inbox | Just After Midnight");
@@ -60,7 +65,10 @@ export default function Admin() {
                             {m.company && <span className="message-company"> · {m.company}</span>}
                           </p>
                           <p className="message-meta">
-                            <a href={`mailto:${m.email}`}>{m.email}</a> ·{" "}
+                            <a href={`mailto:${m.email}`}>{m.email}</a>
+                            {m.phone && <> · <a href={`tel:${m.phone}`}>{m.phone}</a></>}
+                            {m.timezone && <> · {labelFor(TIME_ZONES, m.timezone)}</>}
+                            {m.source && <> · via {labelFor(SOURCES, m.source)}</>} ·{" "}
                             <time dateTime={new Date(m.createdAt).toISOString()}>{new Date(m.createdAt).toLocaleString("en-GB")}</time>
                           </p>
                         </div>

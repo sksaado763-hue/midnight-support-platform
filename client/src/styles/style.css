@@ -1474,8 +1474,29 @@ ul { list-style: none; }
   line-height: var(--lh-md);
   color: var(--navy-text-muted);
 }
-.footer-ways a { color: var(--text); font-weight: 500; border-bottom: 2px solid var(--amber); }
-.footer-ways a:hover { color: var(--amber); }
+/* Now carried inside the canary panel, so it closes the grid with a rule above
+   rather than opening one below. */
+.footer-contact .footer-ways {
+  grid-column: 1 / -1;
+  align-items: center;
+  margin-top: 0.6rem;
+  padding: 1.6rem 0 0;
+  border-top: 1px solid rgba(17, 26, 43, 0.22);
+  border-bottom: 0;
+  gap: 0.9rem 2.5rem;
+}
+.footer-ways-label { margin: 0; font-weight: 700; }
+.footer-way { margin: 0; display: inline-flex; align-items: center; gap: 0.7rem; }
+.footer-ways .contact-chip {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1.5px solid var(--navy);
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.form-note { margin: 0; font-size: var(--fs-md); line-height: var(--lh-md); }
 
 .footer-columns {
   display: grid;

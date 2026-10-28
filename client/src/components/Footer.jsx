@@ -150,12 +150,16 @@ export default function Footer() {
             <p>Get in touch and we'll point you in the right direction.</p>
           </div>
           <ContactForm />
-        </div>
 
-        <div className="footer-ways">
-          <p>Other ways to contact us:</p>
-          <p>Email us: <a href="mailto:havitgrowth@gmail.com">havitgrowth@gmail.com</a></p>
-          <p>Call us: <a href="tel:+923000000000">+92 300 0000000</a></p>
+          <div className="footer-ways">
+            <p className="footer-ways-label">Other ways to contact us:</p>
+            <p className="footer-way">
+              <span>Email us:</span> <a className="contact-chip" href="mailto:havitgrowth@gmail.com">havitgrowth@gmail.com</a>
+            </p>
+            <p className="footer-way">
+              <span>Call us:</span> <a className="contact-chip" href="tel:+923000000000">+92 300 0000000</a>
+            </p>
+          </div>
         </div>
 
         <div className="footer-columns">

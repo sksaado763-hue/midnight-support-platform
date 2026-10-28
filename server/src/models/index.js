@@ -73,8 +73,11 @@ const statSchema = new Schema({
 const messageSchema = new Schema({
   name: { type: String, required: true, maxlength: 120 },
   email: { type: String, required: true, maxlength: 160 },
+  phone: { type: String, default: "", maxlength: 32 },
   company: { type: String, default: "", maxlength: 120 },
+  source: { type: String, default: "" },
   topic: { type: String, default: "" },
+  timezone: { type: String, default: "" },
   message: { type: String, required: true, maxlength: 3000 },
   createdAt: { type: Date, default: Date.now, index: true },
 });

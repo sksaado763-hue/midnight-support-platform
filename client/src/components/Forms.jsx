@@ -2,13 +2,46 @@ import { useState } from "react";
 import { postJson } from "../lib/api";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+/* Loose on purpose: the field takes local and international formats, so the
+   only hard rule is enough digits to actually be a number. */
+const PHONE_RE = /^[+()\d][\d\s()+.-]{6,23}$/;
+
+export const SOURCES = [
+  ["", "Please Select"],
+  ["search", "Found us on a search engine"],
+  ["referral", "A client or partner recommended you"],
+  ["linkedin", "LinkedIn"],
+  ["existing", "We already work with you"],
+  ["event", "An event or meetup"],
+  ["other", "Somewhere else"],
+];
+
+export const TIME_ZONES = [
+  ["", "Please Select"],
+  ["pkt", "Pakistan / Gulf (UTC+4 to +5)"],
+  ["gmt", "United Kingdom & Ireland (UTC+0 to +1)"],
+  ["cet", "Continental Europe (UTC+1 to +2)"],
+  ["est", "North America — East (UTC−5 to −4)"],
+  ["pst", "North America — West (UTC−8 to −7)"],
+  ["sgt", "South & East Asia (UTC+7 to +9)"],
+  ["aest", "Australia & New Zealand (UTC+9.5 to +12)"],
+  ["any", "Any region — whichever shift is awake"],
+];
+
+function Options({ rows }) {
+  return rows.map(([value, label]) => <option value={value} key={value || "blank"}>{label}</option>);
+}
 
 export function ContactForm({ withTopic = false, presetPackage = "" }) {
   const [values, setValues] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    phone: "",
     company: "",
-    topic: withTopic && presetPackage ? "support" : "support",
+    source: "",
+    topic: "support",
+    timezone: "",
     message: "",
   });
   const [status, setStatus] = useState(null);
@@ -19,19 +52,24 @@ export function ContactForm({ withTopic = false, presetPackage = "" }) {
 
   async function submit(event) {
     event.preventDefault();
-    if (!values.name || !values.email || !values.message) {
-      setStatus({ text: "Please fill in your name, email and message.", ok: false });
+    const fullName = `${values.firstName} ${values.lastName}`.trim();
+    if (!values.firstName || !values.lastName || !values.email || !values.phone || !values.message || !values.timezone) {
+      setStatus({ text: "The starred fields all need an answer before this can reach a shift.", ok: false });
       return;
     }
     if (!EMAIL_RE.test(values.email)) {
       setStatus({ text: "That email address doesn't look right.", ok: false });
       return;
     }
+    if (!PHONE_RE.test(values.phone)) {
+      setStatus({ text: "That phone number doesn't look right — include the country code if you can.", ok: false });
+      return;
+    }
     setSending(true);
-    const { ok, body } = await postJson("/api/contact", values);
+    const { ok, body } = await postJson("/api/contact", { ...values, name: fullName });
     if (ok && body && body.ok) {
-      setStatus({ text: `Thanks ${values.name} — we'll be in touch within one working day.`, ok: true });
-      setValues((v) => ({ ...v, name: "", email: "", company: "", message: "" }));
+      setStatus({ text: `Thanks ${values.firstName} — we'll be in touch within one working day.`, ok: true });
+      setValues((v) => ({ ...v, firstName: "", lastName: "", email: "", phone: "", company: "", source: "", timezone: "", message: "" }));
     } else {
       setStatus({ text: (body && body.error) || "Something went wrong — please try again.", ok: false });
     }
@@ -46,18 +84,36 @@ export function ContactForm({ withTopic = false, presetPackage = "" }) {
     <form className={withTopic ? "contact-form reveal" : "footer-form"} id={withTopic ? "contact-form" : "footer-form"} noValidate onSubmit={submit}>
       {withTopic && <h2>Send us a message</h2>}
       <div className="form-row form-row--split">
-        <div>
-          <label htmlFor={`${idPrefix}-name`}>Name<span className="req" aria-hidden="true"> *</span></label>
-          <input type="text" id={`${idPrefix}-name`} name="name" required autoComplete="name" value={values.name} onChange={update("name")} />
+        <div className="form-row">
+          <label htmlFor={`${idPrefix}-first`}>First name<span className="req" aria-hidden="true"> *</span></label>
+          <input type="text" id={`${idPrefix}-first`} name="firstName" required autoComplete="given-name" value={values.firstName} onChange={update("firstName")} />
         </div>
-        <div>
+        <div className="form-row">
+          <label htmlFor={`${idPrefix}-last`}>Last name<span className="req" aria-hidden="true"> *</span></label>
+          <input type="text" id={`${idPrefix}-last`} name="lastName" required autoComplete="family-name" value={values.lastName} onChange={update("lastName")} />
+        </div>
+      </div>
+      <div className="form-row form-row--split">
+        <div className="form-row">
+          <label htmlFor={`${idPrefix}-email`}>Email<span className="req" aria-hidden="true"> *</span></label>
+          <input type="email" id={`${idPrefix}-email`} name="email" required autoComplete="email" value={values.email} onChange={update("email")} />
+        </div>
+        <div className="form-row">
+          <label htmlFor={`${idPrefix}-phone`}>Phone number<span className="req" aria-hidden="true"> *</span></label>
+          <input type="tel" id={`${idPrefix}-phone`} name="phone" required inputMode="tel" autoComplete="tel" placeholder="+92 300 0000000" value={values.phone} onChange={update("phone")} />
+        </div>
+      </div>
+      <div className="form-row form-row--split">
+        <div className="form-row">
           <label htmlFor={`${idPrefix}-company`}>Company<span className="opt"> (optional)</span></label>
           <input type="text" id={`${idPrefix}-company`} name="company" autoComplete="organization" value={values.company} onChange={update("company")} />
         </div>
-      </div>
-      <div className="form-row">
-        <label htmlFor={`${idPrefix}-email`}>Email<span className="req" aria-hidden="true"> *</span></label>
-        <input type="email" id={`${idPrefix}-email`} name="email" required autoComplete="email" value={values.email} onChange={update("email")} />
+        <div className="form-row">
+          <label htmlFor={`${idPrefix}-source`}>How did you hear about us?<span className="opt"> (optional)</span></label>
+          <select id={`${idPrefix}-source`} name="source" value={values.source} onChange={update("source")}>
+            <Options rows={SOURCES} />
+          </select>
+        </div>
       </div>
       {withTopic && (
         <div className="form-row">
@@ -72,16 +128,23 @@ export function ContactForm({ withTopic = false, presetPackage = "" }) {
         </div>
       )}
       <div className="form-row">
-        <label htmlFor={`${idPrefix}-message`}>Message<span className="req" aria-hidden="true"> *</span></label>
+        <label htmlFor={`${idPrefix}-message`}>How can we help?<span className="req" aria-hidden="true"> *</span></label>
         <textarea
           id={`${idPrefix}-message`}
           name="message"
-          rows={withTopic ? 5 : 3}
+          rows={withTopic ? 5 : 4}
           required
           placeholder={messagePlaceholder}
           value={values.message}
           onChange={update("message")}
         />
+      </div>
+      <div className="form-row">
+        <p className="form-note">Our engineers are spread across the clock, so tell us where you are and the shift that is already awake picks this up.</p>
+        <label htmlFor={`${idPrefix}-timezone`}>Your preferred time zone<span className="req" aria-hidden="true"> *</span></label>
+        <select id={`${idPrefix}-timezone`} name="timezone" required value={values.timezone} onChange={update("timezone")}>
+          <Options rows={TIME_ZONES} />
+        </select>
       </div>
       <button type="submit" className="btn btn-primary" disabled={sending}>
         {sending ? "Sending…" : "Send message"}

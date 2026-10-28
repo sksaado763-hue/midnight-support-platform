@@ -498,7 +498,8 @@ body {
 /* The fields stay near-white: the panel carries the colour, the inputs stay
    the quiet ones. No border, because the tone change already separates them. */
 .footer-form .form-row input,
-.footer-form .form-row textarea {
+.footer-form .form-row textarea,
+.footer-form .form-row select {
   background: #f4f4f6;
   border-color: transparent;
   color: var(--navy);
@@ -508,7 +509,8 @@ body {
 .footer-form .form-row textarea::placeholder { color: #8a8a93; font-weight: 500; }
 
 .footer-form .form-row input:focus,
-.footer-form .form-row textarea:focus {
+.footer-form .form-row textarea:focus,
+.footer-form .form-row select:focus {
   background: #ffffff;
   border-color: var(--navy);
   box-shadow: 0 0 0 3px rgba(19, 33, 64, 0.16);
@@ -529,11 +531,23 @@ body {
   color: #ffffff;
 }
 
-.footer-contact,
-.footer-ways { border-color: rgba(255, 255, 255, 0.16); }
+.footer-contact { border-color: rgba(255, 255, 255, 0.16); }
 
-.footer-contact-copy p,
-.footer-ways { color: rgba(255, 255, 255, 0.78); }
+.footer-contact-copy p { color: rgba(255, 255, 255, 0.78); }
+
+/* The ways row moved inside the canary panel, so it reads in the panel's own
+   ink rather than the footer's white. */
+.footer-ways,
+.footer-way span { color: rgba(17, 26, 43, 0.78); }
+.footer-ways-label { color: var(--navy); }
+
+/* Scoped through .footer-ways so it outranks the `.footer-ways a` colour and
+   transition rules elsewhere, which were written for the old underline style. */
+.footer-ways .contact-chip { background: transparent; border-color: var(--navy); color: var(--navy); }
+.footer-ways .contact-chip:hover,
+.footer-ways .contact-chip:focus { background: var(--navy); color: #ffffff; }
+
+.form-note { color: rgba(17, 26, 43, 0.78); }
 
 .contact-address { color: #737373; }
 
@@ -547,12 +561,9 @@ body {
 .footer-col-heading,
 .footer-contact-copy h2 { color: #ffffff; }
 
-.footer-ways a { color: #ffffff; }
-
 .footer-col-list a { color: #f0f0f0; }
 
-.footer-col-list a:hover,
-.footer-ways a:hover { color: #ffffff; }
+.footer-col-list a:hover { color: #ffffff; }
 
 .social-links a { background: none; border: 1px solid #404b5f; color: #ffffff; }
 
@@ -630,7 +641,6 @@ body {
 .article-nav-dir { color: var(--navy-soft); }
 .contact-list a { border-bottom-color: var(--navy); }
 .contact-list a:hover { color: var(--navy-soft); }
-.footer-ways a { border-bottom-color: rgba(255, 255, 255, 0.45); }
 .faq-more a { border-bottom-color: var(--navy); }
 blockquote { border-left-color: var(--navy); }
 .consult-card,

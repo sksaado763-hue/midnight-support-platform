@@ -6,7 +6,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 router.post("/contact", async (req, res, next) => {
   try {
-    const { name, email, company, topic, message } = req.body || {};
+    const { name, email, phone, company, source, topic, timezone, message } = req.body || {};
     if (!name || !email || !message) {
       return res.status(400).json({ ok: false, error: "Name, email and message are required." });
     }
@@ -16,8 +16,11 @@ router.post("/contact", async (req, res, next) => {
     const saved = await Message.create({
       name,
       email,
+      phone: phone || "",
       company: company || "",
+      source: source || "",
       topic: topic || "",
+      timezone: timezone || "",
       message,
     });
     res.status(201).json({ ok: true, id: saved._id.toString() });
