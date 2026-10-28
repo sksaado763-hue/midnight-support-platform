@@ -432,6 +432,26 @@ body {
 
 .site-footer .form-row label { color: #ffffff; }
 
+/* The footer form borrows the button's canary fill, so its fields read as the
+   same object as "Send message" sitting under them. Ink and border stay black
+   for the same reason. The focus ring goes amber-on-amber because the navy one
+   used elsewhere disappears against the midnight slab behind it. */
+.footer-form .form-row input,
+.footer-form .form-row textarea {
+  background: var(--amber);
+  border-color: #000000;
+  color: #000000;
+}
+
+.footer-form .form-row input::placeholder,
+.footer-form .form-row textarea::placeholder { color: rgba(0, 0, 0, 0.55); }
+
+.footer-form .form-row input:focus,
+.footer-form .form-row textarea:focus {
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(250, 189, 20, 0.4);
+}
+
 .footer-contact,
 .footer-ways { border-color: rgba(255, 255, 255, 0.16); }
 
