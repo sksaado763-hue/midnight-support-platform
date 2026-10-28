@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import LatestInsights, { CaseArt } from "../components/Cards";
 import StatsStrip from "../components/StatsStrip";
+import TrustLogos from "../components/TrustLogos";
 import { useEffect, useRef, useState } from "react";
 import { useApi } from "../lib/api";
 
@@ -325,15 +326,7 @@ export default function Home() {
           </div>
           <div className="hero-trust reveal">
             <p className="trust-label">Trusted by:</p>
-            <ul className="trust-logos" aria-label="Selected clients">
-              <li className="trust-logo">TESSERA</li>
-              <li className="trust-logo">HELIOS&nbsp;BANK</li>
-              <li className="trust-logo">NORTHBANK</li>
-              <li className="trust-logo">ARCADIA</li>
-              <li className="trust-logo">VOLTA</li>
-              <li className="trust-logo">BLUEPINE</li>
-              <li className="trust-logo">MERIDIAN</li>
-            </ul>
+            <TrustLogos />
           </div>
           <div className="hero-cards card-links reveal">
             {HERO_CARDS.map((card) => (
