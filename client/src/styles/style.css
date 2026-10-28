@@ -1474,14 +1474,12 @@ ul { list-style: none; }
   line-height: var(--lh-md);
   color: var(--navy-text-muted);
 }
-/* Now carried inside the canary panel, so it closes the grid with a rule above
-   rather than opening one below. */
 .footer-contact .footer-ways {
   grid-column: 1 / -1;
   align-items: center;
+  justify-content: space-between;
   margin-top: 0.6rem;
   padding: 1.6rem 0 0;
-  border-top: 1px solid rgba(17, 26, 43, 0.22);
   border-bottom: 0;
   gap: 0.9rem 2.5rem;
 }
