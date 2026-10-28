@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import LatestInsights, { CaseArt } from "../components/Cards";
-import StatsStrip from "../components/StatsStrip";
 import TrustLogos from "../components/TrustLogos";
 import { PartnerLogo } from "../components/PartnerLogos";
 import { useEffect, useRef, useState } from "react";
@@ -365,8 +364,6 @@ export default function Home() {
       </section>
 
       <WorkSlider />
-
-      <StatsStrip />
 
       <section className="full-services" id="services">
         <div className="container">
