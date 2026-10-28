@@ -258,16 +258,16 @@ ul { list-style: none; }
   transition: border-bottom-color 1s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* The reference nav at 15px/28px gaps already fills the 1320px header row on its own,
-   so bold labels plus the search control only fit one step down — at every width. */
+/* The labels keep their 15px size and tighten their gaps so the header text
+   can stay larger without spilling outside the page column. */
 @media (min-width: 1024px) {
-  .header-inner { gap: 1.2rem; }
-  .brand-main { font-size: 21px; }
-  .brand-top { font-size: 11px; letter-spacing: 0.28em; }
-  .nav-list { gap: 10px; }
-  .nav-link { font-size: 13px; padding: 0.9em 0.6em; gap: 6px; }
+  .header-inner { gap: 0.8rem; }
+  .brand-main { font-size: 24px; }
+  .brand-top { font-size: 12px; letter-spacing: 0.28em; }
+  .nav-list { gap: 6px; }
+  .nav-link { font-size: 15px; padding: 0.9em 0.35em; gap: 6px; }
   .nav-item.has-sub > .nav-link::after { width: 6px; height: 6px; }
-  .header-cta { padding: 12px 14px; }
+  .header-cta { font-size: 15px; padding: 12px 12px; }
 }
 .nav-item.has-sub > .nav-link::after {
   content: "";
@@ -295,7 +295,7 @@ ul { list-style: none; }
   color: #ffffff;
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1;
   cursor: pointer;
 }
@@ -1577,8 +1577,11 @@ ul { list-style: none; }
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1024px) {
+@media (max-width: 1169.98px) {
   .header-cta { display: none; }
+}
+
+@media (max-width: 1024px) {
   .footer-columns { grid-template-columns: repeat(2, 1fr); }
   .logo-grid { grid-template-columns: repeat(3, 1fr); }
 }
