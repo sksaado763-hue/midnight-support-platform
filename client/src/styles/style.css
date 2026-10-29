@@ -807,6 +807,16 @@ ul { list-style: none; }
 }
 
 /* ---------- Hero service cards ---------- */
+.hero-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  margin-top: 48px;
+  border-radius: 10px;
+  background: #000000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 /* Reference geometry: white cards carried inside the midnight band, 40px gutter,
    amber 40px icon, heading + arrow on one line, muted body copy. */
 .hero-cards {
@@ -818,10 +828,10 @@ ul { list-style: none; }
   margin: 48px 0 calc(var(--hero-divider-h) * 0.81 + 50px);
 }
 @media (max-width: 991.98px) {
-  .hero-trust, .hero-cards { margin-top: 32px; }
+  .hero-trust, .hero-video, .hero-cards { margin-top: 32px; }
 }
 @media (max-width: 767.98px) {
-  .hero-trust, .hero-cards { margin-top: 24px; }
+  .hero-trust, .hero-video, .hero-cards { margin-top: 24px; }
 }
 .hero-card {
   position: relative;

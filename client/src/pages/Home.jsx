@@ -334,6 +334,14 @@ export default function Home() {
             <p className="trust-label">Trusted by:</p>
             <TrustLogos />
           </div>
+          <video
+            className="hero-video reveal"
+            controls
+            playsInline
+            preload="metadata"
+            poster="/video/brand-poster.jpg"
+            src="/video/brand-video.mp4"
+          />
           <div className="hero-cards card-links reveal">
             {HERO_CARDS.map((card) => (
               <Link to={card.to} className="hero-card card-link" key={card.to}>
