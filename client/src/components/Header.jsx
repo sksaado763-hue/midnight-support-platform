@@ -81,6 +81,7 @@ export default function Header() {
   const { pathname } = useLocation();
   const navActive = navActiveFor(pathname);
   const [openMenus, setOpenMenus] = useState({});
+  const [activeRows, setActiveRows] = useState({});
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -136,6 +137,16 @@ export default function Header() {
 
   function closeMenu(key) {
     setOpenMenus((current) => (current[key] ? { ...current, [key]: false } : current));
+  }
+
+  function activateRow(menuKey, label) {
+    setActiveRows((current) => (current[menuKey] === label ? current : { ...current, [menuKey]: label }));
+  }
+
+  function activeRowFor(menu) {
+    return menu.rows.find((row) => row.label === activeRows[menu.key])
+      ?? menu.rows.find((row) => row.links.length > 0)
+      ?? menu.rows[0];
   }
 
   function closeMobile() {
@@ -211,23 +222,45 @@ export default function Header() {
                     </svg>
                   </div>
                   <div className="mega-links">
-                    <p className="mega-offer">What we offer</p>
-                    <ul className="mega-rows">
-                      {menu.rows.map((row) => (
-                        <li className="mega-row" key={row.label}>
-                          <Link className="mega-row-link" to={row.to} onClick={closeMobile}>{row.label}</Link>
-                          {row.links.length > 0 && (
-                            <ul className="mega-flyout">
-                              {row.links.map(([label, to]) => (
-                                <li key={`${to}-${label}`}>
-                                  <Link className="mega-flyout-link" to={to} onClick={closeMobile}>{label}</Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="mega-links-main">
+                      <p className="mega-offer">What we offer</p>
+                      <ul className="mega-rows">
+                        {menu.rows.map((row) => (
+                          <li
+                            className="mega-row"
+                            key={row.label}
+                            onMouseEnter={() => { if (canHover.current) activateRow(menu.key, row.label); }}
+                          >
+                            <Link
+                              className="mega-row-link"
+                              to={row.to}
+                              onClick={closeMobile}
+                              onFocus={() => activateRow(menu.key, row.label)}
+                            >
+                              {row.label}
+                            </Link>
+                            {row.links.length > 0 && (
+                              <ul className="mega-flyout">
+                                {row.links.map(([label, to]) => (
+                                  <li key={`${to}-${label}`}>
+                                    <Link className="mega-flyout-link" to={to} onClick={closeMobile}>{label}</Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="mega-links-sub">
+                      <ul className="mega-sub-list">
+                        {activeRowFor(menu).links.map(([label, to]) => (
+                          <li key={`${to}-${label}`}>
+                            <Link className="mega-sub-link" to={to} onClick={closeMobile}>{label}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </li>

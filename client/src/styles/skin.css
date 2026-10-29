@@ -44,9 +44,10 @@ body {
   color: var(--navy);
 }
 .mega-feature { background: var(--navy); }
-.mega-offer, .mega-row-link { color: var(--navy); }
+.mega-offer, .mega-row-link, .mega-sub-link { color: var(--navy); }
 .mega-row-link:hover, .mega-row-link:focus-visible { color: var(--navy-soft); }
-.mega-flyout { background: #ffffff; border-color: var(--line); }
+.mega-sub-link:hover, .mega-sub-link:focus-visible { color: var(--navy-soft); }
+.mega-links-sub { border-color: var(--line); }
 .mega-flyout-link { color: var(--navy-text-muted); }
 .mega-flyout-link:hover, .mega-flyout-link:focus-visible { color: var(--navy-soft); background: var(--tint); }
 
@@ -656,7 +657,6 @@ blockquote { border-left-color: var(--navy); }
   .mega-offer,
   .mega-row-link { color: #ffffff; }
 
-  .mega-flyout { background: transparent; }
   .mega-flyout-link { color: rgba(255, 255, 255, 0.72); }
 
   .nav-link { border-bottom-color: rgba(255, 255, 255, 0.16); }
