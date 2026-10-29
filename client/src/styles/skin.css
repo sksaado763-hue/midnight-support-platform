@@ -434,6 +434,11 @@ body {
   font-size: 15px;
 }
 
+/* Square fields for the enquiry form only; the newsletter pill keeps its round. */
+.form-row input,
+.form-row textarea,
+.form-row select { border-radius: 0; }
+
 .form-row input::placeholder,
 .form-row textarea::placeholder,
 .newsletter-form input::placeholder { color: #b7a2b8; font-weight: 600; }
