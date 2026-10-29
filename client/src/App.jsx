@@ -18,9 +18,12 @@ import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 function ScrollManager() {
-  const { pathname, hash } = useLocation();
+  const location = useLocation();
 
+  /* Keyed on the location object, not its parts: re-clicking the anchor you are
+     already on pushes a fresh entry and has to scroll again. */
   useEffect(() => {
+    const { hash } = location;
     if (!hash) {
       window.scrollTo(0, 0);
       return undefined;
@@ -36,7 +39,7 @@ function ScrollManager() {
     }
     scrollToTarget();
     return () => clearTimeout(timer);
-  }, [pathname, hash]);
+  }, [location]);
 
   return null;
 }

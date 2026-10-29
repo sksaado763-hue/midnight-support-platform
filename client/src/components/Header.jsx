@@ -154,6 +154,14 @@ export default function Header() {
     setOpenMenus({});
   }
 
+  /* A clicked link keeps DOM focus, and :focus-within would hold the panel
+     open after the state has already closed it — worst on links that point at
+     the page you are already on, where nothing else changes. */
+  function followLink(event) {
+    event.currentTarget.blur();
+    closeMobile();
+  }
+
   return (
     <header className="site-header" id="masthead">
       <div className="header-inner" ref={headerInner}>
@@ -209,7 +217,7 @@ export default function Header() {
                       <h3>{menu.label}</h3>
                       <p>{menu.blurb}</p>
                     </div>
-                    <Link className="mega-cta" to={menu.to} onClick={closeMobile}>{menu.heading}</Link>
+                    <Link className="mega-cta" to={menu.to} onClick={followLink}>{menu.heading}</Link>
                     <svg className="mega-rocket" viewBox="0 0 120 72" aria-hidden="true">
                       <g transform="rotate(-14 60 36)">
                         <path d="M18 36c-7-3.4-13-3.4-20 0 7 3.4 13 3.4 20 0z" fill="#f5a11d" opacity="0.9" />
@@ -234,7 +242,7 @@ export default function Header() {
                             <Link
                               className="mega-row-link"
                               to={row.to}
-                              onClick={closeMobile}
+                              onClick={followLink}
                               onFocus={() => activateRow(menu.key, row.label)}
                             >
                               {row.label}
@@ -243,7 +251,7 @@ export default function Header() {
                               <ul className="mega-flyout">
                                 {row.links.map(([label, to]) => (
                                   <li key={`${to}-${label}`}>
-                                    <Link className="mega-flyout-link" to={to} onClick={closeMobile}>{label}</Link>
+                                    <Link className="mega-flyout-link" to={to} onClick={followLink}>{label}</Link>
                                   </li>
                                 ))}
                               </ul>
@@ -256,7 +264,7 @@ export default function Header() {
                       <ul className="mega-sub-list">
                         {activeRowFor(menu).links.map(([label, to]) => (
                           <li key={`${to}-${label}`}>
-                            <Link className="mega-sub-link" to={to} onClick={closeMobile}>{label}</Link>
+                            <Link className="mega-sub-link" to={to} onClick={followLink}>{label}</Link>
                           </li>
                         ))}
                       </ul>
