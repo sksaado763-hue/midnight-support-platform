@@ -588,6 +588,50 @@ body {
 
 .faq-item summary { color: var(--navy); }
 
+/* ---------- Support page bands ---------- */
+.means-card { background: var(--paper); color: var(--navy); }
+.band-title { color: #ffffff; }
+.band-title--dark { color: var(--navy); }
+.band-sub { color: #c2ccde; }
+.band-sub--dark { color: var(--navy-text-muted); }
+.svc-band { background: var(--navy-deep); }
+.svc-card { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.14); color: #ffffff; }
+.svc-icon { color: var(--amber); }
+.svc-card p { color: #c2ccde; }
+.maint-band { background: var(--paper); }
+.support-case { background: #ffffff; border-color: var(--line); color: var(--navy); }
+.support-case:hover { box-shadow: var(--shadow-card); }
+.support-case-industry { color: var(--amber-deep); }
+.support-case p { color: var(--navy-text-muted); }
+.why-band { background: var(--navy); }
+.why-band .band-title { color: var(--amber); }
+.why-band .band-sub { color: #ffffff; }
+.why-card { background: rgba(255, 255, 255, 0.05); }
+.why-card h3 { color: var(--amber); }
+.why-card p { color: #ffffff; }
+.cap-card { background: var(--paper); border-color: var(--line); }
+.cap-card h3 { color: var(--navy); }
+.cap-card li { color: var(--navy-text-muted); }
+.cap-card li::before { color: var(--amber-deep); }
+.case-feature { background: var(--navy-deep); color: #ffffff; }
+.case-feature-label { color: var(--amber); }
+.case-feature-headline { color: #c2ccde; }
+.case-feature .btn-ghost { border-color: #ffffff; color: #ffffff; }
+.case-feature .btn-ghost:hover { background: #ffffff; color: var(--navy); }
+.pii-band { background: var(--navy); }
+.pii-band .band-title { color: var(--amber); }
+.pii-icon { color: var(--amber); }
+.pii-card h3 { color: var(--amber); }
+.pii-card p { color: #ffffff; }
+.ind-band { background: var(--navy-deep); color: #ffffff; }
+.ind-band-copy p { color: #c2ccde; }
+.ind-band-aside a { color: var(--amber); }
+.ind-item { background: rgba(255, 255, 255, 0.05); }
+.ind-item summary { color: #ffffff; }
+.ind-item p,
+.ind-item li { color: #c2ccde; }
+.ind-item li::before { color: var(--amber); }
+
 .faq-chevron { border-color: var(--navy); }
 
 .other-platform-chip { background: #ffffff; border-color: var(--line-strong); }
