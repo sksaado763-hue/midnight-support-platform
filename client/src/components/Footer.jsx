@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ContactForm, NewsletterForm } from "./Forms";
 
@@ -122,6 +122,103 @@ const ASSURANCES = [
   },
 ];
 
+/* Coverage clocks, not office claims: the studio works follow-the-sun from
+   Lahore, so the strip names the regions a shift is awake in rather than
+   inventing premises abroad. */
+const CLOCKS = [
+  { label: "Lahore HQ", timeZone: "Asia/Karachi" },
+  { label: "UK & Ireland", timeZone: "Europe/London" },
+  { label: "North America", timeZone: "America/New_York" },
+  { label: "Australia & NZ", timeZone: "Australia/Sydney" },
+];
+
+const ZONE_FORMATTERS = new Map();
+const OFFSET_FORMATTERS = new Map();
+
+/* Small-ICU browsers only offer "GMT+5" style names, so the strip spells the
+   familiar abbreviations itself and flips them with each zone's DST offset. */
+const ZONE_ABBREVIATIONS = {
+  "Asia/Karachi": ["PKT", "PKT"],
+  "Europe/London": ["GMT", "BST"],
+  "America/New_York": ["EST", "EDT"],
+  "Australia/Sydney": ["AEST", "AEDT"],
+};
+
+function zoneParts(date, timeZone) {
+  let formatter = ZONE_FORMATTERS.get(timeZone);
+  if (!formatter) {
+    formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone,
+      hourCycle: "h23",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    ZONE_FORMATTERS.set(timeZone, formatter);
+  }
+  const parts = formatter.formatToParts(date);
+  const pick = (type) => parts.find((part) => part.type === type)?.value ?? "00";
+  return { hour: pick("hour"), minute: pick("minute"), second: pick("second") };
+}
+
+function zoneOffsetHours(date, timeZone) {
+  let formatter = OFFSET_FORMATTERS.get(timeZone);
+  if (!formatter) {
+    formatter = new Intl.DateTimeFormat("en-GB", { timeZone, timeZoneName: "shortOffset" });
+    OFFSET_FORMATTERS.set(timeZone, formatter);
+  }
+  const name = formatter.formatToParts(date).find((part) => part.type === "timeZoneName")?.value ?? "GMT";
+  const match = /([+-])(\d{1,2})(?::(\d{2}))?/.exec(name);
+  if (!match) return 0;
+  const magnitude = Number(match[2]) + Number(match[3] ?? 0) / 60;
+  return match[1] === "-" ? -magnitude : magnitude;
+}
+
+function zoneAbbreviation(date, timeZone) {
+  const [standard, daylight] = ZONE_ABBREVIATIONS[timeZone] ?? ["", ""];
+  if (standard === daylight) return standard;
+  const year = date.getFullYear();
+  const standardOffset = Math.min(
+    zoneOffsetHours(new Date(year, 0, 1), timeZone),
+    zoneOffsetHours(new Date(year, 6, 1), timeZone),
+  );
+  return zoneOffsetHours(date, timeZone) <= standardOffset ? standard : daylight;
+}
+
+function WorldClocks() {
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="world-clocks" aria-label="Current time across our coverage regions">
+      {CLOCKS.map((zone) => {
+        const t = zoneParts(now, zone.timeZone);
+        const h = Number(t.hour) % 12;
+        const m = Number(t.minute);
+        const s = Number(t.second);
+        return (
+          <div className="world-clock" key={zone.timeZone}>
+            <svg className="clock-face" viewBox="0 0 96 96" aria-hidden="true">
+              <circle className="clock-dial" cx="48" cy="48" r="45.5" />
+              <path className="clock-ticks" d="M48 7v7M89 48h-7M48 89v-7M7 48h7" />
+              <line className="clock-hand clock-hand--hour" x1="48" y1="48" x2="48" y2="28" transform={`rotate(${(h + m / 60) * 30} 48 48)`} />
+              <line className="clock-hand clock-hand--minute" x1="48" y1="48" x2="48" y2="20" transform={`rotate(${(m + s / 60) * 6} 48 48)`} />
+              <line className="clock-hand clock-hand--second" x1="48" y1="53" x2="48" y2="16" transform={`rotate(${s * 6} 48 48)`} />
+              <circle className="clock-pin" cx="48" cy="48" r="2.8" />
+            </svg>
+            <p className="clock-name">{zone.label}</p>
+            <p className="clock-time">{t.hour}:{t.minute}:{t.second} {zoneAbbreviation(now, zone.timeZone)}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function FooterColumn({ column }) {
   const [open, setOpen] = useState(false);
   return (
@@ -183,6 +280,7 @@ export default function Footer() {
           </div>
         </div>
 
+        <WorldClocks />
       </div>
 
       <div className="footer-bottom">

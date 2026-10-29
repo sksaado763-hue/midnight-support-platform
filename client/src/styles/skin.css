@@ -543,6 +543,15 @@ body {
 .assurance { background: #ffffff; color: var(--navy); }
 .assurance-sub { color: rgba(19, 33, 64, 0.66); }
 
+.clock-dial { fill: rgba(255, 255, 255, 0.08); stroke: rgba(255, 255, 255, 0.26); stroke-width: 1; }
+.clock-ticks { stroke: var(--amber); }
+.clock-hand--hour { stroke: var(--amber); stroke-width: 3.4; }
+.clock-hand--minute { stroke: #c9d2df; stroke-width: 2.6; }
+.clock-hand--second { stroke: #c9d2df; stroke-width: 1.2; }
+.clock-pin { fill: var(--amber); }
+.clock-name { color: #ffffff; }
+.clock-time { color: var(--amber); }
+
 .footer-col-toggle,
 .footer-col-heading,
 .footer-contact-copy h2 { color: #ffffff; }

@@ -1442,6 +1442,27 @@ ul { list-style: none; }
   background: var(--footer-fill, var(--navy));
   clip-path: polygon(0 0, 15% 1.2%, 30% 2.5%, 45% 3.7%, 55% 4.5%, 65% 4.7%, 70% 4.5%, 75% 4.1%, 80% 3.5%, 88% 2.2%, 100% 0, 100% 100%, 0 100%);
 }
+.world-clocks {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 48px 0 8px;
+}
+.world-clock { display: grid; justify-items: start; gap: 4px; }
+.clock-face { width: 96px; height: 96px; margin-bottom: 12px; }
+.clock-ticks { fill: none; stroke-width: 2; stroke-linecap: round; }
+.clock-hand { fill: none; stroke-linecap: round; }
+.clock-name {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: 19px;
+  line-height: 26px;
+  font-weight: 700;
+}
+.clock-time { margin: 0; font-size: 18px; line-height: 24px; font-variant-numeric: tabular-nums; }
+
 .footer-bottom { position: relative; z-index: 1; background: var(--footer-deep); padding: 36px 0; margin-top: 2rem; }
 .footer-bottom-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.8rem 2rem; }
 .footer-legal { margin: 0; }
@@ -1707,6 +1728,7 @@ ul { list-style: none; }
 
 @media (max-width: 860px) {
   .footer-contact { grid-template-columns: 1fr; }
+  .world-clocks { grid-template-columns: repeat(2, 1fr); gap: 28px; padding-top: 40px; }
   .report-card { grid-template-columns: 1fr; text-align: center; }
   .report-copy p { margin-inline: auto; }
 }
