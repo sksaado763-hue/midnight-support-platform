@@ -109,17 +109,6 @@ const ASSURANCES = [
       </svg>
     ),
   },
-  {
-    key: "whitelabel",
-    title: "White-label cover",
-    sub: "Invisible behind your brand",
-    mark: (
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 3l7.5 3.4v5.2c0 4.3-3.1 7.9-7.5 9-4.4-1.1-7.5-4.7-7.5-9V6.4L12 3z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-        <path d="M9 12.2l2.2 2.2 4.3-4.6" stroke="#FABD14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
 ];
 
 /* Coverage clocks, not office claims: the studio works follow-the-sun from
