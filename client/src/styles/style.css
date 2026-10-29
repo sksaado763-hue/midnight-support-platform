@@ -1593,6 +1593,7 @@ ul { list-style: none; }
   margin-top: 0.6rem;
   padding: 1.6rem 0 0;
   border-bottom: 0;
+  border-top: 2px solid;
   gap: 0.9rem 2.5rem;
 }
 .footer-ways-label { margin: 0; font-weight: 700; }

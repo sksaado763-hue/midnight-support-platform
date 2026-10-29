@@ -531,6 +531,7 @@ body {
 .footer-ways,
 .footer-way span { color: rgba(17, 26, 43, 0.78); }
 .footer-ways-label { color: var(--navy); }
+.footer-contact .footer-ways { border-top-color: var(--navy-soft); }
 
 /* Scoped through .footer-ways so it outranks the `.footer-ways a` colour and
    transition rules elsewhere, which were written for the old underline style. */
