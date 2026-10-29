@@ -285,10 +285,21 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container footer-bottom-row">
-          <p className="footer-legal">© {new Date().getFullYear()} JUST AFTER MIDNIGHT. All rights reserved.</p>
+          <div className="footer-legal-block">
+            <p className="footer-brandline">
+              <svg viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M19 3a13.5 13.5 0 1 0 8.5 24A14.8 14.8 0 0 1 19 3z" fill="currentColor" />
+              </svg>
+              JUST AFTER MIDNIGHT
+            </p>
+            <p className="footer-legal">© {new Date().getFullYear()} All rights reserved.</p>
+          </div>
           <ul className="footer-assurances" aria-label="How we work">
-            {ASSURANCES.map((item) => (
-              <li className={`assurance assurance--${item.key}`} key={item.key}>
+            {ASSURANCES.map((item, i) => (
+              <li
+                className={`assurance assurance--${item.key}${i === ASSURANCES.length - 1 ? " assurance--text" : ""}`}
+                key={item.key}
+              >
                 {item.mark}
                 <span className="assurance-title">{item.title}</span>
                 <span className="assurance-sub">{item.sub}</span>

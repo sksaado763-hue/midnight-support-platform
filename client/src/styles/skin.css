@@ -537,11 +537,15 @@ body {
 
 .contact-address { color: #737373; }
 
-.footer-legal { color: rgba(255, 255, 255, 0.6); }
+.footer-brandline { color: #ffffff; }
+.footer-brandline svg { color: var(--amber); }
+.footer-legal { color: var(--amber); }
 
 /* White tiles on the deep navy band, same as the reference's certificate row. */
 .assurance { background: #ffffff; color: var(--navy); }
 .assurance-sub { color: rgba(19, 33, 64, 0.66); }
+.assurance--text { background: transparent; color: #ffffff; }
+.assurance--text .assurance-sub { color: rgba(255, 255, 255, 0.66); }
 
 .clock-dial { fill: rgba(255, 255, 255, 0.08); stroke: rgba(255, 255, 255, 0.26); stroke-width: 1; }
 .clock-ticks { stroke: var(--amber); }
