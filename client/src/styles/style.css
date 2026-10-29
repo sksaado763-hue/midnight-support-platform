@@ -815,9 +815,7 @@ ul { list-style: none; }
   aspect-ratio: 16 / 9;
   height: auto;
   margin: 48px 0 calc(var(--hero-divider-h) * 0.81 + 50px);
-  border-radius: 10px;
   background: #000000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 /* Reference geometry: white cards carried inside the midnight band, 40px gutter,
    amber 40px icon, heading + arrow on one line, muted body copy. */
