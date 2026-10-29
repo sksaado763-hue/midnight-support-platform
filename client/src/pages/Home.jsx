@@ -18,7 +18,7 @@ const HERO_CARDS = [
     title: "24/7 Support",
     copy: "Full-stack monitoring, triage and resolution, every hour of every day.",
     icon: (
-      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" strokeWidth="2.4" /><path d="M24 13v11l7 5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
+      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" strokeWidth="3" /><path d="M24 13v11l7 5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg>
     ),
   },
   {
@@ -26,7 +26,7 @@ const HERO_CARDS = [
     title: "Managed Cloud",
     copy: "Consulting, architecture and delivery across AWS, Azure and Google Cloud.",
     icon: (
-      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 30a8 8 0 0 1 .6-15.9A10 10 0 0 1 34 17a7 7 0 0 1-1 13H14z" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" /><path d="M17 37l4-5m5 5l-3-4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
+      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 30a8 8 0 0 1 .6-15.9A10 10 0 0 1 34 17a7 7 0 0 1-1 13H14z" fill="none" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" /><path d="M17 37l4-5m5 5l-3-4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg>
     ),
   },
   {
@@ -34,7 +34,7 @@ const HERO_CARDS = [
     title: "DevOps",
     copy: "Helping teams ship faster without trading away reliability or quality.",
     icon: (
-      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34l6-6 6 4 7-10 6 6 7-12" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" /><circle cx="40" cy="12" r="3" fill="currentColor" /></svg>
+      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34l6-6 6 4 7-10 6 6 7-12" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /><circle cx="40" cy="12" r="3" fill="currentColor" /></svg>
     ),
   },
   {
@@ -42,7 +42,7 @@ const HERO_CARDS = [
     title: "SaaS Support",
     copy: "Care and maintenance for SaaS products, CMS platforms and custom apps.",
     icon: (
-      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="9" width="34" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="2.4" /><path d="M17 41h14M24 33v8" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /><path d="M16 20l5 4-5 4M25 28h7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
+      <svg className="hero-card-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="9" width="34" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="3" /><path d="M17 41h14M24 33v8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /><path d="M16 20l5 4-5 4M25 28h7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
     ),
   },
 ];
