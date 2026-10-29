@@ -807,14 +807,22 @@ ul { list-style: none; }
 }
 
 /* ---------- Hero service cards ---------- */
-/* The film closes the hero, so it holds the wave clearance the cards used to:
-   the divider's white half reaches ~81% of its height at the left edge. */
+/* The film now runs down to the scroll arrow at the hero's base: the old
+   wave-clearance margin is dropped so the video, not a navy gap, meets the
+   divider. A 16/10 box with cover adds height over the source 16/9 without
+   stretching (it crops the sides slightly). */
 .hero-video {
   display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  /* Full-bleed: break out of the 1170px container to span the whole viewport.
+     Margin-based rather than a transform so it coexists with .reveal's
+     translateY; the hero's overflow:hidden clips the scrollbar-width spill. */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
   height: auto;
-  margin: 48px 0 calc(var(--hero-divider-h) * 0.81 + 50px);
+  margin-top: 48px;
+  margin-bottom: 0;
   background: #000000;
 }
 /* Reference geometry: white cards carried inside the midnight band, 40px gutter,
