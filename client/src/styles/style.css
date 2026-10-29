@@ -807,12 +807,14 @@ ul { list-style: none; }
 }
 
 /* ---------- Hero service cards ---------- */
+/* The film closes the hero, so it holds the wave clearance the cards used to:
+   the divider's white half reaches ~81% of its height at the left edge. */
 .hero-video {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
   height: auto;
-  margin-top: 48px;
+  margin: 48px 0 calc(var(--hero-divider-h) * 0.81 + 50px);
   border-radius: 10px;
   background: #000000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -823,9 +825,7 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
-  /* Bottom space tracks the wave: its white half reaches ~81% of the divider's
-     height at the left edge, and the cards need clear air above that. */
-  margin: 48px 0 calc(var(--hero-divider-h) * 0.81 + 50px);
+  margin: 48px 0 0;
 }
 @media (max-width: 991.98px) {
   .hero-trust, .hero-video, .hero-cards { margin-top: 32px; }
