@@ -37,33 +37,18 @@ body {
 
 .nav-toggle span { background: #ffffff; }
 
-.sub-menu {
+.mega-menu {
   background: #ffffff;
   border-color: var(--line);
-  border-radius: 5px;
   box-shadow: 0 18px 44px rgba(19, 33, 64, 0.16);
   color: var(--navy);
 }
-
-.sub-heading {
-  color: var(--navy);
-  font-weight: 700;
-  border-bottom-color: var(--line);
-}
-.sub-label { color: var(--navy-soft); }
-.sub-item { color: var(--navy); font-size: 16px; line-height: 22px; font-weight: 500; transition: font-weight 0.3s ease-in-out, background-color 0.15s ease, color 0.15s ease; }
-.sub-item:hover,
-.sub-item:focus-visible { color: var(--navy-soft); background: var(--tint); font-weight: 700; }
-.sub-icon { background: var(--tint); border-color: var(--line); color: var(--navy-soft); }
-.sub-item:hover .sub-icon,
-.sub-item:focus-visible .sub-icon {
-  background: rgba(36, 63, 136, 0.12);
-  border-color: rgba(36, 63, 136, 0.3);
-  color: var(--navy-soft);
-}
-.sub-menu::-webkit-scrollbar { width: 8px; }
-.sub-menu::-webkit-scrollbar-thumb { background: var(--line-strong); border: none; }
-.sub-menu::-webkit-scrollbar-track { background: transparent; }
+.mega-feature { background: var(--navy); }
+.mega-offer, .mega-row-link { color: var(--navy); }
+.mega-row-link:hover, .mega-row-link:focus-visible { color: var(--navy-soft); }
+.mega-flyout { background: #ffffff; border-color: var(--line); }
+.mega-flyout-link { color: var(--navy-text-muted); }
+.mega-flyout-link:hover, .mega-flyout-link:focus-visible { color: var(--navy-soft); background: var(--tint); }
 
 /* ---------- Header search ---------- */
 .search-toggle { border-color: #ffffff; color: #ffffff; }
@@ -662,15 +647,17 @@ blockquote { border-left-color: var(--navy); }
 @media (max-width: 1023.98px) {
   .main-navigation { background: var(--navy); }
 
-  .sub-menu {
+  .mega-menu {
     background: rgba(255, 255, 255, 0.06);
     border: none;
     box-shadow: none;
   }
 
-  .sub-heading,
-  .sub-label,
-  .sub-item { color: #ffffff; }
+  .mega-offer,
+  .mega-row-link { color: #ffffff; }
+
+  .mega-flyout { background: transparent; }
+  .mega-flyout-link { color: rgba(255, 255, 255, 0.72); }
 
   .nav-link { border-bottom-color: rgba(255, 255, 255, 0.16); }
 }

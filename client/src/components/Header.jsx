@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Icon from "./Icons";
 import { getJson } from "../lib/api";
 
 const SUBMENUS = {
@@ -8,30 +7,36 @@ const SUBMENUS = {
     label: "24/7 Support",
     key: "support",
     heading: "Our Support Services",
-    groups: [
-      { label: "What we offer", links: [["Support Packages", "/support", "layers"], ["Compare Packages", "/support#compare", "sliders"]] },
-      { label: "By industry", links: [["Agencies", "/support#industries", "building"], ["SaaS Platforms", "/support#industries", "window"], ["eCommerce", "/support#industries", "cart"]] },
-      { label: "By cloud provider", links: [["24/7 Support for AWS", "/cloud#aws", "aws"], ["24/7 Support for Azure", "/cloud#azure", "azure"], ["24/7 Support for GCP", "/cloud#gcp", "gcp"]] },
+    to: "/support",
+    blurb: "Monitoring, triage and resolution for your full stack, every hour of every day.",
+    rows: [
+      { label: "Support Packages", to: "/support", links: [["Compare Packages", "/support#compare"]] },
+      { label: "By industry", to: "/support#industries", links: [["Agencies", "/support#industries"], ["SaaS Platforms", "/support#industries"], ["eCommerce", "/support#industries"]] },
+      { label: "By cloud provider", to: "/cloud#aws", links: [["24/7 Support for AWS", "/cloud#aws"], ["24/7 Support for Azure", "/cloud#azure"], ["24/7 Support for GCP", "/cloud#gcp"]] },
     ],
   },
   cloud: {
     label: "Cloud & DevOps",
     key: "cloud",
     heading: "Cloud Services",
-    groups: [
-      { label: "Managed Cloud", links: [["AWS", "/cloud#aws", "aws"], ["Azure", "/cloud#azure", "azure"], ["GCP", "/cloud#gcp", "gcp"]] },
-      { label: "Cloud consulting", links: [["Cost Optimisation", "/cloud#consulting", "cost"], ["Well-Architected Review", "/cloud#consulting", "shield-check"], ["Solution Architecture", "/cloud#consulting", "nodes"], ["Cloud Migration", "/cloud#consulting", "migration"]] },
-      { label: "DevOps", links: [["DevOps Consulting", "/cloud#devops", "cycle"], ["Delivery & Automation", "/cloud#devops", "bolt"], ["Application Modernisation", "/cloud#devops", "code"]] },
+    to: "/cloud",
+    blurb: "Managed cloud, consulting and DevOps delivery that scales with your team.",
+    rows: [
+      { label: "Managed Cloud", to: "/cloud", links: [["AWS", "/cloud#aws"], ["Azure", "/cloud#azure"], ["GCP", "/cloud#gcp"]] },
+      { label: "Cloud consulting", to: "/cloud#consulting", links: [["Cost Optimisation", "/cloud#consulting"], ["Well-Architected Review", "/cloud#consulting"], ["Solution Architecture", "/cloud#consulting"], ["Cloud Migration", "/cloud#consulting"]] },
+      { label: "DevOps", to: "/cloud#devops", links: [["DevOps Consulting", "/cloud#devops"], ["Delivery & Automation", "/cloud#devops"], ["Application Modernisation", "/cloud#devops"]] },
     ],
   },
   platforms: {
     label: "Platforms",
     key: "platforms",
     heading: "Support for Platforms & Tools",
-    groups: [
-      { label: "Experience platforms", links: [["Sitecore", "/platforms/sitecore", "sitemap"], ["Kentico", "/platforms/kentico", "blocks"], ["Umbraco", "/platforms/umbraco", "cube"], ["AEM", "/platforms/aem", "spark"]] },
-      { label: "Commerce & content", links: [["Magento", "/platforms/magento", "bag"], ["Optimizely", "/platforms/optimizely", "flask"], ["WordPress", "/platforms/wordpress", "doc"]] },
-      { label: "Everything else", links: [["Cloudflare", "/platforms/cloudflare", "globe"], ["Custom Applications", "/platforms/custom-applications", "terminal"], ["All platforms", "/platforms", "grid"]] },
+    to: "/platforms",
+    blurb: "Care and maintenance for the CMS, commerce and experience platforms behind your product.",
+    rows: [
+      { label: "Experience platforms", to: "/platforms", links: [["Sitecore", "/platforms/sitecore"], ["Kentico", "/platforms/kentico"], ["Umbraco", "/platforms/umbraco"], ["AEM", "/platforms/aem"]] },
+      { label: "Commerce & content", to: "/platforms", links: [["Magento", "/platforms/magento"], ["Optimizely", "/platforms/optimizely"], ["WordPress", "/platforms/wordpress"]] },
+      { label: "Everything else", to: "/platforms", links: [["Cloudflare", "/platforms/cloudflare"], ["Custom Applications", "/platforms/custom-applications"], ["All platforms", "/platforms"]] },
     ],
   },
 };
@@ -80,7 +85,11 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(null);
+  const [caretX, setCaretX] = useState({});
   const searchInput = useRef(null);
+  const headerInner = useRef(null);
+  const menuLinks = useRef({});
+  const canHover = useRef(typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches);
 
   function closeSearch() {
     setSearchOpen(false);
@@ -113,8 +122,20 @@ export default function Header() {
     ? index.filter((entry) => entry.text.includes(needle)).slice(0, 8)
     : [];
 
-  function toggleMenu(key) {
-    setOpenMenus((current) => ({ ...current, [key]: !current[key] }));
+  /* The caret rides the panel, so its x has to be measured off the open
+     link rather than guessed per menu. */
+  function openMenu(key) {
+    setOpenMenus((current) => (current[key] ? current : { ...current, [key]: true }));
+    const link = menuLinks.current[key];
+    const bar = headerInner.current;
+    if (!link || !bar) return;
+    const lr = link.getBoundingClientRect();
+    const br = bar.getBoundingClientRect();
+    setCaretX((current) => ({ ...current, [key]: lr.left - br.left + lr.width / 2 }));
+  }
+
+  function closeMenu(key) {
+    setOpenMenus((current) => (current[key] ? { ...current, [key]: false } : current));
   }
 
   function closeMobile() {
@@ -124,7 +145,7 @@ export default function Header() {
 
   return (
     <header className="site-header" id="masthead">
-      <div className="header-inner">
+      <div className="header-inner" ref={headerInner}>
         <Link to="/" className="brand" aria-label="Just After Midnight — home" onClick={closeMobile}>
           <span className="brand-name">
             <span className="brand-top">JUST AFTER</span>
@@ -139,35 +160,74 @@ export default function Header() {
         </Link>
 
         <nav className={`main-navigation${mobileOpen ? " is-open" : ""}`} id="site-navigation" aria-label="Main navigation">
-          <ul className="nav-list">
+          <ul className="nav-list" onKeyDown={(event) => { if (event.key === "Escape") setOpenMenus({}); }}>
             {Object.values(SUBMENUS).map((menu) => (
-              <li key={menu.key} className={`nav-item has-sub${openMenus[menu.key] ? " is-open" : ""}`}>
+              <li
+                key={menu.key}
+                className={`nav-item has-sub${openMenus[menu.key] ? " is-open" : ""}`}
+                onMouseEnter={() => { if (canHover.current) openMenu(menu.key); }}
+                onMouseLeave={() => { if (canHover.current) closeMenu(menu.key); }}
+              >
                 <button
+                  ref={(el) => { menuLinks.current[menu.key] = el; }}
                   className={`nav-link${navActive === menu.key ? " is-current" : ""}`}
                   aria-expanded={String(Boolean(openMenus[menu.key]))}
                   aria-controls={`sub-${menu.key}`}
-                  onClick={() => toggleMenu(menu.key)}
+                  onClick={() => (openMenus[menu.key] ? closeMenu(menu.key) : openMenu(menu.key))}
+                  onFocus={() => openMenu(menu.key)}
                 >
                   {menu.label}
                 </button>
-                <div className="sub-menu" id={`sub-${menu.key}`}>
-                  <p className="sub-heading">{menu.heading}</p>
-                  <div className="sub-groups">
-                    {menu.groups.map((group) => (
-                      <div className="sub-group" key={group.label}>
-                        <p className="sub-label">{group.label}</p>
-                        <ul className="sub-items">
-                          {group.links.map(([label, to, icon]) => (
-                            <li key={`${to}-${label}`}>
-                              <Link className="sub-item" to={to} onClick={closeMobile}>
-                                <span className="sub-icon"><Icon name={icon} /></span>
-                                <span className="sub-item-label">{label}</span>
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                <div className="mega-menu" id={`sub-${menu.key}`}>
+                  <span className="mega-caret" style={{ left: caretX[menu.key] ?? 48 }} aria-hidden="true" />
+                  <div className="mega-feature">
+                    <svg className="mega-stars" viewBox="0 0 320 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                      <circle cx="252" cy="64" r="2.6" fill="#ffffff" opacity="0.85" />
+                      <circle cx="288" cy="126" r="2" fill="#ffffff" opacity="0.5" />
+                      <circle cx="238" cy="186" r="1.8" fill="#ffffff" opacity="0.6" />
+                      <circle cx="298" cy="228" r="2.2" fill="#ffffff" opacity="0.4" />
+                      <circle cx="206" cy="252" r="1.6" fill="#ffffff" opacity="0.5" />
+                      <path d="M84 52l2.6 7.4 7.4 2.6-7.4 2.6-2.6 7.4-2.6-7.4-7.4-2.6 7.4-2.6z" fill="#ffffff" opacity="0.9" />
+                      <path d="M150 118l2 5.6 5.6 2-5.6 2-2 5.6-2-5.6-5.6-2 5.6-2z" fill="#ffffff" opacity="0.55" />
+                      <path d="M112 210l1.8 5 5 1.8-5 1.8-1.8 5-1.8-5-5-1.8 5-1.8z" fill="#ffffff" opacity="0.45" />
+                    </svg>
+                    <svg className="mega-cloud" viewBox="0 0 72 44" aria-hidden="true">
+                      <path d="M16 36a11 11 0 0 1 1.2-21.9A15 15 0 0 1 46 18.6 10 10 0 0 1 44.6 36z" fill="#ffffff" />
+                    </svg>
+                    <div className="mega-feature-copy">
+                      <h3>{menu.label}</h3>
+                      <p>{menu.blurb}</p>
+                    </div>
+                    <Link className="mega-cta" to={menu.to} onClick={closeMobile}>{menu.heading}</Link>
+                    <svg className="mega-rocket" viewBox="0 0 120 72" aria-hidden="true">
+                      <g transform="rotate(-14 60 36)">
+                        <path d="M18 36c-7-3.4-13-3.4-20 0 7 3.4 13 3.4 20 0z" fill="#f5a11d" opacity="0.9" />
+                        <path d="M36 29l-12-9 4.5 13z" fill="#fabd14" />
+                        <path d="M36 43l-12 9 4.5-13z" fill="#fabd14" />
+                        <path d="M28 36c15-11 37-11 52 0-15 11-37 11-52 0z" fill="#ffffff" />
+                        <circle cx="54" cy="36" r="5.4" fill="#101828" stroke="#fabd14" strokeWidth="2" />
+                        <path d="M80 36c7-4.6 13-4.6 18 0-5 4.6-11 4.6-18 0z" fill="#fabd14" />
+                      </g>
+                    </svg>
+                  </div>
+                  <div className="mega-links">
+                    <p className="mega-offer">What we offer</p>
+                    <ul className="mega-rows">
+                      {menu.rows.map((row) => (
+                        <li className="mega-row" key={row.label}>
+                          <Link className="mega-row-link" to={row.to} onClick={closeMobile}>{row.label}</Link>
+                          {row.links.length > 0 && (
+                            <ul className="mega-flyout">
+                              {row.links.map(([label, to]) => (
+                                <li key={`${to}-${label}`}>
+                                  <Link className="mega-flyout-link" to={to} onClick={closeMobile}>{label}</Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </li>
