@@ -39,12 +39,33 @@ const SUBMENUS = {
       { label: "Everything else", to: "/platforms", links: [["Cloudflare", "/platforms/cloudflare"], ["Custom Applications", "/platforms/custom-applications"], ["All platforms", "/platforms"]] },
     ],
   },
+  /* Rendered as a single list rather than the offer/flyout grid: the About
+     area has no sub-groups, so the panel is the card plus one column. */
+  about: {
+    label: "About",
+    key: "about",
+    featureTitle: "About Us",
+    blurb: "The people who answer the page. We keep the platforms running, then explain in plain language what happened and what we changed.",
+    flat: [
+      ["About Us", "/about"],
+      ["Our Team", "/about#team"],
+      ["Our Insights", "/insights"],
+      ["Case Studies", "/case-studies"],
+      ["Work with us", "/contact"],
+    ],
+  },
 };
 
 const FLAT_LINKS = [
   ["Case Studies", "/case-studies", "case-studies"],
-  ["About Us", "/about", "about"],
-  ["Insights", "/insights", "insights"],
+];
+
+/* About is a panel too, but it sits after the Case Studies link in the bar, so
+   the nav order is spelled out instead of following the SUBMENUS object. */
+const NAV_ITEMS = [
+  ...Object.values(SUBMENUS).filter((menu) => menu.key !== "about"),
+  ...FLAT_LINKS.map(([label, to, key]) => ({ key, label, to, flatLink: true })),
+  SUBMENUS.about,
 ];
 
 const SOURCES = [
@@ -71,8 +92,7 @@ function navActiveFor(pathname) {
   if (pathname.startsWith("/cloud")) return "cloud";
   if (pathname.startsWith("/platforms")) return "platforms";
   if (pathname.startsWith("/case-studies")) return "case-studies";
-  if (pathname.startsWith("/about")) return "about";
-  if (pathname.startsWith("/insights")) return "insights";
+  if (pathname.startsWith("/about") || pathname.startsWith("/insights")) return "about";
   if (pathname.startsWith("/contact")) return "contact";
   return "";
 }
@@ -180,7 +200,13 @@ export default function Header() {
 
         <nav className={`main-navigation${mobileOpen ? " is-open" : ""}`} id="site-navigation" aria-label="Main navigation">
           <ul className="nav-list" onKeyDown={(event) => { if (event.key === "Escape") setOpenMenus({}); }}>
-            {Object.values(SUBMENUS).map((menu) => (
+            {NAV_ITEMS.map((menu) => (menu.flatLink ? (
+              <li key={menu.key} className={`nav-item${navActive === menu.key ? " is-current" : ""}`}>
+                <Link className="nav-link" to={menu.to} onClick={closeMobile}>
+                  {menu.label}
+                </Link>
+              </li>
+            ) : (
               <li
                 key={menu.key}
                 className={`nav-item has-sub${openMenus[menu.key] ? " is-open" : ""}`}
@@ -214,10 +240,12 @@ export default function Header() {
                       <path d="M16 36a11 11 0 0 1 1.2-21.9A15 15 0 0 1 46 18.6 10 10 0 0 1 44.6 36z" fill="#ffffff" />
                     </svg>
                     <div className="mega-feature-copy">
-                      <h3>{menu.label}</h3>
+                      <h3>{menu.featureTitle ?? menu.label}</h3>
                       <p>{menu.blurb}</p>
                     </div>
-                    <Link className="mega-cta" to={menu.to} onClick={followLink}>{menu.heading}</Link>
+                    {menu.heading && (
+                      <Link className="mega-cta" to={menu.to} onClick={followLink}>{menu.heading}</Link>
+                    )}
                     <svg className="mega-rocket" viewBox="0 0 120 72" aria-hidden="true">
                       <g transform="rotate(-14 60 36)">
                         <path d="M18 36c-7-3.4-13-3.4-20 0 7 3.4 13 3.4 20 0z" fill="#f5a11d" opacity="0.9" />
@@ -229,7 +257,20 @@ export default function Header() {
                       </g>
                     </svg>
                   </div>
-                  <div className="mega-links">
+                  <div className={`mega-links${menu.flat ? " mega-links--flat" : ""}`}>
+                    {menu.flat ? (
+                      <div className="mega-links-main">
+                        <p className="mega-offer">{menu.label}</p>
+                        <ul className="mega-flat-list">
+                          {menu.flat.map(([label, to]) => (
+                            <li className="mega-row" key={`${to}-${label}`}>
+                              <Link className="mega-row-link" to={to} onClick={followLink}>{label}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <>
                     <div className="mega-links-main">
                       <p className="mega-offer">What we offer</p>
                       <ul className="mega-rows">
@@ -269,17 +310,12 @@ export default function Header() {
                         ))}
                       </ul>
                     </div>
+                      </>
+                    )}
                   </div>
                 </div>
               </li>
-            ))}
-            {FLAT_LINKS.map(([label, to, key]) => (
-              <li key={key} className={`nav-item${navActive === key ? " is-current" : ""}`}>
-                <Link className="nav-link" to={to} onClick={closeMobile}>
-                  {label}
-                </Link>
-              </li>
-            ))}
+            )))}
           </ul>
         </nav>
 

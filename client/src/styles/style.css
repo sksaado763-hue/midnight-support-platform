@@ -516,6 +516,9 @@ ul { list-style: none; }
   grid-template-columns: minmax(0, 7fr) minmax(0, 13fr);
   padding: 44px 40px;
 }
+.mega-links--flat { grid-template-columns: 1fr; }
+@media (min-width: 1024px) { .mega-links--flat .mega-offer { font-size: 24px; line-height: 32px; } }
+.mega-flat-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
 .mega-links-main { min-width: 0; padding-right: 40px; }
 .mega-offer {
   margin: 0 0 28px;
@@ -1752,7 +1755,7 @@ ul { list-style: none; }
   .mega-links-main { padding-right: 0; }
   .mega-links-sub { display: none; }
   .mega-offer { color: var(--amber); font-size: 15px; line-height: 22px; margin-bottom: 0.6rem; }
-  .mega-rows { gap: 0.5rem; }
+  .mega-rows, .mega-flat-list { gap: 0.5rem; }
   .mega-row { width: 100%; }
   .mega-row-link { color: #ffffff; font-weight: 700; }
   .mega-row-link::after { content: none; }
