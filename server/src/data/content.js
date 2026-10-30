@@ -226,7 +226,7 @@ const sharedPlatformFeatures = [
   { title: "We follow the sun", text: "Follow-the-sun rotations mean your platform is watched by a rested engineer at every hour — nobody carries the night alone." },
   { title: "We're full-stack", text: "Application, infrastructure, DNS, CDN, integrations — if it touches your platform, it's on our radar." },
   { title: "We're proactive about performance", text: "We catch degrading trends and fix them before your users notice, instead of waiting for the alarm." },
-  { title: "We're tech-enabled; person-led", text: "Best-in-class monitoring does the watching, but a human who knows your estate makes the calls." },
+  { title: "We're tech-enabled; person-led", text: "Best-in-class monitoring does the watching, but a person who understands your estate makes the calls." },
 ];
 
 const platforms = [
@@ -372,12 +372,70 @@ const platforms = [
     intro: "Cloudflare sits in front of everything — DNS, CDN, WAF, workers — which makes it the highest-leverage layer to get right and the most painful to misconfigure.",
     problem: "A bad WAF rule can silently break checkout. A mis-scoped cache purge can leak the wrong content. Edge changes are fast, global and unforgiving — and usually made under time pressure.",
     solution: "We manage Cloudflare estates as part of the platforms they protect: change-controlled rulesets, monitored worker deployments, and 24/7 response when the edge misbehaves — so your team never debugs DNS at midnight.",
+    pillarsTitle: "What we do",
+    pillarsSub: "Three ways teams bring us in — start with the assessment, or skip straight to the part you already know is broken.",
+    pillars: [
+      {
+        title: "Maturity assessment & consultancy",
+        text: "We score the estate against Cloudflare's own reference architecture — DNS, WAF, cache, Zero Trust, Workers — and hand back a prioritised list of what to fix first. The output is a scored baseline and a fix list, so you can see what is actually exposed before anyone touches a rule.",
+      },
+      {
+        title: "Configuration & implementation",
+        text: "Hands-on build work: zone onboarding, DNS cut-overs, WAF and rate-limit tuning, Zero Trust policy, cache rules and Workers. Every change goes through review and carries a rollback path, because the edge is the worst possible place to discover a mistake.",
+      },
+      {
+        title: "24/7 managed service",
+        text: "Once the estate is in shape we stay on it — watching the edge overnight and at weekends, reviewing rule changes before they ship, and picking up the page when something breaks at 3am.",
+      },
+    ],
+    capsTitle: "What that looks like in practice",
+    capsSub: "The work an engagement is actually made of, split by the part you buy first.",
+    capabilities: [
+      {
+        title: "Configuration & implementation",
+        items: [
+          "Zone onboarding and DNS cut-over with a tested rollback path",
+          "WAF, bot and rate-limit rules tuned against your real traffic, not defaults",
+          "Access and Zero Trust policy for staff, partners and unmanaged devices",
+          "Cache rules and page behaviour that match how your application actually caches",
+          "Workers and edge functions deployed from version control, never hand-edited",
+          "Handover notes and runbooks your own team can keep using",
+        ],
+      },
+      {
+        title: "24/7 managed service",
+        items: [
+          "Scheduled rule reviews, not only the ones an incident forces",
+          "Every edge change peer-reviewed and logged before it ships",
+          "Dashboards for cache hit ratio, blocked threats and 5xx responses at the edge",
+          "On-call response the moment the edge starts failing requests",
+          "A monthly review of what changed, what broke and what we fixed",
+        ],
+      },
+    ],
+    fitTitle: "This is usually the right fit if you…",
+    fitWith: [
+      "Run customer-facing traffic across more than one region, or across time zones",
+      "Treat a minute of downtime as lost revenue rather than an inconvenience",
+      "Answer to a regulator, an auditor or an enterprise security review",
+      "Have outgrown self-serve Cloudflare but do not want a platform team of their own",
+      "Want one team accountable for origin, edge and application together",
+      "Would rather talk to the engineer doing the work than to a ticket queue",
+    ],
     features: [
       { title: "Change-controlled edge", text: "WAF rules, redirects and workers go through review — no more mystery breakage traced to a Friday rule edit." },
       { title: "Integrated with your platform support", text: "Edge, origin and application monitored as one system, because incidents never respect layer boundaries." },
     ],
     faqs: [
       { q: "Do you manage Cloudflare for platforms you don't host?", a: "Yes — we can manage your Cloudflare estate whether your origin sits with us, another provider or your own infrastructure." },
+      { q: "What does the Cloudflare edge actually cover?", a: "DNS, TLS termination, caching, WAF and bot management — plus Workers if you use them. Because every request passes through it first, a mistake there is felt by every visitor at once." },
+      { q: "What is a WAF, and do we need to tune it?", a: "A web application firewall inspects requests and blocks the ones that look malicious. The managed rulesets are only a starting point: left at defaults they block legitimate traffic and miss attacks that matter to your application." },
+      { q: "How does DDoS protection work at Cloudflare?", a: "Traffic is absorbed and scrubbed at Cloudflare's edge before it ever reaches your origin. That only helps if your DNS and TLS setup is correct — which is exactly where we start." },
+      { q: "What is Cloudflare Zero Trust?", a: "It is Cloudflare's access layer: instead of exposing internal tools to the internet, staff, partners and devices authenticate at the edge and are only allowed onto what they need. It replaces a traditional VPN if the policies are configured properly." },
+      { q: "Should we cache at the edge, and how much?", a: "More than most teams do — but only for the right things. Static assets should be cached hard; HTML and anything personalised needs rules that stop the cache serving one customer's page to another. That distinction is where most cache incidents come from." },
+      { q: "What are Cloudflare Workers?", a: "Small pieces of code that run at the edge rather than in your origin — redirects, header rewriting, A/B routing, authentication checks. We deploy them from version control so they are reviewable and reversible like any other code." },
+      { q: "Does the edge become a single point of failure?", a: "It can. Your availability becomes dependent on your Cloudflare configuration, so the rules, the TLS setup and the failover behaviour need to be tested rather than assumed. We build that into onboarding." },
+      { q: "Can you work alongside our own security team?", a: "Yes — plenty of clients keep policy ownership in-house and bring us in to review changes, watch the edge overnight and respond when something breaks. We write into your process rather than around it." },
       { q: "What is full-stack support?", a: "Cover across your application, its infrastructure and everything in between — one team, one escalation path, no gaps." },
       { q: "How does it work?", a: "Onboarding audit, monitoring wired in, escalation paths agreed — then we take the 24/7 watch, usually inside two weeks." },
     ],

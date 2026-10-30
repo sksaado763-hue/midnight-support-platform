@@ -59,6 +59,23 @@ export default function PlatformDetail() {
             </article>
           </div>
 
+          {platform.pillars && (
+            <div className="platform-band">
+              <h2 className="band-title band-title--dark band-title--center reveal">{platform.pillarsTitle}</h2>
+              <span className="band-rule band-rule--center" aria-hidden="true" />
+              {platform.pillarsSub && <p className="band-sub band-sub--dark band-sub--center reveal">{platform.pillarsSub}</p>}
+              <div className="cap-grid">
+                {platform.pillars.map((pillar) => (
+                  <article className="cap-card reveal" key={pillar.title}>
+                    <h3>{pillar.title}</h3>
+                    <span className="cap-rule" aria-hidden="true" />
+                    <p>{pillar.text}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="feature-section">
             <h2 className="section-title reveal">Why teams trust us with {platform.name}</h2>
             <div className="feature-grid">
@@ -70,6 +87,35 @@ export default function PlatformDetail() {
               ))}
             </div>
           </div>
+
+          {platform.capabilities && (
+            <div className="platform-band">
+              <h2 className="band-title band-title--dark band-title--center reveal">{platform.capsTitle}</h2>
+              <span className="band-rule band-rule--center" aria-hidden="true" />
+              {platform.capsSub && <p className="band-sub band-sub--dark band-sub--center reveal">{platform.capsSub}</p>}
+              <div className="cap-grid cap-grid--2">
+                {platform.capabilities.map((cap) => (
+                  <article className="cap-card reveal" key={cap.title}>
+                    <h3>{cap.title}</h3>
+                    <span className="cap-rule" aria-hidden="true" />
+                    <ul>
+                      {cap.items.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {platform.fitWith && (
+            <div className="platform-band">
+              <h2 className="band-title band-title--dark band-title--center reveal">{platform.fitTitle}</h2>
+              <span className="band-rule band-rule--center" aria-hidden="true" />
+              <ul className="fit-list reveal">
+                {platform.fitWith.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          )}
 
           <div className="packages-band reveal">
             <div>
