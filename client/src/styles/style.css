@@ -2082,7 +2082,7 @@ ul { list-style: none; }
 .cloud-grid { background: var(--bg); padding-bottom: var(--section-pad); }
 .cloud-grid__intro { max-width: 730px; margin-inline: auto; text-align: center; }
 .cloud-grid__intro .section-title { margin-bottom: 1rem; }
-.cloud-grid__intro p { color: var(--text-muted); font-size: var(--fs-body); line-height: var(--lh-body); }
+.cloud-grid__intro p { color: var(--text); font-size: var(--fs-body); line-height: var(--lh-body); }
 .cloud-grid__cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2102,10 +2102,10 @@ ul { list-style: none; }
   height: 80px;
   color: var(--amber);
 }
-.cloud-tile__icon svg { width: 52px; height: 52px; margin: 14px; }
+.cloud-tile__icon svg { width: 80px; height: 80px; }
 .cloud-tile h3 {
-  font-size: var(--fs-h3);
-  line-height: var(--lh-h3);
+  font-size: 20px;
+  line-height: 28px;
   font-weight: var(--fw-h3);
   margin-top: 20px;
   margin-bottom: 13px;
@@ -2113,7 +2113,7 @@ ul { list-style: none; }
 .cloud-tile h3 a { color: #ffffff; }
 .cloud-tile h3 a:hover { color: var(--amber); }
 .cloud-tile p {
-  color: rgba(255, 255, 255, 0.78);
+  color: #ffffff;
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   padding-bottom: 14px;
@@ -2483,8 +2483,7 @@ ul { list-style: none; }
   .case-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .consult-grid, .value-grid { grid-template-columns: 1fr; }
-  .cloud-grid__cards { grid-template-columns: 1fr; margin-top: 32px; }
-  .cloud-tile { padding: 24px; }
+  .cloud-grid__cards { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .newsletter-form .btn { width: 100%; justify-content: center; }
 }
