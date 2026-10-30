@@ -175,9 +175,18 @@ const ICONS = {
       <rect x="13.6" y="13.6" width="7" height="7" rx="1.6" />
     </>
   ),
+  search: (
+    <>
+      <circle cx="10.6" cy="10.6" r="6.6" />
+      <path d="m15.4 15.4 5 5" />
+    </>
+  ),
 };
 
-export default function Icon({ name }) {
+/* strokeWidth is a prop because the same glyph is drawn at very different sizes:
+   the nav renders it near 20px, the cloud tiles near 52px, and a fixed 1.7 in
+   viewBox units turns into a 3px+ line once scaled up. */
+export default function Icon({ name, strokeWidth = 1.7 }) {
   const glyph = ICONS[name];
   if (!glyph) return null;
   return (
@@ -185,7 +194,7 @@ export default function Icon({ name }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.7"
+      strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"

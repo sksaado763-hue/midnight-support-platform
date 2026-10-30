@@ -1,6 +1,43 @@
 import { Link } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
+import Icon from "../components/Icons";
 import LatestInsights from "../components/Cards";
+
+/* The six tiles are the page's table of contents: five services plus one
+   catch-all. `to` points at the detail section further down, so the anchors the
+   header and homepage link to have to keep existing below. */
+const TILES = [
+  {
+    icon: "layers",
+    title: "Cloud Strategy & Roadmaps",
+    to: "/cloud#consulting",
+    text: "We start from what you are trying to ship and work backwards to the parts of cloud that earn their keep. You get a sequenced plan with costs, risks and owners attached.",
+  },
+  {
+    icon: "sitemap",
+    title: "Solution Architecture",
+    to: "/cloud#consulting",
+    text: "Landing zones, network topology and the failover story — drawn properly and pressure-tested before anyone writes a line of Terraform.",
+  },
+  {
+    icon: "blocks",
+    title: "Application Modernisation",
+    to: "/cloud#devops",
+    text: "Moving a working product onto containers and smaller services without a big-bang rewrite or a feature freeze.",
+  },
+  {
+    icon: "cube",
+    title: "Managed Cloud",
+    to: "/cloud#aws",
+    text: "We run your AWS, Azure or GCP estate end to end — monitoring, patching, capacity and the on-call rota — so your engineers spend the week building.",
+  },
+  {
+    icon: "cost",
+    title: "Cloud Cost Optimisation",
+    to: "/cloud#consulting",
+    text: "Right-sizing, commitment strategy and the guardrails that stop next quarter's bill quietly drifting back up again.",
+  },
+];
 
 const PROVIDERS = [
   {
@@ -44,10 +81,51 @@ export default function Cloud() {
   useTitle("Managed Cloud & DevOps Services | Just After Midnight");
   return (
     <>
-      <section className="page-hero">
+      <section className="cloud-hero">
         <div className="container">
-          <h1 className="page-hero-title reveal">Managed Cloud &amp; DevOps</h1>
-          <p className="page-hero-sub reveal">Next-gen cloud and DevOps services that scale with you — from ambitious start-up to global enterprise. We design, build, migrate and run infrastructure on the platforms you already trust.</p>
+          <div className="cloud-hero__text">
+            <h1 className="page-hero-title reveal">Managed Cloud &amp; DevOps</h1>
+            <p className="page-hero-sub reveal">We design, build, migrate and run cloud infrastructure on AWS, Azure and GCP — then stay on the rota afterwards, so your own engineers get their week back to build product.</p>
+            <div className="hero-actions reveal">
+              <Link to="/contact" className="btn btn-primary">Get in touch <span aria-hidden="true">➔</span></Link>
+            </div>
+          </div>
+        </div>
+        <div className="hero-divider" aria-hidden="true">
+          <svg className="hero-wave" viewBox="0 0 1920 124" preserveAspectRatio="none">
+            <path className="hero-wave__fill" d="M0 24 C150 20 310 25 470 30 C660 36 820 62 960 62 C1080 62 1240 42 1420 46 C1600 50 1740 62 1920 58 V124 H0 Z" />
+          </svg>
+        </div>
+      </section>
+
+      <section className="cloud-grid">
+        <div className="container">
+          <div className="cloud-grid__intro reveal">
+            <h2 className="section-title">Where do you need us?</h2>
+            <p>Each tile jumps straight to the detail for that service, so you can skip the parts you have already solved.</p>
+          </div>
+          <div className="cloud-grid__cards">
+            {TILES.map((tile) => (
+              <article className="cloud-tile reveal" key={tile.title}>
+                <span className="cloud-tile__icon">
+                  <Icon name={tile.icon} strokeWidth={1.1} />
+                </span>
+                <h3>
+                  <Link to={tile.to}>{tile.title} <span aria-hidden="true">➔</span></Link>
+                </h3>
+                <p>{tile.text}</p>
+              </article>
+            ))}
+            <article className="cloud-tile cloud-tile--cta reveal">
+              <span className="cloud-tile__icon">
+                <Icon name="search" strokeWidth={1.1} />
+              </span>
+              <h3>
+                <Link to="/contact">Something else entirely? <span aria-hidden="true">➔</span></Link>
+              </h3>
+              <p>If your problem does not have a tidy name, it is usually the interesting one. Tell us what is going wrong and we will say honestly whether we can help.</p>
+            </article>
+          </div>
         </div>
       </section>
 

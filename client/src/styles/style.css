@@ -2063,6 +2063,67 @@ ul { list-style: none; }
 }
 
 /* ---------- Cloud page ---------- */
+/* Reference `.hero-banner` + `.icon-grid`: a navy hero that hands off through a
+   wave into a centred intro and a 3-up run of navy tiles, the last one inverted
+   to amber as the catch-all. Measurements are theirs (32px tile padding, 10px
+   radius, 80px icon box, 20px gaps, 55px intro-to-grid), the wave is our own
+   homepage divider so both heroes read as the same shape. */
+.cloud-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  color: #ffffff;
+  --hero-divider-h: clamp(48px, 5vw, 96px);
+  padding-block: clamp(72px, 8vw, 120px) calc(var(--hero-divider-h) + 40px);
+}
+.cloud-hero__text { position: relative; z-index: 1; max-width: 620px; }
+.cloud-hero .hero-actions { margin-top: 2rem; }
+
+.cloud-grid { background: var(--bg); padding-bottom: var(--section-pad); }
+.cloud-grid__intro { max-width: 730px; margin-inline: auto; text-align: center; }
+.cloud-grid__intro .section-title { margin-bottom: 1rem; }
+.cloud-grid__intro p { color: var(--text-muted); font-size: var(--fs-body); line-height: var(--lh-body); }
+.cloud-grid__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 55px;
+}
+.cloud-tile {
+  background: var(--navy);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 32px;
+  height: 100%;
+}
+.cloud-tile__icon {
+  display: block;
+  width: 80px;
+  height: 80px;
+  color: var(--amber);
+}
+.cloud-tile__icon svg { width: 52px; height: 52px; margin: 14px; }
+.cloud-tile h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  font-weight: var(--fw-h3);
+  margin-top: 20px;
+  margin-bottom: 13px;
+}
+.cloud-tile h3 a { color: #ffffff; }
+.cloud-tile h3 a:hover { color: var(--amber); }
+.cloud-tile p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  padding-bottom: 14px;
+}
+.cloud-tile--cta { background: var(--amber); }
+.cloud-tile--cta .cloud-tile__icon,
+.cloud-tile--cta h3 a,
+.cloud-tile--cta p { color: var(--navy); }
+.cloud-tile--cta h3 a:hover { color: var(--navy-deep); text-decoration: underline; }
+
 .cloud-section { background: var(--bg); padding: var(--section-pad) 0; }
 .cloud-section--alt { background: var(--paper); }
 .provider-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
@@ -2401,6 +2462,7 @@ ul { list-style: none; }
 /* ---------- Responsive: interior pages ---------- */
 @media (max-width: 1024px) {
   .consult-grid, .value-grid { grid-template-columns: repeat(2, 1fr); }
+  .cloud-grid__cards { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .admin-grid { grid-template-columns: 1fr; }
   .case-detail-grid { grid-template-columns: 1fr; }
@@ -2421,6 +2483,8 @@ ul { list-style: none; }
   .case-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .consult-grid, .value-grid { grid-template-columns: 1fr; }
+  .cloud-grid__cards { grid-template-columns: 1fr; margin-top: 32px; }
+  .cloud-tile { padding: 24px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .newsletter-form .btn { width: 100%; justify-content: center; }
 }
