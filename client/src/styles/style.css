@@ -258,13 +258,14 @@ ul { list-style: none; }
   transition: border-bottom-color 1s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* The labels keep their 15px size and tighten their gaps so the header text
-   can stay larger without spilling outside the page column. */
+/* The labels keep their 15px size so the header text can stay larger without
+   spilling outside the page column; the gaps follow the reference's 24px
+   rhythm, which still fits at the 1024px floor. */
 @media (min-width: 1024px) {
-  .header-inner { gap: 0.8rem; }
+  .header-inner { gap: 1.4rem; }
   .brand-main { font-size: 24px; }
   .brand-top { font-size: 12px; letter-spacing: 0.28em; }
-  .nav-list { gap: 6px; }
+  .nav-list { gap: 24px; }
   .nav-link { font-size: 15px; padding: 0.9em 0.35em; gap: 6px; }
   .nav-item.has-sub > .nav-link::after { width: 6px; height: 6px; }
   .header-cta { font-size: 15px; padding: 12px 12px; }
