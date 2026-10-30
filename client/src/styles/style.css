@@ -260,9 +260,12 @@ ul { list-style: none; }
 
 /* The labels keep their 15px size so the header text can stay larger without
    spilling outside the page column; the gaps follow the reference's 24px
-   rhythm, which still fits at the 1024px floor. */
+   rhythm, which still fits at the 1024px floor. The bar also takes the
+   reference's 35px breathing room top and bottom, so the token grows with it
+   and anchor scrolling still clears the taller sticky header. */
 @media (min-width: 1024px) {
-  .header-inner { gap: 1.4rem; }
+  :root { --header-h: 118px; }
+  .header-inner { gap: 1.4rem; padding-block: 35px; }
   .brand-main { font-size: 24px; }
   .brand-top { font-size: 12px; letter-spacing: 0.28em; }
   .nav-list { gap: 24px; }
