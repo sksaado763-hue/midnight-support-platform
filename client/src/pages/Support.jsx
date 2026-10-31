@@ -222,13 +222,24 @@ export default function Support() {
 
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero page-hero--support">
+        <div className="hero-stars" aria-hidden="true">
+          <svg viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice">
+            <g fill="#ffffff">
+              <circle cx="140" cy="90" r="1.6" opacity=".7" /><circle cx="360" cy="210" r="1.2" opacity=".5" />
+              <circle cx="620" cy="70" r="1.8" opacity=".8" /><circle cx="880" cy="160" r="1.1" opacity=".4" />
+              <circle cx="1120" cy="80" r="1.5" opacity=".7" /><circle cx="1300" cy="220" r="1.3" opacity=".6" />
+              <circle cx="1400" cy="110" r="1.7" opacity=".8" /><circle cx="240" cy="360" r="1.2" opacity=".4" />
+              <circle cx="720" cy="340" r="1.4" opacity=".6" /><circle cx="1180" cy="380" r="1.2" opacity=".5" />
+              <circle cx="500" cy="430" r="1.5" opacity=".7" /><circle cx="960" cy="450" r="1" opacity=".4" />
+            </g>
+          </svg>
+        </div>
         <div className="container">
-          <h1 className="page-hero-title reveal">24/7 Support Services</h1>
-          <p className="page-hero-sub reveal">Monitoring, triage and fixes across your application, website and cloud — handled by engineers who are already awake when it breaks.</p>
+          <h1 className="page-hero-title support-hero-title reveal">24/7 support that stays awake so your platform never goes dark</h1>
+          <p className="page-hero-sub support-hero-sub reveal">Monitoring, triage and fixes across your application, website and cloud — handled by engineers who are already awake when it breaks.</p>
           <div className="hero-actions reveal">
-            <Link to="/support#compare" className="btn btn-primary">Compare packages <span aria-hidden="true">➔</span></Link>
-            <Link to="/contact" className="btn btn-ghost">Talk to an engineer</Link>
+            <Link to="/support#compare" className="btn btn-primary support-hero-cta">Compare packages <span aria-hidden="true">➔</span></Link>
           </div>
         </div>
       </section>

@@ -1822,6 +1822,37 @@ ul { list-style: none; }
 .page-hero-sub { margin-top: 1.1rem; font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-muted); max-width: 62ch; }
 .page-hero .hero-actions { margin-top: 2rem; }
 
+/* Support hero follows the reference: wide gutters, an oversized tight
+   headline and one amber CTA over the starfield. Values measured off the
+   reference capture at a 1911px viewport, held fluid with vw clamps. */
+.page-hero--support {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(64px, 5.3vw, 102px) 0 clamp(96px, 8.4vw, 162px);
+}
+.page-hero--support .container { width: auto; padding-inline: clamp(24px, 6vw, 116px); }
+.page-hero--support .hero-stars svg { width: 100%; height: 100%; }
+.support-hero-title {
+  font-size: clamp(40px, 4.12vw, 80px);
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  max-width: 8.2em;
+}
+.support-hero-sub {
+  margin-top: clamp(28px, 2.86vw, 55px);
+  font-size: clamp(17px, 1.51vw, 29px);
+  line-height: 1.45;
+  max-width: 21em;
+}
+.page-hero--support .hero-actions { margin-top: clamp(40px, 4.37vw, 84px); }
+.support-hero-cta {
+  height: clamp(56px, 4.69vw, 90px);
+  padding-inline: clamp(28px, 2.5vw, 48px);
+  font-size: clamp(16px, 1.25vw, 24px);
+  border-radius: 10px;
+}
+
 .breadcrumb {
   font-family: var(--font-body);
   font-weight: 700;
