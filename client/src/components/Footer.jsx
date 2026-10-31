@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ContactForm, NewsletterForm } from "./Forms";
 
 const COLUMNS = [
@@ -227,9 +227,15 @@ function FooterColumn({ column }) {
 }
 
 export default function Footer() {
+  const { pathname } = useLocation();
+  /* The contact page carries its own form and direct lines, so the footer
+     band would repeat both right underneath it. */
+  const showContactBand = pathname !== "/contact";
+
   return (
     <footer className="site-footer" id="site-footer">
       <div className="container">
+        {showContactBand && (
         <div className="footer-contact" id="contact">
           <div className="footer-contact-copy">
             <h2>Have a question or need a hand?</h2>
@@ -247,6 +253,7 @@ export default function Footer() {
             </p>
           </div>
         </div>
+        )}
 
         <div className="footer-columns">
           {COLUMNS.map((column) => (
