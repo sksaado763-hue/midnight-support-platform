@@ -147,7 +147,7 @@ export function ContactPageForm({ presetPackage = "" }) {
             <FieldError name="email" errors={errors} touched={touched} />
           </div>
 
-          <div className="form-row">
+          <div className="form-row form-row--grow">
             <label htmlFor="cf-message">Message<span className="req" aria-hidden="true"> *</span></label>
             <Field
               as="textarea"
