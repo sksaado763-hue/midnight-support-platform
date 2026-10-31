@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
-import { ContactForm } from "../components/Forms";
+import { ContactPageForm } from "../components/Forms";
 import LatestInsights from "../components/Cards";
 
 export default function Contact() {
@@ -101,7 +101,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <ContactForm withTopic presetPackage={presetPackage} />
+          <ContactPageForm presetPackage={presetPackage} />
         </div>
       </section>
 

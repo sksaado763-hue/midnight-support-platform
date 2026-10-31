@@ -2354,6 +2354,53 @@ ul { list-style: none; }
   box-shadow: var(--shadow-card);
 }
 .contact-form h2 { font-size: var(--fs-h3); line-height: 24px; font-weight: 700; margin-bottom: 0.4rem; }
+
+/* Contact page card: heading block, roomier fields, inline Yup errors. */
+.enquiry-form { gap: 1.1rem; }
+.enquiry-head { display: grid; gap: 0.4rem; }
+.enquiry-head h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+.enquiry-head p { color: var(--text-muted); font-size: var(--fs-md); line-height: var(--lh-md); }
+.enquiry-form .form-row input,
+.enquiry-form .form-row textarea { padding-inline: 16px; }
+.enquiry-form .form-row input[aria-invalid="true"],
+.enquiry-form .form-row textarea[aria-invalid="true"] { border-color: #b42318; }
+.enquiry-form .form-row input[aria-invalid="true"]:focus,
+.enquiry-form .form-row textarea[aria-invalid="true"]:focus {
+  border-color: #b42318;
+  box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.14);
+}
+.field-error {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #b42318;
+}
+.consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+.consent-row input[type="checkbox"] {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+  accent-color: var(--navy-soft);
+  cursor: pointer;
+}
+.consent-row input[type="checkbox"][aria-invalid="true"] { outline: 2px solid #b42318; outline-offset: 1px; }
+.enquiry-submit { width: 100%; padding: var(--pad-btn-lg); }
 .form-row--split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-row select {
   display: block;
