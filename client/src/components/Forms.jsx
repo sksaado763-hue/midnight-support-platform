@@ -75,7 +75,7 @@ export function ContactPageForm({ presetPackage = "" }) {
 
   return (
     <Formik
-      initialValues={{ name: "", company: "", email: "", message: "", consent: false }}
+      initialValues={{ name: "", company: "", email: "", message: "", consent: false, marketing: false }}
       validationSchema={CONTACT_SCHEMA}
       onSubmit={async (values, { resetForm, setSubmitting }) => {
         setStatus(null);
@@ -87,6 +87,9 @@ export function ContactPageForm({ presetPackage = "" }) {
             message: values.message.trim(),
           });
           if (ok && body && body.ok) {
+            if (values.marketing) {
+              postJson("/api/newsletter", { email: values.email.trim() }).catch(() => {});
+            }
             const firstName = values.name.trim().split(/\s+/)[0];
             setStatus({ text: `Thanks ${firstName} — we'll be in touch within one working day.`, ok: true });
             resetForm();
@@ -172,6 +175,11 @@ export function ContactPageForm({ presetPackage = "" }) {
             <span>I agree to Just After Midnight using these details to reply to my enquiry.<span className="req" aria-hidden="true"> *</span></span>
           </label>
           <FieldError name="consent" errors={errors} touched={touched} />
+
+          <label className="consent-row" htmlFor="cf-marketing">
+            <Field id="cf-marketing" name="marketing" type="checkbox" />
+            <span>Send me occasional updates and offers from Just After Midnight by email — one click unsubscribes me.</span>
+          </label>
 
           <div className="enquiry-actions">
             <button type="submit" className="btn btn-primary enquiry-submit" disabled={isSubmitting}>
