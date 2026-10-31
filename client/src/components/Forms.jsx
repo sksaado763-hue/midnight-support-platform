@@ -153,7 +153,7 @@ export function ContactPageForm({ presetPackage = "" }) {
               as="textarea"
               id="cf-message"
               name="message"
-              rows={5}
+              rows={3}
               placeholder={messagePlaceholder}
               aria-invalid={Boolean(touched.message && errors.message)}
               aria-describedby={touched.message && errors.message ? "cf-message-error" : undefined}
@@ -173,12 +173,14 @@ export function ContactPageForm({ presetPackage = "" }) {
           </label>
           <FieldError name="consent" errors={errors} touched={touched} />
 
-          <button type="submit" className="btn btn-primary enquiry-submit" disabled={isSubmitting}>
-            {isSubmitting ? "Sending…" : "Submit now"}
-          </button>
-          <p className={`form-status${status ? (status.ok ? " is-ok" : " is-error") : ""}`} id="contact-form-status" role="status">
-            {status ? status.text : ""}
-          </p>
+          <div className="enquiry-actions">
+            <button type="submit" className="btn btn-primary enquiry-submit" disabled={isSubmitting}>
+              {isSubmitting ? "Sending…" : "Submit now"}
+            </button>
+            <p className={`form-status${status ? (status.ok ? " is-ok" : " is-error") : ""}`} id="contact-form-status" role="status">
+              {status ? status.text : ""}
+            </p>
+          </div>
         </Form>
       )}
     </Formik>
