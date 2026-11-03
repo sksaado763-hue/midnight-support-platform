@@ -2100,6 +2100,22 @@ section.maint-band { position: relative; background: #efefef; }
    the sliver of band colour left under it reads as a floating hairline. */
 .maint-wave--bottom { position: relative; bottom: -1px; }
 .maint-wave--bottom svg { height: clamp(46px, 4.67vw, 89px); }
+
+/* Reference `.curved-divider`: a 73px strip of its own between two bands, so a
+   join is a curve rather than a straight edge Chrome can only half-cover when
+   the page does not land on whole device pixels. */
+.band-wave { position: relative; line-height: 0; pointer-events: none; }
+.band-wave svg { display: block; width: 100%; height: clamp(40px, 3.82vw, 73px); }
+.band-wave--top { top: -1px; }
+.band-wave--bottom { bottom: -1px; }
+/* A strip only sits on the band edge if the band's own padding is inside the
+   copy, so the statement's bottom padding moves onto its container. */
+section.statement { padding: var(--section-pad) 0 0; }
+.statement > .container { padding-bottom: var(--section-pad); }
+/* navy-deep into navy on /support: the two bands are the same family, so letting
+   the statement bleed 1px up covers the half-row and the relocated seam is a
+   3/255 step rather than the light hairline. */
+.ind-band + section.statement { margin-top: -1px; padding-top: calc(var(--section-pad) + 1px); }
 .maint-inner {
   width: auto;
   max-width: clamp(560px, 88.2vw, 1680px);
@@ -2166,8 +2182,11 @@ section.maint-band { position: relative; background: #efefef; }
    66%-wide white intro, then a 3-up run of rounded navy cards — amber h4, white
    copy — and a final inverted canary card carrying the packages CTA. Capture
    px at 1911 (reference CSS × 1.647). */
-.why-band { position: relative; padding: clamp(66px, 5.46vw, 104px) 0 clamp(132px, 10.9vw, 208px); }
-.why-band > .container { position: relative; z-index: 1; width: auto; max-width: clamp(560px, 90.77vw, 1734px); padding-inline: 0; }
+.why-band { position: relative; padding: 0; }
+/* The crest strips are the band's first and last in-flow children, so the band's
+   own padding lives on the container instead — otherwise each strip floats inside
+   the navy and the section edges stay straight lines Chrome half-covers. */
+.why-band > .container { position: relative; z-index: 1; width: auto; max-width: clamp(560px, 90.77vw, 1734px); padding-inline: 0; padding-top: clamp(66px, 5.46vw, 104px); padding-bottom: clamp(132px, 10.9vw, 208px); }
 .why-intro { width: 66%; margin-inline: auto; text-align: center; }
 .why-intro .band-title {
   margin: 0 0 clamp(20px, 1.65vw, 32px);
@@ -2298,10 +2317,10 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
    amber title, then three transparent icon cards (no plate, no rule). All the
    numbers below are capture px at 1911: 1554 track, 378 text column, 56 card
    padding, 98 title gap, 110 icon, 28/39 heading, 22/38 copy. */
-.pii-band { position: relative; padding: clamp(44px, 4.4vw, 84px) 0 0; }
+.pii-band { position: relative; padding: 0; }
 .pii-band > .hero-stars { opacity: 0.85; }
 .pii-band > .hero-stars svg { width: 100%; height: 100%; }
-.pii-band > .container { position: relative; z-index: 1; width: auto; max-width: clamp(560px, 81.32vw, 1554px); padding-inline: 0; }
+.pii-band > .container { position: relative; z-index: 1; width: auto; max-width: clamp(560px, 81.32vw, 1554px); padding-inline: 0; padding-top: clamp(44px, 4.4vw, 84px); }
 .pii-band .band-title { margin: 0 0 clamp(50px, 5.13vw, 98px); font-size: clamp(28px, 2.51vw, 48px); line-height: 1.64; font-weight: 500; letter-spacing: 0; }
 .pii-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.47vw, 28px) clamp(21px, 2.2vw, 42px); margin-top: 0; }
 .pii-card { display: flex; flex-direction: column; align-items: center; height: 100%; padding: clamp(24px, 2.93vw, 56px); border-radius: clamp(7px, 0.73vw, 14px); text-align: center; }

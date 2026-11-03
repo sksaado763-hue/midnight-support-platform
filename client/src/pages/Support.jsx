@@ -368,6 +368,11 @@ export default function Support() {
             </g>
           </svg>
         </div>
+        <div className="band-wave band-wave--top" aria-hidden="true">
+          <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
+            <path d="M0 0H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
+          </svg>
+        </div>
         <div className="container">
           <div className="why-intro reveal">
             <h2 className="band-title band-title--center">Why teams hand us the night</h2>
@@ -386,6 +391,11 @@ export default function Support() {
               <Link to="/support#compare" className="why-accent-cta">View packages <span aria-hidden="true">➔</span></Link>
             </article>
           </div>
+        </div>
+        <div className="band-wave band-wave--bottom" aria-hidden="true">
+          <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
+            <path d="M0 73H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
+          </svg>
         </div>
       </section>
 
@@ -544,6 +554,11 @@ export default function Support() {
             </g>
           </svg>
         </div>
+        <div className="band-wave band-wave--top" aria-hidden="true">
+          <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
+            <path d="M0 0H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
+          </svg>
+        </div>
         <div className="container">
           <h2 className="band-title band-title--center reveal">What good cover buys you</h2>
           <div className="pii-grid">
@@ -589,6 +604,11 @@ export default function Support() {
           <div className="hero-actions reveal" style={{ justifyContent: "center" }}>
             <Link to="/contact" className="btn btn-primary">Get a recommendation <span aria-hidden="true">➔</span></Link>
           </div>
+        </div>
+        <div className="band-wave band-wave--bottom" aria-hidden="true">
+          <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
+            <path d="M0 73H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
+          </svg>
         </div>
       </section>
 
