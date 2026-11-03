@@ -307,10 +307,29 @@ export default function Support() {
       </section>
 
       <section className="maint-band">
-        <div className="container maint-band-inner reveal">
-          <h2>Want changes shipped, not just incidents closed?</h2>
-          <p>Support keeps you stable; managed cloud and DevOps delivery moves you forward. Most customers run both under one relationship.</p>
-          <Link to="/cloud" className="btn btn-primary">See cloud & DevOps <span aria-hidden="true">➔</span></Link>
+        <div className="maint-wave maint-wave--top" aria-hidden="true">
+          <svg viewBox="0 0 1920 58" preserveAspectRatio="none">
+            <path d="M0 0H1920V21C1810 32 1700 41 1560 49C1440 55 1340 55 1220 47C1080 37 1000 27 900 15C820 5 760 0 620 0H260C180 0 90 6 0 14Z" fill="#12203f" />
+          </svg>
+        </div>
+        <div className="container maint-inner">
+          <h2 className="reveal">Pair support with ongoing maintenance</h2>
+          <p className="reveal">Stability is only half the job. Every plan above can run alongside our managed services, so the engineers who close tonight's incident also ship the upgrades, patches and performance work that prevent tomorrow's.</p>
+          <Link to="/cloud" className="btn maint-cta reveal">See cloud & DevOps <span aria-hidden="true">➔</span></Link>
+        </div>
+        <span className="maint-badge" aria-hidden="true">
+          <svg viewBox="0 0 66 66" fill="none">
+            <circle cx="33" cy="33" r="33" fill="#132140" />
+            <circle cx="35" cy="38" r="16.5" stroke="#ffffff" strokeWidth="3.2" />
+            <path d="M28 38.5l5 5L46 30" stroke="#ffffff" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="21" cy="17" r="2.6" fill="#ffffff" />
+            <circle cx="28.5" cy="12.5" r="2.6" fill="#ffffff" />
+          </svg>
+        </span>
+        <div className="maint-wave maint-wave--bottom" aria-hidden="true">
+          <svg viewBox="0 0 1920 89" preserveAspectRatio="none">
+            <path d="M0 55L169.182 37.3769C375.835 15.8505 584.165 15.8506 790.818 37.377L1129.18 72.6231C1335.83 94.1495 1544.17 94.1494 1750.82 72.623L1920 55V89H0Z" fill="var(--bg)" />
+          </svg>
         </div>
       </section>
 

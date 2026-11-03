@@ -2084,10 +2084,40 @@ section.svc-band { background: #12203f; }
   border-radius: 10px;
 }
 
-.maint-band { padding: 56px 0; }
-.maint-band-inner { max-width: 720px; margin-inline: auto; text-align: center; }
-.maint-band h2 { margin: 0 0 0.8rem; font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 700; }
-.maint-band p { margin: 0 0 1.6rem; color: var(--text-muted); }
+/* Reference `.small-cta`: a pale #efefef band handed off from the navy card
+   band by a shallow wave and out again into white, centred ink copy and one
+   navy CTA, with a stopwatch badge parked in the bottom-left corner. */
+section.maint-band { position: relative; background: #efefef; }
+.maint-wave { line-height: 0; pointer-events: none; }
+.maint-wave svg { display: block; width: 100%; }
+.maint-wave--top svg { height: clamp(30px, 3.05vw, 58px); }
+.maint-wave--bottom svg { height: clamp(46px, 4.67vw, 89px); }
+.maint-inner {
+  width: auto;
+  max-width: clamp(560px, 88.2vw, 1680px);
+  padding-inline: 24px;
+  padding-top: clamp(80px, 7.3vw, 139px);
+  padding-bottom: clamp(90px, 7.9vw, 150px);
+  margin-inline: auto;
+  text-align: center;
+}
+.maint-band h2 { margin: 0 0 clamp(24px, 2.15vw, 41px); font-size: clamp(30px, 2.62vw, 50px); line-height: 1.2; font-weight: 600; color: #132140; }
+.maint-band p { margin: 0; font-size: clamp(15px, 1.26vw, 24px); line-height: 1.83; color: #132140; }
+.maint-band .maint-cta {
+  margin-top: clamp(60px, 5.25vw, 100px);
+  height: clamp(56px, 4.67vw, 89px);
+  padding-inline: clamp(28px, 2.2vw, 42px);
+  gap: clamp(10px, 0.79vw, 15px);
+  font-size: clamp(16px, 1.26vw, 24px);
+  font-weight: 900;
+  border-radius: 9px;
+  background: #132140;
+  color: #ffffff;
+}
+.maint-band .maint-cta:hover,
+.maint-band .maint-cta:focus { background: #0d1830; color: #ffffff; }
+.maint-badge { position: absolute; left: clamp(14px, 1.2vw, 23px); bottom: clamp(45px, 3.94vw, 75px); width: clamp(40px, 3.46vw, 66px); height: clamp(40px, 3.46vw, 66px); }
+.maint-badge svg { display: block; width: 100%; height: 100%; }
 
 .support-cases { padding: var(--section-pad) 0; }
 .support-case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
@@ -2165,6 +2195,7 @@ section.svc-band { background: #12203f; }
   .ind-band-grid { grid-template-columns: 1fr; gap: 32px; }
   .support-intro .container { max-width: none; padding-inline: 24px; }
   .svc-band > .container { max-width: none; padding-inline: 24px; }
+  .maint-inner { max-width: none; }
   .support-intro-grid { gap: clamp(36px, 9vw, 56px); }
   .support-intro-grid::before { display: none; }
   .support-intro-copy p { max-width: none; }
