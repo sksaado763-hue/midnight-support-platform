@@ -76,10 +76,6 @@ const REASONS = [
     text: "Follow-the-sun shifts mean your incident lands on an engineer mid-shift, not on a phone ringing in an empty house.",
   },
   {
-    title: "Because every alert has a named owner",
-    text: "Severity grading and an escalation ladder decide who picks it up and who gets called in next. Nothing sits unowned.",
-  },
-  {
     title: "Because fixes arrive with a written handover",
     text: "What broke, what we changed, what we are watching. Your morning starts with answers instead of archaeology.",
   },
@@ -92,20 +88,8 @@ const REASONS = [
     text: "Incident records, change logs and review notes are kept properly, so compliance questions become exports, not panic.",
   },
   {
-    title: "Because the whole stack is one queue",
-    text: "Website, app, cloud and integrations under a single agreement means no vendor blame tennis while your customers wait.",
-  },
-  {
-    title: "Because your runbooks are written for your stack",
-    text: "We build them from in-depth knowledge of your platform, then keep them current. Tech-enabled, person-led.",
-  },
-  {
     title: "Because cover extends to your pipeline",
     text: "Deployments, rollbacks and pipeline health ride on the same shifts — round-the-clock DevOps engineers, or the whole practice as a service.",
-  },
-  {
-    title: "Because one partner should end the search",
-    text: "Monitoring, triage, fixes and the proof it worked. Every gap in your cover lands here and closes here.",
   },
 ];
 
