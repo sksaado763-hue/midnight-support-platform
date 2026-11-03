@@ -264,7 +264,15 @@ export default function Support() {
           <div className="means-card reveal">
             <h3>That means:</h3>
             <ul>
-              {MEANS.map((line) => <li key={line}>{line}</li>)}
+              {MEANS.map((line) => (
+                <li key={line}>
+                  <svg className="means-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <circle cx="16" cy="16" r="14.6" stroke="var(--amber)" strokeWidth="2.4" />
+                    <path d="M9.5 17l4.5 4.5L28 6" stroke="var(--amber)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span>{line}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
