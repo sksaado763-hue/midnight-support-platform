@@ -154,8 +154,8 @@ const OUTCOMES = [
     title: "Protect revenue and reputation",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M24 6l14 6v10c0 9-6 16-14 20-8-4-14-11-14-20V12l14-6z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
-        <path d="M17 24l5 5 9-10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M24 6l14 6v10c0 9-6 16-14 20-8-4-14-11-14-20V12l14-6z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+        <path d="M17 24l5 5 9-10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     text: "Downtime is abandoned baskets, missed calls and a headline you did not write. Cover that never sleeps keeps the trading hours you did not plan for as safe as the ones you did.",
@@ -164,9 +164,9 @@ const OUTCOMES = [
     title: "Ship changes with confidence",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M24 6c8 6 12 14 12 22l-12 10-12-10c0-8 4-16 12-22z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
-        <circle cx="24" cy="22" r="5" stroke="currentColor" strokeWidth="3" />
-        <path d="M12 28l-4 10 10-4M36 28l4 10-10-4" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+        <path d="M24 6c8 6 12 14 12 22l-12 10-12-10c0-8 4-16 12-22z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+        <circle cx="24" cy="22" r="5" stroke="currentColor" strokeWidth="2.2" />
+        <path d="M12 28l-4 10 10-4M36 28l4 10-10-4" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
       </svg>
     ),
     text: "Release checklists, rollback drills and pre-release checks mean your team can deploy on a Friday and still sleep that night. Someone is watching the metrics either way.",
@@ -175,13 +175,18 @@ const OUTCOMES = [
     title: "Spend less on firefighting",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="3" />
-        <path d="M24 14v20M29 19c-1.5-2-4-2.4-6-1.6-2.6 1-3.4 4.4-1 6 2.6 1.8 7 1.4 7 4.8 0 2.6-3 4-6 3.2-1.6-.4-2.8-1.4-3.4-2.6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="2.2" />
+        <path d="M24 14v20M29 19c-1.5-2-4-2.4-6-1.6-2.6 1-3.4 4.4-1 6 2.6 1.8 7 1.4 7 4.8 0 2.6-3 4-6 3.2-1.6-.4-2.8-1.4-3.4-2.6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
       </svg>
     ),
     text: "Recurring incidents get root-cause work, alert noise gets tuned away, and capacity gets planned before it becomes an emergency. The queue shrinks month on month.",
   },
 ];
+
+const PII_STARS = Array.from({ length: 84 }, (_, i) => {
+  const rnd = (n) => { const s = Math.sin(i * 12.9898 + n * 78.233) * 43758.5453; return s - Math.floor(s); };
+  return { cx: rnd(1) * 1911, cy: Math.pow(rnd(2), 1.7) * 720, r: 0.9 + rnd(3) * 2.1, o: 0.18 + rnd(4) * 0.62 };
+});
 
 const INDUSTRIES = [
   {
@@ -530,6 +535,15 @@ export default function Support() {
       </section>
 
       <section className="pii-band">
+        <div className="hero-stars" aria-hidden="true">
+          <svg viewBox="0 0 1911 760" preserveAspectRatio="xMidYMid slice">
+            <g fill="#ffffff">
+              {PII_STARS.map((star, i) => (
+                <circle key={i} cx={star.cx.toFixed(1)} cy={star.cy.toFixed(1)} r={star.r.toFixed(2)} opacity={star.o.toFixed(2)} />
+              ))}
+            </g>
+          </svg>
+        </div>
         <div className="container">
           <h2 className="band-title band-title--center reveal">What good cover buys you</h2>
           <div className="pii-grid">

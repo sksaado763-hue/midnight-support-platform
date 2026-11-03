@@ -2284,13 +2284,27 @@ section.case-feature { position: relative; overflow: hidden; background: var(--n
 .support-faq-art { padding-left: clamp(14px, 1.47vw, 28px); }
 .support-faq-art svg { display: block; width: 100%; height: auto; }
 
-.pii-band { padding: var(--section-pad) 0; }
-.pii-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-.pii-card { display: grid; justify-items: center; gap: 0.9rem; text-align: center; }
-.pii-icon { width: 48px; height: 48px; }
+/* Outcome band — reference .coloured-boxes: a navy starfield slab, one centred
+   amber title, then three transparent icon cards (no plate, no rule). All the
+   numbers below are capture px at 1911: 1554 track, 378 text column, 56 card
+   padding, 98 title gap, 110 icon, 28/39 heading, 22/38 copy. */
+.pii-band { position: relative; padding: clamp(44px, 4.4vw, 84px) 0 0; }
+.pii-band > .hero-stars { opacity: 0.85; }
+.pii-band > .hero-stars svg { width: 100%; height: 100%; }
+.pii-band > .container { position: relative; z-index: 1; width: auto; max-width: clamp(560px, 81.32vw, 1554px); padding-inline: 0; }
+.pii-band .band-title { margin: 0 0 clamp(50px, 5.13vw, 98px); font-size: clamp(28px, 2.51vw, 48px); line-height: 1.64; font-weight: 500; letter-spacing: 0; }
+.pii-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.47vw, 28px) clamp(21px, 2.2vw, 42px); margin-top: 0; }
+.pii-card { display: flex; flex-direction: column; align-items: center; height: 100%; padding: clamp(24px, 2.93vw, 56px); border-radius: clamp(7px, 0.73vw, 14px); text-align: center; }
+.pii-icon { width: clamp(64px, 5.75vw, 110px); height: clamp(64px, 5.75vw, 110px); }
 .pii-icon svg { width: 100%; height: 100%; }
-.pii-card h3 { margin: 0; font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: 700; }
-.pii-card p { margin: 0; font-size: 15px; line-height: 1.65; }
+.pii-card h3 { margin: clamp(12px, 1.47vw, 28px) 0 clamp(8px, 0.94vw, 18px); font-size: clamp(19px, 1.47vw, 28px); line-height: 1.4; font-weight: 600; }
+.pii-card p { margin: 0; font-size: clamp(15px, 1.15vw, 22px); line-height: 1.7; }
+
+@media (max-width: 767.98px) {
+  .pii-band > .container { max-width: none; padding-inline: 24px; }
+  .pii-band .band-title { margin-bottom: 0; }
+  .pii-grid { grid-template-columns: 1fr; }
+}
 
 .ind-band { padding: var(--section-pad) 0; }
 .ind-band-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
@@ -2342,7 +2356,6 @@ section.case-feature { position: relative; overflow: hidden; background: var(--n
   .svc-grid,
   .why-grid,
   .cap-grid,
-  .pii-grid,
   .support-case-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -2350,7 +2363,6 @@ section.case-feature { position: relative; overflow: hidden; background: var(--n
   .svc-grid,
   .why-grid,
   .cap-grid,
-  .pii-grid,
   .support-case-grid { grid-template-columns: 1fr; }
 }
 
