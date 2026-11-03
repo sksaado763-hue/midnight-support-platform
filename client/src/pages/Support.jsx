@@ -279,10 +279,19 @@ export default function Support() {
       </section>
 
       <section className="svc-band">
-        <div className="container">
+        <div className="svc-band-wave" aria-hidden="true">
+          <svg viewBox="0 0 1920 101" preserveAspectRatio="none">
+            <path d="M0 0H1920V69C1790 84 1660 101 1450 101C1120 101 700 34 480 34C320 34 180 46 0 68Z" fill="var(--bg)" />
+          </svg>
+        </div>
+        <div className="svc-head">
           <h2 className="band-title reveal">Our support services</h2>
           <span className="band-rule" aria-hidden="true" />
-          <p className="band-sub reveal">Choose the layers you want covered and the hours you want them covered for — overnights only, weekends only, or the entire clock. The same engineers sit behind every option.</p>
+          <p className="band-sub reveal">Choose your layers. Choose your hours.</p>
+          <p className="band-sub reveal">Overnights only? Weekends only? Every hour of every day? We cover them all.</p>
+          <p className="band-sub band-sub--last reveal">The same engineers sit behind every option, working a written incident process with monitoring that pages us before your users notice.</p>
+        </div>
+        <div className="container">
           <div className="svc-grid">
             {SERVICES.map((service) => (
               <article className="svc-card reveal" key={service.title}>

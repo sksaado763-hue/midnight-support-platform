@@ -1997,7 +1997,8 @@ ul { list-style: none; }
    pitch, 29px navy body copy, 33px outline ticks, and a 334px column gap
    doing the work a divider rule would otherwise do. */
 .support-intro { padding: clamp(40px, 3.9vw, 74px) 0 clamp(50px, 4.8vw, 91px); }
-.support-intro .container { width: auto; max-width: clamp(560px, 87.9vw, 1678px); }
+.support-intro .container,
+.svc-band > .container { width: auto; max-width: clamp(560px, 87.9vw, 1678px); padding-inline: 0; }
 .support-intro-grid { position: relative; display: grid; grid-template-columns: 54.3% 1fr; column-gap: 5.65%; align-items: start; }
 /* The reference splits the columns with a hairline ink rule at ~54% width. */
 .support-intro-grid::before { content: ""; position: absolute; top: 0; bottom: 0; left: 54.3%; width: 1px; background: #132140; }
@@ -2039,7 +2040,21 @@ ul { list-style: none; }
 .band-sub { margin: 0 0 40px; font-size: 17px; line-height: 1.6; max-width: 74ch; }
 .band-sub--center { margin-inline: auto; text-align: center; max-width: 54ch; }
 
-.svc-band { padding: var(--section-pad) 0; }
+.svc-band { position: relative; padding: clamp(140px, 12.1vw, 232px) 0 var(--section-pad); }
+/* Curved crest out of the white intro band, fitted to the reference capture. */
+.svc-band-wave { position: absolute; top: 0; left: 0; right: 0; height: clamp(48px, 5.27vw, 101px); line-height: 0; pointer-events: none; }
+.svc-band-wave svg { display: block; width: 100%; height: 100%; }
+.svc-head { padding-inline: clamp(24px, 6vw, 115px); margin-bottom: clamp(40px, 3.45vw, 66px); }
+.svc-band .band-title {
+  margin: 0 0 clamp(12px, 1.1vw, 21px);
+  font-size: clamp(28px, 2.51vw, 48px);
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+.svc-band .band-rule { width: clamp(48px, 4.39vw, 84px); height: 6px; border-radius: 3px; margin: 0 0 clamp(20px, 1.72vw, 33px); }
+.svc-band .band-sub { margin: 0 0 clamp(13px, 1.15vw, 22px); font-size: clamp(15px, 1.25vw, 24px); line-height: 1.65; max-width: 74ch; }
+.svc-band .band-sub--last { margin-bottom: 0; }
 .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
 .svc-card { border: 1px solid; border-radius: 14px; padding: 30px; }
 .svc-icon { display: block; width: 56px; height: 56px; margin-bottom: 18px; }
@@ -2129,6 +2144,7 @@ ul { list-style: none; }
   .support-faq-grid,
   .ind-band-grid { grid-template-columns: 1fr; gap: 32px; }
   .support-intro .container { max-width: none; padding-inline: 24px; }
+  .svc-band > .container { max-width: none; padding-inline: 24px; }
   .support-intro-grid { gap: clamp(36px, 9vw, 56px); }
   .support-intro-grid::before { display: none; }
   .support-intro-copy p { max-width: none; }
