@@ -2154,11 +2154,52 @@ section.maint-band { position: relative; background: #efefef; }
 .support-case-grid .support-case h3 { margin: clamp(14px, 1.04vw, 20px) 0 0; font-size: clamp(17px, 1.31vw, 25px); line-height: 1.25; font-weight: 700; color: #132140; }
 .support-case-grid .support-case p { margin: clamp(16px, 1.3vw, 25px) 0 0; font-size: clamp(13px, 0.94vw, 18px); line-height: 1.55; font-style: italic; color: #000000; }
 
-.why-band { padding: var(--section-pad) 0; }
-.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-.why-card { border-radius: 14px; padding: 26px 24px; }
-.why-card h3 { margin: 0 0 0.7rem; font-size: 17px; line-height: 1.35; font-weight: 700; }
-.why-card p { margin: 0; font-size: 15px; line-height: 1.6; }
+/* Reference `.icon-grid`: a starfield band with a centred amber title over a
+   66%-wide white intro, then a 3-up run of rounded navy cards — amber h4, white
+   copy — and a final inverted canary card carrying the packages CTA. Capture
+   px at 1911 (reference CSS × 1.647). */
+.why-band { position: relative; padding: clamp(66px, 5.46vw, 104px) 0 clamp(132px, 10.9vw, 208px); }
+.why-band > .container { position: relative; z-index: 1; width: auto; max-width: clamp(560px, 90.77vw, 1734px); padding-inline: 0; }
+.why-intro { width: 66%; margin-inline: auto; text-align: center; }
+.why-intro .band-title {
+  margin: 0 0 clamp(20px, 1.65vw, 32px);
+  font-size: clamp(28px, 2.93vw, 56px);
+  line-height: 1.65;
+  font-weight: 500;
+}
+.why-intro p { margin: 0; font-size: clamp(15px, 1.41vw, 27px); line-height: 1.65; color: #ffffff; }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(13px, 1.65vw, 32px); margin-top: clamp(46px, 3.82vw, 73px); }
+.why-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: clamp(8px, 0.82vw, 16px);
+  padding: clamp(20px, 2.78vw, 53px);
+}
+.why-card h3 { margin: clamp(13px, 1.07vw, 20px) 0 clamp(9px, 0.79vw, 15px); font-size: clamp(17px, 1.73vw, 33px); line-height: 1.4; font-weight: 700; }
+.why-card h3:first-child { margin-top: 0; }
+.why-card p { margin: 0; font-size: clamp(15px, 1.41vw, 27px); line-height: 1.65; }
+/* skin.css paints every .why-card from tokens at 0-2-0; match its specificity
+   for the inverted accent card so the later import cannot beat it. */
+.why-band .why-card--accent { background: var(--amber); }
+.why-band .why-card--accent h3 { color: var(--navy); }
+.why-band .why-card--accent p { color: var(--navy); }
+.why-card--accent .why-accent-cta {
+  margin-top: clamp(24px, 2.47vw, 47px);
+  align-self: flex-start;
+  height: clamp(40px, 3.66vw, 70px);
+  padding-inline: clamp(20px, 1.83vw, 35px);
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(8px, 0.63vw, 12px);
+  border-radius: 8px;
+  background: #132140;
+  color: #ffffff;
+  font-size: clamp(15px, 1.41vw, 27px);
+  font-weight: 700;
+  text-decoration: none;
+}
+.why-card--accent .why-accent-cta:hover,
+.why-card--accent .why-accent-cta:focus { background: #ffffff; color: #132140; }
 
 .cap-band { padding: var(--section-pad) 0; }
 .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }

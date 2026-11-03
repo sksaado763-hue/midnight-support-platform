@@ -95,6 +95,18 @@ const REASONS = [
     title: "Because the whole stack is one queue",
     text: "Website, app, cloud and integrations under a single agreement means no vendor blame tennis while your customers wait.",
   },
+  {
+    title: "Because your runbooks are written for your stack",
+    text: "We build them from in-depth knowledge of your platform, then keep them current. Tech-enabled, person-led.",
+  },
+  {
+    title: "Because cover extends to your pipeline",
+    text: "Deployments, rollbacks and pipeline health ride on the same shifts — round-the-clock DevOps engineers, or the whole practice as a service.",
+  },
+  {
+    title: "Because one partner should end the search",
+    text: "Monitoring, triage, fixes and the proof it worked. Every gap in your cover lands here and closes here.",
+  },
 ];
 
 const CAPABILITIES = [
@@ -351,9 +363,25 @@ export default function Support() {
       </section>
 
       <section className="why-band">
+        <div className="hero-stars" aria-hidden="true">
+          <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+            <g fill="#ffffff">
+              <circle cx="90" cy="120" r="1.5" opacity=".6" /><circle cx="330" cy="60" r="1.1" opacity=".45" />
+              <circle cx="560" cy="200" r="1.7" opacity=".7" /><circle cx="820" cy="90" r="1.2" opacity=".5" />
+              <circle cx="1080" cy="180" r="1.5" opacity=".65" /><circle cx="1330" cy="70" r="1.3" opacity=".55" />
+              <circle cx="1420" cy="330" r="1.6" opacity=".7" /><circle cx="200" cy="420" r="1.2" opacity=".45" />
+              <circle cx="480" cy="560" r="1.4" opacity=".6" /><circle cx="760" cy="480" r="1" opacity=".4" />
+              <circle cx="1020" cy="620" r="1.5" opacity=".65" /><circle cx="1260" cy="520" r="1.2" opacity=".5" />
+              <circle cx="120" cy="700" r="1.4" opacity=".6" /><circle cx="640" cy="800" r="1.2" opacity=".45" />
+              <circle cx="940" cy="760" r="1.6" opacity=".7" /><circle cx="1360" cy="820" r="1.1" opacity=".5" />
+            </g>
+          </svg>
+        </div>
         <div className="container">
-          <h2 className="band-title band-title--center reveal">Why teams hand us the night</h2>
-          <p className="band-sub band-sub--center reveal">Nobody hands over their out-of-hours rota lightly. These are the things that make the handover stick.</p>
+          <div className="why-intro reveal">
+            <h2 className="band-title band-title--center">Why teams hand us the night</h2>
+            <p>Nobody hands over their out-of-hours rota lightly. Support was the whole reason we existed, and it has been our job every hour of every day since — mission-critical retail, hyperscale SaaS, platforms that cannot stop trading. This is why the handover sticks:</p>
+          </div>
           <div className="why-grid">
             {REASONS.map((reason) => (
               <article className="why-card reveal" key={reason.title}>
@@ -361,6 +389,11 @@ export default function Support() {
                 <p>{reason.text}</p>
               </article>
             ))}
+            <article className="why-card why-card--accent reveal">
+              <h3>Because you picked the right partner first time</h3>
+              <p>Convinced so far? There is more on the packages page — and if your gap is not covered here, tell us and we will shape it.</p>
+              <Link to="/support#compare" className="why-accent-cta">View packages <span aria-hidden="true">➔</span></Link>
+            </article>
           </div>
         </div>
       </section>
@@ -461,7 +494,7 @@ export default function Support() {
         <div className="container ind-band-grid">
           <div className="ind-band-copy reveal">
             <h2>Industries we support</h2>
-            <p>Every organisation breaks differently. These are the shapes of business we know best — and the reasons their queues look the way they do.</p>
+            <p>Every organisation breaks differently. These are the sectors we know best — and why their queues look the way they do.</p>
             <p className="ind-band-aside">Don't see your sector? <Link to="/contact">Tell us what you run ➔</Link></p>
           </div>
           <div className="ind-acc reveal">
