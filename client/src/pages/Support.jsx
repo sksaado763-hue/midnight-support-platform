@@ -299,6 +299,7 @@ export default function Support() {
                 <h3>{service.title}</h3>
                 <span className="svc-rule" aria-hidden="true" />
                 {service.paras.map((para) => <p key={para.slice(0, 24)}>{para}</p>)}
+                <Link to="/support#compare" className="btn btn-primary svc-cta">View packages <span aria-hidden="true">➔</span></Link>
               </article>
             ))}
           </div>

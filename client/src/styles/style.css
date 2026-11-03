@@ -2055,14 +2055,34 @@ ul { list-style: none; }
 .svc-band .band-rule { width: clamp(48px, 4.39vw, 84px); height: 6px; border-radius: 3px; margin: 0 0 clamp(20px, 1.72vw, 33px); }
 .svc-band .band-sub { margin: 0 0 clamp(13px, 1.15vw, 22px); font-size: clamp(15px, 1.25vw, 24px); line-height: 1.65; max-width: 74ch; }
 .svc-band .band-sub--last { margin-bottom: 0; }
-.svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-.svc-card { border: 1px solid; border-radius: 14px; padding: 30px; }
-.svc-icon { display: block; width: 56px; height: 56px; margin-bottom: 18px; }
+.svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(14px, 1.16vw, 22px); }
+/* The reference band runs #12203f with #1a2b4e cards; skin.css paints both
+   from tokens at equal specificity, so outrank it here. */
+section.svc-band { background: #12203f; }
+.svc-grid .svc-card { background: #1a2b4e; border-color: #e7e7e4; }
+.svc-grid .svc-card p { color: #ffffff; }
+.svc-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  border-radius: clamp(12px, 1.1vw, 21px);
+  padding: clamp(24px, 2.37vw, 45px);
+}
+.svc-icon { display: block; width: clamp(64px, 6.3vw, 120px); height: clamp(64px, 6.3vw, 120px); margin-bottom: clamp(14px, 1.26vw, 24px); }
 .svc-icon svg { width: 100%; height: 100%; }
-.svc-card h3 { margin: 0 0 12px; font-size: 20px; line-height: 1.25; font-weight: 700; }
-.svc-rule { display: block; width: 44px; height: 3px; border-radius: 2px; margin: 0 0 20px; background: var(--amber); }
-.svc-card p { margin: 0 0 15px; font-size: 15px; line-height: 1.6; }
-.svc-card p:last-child { margin-bottom: 0; }
+.svc-card h3 { margin: 0 0 clamp(10px, 0.94vw, 18px); font-size: clamp(17px, 1.58vw, 30px); line-height: 1.25; font-weight: 800; }
+.svc-rule { display: block; width: clamp(40px, 3.47vw, 66px); height: 4px; border-radius: 2px; margin: 0 0 clamp(20px, 1.73vw, 33px); background: var(--amber); }
+.svc-card p { margin: 0 0 clamp(16px, 1.5vw, 29px); font-size: clamp(15px, 1.26vw, 24px); line-height: 1.65; }
+.svc-card p:last-of-type { margin-bottom: clamp(48px, 5.84vw, 111px); }
+.svc-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  height: clamp(48px, 4.15vw, 79px);
+  padding-inline: clamp(24px, 2.1vw, 40px);
+  font-size: clamp(15px, 1.26vw, 24px);
+  font-weight: 700;
+  border-radius: 10px;
+}
 
 .maint-band { padding: 56px 0; }
 .maint-band-inner { max-width: 720px; margin-inline: auto; text-align: center; }
