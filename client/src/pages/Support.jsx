@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
 import LatestInsights from "../components/Cards";
+import TrustLogos from "../components/TrustLogos";
 
 const MEANS = [
   "One ticket queue across the front end, the services, the infrastructure and the APIs",
@@ -237,10 +238,19 @@ export default function Support() {
         </div>
         <div className="container">
           <h1 className="page-hero-title support-hero-title reveal">24/7 support that stays awake so your platform never goes dark</h1>
-          <p className="page-hero-sub support-hero-sub reveal">Monitoring, triage and fixes across your application, website and cloud — handled by engineers who are already awake when it breaks.</p>
+          <p className="page-hero-sub support-hero-sub reveal">Around-the-clock monitoring, triage and fixes for your application, website and cloud.</p>
           <div className="hero-actions reveal">
             <Link to="/support#compare" className="btn btn-primary support-hero-cta">Compare packages <span aria-hidden="true">➔</span></Link>
           </div>
+          <div className="support-hero-trust reveal">
+            <p className="trust-label">Trusted by:</p>
+            <TrustLogos />
+          </div>
+        </div>
+        <div className="support-hero-divider" aria-hidden="true">
+          <svg viewBox="0 0 1920 160" preserveAspectRatio="none">
+            <path d="M0 68 C180 24 320 0 480 0 C700 0 1120 135 1450 135 C1660 135 1790 100 1920 69 L1920 160 L0 160 Z" fill="var(--bg)" />
+          </svg>
         </div>
       </section>
 

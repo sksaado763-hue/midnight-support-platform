@@ -1828,7 +1828,7 @@ ul { list-style: none; }
 .page-hero--support {
   position: relative;
   overflow: hidden;
-  padding: clamp(64px, 5.3vw, 102px) 0 clamp(96px, 8.4vw, 162px);
+  padding: clamp(64px, 5.3vw, 102px) 0 calc(clamp(70px, 8.4vw, 160px) + clamp(56px, 7vw, 133px));
 }
 .page-hero--support .container { width: auto; padding-inline: clamp(24px, 6vw, 116px); }
 .page-hero--support .hero-stars svg { width: 100%; height: 100%; }
@@ -1837,7 +1837,7 @@ ul { list-style: none; }
   line-height: 0.95;
   font-weight: 800;
   letter-spacing: -0.01em;
-  max-width: 8.2em;
+  max-width: 9.2em;
 }
 .support-hero-sub {
   margin-top: clamp(28px, 2.86vw, 55px);
@@ -1852,6 +1852,27 @@ ul { list-style: none; }
   font-size: clamp(16px, 1.25vw, 24px);
   border-radius: 10px;
 }
+/* The strip sits above a flowing wave that hands the navy over to the page. */
+.support-hero-trust { margin-top: clamp(64px, 7vw, 130px); }
+.page-hero--support .trust-label {
+  font-size: clamp(16px, 1.2vw, 23px);
+  line-height: 1.4;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: clamp(20px, 3.7vw, 70px);
+}
+.support-hero-trust .trust-marquee { --ms: clamp(32px, 2.7vw, 52px); --ws: clamp(24px, 2vw, 34px); }
+.support-hero-trust .trust-logo { margin-right: clamp(2.6rem, 5vw, 6.5rem); }
+.support-hero-divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(70px, 8.4vw, 160px);
+  line-height: 0;
+  pointer-events: none;
+}
+.support-hero-divider svg { display: block; width: 100%; height: 100%; }
 
 .breadcrumb {
   font-family: var(--font-body);
