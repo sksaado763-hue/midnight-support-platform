@@ -2210,11 +2210,46 @@ section.maint-band { position: relative; background: #efefef; }
 .cap-card li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5; }
 .cap-card li::before { content: "✓"; font-weight: 900; flex: none; }
 
-.case-feature { padding: 72px 0; }
-.case-feature-inner { max-width: 760px; }
-.case-feature-label { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-.case-feature h2 { margin: 0 0 0.6rem; font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 700; }
-.case-feature-headline { margin: 0 0 1.6rem; font-size: var(--fs-h4); line-height: var(--lh-h4); }
+/* Reference Ford band (seo-text-block on navy): the reference's own 1920×73
+   wave paths top and bottom, then a 4 / 1 / 7 split — starfield oval artwork,
+   a full-height amber rule, left-aligned white copy and a white CTA. Capture
+   px at 1911: container 1568, row 520, label 30, h2 56, h4 33, p 27, button
+   77×235. skin.css paints label/headline from the old treatment, so the
+   colour overrides below match its specificity to win the later import. */
+section.case-feature { position: relative; overflow: hidden; background: var(--navy); color: #ffffff; padding: clamp(42px, 3.14vw, 60px) 0; }
+.case-feature > .hero-stars { opacity: 0.5; }
+.case-wave { position: absolute; left: 0; right: 0; line-height: 0; pointer-events: none; }
+.case-wave svg { display: block; width: 100%; height: clamp(40px, 3.82vw, 73px); }
+.case-wave--top { top: 0; }
+.case-wave--bottom { bottom: 0; }
+.case-feature > .container { width: auto; max-width: clamp(560px, 81.73vw, 1562px); padding-inline: 0; }
+.case-feature-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 33.33% 8.34% 58.33%; align-items: stretch; min-height: clamp(360px, 27.2vw, 520px); }
+.case-feature-art { display: flex; align-items: center; justify-content: center; padding-inline: clamp(12px, 1.57vw, 30px); }
+.case-feature-art svg { width: 100%; max-width: clamp(240px, 28.6vw, 547px); height: auto; }
+.case-feature-line { background: linear-gradient(to right, transparent 49.7%, var(--amber) 49.7%, var(--amber) 50.3%, transparent 50.3%); }
+.case-feature-content { display: flex; flex-direction: column; justify-content: center; padding-left: clamp(18px, 2.2vw, 42px); text-align: left; }
+.case-feature-label { margin: 0 0 clamp(20px, 1.89vw, 36px); font-size: clamp(16px, 1.57vw, 30px); line-height: 1.2; font-weight: 900; letter-spacing: 0; text-transform: uppercase; }
+.case-feature h2 { margin: 0 0 clamp(10px, 0.94vw, 18px); font-size: clamp(30px, 2.93vw, 56px); line-height: 1.15; font-weight: 900; letter-spacing: -0.01em; color: #ffffff; }
+.case-feature-headline { margin: 0 0 clamp(8px, 0.79vw, 15px); font-size: clamp(20px, 1.83vw, 35px); line-height: 1.3; font-weight: 700; }
+.case-feature-text { margin: 0 0 clamp(22px, 2.05vw, 39px); font-size: clamp(16px, 1.41vw, 27px); line-height: 1.45; max-width: 62ch; }
+.case-feature .case-feature-cta {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(10px, 0.79vw, 15px);
+  height: clamp(48px, 4.03vw, 77px);
+  padding-inline: clamp(24px, 2.04vw, 39px);
+  border-radius: 10px;
+  background: #ffffff;
+  color: #132140;
+  font-size: clamp(16px, 1.41vw, 27px);
+  font-weight: 900;
+  text-decoration: none;
+}
+.case-feature .case-feature-cta:hover,
+.case-feature .case-feature-cta:focus { background: var(--amber); color: #132140; }
+.case-feature .case-feature-label { color: #ffffff; }
+.case-feature .case-feature-headline { color: #ffffff; }
 
 .pricing-intro { max-width: 62ch; margin: 0 auto 2.4rem; text-align: center; color: var(--text-muted); }
 
@@ -2264,6 +2299,11 @@ section.maint-band { position: relative; background: #efefef; }
   .ind-band-grid { grid-template-columns: 1fr; gap: 32px; }
   .support-intro .container { max-width: none; padding-inline: 24px; }
   .svc-band > .container { max-width: none; padding-inline: 24px; }
+  .case-feature > .container { max-width: none; padding-inline: 24px; }
+  .case-feature-grid { grid-template-columns: 1fr; min-height: 0; gap: 36px; }
+  .case-feature-line { display: none; }
+  .case-feature-content { padding-left: 0; text-align: center; }
+  .case-feature .case-feature-cta { align-self: center; }
   .maint-inner { max-width: none; }
   .support-cases .container { max-width: none; padding-inline: 24px; }
   .support-intro-grid { gap: clamp(36px, 9vw, 56px); }
