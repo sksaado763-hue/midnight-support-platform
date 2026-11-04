@@ -188,6 +188,23 @@ const PII_STARS = Array.from({ length: 84 }, (_, i) => {
   return { cx: rnd(1) * 1911, cy: Math.pow(rnd(2), 1.7) * 720, r: 0.9 + rnd(3) * 2.1, o: 0.18 + rnd(4) * 0.62 };
 });
 
+/* The reference's starfield is a cover-positioned texture of blurred dots: a
+   bright core about 3px across, a halo roughly twice as wide, none brighter
+   than 19% white over the navy, and about one per 12,200px². The gradient
+   carries the falloff, so `r` below is the halo and the core is ~40% of it.
+   Brightness goes on `fill-opacity`, not `opacity`: twinkle animates the
+   `opacity` property, which beats the presentation attribute.
+   0.9 container × 0.6 twinkle mean × 0.35 fill = 0.19. */
+const WHY_STARS = Array.from({ length: 296 }, (_, i) => {
+  const rnd = (n) => { const s = Math.sin(i * 12.9898 + n * 78.233) * 43758.5453; return s - Math.floor(s); };
+  return {
+    cx: rnd(1) * 1911,
+    cy: rnd(2) * 1765,
+    r: 2.4 + Math.pow(rnd(3), 2.2) * 7.4,
+    o: 0.26 + rnd(4) * 0.2,
+  };
+});
+
 const INDUSTRIES = [
   {
     title: "Digital Agencies",
@@ -355,16 +372,18 @@ export default function Support() {
 
       <section className="why-band">
         <div className="hero-stars" aria-hidden="true">
-          <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-            <g fill="#ffffff">
-              <circle cx="90" cy="120" r="1.5" opacity=".6" /><circle cx="330" cy="60" r="1.1" opacity=".45" />
-              <circle cx="560" cy="200" r="1.7" opacity=".7" /><circle cx="820" cy="90" r="1.2" opacity=".5" />
-              <circle cx="1080" cy="180" r="1.5" opacity=".65" /><circle cx="1330" cy="70" r="1.3" opacity=".55" />
-              <circle cx="1420" cy="330" r="1.6" opacity=".7" /><circle cx="200" cy="420" r="1.2" opacity=".45" />
-              <circle cx="480" cy="560" r="1.4" opacity=".6" /><circle cx="760" cy="480" r="1" opacity=".4" />
-              <circle cx="1020" cy="620" r="1.5" opacity=".65" /><circle cx="1260" cy="520" r="1.2" opacity=".5" />
-              <circle cx="120" cy="700" r="1.4" opacity=".6" /><circle cx="640" cy="800" r="1.2" opacity=".45" />
-              <circle cx="940" cy="760" r="1.6" opacity=".7" /><circle cx="1360" cy="820" r="1.1" opacity=".5" />
+          <svg viewBox="0 0 1911 1765" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <radialGradient id="whyStarGlow">
+                <stop offset="0" stopColor="#ffffff" />
+                <stop offset="0.4" stopColor="#ffffff" stopOpacity="0.8" />
+                <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            <g fill="url(#whyStarGlow)">
+              {WHY_STARS.map((star, i) => (
+                <circle key={i} cx={star.cx.toFixed(1)} cy={star.cy.toFixed(1)} r={star.r.toFixed(2)} fillOpacity={star.o.toFixed(2)} />
+              ))}
             </g>
           </svg>
         </div>
