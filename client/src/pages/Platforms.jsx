@@ -115,11 +115,10 @@ export default function Platforms() {
             {(platforms || []).map((platform) => (
               <article className="platform-card reveal" key={platform.slug}>
                 <div className={`platform-badge platform-badge--${platform.tint}`} aria-hidden="true">{platform.short}</div>
-                <h2>{platform.name}</h2>
+                <h2 className="platform-card-title">
+                  <Link to={`/platforms/${platform.slug}`}>{platform.name} <span aria-hidden="true">➔</span></Link>
+                </h2>
                 <p>{platform.intro}</p>
-                <Link className="text-link" to={`/platforms/${platform.slug}`}>
-                  Explore {platform.name} support <span aria-hidden="true">➔</span>
-                </Link>
               </article>
             ))}
           </div>

@@ -1933,6 +1933,37 @@ ul { list-style: none; }
 }
 .platforms-hero-divider svg { display: block; width: 100%; height: 100%; }
 
+/* Platforms icon-grid, measured 1:1 off the reference capture at 1906px:
+   179px gutters, three 516px columns that each keep 63px of their own so the
+   copy lands 390px wide, a logo slot, a 29px heading that is itself the link
+   and 22px/38 copy in the band's own navy rather than the site's muted grey.
+   There is no card here — the reference separates columns with air. */
+.platforms-list .container { width: auto; padding-inline: clamp(20px, 9.367vw, 179px); }
+.platforms-list .platform-grid { gap: clamp(48px, 4.71vw, 90px) 0; }
+.platforms-list .platform-card {
+  display: block;
+  padding: 0 clamp(0px, 3.297vw, 63px);
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.platforms-list .platform-card:hover { border-color: transparent; box-shadow: none; }
+.platforms-list .platform-card-title {
+  margin-top: clamp(56px, 5.965vw, 114px);
+  font-size: clamp(20px, 1.413vw, 27px);
+  line-height: 1.2;
+  font-weight: 700;
+}
+.platforms-list .platform-card-title a { color: var(--navy); }
+.platforms-list .platform-card-title a:hover { color: var(--navy); }
+.platforms-list .platform-card p {
+  margin-top: clamp(14px, 0.994vw, 19px);
+  font-size: clamp(16px, 1.151vw, 22px);
+  line-height: 1.727;
+  color: var(--navy);
+}
+
 .breadcrumb {
   font-family: var(--font-body);
   font-weight: 700;
@@ -3007,7 +3038,7 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 
 /* ================= Platforms ================= */
 
-.platforms-list { background: var(--bg); padding: var(--section-pad) 0; }
+.platforms-list { background: var(--bg); padding: clamp(48px, 10.78vw, 206px) 0; }
 .platform-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
