@@ -1886,15 +1886,15 @@ ul { list-style: none; }
    reference's ramp — #122142 at the top down to #17316c at the wave. */
 .page-hero--platforms {
   position: relative;
-  overflow: hidden;
   padding: clamp(56px, 5.861vw, 112px) 0 clamp(120px, 11.251vw, 215px);
 }
 /* Doubled class outranks skin.css's later `.page-hero` gradient import. */
 .page-hero.page-hero--platforms { background: linear-gradient(180deg, #122142 0%, #17316c 100%); }
 .page-hero--platforms .container { width: auto; padding-inline: clamp(20px, 10.413vw, 199px); }
 /* The layer carries the planets too, so it stays fully opaque and the dots
-   dim themselves — 0.6 twinkle mean x 0.20 fill = 0.12. */
-.page-hero--platforms > .hero-stars { opacity: 1; }
+   dim themselves — 0.6 twinkle mean x 0.20 fill = 0.12. The clip lives here
+   rather than on the section so the wave can bleed past the bottom edge. */
+.page-hero--platforms > .hero-stars { opacity: 1; overflow: hidden; }
 .page-hero--platforms > .hero-stars svg { width: 100%; height: 100%; }
 /* twinkle is declared on every circle in a starfield layer and the planets are
    drawn in the same one; a sphere that fades in and out is not the ask. */
@@ -1922,11 +1922,13 @@ ul { list-style: none; }
   font-size: clamp(14px, 1.047vw, 20px);
   border-radius: 8px;
 }
+/* Overshoots the join by 1px: at fractional display scaling the section's
+   bottom edge lands mid-row and paints a full-width grey rule under the wave. */
 .platforms-hero-divider {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -1px;
   height: clamp(40px, 4.186vw, 80px);
   line-height: 0;
   pointer-events: none;
@@ -3038,7 +3040,9 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 
 /* ================= Platforms ================= */
 
-.platforms-list { background: var(--bg); padding: clamp(48px, 10.78vw, 206px) 0; }
+/* Paints over the crest the hero hands it, which otherwise reads as a grey
+   rule at fractional display scaling; the +1px padding holds the copy. */
+.platforms-list { background: var(--bg); margin-top: -1px; padding: calc(clamp(48px, 10.78vw, 206px) + 1px) 0 clamp(48px, 10.78vw, 206px); }
 .platform-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
