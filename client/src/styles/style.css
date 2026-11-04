@@ -2188,10 +2188,20 @@ section.statement { padding: var(--section-pad) 0 0; }
    px at 1911 (reference CSS × 1.647). */
 .why-band { position: relative; padding: 0; }
 /* Element-qualified to outrank skin.css's `.why-band { background: var(--navy) }`.
-   The reference's icon-grid slab is #12203f — the same value svc-band already
-   uses, and 3 units less blue than the hero tone set on this page's first band. */
-section.why-band { background: #12203f; }
+   The reference's icon-grid texture is navy at the top, royal blue behind the
+   cards; the measured plateau is #173677 and the navy is the same #12203f
+   svc-band uses. */
+section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40% 100%); }
+/* The layer also carries the planets, so it stays fully opaque and the dots
+   carry the dimming themselves — 0.6 twinkle mean × 0.32 fill = 0.19. */
+.why-band > .hero-stars { opacity: 1; }
 .why-band > .hero-stars svg { width: 100%; height: 100%; }
+/* twinkle is declared on every circle in a starfield layer, and these planets
+   are drawn in the same one — a sphere that fades in and out is not the ask. */
+.hero-stars .why-planet circle { animation: none; }
+/* skin.css paints the cards translucent white over the band; the reference's
+   plates are an opaque navy that reads the same wherever the gradient is. */
+.why-band .why-card { background: #122140; }
 /* The crest strips are the band's first and last in-flow children, so the band's
    own padding lives on the container instead — otherwise each strip floats inside
    the navy and the section edges stay straight lines Chrome half-covers. */
