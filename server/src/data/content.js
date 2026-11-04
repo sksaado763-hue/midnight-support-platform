@@ -273,7 +273,7 @@ const platforms = [
     name: "Umbraco",
     short: "UM",
     tint: "navy",
-    tagline: "Managed cloud and 24/7 eyes-on support for Umbraco",
+    tagline: "Azure-hosted Umbraco, watched and maintained by us",
     intro: "Umbraco is the friendly open-source CMS that often becomes the focal point of a customer's digital presence — and the friendliest CMS still deserves serious cover.",
     problem: "Umbraco's flexibility means every install is unique. Generic host support knows the infrastructure but not your build; your dev team knows the build but isn't awake at 3am. That gap is where outages live.",
     solution: "As partners of both Umbraco and Microsoft Azure, we support your CMS and its cloud as a single system — patching, performance tuning, uptime and incident response, all under one roof.",
@@ -295,7 +295,7 @@ const platforms = [
     tagline: "Managed services and 24/7 support for AEM estates",
     intro: "AEM is an enterprise-grade experience platform — cross-channel content, personalisation, and a sizeable operational footprint that quietly demands a specialist team.",
     problem: "AEM estates are large, integrated and business-critical. When authoring slows or a publish queue backs up, marketing campaigns and entire product launches are affected — and AEM expertise is scarce and expensive to keep in-house.",
-    solution: "We provide managed cloud services and 24/7 eyes-on support for AEM, watching author instances, publish farms and dispatchers as one estate and intervening before small issues become launch-day problems.",
+    solution: "We run AEM as one estate rather than three queues: author instances, publish farms and dispatchers watched together, with our engineers stepping in long before a slow page becomes a launch-day problem.",
     features: [
       { title: "AEM operational depth", text: "Author/publish topologies, dispatcher rules, oak repository health and index maintenance — handled by people who've done it at scale." },
       { title: "Release-window cover", text: "Campaign launches and major publishes get pre-checked environments and war-room coverage on the day." },
@@ -336,7 +336,7 @@ const platforms = [
     solution: "Our engineers keep Optimizely platforms healthy — content, commerce and experimentation layers — so your team can trust the data, ship campaigns on schedule and never wonder whether the platform is the problem.",
     features: [
       { title: "Experimentation reliability", text: "We watch the runtime and integrations behind your tests, so a misbehaving snippet never quietly corrupts your results." },
-      { title: "Faster feature delivery", text: "Release support and pipeline health checks that get your features to market without drama." },
+      { title: "Faster feature delivery", text: "Release support and pipeline health checks that ship your features without the midnight drama." },
     ],
     faqs: [
       { q: "Which Optimizely products do you cover?", a: "CMS, Commerce and the experimentation platform — individually or as a combined estate." },
@@ -349,10 +349,10 @@ const platforms = [
     name: "WordPress",
     short: "WP",
     tint: "amber",
-    tagline: "24/7 support, managed cloud and DevOps for WordPress",
+    tagline: "WordPress hosting with an on-call engineering team behind it",
     intro: "WordPress offers its users tremendous freedom — which is exactly why high-traffic, business-critical WordPress installs need more than a plugin that promises backups.",
     problem: "Popular, open and endlessly extensible, WordPress is also the most attacked platform on the internet. Plugin conflicts, update breakage and traffic spikes all conspire against the unattended site.",
-    solution: "With our 24/7 support, managed cloud and DevOps offering you get the best of both worlds: an easy-to-use CMS your team already loves, wrapped in enterprise-grade cover — hardening, patching, monitoring and instant response.",
+    solution: "Keep the CMS your editors already like and put our engineers behind it: hardening, patching, monitoring and a response line that answers at any hour, on infrastructure we operate for you.",
     features: [
       { title: "Hardened by default", text: "Security baseline, access hygiene and update discipline applied from day one — not after the first scare." },
       { title: "Scale-ready architecture", text: "Caching layers, CDNs and database tuning that keep editorial teams fast at any traffic level." },

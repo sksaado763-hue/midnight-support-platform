@@ -1880,6 +1880,59 @@ ul { list-style: none; }
 }
 .support-hero-divider svg { display: block; width: 100%; height: 100%; }
 
+/* Platforms hero, measured 1:1 off the reference capture at 1908px: 199px
+   gutters, a 67px/79 two-line headline, 22px copy, a 77px CTA and the navy
+   field handed to the page on a cosine 80px deep. The field itself is the
+   reference's ramp — #122142 at the top down to #17316c at the wave. */
+.page-hero--platforms {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 5.861vw, 112px) 0 clamp(120px, 11.251vw, 215px);
+}
+/* Doubled class outranks skin.css's later `.page-hero` gradient import. */
+.page-hero.page-hero--platforms { background: linear-gradient(180deg, #122142 0%, #17316c 100%); }
+.page-hero--platforms .container { width: auto; padding-inline: clamp(20px, 10.413vw, 199px); }
+/* The layer carries the planets too, so it stays fully opaque and the dots
+   dim themselves — 0.6 twinkle mean x 0.20 fill = 0.12. */
+.page-hero--platforms > .hero-stars { opacity: 1; }
+.page-hero--platforms > .hero-stars svg { width: 100%; height: 100%; }
+/* twinkle is declared on every circle in a starfield layer and the planets are
+   drawn in the same one; a sphere that fades in and out is not the ask. */
+.hero-stars .hero-planet circle { animation: none; }
+.platforms-hero-title,
+.platforms-hero-sub { max-width: clamp(280px, 31.4vw, 600px); }
+.platforms-hero-title {
+  font-size: clamp(32px, 3.506vw, 67px);
+  line-height: 1.14;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.platforms-hero-sub {
+  margin-top: clamp(10px, 0.732vw, 14px);
+  font-size: clamp(16px, 1.151vw, 22px);
+  line-height: 1.72;
+}
+/* Three classes to beat skin.css's later `.page-hero-sub` 0.82 white: this
+   band's copy is measured at full #ffffff in the capture. */
+.page-hero--platforms .page-hero-sub.platforms-hero-sub { color: #ffffff; }
+.page-hero--platforms .hero-actions { margin-top: clamp(14px, 0.994vw, 19px); }
+/* Width follows our own label; `.hero-actions .btn` keeps its 24px padding. */
+.platforms-hero-cta {
+  height: clamp(52px, 4.029vw, 77px);
+  font-size: clamp(14px, 1.047vw, 20px);
+  border-radius: 8px;
+}
+.platforms-hero-divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(40px, 4.186vw, 80px);
+  line-height: 0;
+  pointer-events: none;
+}
+.platforms-hero-divider svg { display: block; width: 100%; height: 100%; }
+
 .breadcrumb {
   font-family: var(--font-body);
   font-weight: 700;
@@ -3331,6 +3384,8 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 .hero-stars circle:nth-child(2n) { animation-duration: 4.2s; animation-delay: 0.6s; }
 .hero-stars circle:nth-child(3n) { animation-duration: 2.6s; animation-delay: 1.2s; }
 .hero-stars circle:nth-child(5n) { animation-duration: 5s; animation-delay: 0.3s; }
+/* The field keeps cycling, but holds still while the pointer is inside it. */
+.hero-stars:hover circle { animation-play-state: paused; }
 .brand-mark { animation: moonGlow 8s ease-in-out infinite; }
 .hero-cloud-a { animation: drift 30s ease-in-out infinite; }
 .hero-cloud-b { animation: drift 25s ease-in-out infinite reverse; }
