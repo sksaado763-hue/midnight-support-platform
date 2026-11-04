@@ -104,6 +104,7 @@ export default function Header() {
   const [activeRows, setActiveRows] = useState({});
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [hiddenOnScroll, setHiddenOnScroll] = useState(false);
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(null);
   const [caretX, setCaretX] = useState({});
@@ -137,6 +138,35 @@ export default function Header() {
   }, [searchOpen]);
 
   useEffect(closeSearch, [pathname]);
+
+  /* Scroll away on the way down, back on the first pixel up — but never while
+     the drawer, the search panel or a mega menu is open, or the thing being
+     used would slide offscreen with the bar. */
+  const overlayOpen = mobileOpen || searchOpen || Object.values(openMenus).some(Boolean);
+
+  useEffect(() => {
+    if (overlayOpen) {
+      setHiddenOnScroll(false);
+      return undefined;
+    }
+    let lastY = window.scrollY;
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const y = window.scrollY;
+        if (Math.abs(y - lastY) < 8) return;
+        setHiddenOnScroll(y > lastY && y > 160);
+        lastY = y;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, [overlayOpen]);
 
   const needle = query.trim().toLowerCase();
   const results = index && needle.length > 1
@@ -183,7 +213,7 @@ export default function Header() {
   }
 
   return (
-    <header className="site-header" id="masthead">
+    <header className={`site-header${hiddenOnScroll ? " is-hidden" : ""}`} id="masthead">
       <div className="header-inner" ref={headerInner}>
         <Link to="/" className="brand" aria-label="Just After Midnight — home" onClick={closeMobile}>
           <span className="brand-name">

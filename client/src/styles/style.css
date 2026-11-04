@@ -204,7 +204,11 @@ ul { list-style: none; }
   z-index: 100;
   background: var(--navy);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.32s ease;
 }
+/* Sticky keeps the header's slot in the layout, so sliding it up by its own
+   height costs the page no reflow — the copy below never jumps. */
+.site-header.is-hidden { transform: translateY(-100%); }
 /* Match .container so the brand, nav and CTA share the page copy's edges. */
 .header-inner {
   position: relative;
@@ -3334,6 +3338,7 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
   .hero-card:hover, .hero-card:hover .hero-card-arrow { transform: none; }
   .insight-card:hover .insight-media svg, .case-card:hover .case-art svg { transform: none; }
   .search-panel { animation: none; }
+  .site-header { transition: none; }
   .scroll-down:hover .scroll-arrow, .scroll-down:focus-visible .scroll-arrow { animation: none; }
   .hero-stars circle, .brand-mark, .partners-illustration,
   .notfound-art, .hero-cloud-a, .hero-cloud-b, .hero-moon,
