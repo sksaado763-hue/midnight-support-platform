@@ -2664,8 +2664,7 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 .archive-cloud--left { top: 176px; left: 1%; width: 204px; }
 .archive-header { position: relative; z-index: 1; }
 .archive-title { margin-bottom: 24px; }
-/* The standfirst uses the home hero subtitle's format, not the archive's bold. */
-.archive-description { font-family: var(--font-head); font-size: 20px; line-height: 28px; font-weight: 500; }
+.archive-description { font-family: var(--font-head); font-size: 20px; font-weight: 700; }
 
 .archive-search { position: relative; z-index: 2; }
 .archive-search-form { display: flex; gap: 19px; font-family: var(--font-body); }
@@ -2771,18 +2770,16 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 @media (min-width: 1200px) {
   .case-study-archive .container { width: min(1510px, 100% - 40px); padding-inline: 0; }
   .archive-hero { padding: 74px 0 70px; }
-  /* The headline and standfirst keep the home page's type here — 48/56 weight 600
-     over 20/28 weight 500 — rather than the archive capture's 66/76 over 27/38
-     bold. Everything else in this tier is still the reference's geometry, which is
-     why the cloud offsets below are anchored to the text block, not to the header. */
+  .archive-title { font-size: 66px; line-height: 76px; margin-bottom: 32px; }
+  .archive-description { font-size: 27px; line-height: 38px; }
+  /* Boxed by ink, not by viewBox: our crescent is 63 wide inside a 90 box, so the
+     offsets below place the glyph where the capture puts it. */
   .archive-moon { top: 51px; left: 4.6%; width: 90px; }
   .archive-cloud--right { top: 73px; right: 5.2%; width: 194px; height: 80px; }
-  /* Anchored to the text block, not to the header. In the capture this cloud
-     overlaps the last headline line and stops 19px above the standfirst, but
-     their headline runs three lines and ours two: lifting it to that gap puts
-     its top edge over the crescent. So it sits level with the standfirst's
-     opening line instead — 32px clear of the moon, 9px clear of the text
-     column, which is the clearance the capture shows on that edge. */
+  /* Their left cloud sits 250px under the header, but that clears their three-line
+     headline only; ours wraps to two, so the same offset drops it onto the
+     description. Anchored to the description instead: 19px of gap above the first
+     description ink, which is the gap the capture shows. */
   .archive-cloud--left { top: 166px; left: 1.2%; width: 194px; height: 80px; }
   .archive-search-form { gap: 28px; }
   .case-study-search { flex-basis: 57.9%; }

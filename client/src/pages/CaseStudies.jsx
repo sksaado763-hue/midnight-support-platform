@@ -17,6 +17,21 @@ const HERO_STARS = Array.from({ length: 96 }, (_, i) => {
   };
 });
 
+/* Their field is not all dots: the capture carries crisp four-point sparkles
+   among the soft ones, roughly one per 40k square px of hero, arm spans 12–28
+   at capture scale, and they are turned through a quarter turn rather than
+   always standing square. */
+const HERO_SPARKS = Array.from({ length: 30 }, (_, i) => {
+  const rnd = (n) => { const s = Math.sin(i * 45.113 + n * 91.7) * 24634.6345; return s - Math.floor(s); };
+  return {
+    cx: 20 + rnd(1) * 1871,
+    cy: Math.pow(rnd(2), 1.15) * 430,
+    r: 6 + Math.pow(rnd(3), 1.6) * 8,
+    rot: rnd(4) * 90,
+    o: 0.3 + rnd(5) * 0.45,
+  };
+});
+
 const tagHref = (tag) => `/case-studies${tag ? `?tag=${encodeURIComponent(tag)}` : ""}`;
 
 /* Round-robin keeps the columns balanced without measuring the cards. */
@@ -77,6 +92,16 @@ export default function CaseStudies() {
             <g fill="url(#archiveStarGlow)">
               {HERO_STARS.map((star, i) => (
                 <circle key={i} cx={star.cx.toFixed(1)} cy={star.cy.toFixed(1)} r={star.r.toFixed(2)} fillOpacity={star.o.toFixed(2)} />
+              ))}
+            </g>
+            <g fill="#ffffff">
+              {HERO_SPARKS.map((spark, i) => (
+                <path
+                  key={i}
+                  d="M0 -1C.1-.25.25-.1 1 0 .25.1.1.25 0 1-.1.25-.25.1-1 0-.25-.1-.1-.25 0-1Z"
+                  transform={`translate(${spark.cx.toFixed(1)} ${spark.cy.toFixed(1)}) rotate(${spark.rot.toFixed(0)}) scale(${spark.r.toFixed(1)})`}
+                  fillOpacity={spark.o.toFixed(2)}
+                />
               ))}
             </g>
           </svg>
