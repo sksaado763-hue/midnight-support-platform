@@ -7,28 +7,27 @@ import { CaseStudyCard } from "../components/Cards";
 /* The reference's archive shows twenty studies a page across three columns. */
 const PER_PAGE = 20;
 
-const HERO_STARS = Array.from({ length: 96 }, (_, i) => {
+/* Their field is a canvas, so its stars are device pixels, not a scaled viewBox:
+   read off the live layer at 1889 it carries 67 dots 6–23px across and 10
+   four-point sparkles 8–14px across over 901k square px — one per 11.7k, all of
+   them solid white, no glow. The viewBox below is the hero's own box at this
+   width, so the same density and the same sizes fall out at the same scale. */
+const HERO_STARS = Array.from({ length: 47 }, (_, i) => {
   const rnd = (n) => { const s = Math.sin(i * 12.9898 + n * 78.233) * 43758.5453; return s - Math.floor(s); };
   return {
     cx: rnd(1) * 1911,
-    cy: Math.pow(rnd(2), 1.1) * 420,
-    r: 2.2 + Math.pow(rnd(3), 2.2) * 6.8,
-    o: 0.22 + rnd(4) * 0.2,
+    cy: rnd(2) * 330,
+    r: 3 + Math.pow(rnd(3), 1.5) * 8.5,
   };
 });
 
-/* Their field is not all dots: the capture carries crisp four-point sparkles
-   among the soft ones, roughly one per 40k square px of hero, arm spans 12–28
-   at capture scale, and they are turned through a quarter turn rather than
-   always standing square. */
-const HERO_SPARKS = Array.from({ length: 30 }, (_, i) => {
+const HERO_SPARKS = Array.from({ length: 7 }, (_, i) => {
   const rnd = (n) => { const s = Math.sin(i * 45.113 + n * 91.7) * 24634.6345; return s - Math.floor(s); };
   return {
     cx: 20 + rnd(1) * 1871,
-    cy: Math.pow(rnd(2), 1.15) * 430,
-    r: 6 + Math.pow(rnd(3), 1.6) * 8,
+    cy: rnd(2) * 330,
+    r: 4 + rnd(3) * 3,
     rot: rnd(4) * 90,
-    o: 0.3 + rnd(5) * 0.45,
   };
 });
 
@@ -81,17 +80,10 @@ export default function CaseStudies() {
     <main className="case-study-archive">
       <section className="archive-hero cutout-bottom">
         <div className="hero-stars" aria-hidden="true">
-          <svg viewBox="0 0 1911 520" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <radialGradient id="archiveStarGlow">
-                <stop offset="0" stopColor="#ffffff" />
-                <stop offset="0.4" stopColor="#ffffff" stopOpacity="0.8" />
-                <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            <g fill="url(#archiveStarGlow)">
+          <svg viewBox="0 0 1911 330" preserveAspectRatio="xMidYMid slice">
+            <g fill="#ffffff">
               {HERO_STARS.map((star, i) => (
-                <circle key={i} cx={star.cx.toFixed(1)} cy={star.cy.toFixed(1)} r={star.r.toFixed(2)} fillOpacity={star.o.toFixed(2)} />
+                <circle key={i} cx={star.cx.toFixed(1)} cy={star.cy.toFixed(1)} r={star.r.toFixed(2)} />
               ))}
             </g>
             <g fill="#ffffff">
@@ -100,7 +92,6 @@ export default function CaseStudies() {
                   key={i}
                   d="M0 -1C.1-.25.25-.1 1 0 .25.1.1.25 0 1-.1.25-.25.1-1 0-.25-.1-.1-.25 0-1Z"
                   transform={`translate(${spark.cx.toFixed(1)} ${spark.cy.toFixed(1)}) rotate(${spark.rot.toFixed(0)}) scale(${spark.r.toFixed(1)})`}
-                  fillOpacity={spark.o.toFixed(2)}
                 />
               ))}
             </g>
