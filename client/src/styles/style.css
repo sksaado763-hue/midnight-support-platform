@@ -2750,6 +2750,40 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
   .case-study-card__title { font-size: 1.1rem; }
 }
 
+/* Their archive is not built on the 1170 container: measured off the capture,
+   the search row runs 200→1710 and the three cards 212→1697, so the whole page
+   lives on a 1510 track with the grid inset 12. Every number below is capture
+   px at our 1911 verification viewport. */
+@media (min-width: 1200px) {
+  .case-study-archive .container { width: min(1510px, 100% - 40px); padding-inline: 0; }
+  .archive-hero { padding-bottom: 70px; }
+  .archive-title { font-size: 66px; line-height: 76px; margin-bottom: 36px; }
+  .archive-description { font-size: 27px; line-height: 38px; }
+  .archive-moon { top: 14px; left: 3.8%; width: 90px; }
+  .archive-cloud--right { top: 45px; right: 7%; width: 190px; }
+  .archive-cloud--left { top: 205px; left: 4.9%; width: 172px; }
+  .archive-search-form { gap: 28px; }
+  .case-study-search { flex-basis: 57.9%; }
+  .case-study-tag-filter { flex-basis: 28.9%; }
+  .case-study-submit { flex-basis: 9.7%; }
+  .case-study-submit .btn { width: 100%; }
+  .archive-search-input,
+  .archive-tag-select { height: 70px; padding: 0 26px; border-radius: 10px; font-size: 18px; }
+  .archive-tag-select { padding-right: 66px; }
+  .select-wrap::after { right: 32px; width: 11px; height: 11px; margin-top: -8px; }
+  .case-study-submit .btn { height: 70px; }
+  .archive-content { padding-top: 110px; }
+  .case-study-masonry-grid { gap: 27px; padding-inline: 12px; }
+  .case-study-column { gap: 28px; }
+  .case-study-card { padding: 51px 63px 48px; border-radius: 7px; }
+  .case-study-card__image { margin-bottom: 40px; border-radius: 10px; }
+  .case-study-card__image svg { height: 155px; border-radius: 10px; }
+  .case-study-card__title { font-size: 24px; line-height: 33px; margin-bottom: 14px; }
+  .case-study-card__excerpt { font-size: 22px; line-height: 37px; flex: 0 0 auto; margin-bottom: 0; }
+  .case-study-card__tags { margin-top: 40px; padding-top: 0; gap: 18px; }
+  .case-study-card__tags .badge { padding: 10px 19px; border-radius: 8px; font-size: 19px; line-height: 22px; }
+}
+
 .case-detail { background: var(--bg); padding: 60px 0 var(--section-pad); }
 .case-detail-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 2.5rem; align-items: start; }
 .prose h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 700; margin: 1.8rem 0 0.7rem; }
