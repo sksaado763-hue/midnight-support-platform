@@ -84,10 +84,10 @@ export default function CaseStudies() {
         <svg className="archive-moon" viewBox="0 0 96 96" aria-hidden="true">
           <path d="M58 6a42 42 0 1 0 27 75A46 46 0 0 1 58 6z" fill="var(--amber)" />
         </svg>
-        <svg className="archive-cloud archive-cloud--right" viewBox="0 0 200 90" aria-hidden="true">
+        <svg className="archive-cloud archive-cloud--right" viewBox="0 0 200 90" preserveAspectRatio="none" aria-hidden="true">
           <path d="M40 88c-22 0-38-14-38-32S20 22 40 24C46 8 64 0 82 6c14-16 40-14 52 4 24-2 42 12 42 30s-18 30-42 30z" />
         </svg>
-        <svg className="archive-cloud archive-cloud--left" viewBox="0 0 200 90" aria-hidden="true">
+        <svg className="archive-cloud archive-cloud--left" viewBox="0 0 200 90" preserveAspectRatio="none" aria-hidden="true">
           <path d="M40 88c-22 0-38-14-38-32S20 22 40 24C46 8 64 0 82 6c14-16 40-14 52 4 24-2 42 12 42 30s-18 30-42 30z" />
         </svg>
         <div className="container">

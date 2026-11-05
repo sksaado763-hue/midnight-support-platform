@@ -260,7 +260,11 @@ body {
 /* The capture samples the hero at #101829 falling to #131C2F — their navy field,
    not the bright #243f88 their stylesheet claims, so the shelf reads as air. */
 .archive-hero { background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%); }
-.archive-cloud { fill: #e8f1f7; opacity: 0.95; }
+.archive-cloud { fill: #f1ffff; opacity: 1; }
+/* Their moon is a lit graphic, not a flat glyph: sampling outward from the ink,
+   the field climbs #121a2b → #28303f over ~34px, and it is neutral (b > r), so
+   the bloom is white light rather than amber spill. */
+.archive-moon { filter: drop-shadow(0 0 24px rgba(255, 255, 255, 0.3)); }
 .archive-title, .archive-description { color: #ffffff; }
 
 /* Fields are frosted light on the sky, not white boxes: 15% white lifting to

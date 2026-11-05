@@ -2753,35 +2753,54 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 /* Their archive is not built on the 1170 container: measured off the capture,
    the search row runs 200→1710 and the three cards 212→1697, so the whole page
    lives on a 1510 track with the grid inset 12. Every number below is capture
-   px at our 1911 verification viewport. */
+   px at our 1911 verification viewport.
+   The capture is a 135% browser zoom — 1510/1120 track, 477/353 card and 70/54
+   control all give the same 1.348 — so each value is their computed CSS px
+   multiplied by it: hero padding 209→282, moon 48×53→65×71, card padding
+   36/46→48/62, plate 261×120→352×162, title 20/28→27/38, chip 32→43.
+   The clouds are the exception: their <img> box computes to 204×120 but only
+   168×76 of it is painted, and the painted glyph is what the capture shows, so
+   the widths below are sized to land 168px of ink, not 275px of box. Their
+   silhouette is also flatter than our path's own 174×88, so the height is
+   pinned to 80 and the viewBox stretched to it (preserveAspectRatio="none")
+   rather than redrawn — a 11% squash that lands the ink at 168×76.
+   Their hero also rides 154px up under a sticky transparent header, which we do
+   not copy: our header is opaque, so the hero keeps only the air the capture
+   actually shows — 85px from the header edge down to the first headline ink. */
 @media (min-width: 1200px) {
   .case-study-archive .container { width: min(1510px, 100% - 40px); padding-inline: 0; }
-  .archive-hero { padding-bottom: 70px; }
-  .archive-title { font-size: 66px; line-height: 76px; margin-bottom: 36px; }
+  .archive-hero { padding: 74px 0 70px; }
+  .archive-title { font-size: 66px; line-height: 76px; margin-bottom: 32px; }
   .archive-description { font-size: 27px; line-height: 38px; }
-  .archive-moon { top: 14px; left: 3.8%; width: 90px; }
-  .archive-cloud--right { top: 45px; right: 7%; width: 190px; }
-  .archive-cloud--left { top: 205px; left: 4.9%; width: 172px; }
+  /* Boxed by ink, not by viewBox: our crescent is 63 wide inside a 90 box, so the
+     offsets below place the glyph where the capture puts it. */
+  .archive-moon { top: 51px; left: 4.6%; width: 90px; }
+  .archive-cloud--right { top: 73px; right: 5.2%; width: 194px; height: 80px; }
+  /* Their left cloud sits 250px under the header, but that clears their three-line
+     headline only; ours wraps to two, so the same offset drops it onto the
+     description. Anchored to the description instead: 19px of gap above the first
+     description ink, which is the gap the capture shows. */
+  .archive-cloud--left { top: 166px; left: 1.2%; width: 194px; height: 80px; }
   .archive-search-form { gap: 28px; }
   .case-study-search { flex-basis: 57.9%; }
   .case-study-tag-filter { flex-basis: 28.9%; }
   .case-study-submit { flex-basis: 9.7%; }
   .case-study-submit .btn { width: 100%; }
   .archive-search-input,
-  .archive-tag-select { height: 70px; padding: 0 26px; border-radius: 10px; font-size: 18px; }
+  .archive-tag-select { height: 70px; padding: 0 26px; border-radius: 8px; font-size: 20px; }
   .archive-tag-select { padding-right: 66px; }
   .select-wrap::after { right: 32px; width: 11px; height: 11px; margin-top: -8px; }
-  .case-study-submit .btn { height: 70px; }
+  .case-study-submit .btn { height: 70px; border-radius: 7px; }
   .archive-content { padding-top: 110px; }
   .case-study-masonry-grid { gap: 27px; padding-inline: 12px; }
   .case-study-column { gap: 28px; }
-  .case-study-card { padding: 51px 63px 48px; border-radius: 7px; }
-  .case-study-card__image { margin-bottom: 40px; border-radius: 10px; }
-  .case-study-card__image svg { height: 155px; border-radius: 10px; }
-  .case-study-card__title { font-size: 24px; line-height: 33px; margin-bottom: 14px; }
-  .case-study-card__excerpt { font-size: 22px; line-height: 37px; flex: 0 0 auto; margin-bottom: 0; }
-  .case-study-card__tags { margin-top: 40px; padding-top: 0; gap: 18px; }
-  .case-study-card__tags .badge { padding: 10px 19px; border-radius: 8px; font-size: 19px; line-height: 22px; }
+  .case-study-card { padding: 48px 62px; border-radius: 7px; }
+  .case-study-card__image { margin-bottom: 32px; border-radius: 11px; }
+  .case-study-card__image svg { height: 162px; border-radius: 11px; }
+  .case-study-card__title { font-size: 27px; line-height: 38px; margin-bottom: 16px; }
+  .case-study-card__excerpt { font-size: 22px; line-height: 35px; margin-bottom: 27px; }
+  .case-study-card__tags { margin-top: 0; padding-top: 11px; gap: 16px; }
+  .case-study-card__tags .badge { padding: 8px 19px; border-radius: 7px; font-size: 19px; line-height: 24px; }
 }
 
 .case-detail { background: var(--bg); padding: 60px 0 var(--section-pad); }
