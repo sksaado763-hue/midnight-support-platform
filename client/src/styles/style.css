@@ -2622,8 +2622,7 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 .pipeline-art svg { width: 100%; max-width: 420px; height: auto; }
 
 /* ---------- Case studies ---------- */
-.case-list, .case-more { background: var(--paper); padding: var(--section-pad) 0; }
-.case-more { background: var(--bg); }
+.case-more { background: var(--bg); padding: var(--section-pad) 0; }
 .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .case-card {
   background: var(--bg);
@@ -2645,6 +2644,111 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 .case-meta { display: flex; gap: 0.8rem; align-items: center; }
 .case-body h2 { font-size: var(--fs-h3); line-height: 28px; font-weight: 600; }
 .case-body > p:not(.case-meta) { font-size: var(--fs-body); line-height: var(--lh-body); color: var(--navy-text-muted); flex: 1; }
+
+/* ---------- Case study archive ---------- */
+/* Reference /about-us/ourwork/: a midnight band that runs on behind the footer,
+   a starfield hero closed by a cosine shelf, a 60/30/10 search row, then three
+   independent masonry columns of slab cards and the pager. */
+.case-study-archive { position: relative; padding-bottom: 18%; margin-bottom: -14%; }
+
+/* Their hero is pulled 154px up into the header slot and given 209px of top
+   padding; net of the two, the headline lands 55px below the header's bottom. */
+.archive-hero { position: relative; padding: 55px 0 48px; overflow: hidden; }
+/* The shelf is 10% of the hero's own height, so it deepens as the copy wraps. */
+.archive-hero { clip-path: polygon(0 0, 100% 0, 100% 95%, 89% 98%, 82% 99.4%, 75% 99.8%, 69% 99.5%, 60% 97.8%, 40% 92%, 29% 90.3%, 20% 90.3%, 10% 92.1%, 0 95%); }
+.archive-hero > .hero-stars { opacity: 1; }
+.archive-hero > .hero-stars svg { width: 100%; height: 100%; }
+.archive-moon { position: absolute; top: 52px; left: 10%; width: 48px; height: auto; z-index: 0; }
+.archive-cloud { position: absolute; z-index: 0; }
+.archive-cloud--right { top: 49px; right: 6%; width: 200px; }
+.archive-cloud--left { top: 176px; left: 1%; width: 204px; }
+.archive-header { position: relative; z-index: 1; }
+.archive-title { margin-bottom: 24px; }
+.archive-description { font-family: var(--font-head); font-size: 20px; font-weight: 700; }
+
+.archive-search { position: relative; z-index: 2; }
+.archive-search-form { display: flex; gap: 19px; font-family: var(--font-body); }
+.case-study-search { flex-basis: 60%; }
+.case-study-tag-filter { flex-basis: 30%; }
+.case-study-submit { flex-basis: 10%; display: flex; align-items: center; justify-content: center; }
+.case-study-submit .btn { height: 54px; }
+.case-study-search .form-label,
+.case-study-tag-filter .form-label { display: none; }
+.select-wrap { position: relative; }
+.archive-search-input,
+.archive-tag-select { width: 100%; height: 54px; padding: 0.75rem 1rem; border: 0; border-radius: 6px; font-family: inherit; font-size: 0.95rem; -webkit-appearance: none; appearance: none; }
+.archive-tag-select { padding-right: 52px; }
+/* Their caret is an inverted 18px SVG; the same box drawn from two borders. */
+.select-wrap::after {
+  content: "";
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin-top: -6px;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.archive-content { padding: 80px 0 0; margin-bottom: 60px; }
+.case-study-masonry-grid { display: flex; gap: 20px; align-items: flex-start; }
+.case-study-column { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+.case-study-masonry-item { width: 100%; }
+.case-study-masonry-item .case-study-card { height: auto; }
+/* Below the reference's 1200px fold the columns flatten into one run of cards;
+   `contents` hands the items back to the grid so nothing is duplicated. */
+@media (max-width: 1199.98px) {
+  .case-study-masonry-grid { flex-direction: column; }
+  .case-study-column { display: contents; }
+}
+
+.case-study-card { display: flex; flex-direction: column; width: 100%; height: 100%; padding: 36px 46px; border-radius: 5px; }
+.case-study-card__link { display: block; }
+.case-study-card__inner { display: flex; flex-direction: column; flex: 1; height: 100%; border-radius: 8px; overflow: hidden; }
+.case-study-card__image { display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 8px; overflow: hidden; margin-bottom: 24px; }
+.case-study-card__image svg { width: 100%; height: 120px; border-radius: 8px; }
+.case-study-card__content { flex: 1; display: flex; flex-direction: column; }
+.case-study-card__title { margin-bottom: 12px; font-size: 1.25rem; line-height: 1.4; font-weight: 600; }
+.case-study-card__excerpt { flex: 1; margin-bottom: 20px; line-height: 1.6; font-size: var(--fs-body); }
+.case-study-card__excerpt p { margin: 0; }
+.case-study-card__tags { margin-top: auto; padding-top: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+.case-study-card__tags .badge { display: inline-block; padding: 6px 14px; border: 1px solid transparent; border-radius: 5px; font-weight: 500; font-size: 12px; line-height: normal; }
+.case-study-card__tags .tag-item.hidden { display: none; }
+@media (min-width: 992px) {
+  .case-study-card__tags .badge { font-size: 14px; line-height: 18px; }
+}
+
+.pagination-wrapper { margin-top: 48px; }
+.pagination { display: flex; justify-content: center; gap: 10px; }
+.page-numbers { padding: 10px 15px; border: 0; border-radius: 4px; font-family: var(--font-body); font-weight: 500; font-size: 16px; cursor: pointer; }
+.no-results { text-align: center; padding: 40px 0; }
+.no-results h2 { margin-bottom: 16px; }
+.no-results p { margin-bottom: 32px; font-size: 1.125rem; }
+
+@media (max-width: 1199.98px) {
+  .case-study-archive { padding-bottom: 22%; margin-bottom: -26%; }
+  .archive-search-form { flex-direction: column; }
+  .case-study-submit .btn { width: 100%; }
+}
+
+@media (max-width: 991.98px) {
+  .archive-header { max-width: none; }
+  .archive-moon { top: 32px; left: 2.5%; max-width: 50px; }
+  .archive-cloud { display: none; }
+}
+
+@media (min-width: 992px) {
+  /* The reference wraps the archive header into col-12 col-lg-9: a 75% column
+     that still starts on the container's left edge. */
+  .archive-header { max-width: 75%; }
+}
+
+@media (max-width: 768px) {
+  .case-study-card__title { font-size: 1.1rem; }
+}
 
 .case-detail { background: var(--bg); padding: 60px 0 var(--section-pad); }
 .case-detail-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 2.5rem; align-items: start; }

@@ -27,6 +27,7 @@ const caseStudySchema = new Schema({
   challenge: String,
   approach: [String],
   outcomes: [String],
+  tags: [String],
   theme: String,
   order: orderField,
 });

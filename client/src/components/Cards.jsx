@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useApi } from "../lib/api";
 
@@ -110,6 +111,54 @@ export function CaseCard({ study, compact = false }) {
         <Link className="text-link" to={`/case-studies/${study.slug}`}>
           Read the case study <span aria-hidden="true">➔</span>
         </Link>
+      </div>
+    </article>
+  );
+}
+
+export function CaseStudyCard({ study }) {
+  const [expanded, setExpanded] = useState(false);
+  const tags = study.tags || [];
+  const collapsed = !expanded && tags.length > 2;
+  const hiddenCount = tags.length - 2;
+
+  return (
+    <article className="case-study-card reveal">
+      <Link className="case-study-card__link" to={`/case-studies/${study.slug}`}>
+        <div className="case-study-card__inner">
+          <div className={`case-study-card__image case-study-card__image--${study.theme}`} aria-hidden="true">
+            <CaseArt theme={study.theme} />
+          </div>
+          <div className="case-study-card__content">
+            <h3 className="case-study-card__title">{study.client}</h3>
+            <div className="case-study-card__excerpt">
+              <p>{study.headline}</p>
+            </div>
+          </div>
+        </div>
+      </Link>
+      <div className="case-study-card__tags">
+        {tags.map((tag, i) => (
+          <Link
+            key={tag}
+            className={`badge tag-item${collapsed && i >= 2 ? " hidden" : ""}`}
+            to={`/case-studies?tag=${encodeURIComponent(tag)}`}
+            rel="tag"
+          >
+            {tag}
+          </Link>
+        ))}
+        {hiddenCount > 0 && (
+          <button
+            type="button"
+            className="badge tag-toggle"
+            aria-expanded={expanded}
+            aria-label={expanded ? "Show fewer tags" : `Show ${hiddenCount} more tags`}
+            onClick={() => setExpanded((open) => !open)}
+          >
+            {expanded ? "Less" : `+${hiddenCount}`}
+          </button>
+        )}
       </div>
     </article>
   );

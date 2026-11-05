@@ -210,7 +210,6 @@ body {
 
 /* Cards that sit inside a raised grey band need to lift one more step */
 .insights .insight-card,
-.case-list .case-card,
 .team-section .team-card,
 .industries .industry-card,
 .admin-panel .message-item,
@@ -231,7 +230,6 @@ body {
 /* Teaser and case cards are midnight slabs, not white tiles: the artwork panel and
    copy sit inside #23304d, and the only hover state is the 8px lift. */
 .insights--shared .insight-card,
-.case-list .case-card,
 .case-more .case-card {
   background: #23304d;
   border-color: transparent;
@@ -239,7 +237,6 @@ body {
 }
 
 .insights--shared .insight-card:hover,
-.case-list .case-card:hover,
 .case-more .case-card:hover { border-color: transparent; box-shadow: none; }
 
 .insights--shared .insight-body h3,
@@ -253,6 +250,62 @@ body {
 
 .insights--shared .text-link,
 .case-card .text-link { color: #ffffff; }
+
+/* ---------- Case study archive: one midnight band, top to footer ---------- */
+.case-study-archive {
+  background: linear-gradient(180deg, var(--navy-deep) 0%, #1f2c49 100%);
+  color: #ffffff;
+}
+
+.archive-hero { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-soft) 100%); }
+.archive-cloud { fill: #e8f1f7; opacity: 0.95; }
+.archive-title, .archive-description { color: #ffffff; }
+
+/* Fields are frosted light on the sky, not white boxes: 15% white lifting to
+   20% on focus, with a white ring and the navy option panel behind them. */
+.archive-search-input,
+.archive-tag-select { background: rgba(255, 255, 255, 0.15); color: #ffffff; }
+
+.archive-search-input::placeholder { color: rgba(255, 255, 255, 0.6); }
+
+.archive-search-input:focus,
+.archive-tag-select:focus {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.archive-tag-select option { background: #23304d; color: #ffffff; }
+.case-study-tag-filter { color: #ffffff; }
+
+/* Cards follow the reference slab: #23304d body, white copy, grey chips. */
+.case-study-card { background: #23304d; }
+.case-study-card:hover { transform: translateY(-8px); }
+.case-study-card__title,
+.case-study-card__excerpt p { color: #ffffff; }
+
+.case-study-card__image svg { transition: transform 0.3s ease; }
+.case-study-card:hover .case-study-card__image svg { transform: scale(1.05); }
+
+.case-study-card__image--spotlight { background: linear-gradient(270deg, #3e1740 0%, #92278f 100%); }
+.case-study-card__image--incident { background: linear-gradient(270deg, #7d277a 0%, #491a4b 100%); }
+.case-study-card__image--observability { background: linear-gradient(135deg, #020381 0%, #2874fc 100%); }
+
+.case-study-card__tags .badge { background-color: #e9e9e9; color: #23304d; }
+.case-study-card__tags .badge:hover { background-color: #ffffff; }
+
+.page-numbers { background: none; color: #ffffff; }
+.page-numbers:hover,
+.page-numbers.current { background-color: var(--amber); color: var(--navy); }
+.page-numbers:hover { text-decoration: none; }
+
+.no-results h2, .no-results p { color: #ffffff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .case-study-card:hover { transform: none; }
+  .case-study-card:hover .case-study-card__image svg { transform: none; }
+}
 
 /* ---------- Accent fills: midnight ink on canary ---------- */
 .tag-orange,

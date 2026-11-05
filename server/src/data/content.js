@@ -110,6 +110,7 @@ const caseStudies = [
       "Introduced blameless post-incident reviews that fed directly into their engineering backlog.",
     ],
     outcomes: ["82% reduction in out-of-hours escalation to client engineers", "Median incident acknowledgement under 4 minutes, around the clock", "Measurable drop in repeat incidents quarter over quarter"],
+    tags: ["24/7 Support", "SaaS", "DevOps", "Managed Hosting", "Global"],
     theme: "spotlight",
   },
   {
@@ -124,6 +125,7 @@ const caseStudies = [
       "Implemented pre-run health checks that block a payroll cycle from starting on a degraded cluster.",
     ],
     outcomes: ["Zero missed payroll windows across 14 months", "Release confidence high enough to deploy during business hours", "Pre-run checks catching degradation before every major cycle"],
+    tags: ["DevOps", "FinTech", "Observability", "Load Testing", "HR Tech"],
     theme: "observability",
   },
   {
@@ -138,6 +140,7 @@ const caseStudies = [
       "Left behind runbooks and architecture documentation the internal team actually uses.",
     ],
     outcomes: ["Migration completed with zero customer-visible downtime", "Infrastructure costs down 35% after right-sizing", "Environment rebuild time cut from days to under an hour"],
+    tags: ["Cloud Migration", "LegalTech", "Managed Cloud", "Infrastructure as Code", "Zero Downtime"],
     theme: "incident",
   },
   {
@@ -152,6 +155,7 @@ const caseStudies = [
       "Established launch-day war rooms for major campaigns, with capacity pre-tested in staging.",
     ],
     outcomes: ["Campaign days handled without manual intervention", "Sign-up conversion during spikes recovered to baseline", "War-room model adopted for every major launch since"],
+    tags: ["Autoscaling", "Consumer App", "Performance", "Incident Response", "Health & Fitness"],
     theme: "spotlight",
   },
 ];
