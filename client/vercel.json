@@ -179,6 +179,26 @@
       "destination": "/api/case-studies/the-body-coach-app.json"
     },
     {
+      "source": "/api/case-studies/dexerto",
+      "destination": "/api/case-studies/dexerto.json"
+    },
+    {
+      "source": "/api/case-studies/hilton-premium-club-japan",
+      "destination": "/api/case-studies/hilton-premium-club-japan.json"
+    },
+    {
+      "source": "/api/case-studies/third-space",
+      "destination": "/api/case-studies/third-space.json"
+    },
+    {
+      "source": "/api/case-studies/gosalary",
+      "destination": "/api/case-studies/gosalary.json"
+    },
+    {
+      "source": "/api/case-studies/gozem",
+      "destination": "/api/case-studies/gozem.json"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
