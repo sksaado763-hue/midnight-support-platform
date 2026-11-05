@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default async function POST(request) {
+export async function POST(request) {
   const body = await request.json().catch(() => null);
   const email = (body || {}).email;
   if (!email || !EMAIL_RE.test(email)) {

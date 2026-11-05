@@ -1,6 +1,6 @@
 import { list, get } from "@vercel/blob";
 
-export default async function GET() {
+export async function GET() {
   const { blobs } = await list({ prefix: "subscribers/" });
   const subscribers = await Promise.all(
     blobs.map(async (b) => {
