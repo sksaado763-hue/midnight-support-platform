@@ -2440,7 +2440,71 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
   .pii-grid { grid-template-columns: 1fr; }
 }
 
-.ind-band { margin-top: -1px; padding: calc(var(--section-pad) + 1px) 0 var(--section-pad); }
+/* Testimonials band — reference .reviews: a paged two-up slider of bordered white
+   cards, no heading, dots under the cards. Every number is the live page's computed
+   CSS at 1889. The visible pair is 1120 wide — 5px wider than the 1110 content on each
+   side, which is where their slide margins land it — so each card is 550 with a 20px
+   gap and the pair stays centred on the container. Cards are 42px 8.333% padding, 10px
+   radius on a 1px #c8c8c8 border, and equalise to the tallest (471 here) because the
+   wrap is a flex column with space-between: quote block at the top, attribution and
+   button pinned at the bottom. The dots sit 83px below the cards and flush right; that
+   is where their own left:50%/translateX(-50%) pair actually lands, so it is a
+   position to copy, not a centring bug to fix. */
+.reviews { margin-top: -1px; padding: 41px 0 40px; background: var(--bg); }
+.reviews-slider { margin-inline: -5px; }
+.reviews-track { display: flex; gap: 20px; overflow-x: hidden; }
+.review { flex: 0 0 calc(50% - 10px); text-align: center; }
+.review-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 42px 8.3333%;
+  border: 1px solid #c8c8c8;
+  border-radius: 10px;
+  background: var(--panel);
+}
+.review-top svg { display: block; margin: 0 auto 24px; }
+.review-quote { font-size: 16px; line-height: 28px; font-weight: 300; color: var(--navy); }
+.review-company { font-size: 16px; line-height: 22px; font-weight: 500; color: var(--navy-soft); }
+.review-position { font-size: 16px; line-height: 28px; font-weight: 500; color: var(--navy); }
+.review-cta {
+  margin-top: 44px;
+  border: 1px solid var(--navy-soft);
+  background: var(--panel);
+  color: var(--navy-soft);
+  text-transform: uppercase;
+}
+.review-dots { display: flex; justify-content: flex-end; gap: 20px; height: 28px; margin: 83px -5px 0; list-style: none; }
+.review-dots li { position: relative; width: 28px; height: 28px; }
+.review-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #c8c8c8;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out,
+    width 0.3s cubic-bezier(0, 0, 0.08, 2.08) 0.3s,
+    height 0.3s cubic-bezier(0, 0, 0.08, 2.08) 0.3s;
+}
+.review-dot.is-active { width: 28px; height: 28px; background: var(--navy); }
+
+@media (min-width: 768px) {
+  .reviews { padding: 81px 0 80px; }
+}
+
+@media (max-width: 767.98px) {
+  .reviews-track { gap: 0; }
+  .review { flex: 0 0 100%; }
+}
+
+.ind-band { padding: var(--section-pad) 0; }
 .ind-band-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
 .ind-band-copy h2 { margin: 0 0 1rem; font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 700; }
 .ind-band-copy p { margin: 0 0 1rem; }
