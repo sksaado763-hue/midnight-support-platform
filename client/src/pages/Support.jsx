@@ -849,20 +849,20 @@ export default function Support() {
           <h3>Not in the list?</h3>
           <p>Everyone fits a category eventually. <Link to="/contact">Tell us what you run</Link> and we will show you what cover looks like for it.</p>
         </div>
+        <div className="band-wave band-wave--bottom" aria-hidden="true">
+          <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
+            <path d="M0 73H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
+          </svg>
+        </div>
       </section>
 
-      <section className="statement">
+      <section className="statement statement--light">
         <div className="container statement-inner">
           <h2 className="statement-title reveal">Not sure which tier fits?</h2>
           <p className="statement-text reveal">Tell us what breaks and when it hurts most — we'll recommend the lightest package that genuinely covers you. No upselling.</p>
           <div className="hero-actions reveal" style={{ justifyContent: "center" }}>
             <Link to="/contact" className="btn btn-primary">Get a recommendation <span aria-hidden="true">➔</span></Link>
           </div>
-        </div>
-        <div className="band-wave band-wave--bottom" aria-hidden="true">
-          <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
-            <path d="M0 73H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
-          </svg>
         </div>
       </section>
 

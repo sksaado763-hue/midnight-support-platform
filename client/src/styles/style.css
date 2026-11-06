@@ -2202,10 +2202,6 @@ section.maint-band { position: relative; background: #efefef; }
    copy, so the statement's bottom padding moves onto its container. */
 section.statement { padding: var(--section-pad) 0 0; }
 .statement > .container { padding-bottom: var(--section-pad); }
-/* navy-deep into navy on /support: the two bands are the same family, so letting
-   the statement bleed 1px up covers the half-row and the relocated seam is a
-   3/255 step rather than the light hairline. */
-.ind-band + section.statement { margin-top: -1px; padding-top: calc(var(--section-pad) + 1px); }
 .maint-inner {
   width: auto;
   max-width: clamp(560px, 88.2vw, 1680px);
@@ -2507,11 +2503,12 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 /* Industries band. Every number here is the reference's own computed CSS, measured over CDP at
    innerWidth 1889: a 1140 container split into two 570 columns whose ink is 550 (copy) and 540
    (artwork) with 30 between them, 40px of section padding plus 80px of outer padding above the
-   heading, and a 1040-wide CTA line 72px under the last row. Our container is 1170 with 30px
-   padding, so the two bleed rules below take it to 25px and turn its 1110 content into their
-   1120 ink track — that is what lands both columns where they measure. */
-.ind-band { padding: 0 0 168px; }
-.ind-band > .band-wave svg { height: clamp(48px, 4.63vw, 88px); }
+   heading, and a 1040-wide CTA line 208px under the last row and 168px above the curved divider
+   that hands the band back to white. Our container is 1170 with 30px padding, so the two bleed
+   rules below take it to 25px and turn its 1110 content into their 1120 ink track — that is what
+   lands both columns where they measure. */
+.ind-band { padding: 0; }
+.ind-band > .band-wave--top svg { height: clamp(48px, 4.63vw, 88px); }
 .ind-band-grid {
   display: grid;
   grid-template-columns: 550px 540px;
@@ -2565,7 +2562,8 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
   grid-template-columns: 215px minmax(0, 1fr);
   gap: 50px;
   align-items: center;
-  margin-top: 72px;
+  margin-top: 208px;
+  margin-bottom: 168px;
   padding: 40px 65px;
   border-radius: 10px;
 }
@@ -2576,7 +2574,6 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 /* Their two columns need 550 + 30 + 540 = 1120 of ink, which our container only offers from
    1180px up, so this band stacks a whole breakpoint before the rest of the page does. */
 @media (max-width: 1199.98px) {
-  .ind-band { padding-bottom: 120px; }
   .ind-band-grid { grid-template-columns: 1fr; gap: 32px; margin-top: 72px; padding-inline: 24px; }
   /* Their mobile row puts the artwork first and full-bleed, before the heading. */
   .ind-art { order: -1; margin-inline: -24px; }
@@ -2586,6 +2583,7 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
     grid-template-columns: 1fr;
     gap: 12px;
     margin-top: 56px;
+    margin-bottom: 120px;
     padding: 40px 20px;
     text-align: center;
   }
