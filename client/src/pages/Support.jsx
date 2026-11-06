@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
-import LatestInsights from "../components/Cards";
 import TrustLogos from "../components/TrustLogos";
 
 const MEANS = [
@@ -923,18 +922,6 @@ export default function Support() {
           </div>
         </div>
       </section>
-
-      <section className="statement statement--light">
-        <div className="container statement-inner">
-          <h2 className="statement-title reveal">Not sure which tier fits?</h2>
-          <p className="statement-text reveal">Tell us what breaks and when it hurts most — we'll recommend the lightest package that genuinely covers you. No upselling.</p>
-          <div className="hero-actions reveal" style={{ justifyContent: "center" }}>
-            <Link to="/contact" className="btn btn-primary">Get a recommendation <span aria-hidden="true">➔</span></Link>
-          </div>
-        </div>
-      </section>
-
-      <LatestInsights />
     </>
   );
 }

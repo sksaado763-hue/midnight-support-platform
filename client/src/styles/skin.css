@@ -754,11 +754,6 @@ body {
 .devops-feature p,
 .outcome-card--navy p { color: rgba(255, 255, 255, 0.82); }
 
-/* /support hands the navy run back to white through the industries band's own
-   curved divider, so the statement that follows sits on the light side. */
-.statement--light { background: var(--bg); color: var(--navy); }
-.statement--light .statement-text { color: var(--text-muted); }
-
 /* ---------- The "Most popular" flag: canary with midnight ink ---------- */
 .price-flag { background: var(--amber); color: var(--accent-ink); }
 
