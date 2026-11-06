@@ -209,30 +209,59 @@ const WHY_STARS = Array.from({ length: 140 }, (_, i) => {
 
 const INDUSTRIES = [
   {
+    title: "SaaS & Platform Products",
+    paragraphs: [
+      "The roadmap is the point of the business, so nights should not be spent on rollback tickets. We take the queue, the alerts and the first line of the incident call, and your engineers wake up to a written picture rather than a thread of guesses.",
+      "Journey-level monitoring, deploy checks and pre-release drills, follow-the-sun rotations across your application, APIs and cloud accounts.",
+    ],
+  },
+  {
+    title: "Commerce & Marketplaces",
+    paragraphs: [
+      "Peak is where the money is, and it never arrives on the schedule you planned. Cart, checkout and payment paths stay watched end to end, with someone awake who has the access to act on them.",
+      "Pre-peak load testing, war-room cover through the trading window, and a fast path back to a working storefront when a plugin or a release breaks it.",
+    ],
+  },
+  {
     title: "Digital Agencies",
-    text: "White-label cover for every client site you build. We stay invisible, your clients stay happy, and Monday mornings stop starting with an outage report.",
-    points: [
-      "Cover for your whole client portfolio under one agreement",
-      "Updates in your brand voice, not ours",
-      "CMS specialists across Sitecore, Umbraco, WordPress & more",
+    paragraphs: [
+      "White-label cover for every client site you ship. We stay invisible, your clients stay happy, and Monday mornings stop starting with an outage report.",
+      "One agreement across the whole portfolio, updates written in your brand voice, and specialists who know the CMS your clients are actually running.",
     ],
   },
   {
-    title: "SaaS Platforms",
-    text: "Your SLA is our SLA. We operate as your outsourced SRE function, monitoring user journeys rather than just host metrics.",
-    points: [
-      "Journey-level monitoring tied to your uptime promises",
-      "Follow-the-sun rotations so no one carries the night alone",
-      "Deploy support, rollback drills and pre-release checks",
+    title: "Health & Care Platforms",
+    paragraphs: [
+      "Clinical and patient-facing systems do not get to be slow, and the records behind them are the most sensitive you own. Availability, access control and evidence all have to hold at three in the morning.",
+      "Monitoring and incident management across portals, booking flows and integrations, with the audit trail and data-handling discipline the sector is inspected against.",
     ],
   },
   {
-    title: "eCommerce",
-    text: "Every minute of downtime is abandoned baskets. Peak trading is where we earn our keep.",
-    points: [
-      "Peak-season war rooms and pre-peak load testing",
-      "Checkout and payment flow monitoring, end to end",
-      "Fast paths to fix for platform and plugin regressions",
+    title: "Fintech & Payments",
+    paragraphs: [
+      "Downtime here is not an inconvenience, it is a trust problem. Transactions, balances and identity flows have to answer, and someone has to be accountable when they do not.",
+      "Rapid triage against tight SLAs, cover that reaches your payment, fraud and banking integrations, and the evidence trail regulators will ask for afterwards.",
+    ],
+  },
+  {
+    title: "Public Sector & Education",
+    paragraphs: [
+      "Citizens and students arrive in waves nobody forecast, on systems nobody is allowed to rewrite. Legacy stacks, multi-vendor estates and procurement paperwork are normal here, not exceptions.",
+      "Full-stack cover across public portals and internal services, transparent reporting, and engineers who work inside change windows and access rules instead of around them.",
+    ],
+  },
+  {
+    title: "Travel & Hospitality",
+    paragraphs: [
+      "Bookings do not respect time zones, and neither do the people whose flights just changed. A slow search or a failed payment at midnight is a customer calling you at four.",
+      "Overnight cover for booking engines, inventory feeds and partner integrations, with the handover written down before your day team logs on.",
+    ],
+  },
+  {
+    title: "Media & Communities",
+    paragraphs: [
+      "Traffic spikes on a story you did not plan for. The stream, the paywall and the comment stack all have to hold while the audience doubles twice before breakfast.",
+      "Elastic monitoring, cache and CDN triage, and moderation-tooling support, so the release you never expected still reads as a good night.",
     ],
   },
 ];
@@ -285,6 +314,7 @@ export default function Support() {
   const reviewsRef = useRef(null);
   const [perView, setPerView] = useState(2);
   const [page, setPage] = useState(0);
+  const [openIndustry, setOpenIndustry] = useState(-1);
   const reviewPages = Math.ceil(TESTIMONIALS.length / perView);
 
   useEffect(() => {
@@ -744,26 +774,80 @@ export default function Support() {
       </section>
 
       <section className="ind-band" id="industries">
+        <div className="band-wave band-wave--top" aria-hidden="true">
+          <svg viewBox="0 0 1920 88" preserveAspectRatio="none">
+            <path d="M0 0H1920V55L1750.82 72.623C1544.17 94.1494 1335.83 94.1495 1129.18 72.6231L790.818 37.377C584.165 15.8506 375.835 15.8505 169.182 37.3769L0 55V0Z" fill="var(--bg)" />
+          </svg>
+        </div>
         <div className="container ind-band-grid">
           <div className="ind-band-copy reveal">
             <h2>Industries we support</h2>
             <p>Every organisation breaks differently. These are the sectors we know best — and why their queues look the way they do.</p>
-            <p className="ind-band-aside">Don't see your sector? <Link to="/contact">Tell us what you run ➔</Link></p>
+            <div className="ind-acc">
+              {INDUSTRIES.map((industry, index) => {
+                const open = openIndustry === index;
+                return (
+                  <div className={`ind-item${open ? " is-open" : ""}`} key={industry.title}>
+                    <button
+                      type="button"
+                      className="ind-head"
+                      aria-expanded={open}
+                      aria-controls={`industry-${index}`}
+                      onClick={() => setOpenIndustry(open ? -1 : index)}
+                    >
+                      <h3>{industry.title}</h3>
+                      <span className="ind-plus" aria-hidden="true" />
+                    </button>
+                    <div className="ind-body" id={`industry-${index}`} role="region">
+                      <div className="ind-body-inner">
+                        {industry.paragraphs.map((text) => <p key={text}>{text}</p>)}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="ind-acc reveal">
-            {INDUSTRIES.map((industry) => (
-              <details className="ind-item" key={industry.title}>
-                <summary>
-                  {industry.title}
-                  <span className="faq-chevron" aria-hidden="true" />
-                </summary>
-                <p>{industry.text}</p>
-                <ul>
-                  {industry.points.map((point) => <li key={point}>{point}</li>)}
-                </ul>
-              </details>
-            ))}
+          <div className="ind-art reveal" aria-hidden="true">
+            <svg viewBox="0 0 540 591" fill="none">
+              <g fill="#ffffff">
+                <circle cx="416" cy="172" r="6" />
+                <circle cx="404" cy="196" r="8" />
+                <circle cx="390" cy="224" r="10" />
+                <circle cx="373" cy="256" r="13" />
+                <circle cx="352" cy="292" r="16" />
+                <circle cx="328" cy="330" r="19" />
+                <circle cx="302" cy="368" r="22" />
+                <circle cx="274" cy="406" r="24" />
+                <circle cx="348" cy="232" r="4" />
+                <circle cx="240" cy="465" r="26" />
+                <circle cx="258" cy="436" r="25" />
+                <circle cx="200" cy="487" r="30" />
+                <circle cx="152" cy="503" r="36" />
+                <circle cx="104" cy="517" r="28" />
+                <circle cx="66" cy="533" r="20" />
+                <circle cx="86" cy="486" r="6" />
+                <circle cx="130" cy="541" r="32" />
+                <circle cx="188" cy="533" r="26" />
+                <circle cx="232" cy="523" r="20" />
+                <ellipse cx="146" cy="545" rx="92" ry="26" />
+              </g>
+              <g transform="translate(452 118) rotate(35)">
+                <path d="M-20 6C-33 18 -41 36 -44 54L-20 44Z" fill="var(--amber)" />
+                <path d="M20 6C33 18 41 36 44 54L20 44Z" fill="var(--amber)" />
+                <path d="M-13 42H13L18 58H-18Z" fill="var(--navy-soft)" />
+                <path d="M0 -66C14 -48 22 -28 22 -8V32C22 39 17 44 10 44H-10C-17 44 -22 39 -22 32V-8C-22 -28 -14 -48 0 -66Z" fill="#ffffff" />
+                <path d="M0 -66C9 -54 15 -41 18 -30H-18C-15 -41 -9 -54 0 -66Z" fill="var(--amber)" />
+                <path d="M-22 14H22V24H-22Z" fill="var(--amber)" />
+                <circle cx="0" cy="-6" r="12" fill="var(--navy-soft)" />
+                <circle cx="0" cy="-6" r="12" stroke="var(--amber)" strokeWidth="3.5" />
+              </g>
+            </svg>
           </div>
+        </div>
+        <div className="container ind-cta reveal">
+          <h3>Not in the list?</h3>
+          <p>Everyone fits a category eventually. <Link to="/contact">Tell us what you run</Link> and we will show you what cover looks like for it.</p>
         </div>
       </section>
 

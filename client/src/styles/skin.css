@@ -693,13 +693,14 @@ body {
 .pii-card h3 { color: var(--amber); }
 .pii-card p { color: #ffffff; }
 .ind-band { background: var(--navy-deep); color: #ffffff; }
-.ind-band-copy p { color: #c2ccde; }
-.ind-band-aside a { color: var(--amber); }
-.ind-item { background: rgba(255, 255, 255, 0.05); }
-.ind-item summary { color: #ffffff; }
-.ind-item p,
-.ind-item li { color: #c2ccde; }
-.ind-item li::before { color: var(--amber); }
+.ind-band-copy > p { color: #c2ccde; }
+.ind-head { color: var(--amber); }
+.ind-plus::before,
+.ind-plus::after { background: var(--amber); }
+.ind-body p { color: #c2ccde; }
+.ind-cta h3,
+.ind-cta p { color: #ffffff; }
+.ind-cta a { color: var(--amber); }
 
 .faq-chevron { border-color: var(--navy); }
 

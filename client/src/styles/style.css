@@ -2504,36 +2504,97 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
   .review { flex: 0 0 100%; }
 }
 
-.ind-band { padding: var(--section-pad) 0; }
-.ind-band-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
-.ind-band-copy h2 { margin: 0 0 1rem; font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 700; }
-.ind-band-copy p { margin: 0 0 1rem; }
-.ind-band-aside { font-weight: 700; }
-.ind-acc { display: grid; gap: 0.7rem; }
-.ind-item { border-radius: var(--radius-md); overflow: hidden; }
-.ind-item summary {
+/* Industries band. Every number here is the reference's own computed CSS, measured over CDP at
+   innerWidth 1889: a 1140 container split into two 570 columns whose ink is 550 (copy) and 540
+   (artwork) with 30 between them, 40px of section padding plus 80px of outer padding above the
+   heading, and a 1040-wide CTA line 72px under the last row. Our container is 1170 with 30px
+   padding, so the two bleed rules below take it to 25px and turn its 1110 content into their
+   1120 ink track — that is what lands both columns where they measure. */
+.ind-band { padding: 0 0 168px; }
+.ind-band > .band-wave svg { height: clamp(48px, 4.63vw, 88px); }
+.ind-band-grid {
+  display: grid;
+  grid-template-columns: 550px 540px;
+  gap: 30px;
+  align-items: start;
+  margin-top: 120px;
+  padding-inline: 25px;
+}
+.ind-band-copy h2 {
+  margin: 0 0 20px;
+  font-family: var(--font-head);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+}
+.ind-band-copy > p { margin: 0 0 20px; font-size: 16px; line-height: 28px; font-weight: 300; }
+.ind-acc { display: grid; }
+.ind-item { border-bottom: 1px solid #cccccc; }
+.ind-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1.05em 1.3em;
+  gap: 10px;
+  width: 100%;
+  padding: 15px 0;
+  border: 0;
+  background: none;
   cursor: pointer;
-  list-style: none;
+  text-align: left;
   font-family: var(--font-head);
-  font-size: var(--fs-h3);
-  line-height: 22px;
-  font-weight: 700;
+  font-size: 17px;
+  line-height: 28px;
+  font-weight: 600;
 }
-.ind-item summary::-webkit-details-marker { display: none; }
-.ind-item p { margin: 0; padding: 0 1.3em 0.8em; font-size: var(--fs-md); line-height: var(--lh-md); }
-.ind-item ul { list-style: none; margin: 0; padding: 0 1.3em 1.2em; display: grid; gap: 0.45rem; }
-.ind-item li { display: flex; gap: 0.55em; align-items: baseline; font-size: var(--fs-md); line-height: var(--lh-md); }
-.ind-item li::before { content: "✓"; font-weight: 700; flex: none; }
+.ind-head h3 { font: inherit; color: inherit; }
+.ind-head:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
+.ind-plus { position: relative; flex: none; width: 12px; height: 12px; }
+.ind-plus::before,
+.ind-plus::after { content: ""; position: absolute; top: 6px; left: 6px; }
+.ind-plus::before { width: 12px; height: 1px; transform: translate(-6px, -0.5px); }
+.ind-plus::after { width: 1px; height: 12px; transform: translate(-0.5px, -6px); transition: height 0.3s ease-in-out; }
+.ind-item.is-open .ind-plus::after { height: 0; transform: translate(-0.5px, 0); }
+.ind-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease-in-out; }
+.ind-item.is-open .ind-body { grid-template-rows: 1fr; }
+.ind-body-inner { overflow: hidden; }
+.ind-body p { margin: 0 0 16px; font-size: 16px; line-height: 28px; font-weight: 300; }
+.ind-art { position: relative; }
+.ind-art svg { display: block; width: 100%; height: auto; }
+.ind-cta {
+  display: grid;
+  grid-template-columns: 215px minmax(0, 1fr);
+  gap: 50px;
+  align-items: center;
+  margin-top: 72px;
+  padding: 40px 65px;
+  border-radius: 10px;
+}
+.ind-cta h3 { font-family: var(--font-head); font-size: 20px; line-height: 28px; font-weight: 500; }
+.ind-cta p { font-size: 16px; line-height: 28px; font-weight: 300; }
+.ind-cta a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Their two columns need 550 + 30 + 540 = 1120 of ink, which our container only offers from
+   1180px up, so this band stacks a whole breakpoint before the rest of the page does. */
+@media (max-width: 1199.98px) {
+  .ind-band { padding-bottom: 120px; }
+  .ind-band-grid { grid-template-columns: 1fr; gap: 32px; margin-top: 72px; padding-inline: 24px; }
+  /* Their mobile row puts the artwork first and full-bleed, before the heading. */
+  .ind-art { order: -1; margin-inline: -24px; }
+  .ind-head { line-height: 22px; }
+  .ind-cta {
+    width: calc(100% - 60px);
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 56px;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .ind-band-copy h2 { font-size: 32px; line-height: 40px; }
+}
 
 @media (max-width: 1023.98px) {
   .support-intro-grid,
-  .support-faq-grid,
-  .ind-band-grid { grid-template-columns: 1fr; gap: 32px; }
+  .support-faq-grid { grid-template-columns: 1fr; gap: 32px; }
   .support-intro .container { max-width: none; padding-inline: 24px; }
   .svc-band > .container { max-width: none; padding-inline: 24px; }
   .case-feature > .container { max-width: none; padding-inline: 24px; }
