@@ -105,14 +105,121 @@ const PROVIDERS = [
   },
 ];
 
+const INDUSTRIES = [
+  {
+    slug: "agencies",
+    name: "Agencies",
+    title: "24/7 support for agencies",
+    tagline: "Client sites, launch dates and retainer SLAs — carried by a rota that never sleeps, so your account managers never have to.",
+    whatTitle: "What agency support from us means",
+    intro: "An agency's reputation is borrowed: every client site carries your name in the footer. Most agency teams we meet build brilliantly and then inherit forty maintenance retainers nobody costed for. We take the retainers onto our rota — monitoring, patching, hotfixes and the Friday-afternoon 'the homepage is blank' call — under your brand or ours, your choice.",
+    problem: "Retainers eat your senior devs. Every client site is a different stack, a different host and a different idea of urgent, and the engineer who built half of them left last spring. Launches slip because the team is rebuilding a client's broken form for the third time.",
+    solution: "We become the agency's support desk: one rota across all client sites, triage graded by the SLA you signed, fixes shipped through your process with your ticket numbers, and a morning handover your account managers can forward verbatim.",
+    pillarsTitle: "What we watch for agencies",
+    pillars: [
+      { title: "Client sites & CMS", text: "WordPress, Sitecore, Kentico, Umbraco and the headless builds in between: plugin and core updates, editorial breakages, form and search regressions." },
+      { title: "Launch cover", text: "Campaign and go-live windows with extra eyes on checkout, forms and page speed, plus a rollback plan written before the traffic arrives." },
+      { title: "Hosting & performance", text: "Shared boxes, managed cloud or static edges: caching, PHP and Node runtimes, database slow queries and the hero image that is four megabytes again." },
+      { title: "SLAs & reporting", text: "Response clocks per retainer, monthly summaries per client, and evidence for the renewal conversation instead of anecdotes." },
+    ],
+    capabilities: [
+      { title: "Every night", items: ["Uptime and journey monitoring across every retainer site", "Security patching and CMS updates inside each client's window", "Backup verification before anyone sleeps on a change", "A triage queue graded by the SLA you signed, not by who shouts"] },
+      { title: "Every month", items: ["Per-client health summary your account managers can forward", "Patch, plugin and runtime update ledger", "Performance and page-speed trend per site", "Retainer load review: which clients cost you hours you never priced"] },
+    ],
+    fitWith: [
+      "You run ten client sites or a hundred, and the retainers outnumber the builders",
+      "Your SLAs promise response times your current rota cannot keep at 2am",
+      "Clients call developers directly and nobody wants that anymore",
+      "You want a support desk that can answer in your name, in your tone",
+    ],
+    trustTitle: "Why agencies hand us the retainers",
+    faqs: [
+      { q: "Can you answer clients in our name?", a: "Yes. We work under your domain, your ticket templates and your tone of voice, or as a named partner — whichever the retainer expects." },
+      { q: "What if a client site is on a stack you have not listed?", a: "We onboard new stacks every quarter. Send us the repo and the hosting panel and we will quote cover for it inside a week." },
+      { q: "Do you take over mid-retainer, mid-disaster?", a: "We do. Half of our agency engagements start as a rescue: we stabilise first, write the handover second, and the retainer continues without the client noticing the seam." },
+    ],
+  },
+  {
+    slug: "saas-platforms",
+    name: "SaaS Platforms",
+    title: "24/7 support for SaaS platforms",
+    tagline: "Uptime, observability and release confidence for products where downtime is a churn conversation.",
+    whatTitle: "What SaaS support from us means",
+    intro: "A SaaS product never closes. Every minute of downtime is a line in a renewal conversation, and every silent degradation is a support ticket waiting to happen. Most product teams we meet have good tests and no nights: monitoring that emails nobody, dashboards nobody reads at 3am. We take the nights, so your engineers ship features instead of carrying pagers.",
+    problem: "Your error budget burns in incidents nobody notices until customers complain in public. Observability exists but nobody owns it at 3am, deploys stop on Fridays, and the on-call rota is two people deep and one holiday away from collapse.",
+    solution: "We run observability and incident response as a service: alerts that page a named engineer, triage to code level, fixes or rollbacks inside your deploy process, and a morning handover that tells your stand-up what happened and what we changed.",
+    pillarsTitle: "What we watch on SaaS platforms",
+    pillars: [
+      { title: "Availability & journeys", text: "Synthetic and real-user monitoring of signup, checkout and the five journeys your revenue depends on, not just the health endpoint." },
+      { title: "Application health", text: "Error rates, latency percentiles, queue depth, worker lag and the slow memory leak that only shows on day six of an uptime streak." },
+      { title: "Releases & rollbacks", text: "Deploy watches, canary checks, feature-flag hygiene and a rollback path rehearsed before it is needed at 2am." },
+      { title: "Data & integrations", text: "Database health, migration safety, third-party API failures and the webhook backlog that quietly stops syncing." },
+    ],
+    capabilities: [
+      { title: "Every night", items: ["Alerting and incident response on a published rota", "Triage to code level with a fix or a rollback decision", "Deploy and canary watches through your release window", "Queue, worker and webhook backlog checks"] },
+      { title: "Every month", items: ["Error-budget and incident review with your engineers", "Observability audit: alerts that page humans, not mailboxes", "Capacity and scaling-policy review ahead of your growth curve", "A reliability report your customer teams can quote in renewal calls"] },
+    ],
+    fitWith: [
+      "Downtime and degradation cost you renewals, not just embarrassment",
+      "Your on-call rota is thinner than your uptime promise",
+      "You want incident response that reads code, not just dashboards",
+      "Releases have slowed down because nobody trusts the nights",
+    ],
+    trustTitle: "Why SaaS teams hand us the pager",
+    faqs: [
+      { q: "Do you replace our SRE team?", a: "No. We take the nights and the routine so your SREs spend their days on platform work instead of pager hangovers." },
+      { q: "Can you work inside our existing observability stack?", a: "Yes. Datadog, Grafana, Sentry, CloudWatch or a homegrown dashboard — we answer what you already have and propose what is missing." },
+      { q: "Who talks to our customers during an incident?", a: "Your team does, with our status notes as the source. We write the internal truth; you decide the public wording." },
+    ],
+  },
+  {
+    slug: "ecommerce",
+    name: "eCommerce",
+    title: "24/7 support for eCommerce",
+    tagline: "Checkout, payments and catalogue uptime for stores where an hour dark is a month of revenue.",
+    whatTitle: "What eCommerce support from us means",
+    intro: "A store is never 'down for maintenance' — it is down for revenue. Most commerce teams we meet watch the server but not the sale: the payment gateway that fails only on one card type, the promo code that breaks the basket, the checkout that slows every evening at peak. We watch the money path as closely as the machines.",
+    problem: "Peak trading is when things break: flash sales, campaign emails, the big seasonal weekend. The basket throws an error nobody can reproduce, the payment provider changes an API without warning, and the team finds out from customers, not monitoring.",
+    solution: "We cover the whole trading surface: storefront, checkout, payments, integrations and the catalogue feeds behind them, with journey monitoring that buys things at 3am so you do not have to, and incident response graded by revenue at risk.",
+    pillarsTitle: "What we watch on eCommerce",
+    pillars: [
+      { title: "Checkout & payments", text: "End-to-end transaction monitoring, gateway health, refund and webhook flows, and the card-type edge cases that only appear in production." },
+      { title: "Storefront & catalogue", text: "Page speed under campaign load, search and filter regressions, stock and price feed failures, and the plugin that breaks the theme." },
+      { title: "Integrations & fulfilment", text: "ERP, order management, courier and email integrations: queue health, sync failures and the order that never reached the warehouse." },
+      { title: "Peak & campaigns", text: "Launch and sale cover with capacity checks beforehand, extra eyes during, and a written rollback plan for every deploy in the window." },
+    ],
+    capabilities: [
+      { title: "Every night", items: ["Synthetic purchases through checkout on a published rota", "Payment gateway, webhook and refund flow monitoring", "Platform, plugin and runtime patching inside your trading window", "Backup and restore verification before peak seasons"] },
+      { title: "Every month", items: ["Conversion-path performance review with page-speed metrics", "Integration and feed health audit", "Peak-readiness check ahead of every campaign in the calendar", "A trading report your commercial team can read without a translator"] },
+    ],
+    fitWith: [
+      "An hour of checkout downtime is a board-level number",
+      "You trade through peaks that your current cover cannot absorb",
+      "Payment and fulfilment integrations fail in ways monitoring misses",
+      "You want cover that watches the sale, not just the server",
+    ],
+    trustTitle: "Why stores hand us the nights",
+    faqs: [
+      { q: "Do you cover Magento and Shopify Plus builds?", a: "Yes, plus WooCommerce, BigCommerce and headless stacks. Platform-specific cover sits under our platforms pages; this rota covers whichever one you trade on." },
+      { q: "Can you join our Black Friday war room?", a: "We run them. Capacity review two weeks out, freeze windows agreed, extra engineers on shift and a live incident channel for the weekend." },
+      { q: "What if the failure is the payment provider's?", a: "We detect it, prove it with transaction traces, open the case with the provider and keep your team informed until it closes." },
+    ],
+  },
+];
+
+const PAGES = [
+  ...PROVIDERS.map((page) => ({ ...page, kind: "provider" })),
+  ...INDUSTRIES.map((page) => ({ ...page, kind: "industry" })),
+];
+
 export default function SupportDetail() {
   const { slug } = useParams();
-  const provider = PROVIDERS.find((p) => p.slug === slug);
-  useTitle(provider ? `${provider.name} Support | Just After Midnight` : "24/7 Support | Just After Midnight");
+  const provider = PAGES.find((p) => p.slug === slug);
+  useTitle(provider ? `${provider.title} | Just After Midnight` : "24/7 Support | Just After Midnight");
 
   if (!provider) return <NotFound />;
 
-  const others = PROVIDERS.filter((p) => p.slug !== slug);
+  const others = PAGES.filter((p) => p.kind === provider.kind && p.slug !== slug);
 
   return (
     <>
@@ -150,7 +257,7 @@ export default function SupportDetail() {
         <div className="container">
           <div className="plat-what reveal">
             <div>
-              <h2>What does {provider.name} support from us mean?</h2>
+              <h2>{provider.whatTitle || `What does ${provider.name} support from us mean?`}</h2>
               <p>{provider.intro}</p>
             </div>
           </div>
@@ -181,7 +288,7 @@ export default function SupportDetail() {
           </div>
 
           <div className="feature-section">
-            <h2 className="section-title reveal">Why teams trust us with {provider.name}</h2>
+            <h2 className="section-title reveal">{provider.trustTitle || `Why teams trust us with ${provider.name}`}</h2>
             <div className="feature-grid">
               {TRUST.map((feature) => (
                 <article className="feature-card reveal" key={feature.title}>
@@ -219,7 +326,7 @@ export default function SupportDetail() {
           <div className="packages-band reveal">
             <div>
               <h2>Our service packages</h2>
-              <p>Every provider we support is covered by one of three packages — pick the lightest one that genuinely covers you.</p>
+              <p>Everything we support is covered by one of three packages — pick the lightest one that genuinely covers you.</p>
             </div>
             <Link to="/support" className="btn btn-primary">Compare packages <span aria-hidden="true">➔</span></Link>
           </div>
@@ -242,7 +349,7 @@ export default function SupportDetail() {
             <div className="other-platform-grid">
               {others.map((other) => (
                 <Link className="other-platform-chip reveal" to={`/support/${other.slug}`} key={other.slug}>
-                  24/7 support for {other.name}
+                  {other.title}
                 </Link>
               ))}
               <Link className="other-platform-chip other-platform-chip--all reveal" to="/support">

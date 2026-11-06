@@ -11,7 +11,7 @@ const SUBMENUS = {
     blurb: "Monitoring, triage and resolution for your full stack, every hour of every day.",
     rows: [
       { label: "Support Packages", to: "/support", links: [["Compare Packages", "/support#compare"]] },
-      { label: "By industry", to: "/support#industries", links: [["Agencies", "/support#industries"], ["SaaS Platforms", "/support#industries"], ["eCommerce", "/support#industries"]] },
+      { label: "By industry", to: "/support/agencies", links: [["Agencies", "/support/agencies"], ["SaaS Platforms", "/support/saas-platforms"], ["eCommerce", "/support/ecommerce"]] },
       { label: "By cloud provider", to: "/support/aws-support", links: [["24/7 Support for AWS", "/support/aws-support"], ["24/7 Support for Azure", "/support/azure-support"], ["24/7 Support for GCP", "/support/gcp-support"]] },
     ],
   },
