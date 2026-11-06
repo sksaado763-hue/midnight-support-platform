@@ -2632,6 +2632,29 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 .glance-item p { margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.65; }
 .glance-item strong { font-weight: 700; }
 
+/* Impact + sources pair. The reference's next `.coloured-boxes` row, measured over CDP at
+   innerWidth 1889: two equal-height 550 cards with a 20px gap, 40px padding and a 10px
+   radius, so the row bleeds 5px past our container exactly like the glance card. Each head
+   starts 20px below the card padding at 20px/28 weight 600 with 13px under it; the sources
+   column is a bullet-less list at the same 16px/28 leading that simply ends short while the
+   row stretches its card level with the navy one. Their section also carries a collapsed
+   40px margin above it, which ours folds into an 80px top padding. */
+.impact-band { background: var(--bg); padding: 80px 0 40px; }
+.impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-inline: -5px; }
+.impact-card,
+.impact-sources { padding: 40px; border-radius: 10px; }
+.impact-card h3,
+.impact-sources h3 {
+  margin: 20px 0 13px;
+  font-family: var(--font-head);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+.impact-card p { margin: 0; font-size: 16px; line-height: 28px; }
+.impact-sources ul { margin: 0; list-style: none; }
+.impact-sources li { font-size: 16px; line-height: 28px; }
+
 @media (max-width: 1023.98px) {
   .support-intro-grid,
   .support-faq-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -2648,11 +2671,6 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
   .support-faq .faq-cta { width: max-content; margin-inline: auto; }
   .maint-inner { max-width: none; }
   .support-cases .container { max-width: none; padding-inline: 24px; }
-  /* Their column gutter goes 10px → 24px and the eyebrow's leading 28px → 18px below 1024,
-     which pulls the title 10px closer. Everything else in the card holds its desktop size. */
-  .glance-band > .container { max-width: none; padding-inline: 24px; }
-  .glance-card { margin-inline: 0; }
-  .glance-eyebrow { line-height: 18px; margin-bottom: 34px; }
   .support-intro-grid { gap: clamp(36px, 9vw, 56px); }
   .support-intro-grid::before { display: none; }
   .support-intro-copy p { max-width: none; }
@@ -2661,6 +2679,21 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
   .why-grid,
   .cap-grid,
   .support-case-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* The reference's coloured-boxes rows flip at its lg breakpoint, measured live: at 1024 the
+   glance card and the impact pair still sit on the desktop track, at 900 both are stacked.
+   Below it the columns take the 24px gutter with a 20px stack gap, the glance eyebrow's
+   leading tightens 28px → 18px (pulling the title 10px closer) and the impact body copy
+   16px/28 → 14px/18, while every head and all card padding hold. */
+@media (max-width: 991.98px) {
+  .glance-band > .container { max-width: none; padding-inline: 24px; }
+  .glance-card { margin-inline: 0; }
+  .glance-eyebrow { line-height: 18px; margin-bottom: 34px; }
+  .impact-band > .container { max-width: none; padding-inline: 24px; }
+  .impact-grid { grid-template-columns: 1fr; margin-inline: 0; }
+  .impact-card p,
+  .impact-sources li { font-size: 14px; line-height: 18px; }
 }
 
 @media (max-width: 620px) {

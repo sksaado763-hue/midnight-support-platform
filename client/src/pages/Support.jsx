@@ -289,6 +289,17 @@ const GLANCE = [
   },
 ];
 
+const IMPACT = {
+  q: "What does an hour of downtime really cost?",
+  a: <>Never just the hour. It is the checkout that stayed broken while the fix waited for a review, the payroll run that missed its window, the Monday spent rebuilding trust in a queue that failed on Friday. Across every incident we have taken over since 2019, the median service sat dark for four hours before anyone outside the team noticed — and the fix, once someone finally started, took twenty minutes.</>,
+  sourcesHead: "Where those numbers come from",
+  sources: [
+    "Our own incident log, 2019 to today: every night we have carried the pager",
+    "Post-incident reviews written for clients and republished here with their permission",
+    "Handover notes from the first fortnight of each engagement, before and after we arrived",
+  ],
+};
+
 const TESTIMONIALS = [
   {
     slug: "gosalary",
@@ -890,6 +901,25 @@ export default function Support() {
                 <p>{item.a}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="impact-band">
+        <div className="container">
+          <div className="impact-grid">
+            <div className="impact-card reveal">
+              <h3>{IMPACT.q}</h3>
+              <p>{IMPACT.a}</p>
+            </div>
+            <div className="impact-sources reveal">
+              <h3>{IMPACT.sourcesHead}</h3>
+              <ul>
+                {IMPACT.sources.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>

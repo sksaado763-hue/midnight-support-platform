@@ -708,6 +708,13 @@ body {
 .glance-item p { color: #c2ccde; }
 .glance-item strong { color: #ffffff; }
 
+.impact-card { background: var(--navy); }
+.impact-card h3 { color: var(--amber); }
+.impact-card p { color: #ffffff; }
+.impact-sources { background: #dce5f2; }
+.impact-sources h3 { color: var(--amber-deep); }
+.impact-sources li { color: var(--text-muted); }
+
 .faq-chevron { border-color: var(--navy); }
 
 .other-platform-chip { background: #ffffff; border-color: var(--line-strong); }
