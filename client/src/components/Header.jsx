@@ -12,7 +12,7 @@ const SUBMENUS = {
     rows: [
       { label: "Support Packages", to: "/support", links: [["Compare Packages", "/support#compare"]] },
       { label: "By industry", to: "/support#industries", links: [["Agencies", "/support#industries"], ["SaaS Platforms", "/support#industries"], ["eCommerce", "/support#industries"]] },
-      { label: "By cloud provider", to: "/cloud#aws", links: [["24/7 Support for AWS", "/cloud#aws"], ["24/7 Support for Azure", "/cloud#azure"], ["24/7 Support for GCP", "/cloud#gcp"]] },
+      { label: "By cloud provider", to: "/support/aws-support", links: [["24/7 Support for AWS", "/support/aws-support"], ["24/7 Support for Azure", "/support/azure-support"], ["24/7 Support for GCP", "/support/gcp-support"]] },
     ],
   },
   cloud: {
