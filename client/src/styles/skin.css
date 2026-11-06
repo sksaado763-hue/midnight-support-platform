@@ -715,6 +715,19 @@ body {
 .impact-sources h3 { color: var(--amber-deep); }
 .impact-sources li { color: var(--text-muted); }
 
+/* The agencies scene: three rows of blocks receding toward the #122142 field,
+   windows mostly dark, the amber ones the only light in the town. */
+.city-back rect { fill: #1b3160; opacity: 0.55; }
+.city-mid rect { fill: #172a52; opacity: 0.85; }
+.city-front rect { fill: #0e1a34; }
+.city-windows rect { fill: rgba(255, 255, 255, 0.1); }
+.city-windows rect.is-lit { fill: rgba(250, 189, 20, 0.55); }
+.city-moon { fill: var(--amber); opacity: 0.9; }
+.city-rocket path:first-child { fill: #e9edf5; }
+.city-porthole { fill: var(--amber); }
+.city-fin { fill: var(--navy-soft); }
+.city-flame { fill: var(--amber); opacity: 0.85; }
+
 .faq-chevron { border-color: var(--navy); }
 
 .other-platform-chip { background: #ffffff; border-color: var(--line-strong); }

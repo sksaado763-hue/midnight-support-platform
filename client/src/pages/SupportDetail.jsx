@@ -109,6 +109,7 @@ const INDUSTRIES = [
   {
     slug: "agencies",
     name: "Agencies",
+    scene: "city",
     title: "24/7 support for agencies",
     tagline: "Client sites, launch dates and retainer SLAs — carried by a rota that never sleeps, so your account managers never have to.",
     whatTitle: "What agency support from us means",
@@ -212,6 +213,45 @@ const PAGES = [
   ...INDUSTRIES.map((page) => ({ ...page, kind: "industry" })),
 ];
 
+/* Our own city skyline: three rows of blocks that ramp up from left to right,
+   so the copy sits over a low horizon and the town grows behind the rocket.
+   The window pattern is deterministic — the same page paints the same way. */
+const CITY_BACK = [
+  [0, 150, 96], [150, 90, 118], [240, 130, 84], [370, 80, 132], [450, 150, 104],
+  [600, 100, 148], [700, 140, 118], [840, 90, 164], [930, 150, 132], [1080, 110, 180],
+  [1190, 130, 148], [1320, 120, 196],
+];
+const CITY_MID = [
+  [40, 120, 128], [170, 80, 152], [260, 140, 110], [410, 100, 166], [520, 130, 134],
+  [660, 90, 180], [760, 150, 146], [920, 100, 198], [1030, 140, 164], [1180, 90, 214],
+  [1280, 160, 180],
+];
+const CITY_FRONT = [
+  [0, 140, 96], [150, 110, 128], [270, 150, 104], [430, 100, 140], [540, 160, 118],
+  [710, 120, 160], [840, 150, 132], [1000, 110, 186], [1120, 160, 152], [1290, 150, 206],
+];
+
+function skylineWindows() {
+  const cells = [];
+  CITY_FRONT.forEach(([x, w, h], b) => {
+    const cols = Math.floor((w - 20) / 22);
+    const rows = Math.floor((h - 26) / 26);
+    for (let c = 0; c < cols; c++) {
+      for (let r = 0; r < rows; r++) {
+        const seed = (c * 3 + r * 5 + b * 7) % 7;
+        if (seed > 2) continue;
+        cells.push({
+          key: `${b}-${c}-${r}`,
+          x: x + 11 + c * 22,
+          y: 320 - h + 14 + r * 26,
+          lit: seed === 0,
+        });
+      }
+    }
+  });
+  return cells;
+}
+
 export default function SupportDetail() {
   const { slug } = useParams();
   const provider = PAGES.find((p) => p.slug === slug);
@@ -223,7 +263,7 @@ export default function SupportDetail() {
 
   return (
     <>
-      <section className="page-hero page-hero--support">
+      <section className={`page-hero page-hero--support${provider.scene ? ` page-hero--${provider.scene}` : ""}`}>
         <div className="hero-stars" aria-hidden="true">
           <svg viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice">
             <g fill="#ffffff">
@@ -236,14 +276,50 @@ export default function SupportDetail() {
             </g>
           </svg>
         </div>
+        {provider.scene === "city" && (
+          <div className="city-skyline" aria-hidden="true">
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice">
+              <g className="city-back">
+                {CITY_BACK.map(([x, w, h]) => <rect key={`b${x}`} x={x} y={320 - h} width={w - 6} height={h} />)}
+              </g>
+              <g className="city-mid">
+                {CITY_MID.map(([x, w, h]) => <rect key={`m${x}`} x={x} y={320 - h} width={w - 8} height={h} />)}
+              </g>
+              <g className="city-front">
+                {CITY_FRONT.map(([x, w, h]) => <rect key={`f${x}`} x={x} y={320 - h} width={w - 10} height={h} />)}
+              </g>
+              <g className="city-windows">
+                {skylineWindows().map((c) => (
+                  <rect key={c.key} className={c.lit ? "is-lit" : undefined} x={c.x} y={c.y} width={8} height={12} />
+                ))}
+              </g>
+            </svg>
+          </div>
+        )}
+        {provider.scene === "city" && (
+          <div className="city-art" aria-hidden="true">
+            <svg viewBox="0 0 220 300">
+              <circle className="city-moon" cx="42" cy="40" r="22" />
+              <g className="city-rocket">
+                <path d="M124 30c22 24 32 58 32 96v50H92v-50c0-38 10-72 32-96z" />
+                <circle className="city-porthole" cx="124" cy="112" r="14" />
+                <path className="city-fin" d="M92 138v48H56c6-24 18-42 36-48z" />
+                <path className="city-fin" d="M156 138v48h36c-6-24-18-42-36-48z" />
+                <path className="city-flame" d="M108 176h32l-5 20-11 26-11-26z" />
+              </g>
+            </svg>
+          </div>
+        )}
         <div className="container">
-          <p className="breadcrumb">
-            <Link to="/support">24/7 Support</Link> <span aria-hidden="true">/</span> {provider.name}
-          </p>
-          <h1 className="page-hero-title support-hero-title reveal">{provider.title}</h1>
-          <p className="page-hero-sub support-hero-sub reveal">{provider.tagline}</p>
-          <div className="hero-actions reveal">
-            <Link to="/contact" className="btn btn-primary support-hero-cta">Get in touch <span aria-hidden="true">➔</span></Link>
+          <div className="hero-copy">
+            <p className="breadcrumb">
+              <Link to="/support">24/7 Support</Link> <span aria-hidden="true">/</span> {provider.name}
+            </p>
+            <h1 className="page-hero-title support-hero-title reveal">{provider.title}</h1>
+            <p className="page-hero-sub support-hero-sub reveal">{provider.tagline}</p>
+            <div className="hero-actions reveal">
+              <Link to="/contact" className="btn btn-primary support-hero-cta">Get in touch <span aria-hidden="true">➔</span></Link>
+            </div>
           </div>
         </div>
         <div className="support-hero-divider" aria-hidden="true">

@@ -1880,6 +1880,88 @@ ul { list-style: none; }
 }
 .support-hero-divider svg { display: block; width: 100%; height: 100%; }
 
+/* Agencies hero, measured off the reference's agency page at 1889: a 630px
+   field with 160px above the copy, a 5/12 column of 475px, a 34/44 headline,
+   a 17/24 standfirst 12px from it and one 56px amber button. Their hero paints
+   the scene as a single background photo; ours draws it in layers so the
+   skyline, the rocket and the copy can each move on their own breakpoint. */
+.page-hero--city {
+  min-height: clamp(520px, 33.35vw, 630px);
+  padding: clamp(104px, 8.47vw, 160px) 0 clamp(104px, 8.47vw, 160px);
+}
+.page-hero--city .container {
+  position: relative;
+  z-index: 2;
+  width: min(1140px, 100%);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+.page-hero--city .hero-copy {
+  max-width: 475px;
+  padding-top: 50px;
+}
+.page-hero--city .support-hero-title {
+  font-size: clamp(26px, 1.8vw, 34px);
+  line-height: clamp(32px, 2.33vw, 44px);
+  font-weight: 500;
+  letter-spacing: 0;
+  max-width: 15ch;
+}
+.page-hero--city .support-hero-sub {
+  margin-top: 12px;
+  font-family: var(--font-head);
+  font-size: clamp(15px, 0.9vw, 17px);
+  line-height: clamp(20px, 1.27vw, 24px);
+  font-weight: 600;
+  max-width: 30ch;
+}
+.page-hero--city .hero-actions { margin-top: 12px; }
+.page-hero--city .support-hero-cta {
+  height: clamp(48px, 2.97vw, 56px);
+  padding: 18px 24px;
+  border-radius: 5px;
+  font-size: clamp(13px, 0.75vw, 14px);
+  font-weight: 600;
+}
+.city-skyline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: clamp(150px, 17vw, 320px);
+  line-height: 0;
+  pointer-events: none;
+}
+.city-skyline svg { display: block; width: 100%; height: 100%; }
+.city-art {
+  position: absolute;
+  right: clamp(16px, 4.2vw, 80px);
+  bottom: clamp(96px, 9vw, 170px);
+  z-index: 2;
+  width: clamp(130px, 12vw, 230px);
+  line-height: 0;
+  pointer-events: none;
+}
+.city-art svg { display: block; width: 100%; height: auto; }
+/* The wave has to cut the town off, not the other way round — and at the
+   hub's 160px depth it buries the whole left horizon, so the city wears a
+   shallower one. */
+.page-hero--city .support-hero-divider { z-index: 3; height: clamp(56px, 4.7vw, 90px); }
+
+/* Below the reference's 992 flip the scene stops being a stage and becomes a
+   backdrop: the copy takes the full measure and the skyline keeps a shallower
+   horizon under it. */
+@media (max-width: 991.98px) {
+  .page-hero--city { min-height: 0; padding: 96px 0 210px; }
+  .page-hero--city .container { padding-inline: 24px; }
+  .page-hero--city .hero-copy { max-width: none; padding-top: 0; }
+  .city-skyline { height: 170px; }
+  /* The measure is too narrow to hold the copy and the rocket side by side,
+     so below the flip the town carries the scene on its own. */
+  .city-art { display: none; }
+}
+
 /* Platforms hero, measured 1:1 off the reference capture at 1908px: 199px
    gutters, a 67px/79 two-line headline, 22px copy, a 77px CTA and the navy
    field handed to the page on a cosine 80px deep. The field itself is the
