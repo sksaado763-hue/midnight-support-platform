@@ -702,6 +702,12 @@ body {
 .ind-cta p { color: #ffffff; }
 .ind-cta a { color: var(--amber); }
 
+.glance-card { background: var(--navy); color: #ffffff; }
+.glance-eyebrow { color: #ffffff; border-bottom-color: var(--amber); }
+.glance-item h3 { color: #ffffff; }
+.glance-item p { color: #c2ccde; }
+.glance-item strong { color: #ffffff; }
+
 .faq-chevron { border-color: var(--navy); }
 
 .other-platform-chip { background: #ffffff; border-color: var(--line-strong); }

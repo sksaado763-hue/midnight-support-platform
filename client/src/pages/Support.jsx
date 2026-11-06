@@ -266,6 +266,29 @@ const INDUSTRIES = [
   },
 ];
 
+const GLANCE = [
+  {
+    q: "Who actually picks up at three in the morning?",
+    a: <>One of our own engineers, <strong>on shift and named on the rota</strong>. Not a queue, not a triage desk reading from a script — the person who answers has already seen the service, the last deploy and the alert that fired before anyone noticed.</>,
+  },
+  {
+    q: "What counts as an incident?",
+    a: <>Anything that stops your users doing the thing they came to do: a payroll run that failed, a checkout that throws, a job that never fired, a certificate that expired on the way through. If it costs you money or trust overnight, we treat it as one.</>,
+  },
+  {
+    q: "What do you need from us before the first night?",
+    a: <>Read access to the stack, a runbook if you keep one, and a way in to whoever alerts. We spend the first fortnight <strong>reading, not changing</strong> — by the time someone quotes you a plan, they have already been through your code.</>,
+  },
+  {
+    q: "What do we get told afterwards?",
+    a: <>A written handover every morning: what broke, what changed, and what is still waiting on a decision from you. Nothing closes until it is written down, so nobody has to rebuild last night from a thread.</>,
+  },
+  {
+    q: "And if it turns out not to be your problem?",
+    a: <>We say so. Plenty of calls end with <strong>that one is upstream</strong> and a name to chase. You will never pay us to sit on something that was never ours to fix.</>,
+  },
+];
+
 const TESTIMONIALS = [
   {
     slug: "gosalary",
@@ -853,6 +876,21 @@ export default function Support() {
           <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
             <path d="M0 73H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
           </svg>
+        </div>
+      </section>
+
+      <section className="glance-band">
+        <div className="container">
+          <div className="glance-card reveal">
+            <p className="glance-eyebrow">The short version</p>
+            <h2>The questions we get asked first</h2>
+            {GLANCE.map((item) => (
+              <div className="glance-item" key={item.q}>
+                <h3>{item.q}</h3>
+                <p>{item.a}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
