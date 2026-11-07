@@ -658,6 +658,12 @@ body {
 .faq-item summary { color: var(--navy); }
 
 /* ---------- Support page bands ---------- */
+.faq-panel { background: var(--navy); color: #ffffff; }
+
+.faq-panel h3,
+.faq-panel p,
+.faq-panel a { color: #ffffff; }
+
 .means-card { background: var(--paper); color: var(--navy); }
 .band-title { color: #ffffff; }
 .band-title--dark { color: var(--navy); }

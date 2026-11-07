@@ -4,6 +4,7 @@ import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
 import CaseFeature from "../components/CaseFeature";
 import CaseStudiesBand from "../components/CaseStudiesBand";
+import FaqBand from "../components/FaqBand";
 import OutcomeBand from "../components/OutcomeBand";
 import WhyBand from "../components/WhyBand";
 import NotFound from "./NotFound";
@@ -222,6 +223,42 @@ const INDUSTRIES = [
           ),
           text: "White-label on your domain, your ticket templates and your tone of voice, with our engineers behind them. The escalation reads like it came from your team, because as far as the client is concerned, it did.",
           closer: "One queue per client, one voice: yours.",
+        },
+      ],
+    },
+    faq: {
+      title: "The cover your agency sells but never staffs",
+      intro: "Certified engineers on a published rota, across every stack in the client portfolio. Here is what actually lands on our desk once the retainer is ours.",
+      panel: {
+        title: "Not covered above?",
+        text: "Send the portfolio list and the SLAs sitting behind it, and we will tell you which sites we can carry tonight.",
+        cta: "Talk to the night desk",
+        to: "/contact",
+      },
+      items: [
+        {
+          q: "Client websites, watched around the clock",
+          a: "Every retainer site on the same rota: uptime and journey monitoring, triage graded by the response clock you signed, and the fix shipped through your process with your ticket number on it.",
+        },
+        {
+          q: "CMS cover from WordPress to headless",
+          a: "Core, plugin and runtime updates inside each client's own window, plus editorial breakages, form regressions and the shop running on three extensions and a hope.",
+        },
+        {
+          q: "The hosting underneath, run properly",
+          a: "Shared boxes, managed cloud and static edges alike: patching on a schedule, performance work that survives a traffic spike, and a cost review that ends in actions rather than graphs.",
+        },
+        {
+          q: "White-label answers in your name",
+          a: "Your domain, your ticket templates, your tone of voice, our engineers behind them. The client never needs to know a second studio is on the call.",
+        },
+        {
+          q: "End-user requests, taken the whole way",
+          a: "Where the agreement allows it we work the queue directly: access requests, the password reset, the escalation that currently reaches your founder on a Sunday evening.",
+        },
+        {
+          q: "Plain English for the words in a retainer",
+          a: "Response clock: how long until a human has picked it up. Full-stack: infrastructure and application on one rota. Out-of-hours: overnight and weekend cover only. Escalation path: the line from first triage to whoever can ship the fix. Everything else in the agreement is written the same way, and we walk you through it before anyone signs.",
         },
       ],
     },
@@ -530,6 +567,16 @@ export default function SupportDetail() {
               title={provider.covers.title}
               intro={provider.covers.intro}
               cards={provider.covers.cards}
+            />
+          )}
+
+          {provider.faq && (
+            <FaqBand
+              variant="detail"
+              title={provider.faq.title}
+              intro={provider.faq.intro}
+              faqs={provider.faq.items}
+              panel={provider.faq.panel}
             />
           )}
 

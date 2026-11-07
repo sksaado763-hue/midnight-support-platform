@@ -2869,6 +2869,71 @@ section.case-feature--detail { padding: 40px 0; }
   .support-case-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* The same accordion band at the reference's detail scale — its .how-it-works
+   row plus the navy .how-it-works-cta panel that closes it. Every number below
+   is that section's computed CSS at innerWidth 1889: 1140 track with 20px of
+   page padding (we keep our shared 1170/30), two 570 columns with 20 between
+   them and 20 of left padding on the artwork, 34/56 w400 over a 16/28 w300
+   standfirst, a 58px header (their 15px padding less the 2px focus border we
+   keep reserved on every row) carrying 17/28 w600 ink and a 12px plus drawn from
+   1px bars, then 16/28 w300 answers with 16px below and the hairline under each
+   item. The gap from standfirst to accordion is 68, not 20: the reference's own
+   empty filler paragraph is 28 of leading with 20px of margin on each side of it. The panel is the
+   container width with 40px of padding on a 10px radius, a 1fr/3fr split inside
+   a further 40px of inline padding, and centred 16/28 copy against a 20/28 w500
+   title. Their own CSS floats that panel with translateY(-50%) — 60 + 80 of
+   flow spacing less half its 184px height, which lands it exactly 48 under the
+   accordion and 92 above the next band whatever the open state, so we ship
+   those two numbers in normal flow instead. These rules sit after the wide
+   band's own tiers so the detail numbers win every tie. */
+.support-faq--detail { padding: 80px 0 92px; margin: 40px 0; }
+.support-faq--detail > .container { width: min(1170px, 100%); max-width: none; padding-inline: 30px; }
+.support-faq--detail .support-faq-grid { gap: 0 20px; }
+.support-faq--detail h2 { margin: 0 0 20px; font-size: 34px; line-height: 56px; font-weight: 400; }
+.support-faq--detail .support-faq-intro { margin: 0 0 68px; font-size: 16px; line-height: 28px; font-weight: 300; color: #132140; }
+.support-faq--detail .faq-list { padding-right: 0; }
+.support-faq--detail .faq-item summary { padding: 13px 0; font-size: 17px; line-height: 28px; gap: 12px; }
+.support-faq--detail .faq-item p { padding: 0 0 16px; font-size: 16px; line-height: 28px; font-weight: 300; color: #132140; }
+.support-faq--detail .faq-plus { width: 12px; height: 12px; }
+.support-faq--detail .faq-plus::before { height: 1px; }
+.support-faq--detail .faq-plus::after { width: 1px; }
+.support-faq--detail .support-faq-art { padding-left: 20px; }
+
+.faq-panel {
+  width: min(1170px, calc(100% - 60px));
+  margin: 48px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 0 40px;
+  align-items: center;
+  padding: 40px;
+  border-radius: 10px;
+}
+.faq-panel h3 { margin: 0; font-size: 20px; line-height: 28px; font-weight: 500; }
+.faq-panel p { margin: 0; font-size: 16px; line-height: 28px; font-weight: 300; text-align: center; }
+.faq-panel a { font-weight: 700; text-decoration: underline; white-space: nowrap; }
+
+@media (max-width: 1023.98px) {
+  .support-faq--detail > .container { width: 100%; padding-inline: 24px; }
+  .support-faq--detail .support-faq-art { padding-left: 0; max-width: 330px; margin-inline: auto; }
+  .faq-panel { width: min(1170px, calc(100% - 48px)); padding: 30px 24px; gap: 24px; }
+}
+
+/* Below the reference's md breakpoint the whole tier steps down — 24/34 title,
+   17/22 headers on a 52px row, 14/18 body — the panel columns stack with the
+   title centred over the copy, and the band's chrome tightens to 20px gutters.
+   The panel's tail shrinks with it because the slab itself ends there. */
+@media (max-width: 767.98px) {
+  .support-faq--detail h2 { font-size: 24px; line-height: 34px; }
+  .support-faq--detail .support-faq-intro,
+  .support-faq--detail .faq-item p,
+  .faq-panel p { font-size: 14px; line-height: 18px; }
+  .support-faq--detail .support-faq-intro { margin-bottom: 58px; }
+  .support-faq--detail .faq-item summary { padding: 13px 0; font-size: 17px; line-height: 22px; }
+  .faq-panel { grid-template-columns: 1fr; padding: 30px 24px; }
+  .faq-panel h3 { font-size: 16px; line-height: 22px; text-align: center; }
+}
+
 /* Sub-page case slab at the small breakpoint: the reference keeps it left-aligned,
    drops the label 48 → 32 and the copy to 14/18, and spaces the stack by 40px.
    Its label-to-artwork gap of 114px is the 74px margin plus that 40px row gap. */
@@ -3750,6 +3815,10 @@ section.case-feature--detail { padding: 40px 0; }
   margin-left: calc(50% - 50vw);
 }
 .platform-detail .pii-band--detail {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+.platform-detail .support-faq--detail {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
