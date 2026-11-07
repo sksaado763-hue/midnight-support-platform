@@ -26,9 +26,7 @@ export default function WhyBand({ title, intro, cards, accent, variant = "wide" 
   return (
     <section className={`why-band${detail ? " why-band--detail" : ""}`}>
       <div className="hero-stars" aria-hidden="true">
-        {/* The detail band is one short row of cards, so the field is cropped to
-            the strip the dots actually occupy instead of the tall wide one. */}
-        <svg viewBox={detail ? "0 0 1911 880" : "0 0 1911 1765"} preserveAspectRatio="xMidYMid slice">
+        <svg viewBox="0 0 1911 1765" preserveAspectRatio="xMidYMid slice">
           <defs>
             <radialGradient id="whyStarGlow">
               <stop offset="0" stopColor="#ffffff" />
@@ -54,30 +52,26 @@ export default function WhyBand({ title, intro, cards, accent, variant = "wide" 
               <circle key={i} cx={star.cx.toFixed(1)} cy={star.cy.toFixed(1)} r={star.r.toFixed(2)} fillOpacity={star.o.toFixed(2)} />
             ))}
           </g>
-          {!detail && (
-            <>
-              <g className="why-planet" transform="translate(250 330) rotate(-16)">
-                <ellipse rx="76" ry="18" fill="none" stroke="#9dc2d6" strokeWidth="6" opacity="0.75" />
-                <circle r="42" fill="url(#whyPlanetCool)" />
-                <g clipPath="url(#whyCoolClip)" fill="#8fd0e6">
-                  <rect x="-46" y="-22" width="92" height="9" rx="4.5" opacity="0.5" />
-                  <rect x="-46" y="1" width="92" height="7" rx="3.5" fill="#2f6f96" opacity="0.45" />
-                  <rect x="-46" y="18" width="92" height="8" rx="4" opacity="0.4" />
-                </g>
-                <path d="M-76 0A76 18 0 0 0 76 0" fill="none" stroke="#b9d7e6" strokeWidth="6" opacity="0.85" />
-              </g>
-              <g className="why-planet" transform="translate(130 543)">
-                <circle r="126" fill="url(#whyPlanetWarm)" />
-                <g clipPath="url(#whyWarmClip)">
-                  <rect x="-112" y="-92" width="104" height="24" rx="12" fill="#ffd2b6" opacity="0.6" />
-                  <rect x="18" y="-64" width="112" height="18" rx="9" fill="#ffd2b6" opacity="0.5" />
-                  <rect x="-74" y="-10" width="132" height="26" rx="13" fill="#d8410a" opacity="0.4" />
-                  <rect x="-124" y="34" width="88" height="20" rx="10" fill="#ffd2b6" opacity="0.45" />
-                  <rect x="34" y="60" width="96" height="16" rx="8" fill="#d8410a" opacity="0.35" />
-                </g>
-              </g>
-            </>
-          )}
+          <g className="why-planet" transform="translate(250 330) rotate(-16)">
+            <ellipse rx="76" ry="18" fill="none" stroke="#9dc2d6" strokeWidth="6" opacity="0.75" />
+            <circle r="42" fill="url(#whyPlanetCool)" />
+            <g clipPath="url(#whyCoolClip)" fill="#8fd0e6">
+              <rect x="-46" y="-22" width="92" height="9" rx="4.5" opacity="0.5" />
+              <rect x="-46" y="1" width="92" height="7" rx="3.5" fill="#2f6f96" opacity="0.45" />
+              <rect x="-46" y="18" width="92" height="8" rx="4" opacity="0.4" />
+            </g>
+            <path d="M-76 0A76 18 0 0 0 76 0" fill="none" stroke="#b9d7e6" strokeWidth="6" opacity="0.85" />
+          </g>
+          <g className="why-planet" transform="translate(130 543)">
+            <circle r="126" fill="url(#whyPlanetWarm)" />
+            <g clipPath="url(#whyWarmClip)">
+              <rect x="-112" y="-92" width="104" height="24" rx="12" fill="#ffd2b6" opacity="0.6" />
+              <rect x="18" y="-64" width="112" height="18" rx="9" fill="#ffd2b6" opacity="0.5" />
+              <rect x="-74" y="-10" width="132" height="26" rx="13" fill="#d8410a" opacity="0.4" />
+              <rect x="-124" y="34" width="88" height="20" rx="10" fill="#ffd2b6" opacity="0.45" />
+              <rect x="34" y="60" width="96" height="16" rx="8" fill="#d8410a" opacity="0.35" />
+            </g>
+          </g>
         </svg>
       </div>
       {!detail && (

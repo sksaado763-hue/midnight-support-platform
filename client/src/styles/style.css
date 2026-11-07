@@ -2416,12 +2416,13 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
 .why-card--accent .why-accent-cta:focus { background: #ffffff; color: #132140; }
 
 /* The same block on the reference's sub-pages, measured live at innerWidth 1889:
-   a 1140 container with 20px gutters, straight edges instead of the crest waves,
-   a flat navy dot field with no planets, and one row of 32px-padded plates —
-   48/56 intro over 16/28, 20/28 card titles, the amber plate closing on a
-   156×56 navy button. The intro column is 66.667% so it lands on the
-   reference's 740px inside our 1110. */
-section.why-band--detail { background: var(--navy); }
+   a 1140 container with 20px gutters and straight edges instead of the crest
+   waves, then rows of 32px-padded plates — 48/56 intro over 16/28, 20/28 card
+   titles, the amber plate closing on a 156×56 navy button. The intro column is
+   66.667% so it lands on the reference's 740px inside our 1110. Nine cards make
+   this band the same height as the /support one, and the reference uses one and
+   the same texture file for both, so the navy→royal-blue field and the planets
+   carry over unchanged. */
 .why-band--detail > .container { width: min(1170px, 100%); max-width: none; padding-inline: 30px; padding-top: 80px; padding-bottom: 80px; }
 .why-band--detail .why-intro { width: 66.667%; }
 .why-band--detail .why-intro .band-title { margin-bottom: 0; font-size: 48px; line-height: 56px; font-weight: 600; }

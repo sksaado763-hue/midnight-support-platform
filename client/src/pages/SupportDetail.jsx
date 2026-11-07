@@ -146,6 +146,30 @@ const INDUSTRIES = [
           title: "Because your roadmap stops being the fallback",
           text: "The update backlog, the CMS regressions and the odd 2am form breaker stop landing on whoever built the site. Your developers ship what you actually quoted, and the retainer stops eating senior time.",
         },
+        {
+          title: "Because every stack in the portfolio has an owner",
+          text: "WordPress, Sitecore, the headless rebuild, the shop running on three plugins and a hope. Whoever shipped it is not the person on shift at 3am, so each client's stack arrives pre-briefed with its own runbook.",
+        },
+        {
+          title: "Because go-live night has a plan before the traffic",
+          text: "Campaign launches get extra eyes on checkout, forms and page speed, a rollback written in advance, and someone watching the dashboards while your team takes the bow.",
+        },
+        {
+          title: "Because the update backlog stops needing a Friday",
+          text: "Core, plugin and runtime changes go out inside each client's own window: backups verified first, every change logged, and nothing landing mid-edit on a Friday afternoon.",
+        },
+        {
+          title: "Because the knowledge stays when the developer goes",
+          text: "The engineer who built six of your client sites is not the only reason they still work. Decisions, risks and open threads leave every shift written down, so the account survives the resignation.",
+        },
+        {
+          title: "Because your client still hears your name",
+          text: "White-label on your domain, your ticket templates and your tone of voice — or our name on the door if the retainer reads better with it. Either way, the client deals with you.",
+        },
+        {
+          title: "Because the queue stops being a group chat",
+          text: "One intake per client, graded by the SLA you signed rather than by who shouts loudest. Your founder stops being the unofficial escalation path at midnight.",
+        },
       ],
       accent: {
         title: "Because your renewals get evidence, not anecdotes",
