@@ -4,6 +4,7 @@ import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
 import CaseFeature from "../components/CaseFeature";
 import CaseStudiesBand from "../components/CaseStudiesBand";
+import OutcomeBand from "../components/OutcomeBand";
 import WhyBand from "../components/WhyBand";
 import NotFound from "./NotFound";
 
@@ -182,6 +183,47 @@ const INDUSTRIES = [
     cases: {
       title: "Proof your renewals can quote",
       slugs: ["dexerto", "third-space", "gosalary", "absolute-software"],
+    },
+    covers: {
+      title: "Built by people who have run the agency side",
+      intro: "Before there was a rota, there was a studio desk: client emergencies answered at two in the morning between build tickets, and a support promise nobody had staffed. Every routine here was written against that gap.",
+      cards: [
+        {
+          title: "Nobody in your studio carries the pager",
+          icon: (
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M30 8a17 17 0 1 0 10 30A19 19 0 0 1 30 8z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+              <path d="M33 7h9l-9 9h9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          ),
+          text: "Alerts, first response and the 3am fix land on our rota, not on whoever shipped the build. Your developers go back to the next project and the client site still gets answered inside the minutes your SLA promises.",
+          closer: "So whoever answers at half past three is already briefed.",
+        },
+        {
+          title: "Your retainers stop losing money after launch",
+          icon: (
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="2.2" />
+              <path d="M24 9v15h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M15 39l4-6 5 4 5-7 4 5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          ),
+          text: "Support hours are the line every agency under-prices. One invoice across the portfolio, response clocks per client and a monthly summary of where the hours actually went, so the renewal conversation has evidence in it.",
+          closer: "Which makes the retainer the hours you priced.",
+        },
+        {
+          title: "Your brand on every reply",
+          icon: (
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M6 11h26v17H16l-10 8V11z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+              <path d="M18 32h10l10 8v-8h4V19" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+              <path d="M13 20l5 5 10-11" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          ),
+          text: "White-label on your domain, your ticket templates and your tone of voice, with our engineers behind them. The escalation reads like it came from your team, because as far as the client is concerned, it did.",
+          closer: "One queue per client, one voice: yours.",
+        },
+      ],
     },
     problem: "Retainers eat your senior devs. Every client site is a different stack, a different host and a different idea of urgent, and the engineer who built half of them left last spring. Launches slip because the team is rebuilding a client's broken form for the third time.",
     solution: "We become the agency's support desk: one rota across all client sites, triage graded by the SLA you signed, fixes shipped through your process with your ticket numbers, and a morning handover your account managers can forward verbatim.",
@@ -479,6 +521,15 @@ export default function SupportDetail() {
               variant="detail"
               title={provider.cases.title}
               studies={provider.cases.slugs.map((slug) => (caseStudies || []).find((study) => study.slug === slug)).filter(Boolean)}
+            />
+          )}
+
+          {provider.covers && (
+            <OutcomeBand
+              variant="detail"
+              title={provider.covers.title}
+              intro={provider.covers.intro}
+              cards={provider.covers.cards}
             />
           )}
 

@@ -5,6 +5,7 @@ import { useApi } from "../lib/api";
 import TrustLogos from "../components/TrustLogos";
 import CaseFeature from "../components/CaseFeature";
 import CaseStudiesBand from "../components/CaseStudiesBand";
+import OutcomeBand from "../components/OutcomeBand";
 import WhyBand from "../components/WhyBand";
 
 const MEANS = [
@@ -185,11 +186,6 @@ const OUTCOMES = [
     text: "Recurring incidents get root-cause work, alert noise gets tuned away, and capacity gets planned before it becomes an emergency. The queue shrinks month on month.",
   },
 ];
-
-const PII_STARS = Array.from({ length: 84 }, (_, i) => {
-  const rnd = (n) => { const s = Math.sin(i * 12.9898 + n * 78.233) * 43758.5453; return s - Math.floor(s); };
-  return { cx: rnd(1) * 1911, cy: Math.pow(rnd(2), 1.7) * 720, r: 0.9 + rnd(3) * 2.1, o: 0.18 + rnd(4) * 0.62 };
-});
 
 const INDUSTRIES = [
   {
@@ -591,34 +587,7 @@ export default function Support() {
         </div>
       </section>
 
-      <section className="pii-band">
-        <div className="hero-stars" aria-hidden="true">
-          <svg viewBox="0 0 1911 760" preserveAspectRatio="xMidYMid slice">
-            <g fill="#ffffff">
-              {PII_STARS.map((star, i) => (
-                <circle key={i} cx={star.cx.toFixed(1)} cy={star.cy.toFixed(1)} r={star.r.toFixed(2)} opacity={star.o.toFixed(2)} />
-              ))}
-            </g>
-          </svg>
-        </div>
-        <div className="band-wave band-wave--top" aria-hidden="true">
-          <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
-            <path d="M0 0H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
-          </svg>
-        </div>
-        <div className="container">
-          <h2 className="band-title band-title--center reveal">What good cover buys you</h2>
-          <div className="pii-grid">
-            {OUTCOMES.map((outcome) => (
-              <article className="pii-card reveal" key={outcome.title}>
-                <span className="pii-icon">{outcome.icon}</span>
-                <h3>{outcome.title}</h3>
-                <p>{outcome.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <OutcomeBand title="What good cover buys you" cards={OUTCOMES} />
 
       <section className="reviews" aria-label="What the teams we support tell us">
         <div className="container">

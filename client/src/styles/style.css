@@ -2602,6 +2602,28 @@ section.case-feature--detail { padding: 40px 0; }
   .pii-grid { grid-template-columns: 1fr; }
 }
 
+/* The same band at the reference's detail scale — `.seo-text-block` painted on
+   the flat `Dark-No-gradient.webp` field, which is one colour (#12203f) under
+   84 muted dots, so it needs no gradient and no wave: 40px at both ends. Every
+   number below is that section's computed CSS at innerWidth 1889 — container
+   1140 with 20px of page padding, three 380 columns carrying 10px each side, so
+   360 of text and 20px between them, 80px icons, 48/56 title over 16/28 copy,
+   24 to the columns' own intro and 48 from that intro to the grid (the last
+   being the 20 the reference measures plus the 28 of its empty closing <p>).
+   Below 992 the reference drops to 32/normal and 14/18, which is the same pair
+   our other detail bands already use. */
+.pii-band--detail { padding: 40px 0; }
+.pii-band--detail > .container { width: min(1170px, 100%); max-width: none; padding-inline: 30px; padding-top: 0; }
+.pii-band--detail .pii-head { text-align: center; }
+.pii-band--detail .band-title { margin: 0 0 24px; font-size: 48px; line-height: 56px; font-weight: 600; }
+.pii-band--detail .pii-head > p { margin: 0; font-size: 16px; line-height: 28px; font-weight: 300; color: #ffffff; }
+.pii-band--detail .pii-grid { margin-top: 48px; gap: 20px; }
+.pii-band--detail .pii-card { padding: 0; border-radius: 0; }
+.pii-band--detail .pii-icon { width: 80px; height: 80px; }
+.pii-band--detail .pii-card h3 { margin: 29px 0 24px; font-size: 20px; line-height: 28px; font-weight: 500; }
+.pii-band--detail .pii-card p { font-size: 16px; line-height: 28px; font-weight: 300; }
+.pii-band--detail .pii-card p + p { margin-top: 20px; font-weight: 400; }
+
 /* Testimonials band — reference .reviews: a paged two-up slider of bordered white
    cards, no heading, dots under the cards. Every number is the live page's computed
    CSS at 1889. The visible pair is 1120 wide — 5px wider than the 1110 content on each
@@ -2877,6 +2899,20 @@ section.case-feature--detail { padding: 40px 0; }
   .why-band--detail .why-intro p,
   .why-band--detail .why-card p { font-size: 14px; line-height: 18px; }
   .why-band--detail .why-grid { grid-template-columns: 1fr; margin-top: 73px; }
+}
+
+/* The icon band's mobile tiers, from the same reference section at innerWidth
+   490: the copy drops to 14/18 and the heading to 16/22, the icon-to-heading
+   gap narrows 29 → 14 with the reference's own shorter image line box, and the
+   columns stack on a 32px gap under a 34px head — 52 measured less the 18 of
+   the empty paragraph we do not carry. */
+@media (max-width: 767.98px) {
+  .pii-band--detail > .container { width: 100%; padding-inline: 24px; }
+  .pii-band--detail .band-title { font-size: 32px; line-height: 39px; }
+  .pii-band--detail .pii-head > p,
+  .pii-band--detail .pii-card p { font-size: 14px; line-height: 18px; }
+  .pii-band--detail .pii-card h3 { margin-top: 14px; font-size: 16px; line-height: 22px; }
+  .pii-band--detail .pii-grid { margin-top: 34px; gap: 32px; }
 }
 
 /* The reference's coloured-boxes rows flip at its lg breakpoint, measured live: at 1024 the
@@ -3710,6 +3746,10 @@ section.case-feature--detail { padding: 40px 0; }
   margin-left: calc(50% - 50vw);
 }
 .platform-detail .support-cases--detail {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+.platform-detail .pii-band--detail {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
