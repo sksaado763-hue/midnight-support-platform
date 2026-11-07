@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
 import TrustLogos from "../components/TrustLogos";
+import CaseFeature from "../components/CaseFeature";
 
 const MEANS = [
   "One ticket queue across the front end, the services, the infrastructure and the APIs",
@@ -604,47 +605,7 @@ export default function Support() {
         </div>
       </section>
 
-      {featured && (
-        <section className="case-feature">
-          <div className="hero-stars" aria-hidden="true">
-            <svg viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice">
-              <g fill="#ffffff">
-                <circle cx="120" cy="80" r="1.4" opacity=".55" /><circle cx="420" cy="60" r="1.1" opacity=".45" />
-                <circle cx="700" cy="130" r="1.6" opacity=".65" /><circle cx="980" cy="70" r="1.2" opacity=".5" />
-                <circle cx="1250" cy="150" r="1.5" opacity=".6" /><circle cx="260" cy="300" r="1.2" opacity=".45" />
-                <circle cx="560" cy="360" r="1.4" opacity=".55" /><circle cx="880" cy="320" r="1.1" opacity=".5" />
-                <circle cx="1150" cy="380" r="1.5" opacity=".6" /><circle cx="1380" cy="260" r="1.2" opacity=".45" />
-              </g>
-            </svg>
-          </div>
-          <div className="case-wave case-wave--top" aria-hidden="true">
-            <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
-              <path d="M0 0H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
-            </svg>
-          </div>
-          <div className="container case-feature-grid">
-            <div className="case-feature-art reveal">
-              <svg viewBox="0 0 560 300" aria-hidden="true">
-                <ellipse cx="280" cy="150" rx="262" ry="126" fill="none" stroke="#ffffff" strokeWidth="9" />
-                <text x="280" y="150" textAnchor="middle" dominantBaseline="central" fill="#ffffff" fontFamily="Georgia, 'Times New Roman', serif" fontStyle="italic" fontWeight="700" fontSize={Math.max(44, Math.min(112, Math.round(1900 / featured.client.length)))} textLength={Math.min(440, featured.client.length * 62)} lengthAdjust="spacingAndGlyphs">{featured.client}</text>
-              </svg>
-            </div>
-            <span className="case-feature-line" aria-hidden="true" />
-            <div className="case-feature-content reveal">
-              <p className="case-feature-label">Case study</p>
-              <h2>{featured.client}</h2>
-              <h4 className="case-feature-headline">{featured.headline}</h4>
-              <p className="case-feature-text">{featured.challenge}</p>
-              <Link to={`/case-studies/${featured.slug}`} className="btn case-feature-cta">Read case study <span aria-hidden="true">➔</span></Link>
-            </div>
-          </div>
-          <div className="case-wave case-wave--bottom" aria-hidden="true">
-            <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
-              <path d="M0 73H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
-            </svg>
-          </div>
-        </section>
-      )}
+      <CaseFeature study={featured} />
 
       <section className="pricing" id="compare">
         <div className="container">

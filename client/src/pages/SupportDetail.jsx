@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
+import { useApi } from "../lib/api";
+import CaseFeature from "../components/CaseFeature";
 import NotFound from "./NotFound";
 
 const TRUST = [
@@ -130,6 +132,7 @@ const INDUSTRIES = [
       closer: "Want the cover levels and their response clocks side by side?",
       cta: "See the packages",
     },
+    caseStudy: "dexerto",
     problem: "Retainers eat your senior devs. Every client site is a different stack, a different host and a different idea of urgent, and the engineer who built half of them left last spring. Launches slip because the team is rebuilding a client's broken form for the third time.",
     solution: "We become the agency's support desk: one rota across all client sites, triage graded by the SLA you signed, fixes shipped through your process with your ticket numbers, and a morning handover your account managers can forward verbatim.",
     pillarsTitle: "What we watch for agencies",
@@ -279,6 +282,8 @@ export default function SupportDetail() {
     filmRef.current?.play().catch(() => {});
   };
   useTitle(provider ? `${provider.title} | Just After Midnight` : "24/7 Support | Just After Midnight");
+  const { data: caseStudies } = useApi(provider?.caseStudy ? "/api/case-studies" : null);
+  const featured = provider?.caseStudy ? (caseStudies || []).find((study) => study.slug === provider.caseStudy) : null;
 
   if (!provider) return <NotFound />;
 
@@ -477,6 +482,8 @@ export default function SupportDetail() {
             </div>
             <Link to="/support" className="btn btn-primary">Compare packages <span aria-hidden="true">➔</span></Link>
           </div>
+
+          <CaseFeature study={featured} variant="detail" />
 
           <div className="faq-section">
             <h2 className="section-title reveal">FAQ</h2>
