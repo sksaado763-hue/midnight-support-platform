@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
 import CaseFeature from "../components/CaseFeature";
+import WhyBand from "../components/WhyBand";
 import NotFound from "./NotFound";
 
 const TRUST = [
@@ -133,6 +134,26 @@ const INDUSTRIES = [
       cta: "See the packages",
     },
     caseStudy: "dexerto",
+    why: {
+      title: "Why agencies keep us on the retainer",
+      intro: "You sold the client a platform, not an on-call rota. Ten sites, ten stacks and one team that has to be somewhere else — that is the arithmetic we were built for. Here is what changes once the desk is ours:",
+      cards: [
+        {
+          title: "Because your clients never learn the word outage",
+          text: "Someone is already awake and already looking. The page gets picked up in minutes, the fix ships through your process, and your account manager reads it in the morning summary rather than the client's escalation.",
+        },
+        {
+          title: "Because your roadmap stops being the fallback",
+          text: "The update backlog, the CMS regressions and the odd 2am form breaker stop landing on whoever built the site. Your developers ship what you actually quoted, and the retainer stops eating senior time.",
+        },
+      ],
+      accent: {
+        title: "Because your renewals get evidence, not anecdotes",
+        text: "Per-client health summaries, a patch ledger and response clocks you can forward verbatim into the renewal conversation. Sound like the arrangement you are missing?",
+        cta: "Talk to us",
+        to: "/contact",
+      },
+    },
     problem: "Retainers eat your senior devs. Every client site is a different stack, a different host and a different idea of urgent, and the engineer who built half of them left last spring. Launches slip because the team is rebuilding a client's broken form for the third time.",
     solution: "We become the agency's support desk: one rota across all client sites, triage graded by the SLA you signed, fixes shipped through your process with your ticket numbers, and a morning handover your account managers can forward verbatim.",
     pillarsTitle: "What we watch for agencies",
@@ -412,6 +433,16 @@ export default function SupportDetail() {
                 </div>
               </div>
             </section>
+          )}
+
+          {provider.why && (
+            <WhyBand
+              variant="detail"
+              title={provider.why.title}
+              intro={provider.why.intro}
+              cards={provider.why.cards}
+              accent={provider.why.accent}
+            />
           )}
 
           <div className="ps-grid">

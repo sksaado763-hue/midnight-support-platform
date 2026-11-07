@@ -2415,6 +2415,33 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
 .why-card--accent .why-accent-cta:hover,
 .why-card--accent .why-accent-cta:focus { background: #ffffff; color: #132140; }
 
+/* The same block on the reference's sub-pages, measured live at innerWidth 1889:
+   a 1140 container with 20px gutters, straight edges instead of the crest waves,
+   a flat navy dot field with no planets, and one row of 32px-padded plates —
+   48/56 intro over 16/28, 20/28 card titles, the amber plate closing on a
+   156×56 navy button. The intro column is 66.667% so it lands on the
+   reference's 740px inside our 1110. */
+section.why-band--detail { background: var(--navy); }
+.why-band--detail > .container { width: min(1170px, 100%); max-width: none; padding-inline: 30px; padding-top: 80px; padding-bottom: 80px; }
+.why-band--detail .why-intro { width: 66.667%; }
+.why-band--detail .why-intro .band-title { margin-bottom: 0; font-size: 48px; line-height: 56px; font-weight: 600; }
+.why-band--detail .why-intro p { font-size: 16px; line-height: 28px; font-weight: 300; }
+/* 83px = the reference's 55px row margin plus the 28px empty paragraph it
+   leaves under the intro; 73px is the same pair at its mobile line-height. */
+.why-band--detail .why-grid { gap: 20px; margin-top: 83px; }
+.why-band--detail .why-card { border-radius: 10px; padding: 32px; }
+.why-band--detail .why-card h3 { margin: 0 0 13px; font-size: 20px; line-height: 28px; font-weight: 500; }
+.why-band--detail .why-card p { font-size: 16px; line-height: 28px; font-weight: 300; }
+.why-band--detail .why-card--accent .why-accent-cta {
+  margin-top: 44px;
+  height: 56px;
+  gap: 10px;
+  padding: var(--pad-btn-lg);
+  border-radius: var(--radius-btn);
+  font-size: var(--fs-btn);
+  font-weight: 600;
+}
+
 .cap-band { padding: var(--section-pad) 0; }
 .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .cap-card { border: 1px solid; border-radius: 14px; padding: 30px 32px; }
@@ -2813,6 +2840,25 @@ section.case-feature--detail { padding: 40px 0; }
   .case-feature--detail .case-feature-headline { font-size: 14px; line-height: 18px; }
   .case-feature--detail .case-feature-text { font-size: 14px; line-height: 18px; margin-bottom: 10px; }
   .case-feature--detail .case-feature-cta { align-self: flex-start; }
+}
+
+/* The sub-page icon-card band follows the reference's own grid tiers, measured
+   live: 3-up from its lg breakpoint, 2-up between md and lg, 1-up below — at
+   which point the intro goes full-bleed to the 24px gutter and the copy drops
+   to 14/18 while the 32px plate padding and 10px radius hold. */
+@media (min-width: 992px) {
+  .why-band--detail .why-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 991.98px) {
+  .why-band--detail .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 767.98px) {
+  .why-band--detail > .container { width: 100%; padding-inline: 24px; }
+  .why-band--detail .why-intro { width: 100%; }
+  .why-band--detail .why-intro .band-title { font-size: 32px; line-height: 39px; }
+  .why-band--detail .why-intro p,
+  .why-band--detail .why-card p { font-size: 14px; line-height: 18px; }
+  .why-band--detail .why-grid { grid-template-columns: 1fr; margin-top: 73px; }
 }
 
 /* The reference's coloured-boxes rows flip at its lg breakpoint, measured live: at 1024 the
@@ -3609,6 +3655,10 @@ section.case-feature--detail { padding: 40px 0; }
 /* The case-study slab is a page-level band, so inside the sub-page container it
    breaks out the same way the grey video band above it does. */
 .platform-detail .case-feature {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+.platform-detail .why-band--detail {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
