@@ -3498,6 +3498,19 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
 .plat-what h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 700; margin-bottom: 0.6rem; }
 .plat-what p { color: var(--navy-text-muted); font-size: var(--fs-body); line-height: var(--lh-body); }
 
+.seo-intro { margin-bottom: 2.4rem; }
+.seo-intro-title { font-size: var(--fs-h2); line-height: 1.15; font-weight: 700; margin-bottom: 24px; }
+.seo-intro-body { max-width: 66.667%; }
+.seo-intro-body p { margin-bottom: 20px; }
+.seo-intro-points { margin-bottom: 20px; }
+.seo-intro-points li::before { content: "•\00a0"; }
+.seo-intro-join { font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: 700; margin-bottom: 24px; }
+
+@media (max-width: 991.98px) {
+  .seo-intro-body { max-width: none; }
+  .seo-intro-body p, .seo-intro-points { margin-bottom: 10px; }
+}
+
 .platform-detail { background: var(--bg); padding: 60px 0 88px; }
 
 .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-bottom: 3rem; }

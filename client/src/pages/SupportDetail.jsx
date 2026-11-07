@@ -340,12 +340,26 @@ export default function SupportDetail() {
 
       <section className="platform-detail">
         <div className="container">
-          <div className="plat-what reveal">
-            <div>
-              <h2>{provider.whatTitle || `What does ${provider.name} support from us mean?`}</h2>
-              <p>{provider.intro}</p>
+          {provider.gap ? (
+            <div className="seo-intro">
+              <h2 className="seo-intro-title reveal">{provider.gap.title}</h2>
+              <div className="seo-intro-body reveal">
+                <p>{provider.gap.lead}</p>
+                <ul className="seo-intro-points">
+                  {provider.gap.points.map((point) => <li key={point}>{point}</li>)}
+                </ul>
+                <p>{provider.gap.question}</p>
+                <h4 className="seo-intro-join"><Link to="/contact">{provider.gap.join}</Link></h4>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="plat-what reveal">
+              <div>
+                <h2>{provider.whatTitle || `What does ${provider.name} support from us mean?`}</h2>
+                <p>{provider.intro}</p>
+              </div>
+            </div>
+          )}
 
           <div className="ps-grid">
             <article className="ps-card ps-card--problem reveal">
