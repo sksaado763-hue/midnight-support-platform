@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
 import CaseFeature from "../components/CaseFeature";
+import CaseStudiesBand from "../components/CaseStudiesBand";
 import WhyBand from "../components/WhyBand";
 import NotFound from "./NotFound";
 
@@ -178,6 +179,10 @@ const INDUSTRIES = [
         to: "/contact",
       },
     },
+    cases: {
+      title: "Proof your renewals can quote",
+      slugs: ["dexerto", "third-space", "gosalary", "absolute-software"],
+    },
     problem: "Retainers eat your senior devs. Every client site is a different stack, a different host and a different idea of urgent, and the engineer who built half of them left last spring. Launches slip because the team is rebuilding a client's broken form for the third time.",
     solution: "We become the agency's support desk: one rota across all client sites, triage graded by the SLA you signed, fixes shipped through your process with your ticket numbers, and a morning handover your account managers can forward verbatim.",
     pillarsTitle: "What we watch for agencies",
@@ -327,7 +332,7 @@ export default function SupportDetail() {
     filmRef.current?.play().catch(() => {});
   };
   useTitle(provider ? `${provider.title} | Just After Midnight` : "24/7 Support | Just After Midnight");
-  const { data: caseStudies } = useApi(provider?.caseStudy ? "/api/case-studies" : null);
+  const { data: caseStudies } = useApi(provider?.caseStudy || provider?.cases ? "/api/case-studies" : null);
   const featured = provider?.caseStudy ? (caseStudies || []).find((study) => study.slug === provider.caseStudy) : null;
 
   if (!provider) return <NotFound />;
@@ -466,6 +471,14 @@ export default function SupportDetail() {
               intro={provider.why.intro}
               cards={provider.why.cards}
               accent={provider.why.accent}
+            />
+          )}
+
+          {provider.cases && (
+            <CaseStudiesBand
+              variant="detail"
+              title={provider.cases.title}
+              studies={provider.cases.slugs.map((slug) => (caseStudies || []).find((study) => study.slug === slug)).filter(Boolean)}
             />
           )}
 

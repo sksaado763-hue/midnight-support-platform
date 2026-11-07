@@ -4,6 +4,7 @@ import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
 import TrustLogos from "../components/TrustLogos";
 import CaseFeature from "../components/CaseFeature";
+import CaseStudiesBand from "../components/CaseStudiesBand";
 import WhyBand from "../components/WhyBand";
 
 const MEANS = [
@@ -471,22 +472,7 @@ export default function Support() {
         </div>
       </section>
 
-      <section className="support-cases">
-        <div className="container">
-          <h2 className="section-title reveal">Proof, not promises</h2>
-          <div className="support-case-grid">
-            {(caseStudies || []).slice(0, 4).map((study) => (
-              <Link className="support-case reveal" to={`/case-studies/${study.slug}`} key={study.slug}>
-                <span className="support-case-art">
-                  <span className="support-case-word">{study.client}</span>
-                </span>
-                <h3>{study.client}</h3>
-                <p>{study.headline}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CaseStudiesBand title="Proof, not promises" studies={caseStudies} />
 
       <WhyBand
         title="Why teams hand us the night"
