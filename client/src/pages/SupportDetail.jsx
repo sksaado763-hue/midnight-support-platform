@@ -7,6 +7,7 @@ import CapabilityBand from "../components/CapabilityBand";
 import CaseStudiesBand from "../components/CaseStudiesBand";
 import FaqBand from "../components/FaqBand";
 import OutcomeBand from "../components/OutcomeBand";
+import PackageBand from "../components/PackageBand";
 import WhyBand from "../components/WhyBand";
 import NotFound from "./NotFound";
 
@@ -342,6 +343,77 @@ const INDUSTRIES = [
         text: "Send the portfolio list and the stacks sitting behind it — we will tell you which sites we can carry tonight.",
         cta: "Talk about white-label cover",
         to: "/contact",
+      },
+    },
+    packages: {
+      title: "Pick the cover your portfolio needs",
+      intro: "Four ways to put the night desk behind your client sites, priced by how much of the rota we carry rather than by how many tickets arrive. None of them quite fit? Tell us what you run and we cut the agreement to match.",
+      tiers: [
+        {
+          tab: "Office hours only",
+          name: "FIRST-LINE DESK",
+          items: [
+            "Uptime and journey alerts watched",
+            "First-line triage in working hours",
+            "A named queue per client site",
+            "Written handover each morning",
+          ],
+          cta: "Talk about this tier",
+          hover: "Contact",
+          to: "/contact?package=first-line-desk",
+        },
+        {
+          tab: "Overnights and weekends",
+          name: "OUT-OF-HOURS ROTAS",
+          items: [
+            "Everything in the first tier",
+            "Engineers on call overnight",
+            "Weekend and bank-holiday rota",
+            "Incident write-ups by nine",
+            "Rollbacks shipped in window",
+            "Triage graded by your SLA",
+          ],
+          cta: "Talk about this tier",
+          hover: "Contact",
+          to: "/contact?package=out-of-hours-rotas",
+        },
+        {
+          tab: "The whole clock",
+          name: "ROUND-THE-CLOCK DESK",
+          items: [
+            "Everything in the out-of-hours tier",
+            "One rota across every site",
+            "Half-hour response at any hour",
+            "Launch nights watched live",
+            "Monthly health summary per client",
+            "Patch and update ledger kept",
+          ],
+          cta: "Talk about this tier",
+          hover: "Contact",
+          to: "/contact?package=round-the-clock-desk",
+        },
+        {
+          tab: "Built around you",
+          name: "CUSTOM & ADD-ONS",
+          items: [
+            "Application-only or full-stack cover",
+            "Tighter response clocks per tier",
+            "Build tickets folded into the rota",
+            "A dedicated squad for one big client",
+            "Pipelines and release engineering",
+            "A ticket cap that suits the retainer",
+            "Something else entirely? Say the word and we will shape it",
+          ],
+          cta: "Design a package",
+          hover: "Contact",
+          to: "/contact?package=custom",
+        },
+      ],
+      note: {
+        lead: "Need engineers for the build itself?",
+        text: "If what you are after is a rebuild or a modernisation rather than a rota, that work sits with a different team —",
+        link: "see what we build",
+        to: "/cloud",
       },
     },
     fitWith: [
@@ -690,6 +762,15 @@ export default function SupportDetail() {
               intro={provider.coverage.intro}
               groups={provider.coverage.groups}
               closer={provider.coverage.closer}
+            />
+          )}
+
+          {provider.packages && (
+            <PackageBand
+              title={provider.packages.title}
+              intro={provider.packages.intro}
+              tiers={provider.packages.tiers}
+              note={provider.packages.note}
             />
           )}
 

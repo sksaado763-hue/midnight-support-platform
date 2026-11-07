@@ -2524,6 +2524,79 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
   .cap-band--detail .cap-cols { grid-template-columns: 1fr; }
 }
 
+/* Reference packages block — three sections that read as one slab (title over a
+   narrow copy column, the four-column table, the closing line). Every number is
+   that page's computed CSS at innerWidth 1889: the intro carries 20px of top
+   margin and a 83.333% column (their 930 of text on a 1140 track, ours 925 on
+   1170) with 48/56 w700 over 16/28 w300; the table slab pads 60px top and bottom
+   and its row cancels the container gutters, so the four columns span the full
+   track — 285 each with no gap between them, each carrying its own 1px border,
+   which is why adjacent cards read as a 2px rule. Inside a column: 20px above
+   the name, 17/24 w700 name with 20px below, then the list — items are 16/28
+   w300 in a 49.1px box (10px of padding either side of a 28px line, floored by
+   the reference's own min-height) with a hairline above each and below the last,
+   and 40px under the list. The button is `margin:auto auto 20px` inside a
+   stretched flex column, so it centres itself and drops to the bottom of the
+   tallest card whatever the row count; it is 50px tall with overflow hidden.
+   The closing line sits flush under the table with 40px below it — the
+   reference declares pb-md-6 (120) and pb-2 (40) and the base utility wins, as
+   it always does here. Below 768 the copy column goes full width, the items
+   align left, and the row spans the viewport edge to edge. */
+.pkg-intro { margin-top: 20px; }
+.pkg-intro > .container { width: min(1170px, 100%); max-width: none; padding-inline: 30px; }
+.pkg-intro-copy { width: 83.3333%; margin-inline: auto; text-align: center; }
+.pkg-intro-copy h2 { margin: 0 0 24px; font-size: 48px; line-height: 56px; font-weight: 700; }
+.pkg-intro-copy > p { margin: 0; font-size: 16px; line-height: 28px; font-weight: 300; }
+.pkg-intro-copy a { text-decoration: underline; }
+
+.pkg-table > .container { width: min(1170px, 100%); max-width: none; padding: 60px 30px; }
+.pkg-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-inline: -30px; }
+.pkg-col { position: relative; display: flex; flex-direction: column; padding-top: 20px; border: 1px solid; }
+.pkg-tab {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: 0;
+  overflow: hidden;
+  line-height: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+.pkg-name { margin: 0 0 20px; padding-inline: 10px; font-size: 17px; line-height: 24px; font-weight: 700; text-align: center; }
+.pkg-list { list-style: none; margin: 0 0 40px; padding: 0; }
+.pkg-list li { min-height: 49.1px; padding: 10px 20px; border-top: 1px solid; font-size: 16px; line-height: 28px; font-weight: 300; text-align: center; }
+.pkg-list li:last-child { border-bottom-width: 1px; border-bottom-style: solid; }
+.pkg-cta { display: block; width: max-content; height: 50px; margin: auto auto 20px; position: relative; overflow: hidden; }
+.pkg-cta-hover { position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; line-height: 46px; text-align: center; transform: translateY(-102%); transition: transform 0.3s ease-in-out; }
+.pkg-cta-text { position: relative; bottom: 0; display: block; transition: bottom 0.3s ease-in-out; }
+.pkg-col:hover .pkg-tab { height: 30px; }
+.pkg-cta:hover .pkg-cta-hover, .pkg-cta:focus-visible .pkg-cta-hover { transform: translateY(0); }
+.pkg-cta:hover .pkg-cta-text, .pkg-cta:focus-visible .pkg-cta-text { bottom: -300%; }
+
+.pkg-note { padding-bottom: 40px; }
+.pkg-note > .container { width: min(1170px, 100%); max-width: none; padding-inline: 30px; }
+.pkg-note p { margin: 0; text-align: center; font-size: 16px; line-height: 28px; font-weight: 300; }
+.pkg-note p strong { font-weight: 700; }
+.pkg-note p a { text-decoration: underline; white-space: nowrap; }
+
+@media (max-width: 767.98px) {
+  .pkg-intro > .container,
+  .pkg-table > .container,
+  .pkg-note > .container { width: 100%; padding-inline: 24px; }
+  .pkg-intro-copy { width: 100%; }
+  .pkg-intro-copy h2 { font-size: 32px; line-height: normal; }
+  .pkg-intro-copy > p,
+  .pkg-name,
+  .pkg-list li,
+  .pkg-note p { font-size: 14px; line-height: 18px; }
+  .pkg-grid { grid-template-columns: 1fr; margin-inline: -24px; }
+  .pkg-list li { text-align: left; }
+}
+
 /* Reference Ford band (seo-text-block on navy): the reference's own 1920×73
    wave paths top and bottom, then a 4 / 1 / 7 split — starfield oval artwork,
    a full-height amber rule, left-aligned white copy and a white CTA. Capture
@@ -3874,7 +3947,8 @@ section.case-feature--detail { padding: 40px 0; }
   margin-left: calc(50% - 50vw);
 }
 .platform-detail .support-faq--detail,
-.platform-detail .cap-band--detail {
+.platform-detail .cap-band--detail,
+.platform-detail .pkg-band {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }

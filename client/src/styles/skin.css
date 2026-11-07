@@ -695,6 +695,27 @@ body {
 .cap-band--detail .cap-col li,
 .cap-band--detail .cap-closer p { color: #ffffff; }
 .cap-band--detail .cap-col li svg { color: var(--amber); }
+
+/* Packages block. The reference draws the card rule in #aaa and the row
+   separators in #d0d0d0 — flat greys; ours are the navy-alpha line tokens every
+   other band uses. Their package name is crimson #e24168, ours is the palette's
+   pink role. Their hover chrome — tab plate, card tint and border, and the panel
+   that slides over the button label — is #a1cce3, which is our --sky to within
+   one step, so the interaction stays on the reference's own blue. */
+.pkg-band { background: var(--bg); }
+.pkg-intro-copy h2,
+.pkg-intro-copy > p,
+.pkg-intro-copy a,
+.pkg-tab,
+.pkg-list li,
+.pkg-note p,
+.pkg-note p a { color: var(--text); }
+.pkg-name { color: var(--pink); }
+.pkg-col { border-color: var(--line-strong); }
+.pkg-list li { border-color: var(--line); }
+.pkg-col:hover { background: rgba(162, 204, 228, 0.14); border-color: var(--sky); }
+.pkg-col:hover .pkg-tab { background: var(--sky); border: 1px solid var(--sky); }
+.pkg-cta-hover { background: var(--sky); color: var(--text); }
 .case-feature { background: var(--navy-deep); color: #ffffff; }
 .case-feature-label { color: var(--amber); }
 .case-feature-headline { color: #c2ccde; }
