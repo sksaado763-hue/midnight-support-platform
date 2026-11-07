@@ -688,6 +688,13 @@ body {
 .cap-card h3 { color: var(--navy); }
 .cap-card li { color: var(--navy-text-muted); }
 .cap-card li::before { color: var(--amber-deep); }
+.cap-band--detail { background: var(--navy); }
+.cap-band--detail .cap-head h2,
+.cap-band--detail .cap-head > p,
+.cap-band--detail .cap-col h3,
+.cap-band--detail .cap-col li,
+.cap-band--detail .cap-closer p { color: #ffffff; }
+.cap-band--detail .cap-col li svg { color: var(--amber); }
 .case-feature { background: var(--navy-deep); color: #ffffff; }
 .case-feature-label { color: var(--amber); }
 .case-feature-headline { color: #c2ccde; }

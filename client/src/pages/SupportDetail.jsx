@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
 import CaseFeature from "../components/CaseFeature";
+import CapabilityBand from "../components/CapabilityBand";
 import CaseStudiesBand from "../components/CaseStudiesBand";
 import FaqBand from "../components/FaqBand";
 import OutcomeBand from "../components/OutcomeBand";
@@ -36,6 +37,23 @@ const PROVIDERS = [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "Patching and runtime upgrades inside your approved window", "Backup verification and restore drills", "Certificate, domain and DNS expiry watch"] },
       { title: "Every month", items: ["Cost review with a written list of actions", "IAM and security-group drift review", "Capacity and scaling-policy check", "A plain-language report your finance team can read"] },
     ],
+    coverage: {
+      title: "The AWS work that happens while you sleep",
+      intro: "Every line below is on the rota, with a named engineer and a written result. What changes between tiers is how fast we pick it up, not whether we pick it up.",
+      groups: [
+        { title: "Compute & containers", items: ["ECS and EKS service watches", "Lambda cold starts and error budgets", "EC2 fleet patching inside your window", "Autoscaling bounds reviewed weekly"] },
+        { title: "Data & storage", items: ["RDS failover tested, not assumed", "DynamoDB capacity and hot partitions", "S3 lifecycle and versioning audits", "ElastiCache evictions and memory drift"] },
+        { title: "Network & edge", items: ["Load-balancer target health checks", "CloudFront hit ratios and cache rules", "Certificate, DNS and Route 53 expiry", "VPC reachability and peering analysis"] },
+        { title: "Identity & spend", items: ["IAM access reviews on a published rota", "Unused roles and keys removed", "Cost anomalies alerted with an owner", "Savings-plan coverage reported monthly"] },
+        { title: "Incident & response", items: ["Severity grading and SLA clocks", "Bridge calls during major incidents", "AWS support cases opened and chased", "Post-incident write-ups with actions"] },
+        { title: "Change & releases", items: ["Deployment watches through your window", "Rollback rehearsed every quarter", "Maintenance slots agreed in writing", "A change log your auditors can read"] },
+      ],
+      closer: {
+        text: "Tell us which accounts hurt and we will take those first — the rest follows on the same rota.",
+        cta: "Talk about your AWS estate",
+        to: "/contact",
+      },
+    },
     fitWith: [
       "You run production on AWS with no dedicated platform team",
       "Your current cover ends at 18:00 and your users do not",
@@ -67,6 +85,23 @@ const PROVIDERS = [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "Patch and runtime upgrades inside your approved window", "Backup verification and restore drills", "Certificate, domain and DNS expiry watch"] },
       { title: "Every month", items: ["Subscription and cost review with a delete list", "Entra role and service-principal drift review", "Quota and scaling-policy check", "A plain-language report your finance team can read"] },
     ],
+    coverage: {
+      title: "The Azure work that happens while you sleep",
+      intro: "Subscriptions, tenants and the applications on top of them, handled by named engineers with a written handover at the end of every shift.",
+      groups: [
+        { title: "Compute & containers", items: ["AKS node pools patched in window", "App Service plans sized to traffic", "Functions scale-out limits watched", "Container apps and their quotas reviewed"] },
+        { title: "Data & storage", items: ["Azure SQL query and index reviews", "Cosmos DB throughput and partition keys", "Blob lifecycle and immutability checks", "Redis memory and failover watches"] },
+        { title: "Network & edge", items: ["Front Door health probes and routing", "Private endpoint reachability analysis", "VNet and NSG drift reviews", "Certificate and DNS expiry watch"] },
+        { title: "Identity & spend", items: ["Entra access reviews on a rota", "Stale service principals removed", "Licence sprawl counted and cut", "Subscription spend reviewed monthly"] },
+        { title: "Incident & response", items: ["Severity grading and SLA clocks", "Microsoft support cases chased", "Bridge calls during major incidents", "Post-incident write-ups with actions"] },
+        { title: "Change & governance", items: ["Policy exceptions logged and owned", "Landing-zone and blueprint checks", "Release windows agreed in writing", "Backup and restore drills scheduled"] },
+      ],
+      closer: {
+        text: "Send the subscriptions that matter and we will take those first — the rest follows on the same rota.",
+        cta: "Talk about your Azure estate",
+        to: "/contact",
+      },
+    },
     fitWith: [
       "You run production across several Azure subscriptions",
       "Your alerts currently land on a distribution list",
@@ -98,6 +133,23 @@ const PROVIDERS = [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "GKE and Cloud Run upgrades inside your approved window", "Backup verification and restore drills", "Pipeline failure triage with a morning note"] },
       { title: "Every month", items: ["Project and billing review with a delete list", "IAM and service-account drift review", "Quota and autoscaling check", "A plain-language report your finance team can read"] },
     ],
+    coverage: {
+      title: "The GCP work that happens while you sleep",
+      intro: "Clusters, pipelines and the projects around them, watched by named engineers who hand over in writing before your day starts.",
+      groups: [
+        { title: "Compute & services", items: ["GKE upgrades staged and watched", "Cloud Run instance limits tuned", "Cloud Functions timeouts reviewed", "Spot capacity and preemption handled"] },
+        { title: "Data & pipelines", items: ["BigQuery job failures triaged", "Cloud SQL failover tested, not assumed", "Pub/Sub backlogs alarmed and cleared", "Dataflow reruns with a morning note"] },
+        { title: "Network & edge", items: ["Load-balancer health and serving paths", "Cloud CDN hit ratios reviewed", "VPN and Interconnect tunnels watched", "Bucket IAM conditions audited"] },
+        { title: "Identity & spend", items: ["Service-account keys rotated", "Organisation-policy drift reviewed", "Budget alerts per project, with owners", "Idle projects found and shut down"] },
+        { title: "Incident & response", items: ["Severity grading and SLA clocks", "Google Cloud cases opened and chased", "Bridge calls during major incidents", "Post-incident write-ups with actions"] },
+        { title: "Change & releases", items: ["Deployment watches through your window", "Rollback rehearsed every quarter", "Maintenance slots agreed in writing", "A change log your auditors can read"] },
+      ],
+      closer: {
+        text: "Name the projects that carry revenue and we will start there; the rest of the organisation follows.",
+        cta: "Talk about your GCP estate",
+        to: "/contact",
+      },
+    },
     fitWith: [
       "Your product lives on GKE or Cloud Run with no platform team",
       "BigQuery pipelines currently fail without anyone noticing",
@@ -275,6 +327,23 @@ const INDUSTRIES = [
       { title: "Every night", items: ["Uptime and journey monitoring across every retainer site", "Security patching and CMS updates inside each client's window", "Backup verification before anyone sleeps on a change", "A triage queue graded by the SLA you signed, not by who shouts"] },
       { title: "Every month", items: ["Per-client health summary your account managers can forward", "Patch, plugin and runtime update ledger", "Performance and page-speed trend per site", "Retainer load review: which clients cost you hours you never priced"] },
     ],
+    coverage: {
+      title: "The cover that runs on every site you have shipped",
+      intro: "One rota across the portfolio, graded by the retainer you signed rather than by who shouts first. This is what actually lands on our desk:",
+      groups: [
+        { title: "Client sites, watched and answered", items: ["Uptime and journey checks per retainer", "Triage graded by the SLA you signed", "Someone on the incident until it closes", "A written handover by nine o'clock"] },
+        { title: "Content, forms and checkout", items: ["Editor breakages fixed the same night", "Form, search and cart regressions tested", "Plugin conflicts traced to the culprit", "Cache and media resets before they show"] },
+        { title: "Core, plugin and platform updates", items: ["CMS update windows per client site", "Runtime and language upgrades in window", "Backups verified before anything ships", "Rollback ready for every change"] },
+        { title: "Access, security and expiry", items: ["Admin access reviews for each portfolio", "Secret and certificate rotation", "Malware scans and file-integrity checks", "Domain, hosting and licence renewals tracked"] },
+        { title: "Performance and launch nights", items: ["Page-speed budgets on the money journeys", "Pre-launch capacity and cache checks", "Extra engineers on campaign nights", "Alert tuning that kills the noise"] },
+        { title: "Reporting for the renewal", items: ["Monthly health summary per client", "Response clocks measured against the SLA", "A patch ledger across the portfolio", "Incident write-ups you can forward"] },
+      ],
+      closer: {
+        text: "Send the portfolio list and the stacks sitting behind it — we will tell you which sites we can carry tonight.",
+        cta: "Talk about white-label cover",
+        to: "/contact",
+      },
+    },
     fitWith: [
       "You run ten client sites or a hundred, and the retainers outnumber the builders",
       "Your SLAs promise response times your current rota cannot keep at 2am",
@@ -308,6 +377,23 @@ const INDUSTRIES = [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "Triage to code level with a fix or a rollback decision", "Deploy and canary watches through your release window", "Queue, worker and webhook backlog checks"] },
       { title: "Every month", items: ["Error-budget and incident review with your engineers", "Observability audit: alerts that page humans, not mailboxes", "Capacity and scaling-policy review ahead of your growth curve", "A reliability report your customer teams can quote in renewal calls"] },
     ],
+    coverage: {
+      title: "The reliability work that happens while you sleep",
+      intro: "Alerts that page a named engineer, triage that reaches the code, and a handover your stand-up can read out loud. The routine looks like this:",
+      groups: [
+        { title: "Availability & journeys", items: ["Synthetic signup and checkout runs", "Real-user speed budgets per release", "Error budgets tracked, not estimated", "A status page that tells the truth"] },
+        { title: "Application health", items: ["Latency percentiles and error rates", "Queue depth and worker lag watched", "Memory leaks caught on day six", "Log volume anomalies triaged early"] },
+        { title: "Incident & response", items: ["Severity grading and SLA clocks", "Triage to code level overnight", "Fix or rollback decided in writing", "Blameless reviews with follow-through"] },
+        { title: "Releases & rollbacks", items: ["Deploy watches through your window", "Canary checks before full traffic", "Feature-flag hygiene reviewed", "Rollback rehearsed before it is needed"] },
+        { title: "Data & integrations", items: ["Database health and slow queries", "Replication lag and failover tests", "Third-party API failures caught", "Webhook backlogs cleared overnight"] },
+        { title: "Observability as a service", items: ["Alert tuning that kills the noise", "Dashboards owned, not abandoned", "SLO and uptime reporting monthly", "Telemetry spend reviewed for value"] },
+      ],
+      closer: {
+        text: "Send your stack and your worst month on it — we will show you which nights would have been quieter.",
+        cta: "Talk about your platform",
+        to: "/contact",
+      },
+    },
     fitWith: [
       "Downtime and degradation cost you renewals, not just embarrassment",
       "Your on-call rota is thinner than your uptime promise",
@@ -341,6 +427,23 @@ const INDUSTRIES = [
       { title: "Every night", items: ["Synthetic purchases through checkout on a published rota", "Payment gateway, webhook and refund flow monitoring", "Platform, plugin and runtime patching inside your trading window", "Backup and restore verification before peak seasons"] },
       { title: "Every month", items: ["Conversion-path performance review with page-speed metrics", "Integration and feed health audit", "Peak-readiness check ahead of every campaign in the calendar", "A trading report your commercial team can read without a translator"] },
     ],
+    coverage: {
+      title: "The trading work that happens while you sleep",
+      intro: "Synthetic baskets at three in the morning, gateway health before the campaign, and incidents graded by revenue at risk. Here is the cover:",
+      groups: [
+        { title: "Checkout & payments", items: ["Synthetic purchases on a published rota", "Gateway, webhook and refund-flow checks", "Card-type edge cases reproduced fast", "Fraud rules reviewed for false rejections"] },
+        { title: "Storefront & catalogue", items: ["Page speed under campaign load", "Search and filter regressions caught", "Stock and price feed failures triaged", "Theme and plugin conflicts traced"] },
+        { title: "Integrations & fulfilment", items: ["ERP and order-management sync health", "Courier and label API failures chased", "Marketplace feeds watched end to end", "The order that never reached the warehouse"] },
+        { title: "Peak & campaigns", items: ["Capacity checks before every sale", "Extra engineers through the window", "Freeze windows agreed in writing", "A rollback plan for each deploy"] },
+        { title: "Security & compliance", items: ["Patching inside your trading window", "Card-data scope reviewed annually", "Bot and scraper rules tuned", "Credential leaks watched and closed"] },
+        { title: "Trading & reporting", items: ["Conversion-path performance monthly", "Incident cost in revenue, not uptime", "Peak-readiness notes before the calendar", "A trading report your commercial team can read"] },
+      ],
+      closer: {
+        text: "Tell us your platform, your peak and your last bad weekend, and we will quote cover against all three.",
+        cta: "Talk about your store",
+        to: "/contact",
+      },
+    },
     fitWith: [
       "An hour of checkout downtime is a board-level number",
       "You trade through peaks that your current cover cannot absorb",
@@ -577,6 +680,16 @@ export default function SupportDetail() {
               intro={provider.faq.intro}
               faqs={provider.faq.items}
               panel={provider.faq.panel}
+            />
+          )}
+
+          {provider.coverage && (
+            <CapabilityBand
+              variant="detail"
+              title={provider.coverage.title}
+              intro={provider.coverage.intro}
+              groups={provider.coverage.groups}
+              closer={provider.coverage.closer}
             />
           )}
 

@@ -4,6 +4,7 @@ import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
 import TrustLogos from "../components/TrustLogos";
 import CaseFeature from "../components/CaseFeature";
+import CapabilityBand from "../components/CapabilityBand";
 import CaseStudiesBand from "../components/CaseStudiesBand";
 import FaqBand from "../components/FaqBand";
 import OutcomeBand from "../components/OutcomeBand";
@@ -481,24 +482,11 @@ export default function Support() {
         }}
       />
 
-      <section className="cap-band">
-        <div className="container">
-          <h2 className="band-title band-title--dark band-title--center reveal">What the support desk actually does</h2>
-          <span className="band-rule band-rule--center" aria-hidden="true" />
-          <p className="band-sub band-sub--dark band-sub--center reveal">The routines that keep platforms healthy, handled by one team before they become incidents.</p>
-          <div className="cap-grid">
-            {CAPABILITIES.map((cap) => (
-              <article className="cap-card reveal" key={cap.title}>
-                <h3>{cap.title}</h3>
-                <span className="cap-rule" aria-hidden="true" />
-                <ul>
-                  {cap.items.map((item) => <li key={item}>{item}</li>)}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CapabilityBand
+        title="What the support desk actually does"
+        intro="The routines that keep platforms healthy, handled by one team before they become incidents."
+        groups={CAPABILITIES}
+      />
 
       <CaseFeature study={featured} />
 

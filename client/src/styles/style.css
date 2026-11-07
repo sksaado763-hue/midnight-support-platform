@@ -2469,6 +2469,61 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
 .cap-card li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5; }
 .cap-card li::before { content: "✓"; font-weight: 900; flex: none; }
 
+/* The same list at the reference's detail scale — `.seo-text-block` painted on
+   the flat starfield field, so 40px at both ends of the slab and no card chrome.
+   Every number below is that section's computed CSS at innerWidth 1889: 1140
+   track with 20px of page padding (we keep our shared 1170/30), 48/56 w700 title
+   — the reference draws its headline inside a <strong>, which is why the visible
+   weight beats the h1's own 600 — over 16/28 w300 copy. From that copy to the
+   columns is 68: the 20 the reference measures, plus the 28 of its empty closing
+   <p>, plus the 20 of row gap. Three 380 columns with 10px each side — 360 of
+   text here — carry 17/24 w600 heads over a 24px gap, then 16/28 w300 items with
+   a 22px icon and a 24px gap after it: the reference's li carries 5px of padding,
+   so its text actually starts 51 in, and its icon box is 24 tall with 3px of
+   margin against a 28px line box. The section is text-align:center, which only
+   shows on an item that wraps — the flex text box shrinks to its content, so a
+   one-line item sits left and a two-line item centres its tail. Rows are 20 apart
+   measured box to box, but each
+   reference column carries a 12px tail on its last item that we do not, so the
+   grid gap is 32. The closer block is 20 below the columns and opens with an
+   empty 24px-spaced <h3> and an empty 28/20 <p>, so the closing line starts 92
+   under them; the button is the reference's own 56px canary, 20 under that line. */
+.cap-band--detail { position: relative; padding: 40px 0; }
+.cap-band--detail > .hero-stars { opacity: 0.85; }
+.cap-band--detail > .hero-stars svg { width: 100%; height: 100%; }
+.cap-band--detail > .container { position: relative; z-index: 1; width: min(1170px, 100%); max-width: none; padding-inline: 30px; }
+.cap-band--detail .cap-head { text-align: center; }
+.cap-band--detail .cap-head h2 { margin: 0 0 24px; font-size: 48px; line-height: 56px; font-weight: 700; }
+.cap-band--detail .cap-head > p { margin: 0; font-size: 16px; line-height: 28px; font-weight: 300; }
+.cap-band--detail .cap-cols { margin-top: 68px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 20px; }
+.cap-band--detail .cap-col h3 { margin: 0 0 24px; font-size: 17px; line-height: 24px; font-weight: 600; }
+.cap-band--detail .cap-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.cap-band--detail .cap-col li { display: flex; align-items: flex-start; padding-left: 5px; text-align: center; font-size: 16px; line-height: 28px; font-weight: 300; }
+.cap-band--detail .cap-col li svg { flex: none; width: 22px; height: 22px; margin: 4px 24px 0 0; }
+.cap-band--detail .cap-closer { margin-top: 92px; text-align: center; }
+.cap-band--detail .cap-closer p { margin: 0 0 20px; font-size: 16px; line-height: 28px; font-weight: 700; }
+
+/* The reference walks this band on its own md breakpoint: below 992 the headline
+   is 32/normal and every 16/28 role — copy, heads, items and the closing line —
+   drops to 14/18, and its shorter filler line pulls the closer 20px up. The
+   three columns only stack below 768, where the slab takes 72px under the button
+   instead of 40. */
+@media (max-width: 991.98px) {
+  .cap-band--detail .cap-head h2 { font-size: 32px; line-height: 39px; }
+  .cap-band--detail .cap-head > p,
+  .cap-band--detail .cap-col h3,
+  .cap-band--detail .cap-col li,
+  .cap-band--detail .cap-closer p { font-size: 14px; line-height: 18px; }
+  .cap-band--detail .cap-closer { margin-top: 72px; }
+  .cap-band--detail .cap-closer p { margin-bottom: 10px; }
+}
+
+@media (max-width: 767.98px) {
+  .cap-band--detail { padding: 40px 0 72px; }
+  .cap-band--detail > .container { width: 100%; padding-inline: 24px; }
+  .cap-band--detail .cap-cols { grid-template-columns: 1fr; }
+}
+
 /* Reference Ford band (seo-text-block on navy): the reference's own 1920×73
    wave paths top and bottom, then a 4 / 1 / 7 split — starfield oval artwork,
    a full-height amber rule, left-aligned white copy and a white CTA. Capture
@@ -3818,7 +3873,8 @@ section.case-feature--detail { padding: 40px 0; }
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
-.platform-detail .support-faq--detail {
+.platform-detail .support-faq--detail,
+.platform-detail .cap-band--detail {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
