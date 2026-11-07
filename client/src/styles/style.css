@@ -144,6 +144,10 @@ ul { list-style: none; }
   background: var(--amber);
   color: var(--accent-ink);
 }
+.btn-navy {
+  background: var(--navy);
+  color: #ffffff;
+}
 .btn-outline {
   border: 1px solid #ffffff;
   color: #ffffff;
@@ -3511,7 +3515,48 @@ section.case-feature { position: relative; background: var(--navy); color: #ffff
   .seo-intro-body p, .seo-intro-points { margin-bottom: 10px; }
 }
 
-.platform-detail { background: var(--bg); padding: 60px 0 88px; }
+/* Full-bleed inside the white band, so the grey meets the page edges the way
+   the reference's does. Margin-based rather than a transform, and the parent
+   clips the scrollbar-width spill that 100vw brings. */
+.how-it-works {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: 52px;
+  background: var(--surface-2);
+  padding: 80px 0;
+}
+.hiw-grid { display: grid; grid-template-columns: 550fr 455fr; column-gap: 10.45%; align-items: center; }
+.hiw-media { position: relative; }
+.hiw-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000000; }
+.hiw-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 130px;
+  height: 130px;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 50%;
+  background: var(--amber);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+.hiw-play:hover { background: var(--amber-hover); transform: translate(-50%, -50%) scale(1.05); }
+.hiw-play:focus-visible { outline: 2px solid var(--mint); outline-offset: 4px; }
+.hiw-copy h2 { line-height: 1.15; margin-bottom: 24px; }
+.hiw-copy p { margin-bottom: 20px; }
+
+@media (max-width: 991.98px) {
+  /* The reference's prose → grey gap is 52 at desktop but 74 at mobile: its
+     trailing empty paragraph and band padding grow at the small breakpoint. */
+  .how-it-works { padding: 60px 0; margin-top: 74px; }
+  .hiw-grid { grid-template-columns: 1fr; gap: 21px; }
+  .hiw-copy p { margin-bottom: 10px; }
+}
+
+.platform-detail { background: var(--bg); padding: 60px 0 88px; overflow-x: clip; }
 
 .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-bottom: 3rem; }
 .ps-card {

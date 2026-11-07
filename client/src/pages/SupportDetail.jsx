@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import NotFound from "./NotFound";
@@ -123,6 +124,12 @@ const INDUSTRIES = [
       question: "Sound like the arrangement your agency has been missing?",
       join: "Talk to us about white-label cover:",
     },
+    video: {
+      title: "Inside the night shift",
+      lead: "Two minutes on what actually happens after you close: what we watch, who picks up the page, and what lands in your inbox by nine.",
+      closer: "Want the cover levels and their response clocks side by side?",
+      cta: "See the packages",
+    },
     problem: "Retainers eat your senior devs. Every client site is a different stack, a different host and a different idea of urgent, and the engineer who built half of them left last spring. Launches slip because the team is rebuilding a client's broken form for the third time.",
     solution: "We become the agency's support desk: one rota across all client sites, triage graded by the SLA you signed, fixes shipped through your process with your ticket numbers, and a morning handover your account managers can forward verbatim.",
     pillarsTitle: "What we watch for agencies",
@@ -144,7 +151,7 @@ const INDUSTRIES = [
     ],
     trustTitle: "Why agencies hand us the retainers",
     faqs: [
-      { q: "Can you answer clients in our name?", a: "Yes. We work under your domain, your ticket templates and your tone of voice, or as a named partner — whichever the retainer expects." },
+      { q: "Can you answer clients in our name?", a: "Yes. We answer under your domain, your ticket templates and your tone of voice — or wear our own name if the retainer is better served that way." },
       { q: "What if a client site is on a stack you have not listed?", a: "We onboard new stacks every quarter. Send us the repo and the hosting panel and we will quote cover for it inside a week." },
       { q: "Do you take over mid-retainer, mid-disaster?", a: "We do. Half of our agency engagements start as a rescue: we stabilise first, write the handover second, and the retainer continues without the client noticing the seam." },
     ],
@@ -264,6 +271,13 @@ function skylineWindows() {
 export default function SupportDetail() {
   const { slug } = useParams();
   const provider = PAGES.find((p) => p.slug === slug);
+  const [filmSlug, setFilmSlug] = useState("");
+  const playing = filmSlug === slug;
+  const filmRef = useRef(null);
+  const startFilm = () => {
+    setFilmSlug(slug);
+    filmRef.current?.play().catch(() => {});
+  };
   useTitle(provider ? `${provider.title} | Just After Midnight` : "24/7 Support | Just After Midnight");
 
   if (!provider) return <NotFound />;
@@ -359,6 +373,40 @@ export default function SupportDetail() {
                 <p>{provider.intro}</p>
               </div>
             </div>
+          )}
+
+          {provider.video && (
+            <section className="how-it-works">
+              <div className="container">
+                <div className="hiw-grid">
+                  <div className="hiw-media reveal">
+                    <video
+                      ref={filmRef}
+                      className="hiw-video"
+                      src="/video/brand-video.mp4"
+                      poster="/video/brand-poster.jpg"
+                      preload="none"
+                      controls={playing}
+                      playsInline
+                      onEnded={() => setFilmSlug("")}
+                    />
+                    {!playing && (
+                      <button type="button" className="hiw-play" onClick={startFilm} aria-label={`Play: ${provider.video.title}`}>
+                        <svg viewBox="0 0 35 38" width="35" height="38" aria-hidden="true" focusable="false">
+                          <path d="M2 2l31 17L2 36z" fill="#ffffff" />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
+                  <div className="hiw-copy reveal">
+                    <h2>{provider.video.title}</h2>
+                    <p>{provider.video.lead}</p>
+                    <p>{provider.video.closer}</p>
+                    <Link to="/support" className="btn btn-navy btn-lg">{provider.video.cta}</Link>
+                  </div>
+                </div>
+              </div>
+            </section>
           )}
 
           <div className="ps-grid">
