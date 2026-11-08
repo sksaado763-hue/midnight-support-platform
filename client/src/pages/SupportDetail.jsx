@@ -609,11 +609,54 @@ const INDUSTRIES = [
       "You want incident response that reads code, not just dashboards",
       "Releases have slowed down because nobody trusts the nights",
     ],
-    faqs: [
-      { q: "Do you replace our SRE team?", a: "No. We take the nights and the routine so your SREs spend their days on platform work instead of pager hangovers." },
-      { q: "Can you work inside our existing observability stack?", a: "Yes. Datadog, Grafana, Sentry, CloudWatch or a homegrown dashboard — we answer what you already have and propose what is missing." },
-      { q: "Who talks to our customers during an incident?", a: "Your team does, with our status notes as the source. We write the internal truth; you decide the public wording." },
-    ],
+    /* The reference's how-it-works accordion. This instance declares its own
+       padding instead of a margin and keeps no filler paragraph under the
+       standfirst, hence `padded` on the band below. */
+    faq: {
+      padded: true,
+      title: "What people ask before they hand us the clock",
+      intro: "The four tiers above say what we carry. This is the part every founder wants spelled out before a rota changes hands.",
+      items: [
+        {
+          q: "Who actually picks up when an alert fires at three in the morning?",
+          a: "A named engineer on our rota, not a queue. They read the dashboards you already run, decide whether it is a page or a ticket, and act before your own team is awake.",
+        },
+        {
+          q: "Can you work inside our existing observability stack?",
+          a: "Yes. Datadog, Grafana, Sentry, CloudWatch or a homegrown board — we answer what you already have and propose what is missing, rather than asking for a second source of truth.",
+        },
+        {
+          q: "Which numbers would be watched on the platform?",
+          a: "Availability and error rates at the edge and per endpoint, latency percentiles, queue depth, database saturation, certificate and DNS expiry, the third-party services your product leans on, and each release as it rolls out.",
+        },
+        {
+          q: "Can you hold the uptime promise we have made our own customers?",
+          a: "Yes, and in writing. Your response and resolution clocks become ours, along with the evidence that goes with them at renewal time.",
+        },
+        {
+          q: "Do you replace our SRE team?",
+          a: "No. We take the nights and the routine so your engineers spend their days on platform work instead of pager hangovers.",
+        },
+        {
+          q: "Who talks to our customers while something is burning?",
+          a: "Your team does, with our status notes as the source. We write the internal truth; you decide the public wording.",
+        },
+        {
+          q: "We run services nobody outside built them. Still coverable?",
+          a: "Usually. We read code before we read dashboards, so an in-house service or a dependency nobody owns is not a reason to leave it uncovered.",
+        },
+        {
+          q: "What does the first week look like?",
+          a: "Read-only access, a written map of what we found against what your SLAs assume, then the plan you approve. Nothing changes on the platform until you say so.",
+        },
+      ],
+      panel: {
+        title: "Still deciding?",
+        text: "Send the stack and the clocks sitting behind it — we will tell you which of those nights stop being yours.",
+        cta: "Talk about your platform",
+        to: "/contact",
+      },
+    },
   },
   {
     slug: "ecommerce",
@@ -848,6 +891,7 @@ export default function SupportDetail() {
     faq: provider.faq && (
         <FaqBand
           variant="detail"
+          padded={provider.faq.padded}
           title={provider.faq.title}
           intro={provider.faq.intro}
           faqs={provider.faq.items}
@@ -921,7 +965,7 @@ export default function SupportDetail() {
 
     reviews: provider.reviews && <ReviewsBand />,
 
-    faqSection: (<div className="faq-section">
+    faqSection: provider.faqs && (<div className="faq-section">
         <h2 className="section-title reveal">FAQ</h2>
         <div className="faq-list reveal">
           {provider.faqs.map((faq) => (

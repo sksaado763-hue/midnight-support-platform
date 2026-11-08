@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const STACK_LAYERS = ["Websites", "Applications", "Platform", "Cloud", "Infrastructure"];
 
-export default function FaqBand({ title, intro, faqs, cta, panel, variant = "wide" }) {
+export default function FaqBand({ title, intro, faqs, cta, panel, variant = "wide", padded }) {
   const detail = variant === "detail";
 
   return (
-    <section className={`support-faq${detail ? " support-faq--detail" : ""}`}>
+    <section className={`support-faq${detail ? " support-faq--detail" : ""}${padded ? " support-faq--padded" : ""}`}>
       <div className="container support-faq-grid">
         <div className="support-faq-col">
           <h2 className="reveal">{title}</h2>

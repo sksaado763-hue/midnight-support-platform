@@ -3240,7 +3240,7 @@ section.case-feature--detail { padding: 40px 0; }
 .support-faq--detail { padding: 80px 0 92px; margin: 40px 0; }
 .support-faq--detail > .container { width: min(1170px, 100%); max-width: none; padding-inline: 30px; }
 .support-faq--detail .support-faq-grid { gap: 0 20px; }
-.support-faq--detail h2 { margin: 0 0 20px; font-size: 34px; line-height: 56px; font-weight: 400; }
+.support-faq--detail h2 { margin: 0 0 20px; font-size: 34px; line-height: 56px; font-weight: 500; }
 .support-faq--detail .support-faq-intro { margin: 0 0 68px; font-size: 16px; line-height: 28px; font-weight: 300; color: #132140; }
 .support-faq--detail .faq-list { padding-right: 0; }
 .support-faq--detail .faq-item summary { padding: 13px 0; font-size: 17px; line-height: 28px; gap: 12px; }
@@ -3249,6 +3249,17 @@ section.case-feature--detail { padding: 40px 0; }
 .support-faq--detail .faq-plus::before { height: 1px; }
 .support-faq--detail .faq-plus::after { width: 1px; }
 .support-faq--detail .support-faq-art { padding-left: 20px; }
+
+/* The SaaS page runs the same block with its own two settings: it declares
+   pv-md-4 rather than the agencies margin, and keeps no filler paragraph under
+   the standfirst. Its ink therefore starts 160 from the top of the band instead
+   of 120, the accordion sits 20 under the standfirst instead of 68, the floated
+   panel hangs 72 below the accordion instead of 48, and the band runs 208 past
+   the panel. On a phone the same block reads 120 above, 54 to the panel and 226
+   past it, because the section padding halves while the outer keeps its 80. */
+.support-faq--detail.support-faq--padded { padding: 160px 0 208px; margin: 0; }
+.support-faq--detail.support-faq--padded .support-faq-intro { margin-bottom: 20px; }
+.support-faq--detail.support-faq--padded .faq-panel { margin-top: 72px; }
 
 .faq-panel {
   width: min(1170px, calc(100% - 60px));
@@ -3283,6 +3294,8 @@ section.case-feature--detail { padding: 40px 0; }
   .support-faq--detail .faq-item summary { padding: 13px 0; font-size: 17px; line-height: 22px; }
   .faq-panel { grid-template-columns: 1fr; padding: 30px 24px; }
   .faq-panel h3 { font-size: 16px; line-height: 22px; text-align: center; }
+  .support-faq--detail.support-faq--padded { padding: 120px 0 226px; }
+  .support-faq--detail.support-faq--padded .faq-panel { margin-top: 54px; }
 }
 
 /* Sub-page case slab at the small breakpoint: the reference keeps it left-aligned,
