@@ -8,6 +8,7 @@ import CaseStudiesBand from "../components/CaseStudiesBand";
 import FaqBand from "../components/FaqBand";
 import OutcomeBand from "../components/OutcomeBand";
 import PackageBand from "../components/PackageBand";
+import ReviewsBand from "../components/ReviewsBand";
 import WhyBand from "../components/WhyBand";
 import NotFound from "./NotFound";
 
@@ -369,6 +370,7 @@ const INDUSTRIES = [
         to: "/cloud",
       },
     },
+    reviews: true,
     faqs: [
       { q: "Can you answer clients in our name?", a: "Yes. We answer under your domain, your ticket templates and your tone of voice — or wear our own name if the retainer is better served that way." },
       { q: "What if a client site is on a stack you have not listed?", a: "We onboard new stacks every quarter. Send us the repo and the hosting panel and we will quote cover for it inside a week." },
@@ -739,6 +741,8 @@ export default function SupportDetail() {
           )}
 
           <CaseFeature study={featured} variant="detail" />
+
+          {provider.reviews && <ReviewsBand />}
 
           <div className="faq-section">
             <h2 className="section-title reveal">FAQ</h2>

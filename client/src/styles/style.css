@@ -4024,7 +4024,8 @@ section.case-feature--detail { padding: 40px 0; }
 }
 .platform-detail .support-faq--detail,
 .platform-detail .cap-band--detail,
-.platform-detail .pkg-band {
+.platform-detail .pkg-band,
+.platform-detail .reviews {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
