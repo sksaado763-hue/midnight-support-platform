@@ -4083,6 +4083,39 @@ section.case-feature--detail { padding: 40px 0; }
 .seo-intro-points li::before { content: "•\00a0"; }
 .seo-intro-join { font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: 700; margin-bottom: 24px; }
 
+/* The SaaS sub-page hands the same intro block a second shape: prose and a
+   marked list share the row, with the theme's hairline between them. The
+   reference measures that row at 645 + 95 + 380 on its 1140px track, so the
+   three fr units are its own column widths and the 5px bleed moves the whole
+   row onto our ink. Below md the list drops under the prose and the rule,
+   which is vertical, collapses to nothing. */
+.seo-intro--split { margin-bottom: 20px; }
+.seo-intro--split .seo-intro-title { margin-inline: -5px; font-weight: 500; }
+.seo-intro-split { display: grid; grid-template-columns: 645fr 95fr 380fr; margin-inline: -5px; }
+.seo-intro--split .seo-intro-body { max-width: none; }
+.seo-intro--split .seo-intro-body p:last-child { margin-bottom: 0; }
+.seo-intro-rule { width: 50%; border-right: 1px solid var(--navy); }
+.seo-intro-split .seo-intro-points--marked { padding-left: 20px; margin-bottom: 0; }
+.seo-intro-points--marked li {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding-left: 5px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+}
+.seo-intro-points--marked li::before { content: none; }
+.seo-intro-mark { flex: none; }
+
+@media (max-width: 767.98px) {
+  .seo-intro--split .seo-intro-title { margin-inline: 0; }
+  .seo-intro-split { grid-template-columns: minmax(0, 1fr); margin-inline: 0; }
+  .seo-intro-rule { display: none; }
+  .seo-intro-points--marked li { font-size: 14px; line-height: 18px; }
+}
+
 @media (max-width: 991.98px) {
   .seo-intro-body { max-width: none; }
   .seo-intro-body p, .seo-intro-points { margin-bottom: 10px; }

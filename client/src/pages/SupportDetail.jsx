@@ -385,8 +385,27 @@ const INDUSTRIES = [
       "buildNote", "cases", "faq", "slab2", "glance", "impacts"],
     title: "24/7 support for SaaS platforms",
     tagline: "Uptime, observability and release confidence for products where downtime is a churn conversation.",
-    whatTitle: "What SaaS support from us means",
-    intro: "A SaaS product never closes. Every minute of downtime is a line in a renewal conversation, and every silent degradation is a support ticket waiting to happen. Most product teams we meet have good tests and no nights: monitoring that emails nobody, dashboards nobody reads at 3am. We take the nights, so your engineers ship features instead of carrying pagers.",
+    gap: {
+      title: "A product that never closes needs a desk that never closes",
+      split: {
+        paras: [
+          "Availability is not a feature you ship once and forget. A distributed product is a hundred dependencies nobody can see at the same time, and the renewal conversation is usually decided by whichever one fails on a Sunday.",
+          "We run that desk: telemetry watched by engineers who read the code behind the graph, incidents owned from the first alert to the written post-mortem, and a handover on your stand-up screen before the working day starts.",
+          "Curious where the cover actually bites?",
+          "These are the threads we are pulled on most often:",
+        ],
+        points: [
+          "Cover in every timezone, not just ours",
+          "One engineer owns each incident end to end",
+          "Traces, logs and metrics read together",
+          "Availability targets written into the agreement",
+          "Senior platform and SRE people on the rota",
+          "Launch nights watched while they happen",
+          "Support for stacks nobody else wants to touch",
+          "Nobody on your team carrying a pager",
+        ],
+      },
+    },
     promise: [
       {
         title: "Your SLA becomes something we carry",
@@ -627,17 +646,40 @@ export default function SupportDetail() {
      already measured against. */
   const BANDS = {
     intro: provider.gap ? (
-        <div className="seo-intro">
-          <h2 className="seo-intro-title reveal">{provider.gap.title}</h2>
-          <div className="seo-intro-body reveal">
-            <p>{provider.gap.lead}</p>
-            <ul className="seo-intro-points">
-              {provider.gap.points.map((point) => <li key={point}>{point}</li>)}
-            </ul>
-            <p>{provider.gap.question}</p>
-            <h4 className="seo-intro-join"><Link to="/contact">{provider.gap.join}</Link></h4>
+        provider.gap.split ? (
+          <div className="seo-intro seo-intro--split">
+            <h2 className="seo-intro-title reveal">{provider.gap.title}</h2>
+            <div className="seo-intro-split">
+              <div className="seo-intro-body reveal">
+                {provider.gap.split.paras.map((para) => <p key={para}>{para}</p>)}
+              </div>
+              <span className="seo-intro-rule" aria-hidden="true" />
+              <ul className="seo-intro-points seo-intro-points--marked reveal">
+                {provider.gap.split.points.map((point) => (
+                  <li key={point}>
+                    <svg className="seo-intro-mark" viewBox="0 0 25 25" width="25" height="25" aria-hidden="true" focusable="false">
+                      <path d="M15.5 3a10 10 0 1 0 6.4 12.9A11.5 11.5 0 0 1 15.5 3z" fill="var(--amber)" />
+                      <circle cx="19.4" cy="6.4" r="2.1" fill="var(--amber)" />
+                    </svg>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="seo-intro">
+            <h2 className="seo-intro-title reveal">{provider.gap.title}</h2>
+            <div className="seo-intro-body reveal">
+              <p>{provider.gap.lead}</p>
+              <ul className="seo-intro-points">
+                {provider.gap.points.map((point) => <li key={point}>{point}</li>)}
+              </ul>
+              <p>{provider.gap.question}</p>
+              <h4 className="seo-intro-join"><Link to="/contact">{provider.gap.join}</Link></h4>
+            </div>
+          </div>
+        )
       ) : (
         <div className="plat-what reveal">
           <div>
