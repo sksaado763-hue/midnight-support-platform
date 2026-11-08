@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import { useApi } from "../lib/api";
@@ -381,6 +381,8 @@ const INDUSTRIES = [
     slug: "saas-platforms",
     name: "SaaS Platforms",
     scene: "net",
+    bands: ["intro", "promise", "slabEarly", "why", "coverage", "pricing", "packages",
+      "buildNote", "cases", "faq", "slab2", "glance", "impacts"],
     title: "24/7 support for SaaS platforms",
     tagline: "Uptime, observability and release confidence for products where downtime is a churn conversation.",
     whatTitle: "What SaaS support from us means",
@@ -575,6 +577,203 @@ export default function SupportDetail() {
 
   const others = PAGES.filter((p) => p.kind === provider.kind && p.slug !== slug);
 
+  /* The reference does not run the same band order on every support sub-page: its
+     SaaS page puts the case slab above the icon grid and closes on the glance and
+     impact rows, where the agencies page runs the video first and the slab last.
+     So the sequence is page data. Each band still renders only when the page has
+     content for it, which is why the default below is the order the other pages
+     already measured against. */
+  const BANDS = {
+    intro: provider.gap ? (
+        <div className="seo-intro">
+          <h2 className="seo-intro-title reveal">{provider.gap.title}</h2>
+          <div className="seo-intro-body reveal">
+            <p>{provider.gap.lead}</p>
+            <ul className="seo-intro-points">
+              {provider.gap.points.map((point) => <li key={point}>{point}</li>)}
+            </ul>
+            <p>{provider.gap.question}</p>
+            <h4 className="seo-intro-join"><Link to="/contact">{provider.gap.join}</Link></h4>
+          </div>
+        </div>
+      ) : (
+        <div className="plat-what reveal">
+          <div>
+            <h2>{provider.whatTitle || `What does ${provider.name} support from us mean?`}</h2>
+            <p>{provider.intro}</p>
+          </div>
+        </div>
+      ),
+
+    promise: provider.promise && <OutcomeBand variant="boxes" cards={provider.promise} />,
+
+    slabEarly: provider.caseStudy?.slot === "early" && (
+        <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
+      ),
+
+    video: provider.video && (
+        <section className="how-it-works">
+          <div className="container">
+            <div className="hiw-grid">
+              <div className="hiw-media reveal">
+                <video
+                  ref={filmRef}
+                  className="hiw-video"
+                  src="/video/brand-video.mp4"
+                  poster="/video/brand-poster.jpg"
+                  preload="none"
+                  controls={playing}
+                  playsInline
+                  onEnded={() => setFilmSlug("")}
+                />
+                {!playing && (
+                  <button type="button" className="hiw-play" onClick={startFilm} aria-label={`Play: ${provider.video.title}`}>
+                    <svg viewBox="0 0 35 38" width="35" height="38" aria-hidden="true" focusable="false">
+                      <path d="M2 2l31 17L2 36z" fill="#ffffff" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+              <div className="hiw-copy reveal">
+                <h2>{provider.video.title}</h2>
+                <p>{provider.video.lead}</p>
+                <p>{provider.video.closer}</p>
+                <Link to="/support" className="btn btn-navy btn-lg">{provider.video.cta}</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      ),
+
+    why: provider.why && (
+        <WhyBand
+          variant="detail"
+          title={provider.why.title}
+          intro={provider.why.intro}
+          cards={provider.why.cards}
+          accent={provider.why.accent}
+        />
+      ),
+
+    cases: provider.cases && (
+        <CaseStudiesBand
+          variant="detail"
+          title={provider.cases.title}
+          studies={provider.cases.slugs.map((slug) => (caseStudies || []).find((study) => study.slug === slug)).filter(Boolean)}
+        />
+      ),
+
+    covers: provider.covers && (
+        <OutcomeBand
+          variant="detail"
+          title={provider.covers.title}
+          intro={provider.covers.intro}
+          cards={provider.covers.cards}
+        />
+      ),
+
+    faq: provider.faq && (
+        <FaqBand
+          variant="detail"
+          title={provider.faq.title}
+          intro={provider.faq.intro}
+          faqs={provider.faq.items}
+          panel={provider.faq.panel}
+        />
+      ),
+
+    coverage: provider.coverage && (
+        <CapabilityBand
+          variant="detail"
+          title={provider.coverage.title}
+          intro={provider.coverage.intro}
+          groups={provider.coverage.groups}
+          closer={provider.coverage.closer}
+        />
+      ),
+
+    packages: provider.packages && (
+        <PackageBand
+          title={provider.packages.title}
+          intro={provider.packages.intro}
+          tiers={provider.packages.tiers}
+          note={provider.packages.note}
+        />
+      ),
+
+    capabilities: provider.capabilities && (
+        <div className="platform-band">
+          <h2 className="band-title band-title--dark band-title--center reveal">What the cover includes</h2>
+          <span className="band-rule band-rule--center" aria-hidden="true" />
+          <div className="cap-grid cap-grid--2">
+            {provider.capabilities.map((cap) => (
+              <article className="cap-card reveal" key={cap.title}>
+                <h3>{cap.title}</h3>
+                <span className="cap-rule" aria-hidden="true" />
+                <ul>
+                  {cap.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      ),
+
+    fitWith: provider.fitWith && (
+        <div className="platform-band">
+          <h2 className="band-title band-title--dark band-title--center reveal">A good fit if</h2>
+          <span className="band-rule band-rule--center" aria-hidden="true" />
+          <ul className="fit-list reveal">
+            {provider.fitWith.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
+      ),
+
+    packagesNote: !provider.packages && (
+        <div className="packages-band reveal">
+          <div>
+            <h2>Our service packages</h2>
+            <p>Everything we support is covered by one of three packages — pick the lightest one that genuinely covers you.</p>
+          </div>
+          <Link to="/support" className="btn btn-primary">Compare packages <span aria-hidden="true">➔</span></Link>
+        </div>
+      ),
+
+    slab: provider.caseStudy && provider.caseStudy.slot !== "early" && (
+        <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
+      ),
+
+    reviews: provider.reviews && <ReviewsBand />,
+
+    faqSection: (<div className="faq-section">
+        <h2 className="section-title reveal">FAQ</h2>
+        <div className="faq-list reveal">
+          {provider.faqs.map((faq) => (
+            <details className="faq-item" key={faq.q}>
+              <summary>{faq.q}<span className="faq-chevron" aria-hidden="true"></span></summary>
+              <p>{faq.a}</p>
+            </details>
+          ))}
+        </div>
+        <p className="faq-more reveal">More questions? <Link to="/contact">Ask us anything</Link> — we answer quickly, even at strange hours.</p>
+      </div>),
+
+    others: (<div className="other-platforms">
+        <h2 className="section-title reveal">We also cover</h2>
+        <div className="other-platform-grid">
+          {others.map((other) => (
+            <Link className="other-platform-chip reveal" to={`/support/${other.slug}`} key={other.slug}>
+              {other.title}
+            </Link>
+          ))}
+          <Link className="other-platform-chip other-platform-chip--all reveal" to="/support">
+            All support services <span aria-hidden="true">➔</span>
+          </Link>
+        </div>
+      </div>),
+  };
+  const bandOrder = provider.bands || ["intro", "promise", "slabEarly", "video", "why", "cases", "covers", "faq", "coverage", "packages", "capabilities", "fitWith", "packagesNote", "slab", "reviews", "faqSection", "others"];
+
   return (
     <>
       <section className={`page-hero page-hero--support${provider.scene ? ` page-hero--${provider.scene}` : ""}`}>
@@ -685,193 +884,9 @@ export default function SupportDetail() {
 
       <section className="platform-detail">
         <div className="container">
-          {provider.gap ? (
-            <div className="seo-intro">
-              <h2 className="seo-intro-title reveal">{provider.gap.title}</h2>
-              <div className="seo-intro-body reveal">
-                <p>{provider.gap.lead}</p>
-                <ul className="seo-intro-points">
-                  {provider.gap.points.map((point) => <li key={point}>{point}</li>)}
-                </ul>
-                <p>{provider.gap.question}</p>
-                <h4 className="seo-intro-join"><Link to="/contact">{provider.gap.join}</Link></h4>
-              </div>
-            </div>
-          ) : (
-            <div className="plat-what reveal">
-              <div>
-                <h2>{provider.whatTitle || `What does ${provider.name} support from us mean?`}</h2>
-                <p>{provider.intro}</p>
-              </div>
-            </div>
-          )}
-
-          {provider.promise && <OutcomeBand variant="boxes" cards={provider.promise} />}
-
-          {provider.caseStudy?.slot === "early" && (
-            <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
-          )}
-
-          {provider.video && (
-            <section className="how-it-works">
-              <div className="container">
-                <div className="hiw-grid">
-                  <div className="hiw-media reveal">
-                    <video
-                      ref={filmRef}
-                      className="hiw-video"
-                      src="/video/brand-video.mp4"
-                      poster="/video/brand-poster.jpg"
-                      preload="none"
-                      controls={playing}
-                      playsInline
-                      onEnded={() => setFilmSlug("")}
-                    />
-                    {!playing && (
-                      <button type="button" className="hiw-play" onClick={startFilm} aria-label={`Play: ${provider.video.title}`}>
-                        <svg viewBox="0 0 35 38" width="35" height="38" aria-hidden="true" focusable="false">
-                          <path d="M2 2l31 17L2 36z" fill="#ffffff" />
-                        </svg>
-                      </button>
-                    )}
-                  </div>
-                  <div className="hiw-copy reveal">
-                    <h2>{provider.video.title}</h2>
-                    <p>{provider.video.lead}</p>
-                    <p>{provider.video.closer}</p>
-                    <Link to="/support" className="btn btn-navy btn-lg">{provider.video.cta}</Link>
-                  </div>
-                </div>
-              </div>
-            </section>
-          )}
-
-          {provider.why && (
-            <WhyBand
-              variant="detail"
-              title={provider.why.title}
-              intro={provider.why.intro}
-              cards={provider.why.cards}
-              accent={provider.why.accent}
-            />
-          )}
-
-          {provider.cases && (
-            <CaseStudiesBand
-              variant="detail"
-              title={provider.cases.title}
-              studies={provider.cases.slugs.map((slug) => (caseStudies || []).find((study) => study.slug === slug)).filter(Boolean)}
-            />
-          )}
-
-          {provider.covers && (
-            <OutcomeBand
-              variant="detail"
-              title={provider.covers.title}
-              intro={provider.covers.intro}
-              cards={provider.covers.cards}
-            />
-          )}
-
-          {provider.faq && (
-            <FaqBand
-              variant="detail"
-              title={provider.faq.title}
-              intro={provider.faq.intro}
-              faqs={provider.faq.items}
-              panel={provider.faq.panel}
-            />
-          )}
-
-          {provider.coverage && (
-            <CapabilityBand
-              variant="detail"
-              title={provider.coverage.title}
-              intro={provider.coverage.intro}
-              groups={provider.coverage.groups}
-              closer={provider.coverage.closer}
-            />
-          )}
-
-          {provider.packages && (
-            <PackageBand
-              title={provider.packages.title}
-              intro={provider.packages.intro}
-              tiers={provider.packages.tiers}
-              note={provider.packages.note}
-            />
-          )}
-
-          {provider.capabilities && (
-            <div className="platform-band">
-              <h2 className="band-title band-title--dark band-title--center reveal">What the cover includes</h2>
-              <span className="band-rule band-rule--center" aria-hidden="true" />
-              <div className="cap-grid cap-grid--2">
-                {provider.capabilities.map((cap) => (
-                  <article className="cap-card reveal" key={cap.title}>
-                    <h3>{cap.title}</h3>
-                    <span className="cap-rule" aria-hidden="true" />
-                    <ul>
-                      {cap.items.map((item) => <li key={item}>{item}</li>)}
-                    </ul>
-                  </article>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {provider.fitWith && (
-            <div className="platform-band">
-              <h2 className="band-title band-title--dark band-title--center reveal">A good fit if</h2>
-              <span className="band-rule band-rule--center" aria-hidden="true" />
-              <ul className="fit-list reveal">
-                {provider.fitWith.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </div>
-          )}
-
-          {!provider.packages && (
-            <div className="packages-band reveal">
-              <div>
-                <h2>Our service packages</h2>
-                <p>Everything we support is covered by one of three packages — pick the lightest one that genuinely covers you.</p>
-              </div>
-              <Link to="/support" className="btn btn-primary">Compare packages <span aria-hidden="true">➔</span></Link>
-            </div>
-          )}
-
-          {provider.caseStudy && provider.caseStudy.slot !== "early" && (
-            <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
-          )}
-
-          {provider.reviews && <ReviewsBand />}
-
-          <div className="faq-section">
-            <h2 className="section-title reveal">FAQ</h2>
-            <div className="faq-list reveal">
-              {provider.faqs.map((faq) => (
-                <details className="faq-item" key={faq.q}>
-                  <summary>{faq.q}<span className="faq-chevron" aria-hidden="true"></span></summary>
-                  <p>{faq.a}</p>
-                </details>
-              ))}
-            </div>
-            <p className="faq-more reveal">More questions? <Link to="/contact">Ask us anything</Link> — we answer quickly, even at strange hours.</p>
-          </div>
-
-          <div className="other-platforms">
-            <h2 className="section-title reveal">We also cover</h2>
-            <div className="other-platform-grid">
-              {others.map((other) => (
-                <Link className="other-platform-chip reveal" to={`/support/${other.slug}`} key={other.slug}>
-                  {other.title}
-                </Link>
-              ))}
-              <Link className="other-platform-chip other-platform-chip--all reveal" to="/support">
-                All support services <span aria-hidden="true">➔</span>
-              </Link>
-            </div>
-          </div>
+          {bandOrder.map((key) => (
+            <Fragment key={key}>{BANDS[key]}</Fragment>
+          ))}
         </div>
       </section>
     </>
