@@ -11,13 +11,6 @@ import PackageBand from "../components/PackageBand";
 import WhyBand from "../components/WhyBand";
 import NotFound from "./NotFound";
 
-const TRUST = [
-  { title: "Named engineers, not a ticket queue", text: "The person who answers has your architecture diagram open. Rotas are published, so you know who before you call." },
-  { title: "Changes proposed, never surprised", text: "Anything that touches production arrives as a written proposal with a rollback line. You approve; we execute; we report." },
-  { title: "One handover every morning", text: "What fired, what we changed, what is still open and waiting on you. Nothing lives only in a dashboard." },
-  { title: "Upstream honesty", text: "If the fault belongs to the provider, we say so, open the case with them and chase it until it closes — on our time, not yours." },
-];
-
 const PROVIDERS = [
   {
     slug: "aws-support",
@@ -386,7 +379,6 @@ const INDUSTRIES = [
       "Clients call developers directly and nobody wants that anymore",
       "You want a support desk that can answer in your name, in your tone",
     ],
-    trustTitle: "Why agencies hand us the retainers",
     faqs: [
       { q: "Can you answer clients in our name?", a: "Yes. We answer under your domain, your ticket templates and your tone of voice — or wear our own name if the retainer is better served that way." },
       { q: "What if a client site is on a stack you have not listed?", a: "We onboard new stacks every quarter. Send us the repo and the hosting panel and we will quote cover for it inside a week." },
@@ -427,7 +419,6 @@ const INDUSTRIES = [
       "You want incident response that reads code, not just dashboards",
       "Releases have slowed down because nobody trusts the nights",
     ],
-    trustTitle: "Why SaaS teams hand us the pager",
     faqs: [
       { q: "Do you replace our SRE team?", a: "No. We take the nights and the routine so your SREs spend their days on platform work instead of pager hangovers." },
       { q: "Can you work inside our existing observability stack?", a: "Yes. Datadog, Grafana, Sentry, CloudWatch or a homegrown dashboard — we answer what you already have and propose what is missing." },
@@ -468,7 +459,6 @@ const INDUSTRIES = [
       "Payment and fulfilment integrations fail in ways monitoring misses",
       "You want cover that watches the sale, not just the server",
     ],
-    trustTitle: "Why stores hand us the nights",
     faqs: [
       { q: "Do you cover Magento and Shopify Plus builds?", a: "Yes, plus WooCommerce, BigCommerce and headless stacks. Platform-specific cover sits under our platforms pages; this rota covers whichever one you trade on." },
       { q: "Can you join our Black Friday war room?", a: "We run them. Capacity review two weeks out, freeze windows agreed, extra engineers on shift and a live incident channel for the weekend." },
@@ -719,18 +709,6 @@ export default function SupportDetail() {
               note={provider.packages.note}
             />
           )}
-
-          <div className="feature-section">
-            <h2 className="section-title reveal">{provider.trustTitle || `Why teams trust us with ${provider.name}`}</h2>
-            <div className="feature-grid">
-              {TRUST.map((feature) => (
-                <article className="feature-card reveal" key={feature.title}>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
 
           <div className="platform-band">
             <h2 className="band-title band-title--dark band-title--center reveal">What the cover includes</h2>
