@@ -381,8 +381,8 @@ const INDUSTRIES = [
     slug: "saas-platforms",
     name: "SaaS Platforms",
     scene: "net",
-    bands: ["intro", "promise", "slabEarly", "why", "coverage", "pricing", "packages",
-      "buildNote", "cases", "faq", "slab2", "glance", "impacts"],
+    bands: ["intro", "promise", "slabEarly", "why", "coverage", "packages",
+      "cases", "faq", "slab2", "glance", "impacts"],
     title: "24/7 support for SaaS platforms",
     tagline: "Uptime, observability and release confidence for products where downtime is a churn conversation.",
     gap: {
@@ -514,6 +514,84 @@ const INDUSTRIES = [
         text: "Send your stack and your worst month on it — we will show you which nights would have been quieter.",
         cta: "Talk about your platform",
         to: "/contact",
+      },
+    },
+    /* The reference's three closing prose sections — the centred title over the
+       narrower copy column, the four-column table, the one-line handover — are
+       the block PackageBand already renders on the agencies page, so SaaS takes
+       the same component. Two measured differences travel as props: this page's
+       prose section declares pt-md-4 over and above its top margin, and its
+       closing link is an accent rather than plain ink. */
+    packages: {
+      introGap: true,
+      title: "How much of the clock do we carry?",
+      intro: "Four ways to put engineers behind a platform that never closes. Take one as written, blend two, or point us at the corner of the stack nobody on your team wants to own.",
+      introTail: { lead: "We cut the agreement around that — just", link: "tell us what you run", to: "/contact" },
+      tiers: [
+        {
+          tab: "The early warning",
+          name: "MONITORING & TRIAGE",
+          items: [
+            "Uptime and journey probes",
+            "First-line triage in hours",
+            "Alerts routed by name",
+          ],
+          cta: "Talk about this tier",
+          hover: "Contact",
+          to: "/contact?package=monitoring-triage",
+        },
+        {
+          tab: "Nights and weekends",
+          name: "OUT-OF-HOURS ROTAS",
+          items: [
+            "Everything in tier one",
+            "Engineers on call overnight",
+            "Weekend and holiday rota",
+            "Incident notes by nine",
+            "Rollbacks shipped in window",
+            "Response clocks per service",
+          ],
+          cta: "Talk about this tier",
+          hover: "Contact",
+          to: "/contact?package=out-of-hours-rotas",
+        },
+        {
+          tab: "The whole clock",
+          name: "ROUND-THE-CLOCK DESK",
+          items: [
+            "Everything in tier two",
+            "One rota, every service",
+            "Deploys watched as they run",
+            "Error budgets reviewed monthly",
+            "Status page kept honest",
+            "Quarterly reliability roadmap",
+          ],
+          cta: "Talk about this tier",
+          hover: "Contact",
+          to: "/contact?package=round-the-clock-desk",
+        },
+        {
+          tab: "Cut to your stack",
+          name: "CUSTOM & ADD-ONS",
+          items: [
+            "App-only or full-stack cover",
+            "Tighter response clocks",
+            "SRE and observability work",
+            "Cost and capacity reviews",
+            "Compliance evidence packs",
+            "A ticket cap you choose",
+            "Something else? Say the word",
+          ],
+          cta: "Design a package",
+          hover: "Contact",
+          to: "/contact?package=custom",
+        },
+      ],
+      note: {
+        lead: "Want the platform rebuilt, not only held?",
+        text: "Rebuilds and modernisation sit with a different team —",
+        link: "see what we build",
+        to: "/cloud",
       },
     },
     fitWith: [
@@ -782,6 +860,8 @@ export default function SupportDetail() {
         <PackageBand
           title={provider.packages.title}
           intro={provider.packages.intro}
+          introTail={provider.packages.introTail}
+          introGap={provider.packages.introGap}
           tiers={provider.packages.tiers}
           note={provider.packages.note}
         />

@@ -7,15 +7,26 @@ import { Link } from "react-router-dom";
    card, which drops a 30px sky tab above the box, tints the column and turns its
    border sky. The button carries the same trick: a "Contact" panel parked at
    translateY(-102%) slides down over the label on hover. Both are reproduced
-   here rather than baked into one column. */
-export default function PackageBand({ title, intro, tiers, note }) {
+   here rather than baked into one column.
+
+   The two sub-pages that carry this block differ in one place each: the SaaS
+   page's prose section declares pt-md-4 on top of its mt-md-4, so it opens 20px
+   below where the agencies page does, and it finishes its copy with an accent
+   link the agencies page leaves as plain text. Both come in as props so the
+   geometry stays one component. */
+export default function PackageBand({ title, intro, introTail, introGap, tiers, note }) {
   return (
     <section className="pkg-band">
-      <div className="pkg-intro">
+      <div className={`pkg-intro${introGap ? " pkg-intro--gap" : ""}`}>
         <div className="container">
           <div className="pkg-intro-copy reveal">
             <h2>{title}</h2>
-            <p>{intro}</p>
+            <p>
+              {intro}
+              {introTail && (
+                <> {introTail.lead} <Link className="pkg-intro-cta" to={introTail.to}>{introTail.link}</Link>.</>
+              )}
+            </p>
           </div>
         </div>
       </div>

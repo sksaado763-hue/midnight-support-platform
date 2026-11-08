@@ -699,7 +699,9 @@ body {
 /* Packages block. The reference draws the card rule in #aaa and the row
    separators in #d0d0d0 — flat greys; ours are the navy-alpha line tokens every
    other band uses. Their package name is crimson #e24168, ours is the palette's
-   pink role. Their hover chrome — tab plate, card tint and border, and the panel
+   pink role — and the SaaS page paints its closing link the same crimson, so it
+   takes the same role while the agencies page leaves that link in ink.
+   Their hover chrome — tab plate, card tint and border, and the panel
    that slides over the button label — is #a1cce3, which is our --sky to within
    one step, so the interaction stays on the reference's own blue. */
 .pkg-band { background: var(--bg); }
@@ -711,6 +713,7 @@ body {
 .pkg-note p,
 .pkg-note p a { color: var(--text); }
 .pkg-name { color: var(--pink); }
+.pkg-intro-copy .pkg-intro-cta { color: var(--pink); }
 .pkg-col { border-color: var(--line-strong); }
 .pkg-list li { border-color: var(--line); }
 .pkg-col:hover { background: rgba(162, 204, 228, 0.14); border-color: var(--sky); }

@@ -2641,8 +2641,11 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
    The closing line sits flush under the table with 40px below it — the
    reference declares pb-md-6 (120) and pb-2 (40) and the base utility wins, as
    it always does here. Below 768 the copy column goes full width, the items
-   align left, and the row spans the viewport edge to edge. */
+   align left, and the row spans the viewport edge to edge. The SaaS page's
+   prose section declares pt-md-4 as well as mt-md-4, so it opens 20px lower —
+   that is the whole of `--gap`. */
 .pkg-intro { margin-top: 20px; }
+.pkg-intro--gap { padding-top: 20px; }
 .pkg-intro > .container { width: min(1170px, 100%); max-width: none; padding-inline: 30px; }
 .pkg-intro-copy { width: 83.3333%; margin-inline: auto; text-align: center; }
 .pkg-intro-copy h2 { margin: 0 0 24px; font-size: 48px; line-height: 56px; font-weight: 700; }
