@@ -380,6 +380,7 @@ const INDUSTRIES = [
   {
     slug: "saas-platforms",
     name: "SaaS Platforms",
+    scene: "net",
     title: "24/7 support for SaaS platforms",
     tagline: "Uptime, observability and release confidence for products where downtime is a churn conversation.",
     whatTitle: "What SaaS support from us means",
@@ -482,6 +483,13 @@ const CITY_FRONT = [
   [710, 120, 160], [840, 150, 132], [1000, 110, 186], [1120, 160, 152], [1290, 150, 206],
 ];
 
+/* The SaaS scene: one desk answering six watched services, laid out on a
+   hexagon so every wire leaves the core at the same length. */
+const NET_NODES = [
+  { x: 220, y: 62 }, { x: 366, y: 150 }, { x: 366, y: 330 },
+  { x: 220, y: 418 }, { x: 74, y: 330 }, { x: 74, y: 150 },
+];
+
 function skylineWindows() {
   const cells = [];
   CITY_FRONT.forEach(([x, w, h], b) => {
@@ -566,6 +574,46 @@ export default function SupportDetail() {
                 <path className="city-fin" d="M92 138v48H56c6-24 18-42 36-48z" />
                 <path className="city-fin" d="M156 138v48h36c-6-24-18-42-36-48z" />
                 <path className="city-flame" d="M108 176h32l-5 20-11 26-11-26z" />
+              </g>
+            </svg>
+          </div>
+        )}
+        {provider.scene === "net" && (
+          <div className="net-art" aria-hidden="true">
+            <svg viewBox="0 0 440 480" fill="none">
+              <g className="net-wires">
+                {NET_NODES.map((n) => (
+                  <path className="net-wire" key={`w${n.x}-${n.y}`} d={`M220 240L${n.x} ${n.y}`} />
+                ))}
+              </g>
+              <g className="net-pulses">
+                {NET_NODES.map((n, i) => (
+                  <path
+                    className="net-pulse"
+                    key={`p${n.x}-${n.y}`}
+                    pathLength="100"
+                    d={`M220 240L${n.x} ${n.y}`}
+                    style={{ animationDelay: `${i * 0.8}s` }}
+                  />
+                ))}
+              </g>
+              <g className="net-nodes">
+                {NET_NODES.map((n, i) => (
+                  <g
+                    className="net-node"
+                    key={`n${n.x}-${n.y}`}
+                    transform={`translate(${n.x} ${n.y})`}
+                    style={{ animationDelay: `${i * 0.45}s` }}
+                  >
+                    <rect x="-31" y="-21" width="62" height="42" rx="9" />
+                    <path d="M-19 -8h38M-19 1h38M-19 10h22" />
+                  </g>
+                ))}
+              </g>
+              <g className="net-core">
+                <rect x="152" y="204" width="136" height="72" rx="14" />
+                <path d="M172 230h58M172 248h84" />
+                <circle className="net-core-dot" cx="264" cy="230" r="7" />
               </g>
             </svg>
           </div>

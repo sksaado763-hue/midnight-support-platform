@@ -1966,6 +1966,97 @@ ul { list-style: none; }
   .city-art { display: none; }
 }
 
+/* SaaS hero, measured off the reference's SaaS page at 1889: the same 5/12
+   column, 34/44 headline, 17/24 standfirst and 56px button as the agencies
+   hero, but 80px of section padding instead of 40 — a 730px field. Their art
+   is one dark photo of a glowing service graph; ours draws the graph, so the
+   pulse runs on its own clock and stops when the pointer is on the hero. */
+.page-hero--net {
+  min-height: clamp(600px, 38.64vw, 730px);
+  padding: clamp(130px, 10.58vw, 200px) 0;
+}
+.page-hero--net .container {
+  position: relative;
+  z-index: 2;
+  width: min(1140px, 100%);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+.page-hero--net .hero-copy { max-width: 475px; }
+.page-hero--net .support-hero-title {
+  font-size: clamp(26px, 1.8vw, 34px);
+  line-height: clamp(32px, 2.33vw, 44px);
+  font-weight: 500;
+  letter-spacing: 0;
+  max-width: 15ch;
+}
+.page-hero--net .support-hero-sub {
+  margin-top: 12px;
+  font-family: var(--font-head);
+  font-size: clamp(15px, 0.9vw, 17px);
+  line-height: clamp(20px, 1.27vw, 24px);
+  font-weight: 600;
+  max-width: 30ch;
+}
+.page-hero--net .hero-actions { margin-top: 12px; }
+.page-hero--net .support-hero-cta {
+  height: clamp(48px, 2.97vw, 56px);
+  padding: 18px 24px;
+  border-radius: 5px;
+  font-size: clamp(13px, 0.75vw, 14px);
+  font-weight: 600;
+}
+.net-art {
+  position: absolute;
+  right: clamp(-34px, -1.3vw, 0px);
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 1;
+  width: clamp(250px, 23.3vw, 440px);
+  line-height: 0;
+  pointer-events: none;
+}
+.net-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.net-wire { stroke-width: 1.5; }
+.net-pulse {
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 7 93;
+  animation: net-travel 5.4s linear infinite;
+}
+@keyframes net-travel {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+.net-node rect, .net-core rect { stroke-width: 1.5; }
+.net-node path, .net-core path { stroke-width: 1.5; stroke-linecap: round; }
+.net-node { animation: net-watched 3.2s ease-in-out infinite; }
+/* The wave has to cut the graph off, not the other way round — the hub's
+   160px curve would bury the lower nodes, so the scene wears the shallower
+   city wave. */
+.page-hero--net .support-hero-divider { z-index: 3; height: clamp(56px, 4.7vw, 90px); }
+@keyframes net-watched {
+  0%, 70%, 100% { opacity: 1; }
+  80% { opacity: 0.55; }
+}
+.net-core-dot { animation: net-blink 2.6s steps(1, end) infinite; }
+@keyframes net-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0.2; }
+}
+.page-hero--net:hover .net-pulse,
+.page-hero--net:hover .net-node,
+.page-hero--net:hover .net-core-dot { animation-play-state: paused; }
+
+/* Below the reference's 992 flip the graph is cropped out of their photo, so
+   the scene carries on the starfield alone and the copy takes the measure. */
+@media (max-width: 991.98px) {
+  .page-hero--net { min-height: 0; padding: 120px 0 40px; }
+  .page-hero--net .container { padding-inline: 24px; }
+  .page-hero--net .hero-copy { max-width: none; }
+  .net-art { display: none; }
+}
+
 /* Platforms hero, measured 1:1 off the reference capture at 1908px: 199px
    gutters, a 67px/79 two-line headline, 22px copy, a 77px CTA and the navy
    field handed to the page on a cosine 80px deep. The field itself is the
@@ -4389,6 +4480,7 @@ section.case-feature--detail { padding: 40px 0; }
   .hero-stars circle, .brand-mark, .partners-illustration,
   .notfound-art, .hero-cloud-a, .hero-cloud-b, .hero-moon,
   .support-faq-art .faq-lift,
+  .net-pulse, .net-node, .net-core-dot,
   .hero-actions:has(.btn:hover) .btn span[aria-hidden="true"] { animation: none; }
   .trust-logo, .trust-logos, .trust-mark-base > *, .trust-word { animation: none; }
   .trust-mark-base > * { stroke-dashoffset: 0; }

@@ -791,6 +791,19 @@ body {
 .city-fin { fill: var(--navy-soft); }
 .city-flame { fill: var(--amber); opacity: 0.85; }
 
+/* The SaaS graph: wires the colour of the night field, the pulse and the
+   watched drums in brand amber, the core lit brighter than anything it
+   answers. Their photo glows magenta; ours keeps the palette. */
+.net-wire { stroke: rgba(255, 255, 255, 0.16); }
+.net-pulse { stroke: var(--amber); }
+.net-node rect { fill: rgba(255, 255, 255, 0.04); stroke: rgba(250, 189, 20, 0.5); }
+.net-node path { stroke: rgba(250, 189, 20, 0.5); }
+/* Opaque, or the six wires show through the desk they run to. */
+.net-core rect { fill: #16264a; stroke: var(--amber); filter: drop-shadow(0 0 14px rgba(250, 189, 20, 0.22)); }
+.net-core path { stroke: rgba(255, 255, 255, 0.72); }
+.net-core-dot { fill: var(--amber); }
+.net-node rect { filter: drop-shadow(0 0 8px rgba(250, 189, 20, 0.16)); }
+
 .faq-chevron { border-color: var(--navy); }
 
 .other-platform-chip { background: #ffffff; border-color: var(--line-strong); }
