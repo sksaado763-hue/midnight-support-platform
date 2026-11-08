@@ -156,7 +156,7 @@ const INDUSTRIES = [
       closer: "Want the cover levels and their response clocks side by side?",
       cta: "See the packages",
     },
-    caseStudy: "dexerto",
+    caseStudy: { slug: "dexerto" },
     why: {
       title: "Why agencies keep us on the retainer",
       intro: "You sold the client a platform, not an on-call rota. Ten sites, ten stacks and one team that has to be somewhere else — that is the arithmetic we were built for. Here is what changes once the desk is ours:",
@@ -431,9 +431,9 @@ const INDUSTRIES = [
         text: "Stability work is not only watching. We pull apart the monolith edges that slow every release, move the jobs that block deploys behind flags, and take the waste out of a cloud bill that grew faster than the product. The reliability review is where that list gets written, and where it gets closed. The platform you renew on need not be the one you started with.",
       },
     ],
+    caseStudy: { slug: "absolute-software", split: "4-1-7", slot: "early" },
     capabilities: [
-      { title: "Every night", items: ["Alerting and incident response on a published rota", "Triage to code level with a fix or a rollback decision", "Deploy and canary watches through your release window", "Queue, worker and webhook backlog checks"] },
-      { title: "Every month", items: ["Error-budget and incident review with your engineers", "Observability audit: alerts that page humans, not mailboxes", "Capacity and scaling-policy review ahead of your growth curve", "A reliability report your customer teams can quote in renewal calls"] },
+      { title: "Every night", items: ["Alerting and incident response on a published rota", "Triage to code level with a fix or a rollback decision", "Deploy and canary watches through your release window", "Queue, worker and webhook backlog checks"] },      { title: "Every month", items: ["Error-budget and incident review with your engineers", "Observability audit: alerts that page humans, not mailboxes", "Capacity and scaling-policy review ahead of your growth curve", "A reliability report your customer teams can quote in renewal calls"] },
     ],
     coverage: {
       title: "The reliability work that happens while you sleep",
@@ -569,7 +569,7 @@ export default function SupportDetail() {
   };
   useTitle(provider ? `${provider.title} | Just After Midnight` : "24/7 Support | Just After Midnight");
   const { data: caseStudies } = useApi(provider?.caseStudy || provider?.cases ? "/api/case-studies" : null);
-  const featured = provider?.caseStudy ? (caseStudies || []).find((study) => study.slug === provider.caseStudy) : null;
+  const featured = provider?.caseStudy ? (caseStudies || []).find((study) => study.slug === provider.caseStudy.slug) : null;
 
   if (!provider) return <NotFound />;
 
@@ -708,6 +708,10 @@ export default function SupportDetail() {
 
           {provider.promise && <OutcomeBand variant="boxes" cards={provider.promise} />}
 
+          {provider.caseStudy?.slot === "early" && (
+            <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
+          )}
+
           {provider.video && (
             <section className="how-it-works">
               <div className="container">
@@ -836,7 +840,9 @@ export default function SupportDetail() {
             </div>
           )}
 
-          <CaseFeature study={featured} variant="detail" />
+          {provider.caseStudy && provider.caseStudy.slot !== "early" && (
+            <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
+          )}
 
           {provider.reviews && <ReviewsBand />}
 

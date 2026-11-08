@@ -2828,8 +2828,14 @@ section.case-feature--detail { padding: 40px 0; }
   letter-spacing: 0;
   text-transform: none;
 }
-.case-feature--detail h2 { margin: 0 0 24px; font-size: 48px; line-height: 56px; font-weight: 600; letter-spacing: 0; }
-.case-feature--detail .case-feature-headline { margin: 0 0 24px; font-size: 17px; line-height: 24px; font-weight: 600; }
+
+/* The reference's SaaS slab hands the artwork four of its twelve columns rather
+   than three, and drops the empty paragraph that puts 92px under the agencies
+   label. The two travel together in their markup, so they travel together here. */
+.case-feature--detail.case-feature--split-4-1-7 .case-feature-grid { grid-template-columns: 33.333% 8.334% 58.333%; }
+.case-feature--detail.case-feature--split-4-1-7 .case-feature-label { margin-bottom: 24px; }
+
+.case-feature--detail h2 { margin: 0 0 24px; font-size: 48px; line-height: 56px; font-weight: 600; letter-spacing: 0; }.case-feature--detail .case-feature-headline { margin: 0 0 24px; font-size: 17px; line-height: 24px; font-weight: 600; }
 .case-feature--detail .case-feature-text { margin: 0 0 20px; font-size: 16px; line-height: 28px; max-width: none; }
 .case-feature--detail .case-feature-cta {
   height: 56px;

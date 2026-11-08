@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 
 /* The reference's case-study block: a navy starfield slab, the client in a
    hand-drawn oval, an amber rule, then the story and a white CTA. Shared by
-   /support and the 24/7 support sub-pages so the treatment cannot drift. */
-export default function CaseFeature({ study, variant = "wide" }) {
+   /support and the 24/7 support sub-pages so the treatment cannot drift.
+   `split` carries the reference's own 12-column spans for the page it sits on. */
+export default function CaseFeature({ study, variant = "wide", split = "3-1-8" }) {
   if (!study) return null;
   const detail = variant === "detail";
   return (
-    <section className={`case-feature${detail ? " case-feature--detail" : ""}`}>
+    <section className={`case-feature${detail ? " case-feature--detail" : ""}${detail ? ` case-feature--split-${split}` : ""}`}>
       <div className="hero-stars" aria-hidden="true">
         <svg viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice">
           <g fill="#ffffff">
