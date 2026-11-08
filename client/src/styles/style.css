@@ -4225,6 +4225,8 @@ section.case-feature--detail { padding: 40px 0; }
 .platform-detail .cap-band--detail,
 .platform-detail .pii-band--boxes,
 .platform-detail .pkg-band,
+.platform-detail .glance-band,
+.platform-detail .impact-band,
 .platform-detail .reviews {
   width: 100vw;
   margin-left: calc(50% - 50vw);

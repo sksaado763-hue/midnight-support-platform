@@ -6,6 +6,8 @@ import CaseFeature from "../components/CaseFeature";
 import CapabilityBand from "../components/CapabilityBand";
 import CaseStudiesBand from "../components/CaseStudiesBand";
 import FaqBand from "../components/FaqBand";
+import GlanceBand from "../components/GlanceBand";
+import ImpactBand from "../components/ImpactBand";
 import OutcomeBand from "../components/OutcomeBand";
 import PackageBand from "../components/PackageBand";
 import ReviewsBand from "../components/ReviewsBand";
@@ -457,6 +459,46 @@ const INDUSTRIES = [
        second copy after the FAQ. A different study keeps the page from naming
        the same client in two places. */
     slab2: { slug: "gosalary", split: "4-1-7" },
+    /* The reference closes every support page with the same two slabs — the
+       at-a-glance card and the impact/sources row — and /support runs the same
+       pair. The questions here are the spec-sheet ones a buyer asks before a
+       rota changes hands, which is a different register from the FAQ above. */
+    glance: {
+      eyebrow: "The short version",
+      title: "What we take on for a SaaS platform",
+      items: [
+        {
+          q: "Who is actually on the pager?",
+          a: <>Three shifts, one queue, <strong>names on the rota</strong>. Whoever picks up your alert has already read that service's runbook and seen the deploy that shipped before it.</>,
+        },
+        {
+          q: "Which layers of the stack are covered?",
+          a: "The cloud accounts, what runs on them — containers, serverless functions, queues, databases — the release pipeline that pushes all of it, and the third-party APIs your product is stitched together from but cannot patch yourself.",
+        },
+        {
+          q: "How is the availability promise written down?",
+          a: <>A first-response clock per severity, a change window you approve in advance, and a monthly report that lists every miss against <strong>the number we quoted</strong>. It goes in the contract, not on a slide.</>,
+        },
+        {
+          q: "What happens when a 2am deploy goes bad?",
+          a: "We roll it back first and read the logs after. Your team wakes up to the diff, the reason it broke and the fix that went in — not a thread of guesses at 40,000 people.",
+        },
+        {
+          q: "What do you need from us before the first night?",
+          a: "Read access to the stack, whoever can approve an emergency rollback at short notice, and the list of vendors whose APIs the product leans on. Everything else we work out in the first fortnight.",
+        },
+      ],
+    },
+    impacts: {
+      q: "What does an hour of downtime do to a subscription product?",
+      a: <>The hour is the smallest part of it. Churn does not arrive as a spike the morning after an outage — it arrives as the customer who found your product unreliable twice and quietly stopped renewing seats. Then it is the release your team held back for a week because nobody trusted the pipeline, and the two engineers who were meant to be building the roadmap and were instead reading last night's logs. <strong>Every one of those is a cost line</strong>, and none of them show up in an uptime report.</>,
+      sourcesHead: "Where those numbers come from",
+      sources: [
+        "Renewal and seat-count data from the platforms we have taken over, before and after the first quarter on the rota",
+        "Release-frequency records from our own handover notes, logged against the incidents that paused a deploy",
+        "Engineering time booked against incident response in the monthly reports we send clients",
+      ],
+    },
     why: {
       title: "How the cover actually holds",
       intro: "Holds against what? A p1 at four in the morning, a canary that never went green, a vendor that changed its API contract without telling anyone, an audit asking for evidence from a quarter you have already forgotten. This is the machinery behind the promise:",
@@ -972,6 +1014,19 @@ export default function SupportDetail() {
           study={(caseStudies || []).find((study) => study.slug === provider.slab2.slug)}
           variant="detail"
           split={provider.slab2.split}
+        />
+      ),
+
+    glance: provider.glance && (
+        <GlanceBand eyebrow={provider.glance.eyebrow} title={provider.glance.title} items={provider.glance.items} />
+      ),
+
+    impacts: provider.impacts && (
+        <ImpactBand
+          question={provider.impacts.q}
+          answer={provider.impacts.a}
+          sourcesHead={provider.impacts.sourcesHead}
+          sources={provider.impacts.sources}
         />
       ),
 

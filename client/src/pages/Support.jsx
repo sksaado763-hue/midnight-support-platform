@@ -7,6 +7,8 @@ import CaseFeature from "../components/CaseFeature";
 import CapabilityBand from "../components/CapabilityBand";
 import CaseStudiesBand from "../components/CaseStudiesBand";
 import FaqBand from "../components/FaqBand";
+import GlanceBand from "../components/GlanceBand";
+import ImpactBand from "../components/ImpactBand";
 import InsightsBand from "../components/InsightsBand";
 import OutcomeBand from "../components/OutcomeBand";
 import ReviewsBand from "../components/ReviewsBand";
@@ -563,39 +565,14 @@ export default function Support() {
         </div>
       </section>
 
-      <section className="glance-band">
-        <div className="container">
-          <div className="glance-card reveal">
-            <p className="glance-eyebrow">The short version</p>
-            <h2>The questions we get asked first</h2>
-            {GLANCE.map((item) => (
-              <div className="glance-item" key={item.q}>
-                <h3>{item.q}</h3>
-                <p>{item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <GlanceBand eyebrow="The short version" title="The questions we get asked first" items={GLANCE} />
 
-      <section className="impact-band">
-        <div className="container">
-          <div className="impact-grid">
-            <div className="impact-card reveal">
-              <h3>{IMPACT.q}</h3>
-              <p>{IMPACT.a}</p>
-            </div>
-            <div className="impact-sources reveal">
-              <h3>{IMPACT.sourcesHead}</h3>
-              <ul>
-                {IMPACT.sources.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ImpactBand
+        question={IMPACT.q}
+        answer={IMPACT.a}
+        sourcesHead={IMPACT.sourcesHead}
+        sources={IMPACT.sources}
+      />
     </>
   );
 }
