@@ -3309,6 +3309,12 @@ section.case-feature--detail { padding: 40px 0; }
   .case-feature--detail .case-feature-headline { font-size: 14px; line-height: 18px; }
   .case-feature--detail .case-feature-text { font-size: 14px; line-height: 18px; margin-bottom: 10px; }
   .case-feature--detail .case-feature-cta { align-self: flex-start; }
+  /* The 4-1-7 split carries three-column and label rules at a higher specificity
+     than the stack above, so it needs its own collapse. Its label drops to a 32px
+     margin — 32 plus the 40px row gap is the 72px the reference measures between
+     the label and the artwork on this instance. */
+  .case-feature--detail.case-feature--split-4-1-7 .case-feature-grid { grid-template-columns: 1fr; }
+  .case-feature--detail.case-feature--split-4-1-7 .case-feature-label { margin-bottom: 32px; }
 }
 
 /* The sub-page icon-card band follows the reference's own grid tiers, measured

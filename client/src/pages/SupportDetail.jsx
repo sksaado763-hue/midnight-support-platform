@@ -453,6 +453,10 @@ const INDUSTRIES = [
       },
     ],
     caseStudy: { slug: "absolute-software", split: "4-1-7", slot: "early" },
+    /* The reference runs the same case-study template twice on this page, the
+       second copy after the FAQ. A different study keeps the page from naming
+       the same client in two places. */
+    slab2: { slug: "gosalary", split: "4-1-7" },
     why: {
       title: "How the cover actually holds",
       intro: "Holds against what? A p1 at four in the morning, a canary that never went green, a vendor that changed its API contract without telling anyone, an audit asking for evidence from a quarter you have already forgotten. This is the machinery behind the promise:",
@@ -961,6 +965,14 @@ export default function SupportDetail() {
 
     slab: provider.caseStudy && provider.caseStudy.slot !== "early" && (
         <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
+      ),
+
+    slab2: provider.slab2 && (
+        <CaseFeature
+          study={(caseStudies || []).find((study) => study.slug === provider.slab2.slug)}
+          variant="detail"
+          split={provider.slab2.split}
+        />
       ),
 
     reviews: provider.reviews && <ReviewsBand />,
