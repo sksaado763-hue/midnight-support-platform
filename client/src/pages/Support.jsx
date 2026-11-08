@@ -7,6 +7,7 @@ import CaseFeature from "../components/CaseFeature";
 import CapabilityBand from "../components/CapabilityBand";
 import CaseStudiesBand from "../components/CaseStudiesBand";
 import FaqBand from "../components/FaqBand";
+import InsightsBand from "../components/InsightsBand";
 import OutcomeBand from "../components/OutcomeBand";
 import WhyBand from "../components/WhyBand";
 
@@ -323,6 +324,7 @@ export default function Support() {
   useTitle("24/7 Support Services | Just After Midnight");
   const { data: packages } = useApi("/api/packages");
   const { data: caseStudies } = useApi("/api/case-studies");
+  const { data: articles } = useApi("/api/articles");
   const featured = (caseStudies || [])[0];
 
   const reviewsRef = useRef(null);
@@ -515,6 +517,24 @@ export default function Support() {
           <p className="pricing-note reveal">All prices ex-GST. Response times are contractual commitments, not best-effort promises — ask us for the SLA document.</p>
         </div>
       </section>
+
+      <section className="price-prose">
+        <div className="container">
+          <h2 className="reveal">What you actually pay for</h2>
+          <div className="price-prose-body reveal">
+            <p>No rate card written for somebody else&rsquo;s client has ever fitted your estate. Send us the stacks, the panels and the traffic you carry, and the quote comes back shaped around that instead.</p>
+            <p>Four tiers cover the ground between an office-hours desk and a rota that never closes. Take one, blend two, or point us at the single awkward corner of the platform that nobody on your side wants to own.</p>
+            <p>Reporting cadence, an engineer watching the 2am deploy, escalation written into the agreement — the shape of the week is yours to choose. Most quotes leave here inside a working day.</p>
+          </div>
+        </div>
+      </section>
+
+      <InsightsBand
+        title="Field notes from the night shift"
+        cta="Read the insights"
+        to="/insights"
+        articles={articles || []}
+      />
 
       <FaqBand
         title="24/7 Support FAQ"

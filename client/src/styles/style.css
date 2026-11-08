@@ -2597,6 +2597,82 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
   .pkg-list li { text-align: left; }
 }
 
+/* Band 11, measured offline against main.css at innerWidth 1889 and true 390.
+   Prose slab: 40/40 padding, 20/28 w700 heading, then a 20px gap before a body
+   column of 16/28 w300 paragraphs 20 apart with the last one flush. Insights
+   slab: same 40/40, but the content container carries 217px of headroom — the
+   reference spends 23.6px on an empty mascot row and 193px of padding on the
+   block below it — and the header row keeps 48px under it. Three cards on a
+   20px gap, each a white box in a 5px white border with 2:1 artwork bleeding to
+   the top corners, the copy panel pulled 20px over it (10px at mobile) and an
+   inset tag panel 4px below the excerpt. */
+.price-prose { padding: 40px 0; }
+.price-prose > .container { width: min(1170px, 100%); max-width: none; padding-inline: 30px; }
+.price-prose h2 { margin: 0 0 44px; font-size: 20px; line-height: 28px; font-weight: 700; }
+.price-prose p { margin: 0 0 20px; font-size: 16px; line-height: 28px; font-weight: 300; }
+.price-prose p:last-child { margin-bottom: 0; }
+
+.insight-band { position: relative; padding: 40px 0; }
+.insight-band-wave {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 15% 5.5%, 25% 8%, 30% 8.5%, 36% 9%, 47% 8.5%, 57% 7%, 87% 2%, 100% 0, 100% 100%, 0 100%);
+}
+.insight-band-flair {
+  position: absolute;
+  top: 50px;
+  right: calc(50% - 585px);
+  width: 221px;
+  height: 200px;
+  transform: translateY(-50%);
+  animation: insightFlair 30s ease-in-out infinite;
+}
+.insight-band:hover .insight-band-flair { animation-play-state: paused; }
+.insight-band > .container { position: relative; padding-top: 217px; }
+.insight-band-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+.insight-band-title { margin: 0; font-size: 34px; line-height: 56px; font-weight: 500; }
+.insight-band-cta--mobile { display: none; }
+.insight-band-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+
+.insight-card--blog { position: relative; z-index: 1; border: 5px solid; border-radius: 12px; }
+.insight-card--blog:hover { box-shadow: none; }
+.insight-card--blog .insight-media { aspect-ratio: 2 / 1; min-height: 0; overflow: hidden; margin-bottom: -20px; border-radius: 12px 12px 0 0; }
+.insight-card--blog .insight-media svg { border-radius: 12px 12px 0 0; transition: transform 0.3s ease; }
+.insight-card--blog:hover .insight-media svg { transform: scale(1.05); }
+.insight-card--blog .insight-body { position: relative; z-index: 2; display: flex; flex-direction: column; padding: 28px 0 0; border-radius: 12px; gap: 0; }
+.insight-card--blog .insight-body h3 { order: 1; margin: 0 20px 8px; font-size: 20px; line-height: 28px; font-weight: 500; }
+.insight-card--blog .insight-body > p:not(.insight-meta) { order: 2; margin: 0 20px 16px; padding: 0; font-size: 16px; line-height: 28px; font-weight: 300; flex: 1; }
+.insight-card--blog .insight-meta { order: 3; margin: 4px 0 0; padding: 17px 21px; border-radius: 12px; gap: 8px; align-items: flex-start; }
+.insight-card--blog .new-badge { top: -5px; left: -5px; width: 75px; height: 44px; padding: 11px 20px; font-size: 16px; line-height: 22px; }
+
+@keyframes insightFlair {
+  0% { transform: translateY(-50%) translate(0, 0) rotate(0deg); }
+  30% { transform: translateY(-50%) translate(-32px, -22px) rotate(-3deg); }
+  60% { transform: translateY(-50%) translate(16px, -36px) rotate(2deg); }
+  85% { transform: translateY(-50%) translate(26px, -12px) rotate(-4deg); }
+  100% { transform: translateY(-50%) translate(0, 0) rotate(0deg); }
+}
+
+@media (max-width: 991.98px) {
+  .price-prose > .container { width: 100%; padding-inline: 24px; }
+  .price-prose h2 { font-size: 16px; line-height: 22px; }
+  .price-prose p { font-size: 14px; line-height: 18px; margin-bottom: 10px; }
+  .insight-band-wave { clip-path: polygon(0 0, 15% 1.5%, 25% 2.7%, 36% 4%, 47% 5%, 57% 5.5%, 70% 5%, 87% 2.7%, 100% 0, 100% 100%, 0 100%); }
+  .insight-band-flair { right: 0; width: auto; height: 140px; max-width: 40%; }
+  .insight-band > .container { padding-top: 136px; padding-inline: 24px; }
+  .insight-band-head { flex-direction: column; justify-content: center; gap: 24px; margin-bottom: 40px; text-align: center; }
+  .insight-band-title { font-size: 24px; line-height: 34px; }
+  .insight-band-cta--desk { display: none; }
+  .insight-band-cta--mobile { display: flex; width: 100%; margin-top: 30px; }
+  .insight-band-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: -24px; padding-inline: 36px; }
+  .insight-band-grid::-webkit-scrollbar { display: none; }
+  .insight-band-grid > * { flex: 0 0 318px; scroll-snap-align: center; }
+  .insight-card--blog .insight-media { margin-bottom: -10px; }
+  .insight-card--blog .insight-body h3 { font-size: 16px; line-height: 22px; }
+  .insight-card--blog .insight-body > p:not(.insight-meta) { font-size: 14px; line-height: 18px; }
+  .insight-card--blog .insight-body > p:not(.insight-meta) p { line-height: 22.4px; }
+}
+
 /* Reference Ford band (seo-text-block on navy): the reference's own 1920×73
    wave paths top and bottom, then a 4 / 1 / 7 split — starfield oval artwork,
    a full-height amber rule, left-aligned white copy and a white CTA. Capture

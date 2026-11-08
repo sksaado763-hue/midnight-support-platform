@@ -46,22 +46,25 @@ export function ArticleArt({ theme }) {
   );
 }
 
-export function InsightCard({ article, withBadge = false }) {
+export function InsightCard({ article, withBadge = false, isNew = false, variant }) {
+  const isBlog = variant === "blog";
   return (
-    <article className="insight-card reveal">
+    <article className={`insight-card reveal${isBlog ? " insight-card--blog" : ""}`}>
       <Link className="insight-card-link" to={`/insights/${article.slug}`}>
         <div className={`insight-media insight-media--${article.theme}`} aria-hidden="true">
-          {withBadge && article.newBadge && <span className="new-badge">New</span>}
+          {withBadge && (isNew || article.newBadge) && <span className="new-badge">New</span>}
           <ArticleArt theme={article.theme} />
         </div>
         <div className="insight-body">
           <p className="insight-meta">
             <span className={`tag ${article.tagClass}`}>{article.tag}</span>
-            <time dateTime={article.date}>{article.dateLabel}</time>
+            {!isBlog && <time dateTime={article.date}>{article.dateLabel}</time>}
           </p>
           <h3>{article.title}</h3>
           <p>{article.excerpt}</p>
-          <span className="text-link">Read more <span aria-hidden="true">➔</span></span>
+          {!isBlog && (
+            <span className="text-link">Read more <span aria-hidden="true">➔</span></span>
+          )}
         </div>
       </Link>
     </article>

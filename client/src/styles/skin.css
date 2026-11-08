@@ -716,6 +716,35 @@ body {
 .pkg-col:hover { background: rgba(162, 204, 228, 0.14); border-color: var(--sky); }
 .pkg-col:hover .pkg-tab { background: var(--sky); border: 1px solid var(--sky); }
 .pkg-cta-hover { background: var(--sky); color: var(--text); }
+
+/* Band 11. Their wave is a flat #f0f0f0 polygon — the same value as our
+   --surface, so the slab needs no new token — but the tag panel inside the card
+   is a lighter #f6f6f6 that sits on white, and nothing in the palette covers
+   it. Their card wears a 5px border in the page white to lift itself off the
+   grey; ours is --bg for the same reason, never --white, which is navy here.
+   Their mascot is a pink-and-yellow bomb; ours is the same two roles plus the
+   sky window. */
+.price-prose,
+.insight-band { background: var(--bg); }
+.price-prose h2,
+.price-prose p { color: var(--text); }
+.insight-band-wave { background: var(--surface); }
+.flair-moon { fill: var(--amber); }
+.flair-hull { fill: var(--pink); }
+.flair-window { fill: var(--sky); }
+.flair-fin { fill: var(--navy-soft); }
+.flair-flame { fill: var(--amber); }
+.insight-band-title { color: var(--text); }
+.insight-card--blog { background: var(--bg); border: 5px solid var(--bg); }
+.insight-card--blog .insight-body { background: var(--bg); }
+.insight-card--blog .insight-body h3,
+.insight-card--blog .insight-body > p:not(.insight-meta) { color: var(--text); }
+.insight-card--blog .insight-meta { background: #f6f6f6; }
+/* Their mobile card is a different element from the desktop one and picks up no
+   border at all, so the artwork runs the full 318px there. */
+@media (max-width: 991.98px) {
+  .insight-card--blog { border: 0; }
+}
 .case-feature { background: var(--navy-deep); color: #ffffff; }
 .case-feature-label { color: var(--amber); }
 .case-feature-headline { color: #c2ccde; }
