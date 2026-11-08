@@ -25,15 +25,6 @@ const PROVIDERS = [
     title: "24/7 support for AWS",
     tagline: "The cluster, the queues, the lambdas and the bill — watched, patched and answered for, every hour of every day.",
     intro: "AWS rewards depth and punishes neglect. Most teams we meet run a competent estate that nobody has time to keep competent: images a year stale, roles wider than they need to be, a dashboard nobody opens. We take the whole thing onto our rota so your engineers stop being the on-call for infrastructure they inherited.",
-    problem: "Your AWS bill grows every quarter while your confidence in it shrinks. Nobody is sure which of the four staging accounts still matters, the nightly batch is one expired certificate away from stopping, and the engineer who designed the VPC left two years ago.",
-    solution: "We run your AWS estate as a named rota with a morning handover: monitoring and alerting we actually answer, patching and upgrades on a schedule you approve, cost reviews that end in actions rather than graphs, and a human on the phone when something fires at three in the morning.",
-    pillarsTitle: "What we watch on AWS",
-    pillars: [
-      { title: "Compute & containers", text: "ECS, EKS, Lambda and the EC2 fleet beneath them: deploys, scaling policies, capacity headroom and the slow leaks that show up as a restart loop." },
-      { title: "Data & storage", text: "RDS, DynamoDB, S3 and ElastiCache: backups that are tested restores, replication lag, versioning and the lifecycle rules quietly costing you money." },
-      { title: "Network & edge", text: "VPC peering, transit gateways, load balancers, CloudFront and certificate expiry — the layer where most overnight calls actually start." },
-      { title: "Identity & spend", text: "IAM drift, unused roles, over-provisioned instances and savings-plan maths, reviewed monthly and written up in plain language." },
-    ],
     capabilities: [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "Patching and runtime upgrades inside your approved window", "Backup verification and restore drills", "Certificate, domain and DNS expiry watch"] },
       { title: "Every month", items: ["Cost review with a written list of actions", "IAM and security-group drift review", "Capacity and scaling-policy check", "A plain-language report your finance team can read"] },
@@ -73,15 +64,6 @@ const PROVIDERS = [
     title: "24/7 support for Azure",
     tagline: "AKS, App Service, Functions and Entra — watched, patched and answered for, every hour of every day.",
     intro: "Azure estates tend to accrete: a subscription per project, an App Service plan per experiment, an Entra tenant nobody wants to own. We take the whole subscription group onto our rota so the estate stays legible and the alerts reach someone awake.",
-    problem: "Half your Azure spend is staging environments nobody remembers creating, and the other half is production running on an App Service plan sized by guesswork. When something breaks at night, the alert goes to a distribution list.",
-    solution: "We run Azure as a named rota with a morning handover: monitoring we answer, patching and version upgrades on an approved schedule, enrolment and licence cleanup, and a cost review that names what should be deleted.",
-    pillarsTitle: "What we watch on Azure",
-    pillars: [
-      { title: "Compute & containers", text: "AKS node pools, App Service plans, Functions and container apps: deploys, scaling rules and the quota limits that bite mid-launch." },
-      { title: "Data & storage", text: "Azure SQL, Cosmos DB, Storage Accounts and Redis: backup policy that survives a restore test, replication and retention rules." },
-      { title: "Network & edge", text: "VNets, private endpoints, Front Door, Application Gateway and certificate expiry — the layer most overnight incidents start in." },
-      { title: "Identity & spend", text: "Entra roles, stale service principals, licence sprawl and reservation maths, reviewed monthly and written up plainly." },
-    ],
     capabilities: [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "Patch and runtime upgrades inside your approved window", "Backup verification and restore drills", "Certificate, domain and DNS expiry watch"] },
       { title: "Every month", items: ["Subscription and cost review with a delete list", "Entra role and service-principal drift review", "Quota and scaling-policy check", "A plain-language report your finance team can read"] },
@@ -121,15 +103,6 @@ const PROVIDERS = [
     title: "24/7 support for GCP",
     tagline: "GKE, Cloud Run, BigQuery and the projects around them — watched, patched and answered for, every hour of every day.",
     intro: "GCP is where data-heavy products live, and where idle projects go to accumulate cost. We take the organisation onto our rota: the clusters, the pipelines, the IAM bindings and the budget alerts that currently nobody owns.",
-    problem: "Your GCP organisation has nineteen projects, three of which are production and none of which share a billing alert. The nightly pipeline into BigQuery fails quietly, and the on-call rota is a group chat.",
-    solution: "We run GCP as a named rota with a morning handover: monitoring we answer, GKE and Cloud Run upgrades on an approved schedule, pipeline failure triage, and a monthly review of projects, identity and spend.",
-    pillarsTitle: "What we watch on GCP",
-    pillars: [
-      { title: "Compute & containers", text: "GKE node pools, Cloud Run services and Cloud Functions: deploys, autoscaling bounds and the quota walls that appear mid-release." },
-      { title: "Data & pipelines", text: "BigQuery, Cloud SQL, Pub/Sub and Dataflow: failed jobs, dead-letter depth, slot capacity and backups that are tested restores." },
-      { title: "Network & edge", text: "VPCs, shared networks, Cloud Load Balancing, Cloud CDN and certificate expiry — where most overnight calls begin." },
-      { title: "Identity & spend", text: "IAM bindings, service-account sprawl, idle projects and committed-use maths, reviewed monthly and written up plainly." },
-    ],
     capabilities: [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "GKE and Cloud Run upgrades inside your approved window", "Backup verification and restore drills", "Pipeline failure triage with a morning note"] },
       { title: "Every month", items: ["Project and billing review with a delete list", "IAM and service-account drift review", "Quota and autoscaling check", "A plain-language report your finance team can read"] },
@@ -315,15 +288,6 @@ const INDUSTRIES = [
         },
       ],
     },
-    problem: "Retainers eat your senior devs. Every client site is a different stack, a different host and a different idea of urgent, and the engineer who built half of them left last spring. Launches slip because the team is rebuilding a client's broken form for the third time.",
-    solution: "We become the agency's support desk: one rota across all client sites, triage graded by the SLA you signed, fixes shipped through your process with your ticket numbers, and a morning handover your account managers can forward verbatim.",
-    pillarsTitle: "What we watch for agencies",
-    pillars: [
-      { title: "Client sites & CMS", text: "WordPress, Sitecore, Kentico, Umbraco and the headless builds in between: plugin and core updates, editorial breakages, form and search regressions." },
-      { title: "Launch cover", text: "Campaign and go-live windows with extra eyes on checkout, forms and page speed, plus a rollback plan written before the traffic arrives." },
-      { title: "Hosting & performance", text: "Shared boxes, managed cloud or static edges: caching, PHP and Node runtimes, database slow queries and the hero image that is four megabytes again." },
-      { title: "SLAs & reporting", text: "Response clocks per retainer, monthly summaries per client, and evidence for the renewal conversation instead of anecdotes." },
-    ],
     capabilities: [
       { title: "Every night", items: ["Uptime and journey monitoring across every retainer site", "Security patching and CMS updates inside each client's window", "Backup verification before anyone sleeps on a change", "A triage queue graded by the SLA you signed, not by who shouts"] },
       { title: "Every month", items: ["Per-client health summary your account managers can forward", "Patch, plugin and runtime update ledger", "Performance and page-speed trend per site", "Retainer load review: which clients cost you hours you never priced"] },
@@ -436,15 +400,6 @@ const INDUSTRIES = [
     tagline: "Uptime, observability and release confidence for products where downtime is a churn conversation.",
     whatTitle: "What SaaS support from us means",
     intro: "A SaaS product never closes. Every minute of downtime is a line in a renewal conversation, and every silent degradation is a support ticket waiting to happen. Most product teams we meet have good tests and no nights: monitoring that emails nobody, dashboards nobody reads at 3am. We take the nights, so your engineers ship features instead of carrying pagers.",
-    problem: "Your error budget burns in incidents nobody notices until customers complain in public. Observability exists but nobody owns it at 3am, deploys stop on Fridays, and the on-call rota is two people deep and one holiday away from collapse.",
-    solution: "We run observability and incident response as a service: alerts that page a named engineer, triage to code level, fixes or rollbacks inside your deploy process, and a morning handover that tells your stand-up what happened and what we changed.",
-    pillarsTitle: "What we watch on SaaS platforms",
-    pillars: [
-      { title: "Availability & journeys", text: "Synthetic and real-user monitoring of signup, checkout and the five journeys your revenue depends on, not just the health endpoint." },
-      { title: "Application health", text: "Error rates, latency percentiles, queue depth, worker lag and the slow memory leak that only shows on day six of an uptime streak." },
-      { title: "Releases & rollbacks", text: "Deploy watches, canary checks, feature-flag hygiene and a rollback path rehearsed before it is needed at 2am." },
-      { title: "Data & integrations", text: "Database health, migration safety, third-party API failures and the webhook backlog that quietly stops syncing." },
-    ],
     capabilities: [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "Triage to code level with a fix or a rollback decision", "Deploy and canary watches through your release window", "Queue, worker and webhook backlog checks"] },
       { title: "Every month", items: ["Error-budget and incident review with your engineers", "Observability audit: alerts that page humans, not mailboxes", "Capacity and scaling-policy review ahead of your growth curve", "A reliability report your customer teams can quote in renewal calls"] },
@@ -486,15 +441,6 @@ const INDUSTRIES = [
     tagline: "Checkout, payments and catalogue uptime for stores where an hour dark is a month of revenue.",
     whatTitle: "What eCommerce support from us means",
     intro: "A store is never 'down for maintenance' — it is down for revenue. Most commerce teams we meet watch the server but not the sale: the payment gateway that fails only on one card type, the promo code that breaks the basket, the checkout that slows every evening at peak. We watch the money path as closely as the machines.",
-    problem: "Peak trading is when things break: flash sales, campaign emails, the big seasonal weekend. The basket throws an error nobody can reproduce, the payment provider changes an API without warning, and the team finds out from customers, not monitoring.",
-    solution: "We cover the whole trading surface: storefront, checkout, payments, integrations and the catalogue feeds behind them, with journey monitoring that buys things at 3am so you do not have to, and incident response graded by revenue at risk.",
-    pillarsTitle: "What we watch on eCommerce",
-    pillars: [
-      { title: "Checkout & payments", text: "End-to-end transaction monitoring, gateway health, refund and webhook flows, and the card-type edge cases that only appear in production." },
-      { title: "Storefront & catalogue", text: "Page speed under campaign load, search and filter regressions, stock and price feed failures, and the plugin that breaks the theme." },
-      { title: "Integrations & fulfilment", text: "ERP, order management, courier and email integrations: queue health, sync failures and the order that never reached the warehouse." },
-      { title: "Peak & campaigns", text: "Launch and sale cover with capacity checks beforehand, extra eyes during, and a written rollback plan for every deploy in the window." },
-    ],
     capabilities: [
       { title: "Every night", items: ["Synthetic purchases through checkout on a published rota", "Payment gateway, webhook and refund flow monitoring", "Platform, plugin and runtime patching inside your trading window", "Backup and restore verification before peak seasons"] },
       { title: "Every month", items: ["Conversion-path performance review with page-speed metrics", "Integration and feed health audit", "Peak-readiness check ahead of every campaign in the calendar", "A trading report your commercial team can read without a translator"] },
@@ -773,31 +719,6 @@ export default function SupportDetail() {
               note={provider.packages.note}
             />
           )}
-
-          <div className="ps-grid">
-            <article className="ps-card ps-card--problem reveal">
-              <h2>Your problem</h2>
-              <p>{provider.problem}</p>
-            </article>
-            <article className="ps-card ps-card--solution reveal">
-              <h2>Our solution</h2>
-              <p>{provider.solution}</p>
-            </article>
-          </div>
-
-          <div className="platform-band">
-            <h2 className="band-title band-title--dark band-title--center reveal">{provider.pillarsTitle}</h2>
-            <span className="band-rule band-rule--center" aria-hidden="true" />
-            <div className="cap-grid">
-              {provider.pillars.map((pillar) => (
-                <article className="cap-card reveal" key={pillar.title}>
-                  <h3>{pillar.title}</h3>
-                  <span className="cap-rule" aria-hidden="true" />
-                  <p>{pillar.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
 
           <div className="feature-section">
             <h2 className="section-title reveal">{provider.trustTitle || `Why teams trust us with ${provider.name}`}</h2>
