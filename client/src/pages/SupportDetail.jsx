@@ -385,6 +385,52 @@ const INDUSTRIES = [
     tagline: "Uptime, observability and release confidence for products where downtime is a churn conversation.",
     whatTitle: "What SaaS support from us means",
     intro: "A SaaS product never closes. Every minute of downtime is a line in a renewal conversation, and every silent degradation is a support ticket waiting to happen. Most product teams we meet have good tests and no nights: monitoring that emails nobody, dashboards nobody reads at 3am. We take the nights, so your engineers ship features instead of carrying pagers.",
+    promise: [
+      {
+        title: "Your SLA becomes something we carry",
+        icon: (
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M24 5l15 6v13c0 9-6.4 15.6-15 19-8.6-3.4-15-10-15-19V11z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+            <path d="M24 15v9l7 4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        ),
+        text: "You publish an availability number and you pay when you miss it. So do we, on the same clock: alerting on a named rota, triage that reaches the code, and a fix or a rollback decision written down before the renewal team notices. Our agreement exists to hold yours up, so 99.99% stops being a number you have to defend.",
+      },
+      {
+        title: "Nothing inside the system stays invisible",
+        icon: (
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="4" stroke="currentColor" strokeWidth="2.2" />
+            <path d="M24 12a12 12 0 0 1 12 12M24 36A12 12 0 0 1 12 24" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            <path d="M24 5a19 19 0 0 1 19 19M24 43A19 19 0 0 1 5 24" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        ),
+        text: "Distributed products are efficient and opaque in the same breath. We work the telemetry you already run — traces, logs, queue depth, worker lag — until the black box has a shape, then tune the alerts so they wake a person instead of a mailbox nobody reads. Visibility first: every incident after that is shorter.",
+      },
+      {
+        title: "Your customers get an answer, not a queue",
+        icon: (
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M9 27v-5a15 15 0 0 1 30 0v5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            <rect x="5" y="25" width="9" height="14" rx="4.5" stroke="currentColor" strokeWidth="2.2" />
+            <rect x="34" y="25" width="9" height="14" rx="4.5" stroke="currentColor" strokeWidth="2.2" />
+            <path d="M20 39h8a7 7 0 0 1-7 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        ),
+        text: "Plenty of product teams hand us the end-user queue along with the infrastructure. A login that fails in one region, an export that quietly truncates, a webhook that stopped firing on a Tuesday: those tickets land on our desk overnight and come back resolved, with the fix written up for your changelog. One rota behind your support address, either side of midnight.",
+      },
+      {
+        title: "Technical debt stops compounding nightly",
+        icon: (
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M6 8v32h36" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            <path d="M12 16l9 8 7-5 12 13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M40 32h-8v-8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        ),
+        text: "Stability work is not only watching. We pull apart the monolith edges that slow every release, move the jobs that block deploys behind flags, and take the waste out of a cloud bill that grew faster than the product. The reliability review is where that list gets written, and where it gets closed. The platform you renew on need not be the one you started with.",
+      },
+    ],
     capabilities: [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "Triage to code level with a fix or a rollback decision", "Deploy and canary watches through your release window", "Queue, worker and webhook backlog checks"] },
       { title: "Every month", items: ["Error-budget and incident review with your engineers", "Observability audit: alerts that page humans, not mailboxes", "Capacity and scaling-policy review ahead of your growth curve", "A reliability report your customer teams can quote in renewal calls"] },
@@ -659,6 +705,8 @@ export default function SupportDetail() {
               </div>
             </div>
           )}
+
+          {provider.promise && <OutcomeBand variant="boxes" cards={provider.promise} />}
 
           {provider.video && (
             <section className="how-it-works">

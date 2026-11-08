@@ -755,6 +755,12 @@ body {
 .pii-icon { color: var(--amber); }
 .pii-card h3 { color: var(--amber); }
 .pii-card p { color: #ffffff; }
+/* The white `.coloured-boxes` row runs its ink at one value: the reference paints
+   head and body the same #12203f it uses for headings, and only the icons are
+   amber. Our navy stands in for theirs. */
+.pii-band--boxes { background: var(--bg); }
+.pii-band--boxes .pii-card h3 { color: var(--navy); }
+.pii-band--boxes .pii-card p { color: var(--navy); }
 .ind-band { background: var(--navy-deep); color: #ffffff; }
 .ind-band-copy > p { color: #c2ccde; }
 .ind-head { color: var(--amber); }

@@ -2919,6 +2919,34 @@ section.case-feature--detail { padding: 40px 0; }
 .pii-band--detail .pii-card p { font-size: 16px; line-height: 28px; font-weight: 300; }
 .pii-band--detail .pii-card p + p { margin-top: 20px; font-weight: 400; }
 
+/* The same grid on a plain white section — the reference's `.coloured-boxes` with
+   no background image and no heading, measured live at innerWidth 1889: 40px of
+   section padding at both ends, then `.column` cards two across. Each column is
+   570 with 10px of its own padding, so the cards are 550 wide and the pair spans
+   1120 — the same ink track the glance and impact rows land on, five pixels wider
+   than our container, which is why it gets the same bleed. The card is 40px of
+   padding on a 10px radius with no border and no fill, so it reads as a text
+   column rather than a plate. The icon is an 80px square, the head sits 20px under
+   it at 20/28 weight 600 with 13px below, and the copy is 16/28 weight 300, all of
+   it centred at this width. Below 768 the reference stacks it left: same 40px card,
+   same 80px icon and 20/28 head, copy down to 14/18. */
+.pii-band--boxes { background: var(--bg); padding: 40px 0; text-align: center; }
+.pii-band--boxes > .container { width: min(1170px, 100%); max-width: none; padding: 0 30px; }
+.pii-band--boxes .pii-grid { grid-template-columns: 1fr 1fr; gap: 20px; margin-inline: -5px; }
+.pii-band--boxes .pii-card { padding: 40px; border-radius: 10px; align-items: stretch; height: auto; align-self: start; }
+.pii-band--boxes .pii-icon { width: 80px; height: 80px; margin-inline: auto; }
+.pii-band--boxes .pii-card h3 { margin: 20px 0 13px; font-size: 20px; line-height: 28px; font-weight: 600; }
+.pii-band--boxes .pii-card p { font-size: 16px; line-height: 28px; font-weight: 300; }
+
+@media (max-width: 767.98px) {
+  .pii-band--boxes { text-align: left; }
+  .pii-band--boxes > .container { padding: 0 24px; }
+  .pii-band--boxes .pii-grid { grid-template-columns: 1fr; margin-inline: 0; }
+  .pii-band--boxes .pii-card { text-align: left; }
+  .pii-band--boxes .pii-icon { margin-inline: 0; }
+  .pii-band--boxes .pii-card p { font-size: 14px; line-height: 18px; }
+}
+
 /* Testimonials band — reference .reviews: a paged two-up slider of bordered white
    cards, no heading, dots under the cards. Every number is the live page's computed
    CSS at 1889. The visible pair is 1120 wide — 5px wider than the 1110 content on each
@@ -4115,6 +4143,7 @@ section.case-feature--detail { padding: 40px 0; }
 }
 .platform-detail .support-faq--detail,
 .platform-detail .cap-band--detail,
+.platform-detail .pii-band--boxes,
 .platform-detail .pkg-band,
 .platform-detail .reviews {
   width: 100vw;
