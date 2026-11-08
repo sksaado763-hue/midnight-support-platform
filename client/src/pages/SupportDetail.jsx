@@ -281,10 +281,6 @@ const INDUSTRIES = [
         },
       ],
     },
-    capabilities: [
-      { title: "Every night", items: ["Uptime and journey monitoring across every retainer site", "Security patching and CMS updates inside each client's window", "Backup verification before anyone sleeps on a change", "A triage queue graded by the SLA you signed, not by who shouts"] },
-      { title: "Every month", items: ["Per-client health summary your account managers can forward", "Patch, plugin and runtime update ledger", "Performance and page-speed trend per site", "Retainer load review: which clients cost you hours you never priced"] },
-    ],
     coverage: {
       title: "The cover that runs on every site you have shipped",
       intro: "One rota across the portfolio, graded by the retainer you signed rather than by who shouts first. This is what actually lands on our desk:",
@@ -373,12 +369,6 @@ const INDUSTRIES = [
         to: "/cloud",
       },
     },
-    fitWith: [
-      "You run ten client sites or a hundred, and the retainers outnumber the builders",
-      "Your SLAs promise response times your current rota cannot keep at 2am",
-      "Clients call developers directly and nobody wants that anymore",
-      "You want a support desk that can answer in your name, in your tone",
-    ],
     faqs: [
       { q: "Can you answer clients in our name?", a: "Yes. We answer under your domain, your ticket templates and your tone of voice — or wear our own name if the retainer is better served that way." },
       { q: "What if a client site is on a stack you have not listed?", a: "We onboard new stacks every quarter. Send us the repo and the hosting panel and we will quote cover for it inside a week." },
@@ -710,37 +700,43 @@ export default function SupportDetail() {
             />
           )}
 
-          <div className="platform-band">
-            <h2 className="band-title band-title--dark band-title--center reveal">What the cover includes</h2>
-            <span className="band-rule band-rule--center" aria-hidden="true" />
-            <div className="cap-grid cap-grid--2">
-              {provider.capabilities.map((cap) => (
-                <article className="cap-card reveal" key={cap.title}>
-                  <h3>{cap.title}</h3>
-                  <span className="cap-rule" aria-hidden="true" />
-                  <ul>
-                    {cap.items.map((item) => <li key={item}>{item}</li>)}
-                  </ul>
-                </article>
-              ))}
+          {provider.capabilities && (
+            <div className="platform-band">
+              <h2 className="band-title band-title--dark band-title--center reveal">What the cover includes</h2>
+              <span className="band-rule band-rule--center" aria-hidden="true" />
+              <div className="cap-grid cap-grid--2">
+                {provider.capabilities.map((cap) => (
+                  <article className="cap-card reveal" key={cap.title}>
+                    <h3>{cap.title}</h3>
+                    <span className="cap-rule" aria-hidden="true" />
+                    <ul>
+                      {cap.items.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  </article>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="platform-band">
-            <h2 className="band-title band-title--dark band-title--center reveal">A good fit if</h2>
-            <span className="band-rule band-rule--center" aria-hidden="true" />
-            <ul className="fit-list reveal">
-              {provider.fitWith.map((item) => <li key={item}>{item}</li>)}
-            </ul>
-          </div>
-
-          <div className="packages-band reveal">
-            <div>
-              <h2>Our service packages</h2>
-              <p>Everything we support is covered by one of three packages — pick the lightest one that genuinely covers you.</p>
+          {provider.fitWith && (
+            <div className="platform-band">
+              <h2 className="band-title band-title--dark band-title--center reveal">A good fit if</h2>
+              <span className="band-rule band-rule--center" aria-hidden="true" />
+              <ul className="fit-list reveal">
+                {provider.fitWith.map((item) => <li key={item}>{item}</li>)}
+              </ul>
             </div>
-            <Link to="/support" className="btn btn-primary">Compare packages <span aria-hidden="true">➔</span></Link>
-          </div>
+          )}
+
+          {!provider.packages && (
+            <div className="packages-band reveal">
+              <div>
+                <h2>Our service packages</h2>
+                <p>Everything we support is covered by one of three packages — pick the lightest one that genuinely covers you.</p>
+              </div>
+              <Link to="/support" className="btn btn-primary">Compare packages <span aria-hidden="true">➔</span></Link>
+            </div>
+          )}
 
           <CaseFeature study={featured} variant="detail" />
 
