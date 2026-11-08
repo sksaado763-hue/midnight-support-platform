@@ -2536,8 +2536,10 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
 .why-band--detail .why-intro .band-title { margin-bottom: 0; font-size: 48px; line-height: 56px; font-weight: 600; }
 .why-band--detail .why-intro p { font-size: 16px; line-height: 28px; font-weight: 300; }
 /* 83px = the reference's 55px row margin plus the 28px empty paragraph it
-   leaves under the intro; 73px is the same pair at its mobile line-height. */
-.why-band--detail .why-grid { gap: 20px; margin-top: 83px; }
+   leaves under the intro; 73px is the same pair at its mobile line-height.
+   The 5px bleed moves our 1110px ink track onto their 1120px one, which is what
+   puts each card at the 360px they measure rather than 356.7px. */
+.why-band--detail .why-grid { gap: 20px; margin-top: 83px; margin-inline: -5px; }
 .why-band--detail .why-card { border-radius: 10px; padding: 32px; }
 .why-band--detail .why-card h3 { margin: 0 0 13px; font-size: 20px; line-height: 28px; font-weight: 500; }
 .why-band--detail .why-card p { font-size: 16px; line-height: 28px; font-weight: 300; }
@@ -3292,7 +3294,7 @@ section.case-feature--detail { padding: 40px 0; }
   .why-band--detail .why-intro .band-title { font-size: 32px; line-height: 39px; }
   .why-band--detail .why-intro p,
   .why-band--detail .why-card p { font-size: 14px; line-height: 18px; }
-  .why-band--detail .why-grid { grid-template-columns: 1fr; margin-top: 73px; }
+  .why-band--detail .why-grid { grid-template-columns: 1fr; margin-top: 73px; margin-inline: 0; }
 }
 
 /* The icon band's mobile tiers, from the same reference section at innerWidth

@@ -434,6 +434,48 @@ const INDUSTRIES = [
       },
     ],
     caseStudy: { slug: "absolute-software", split: "4-1-7", slot: "early" },
+    why: {
+      title: "How the cover actually holds",
+      intro: "Holds against what? A p1 at four in the morning, a canary that never went green, a vendor that changed its API contract without telling anyone, an audit asking for evidence from a quarter you have already forgotten. This is the machinery behind the promise:",
+      cards: [
+        {
+          title: "Someone is awake before your customers are",
+          text: "Alerts land on a rota with names on it, not a mailbox nobody owns. First response is measured in minutes at 03:00 and at 15:00, and whoever picks it up has already read the runbook for that service.",
+        },
+        {
+          title: "Triage reaches the code, not the dashboard",
+          text: "We read repositories for a living. When a latency spike turns out to be a query plan that moved with the last migration, that is the finding in the ticket rather than a screenshot of the graph that went red.",
+        },
+        {
+          title: "Your team stops being the fallback",
+          text: "The people who built the service should be designing the next one. The routine work — the flaky worker, the expiring certificate, the dependency that has to move — gets absorbed by the rota instead of interrupting them.",
+        },
+        {
+          title: "Releases stop being an act of nerve",
+          text: "Every deploy gets a watcher, a canary check and a rollback that has been rehearsed rather than imagined. That is how a product team gets back to shipping on a Tuesday afternoon instead of waiting for a window.",
+        },
+        {
+          title: "Evidence accumulates while you sleep",
+          text: "Patch logs, access reviews, restore tests and incident write-ups, filed against the date they happened. When an audit or an enterprise prospect asks, the answer is a folder instead of a fortnight of archaeology.",
+        },
+        {
+          title: "The end-user queue has an owner overnight",
+          text: "A login that breaks in one region, an export that quietly truncates, a webhook that stopped firing on a Tuesday. Those come to us, get fixed or reproduced with a case number, and land back on your desk explained.",
+        },
+        {
+          title: "Upstream failures get caught first",
+          text: "Payments, identity, email, the analytics script that started blocking your checkout. We watch the dependency graph as closely as the infrastructure, so a vendor outage becomes your incident note rather than your customer's complaint.",
+        },
+        {
+          title: "The bill stops outrunning the product",
+          text: "Telemetry spend, idle capacity and storage nobody deletes get counted monthly, with a named action against each line. Reliability work that ignores the invoice does not survive its second year.",
+        },
+        {
+          title: "Renewal season opens with numbers",
+          text: "Availability against the promise, error budget consumed, response clocks, and what changed since last quarter. Your customer team quotes from the same report we wrote, which is rather the point of having one.",
+        },
+      ],
+    },
     capabilities: [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "Triage to code level with a fix or a rollback decision", "Deploy and canary watches through your release window", "Queue, worker and webhook backlog checks"] },      { title: "Every month", items: ["Error-budget and incident review with your engineers", "Observability audit: alerts that page humans, not mailboxes", "Capacity and scaling-policy review ahead of your growth curve", "A reliability report your customer teams can quote in renewal calls"] },
     ],
