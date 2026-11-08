@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 
-export default function CaseStudiesBand({ title, studies, variant = "wide" }) {
+export default function CaseStudiesBand({ title, studies, variant = "wide", tightHeader }) {
   return (
-    <section className={`support-cases${variant === "detail" ? " support-cases--detail" : ""}`}>
+    <section
+      className={`support-cases${variant === "detail" ? " support-cases--detail" : ""}${
+        tightHeader ? " support-cases--tight" : ""
+      }`}
+    >
       <div className="container">
         <h2 className="section-title reveal">{title}</h2>
         <div className="support-case-grid">

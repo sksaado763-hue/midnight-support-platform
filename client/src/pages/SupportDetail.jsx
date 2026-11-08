@@ -594,6 +594,15 @@ const INDUSTRIES = [
         to: "/cloud",
       },
     },
+    /* The reference's case-study-examples slider, same four cards the agencies
+       page runs through CaseStudiesBand's detail variant. The study this page
+       already opens with its own slab is left out of the grid. This instance has
+       no empty subtitle paragraph in its header row, hence the tighter drop. */
+    cases: {
+      title: "Platforms that got their nights back",
+      slugs: ["the-body-coach-app", "paylocity", "structureflow", "gozem"],
+      tightHeader: true,
+    },
     fitWith: [
       "Downtime and degradation cost you renewals, not just embarrassment",
       "Your on-call rota is thinner than your uptime promise",
@@ -821,6 +830,7 @@ export default function SupportDetail() {
     cases: provider.cases && (
         <CaseStudiesBand
           variant="detail"
+          tightHeader={provider.cases.tightHeader}
           title={provider.cases.title}
           studies={provider.cases.slugs.map((slug) => (caseStudies || []).find((study) => study.slug === slug)).filter(Boolean)}
         />

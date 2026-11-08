@@ -2458,6 +2458,16 @@ section.statement { padding: var(--section-pad) 0 0; }
 .support-cases--detail .support-case-grid .support-case h3 { margin: 12px 0 0; font-size: 17px; line-height: 24px; font-weight: 600; }
 .support-cases--detail .support-case-grid .support-case p { margin: 16px 0 0; font-size: 14px; line-height: 18px; font-weight: 300; }
 
+/* The SaaS page runs the same block with two of its own settings: the header row
+   has no empty subtitle paragraph, so the cards start 56px earlier — 128 from the
+   top of the heading on both the desktop and the phone tier, which is one 72px
+   drop from the bottom of a 56-line and from the bottom of a 34-line alike — and
+   it is `tal` rather than `tac`, so the heading sits left below md. */
+.support-cases--detail.support-cases--tight .support-case-grid { margin-top: 72px; }
+@media (max-width: 767.98px) {
+  .support-cases--detail.support-cases--tight .section-title { text-align: left; }
+}
+
 /* Reference `.icon-grid`: a starfield band with a centred amber title over a
    66%-wide white intro, then a 3-up run of rounded navy cards — amber h4, white
    copy — and a final inverted canary card carrying the packages CTA. Capture
