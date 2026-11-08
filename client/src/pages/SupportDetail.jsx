@@ -500,6 +500,7 @@ const INDUSTRIES = [
     ],
     coverage: {
       title: "The reliability work that happens while you sleep",
+      titleScale: "h2",
       intro: "Alerts that page a named engineer, triage that reaches the code, and a handover your stand-up can read out loud. The routine looks like this:",
       groups: [
         { title: "Availability & journeys", items: ["Synthetic signup and checkout runs", "Real-user speed budgets per release", "Error budgets tracked, not estimated", "A status page that tells the truth"] },
@@ -773,6 +774,7 @@ export default function SupportDetail() {
           intro={provider.coverage.intro}
           groups={provider.coverage.groups}
           closer={provider.coverage.closer}
+          titleScale={provider.coverage.titleScale}
         />
       ),
 

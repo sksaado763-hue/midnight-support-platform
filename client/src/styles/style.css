@@ -2585,10 +2585,15 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
 .cap-band--detail > .hero-stars { opacity: 0.85; }
 .cap-band--detail > .hero-stars svg { width: 100%; height: 100%; }
 .cap-band--detail > .container { position: relative; z-index: 1; width: min(1170px, 100%); max-width: none; padding-inline: 30px; }
-.cap-band--detail .cap-head { text-align: center; }
+.cap-band--detail .cap-head { text-align: center; margin-inline: -5px; }
 .cap-band--detail .cap-head h2 { margin: 0 0 24px; font-size: 48px; line-height: 56px; font-weight: 700; }
 .cap-band--detail .cap-head > p { margin: 0; font-size: 16px; line-height: 28px; font-weight: 300; }
-.cap-band--detail .cap-cols { margin-top: 68px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 20px; }
+/* The reference's SaaS page leaves this block's headline as a plain h2 rather
+   than the h1 the agencies page carries, and opens the section with an empty
+   paragraph: 28px of box plus 20px of margin before the title is reached. */
+.cap-band--detail .cap-head--h2 { padding-top: 48px; }
+.cap-band--detail .cap-head--h2 h2 { font-size: 34px; line-height: 1.15; font-weight: 500; }
+.cap-band--detail .cap-cols { margin-top: 68px; margin-inline: -5px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 20px; }
 .cap-band--detail .cap-col h3 { margin: 0 0 24px; font-size: 17px; line-height: 24px; font-weight: 600; }
 .cap-band--detail .cap-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .cap-band--detail .cap-col li { display: flex; align-items: flex-start; padding-left: 5px; text-align: center; font-size: 16px; line-height: 28px; font-weight: 300; }
@@ -2614,6 +2619,8 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
 @media (max-width: 767.98px) {
   .cap-band--detail { padding: 40px 0 72px; }
   .cap-band--detail > .container { width: 100%; padding-inline: 24px; }
+  .cap-band--detail .cap-head,
+  .cap-band--detail .cap-cols { margin-inline: 0; }
   .cap-band--detail .cap-cols { grid-template-columns: 1fr; }
 }
 

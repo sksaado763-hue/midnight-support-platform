@@ -21,8 +21,9 @@ const CAP_STARS = Array.from({ length: 150 }, (_, i) => {
    discipline list the reference ships at the wide scale on /support ("What the
    support desk actually does") and again at the detail scale on its sub-pages,
    where the same block sits on the starfield and closes with a centred line and
-   a canary button. */
-export default function CapabilityBand({ title, intro, groups, closer, variant = "wide" }) {
+   a canary button. `titleScale` is the heading level the reference's own editor
+   left on that page: an h1 on agencies, a smaller h2 on SaaS. */
+export default function CapabilityBand({ title, intro, groups, closer, variant = "wide", titleScale = "h1" }) {
   if (variant !== "detail") {
     return (
       <section className="cap-band">
@@ -65,7 +66,7 @@ export default function CapabilityBand({ title, intro, groups, closer, variant =
         </svg>
       </div>
       <div className="container">
-        <div className="cap-head reveal">
+        <div className={`cap-head reveal${titleScale === "h2" ? " cap-head--h2" : ""}`}>
           <h2>{title}</h2>
           <p>{intro}</p>
         </div>
