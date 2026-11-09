@@ -2758,6 +2758,39 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
 .insight-card--blog .insight-meta { order: 3; margin: 4px 0 0; padding: 17px 21px; border-radius: 12px; gap: 8px; align-items: flex-start; }
 .insight-card--blog .new-badge { top: -5px; left: -5px; width: 75px; height: 44px; padding: 11px 20px; font-size: 16px; line-height: 22px; }
 
+/* The SaaS page runs the same slab with the cards turned round: a flat grey
+   field with no wave at all, and each article as one navy plate padded 36px
+   46px. The artwork sits inside that padding rather than bleeding into the
+   corners — 8px radius, 24px under it — the title and excerpt are centred, and
+   the tag chips lie straight on the navy instead of in an inset panel. Their
+   header row carries no button here, only the heading. */
+.insight-card--plain { border-radius: 5px; padding: 36px 46px; }
+/* Their artwork panel is a fixed-height strip — 129px on the desktop card,
+   124px on the slider card — not an aspect crop; the two tiers are literally
+   different markup with two authored heights. */
+.insight-card--plain .insight-media { min-height: 0; height: 129px; overflow: hidden; margin: 0 0 24px; border-radius: 8px; }
+.insight-card--plain .insight-media svg { border-radius: 8px; }
+@media (max-width: 991.98px) {
+  .insight-card--plain .insight-media { height: 124px; }
+}
+.insight-card--plain .insight-body { padding: 0; text-align: center; gap: 0; }
+.insight-card--plain .insight-body h3 { order: 1; margin: 0 0 12px; font-size: 20px; line-height: 28px; font-weight: 600; }
+.insight-card--plain .insight-body > p:not(.insight-meta) { order: 2; margin: 0; font-size: 16px; line-height: 25.6px; font-weight: 300; }
+.insight-card--plain .insight-meta { order: 3; justify-content: flex-start; gap: 12px; margin: 8px 0 0; padding: 0; }
+/* Their chips are a taller pill than the site default: 6px of vertical padding
+   around an 18px line, which is the 32px they measure. The row itself stays
+   left-aligned even though the copy above it is centred. */
+.insight-card--plain .tag { padding: 6px 14px; line-height: 18px; border: 1px solid transparent; }
+/* Below their md tier the card drops its centred treatment: copy goes back to
+   the left and every size steps down 0.88 — 20/28 becomes 17.6/24.64, the
+   excerpt 14/22.4, and the chip a 12px/14px line inside the same 28px pill. */
+@media (max-width: 767.98px) {
+  .insight-card--plain .insight-body { text-align: left; }
+  .insight-card--plain .insight-body h3 { font-size: 17.6px; line-height: 24.64px; }
+  .insight-card--plain .insight-body > p:not(.insight-meta) { font-size: 14px; line-height: 22.4px; }
+  .insight-card--plain .tag { font-size: 12px; line-height: 14px; }
+}
+
 @keyframes insightFlair {
   0% { transform: translateY(-50%) translate(0, 0) rotate(0deg); }
   30% { transform: translateY(-50%) translate(-32px, -22px) rotate(-3deg); }
@@ -4225,6 +4258,7 @@ section.case-feature--detail { padding: 40px 0; }
 .platform-detail .cap-band--detail,
 .platform-detail .pii-band--boxes,
 .platform-detail .pkg-band,
+.platform-detail .insight-band,
 .platform-detail .glance-band,
 .platform-detail .impact-band,
 .platform-detail .reviews {

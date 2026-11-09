@@ -48,8 +48,10 @@ export function ArticleArt({ theme }) {
 
 export function InsightCard({ article, withBadge = false, isNew = false, variant }) {
   const isBlog = variant === "blog";
+  const isPlain = variant === "plain";
+  const isBand = isBlog || isPlain;
   return (
-    <article className={`insight-card reveal${isBlog ? " insight-card--blog" : ""}`}>
+    <article className={`insight-card reveal${isBlog ? " insight-card--blog" : ""}${isPlain ? " insight-card--plain" : ""}`}>
       <Link className="insight-card-link" to={`/insights/${article.slug}`}>
         <div className={`insight-media insight-media--${article.theme}`} aria-hidden="true">
           {withBadge && (isNew || article.newBadge) && <span className="new-badge">New</span>}
@@ -58,11 +60,11 @@ export function InsightCard({ article, withBadge = false, isNew = false, variant
         <div className="insight-body">
           <p className="insight-meta">
             <span className={`tag ${article.tagClass}`}>{article.tag}</span>
-            {!isBlog && <time dateTime={article.date}>{article.dateLabel}</time>}
+            {!isBand && <time dateTime={article.date}>{article.dateLabel}</time>}
           </p>
           <h3>{article.title}</h3>
           <p>{article.excerpt}</p>
-          {!isBlog && (
+          {!isBand && (
             <span className="text-link">Read more <span aria-hidden="true">➔</span></span>
           )}
         </div>

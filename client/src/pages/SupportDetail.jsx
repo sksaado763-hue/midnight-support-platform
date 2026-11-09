@@ -8,6 +8,7 @@ import CaseStudiesBand from "../components/CaseStudiesBand";
 import FaqBand from "../components/FaqBand";
 import GlanceBand from "../components/GlanceBand";
 import ImpactBand from "../components/ImpactBand";
+import InsightsBand from "../components/InsightsBand";
 import OutcomeBand from "../components/OutcomeBand";
 import PackageBand from "../components/PackageBand";
 import ReviewsBand from "../components/ReviewsBand";
@@ -384,7 +385,7 @@ const INDUSTRIES = [
     name: "SaaS Platforms",
     scene: "net",
     bands: ["intro", "promise", "slabEarly", "why", "coverage", "packages",
-      "cases", "faq", "slab2", "glance", "impacts"],
+      "cases", "faq", "slab2", "insights", "glance", "impacts"],
     title: "24/7 support for SaaS platforms",
     tagline: "Uptime, observability and release confidence for products where downtime is a churn conversation.",
     gap: {
@@ -459,6 +460,10 @@ const INDUSTRIES = [
        second copy after the FAQ. A different study keeps the page from naming
        the same client in two places. */
     slab2: { slug: "gosalary", split: "4-1-7" },
+    /* The reference slips its reading list between the second slab and the
+       at-a-glance card. The cards themselves come from the same article feed
+       /support runs, so this page only supplies the framing. */
+    insights: { title: "Field notes for a platform that cannot go quiet", variant: "plain" },
     /* The reference closes every support page with the same two slabs — the
        at-a-glance card and the impact/sources row — and /support runs the same
        pair. The questions here are the spec-sheet ones a buyer asks before a
@@ -809,6 +814,7 @@ export default function SupportDetail() {
   };
   useTitle(provider ? `${provider.title} | Just After Midnight` : "24/7 Support | Just After Midnight");
   const { data: caseStudies } = useApi(provider?.caseStudy || provider?.cases ? "/api/case-studies" : null);
+  const { data: articles } = useApi(provider?.insights ? "/api/articles" : null);
   const featured = provider?.caseStudy ? (caseStudies || []).find((study) => study.slug === provider.caseStudy.slug) : null;
 
   if (!provider) return <NotFound />;
@@ -1014,6 +1020,16 @@ export default function SupportDetail() {
           study={(caseStudies || []).find((study) => study.slug === provider.slab2.slug)}
           variant="detail"
           split={provider.slab2.split}
+        />
+      ),
+
+    insights: provider.insights && (
+        <InsightsBand
+          title={provider.insights.title}
+          cta={provider.insights.cta}
+          to={provider.insights.to}
+          articles={articles || []}
+          variant={provider.insights.variant}
         />
       ),
 

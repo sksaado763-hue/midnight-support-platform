@@ -743,6 +743,15 @@ body {
 .insight-card--blog .insight-body h3,
 .insight-card--blog .insight-body > p:not(.insight-meta) { color: var(--text); }
 .insight-card--blog .insight-meta { background: #f6f6f6; }
+/* The SaaS instance inverts the card: their plate is #23304d on the #f0f0f0
+   field, which is our navy on --surface, and the white copy roles need no new
+   token either. The chips keep the shared --surface-2, already their #e9e9e9. */
+.insight-band--plain { background: var(--surface); }
+.insight-card--plain { background: var(--navy); border: 0; }
+.insight-card--plain:hover { box-shadow: none; }
+.insight-card--plain .insight-body h3,
+.insight-card--plain .insight-body > p:not(.insight-meta) { color: #ffffff; }
+.insight-card--plain .tag { background: var(--surface-2); color: #23304d; }
 /* Their mobile card is a different element from the desktop one and picks up no
    border at all, so the artwork runs the full 318px there. */
 @media (max-width: 991.98px) {

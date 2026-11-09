@@ -8,13 +8,14 @@ import { InsightCard } from "./Cards";
    are white boxes wearing a 5px white border, artwork bleeding into the top
    corners and the copy panel pulled 20px up over it, and the tag row sits in an
    inset grey panel at the foot of the card. */
-export default function InsightsBand({ title, cta, to, articles = [] }) {
+export default function InsightsBand({ title, cta, to, articles = [], variant = "blog" }) {
+  const plain = variant === "plain";
   const byDate = [...articles].sort((a, b) => (a.date < b.date ? 1 : -1));
   const recent = new Set(byDate.slice(0, 2).map((article) => article.slug));
 
   return (
-    <section className="insight-band">
-      <div className="insight-band-wave" aria-hidden="true" />
+    <section className={`insight-band${plain ? " insight-band--plain" : ""}`}>
+      {!plain && <div className="insight-band-wave" aria-hidden="true" />}
       <svg className="insight-band-flair" viewBox="0 0 221 200" aria-hidden="true">
         <path
           className="flair-moon"
@@ -35,9 +36,11 @@ export default function InsightsBand({ title, cta, to, articles = [] }) {
       <div className="container">
         <div className="insight-band-head reveal">
           <h2 className="insight-band-title">{title}</h2>
-          <Link className="btn btn-navy insight-band-cta insight-band-cta--desk" to={to}>
-            {cta}
-          </Link>
+          {cta && (
+            <Link className="btn btn-navy insight-band-cta insight-band-cta--desk" to={to}>
+              {cta}
+            </Link>
+          )}
         </div>
 
         <div className="insight-band-grid">
@@ -45,16 +48,18 @@ export default function InsightsBand({ title, cta, to, articles = [] }) {
             <InsightCard
               key={article.slug}
               article={article}
-              variant="blog"
-              withBadge
+              variant={variant}
+              withBadge={!plain}
               isNew={recent.has(article.slug)}
             />
           ))}
         </div>
 
-        <Link className="btn btn-navy insight-band-cta insight-band-cta--mobile" to={to}>
-          {cta}
-        </Link>
+        {cta && (
+          <Link className="btn btn-navy insight-band-cta insight-band-cta--mobile" to={to}>
+            {cta}
+          </Link>
+        )}
       </div>
     </section>
   );
