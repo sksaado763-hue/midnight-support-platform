@@ -4188,6 +4188,40 @@ section.case-feature--detail { padding: 40px 0; }
   .seo-intro-points--marked li { font-size: 14px; line-height: 18px; }
 }
 
+/* The eCommerce intro splits a second time: a full-width head of prose, then
+   two free columns of h4-and-paragraph blocks around the same hairline —
+   50% / 8.333% / 41.667% of their track, every block 10px inside its column
+   edge, so this variant pads its columns instead of bleeding. Their row-gap is
+   20px at both tiers, and the rule sits 10px inside the separator column so it
+   measures half of what is left. Below md the columns stack, the first one
+   carries their extra 32px, and the rule stays in flow at zero height instead
+   of being removed — that collapsed item is what makes their 72px seam. */
+.seo-intro--columns .seo-intro-title { font-weight: 500; }
+.seo-intro--columns .seo-intro-head { padding-inline: 10px; margin-bottom: 20px; }
+.seo-intro--columns .seo-intro-head p { font-size: 16px; line-height: 28px; font-weight: 300; margin-bottom: 20px; }
+.seo-intro--columns .seo-intro-head p:last-child { margin-bottom: 0; }
+.seo-intro-columns { display: grid; grid-template-columns: 570fr 95fr 475fr; }
+.seo-intro-columns .seo-intro-rule { margin-inline: 10px; width: calc(50% - 10px); }
+.seo-intro-col { padding-inline: 10px; }
+.seo-intro-col h4 { font-size: 17px; line-height: 24px; font-weight: 600; margin-bottom: 24px; }
+.seo-intro-col p { font-size: 16px; line-height: 28px; font-weight: 300; margin-bottom: 20px; }
+.seo-intro-col > :last-child { margin-bottom: 0; }
+.seo-intro-col ul { padding-left: 20px; list-style: disc; }
+.seo-intro-col li { padding-left: 5px; margin-bottom: 12px; font-size: 16px; line-height: 28px; font-weight: 300; }
+@media (max-width: 767.98px) {
+  /* Their mobile row is full-bleed and the columns carry the 24px inset; ours
+     already takes 30px from .container, so the columns pad nothing here. */
+  .seo-intro--columns .seo-intro-head, .seo-intro-col { padding-inline: 0; }
+  .seo-intro--columns .seo-intro-title { font-size: 24px; line-height: 27.6px; }
+  .seo-intro--columns .seo-intro-head p { font-size: 14px; line-height: 18px; margin-bottom: 10px; }
+  .seo-intro-columns { grid-template-columns: minmax(0, 1fr); row-gap: 20px; }
+  .seo-intro-columns .seo-intro-col:first-child { margin-bottom: 32px; }
+  .seo-intro-col h4 { font-size: 14px; line-height: 18px; }
+  .seo-intro-col p, .seo-intro-col li { font-size: 14px; line-height: 18px; }
+  .seo-intro-col p { margin-bottom: 10px; }
+  .seo-intro-columns .seo-intro-rule { display: block; margin-inline: 0; width: 50%; }
+}
+
 @media (max-width: 991.98px) {
   .seo-intro-body { max-width: none; }
   .seo-intro-body p, .seo-intro-points { margin-bottom: 10px; }

@@ -716,6 +716,28 @@ const INDUSTRIES = [
     tagline: "Checkout, payments and catalogue uptime for stores where an hour dark is a month of revenue.",
     whatTitle: "What eCommerce support from us means",
     intro: "A store is never 'down for maintenance' — it is down for revenue. Most commerce teams we meet watch the server but not the sale: the payment gateway that fails only on one card type, the promo code that breaks the basket, the checkout that slows every evening at peak. We watch the money path as closely as the machines.",
+    gap: {
+      title: "What we do",
+      head: [
+        "Think of us as the night shift your store never had to hire.",
+        "From headless storefronts to checkout APIs that change weekly, modern commerce teams need a partner who can keep pace. That is us: we keep the platform healthy, the stack patched and the architecture honest so your team can ship instead of firefight.",
+        "Full-stack cover, cloud design or a rebuild that cannot pause trading — we have done all three at peak.",
+      ],
+      columns: {
+        left: [
+          { h: "Supporting your solution", p: "Behind every store that survives a sale weekend is a support team that never blinked. We bring the engineers, the tooling and a follow-the-sun rota so your digital estate stays steady around the clock." },
+          { p: "Here is how we keep you trading:" },
+          { h: "We cover the whole money path", p: "Storefront, headless CMS, checkout APIs, the POS layer, the integrations between them. Your team sets the SLA; everything under it is ours." },
+          { h: "We fit the stack you already run", p: "Containers, composable storefronts, APIs at every seam — whatever shape your platform is in today, we slot in beside it rather than replacing it." },
+        ],
+        right: [
+          { h: "We stop outages before they land", p: "Mission Control, our internal support platform, gives one view over:" },
+          { items: ["Infrastructure health", "Revenue-critical metrics", "Service and container telemetry", "Endpoint behaviour", "Upstream patch feeds", "Vendor integrations"] },
+          { p: "Where most teams find out from a customer, we find out from a graph." },
+          { h: "We measure ourselves in revenue kept", p: "Uptime percentages are table stakes. Our reports count the baskets that completed, the gateways that answered and the peaks that passed without a war room." },
+        ],
+      },
+    },
     capabilities: [
       { title: "Every night", items: ["Synthetic purchases through checkout on a published rota", "Payment gateway, webhook and refund flow monitoring", "Platform, plugin and runtime patching inside your trading window", "Backup and restore verification before peak seasons"] },
       { title: "Every month", items: ["Conversion-path performance review with page-speed metrics", "Integration and feed health audit", "Peak-readiness check ahead of every campaign in the calendar", "A trading report your commercial team can read without a translator"] },
@@ -829,7 +851,35 @@ export default function SupportDetail() {
      already measured against. */
   const BANDS = {
     intro: provider.gap ? (
-        provider.gap.split ? (
+        provider.gap.columns ? (
+          <div className="seo-intro seo-intro--columns">
+            <div className="seo-intro-head reveal">
+              <h2 className="seo-intro-title">{provider.gap.title}</h2>
+              {provider.gap.head.map((para) => <p key={para}>{para}</p>)}
+            </div>
+            <div className="seo-intro-columns">
+              <div className="seo-intro-col reveal">
+                {provider.gap.columns.left.map((block) => (
+                  <Fragment key={block.h || block.items?.[0]}>
+                    {block.h && <h4>{block.h}</h4>}
+                    {block.p && <p>{block.p}</p>}
+                    {block.items && <ul>{block.items.map((item) => <li key={item}>{item}</li>)}</ul>}
+                  </Fragment>
+                ))}
+              </div>
+              <span className="seo-intro-rule" aria-hidden="true" />
+              <div className="seo-intro-col reveal">
+                {provider.gap.columns.right.map((block) => (
+                  <Fragment key={block.h || block.items?.[0]}>
+                    {block.h && <h4>{block.h}</h4>}
+                    {block.p && <p>{block.p}</p>}
+                    {block.items && <ul>{block.items.map((item) => <li key={item}>{item}</li>)}</ul>}
+                  </Fragment>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : provider.gap.split ? (
           <div className="seo-intro seo-intro--split">
             <h2 className="seo-intro-title reveal">{provider.gap.title}</h2>
             <div className="seo-intro-split">
