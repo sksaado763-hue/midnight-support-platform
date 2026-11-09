@@ -373,7 +373,128 @@ const INDUSTRIES = [
         to: "/cloud",
       },
     },
+    agencyServices: {
+      title: "We provide outsourced hosting and support to digital agencies just like yours",
+      intro: "With .NET developers and certified cloud engineers ready at the drop of a hat, we're always on so you can switch off.",
+      cards: [
+        {
+          title: "Website support for agencies",
+          text: "We support major mission-critical client websites 24/7, full-stack or out-of-hours. We monitor and triage according to an industry-leading SLA.",
+        },
+        {
+          title: "CMS support for agencies, from WordPress to AEM",
+          text: "We support websites and major applications built on a variety of platforms. From HIPAA compliance on Sitecore to composability challenges on AEM, we've got you covered.",
+        },
+        {
+          title: "Cloud-native leadership and infrastructure support",
+          text: "We support all major public cloud providers. We also design, build and migrate cloud-native solutions in line with client goals.",
+        },
+        {
+          title: "White label support for agencies",
+          text: "Our job is to act as a seamless extension of your team. If that means being so seamless we're invisible, that's up to you.",
+        },
+        {
+          title: "Fully outsourced client support and end-user requests",
+          text: "Depending on the situation, we can handle end-user requests and jump on tickets directly with your customers.",
+        },
+      ],
+    },
+    agencyCapabilities: {
+      title: "Don't you wish you had a team that could handle it all?",
+      intro: "We've got you covered – here's what we can do for you:",
+      closer: "It's simple – you tell us your requirements and we plug in wherever you need us.",
+      groups: [
+        {
+          title: "Incident and response management",
+          items: ["Incident management (IM)", "Root cause analysis (RCA)", "Incident response management", "Incident triage", "Security incident response", "Application rollbacks"],
+        },
+        {
+          title: "Service continuity and recovery",
+          items: ["Restarting services", "Backup and restore procedures", "Manual scaling of resources", "IP whitelisting", "Access management", "Password resets"],
+        },
+        {
+          title: "Access and security management",
+          items: ["User account provisioning", "User removal", "Access control", "Service validation and testing", "Knowledge base management", "Post-incident review (PIR)"],
+        },
+        {
+          title: "Quality and process improvement",
+          items: ["Vendor liaison/3rd-party escalation", "System health checks", "Monitoring, alerts and telemetry", "Performance monitoring", "Network diagnostics and flow analysis", "End-to-end latency analysis"],
+        },
+        {
+          title: "Observability and performance",
+          items: ["Capacity monitoring and forecasting", "SLA management", "Change management", "Patch management", "Downtime reporting", "Ticket management"],
+        },
+        {
+          title: "Service management and operations",
+          items: ["Outage communication", "Configuration management", "Service request management", "Escalation management"],
+        },
+      ],
+    },
+    partnerProgramme: {
+      title: "What is the JAM Partner Programme?",
+      intro: "The JAM Partner Programme is a place for the likes of Grey, Ogilvy (and yourselves) to get discounts, new business and exclusive event invites.",
+      sub: "Depending on how many projects you share with us, you'll be awarded a Crescent Moon, Half Moon or Full Moon Membership.",
+      cta: "There's no fee to join. No pressure. Just fill in this form and join the club!",
+      benefitsTitle: "What are the benefits?",
+      benefits: [
+        "Receive discounts on our 24/7 support services (up to 15%)",
+        "Receive referrals for new business from major brands in your niche",
+        "Receive sales support, including friendly faces in live pitches",
+        "Get invites to exclusive events including our Summer Party",
+        "Enhance visibility through branding and collaborative activities",
+      ],
+      link: { text: "Find out more about our Partner Programme", to: "/contact" },
+    },
     reviews: true,
+    insights: {
+      title: "Latest Insights from JAM",
+      to: "/insights",
+      variant: "plain",
+    },
+    glance: {
+      eyebrow: "At a glance",
+      title: "Just After Midnight's support offering",
+      items: [
+        {
+          q: "What technologies do you support?",
+          a: <>We support cloud platforms (<strong>AWS, Azure, GCP, Alibaba Cloud</strong>), CMS and DXP platforms (<strong>Sitecore, Kentico, Umbraco, AEM, Optimizely, WordPress, Drupal, Magento</strong>), custom-built applications, edge/CDN networks, and third-party integrations including APIs.</>,
+        },
+        {
+          q: "What support windows are available?",
+          a: <><strong>24/7/365</strong> support, out-of-hours support and overnight support, weekends-only support, or a custom schedule built around your needs.</>,
+        },
+        {
+          q: "What functions does your support team cover?",
+          a: "Our support covers monitoring and alerting, incident management and triage, root cause analysis (RCA), SRE and DevOps support, observability, security incident response, backup and recovery, change and patch management, and third-party vendor escalation.",
+        },
+        {
+          q: "What industries do you support?",
+          a: "We work with businesses and organisations in SaaS, eCommerce, healthtech, legaltech, fintech, government, manufacturing, logistics, and digital agencies – and many more.",
+        },
+        {
+          q: "What security accreditations do you hold?",
+          a: <>We are <strong>ISO 27001</strong> certified, <strong>Cyber Essentials Plus</strong> verified, and <strong>PCI DSS</strong> compliant.</>,
+        },
+      ],
+    },
+    impacts: {
+      q: "What are the impacts of incidents on teams and revenue?",
+      a: "According to industry sources, downtime costs businesses between $540,000 (Splunk, The Hidden Costs of Downtime) and $2 million (New Relic, Observability Forecast 2025) per hour for many high-impact outages. Incidents also consume significant engineering capacity: the median engineering team spends 30% of its time addressing disruptions (New Relic, Observability Forecast 2024).",
+      sourcesHead: "Sources",
+      sources: [
+        "Splunk, The Hidden Costs of Downtime (2000 Global Executives surveyed)",
+        "New Relic, Observability Forecast 2025 (1,700 global technology professionals surveyed)",
+        "New Relic Observability Forecast 2024 (1,700 global technology professionals surveyed)",
+      ],
+    },
+    bands: [
+      "intro", "video", "why", "cases", "covers",
+      "agencyServices", "agencyCapabilities",
+      "faq", "coverage", "packages",
+      "slab", "partnerBand",
+      "reviews", "faqSection",
+      "insights", "glance", "impacts", "others",
+    ],
     faqs: [
       { q: "Can you answer clients in our name?", a: "Yes. We answer under your domain, your ticket templates and your tone of voice — or wear our own name if the retainer is better served that way." },
       { q: "What if a client site is on a stack you have not listed?", a: "We onboard new stacks every quarter. Send us the repo and the hosting panel and we will quote cover for it inside a week." },
@@ -1587,6 +1708,83 @@ export default function SupportDetail() {
       ),
 
     reviews: provider.reviews && <ReviewsBand />,
+
+    agencyServices: provider.agencyServices && (
+      <section className="ag-services-section">
+        <div className="container">
+          <div className="ag-services-head reveal">
+            <h2>{provider.agencyServices.title}</h2>
+            <p>{provider.agencyServices.intro}</p>
+          </div>
+          <div className="ag-services-grid">
+            {provider.agencyServices.cards.map((card) => (
+              <article className="ag-service-card reveal" key={card.title}>
+                <div className="ag-service-icon-wrap">
+                  <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" width="32" height="32">
+                    <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="2" />
+                    <path d="M16 24l5 5 11-10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ),
+
+    agencyCapabilities: provider.agencyCapabilities && (
+      <section className="ag-cap-section">
+        <div className="container">
+          <div className="ag-cap-head reveal">
+            <h2>{provider.agencyCapabilities.title}</h2>
+            <p>{provider.agencyCapabilities.intro}</p>
+          </div>
+          <div className="ag-cap-grid">
+            {provider.agencyCapabilities.groups.map((group) => (
+              <div className="ag-cap-group reveal" key={group.title}>
+                <h4>{group.title}</h4>
+                <ul>
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          {provider.agencyCapabilities.closer && (
+            <p className="ag-cap-closer reveal">{provider.agencyCapabilities.closer}</p>
+          )}
+        </div>
+      </section>
+    ),
+
+    partnerBand: provider.partnerProgramme && (
+      <section className="ag-partner-section">
+        <div className="container">
+          <div className="ag-partner-grid">
+            <div className="ag-partner-copy reveal">
+              <h2>{provider.partnerProgramme.title}</h2>
+              <p>{provider.partnerProgramme.intro}</p>
+              <p>{provider.partnerProgramme.sub}</p>
+              <p><strong>{provider.partnerProgramme.cta}</strong></p>
+              <Link to={provider.partnerProgramme.link.to} className="btn btn-primary">
+                {provider.partnerProgramme.link.text} <span aria-hidden="true">➔</span>
+              </Link>
+            </div>
+            <div className="ag-partner-benefits reveal">
+              <h3>{provider.partnerProgramme.benefitsTitle}</h3>
+              <ul>
+                {provider.partnerProgramme.benefits.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    ),
 
     faqSection: provider.faqs && (<div className="faq-section">
         <h2 className="section-title reveal">FAQ</h2>
