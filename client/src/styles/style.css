@@ -4965,91 +4965,179 @@ section.case-feature--detail { padding: 40px 0; }
 
 /* Consultation Block */
 .ecom-consult-section {
-  padding: 80px 0;
+  padding: 84px 0 100px;
   background: #ffffff;
 }
 .ecom-consult-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 52px;
+  gap: 64px;
   align-items: start;
 }
 .ecom-consult-copy h2 {
   font-family: Montserrat, sans-serif;
-  font-size: clamp(24px, 2.5vw, 34px);
+  font-size: 38px;
   line-height: 1.15;
-  font-weight: 500;
-  color: #111a2b;
-  margin: 0 0 10px;
+  font-weight: 600;
+  color: #12203f;
+  margin: 0 0 24px;
+  letter-spacing: -0.4px;
 }
 .ecom-consult-copy h4 {
   font-family: Montserrat, sans-serif;
-  font-size: 17px;
-  line-height: 24px;
-  font-weight: 600;
-  color: #111a2b;
-  margin: 0 0 16px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+  color: #12203f;
+  margin: 0 0 22px;
 }
 .ecom-consult-copy p {
   font-family: Ubuntu, sans-serif;
-  font-size: 16px;
-  line-height: 28px;
+  font-size: 15px;
+  line-height: 24px;
   font-weight: 300;
-  color: #111a2b;
-  margin: 0 0 16px;
+  color: #334155;
+  margin: 0 0 18px;
 }
 .ecom-consult-copy ul {
-  padding-left: 22px;
+  padding-left: 20px;
   list-style: disc;
   margin: 0 0 20px;
 }
 .ecom-consult-copy li {
   font-family: Ubuntu, sans-serif;
-  font-size: 16px;
-  line-height: 28px;
+  font-size: 15px;
+  line-height: 24px;
   font-weight: 300;
-  color: #111a2b;
-  margin-bottom: 8px;
+  color: #334155;
+  margin-bottom: 12px;
 }
+
+/* HubSpot-style consultation form */
 .ecom-consult-form-wrap {
-  background: #111a2b;
-  border-radius: 12px;
-  padding: 36px 32px;
-  color: #ffffff;
-  box-shadow: 0 18px 44px rgba(17, 26, 43, 0.15);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
-.ecom-consult-form-wrap label {
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 500;
+.ecom-hs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.ecom-hs-row {
+  display: flex;
+  width: 100%;
+}
+.ecom-hs-row--2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.ecom-hs-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.ecom-hs-field label {
+  font-family: Ubuntu, sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #24334a;
   margin-bottom: 6px;
   display: block;
 }
-.ecom-consult-form-wrap .req {
-  color: #fabd14;
+.hs-req {
+  color: #dc2626;
+  margin-left: 1px;
+  font-weight: 400;
 }
-.ecom-consult-form-wrap input,
-.ecom-consult-form-wrap textarea {
+.ecom-hs-field input,
+.ecom-hs-field textarea,
+.ecom-hs-field select {
   width: 100%;
-  background: #18253e;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 6px;
+  background-color: #f5f8fa;
+  border: 1px solid #cbd6e2;
+  border-radius: 3px;
   padding: 10px 14px;
-  color: #ffffff;
   font-family: Ubuntu, sans-serif;
   font-size: 14px;
+  color: #33475b;
+  line-height: 20px;
   box-sizing: border-box;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
-.ecom-consult-form-wrap input:focus,
-.ecom-consult-form-wrap textarea:focus {
+.ecom-hs-field input:focus,
+.ecom-hs-field textarea:focus,
+.ecom-hs-field select:focus {
+  background-color: #ffffff;
   border-color: #fabd14;
   outline: none;
-  box-shadow: 0 0 0 2px rgba(250, 189, 20, 0.25);
+  box-shadow: 0 0 0 1px #fabd14;
 }
-.ecom-form-submit {
+.ecom-hs-field textarea {
+  resize: vertical;
+  min-height: 94px;
+  line-height: 20px;
+}
+.ecom-hs-select-wrap {
+  position: relative;
   width: 100%;
-  margin-top: 14px;
-  padding: 14px;
+}
+.ecom-hs-select-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 36px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%237c98b6' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+.ecom-hs-select-wrap select:has(option[value=""]:checked) {
+  color: #7c98b6;
+}
+.ecom-hs-select-wrap select option {
+  color: #33475b;
+}
+.ecom-hs-notice {
+  font-family: Ubuntu, sans-serif;
+  font-size: 13.5px;
+  line-height: 20px;
+  font-weight: 300;
+  color: #475569;
+  margin: 4px 0 0;
+}
+.ecom-hs-privacy {
+  font-family: Ubuntu, sans-serif;
+  font-size: 13.5px;
+  line-height: 20px;
+  font-weight: 300;
+  color: #475569;
+  margin: 4px 0 2px;
+}
+.ecom-hs-privacy-link {
+  color: #e11d48;
+  text-decoration: underline;
+  font-weight: 400;
+  transition: opacity 0.2s ease;
+}
+.ecom-hs-privacy-link:hover {
+  opacity: 0.85;
+}
+.ecom-hs-submit {
+  align-self: flex-start;
+  min-width: 140px;
+  padding: 12px 32px;
+  border-radius: 4px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  margin-top: 4px;
 }
 
 /* Why Choose Us (eCommerce) */
@@ -5113,5 +5201,5 @@ section.case-feature--detail { padding: 40px 0; }
 @media (max-width: 620px) {
   .ecom-services-grid { grid-template-columns: 1fr; }
   .ecom-why-grid { grid-template-columns: 1fr; }
-  .ecom-consult-form-wrap { padding: 24px 18px; }
+  .ecom-hs-row--2col { grid-template-columns: 1fr; }
 }

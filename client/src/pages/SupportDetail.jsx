@@ -942,32 +942,59 @@ const NET_NODES = [
 ];
 
 function EcomConsultationForm() {
-  const [values, setValues] = useState({ name: "", email: "", phone: "", company: "", stack: "", message: "" });
+  const [values, setValues] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    source: "",
+    help: "",
+    timezone: "",
+  });
   const [status, setStatus] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
-  const update = (f) => (e) => setValues((v) => ({ ...v, [f]: e.target.value }));
+  const update = (field) => (e) =>
+    setValues((prev) => ({ ...prev, [field]: e.target.value }));
 
   async function submit(e) {
     e.preventDefault();
-    if (!values.name || !values.email) {
-      setStatus({ ok: false, text: "Name and email are required." });
+    if (
+      !values.firstName.trim() ||
+      !values.lastName.trim() ||
+      !values.email.trim() ||
+      !values.phone.trim() ||
+      !values.timezone
+    ) {
+      setStatus({ ok: false, text: "Please complete all required fields." });
       return;
     }
     setSubmitting(true);
     setStatus(null);
     try {
       const { ok, body } = await postJson("/api/contact", {
-        name: values.name.trim(),
+        name: `${values.firstName.trim()} ${values.lastName.trim()}`,
         email: values.email.trim(),
         phone: values.phone.trim(),
-        company: values.company.trim(),
+        source: values.source || "Not specified",
+        timezone: values.timezone,
         topic: "15-minute consultation",
-        message: `Platform / Stack: ${values.stack || "Not specified"}\n\n${values.message || "eCommerce consultation request"}`,
+        message: `How can we help:\n${values.help.trim() || "eCommerce consultation request"}\n\nTimezone: ${values.timezone}\nSource: ${values.source || "Not specified"}`,
       });
       if (ok && body?.ok) {
-        setStatus({ ok: true, text: "Thanks — we'll be in touch to schedule your consultation." });
-        setValues({ name: "", email: "", phone: "", company: "", stack: "", message: "" });
+        setStatus({
+          ok: true,
+          text: "Thank you! We've received your details and will be in touch shortly to book your 15-minute consultation.",
+        });
+        setValues({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          source: "",
+          help: "",
+          timezone: "",
+        });
       } else {
         setStatus({ ok: false, text: body?.error || "Something went wrong. Please try again." });
       }
@@ -979,40 +1006,147 @@ function EcomConsultationForm() {
   }
 
   return (
-    <form className="ecom-form" onSubmit={submit} noValidate>
-      <div className="form-row form-row--split">
-        <div className="form-row">
-          <label htmlFor="ec-name">Your name<span className="req" aria-hidden="true"> *</span></label>
-          <input type="text" id="ec-name" required value={values.name} onChange={update("name")} placeholder="Jane Doe" />
+    <form className="ecom-hs-form" onSubmit={submit} noValidate>
+      <div className="ecom-hs-row ecom-hs-row--2col">
+        <div className="ecom-hs-field">
+          <label htmlFor="ec-fname">
+            First name<span className="hs-req">*</span>
+          </label>
+          <input
+            type="text"
+            id="ec-fname"
+            name="firstName"
+            required
+            value={values.firstName}
+            onChange={update("firstName")}
+            autoComplete="given-name"
+          />
         </div>
-        <div className="form-row">
-          <label htmlFor="ec-email">Your email<span className="req" aria-hidden="true"> *</span></label>
-          <input type="email" id="ec-email" required value={values.email} onChange={update("email")} placeholder="jane@brand.com" />
+        <div className="ecom-hs-field">
+          <label htmlFor="ec-lname">
+            Last name<span className="hs-req">*</span>
+          </label>
+          <input
+            type="text"
+            id="ec-lname"
+            name="lastName"
+            required
+            value={values.lastName}
+            onChange={update("lastName")}
+            autoComplete="family-name"
+          />
         </div>
       </div>
-      <div className="form-row form-row--split">
-        <div className="form-row">
-          <label htmlFor="ec-phone">Phone number</label>
-          <input type="tel" id="ec-phone" value={values.phone} onChange={update("phone")} placeholder="+1 555 0199" />
+
+      <div className="ecom-hs-row ecom-hs-row--2col">
+        <div className="ecom-hs-field">
+          <label htmlFor="ec-email">
+            Email<span className="hs-req">*</span>
+          </label>
+          <input
+            type="email"
+            id="ec-email"
+            name="email"
+            required
+            value={values.email}
+            onChange={update("email")}
+            autoComplete="email"
+          />
         </div>
-        <div className="form-row">
-          <label htmlFor="ec-company">Company</label>
-          <input type="text" id="ec-company" value={values.company} onChange={update("company")} placeholder="Acme Retail" />
+        <div className="ecom-hs-field">
+          <label htmlFor="ec-phone">
+            Phone number<span className="hs-req">*</span>
+          </label>
+          <input
+            type="tel"
+            id="ec-phone"
+            name="phone"
+            required
+            value={values.phone}
+            onChange={update("phone")}
+            autoComplete="tel"
+          />
         </div>
       </div>
-      <div className="form-row">
-        <label htmlFor="ec-stack">Current platform / architecture</label>
-        <input type="text" id="ec-stack" value={values.stack} onChange={update("stack")} placeholder="e.g. Magento, Shopify Plus, Composable Headless" />
+
+      <div className="ecom-hs-row">
+        <div className="ecom-hs-field">
+          <label htmlFor="ec-source">How did you hear about us?</label>
+          <div className="ecom-hs-select-wrap">
+            <select
+              id="ec-source"
+              name="source"
+              value={values.source}
+              onChange={update("source")}
+            >
+              <option value="">Please Select</option>
+              <option value="Search engine">Found us on a search engine</option>
+              <option value="Recommendation">A client or partner recommended you</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Existing client">We already work with you</option>
+              <option value="Event">An event or meetup</option>
+              <option value="Other">Somewhere else</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <div className="form-row">
-        <label htmlFor="ec-msg">Anything specific you'd like to discuss?</label>
-        <textarea id="ec-msg" rows={3} value={values.message} onChange={update("message")} placeholder="Goals, upcoming peaks, or current bottlenecks…" />
+
+      <div className="ecom-hs-row">
+        <div className="ecom-hs-field">
+          <label htmlFor="ec-help">How can we help?</label>
+          <textarea
+            id="ec-help"
+            name="help"
+            rows={4}
+            value={values.help}
+            onChange={update("help")}
+          />
+        </div>
       </div>
-      <button type="submit" className="btn ecom-btn-yellow ecom-form-submit" disabled={submitting}>
-        {submitting ? "Booking…" : "Book 15-Minute Consultation"}
+
+      <p className="ecom-hs-notice">
+        We&apos;re a global team, which means we&apos;re online 24/7! To help us direct your enquiry, please pick the region that works best for your time zone.
+      </p>
+
+      <div className="ecom-hs-row">
+        <div className="ecom-hs-field">
+          <label htmlFor="ec-timezone">
+            Your preferred time zone<span className="hs-req">*</span>
+          </label>
+          <div className="ecom-hs-select-wrap">
+            <select
+              id="ec-timezone"
+              name="timezone"
+              required
+              value={values.timezone}
+              onChange={update("timezone")}
+            >
+              <option value="">Please Select</option>
+              <option value="UK / Europe (GMT/BST/CET)">UK &amp; Europe (GMT/BST/CET)</option>
+              <option value="North America - East (EST/EDT)">North America - East (EST/EDT)</option>
+              <option value="North America - West (PST/PDT)">North America - West (PST/PDT)</option>
+              <option value="Asia Pacific / Singapore (SGT)">Asia Pacific / Singapore (SGT)</option>
+              <option value="Australia / New Zealand (AEST/NZST)">Australia &amp; New Zealand (AEST/NZST)</option>
+              <option value="Middle East / Gulf (GST)">Middle East / Gulf (GST)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <p className="ecom-hs-privacy">
+        To learn how we store your information, please review our{" "}
+        <Link to="/privacy-policy" className="ecom-hs-privacy-link">
+          Privacy Policy
+        </Link>
+        .
+      </p>
+
+      <button type="submit" className="btn ecom-btn-yellow ecom-hs-submit" disabled={submitting}>
+        {submitting ? "Submitting…" : "Submit"}
       </button>
+
       {status && (
-        <p className={`form-status ${status.ok ? "is-ok" : "is-error"}`} role="status">
+        <p className={`form-status ${status.ok ? "is-ok" : "is-error"}`} role="status" style={{ marginTop: 14 }}>
           {status.text}
         </p>
       )}
@@ -1292,7 +1426,6 @@ export default function SupportDetail() {
                   <li key={pt}>{pt}</li>
                 ))}
               </ul>
-              <p><strong>{provider.consultation.closer}</strong></p>
             </div>
             <div className="ecom-consult-form-wrap reveal">
               <EcomConsultationForm />
