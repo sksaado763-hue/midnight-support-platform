@@ -4676,3 +4676,442 @@ section.case-feature--detail { padding: 40px 0; }
   .trust-marquee:hover .trust-logo::before,
   .trust-logo::before { animation: none; opacity: 0; }
 }
+
+/* ============================================================
+   eCommerce Page — pixel-matched to justaftermidnight247.com
+   ============================================================ */
+
+/* Hero Banner */
+.hero-banner.ecom-hero {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: clamp(90px, 8vw, 130px) 0 clamp(110px, 10vw, 150px);
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 89% 98%, 82% 99.4%, 75% 99.8%, 69% 99.5%, 60% 97.8%, 40% 92%, 29% 90.3%, 20% 90.3%, 10% 92.1%, 0 95%);
+  z-index: 1;
+  overflow: hidden;
+  text-align: left;
+}
+.ecom-hero-row {
+  display: flex;
+  align-items: center;
+}
+.ecom-hero-col {
+  max-width: 580px;
+}
+.ecom-breadcrumb {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.ecom-breadcrumb a {
+  color: #fabd14;
+  text-decoration: none;
+}
+.ecom-hero-title {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(32px, 3.8vw, 48px);
+  line-height: clamp(38px, 4.4vw, 56px);
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #ffffff;
+  margin: 0 0 14px;
+}
+.ecom-hero-sub {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(15px, 1.35vw, 17px);
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #ffffff;
+  margin: 0 0 28px;
+  text-align: left;
+}
+.ecom-btn-yellow {
+  background-color: #fabd14 !important;
+  color: #12203f !important;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 14px 28px;
+  border-radius: 4px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+.ecom-btn-yellow:hover,
+.ecom-btn-yellow:focus-visible {
+  background-color: #12203f !important;
+  color: #fabd14 !important;
+  box-shadow: 0 4px 14px rgba(18, 32, 63, 0.3);
+}
+
+/* Curved Dividers */
+.global-curved-divider {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  line-height: 0;
+  pointer-events: none;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+.global-curved-divider svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Services 6-Grid */
+.ecom-services-section {
+  background-color: #132140;
+  padding: 80px 0 100px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  position: relative;
+  z-index: 1;
+}
+.ecom-services-head h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(24px, 2.5vw, 34px);
+  line-height: 1.15;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  margin: 0 0 12px;
+}
+.ecom-services-head p {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 52px;
+}
+.ecom-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.ecom-service-card {
+  background-color: #212e4b;
+  border-radius: 10px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.ecom-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+.ecom-service-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+.ecom-service-card h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 13px;
+}
+.ecom-service-card p {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Future-Proof Cloud Architecture (Coloured Boxes) */
+.ecom-cloud-section {
+  padding: 80px 0 60px;
+}
+.ecom-cloud-head h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(24px, 2.5vw, 34px);
+  line-height: 1.15;
+  font-weight: 500;
+  color: #111a2b;
+  margin: 0 0 16px;
+}
+.ecom-cloud-intro {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #111a2b;
+  margin: 0 0 44px;
+}
+.ecom-cloud-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.ecom-cloud-box {
+  background: #ffffff;
+  border: 1px solid rgba(19, 33, 64, 0.12);
+  border-radius: 10px;
+  padding: 32px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.ecom-cloud-box:hover {
+  border-color: rgba(19, 33, 64, 0.28);
+  box-shadow: 0 10px 24px rgba(19, 33, 64, 0.08);
+}
+.ecom-cloud-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 18px;
+  display: block;
+}
+.ecom-cloud-box h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #111a2b;
+  margin: 0 0 12px;
+}
+.ecom-cloud-box p {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #111a2b;
+  margin: 0;
+}
+
+/* Security & Compliance */
+.ecom-security-section {
+  background-color: #12203f;
+  padding: 60px 0;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+.ecom-security-grid {
+  display: grid;
+  grid-template-columns: 540fr 90fr 460fr;
+  align-items: center;
+}
+.ecom-security-copy h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(24px, 2.5vw, 34px);
+  line-height: 1.15;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 16px;
+}
+.ecom-security-copy p {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #ffffff;
+  margin: 0 0 16px;
+}
+.ecom-security-copy ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+.ecom-security-copy li {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ecom-security-copy li svg {
+  flex-shrink: 0;
+}
+.ecom-security-rule {
+  height: 85%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  justify-self: center;
+}
+.ecom-security-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ecom-security-img {
+  max-width: 360px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Consultation Block */
+.ecom-consult-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+.ecom-consult-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: start;
+}
+.ecom-consult-copy h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(24px, 2.5vw, 34px);
+  line-height: 1.15;
+  font-weight: 500;
+  color: #111a2b;
+  margin: 0 0 10px;
+}
+.ecom-consult-copy h4 {
+  font-family: Montserrat, sans-serif;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #111a2b;
+  margin: 0 0 16px;
+}
+.ecom-consult-copy p {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #111a2b;
+  margin: 0 0 16px;
+}
+.ecom-consult-copy ul {
+  padding-left: 22px;
+  list-style: disc;
+  margin: 0 0 20px;
+}
+.ecom-consult-copy li {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #111a2b;
+  margin-bottom: 8px;
+}
+.ecom-consult-form-wrap {
+  background: #111a2b;
+  border-radius: 12px;
+  padding: 36px 32px;
+  color: #ffffff;
+  box-shadow: 0 18px 44px rgba(17, 26, 43, 0.15);
+}
+.ecom-consult-form-wrap label {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+.ecom-consult-form-wrap .req {
+  color: #fabd14;
+}
+.ecom-consult-form-wrap input,
+.ecom-consult-form-wrap textarea {
+  width: 100%;
+  background: #18253e;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: #ffffff;
+  font-family: Ubuntu, sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.ecom-consult-form-wrap input:focus,
+.ecom-consult-form-wrap textarea:focus {
+  border-color: #fabd14;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(250, 189, 20, 0.25);
+}
+.ecom-form-submit {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px;
+}
+
+/* Why Choose Us (eCommerce) */
+.ecom-why-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+.ecom-why-section h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(24px, 2.5vw, 34px);
+  line-height: 56px;
+  font-weight: 500;
+  color: #111a2b;
+  text-align: center;
+  margin: 0 0 48px;
+}
+.ecom-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.ecom-why-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+.ecom-why-icon {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 16px;
+  display: block;
+}
+.ecom-why-card h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #111a2b;
+  margin: 0 0 12px;
+}
+.ecom-why-card p {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #111a2b;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .ecom-services-grid { grid-template-columns: repeat(2, 1fr); }
+  .ecom-cloud-grid { grid-template-columns: 1fr; }
+  .ecom-security-grid { grid-template-columns: 1fr; gap: 32px; }
+  .ecom-security-rule { display: none; }
+  .ecom-consult-grid { grid-template-columns: 1fr; gap: 36px; }
+  .ecom-why-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+}
+
+@media (max-width: 620px) {
+  .ecom-services-grid { grid-template-columns: 1fr; }
+  .ecom-why-grid { grid-template-columns: 1fr; }
+  .ecom-consult-form-wrap { padding: 24px 18px; }
+}

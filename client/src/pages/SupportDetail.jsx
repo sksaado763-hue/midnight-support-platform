@@ -1,7 +1,7 @@
 import { Fragment, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
-import { useApi } from "../lib/api";
+import { useApi, postJson } from "../lib/api";
 import CaseFeature from "../components/CaseFeature";
 import CapabilityBand from "../components/CapabilityBand";
 import CaseStudiesBand from "../components/CaseStudiesBand";
@@ -712,64 +712,202 @@ const INDUSTRIES = [
   {
     slug: "ecommerce",
     name: "eCommerce",
-    title: "24/7 support for eCommerce",
-    tagline: "Checkout, payments and catalogue uptime for stores where an hour dark is a month of revenue.",
-    whatTitle: "What eCommerce support from us means",
-    intro: "A store is never 'down for maintenance' — it is down for revenue. Most commerce teams we meet watch the server but not the sale: the payment gateway that fails only on one card type, the promo code that breaks the basket, the checkout that slows every evening at peak. We watch the money path as closely as the machines.",
+    pageTitle: "eCommerce",
+    scene: "ecom",
+    title: "Managed Services for eCommerce",
+    tagline: "Keeping modern eCommerce platforms fast, stable and revenue-ready around the clock",
+    bands: [
+      "intro",
+      "video",
+      "ecomServices",
+      "ecomCloud",
+      "ecomSecurity",
+      "ecomConsult",
+      "ecomWhy",
+      "insights",
+      "glance",
+      "impacts",
+      "others",
+    ],
     gap: {
       title: "What we do",
       head: [
-        "Think of us as the night shift your store never had to hire.",
-        "From headless storefronts to checkout APIs that change weekly, modern commerce teams need a partner who can keep pace. That is us: we keep the platform healthy, the stack patched and the architecture honest so your team can ship instead of firefight.",
-        "Full-stack cover, cloud design or a rebuild that cannot pause trading — we have done all three at peak.",
+        "Think of it this way: you’re Steve Jobs; we’re whoever the other guys were.",
+        "From composable commerce to mile-a-minute feature rollouts, modern eCommerce teams need a managed services partner who can keep up. That’s us. We run the platform, support the stack and strengthen the architecture, so you can innovate with confidence.",
+        "Whether it’s 24/7 full-stack support, next-gen cloud designs or high-scale serverless builds, we’ve got you covered.",
       ],
       columns: {
         left: [
-          { h: "Supporting your solution", p: "Behind every store that survives a sale weekend is a support team that never blinked. We bring the engineers, the tooling and a follow-the-sun rota so your digital estate stays steady around the clock." },
-          { p: "Here is how we keep you trading:" },
-          { h: "We cover the whole money path", p: "Storefront, headless CMS, checkout APIs, the POS layer, the integrations between them. Your team sets the SLA; everything under it is ours." },
-          { h: "We fit the stack you already run", p: "Containers, composable storefronts, APIs at every seam — whatever shape your platform is in today, we slot in beside it rather than replacing it." },
+          { h: "Supporting your solution", p: "Behind every great eCommerce brand is a great 24/7 support team. That’s where we come in. We combine the right engineers, the right tooling and a genuinely follow-the-sun model to keep your digital estate stable around the clock." },
+          { p: "Here’s how we keep you moving:" },
+          { h: "We support your full digital presence, end-to-end", p: "Your storefront, your headless CMS, your checkout APIs, your POS content layer, your integrations. It’s all covered. You pick the SLA, we take care of the rest." },
+          { h: "We work comfortably across modern eCommerce stacks", p: "Containerised microservices? Composable commerce? API-first everything? Yes, yes and yes. Whatever your stack looks like today, we slot in and support it." },
         ],
         right: [
-          { h: "We stop outages before they land", p: "Mission Control, our internal support platform, gives one view over:" },
-          { items: ["Infrastructure health", "Revenue-critical metrics", "Service and container telemetry", "Endpoint behaviour", "Upstream patch feeds", "Vendor integrations"] },
-          { p: "Where most teams find out from a customer, we find out from a graph." },
-          { h: "We measure ourselves in revenue kept", p: "Uptime percentages are table stakes. Our reports count the baskets that completed, the gateways that answered and the peaks that passed without a war room." },
+          { h: "We prevent outages before they land", p: "With Mission Control, our internal full-stack support platform, we get a birds-eye view of:" },
+          { items: ["Infrastructure health", "Business-critical metrics", "Microservices and container signals", "API behaviour", "Patch feeds", "Third party integrations"] },
+          { p: "Where most teams struggle to gain visibility across modern, distributed architectures, we were built for it." },
+          { h: "We integrate seamlessly with your team", p: "We build runbooks with you, agree ownership lines, define escalations and then operate quietly behind the scenes — resolving issues before they turn into incidents and keeping your team focused on innovation." },
         ],
       },
     },
-    capabilities: [
-      { title: "Every night", items: ["Synthetic purchases through checkout on a published rota", "Payment gateway, webhook and refund flow monitoring", "Platform, plugin and runtime patching inside your trading window", "Backup and restore verification before peak seasons"] },
-      { title: "Every month", items: ["Conversion-path performance review with page-speed metrics", "Integration and feed health audit", "Peak-readiness check ahead of every campaign in the calendar", "A trading report your commercial team can read without a translator"] },
-    ],
-    coverage: {
-      title: "The trading work that happens while you sleep",
-      intro: "Synthetic baskets at three in the morning, gateway health before the campaign, and incidents graded by revenue at risk. Here is the cover:",
-      groups: [
-        { title: "Checkout & payments", items: ["Synthetic purchases on a published rota", "Gateway, webhook and refund-flow checks", "Card-type edge cases reproduced fast", "Fraud rules reviewed for false rejections"] },
-        { title: "Storefront & catalogue", items: ["Page speed under campaign load", "Search and filter regressions caught", "Stock and price feed failures triaged", "Theme and plugin conflicts traced"] },
-        { title: "Integrations & fulfilment", items: ["ERP and order-management sync health", "Courier and label API failures chased", "Marketplace feeds watched end to end", "The order that never reached the warehouse"] },
-        { title: "Peak & campaigns", items: ["Capacity checks before every sale", "Extra engineers through the window", "Freeze windows agreed in writing", "A rollback plan for each deploy"] },
-        { title: "Security & compliance", items: ["Patching inside your trading window", "Card-data scope reviewed annually", "Bot and scraper rules tuned", "Credential leaks watched and closed"] },
-        { title: "Trading & reporting", items: ["Conversion-path performance monthly", "Incident cost in revenue, not uptime", "Peak-readiness notes before the calendar", "A trading report your commercial team can read"] },
-      ],
-      closer: {
-        text: "Tell us your platform, your peak and your last bad weekend, and we will quote cover against all three.",
-        cta: "Talk about your store",
-        to: "/contact",
-      },
+    video: {
+      title: "See it in action",
+      lead: "Get a glimpse at the behind-the-scenes machinery that allows us to keep eCommerce platforms online, 24/7.",
     },
-    fitWith: [
-      "An hour of checkout downtime is a board-level number",
-      "You trade through peaks that your current cover cannot absorb",
-      "Payment and fulfilment integrations fail in ways monitoring misses",
-      "You want cover that watches the sale, not just the server",
+    services: [
+      {
+        title: "Around-the-Clock Reliability",
+        icon: "/icons/clock-arrow.webp",
+        text: "24/7 monitoring, incident response and platform oversight covering the full digital ecosystem: storefronts, APIs, headless CMS, microservices, POS integrations and cloud infrastructure. Issues are detected and resolved before they impact trading.",
+      },
+      {
+        title: "Modernisation & Optimisation",
+        icon: "/icons/migration.webp",
+        text: "Enhancements that unlock speed, stability and innovation, from adopting serverless patterns to reshaping legacy components, improving CI/CD pipelines or enabling composable commerce architectures.",
+      },
+      {
+        title: "Cloud Management for eCommerce",
+        icon: "/icons/cloud-support.webp",
+        text: "Day-to-day management of cloud environments powering eCommerce platforms. Includes performance tuning, autoscaling, cost optimisation and advanced cloud-native capabilities to ensure fast, consistent customer experiences during peak traffic.",
+      },
+      {
+        title: "Managed Security for eCommerce",
+        icon: "/icons/security.png",
+        text: "Continuous vulnerability scanning, patch oversight, asset monitoring and proactive threat detection. Designed to support PCI considerations, consumer data security and the fast-changing threat landscape facing online retailers.",
+      },
+      {
+        title: "Digital Customer Experience (DCX) Expertise",
+        icon: "/icons/love.png",
+        text: "As an AWS DCX Partner, we support the creation of rich, high-performing digital commerce experiences. Ideal for brands building interactive, content-heavy or multi-market storefronts.",
+      },
+      {
+        title: "Platform Support",
+        icon: "/icons/monitoring.webp",
+        text: "End-to-end support across major eCommerce platforms and digital experience systems such as Sitecore, Kentico and custom-build headless setups. Delivered as an extension of internal engineering and ops teams.",
+      },
     ],
-    faqs: [
-      { q: "Do you cover Magento and Shopify Plus builds?", a: "Yes, plus WooCommerce, BigCommerce and headless stacks. Platform-specific cover sits under our platforms pages; this rota covers whichever one you trade on." },
-      { q: "Can you join our Black Friday war room?", a: "We run them. Capacity review two weeks out, freeze windows agreed, extra engineers on shift and a live incident channel for the weekend." },
-      { q: "What if the failure is the payment provider's?", a: "We detect it, prove it with transaction traces, open the case with the provider and keep your team informed until it closes." },
-    ],
+    cloud: {
+      title: "What does a future-proof eCommerce cloud actually look like?",
+      intro: "Today’s high-growth eCommerce platforms are high-velocity. They’re gobally distributed systems that need to scale instantly, stay fast under pressure and support rapid change. Modern cloud foundations make all of that possible. Our managed services ensure your platform is ready for anything, from seasonal peaks to global expansion.",
+      boxes: [
+        {
+          title: "High-scale cloud architecture",
+          icon: "/icons/rocket.svg",
+          text: "Cloud environments designed specifically for the traffic patterns and complexity of eCommerce. Built for global audiences, high throughput, headless architectures, microservices and modern container/serverless workflows.",
+        },
+        {
+          title: "Modernisation & replatforming",
+          icon: "/icons/cloud-strategy.svg",
+          text: "Transformation paths that move brands away from brittle, slow or costly systems into cloud-native environments that support agility. Whether shifting from monoliths to microservices or replatforming to a new commerce engine, transitions are made with minimal trading disruption.",
+        },
+        {
+          title: "Faster, safer feature delivery",
+          icon: "/icons/lightbulb-check.svg",
+          text: "Engineering pipelines that enable rapid releases without risking downtime. CI/CD automation, infrastructure as code and DevOps expertise keep deployments smooth, even during busy trading periods or out-of-hours launches.",
+        },
+        {
+          title: "Performance, cost & scalability optimisation",
+          icon: "/icons/money-saving.svg",
+          text: "Continuous cloud improvements that keep stores fast and cost-efficient. From autoscaling strategies to resource right-sizing and performance tuning, optimisation ensures the platform can grow sustainably while staying responsive.",
+        },
+      ],
+    },
+    security: {
+      title: "Security & Compliance for eCommerce",
+      intro: "eCommerce platforms process high-value data and operate in a rapidly evolving threat landscape. We simplify the essential parts:",
+      points: [
+        "Regular vulnerability scans",
+        "Asset monitoring",
+        "Emergency patch monitoring",
+        "Platform monitoring",
+        "Risk prioritisation & remediation guidance",
+      ],
+      closer: "All in one flexible, easy-to-understand managed service.",
+      image: "/icons/network-security.svg",
+    },
+    consultation: {
+      title: "Book a free 15-minute consultation",
+      subtitle: "Like what you’re hearing?",
+      paras: [
+        "Book a free 15-minute consultation with one of our eCommerce experts. We’ll run through your key objectives, and your current technology stack and fill in the blanks between.",
+        "Ultimately, our job is to make sure you get where you’re going, so tell us the destination, and we’ll give you the map.",
+      ],
+      askIntro: "We’ll ask you about:",
+      points: [
+        "Any managed services you’re currently using",
+        "Regular blockers and headaches",
+        "The level of support you require (if you need support), i.e. 24/7, out-of-hours or specific windows",
+        "Your current architecture and how you want it to evolve",
+      ],
+      closer: "Look forward to hearing from you!",
+    },
+    why: {
+      title: "Why Our eCommerce Partners Choose Us",
+      cards: [
+        {
+          title: "Cloud app and platform experts",
+          icon: "/icons/why-bolt.svg",
+          text: "Our global team boasts cloud, application and platform experts. This gives us a 360-degree perspective on your app and infrastructure.",
+        },
+        {
+          title: "Work with a next-gen managed service provider",
+          icon: "/icons/why-bolt.svg",
+          text: "As an MSP on the cutting edge of technology, we’re a partner for today and tomorrow, helping you strategically assess tech trends and make smart decisions about innovation.",
+        },
+        {
+          title: "A one-of-a-kind support service",
+          icon: "/icons/why-bolt.svg",
+          text: "Our full-stack, tech-enabled 24/7 support service is uniquely placed to help our partners meet the support needs of modern applications.",
+        },
+        {
+          title: "Global reach",
+          icon: "/icons/why-bolt.svg",
+          text: "With offices in 4 time zones, we have the reach to support and accelerate our enterprise-level ecommerce partners and help smaller brands break new ground.",
+        },
+      ],
+    },
+    insights: {
+      title: "Latest Insights from JAM",
+      to: "/insights",
+      variant: "plain",
+    },
+    glance: {
+      eyebrow: "At a glance",
+      title: "Just After Midnight’s support offering",
+      items: [
+        {
+          q: "What technologies do you support?",
+          a: <>We support cloud platforms (<strong>AWS, Azure, GCP, Alibaba Cloud</strong>), CMS and DXP platforms (<strong>Sitecore, Kentico, Umbraco, AEM, Optimizely, WordPress, Drupal, Magento</strong>), custom-built applications, edge/CDN networks, and third-party integrations including APIs.</>,
+        },
+        {
+          q: "What support windows are available?",
+          a: <><strong>24/7/365</strong> support, out-of-hours support and overnight support, weekends-only support, or a custom schedule built around your needs.</>,
+        },
+        {
+          q: "What functions does your support team cover?",
+          a: "Our support covers monitoring and alerting, incident management and triage, root cause analysis (RCA), SRE and DevOps support, observability, security incident response, backup and recovery, change and patch management, and third-party vendor escalation.",
+        },
+        {
+          q: "What industries do you support?",
+          a: "We work with businesses and organisations in SaaS, eCommerce, healthtech, legaltech, fintech, government, manufacturing, logistics, and digital agencies – and many more.",
+        },
+        {
+          q: "What security accreditations do you hold?",
+          a: <>We are <strong>ISO 27001</strong> certified, <strong>Cyber Essentials Plus</strong> verified, and <strong>PCI DSS</strong> compliant.</>,
+        },
+      ],
+    },
+    impacts: {
+      q: "What are the impacts of incidents on teams and revenue?",
+      a: "According to industry sources, downtime costs businesses between $540,000 (Splunk, The Hidden Costs of Downtime) and $2 million (New Relic, Observability Forecast 2025) per hour for many high-impact outages. Incidents also consume significant engineering capacity: the median engineering team spends 30% of its time addressing disruptions (New Relic, Observability Forecast 2024).",
+      sourcesHead: "Sources",
+      sources: [
+        "Splunk, The Hidden Costs of Downtime (2000 Global Executives surveyed)",
+        "New Relic, Observability Forecast 2025 (1,700 global technology professionals surveyed)",
+        "New Relic Observability Forecast 2024 (1,700 global technology professionals surveyed)",
+      ],
+    },
   },
 ];
 
@@ -803,6 +941,85 @@ const NET_NODES = [
   { x: 220, y: 418 }, { x: 74, y: 330 }, { x: 74, y: 150 },
 ];
 
+function EcomConsultationForm() {
+  const [values, setValues] = useState({ name: "", email: "", phone: "", company: "", stack: "", message: "" });
+  const [status, setStatus] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  const update = (f) => (e) => setValues((v) => ({ ...v, [f]: e.target.value }));
+
+  async function submit(e) {
+    e.preventDefault();
+    if (!values.name || !values.email) {
+      setStatus({ ok: false, text: "Name and email are required." });
+      return;
+    }
+    setSubmitting(true);
+    setStatus(null);
+    try {
+      const { ok, body } = await postJson("/api/contact", {
+        name: values.name.trim(),
+        email: values.email.trim(),
+        phone: values.phone.trim(),
+        company: values.company.trim(),
+        topic: "15-minute consultation",
+        message: `Platform / Stack: ${values.stack || "Not specified"}\n\n${values.message || "eCommerce consultation request"}`,
+      });
+      if (ok && body?.ok) {
+        setStatus({ ok: true, text: "Thanks — we'll be in touch to schedule your consultation." });
+        setValues({ name: "", email: "", phone: "", company: "", stack: "", message: "" });
+      } else {
+        setStatus({ ok: false, text: body?.error || "Something went wrong. Please try again." });
+      }
+    } catch {
+      setStatus({ ok: false, text: "We couldn't reach the server — please try again." });
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <form className="ecom-form" onSubmit={submit} noValidate>
+      <div className="form-row form-row--split">
+        <div className="form-row">
+          <label htmlFor="ec-name">Your name<span className="req" aria-hidden="true"> *</span></label>
+          <input type="text" id="ec-name" required value={values.name} onChange={update("name")} placeholder="Jane Doe" />
+        </div>
+        <div className="form-row">
+          <label htmlFor="ec-email">Your email<span className="req" aria-hidden="true"> *</span></label>
+          <input type="email" id="ec-email" required value={values.email} onChange={update("email")} placeholder="jane@brand.com" />
+        </div>
+      </div>
+      <div className="form-row form-row--split">
+        <div className="form-row">
+          <label htmlFor="ec-phone">Phone number</label>
+          <input type="tel" id="ec-phone" value={values.phone} onChange={update("phone")} placeholder="+1 555 0199" />
+        </div>
+        <div className="form-row">
+          <label htmlFor="ec-company">Company</label>
+          <input type="text" id="ec-company" value={values.company} onChange={update("company")} placeholder="Acme Retail" />
+        </div>
+      </div>
+      <div className="form-row">
+        <label htmlFor="ec-stack">Current platform / architecture</label>
+        <input type="text" id="ec-stack" value={values.stack} onChange={update("stack")} placeholder="e.g. Magento, Shopify Plus, Composable Headless" />
+      </div>
+      <div className="form-row">
+        <label htmlFor="ec-msg">Anything specific you'd like to discuss?</label>
+        <textarea id="ec-msg" rows={3} value={values.message} onChange={update("message")} placeholder="Goals, upcoming peaks, or current bottlenecks…" />
+      </div>
+      <button type="submit" className="btn ecom-btn-yellow ecom-form-submit" disabled={submitting}>
+        {submitting ? "Booking…" : "Book 15-Minute Consultation"}
+      </button>
+      {status && (
+        <p className={`form-status ${status.ok ? "is-ok" : "is-error"}`} role="status">
+          {status.text}
+        </p>
+      )}
+    </form>
+  );
+}
+
 function skylineWindows() {
   const cells = [];
   CITY_FRONT.forEach(([x, w, h], b) => {
@@ -834,7 +1051,7 @@ export default function SupportDetail() {
     setFilmSlug(slug);
     filmRef.current?.play().catch(() => {});
   };
-  useTitle(provider ? `${provider.title} | Just After Midnight` : "24/7 Support | Just After Midnight");
+  useTitle(provider ? `${provider.pageTitle || provider.title} | Just After Midnight` : "24/7 Support | Just After Midnight");
   const { data: caseStudies } = useApi(provider?.caseStudy || provider?.cases ? "/api/case-studies" : null);
   const { data: articles } = useApi(provider?.insights ? "/api/articles" : null);
   const featured = provider?.caseStudy ? (caseStudies || []).find((study) => study.slug === provider.caseStudy.slug) : null;
@@ -929,38 +1146,178 @@ export default function SupportDetail() {
       ),
 
     video: provider.video && (
-        <section className="how-it-works">
-          <div className="container">
-            <div className="hiw-grid">
-              <div className="hiw-media reveal">
-                <video
-                  ref={filmRef}
-                  className="hiw-video"
-                  src="/video/brand-video.mp4"
-                  poster="/video/brand-poster.jpg"
-                  preload="none"
-                  controls={playing}
-                  playsInline
-                  onEnded={() => setFilmSlug("")}
-                />
-                {!playing && (
-                  <button type="button" className="hiw-play" onClick={startFilm} aria-label={`Play: ${provider.video.title}`}>
-                    <svg viewBox="0 0 35 38" width="35" height="38" aria-hidden="true" focusable="false">
-                      <path d="M2 2l31 17L2 36z" fill="#ffffff" />
-                    </svg>
-                  </button>
-                )}
+        <>
+          {provider.slug === "ecommerce" && (
+            <div className="global-curved-divider global-curved-divider--down" style={{ backgroundColor: "#f2f2f2" }}>
+              <svg width="1920" height="89" viewBox="0 0 1920 89" fill="none">
+                <path d="M0 0H915.5H1920V55L1750.82 72.623C1544.17 94.1494 1335.83 94.1495 1129.18 72.6231L790.818 37.377C584.165 15.8506 375.835 15.8505 169.182 37.3769L0 55V0Z" fill="#FFFFFF" />
+              </svg>
+            </div>
+          )}
+          <section className="how-it-works" style={provider.slug === "ecommerce" ? { backgroundColor: "#f2f2f2", marginTop: 0 } : undefined}>
+            <div className="container">
+              <div className="hiw-grid">
+                <div className="hiw-media reveal">
+                  <video
+                    ref={filmRef}
+                    className="hiw-video"
+                    src="/video/brand-video.mp4"
+                    poster="/video/brand-poster.jpg"
+                    preload="none"
+                    controls={playing}
+                    playsInline
+                    onEnded={() => setFilmSlug("")}
+                  />
+                  {!playing && (
+                    <button type="button" className="hiw-play" onClick={startFilm} aria-label={`Play: ${provider.video.title}`}>
+                      <svg viewBox="0 0 35 38" width="35" height="38" aria-hidden="true" focusable="false">
+                        <path d="M2 2l31 17L2 36z" fill="#ffffff" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+                <div className="hiw-copy reveal">
+                  <h2>{provider.video.title}</h2>
+                  <p>{provider.video.lead}</p>
+                  {provider.video.closer && <p>{provider.video.closer}</p>}
+                  {provider.video.cta && <Link to="/support" className="btn btn-navy btn-lg">{provider.video.cta}</Link>}
+                </div>
               </div>
-              <div className="hiw-copy reveal">
-                <h2>{provider.video.title}</h2>
-                <p>{provider.video.lead}</p>
-                <p>{provider.video.closer}</p>
-                <Link to="/support" className="btn btn-navy btn-lg">{provider.video.cta}</Link>
+            </div>
+          </section>
+          {provider.slug === "ecommerce" && (
+            <div className="global-curved-divider global-curved-divider--down" style={{ backgroundColor: "#132140" }}>
+              <svg width="1920" height="89" viewBox="0 0 1920 89" fill="none">
+                <path d="M0 0H915.5H1920V55L1750.82 72.623C1544.17 94.1494 1335.83 94.1495 1129.18 72.6231L790.818 37.377C584.165 15.8506 375.835 15.8505 169.182 37.3769L0 55V0Z" fill="#f2f2f2" />
+              </svg>
+            </div>
+          )}
+        </>
+      ),
+
+    ecomServices: provider.services && (
+      <section className="ecom-services-section">
+        <div className="container">
+          <div className="ecom-services-head reveal">
+            <h2>Our Services for eCommerce</h2>
+            <p>Our unified, full-stack service keeps your revenue protected, your customers happy and your team free to focus on growth. Here's a birds-eye view.</p>
+          </div>
+          <div className="ecom-services-grid">
+            {provider.services.map((svc) => (
+              <article className="ecom-service-card reveal" key={svc.title}>
+                <img src={svc.icon} alt="" className="ecom-service-icon" />
+                <h3>{svc.title}</h3>
+                <p>{svc.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ),
+
+    ecomCloud: provider.cloud && (
+      <section className="ecom-cloud-section">
+        <div className="container">
+          <div className="ecom-cloud-head reveal">
+            <h2>{provider.cloud.title}</h2>
+            <p className="ecom-cloud-intro">{provider.cloud.intro}</p>
+          </div>
+          <div className="ecom-cloud-grid">
+            {provider.cloud.boxes.map((box) => (
+              <article className="ecom-cloud-box reveal" key={box.title}>
+                <img src={box.icon} alt="" className="ecom-cloud-icon" />
+                <h3>{box.title}</h3>
+                <p>{box.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ),
+
+    ecomSecurity: provider.security && (
+      <>
+        <div className="global-curved-divider global-curved-divider--up" style={{ backgroundColor: "#ffffff" }}>
+          <svg width="1920" height="73" viewBox="0 0 1920 73" fill="none">
+            <path d="M1920 72.9999L0 73.0012L3.42974e-06 33.7695L169.182 16.1465C375.835 -5.37986 584.165 -5.37991 790.818 16.1465L1129.18 51.3927C1335.83 72.9191 1544.16 72.9191 1750.82 51.3928L1920 33.7697L1920 72.9999Z" fill="#12203f" />
+          </svg>
+        </div>
+        <section className="ecom-security-section">
+          <div className="container">
+            <div className="ecom-security-grid">
+              <div className="ecom-security-copy reveal">
+                <h2>{provider.security.title}</h2>
+                <p>{provider.security.intro}</p>
+                <ul>
+                  {provider.security.points.map((pt) => (
+                    <li key={pt}>
+                      <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
+                        <circle cx="8" cy="8" r="7" stroke="#fabd14" strokeWidth="2" />
+                        <path d="M5 8l2 2 4-4" stroke="#fabd14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p>{provider.security.closer}</p>
+              </div>
+              <div className="ecom-security-rule" aria-hidden="true" />
+              <div className="ecom-security-media reveal">
+                <img src={provider.security.image} alt="" className="ecom-security-img" />
               </div>
             </div>
           </div>
         </section>
-      ),
+        <div className="global-curved-divider global-curved-divider--up" style={{ backgroundColor: "#12203f" }}>
+          <svg width="1920" height="73" viewBox="0 0 1920 73" fill="none">
+            <path d="M1920 72.9999L0 73.0012L3.42974e-06 33.7695L169.182 16.1465C375.835 -5.37986 584.165 -5.37991 790.818 16.1465L1129.18 51.3927C1335.83 72.9191 1544.16 72.9191 1750.82 51.3928L1920 33.7697L1920 72.9999Z" fill="#ffffff" />
+          </svg>
+        </div>
+      </>
+    ),
+
+    ecomConsult: provider.consultation && (
+      <section className="ecom-consult-section" id="consultation-form">
+        <div className="container">
+          <div className="ecom-consult-grid">
+            <div className="ecom-consult-copy reveal">
+              <h2>{provider.consultation.title}</h2>
+              <h4>{provider.consultation.subtitle}</h4>
+              {provider.consultation.paras.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+              <p>{provider.consultation.askIntro}</p>
+              <ul>
+                {provider.consultation.points.map((pt) => (
+                  <li key={pt}>{pt}</li>
+                ))}
+              </ul>
+              <p><strong>{provider.consultation.closer}</strong></p>
+            </div>
+            <div className="ecom-consult-form-wrap reveal">
+              <EcomConsultationForm />
+            </div>
+          </div>
+        </div>
+      </section>
+    ),
+
+    ecomWhy: provider.why && (
+      <section className="ecom-why-section">
+        <div className="container">
+          <h2 className="reveal">{provider.why.title}</h2>
+          <div className="ecom-why-grid">
+            {provider.why.cards.map((c) => (
+              <article className="ecom-why-card reveal" key={c.title}>
+                <img src={c.icon} alt="" className="ecom-why-icon" />
+                <h3>{c.title}</h3>
+                <p>{c.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ),
 
     why: provider.why && (
         <WhyBand
@@ -1129,111 +1486,130 @@ export default function SupportDetail() {
 
   return (
     <>
-      <section className={`page-hero page-hero--support${provider.scene ? ` page-hero--${provider.scene}` : ""}`}>
-        <div className="hero-stars" aria-hidden="true">
-          <svg viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice">
-            <g fill="#ffffff">
-              <circle cx="140" cy="90" r="1.6" opacity=".7" /><circle cx="360" cy="210" r="1.2" opacity=".5" />
-              <circle cx="620" cy="70" r="1.8" opacity=".8" /><circle cx="880" cy="160" r="1.1" opacity=".4" />
-              <circle cx="1120" cy="80" r="1.5" opacity=".7" /><circle cx="1300" cy="220" r="1.3" opacity=".6" />
-              <circle cx="1400" cy="110" r="1.7" opacity=".8" /><circle cx="240" cy="360" r="1.2" opacity=".4" />
-              <circle cx="720" cy="340" r="1.4" opacity=".6" /><circle cx="1180" cy="380" r="1.2" opacity=".5" />
-              <circle cx="500" cy="430" r="1.5" opacity=".7" /><circle cx="960" cy="450" r="1" opacity=".4" />
-            </g>
-          </svg>
-        </div>
-        {provider.scene === "city" && (
-          <div className="city-skyline" aria-hidden="true">
-            <svg viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice">
-              <g className="city-back">
-                {CITY_BACK.map(([x, w, h]) => <rect key={`b${x}`} x={x} y={320 - h} width={w - 6} height={h} />)}
-              </g>
-              <g className="city-mid">
-                {CITY_MID.map(([x, w, h]) => <rect key={`m${x}`} x={x} y={320 - h} width={w - 8} height={h} />)}
-              </g>
-              <g className="city-front">
-                {CITY_FRONT.map(([x, w, h]) => <rect key={`f${x}`} x={x} y={320 - h} width={w - 10} height={h} />)}
-              </g>
-              <g className="city-windows">
-                {skylineWindows().map((c) => (
-                  <rect key={c.key} className={c.lit ? "is-lit" : undefined} x={c.x} y={c.y} width={8} height={12} />
-                ))}
-              </g>
-            </svg>
-          </div>
-        )}
-        {provider.scene === "city" && (
-          <div className="city-art" aria-hidden="true">
-            <svg viewBox="0 0 220 300">
-              <circle className="city-moon" cx="42" cy="40" r="22" />
-              <g className="city-rocket">
-                <path d="M124 30c22 24 32 58 32 96v50H92v-50c0-38 10-72 32-96z" />
-                <circle className="city-porthole" cx="124" cy="112" r="14" />
-                <path className="city-fin" d="M92 138v48H56c6-24 18-42 36-48z" />
-                <path className="city-fin" d="M156 138v48h36c-6-24-18-42-36-48z" />
-                <path className="city-flame" d="M108 176h32l-5 20-11 26-11-26z" />
-              </g>
-            </svg>
-          </div>
-        )}
-        {provider.scene === "net" && (
-          <div className="net-art" aria-hidden="true">
-            <svg viewBox="0 0 440 480" fill="none">
-              <g className="net-wires">
-                {NET_NODES.map((n) => (
-                  <path className="net-wire" key={`w${n.x}-${n.y}`} d={`M220 240L${n.x} ${n.y}`} />
-                ))}
-              </g>
-              <g className="net-pulses">
-                {NET_NODES.map((n, i) => (
-                  <path
-                    className="net-pulse"
-                    key={`p${n.x}-${n.y}`}
-                    pathLength="100"
-                    d={`M220 240L${n.x} ${n.y}`}
-                    style={{ animationDelay: `${i * 0.8}s` }}
-                  />
-                ))}
-              </g>
-              <g className="net-nodes">
-                {NET_NODES.map((n, i) => (
-                  <g
-                    className="net-node"
-                    key={`n${n.x}-${n.y}`}
-                    transform={`translate(${n.x} ${n.y})`}
-                    style={{ animationDelay: `${i * 0.45}s` }}
-                  >
-                    <rect x="-31" y="-21" width="62" height="42" rx="9" />
-                    <path d="M-19 -8h38M-19 1h38M-19 10h22" />
-                  </g>
-                ))}
-              </g>
-              <g className="net-core">
-                <rect x="152" y="204" width="136" height="72" rx="14" />
-                <path d="M172 230h58M172 248h84" />
-                <circle className="net-core-dot" cx="264" cy="230" r="7" />
-              </g>
-            </svg>
-          </div>
-        )}
-        <div className="container">
-          <div className="hero-copy">
-            <p className="breadcrumb">
-              <Link to="/support">24/7 Support</Link> <span aria-hidden="true">/</span> {provider.name}
-            </p>
-            <h1 className="page-hero-title support-hero-title reveal">{provider.title}</h1>
-            <p className="page-hero-sub support-hero-sub reveal">{provider.tagline}</p>
-            <div className="hero-actions reveal">
-              <Link to="/contact" className="btn btn-primary support-hero-cta">Get in touch <span aria-hidden="true">➔</span></Link>
+      {provider.scene === "ecom" ? (
+        <section className="hero-banner ecom-hero" style={{ backgroundImage: "url(/icons/hero-ecom-bg.jpg)" }}>
+          <div className="container">
+            <div className="ecom-hero-row">
+              <div className="ecom-hero-col">
+                <p className="breadcrumb ecom-breadcrumb">
+                  <Link to="/support">24/7 Support</Link> <span aria-hidden="true">/</span> {provider.name}
+                </p>
+                <h1 className="banner-title ecom-hero-title reveal"><span>{provider.title}</span></h1>
+                <h4 className="ecom-hero-sub reveal"><span>{provider.tagline}</span></h4>
+                <div className="hero-actions reveal">
+                  <a href="#consultation-form" className="btn ecom-btn-yellow">GET IN TOUCH</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="support-hero-divider" aria-hidden="true">
-          <svg viewBox="0 0 1920 160" preserveAspectRatio="none">
-            <path d="M0 68 C180 24 320 0 480 0 C700 0 1120 135 1450 135 C1660 135 1790 100 1920 69 L1920 160 L0 160 Z" fill="var(--bg)" />
-          </svg>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className={`page-hero page-hero--support${provider.scene ? ` page-hero--${provider.scene}` : ""}`}>
+          <div className="hero-stars" aria-hidden="true">
+            <svg viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice">
+              <g fill="#ffffff">
+                <circle cx="140" cy="90" r="1.6" opacity=".7" /><circle cx="360" cy="210" r="1.2" opacity=".5" />
+                <circle cx="620" cy="70" r="1.8" opacity=".8" /><circle cx="880" cy="160" r="1.1" opacity=".4" />
+                <circle cx="1120" cy="80" r="1.5" opacity=".7" /><circle cx="1300" cy="220" r="1.3" opacity=".6" />
+                <circle cx="1400" cy="110" r="1.7" opacity=".8" /><circle cx="240" cy="360" r="1.2" opacity=".4" />
+                <circle cx="720" cy="340" r="1.4" opacity=".6" /><circle cx="1180" cy="380" r="1.2" opacity=".5" />
+                <circle cx="500" cy="430" r="1.5" opacity=".7" /><circle cx="960" cy="450" r="1" opacity=".4" />
+              </g>
+            </svg>
+          </div>
+          {provider.scene === "city" && (
+            <div className="city-skyline" aria-hidden="true">
+              <svg viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice">
+                <g className="city-back">
+                  {CITY_BACK.map(([x, w, h]) => <rect key={`b${x}`} x={x} y={320 - h} width={w - 6} height={h} />)}
+                </g>
+                <g className="city-mid">
+                  {CITY_MID.map(([x, w, h]) => <rect key={`m${x}`} x={x} y={320 - h} width={w - 8} height={h} />)}
+                </g>
+                <g className="city-front">
+                  {CITY_FRONT.map(([x, w, h]) => <rect key={`f${x}`} x={x} y={320 - h} width={w - 10} height={h} />)}
+                </g>
+                <g className="city-windows">
+                  {skylineWindows().map((c) => (
+                    <rect key={c.key} className={c.lit ? "is-lit" : undefined} x={c.x} y={c.y} width={8} height={12} />
+                  ))}
+                </g>
+              </svg>
+            </div>
+          )}
+          {provider.scene === "city" && (
+            <div className="city-art" aria-hidden="true">
+              <svg viewBox="0 0 220 300">
+                <circle className="city-moon" cx="42" cy="40" r="22" />
+                <g className="city-rocket">
+                  <path d="M124 30c22 24 32 58 32 96v50H92v-50c0-38 10-72 32-96z" />
+                  <circle className="city-porthole" cx="124" cy="112" r="14" />
+                  <path className="city-fin" d="M92 138v48H56c6-24 18-42 36-48z" />
+                  <path className="city-fin" d="M156 138v48h36c-6-24-18-42-36-48z" />
+                  <path className="city-flame" d="M108 176h32l-5 20-11 26-11-26z" />
+                </g>
+              </svg>
+            </div>
+          )}
+          {provider.scene === "net" && (
+            <div className="net-art" aria-hidden="true">
+              <svg viewBox="0 0 440 480" fill="none">
+                <g className="net-wires">
+                  {NET_NODES.map((n) => (
+                    <path className="net-wire" key={`w${n.x}-${n.y}`} d={`M220 240L${n.x} ${n.y}`} />
+                  ))}
+                </g>
+                <g className="net-pulses">
+                  {NET_NODES.map((n, i) => (
+                    <path
+                      className="net-pulse"
+                      key={`p${n.x}-${n.y}`}
+                      pathLength="100"
+                      d={`M220 240L${n.x} ${n.y}`}
+                      style={{ animationDelay: `${i * 0.8}s` }}
+                    />
+                  ))}
+                </g>
+                <g className="net-nodes">
+                  {NET_NODES.map((n, i) => (
+                    <g
+                      className="net-node"
+                      key={`n${n.x}-${n.y}`}
+                      transform={`translate(${n.x} ${n.y})`}
+                      style={{ animationDelay: `${i * 0.45}s` }}
+                    >
+                      <rect x="-31" y="-21" width="62" height="42" rx="9" />
+                      <path d="M-19 -8h38M-19 1h38M-19 10h22" />
+                    </g>
+                  ))}
+                </g>
+                <g className="net-core">
+                  <rect x="152" y="204" width="136" height="72" rx="14" />
+                  <path d="M172 230h58M172 248h84" />
+                  <circle className="net-core-dot" cx="264" cy="230" r="7" />
+                </g>
+              </svg>
+            </div>
+          )}
+          <div className="container">
+            <div className="hero-copy">
+              <p className="breadcrumb">
+                <Link to="/support">24/7 Support</Link> <span aria-hidden="true">/</span> {provider.name}
+              </p>
+              <h1 className="page-hero-title support-hero-title reveal">{provider.title}</h1>
+              <p className="page-hero-sub support-hero-sub reveal">{provider.tagline}</p>
+              <div className="hero-actions reveal">
+                <Link to="/contact" className="btn btn-primary support-hero-cta">Get in touch <span aria-hidden="true">➔</span></Link>
+              </div>
+            </div>
+          </div>
+          <div className="support-hero-divider" aria-hidden="true">
+            <svg viewBox="0 0 1920 160" preserveAspectRatio="none">
+              <path d="M0 68 C180 24 320 0 480 0 C700 0 1120 135 1450 135 C1660 135 1790 100 1920 69 L1920 160 L0 160 Z" fill="var(--bg)" />
+            </svg>
+          </div>
+        </section>
+      )}
 
       <section className="platform-detail">
         <div className="container">
