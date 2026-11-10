@@ -86,29 +86,34 @@ const BRANDS = [
 /* Renders the brand set twice: the clone is what lets the track scroll
    infinitely and hand off seamlessly. It is aria-hidden so screen readers
    still hear each name exactly once. */
-function BrandSet({ hidden }) {
+function BrandSet({ hidden, brands }) {
   return (
     <ul className="trust-set" aria-label={hidden ? undefined : "Selected clients"} aria-hidden={hidden || undefined}>
-      {BRANDS.map((brand, i) => (
-        <li className={`trust-logo trust-${brand.key}`} key={brand.key} style={{ "--i": i }}>
-          <svg className="trust-mark" viewBox="0 0 24 24" role="img" aria-label={brand.name}>
-            <g className="trust-mark-base">{brand.mark}</g>
-            {/* Same geometry redrawn as a short travelling arc — the idle cycle. */}
-            <g className="trust-mark-trace" aria-hidden="true">{brand.mark}</g>
-          </svg>
-          <span className="trust-word">{brand.word}</span>
+      {brands.map((brand, i) => (
+        <li className={`trust-logo${brand.src ? " trust-logo--image" : ` trust-${brand.key}`}`} key={brand.key || brand.name} style={{ "--i": i }}>
+          {brand.src ? (
+            <img src={brand.src} alt={hidden ? "" : brand.name} width="90" height="90" decoding="async" />
+          ) : (
+            <>
+              <svg className="trust-mark" viewBox="0 0 24 24" role="img" aria-label={brand.name}>
+                <g className="trust-mark-base">{brand.mark}</g>
+                <g className="trust-mark-trace" aria-hidden="true">{brand.mark}</g>
+              </svg>
+              <span className="trust-word">{brand.word}</span>
+            </>
+          )}
         </li>
       ))}
     </ul>
   );
 }
 
-export function TrustLogos() {
+export function TrustLogos({ brands = BRANDS, variant = "default" }) {
   return (
-    <div className="trust-marquee">
+    <div className={`trust-marquee${variant === "images" ? " trust-marquee--images" : ""}`}>
       <div className="trust-logos">
-        <BrandSet />
-        <BrandSet hidden />
+        <BrandSet brands={brands} />
+        <BrandSet brands={brands} hidden />
       </div>
     </div>
   );

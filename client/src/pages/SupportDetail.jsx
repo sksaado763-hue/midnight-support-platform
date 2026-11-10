@@ -12,6 +12,7 @@ import InsightsBand from "../components/InsightsBand";
 import OutcomeBand from "../components/OutcomeBand";
 import PackageBand from "../components/PackageBand";
 import ReviewsBand from "../components/ReviewsBand";
+import TrustLogos from "../components/TrustLogos";
 import WhyBand from "../components/WhyBand";
 import NotFound from "./NotFound";
 
@@ -19,6 +20,26 @@ const PROVIDERS = [
   {
     slug: "aws-support",
     name: "AWS",
+    scene: "aws",
+    heroBadges: [
+      { src: "/icons/aws-badge.webp", alt: "AWS Partner — Managed Service Provider" },
+      { src: "/icons/aws-badge_tiered-badge.png", alt: "AWS Partner — Advanced Tier Services" },
+      { src: "/icons/aws-badge_migration-and-modernisation-services-1.png", alt: "AWS Partner — Migration and Modernization Services" },
+      { src: "/icons/aws-badge_advertising-and-marketing.png", alt: "AWS Partner — Advertising and Marketing Technology" },
+    ],
+    heroClients: [
+      { name: "JetBrains", src: "/icons/aws-Jetbrains-scaled.png" },
+      { name: "Hilton", src: "/icons/aws-Hilton-Hotels-scaled.png" },
+      { name: "Heineken", src: "/icons/aws-Heineken-scaled.png" },
+      { name: "Cartier", src: "/icons/aws-Cartier-scaled.png" },
+      { name: "Bupa", src: "/icons/aws-Bupa-scaled.webp" },
+      { name: "The Body Coach", src: "/icons/aws-The_Body_Coach_logo.svg" },
+      { name: "Vue", src: "/icons/aws-Vue_logo_with_bounding_box.svg" },
+      { name: "DLA Piper", src: "/icons/aws-DLA_Piper_logo-1-1.svg" },
+      { name: "Coles", src: "/icons/aws-Coles_logo-1.svg" },
+      { name: "Tesco", src: "/icons/aws-Tesco_Logo-1-1.svg" },
+      { name: "Volkswagen", src: "/icons/aws-Volkswagon-scaled.png" },
+    ],
     pageTitle: "AWS Managed Support & Hosting",
     title: "AWS Managed Support & Hosting",
     tagline: "24/7 support for mission-critical AWS environments",
@@ -1908,6 +1929,7 @@ export default function SupportDetail() {
 
     packages: provider.packages && (
         <PackageBand
+          id={provider.scene === "aws" ? "packages" : undefined}
           title={provider.packages.title}
           intro={provider.packages.intro}
           introTail={provider.packages.introTail}
@@ -2186,7 +2208,31 @@ export default function SupportDetail() {
 
   return (
     <>
-      {provider.scene === "ecom" ? (
+      {provider.scene === "aws" ? (
+        <section className="aws-hero" aria-labelledby="aws-hero-title">
+          <div className="container">
+            <div className="aws-hero-copy">
+              <h1 id="aws-hero-title">{provider.title}</h1>
+              <p className="aws-hero-sub">{provider.tagline}</p>
+              <a href="#packages" className="btn aws-hero-cta">View packages <span aria-hidden="true">➔</span></a>
+              <ul className="aws-hero-badges" aria-label="AWS partner credentials">
+                {provider.heroBadges.map((badge) => (
+                  <li key={badge.src}><img src={badge.src} alt={badge.alt} width="80" height="80" decoding="async" /></li>
+                ))}
+              </ul>
+              <div className="aws-hero-trust">
+                <p>Trusted by:</p>
+                <TrustLogos brands={provider.heroClients} variant="images" />
+              </div>
+            </div>
+          </div>
+          <div className="aws-hero-divider" aria-hidden="true">
+            <svg viewBox="0 0 1920 160" preserveAspectRatio="none">
+              <path d="M0 68 C180 24 320 0 480 0 C700 0 1120 135 1450 135 C1660 135 1790 100 1920 69 L1920 160 L0 160 Z" fill="var(--bg)" />
+            </svg>
+          </div>
+        </section>
+      ) : provider.scene === "ecom" ? (
         <section className="hero-banner ecom-hero" style={{ backgroundImage: "url(/icons/hero-ecom-bg.jpg)" }}>
           <div className="container">
             <div className="ecom-hero-row">

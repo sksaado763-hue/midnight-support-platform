@@ -4270,6 +4270,64 @@ section.case-feature--detail { padding: 40px 0; }
 
 .platform-detail { background: var(--bg); padding: 60px 0 88px; overflow-x: clip; }
 
+.site-header.site-header--aws { margin-bottom: calc(-1 * var(--header-h)); background: transparent; }
+.site-header.site-header--aws.is-scrolled { background: #14213f; }
+.aws-hero {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--header-h) + 48px) 0 220px;
+  color: #fff;
+  background: #14213f url("/icons/aws-hero-bg.jpg") center / cover no-repeat;
+}
+@media (min-width: 1200px) {
+  .aws-hero { background: url("/icons/aws-hero-bg.jpg") center -44px / auto calc(100% - 24px) no-repeat, linear-gradient(#14213f, #19376e); }
+}
+.aws-hero-copy { width: 455px; max-width: 100%; }
+.aws-hero h1 { font-size: 48px; line-height: 56px; font-weight: 700; margin: 0 0 10px; }
+.aws-hero-sub { font-family: var(--font-head); font-size: 20px; line-height: 28px; font-weight: 500; }
+.aws-hero .aws-hero-cta {
+  margin-top: 40px;
+  padding: 16px 28px;
+  min-height: 60px;
+  border: 0;
+  border-radius: 6px;
+  font-family: var(--font-head);
+  font-size: 15px;
+  line-height: 28px;
+  font-weight: 900;
+  background: var(--amber);
+  color: #12203f;
+}
+.aws-hero .aws-hero-cta:hover { background: var(--amber-hover); }
+.aws-hero .aws-hero-cta:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
+.aws-hero-badges { display: flex; gap: 4px; margin-top: 56px; }
+.aws-hero-badges li { flex: 0 1 80px; min-width: 0; }
+.aws-hero-badges img { width: 80px; height: auto; aspect-ratio: 1; }
+.aws-hero-trust { margin-top: 40px; }
+.aws-hero-trust > p { font-size: 16px; line-height: 28px; font-weight: 300; margin-bottom: 25px; }
+.trust-marquee.trust-marquee--images { --scroll: 44s; padding: 0; margin: 0; overflow: hidden; mask-image: none; -webkit-mask-image: none; }
+.trust-marquee--images .trust-logos { width: max-content; flex-wrap: nowrap; }
+.trust-marquee--images .trust-set { flex-wrap: nowrap; gap: 32px; padding-right: 32px; }
+.trust-marquee--images .trust-logo { width: 90px; height: 90px; margin: 0; padding: 0; flex: none; animation: none; }
+.trust-marquee--images .trust-logo::before { display: none; }
+.trust-marquee--images img { width: 90px; height: 90px; object-fit: contain; }
+.aws-hero-divider { position: absolute; inset: auto 0 0; height: 160px; pointer-events: none; }
+.aws-hero-divider svg { width: 100%; height: 100%; }
+@media (max-width: 767.98px) {
+  .aws-hero { padding-block: calc(var(--header-h) + 40px) 120px; background-position: 30% center; }
+  .aws-hero h1 { font-size: 36px; line-height: 42px; }
+  .aws-hero-sub { font-size: 18px; line-height: 26px; }
+  .aws-hero .aws-hero-cta { margin-top: 32px; }
+  .aws-hero-badges { margin-top: 40px; }
+  .aws-hero-trust { margin-top: 32px; }
+  .trust-marquee--images .trust-set { gap: 20px; padding-right: 20px; }
+  .trust-marquee--images .trust-logo, .trust-marquee--images img { width: 72px; height: 72px; }
+  .aws-hero-divider { height: 70px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trust-marquee--images .trust-logos { animation: none; }
+}
+
 .platform-detail--aws { --section-gap: 80px; padding-block: var(--section-gap); }
 .platform-detail--aws > .container { display: flex; flex-direction: column; gap: var(--section-gap); }
 .platform-detail--aws > .container > * { margin-block: 0; }

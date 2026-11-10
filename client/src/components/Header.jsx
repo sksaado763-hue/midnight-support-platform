@@ -105,6 +105,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [hiddenOnScroll, setHiddenOnScroll] = useState(false);
+  const [pastTop, setPastTop] = useState(false);
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(null);
   const [caretX, setCaretX] = useState({});
@@ -145,6 +146,7 @@ export default function Header() {
   const overlayOpen = mobileOpen || searchOpen || Object.values(openMenus).some(Boolean);
 
   useEffect(() => {
+    setPastTop(window.scrollY > 0);
     if (overlayOpen) {
       setHiddenOnScroll(false);
       return undefined;
@@ -156,6 +158,7 @@ export default function Header() {
       frame = requestAnimationFrame(() => {
         frame = 0;
         const y = window.scrollY;
+        setPastTop(y > 0);
         if (Math.abs(y - lastY) < 8) return;
         setHiddenOnScroll(y > lastY && y > 160);
         lastY = y;
@@ -213,7 +216,7 @@ export default function Header() {
   }
 
   return (
-    <header className={`site-header${hiddenOnScroll ? " is-hidden" : ""}`} id="masthead">
+    <header className={`site-header${pathname === "/support/aws-support" ? ` site-header--aws${pastTop ? " is-scrolled" : ""}` : ""}${hiddenOnScroll ? " is-hidden" : ""}`} id="masthead">
       <div className="header-inner" ref={headerInner}>
         <Link to="/" className="brand" aria-label="Just After Midnight — home" onClick={closeMobile}>
           <span className="brand-name">

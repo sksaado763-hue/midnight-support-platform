@@ -14,9 +14,9 @@ import { Link } from "react-router-dom";
    below where the agencies page does, and it finishes its copy with an accent
    link the agencies page leaves as plain text. Both come in as props so the
    geometry stays one component. */
-export default function PackageBand({ title, intro, introTail, introGap, tiers, note }) {
+export default function PackageBand({ id, title, intro, introTail, introGap, tiers, note }) {
   return (
-    <section className="pkg-band">
+    <section className="pkg-band" id={id}>
       <div className={`pkg-intro${introGap ? " pkg-intro--gap" : ""}`}>
         <div className="container">
           <div className="pkg-intro-copy reveal">
