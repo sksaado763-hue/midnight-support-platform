@@ -4270,6 +4270,15 @@ section.case-feature--detail { padding: 40px 0; }
 
 .platform-detail { background: var(--bg); padding: 60px 0 88px; overflow-x: clip; }
 
+.platform-detail--aws { --section-gap: 80px; padding-block: var(--section-gap); }
+.platform-detail--aws > .container { display: flex; flex-direction: column; gap: var(--section-gap); }
+.platform-detail--aws > .container > * { margin-block: 0; }
+.platform-detail--aws .pkg-intro { margin-top: 0; }
+
+@media (max-width: 767.98px) {
+  .platform-detail--aws { --section-gap: 48px; }
+}
+
 /* The case-study slab is a page-level band, so inside the sub-page container it
    breaks out the same way the grey video band above it does. */
 .platform-detail .case-feature {

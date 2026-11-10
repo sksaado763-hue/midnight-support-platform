@@ -2311,7 +2311,7 @@ export default function SupportDetail() {
         </section>
       )}
 
-      <section className="platform-detail">
+      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}`}>
         <div className="container">
           {bandOrder.map((key) => (
             <Fragment key={key}>{BANDS[key]}</Fragment>
