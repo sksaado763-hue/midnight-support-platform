@@ -216,7 +216,7 @@ export default function Header() {
   }
 
   return (
-    <header className={`site-header${pathname === "/support/aws-support" ? ` site-header--aws${pastTop ? " is-scrolled" : ""}` : ""}${hiddenOnScroll ? " is-hidden" : ""}`} id="masthead">
+    <header className={`site-header${["/support/aws-support", "/support/azure-support"].includes(pathname) ? ` site-header--aws${pastTop ? " is-scrolled" : ""}` : ""}${hiddenOnScroll ? " is-hidden" : ""}`} id="masthead">
       <div className="header-inner" ref={headerInner}>
         <Link to="/" className="brand" aria-label="Just After Midnight — home" onClick={closeMobile}>
           <span className="brand-name">

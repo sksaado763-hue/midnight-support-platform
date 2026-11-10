@@ -1,8 +1,9 @@
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 const STACK_LAYERS = ["Websites", "Applications", "Platform", "Cloud", "Infrastructure"];
 
-export default function FaqBand({ title, intro, faqs, cta, panel, variant = "wide", padded }) {
+export default function FaqBand({ title, intro, faqs, cta, panel, variant = "wide", padded, artwork }) {
   const detail = variant === "detail";
 
   return (
@@ -18,7 +19,12 @@ export default function FaqBand({ title, intro, faqs, cta, panel, variant = "wid
                   {faq.q}
                   <span className="faq-plus" aria-hidden="true" />
                 </summary>
-                <p>{faq.a}</p>
+                {faq.paragraphs || faq.terms ? (
+                  <div className="faq-answer">
+                    {faq.paragraphs?.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                    {faq.terms && <dl>{faq.terms.map(({ term, definition }) => <Fragment key={term}><dt>{term}</dt><dd>{definition}</dd></Fragment>)}</dl>}
+                  </div>
+                ) : <p>{faq.a}</p>}
               </details>
             ))}
           </div>
@@ -27,7 +33,7 @@ export default function FaqBand({ title, intro, faqs, cta, panel, variant = "wid
           )}
         </div>
         <div className="support-faq-art reveal" aria-hidden="true">
-          <svg viewBox="0 0 727 620" role="presentation" focusable="false">
+          {artwork ? <img src={artwork} alt="" loading="lazy" decoding="async" /> : <svg viewBox="0 0 727 620" role="presentation" focusable="false">
             <defs>
               <mask id="faq-moon">
                 <rect x="0" y="0" width="727" height="620" fill="#ffffff" />
@@ -61,7 +67,7 @@ export default function FaqBand({ title, intro, faqs, cta, panel, variant = "wid
                 </g>
               );
             })}
-          </svg>
+          </svg>}
         </div>
       </div>
 

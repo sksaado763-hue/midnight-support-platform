@@ -89,12 +89,14 @@ export default function WhyBand({ title, intro, cards, accent, variant = "wide" 
         <div className="why-grid">
           {cards.map((card) => (
             <article className="why-card reveal" key={card.title}>
+              {card.icon && <img className="why-card-icon" src={card.icon} width="80" height="80" alt="" />}
               <h3>{card.title}</h3>
               <p>{card.text}</p>
             </article>
           ))}
           {accent && (
             <article className="why-card why-card--accent reveal">
+              {accent.icon && <img className="why-card-icon" src={accent.icon} width="80" height="80" alt="" />}
               <h3>{accent.title}</h3>
               <p>{accent.text}</p>
               <Link to={accent.to} className="why-accent-cta">{accent.cta} <span aria-hidden="true">➔</span></Link>

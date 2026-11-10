@@ -5744,3 +5744,219 @@ section.case-feature--detail { padding: 40px 0; }
 @media (max-width: 620px) {
   .aws-why-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== Azure support & hosting detail page =====
+   Scoped to .platform-detail--azure / .azure-hero so the shared bands keep their
+   measured geometry on every other page. Specificity carries an extra class to
+   outrank the equal-specificity overrides in skin.css. */
+
+/* Hero — dark-11 photograph, left/top anchored, no badges or wave divider. */
+.azure-hero {
+  background: #0d1d3d url("/icons/azure-1920x732_dark-11.jpg") left top / cover no-repeat;
+  padding: calc(var(--header-h) + 72px) 0 96px;
+}
+.azure-hero .aws-hero-copy { width: 475px; }
+.azure-hero h1 { font-weight: 900; letter-spacing: -0.01em; }
+.azure-hero .aws-hero-trust { margin-top: 33px; }
+@media (min-width: 1200px) {
+  .azure-hero { background: #0d1d3d url("/icons/azure-1920x732_dark-11.jpg") left top / cover no-repeat; }
+}
+@media (max-width: 767.98px) {
+  .azure-hero { padding-block: calc(var(--header-h) + 40px) 72px; background-position: 30% top; }
+  .azure-hero .aws-hero-copy { width: 100%; }
+}
+
+.platform-detail--azure { background: #ffffff; padding: 0 0 80px; }
+.platform-detail--azure > .container { width: min(1170px, 100%); padding-inline: 30px; }
+
+/* Intro prose — plain white, not the paper card the hub uses. */
+.platform-detail--azure .plat-what {
+  display: block;
+  background: transparent;
+  border-radius: 0;
+  padding: 72px 0 40px;
+  margin: 0;
+}
+.platform-detail--azure .plat-what h2 {
+  font-family: var(--font-head);
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+  color: #132140;
+}
+.platform-detail--azure .plat-what p { font-size: 16px; line-height: 28px; margin: 0 0 20px; color: var(--navy-text-muted); }
+.platform-detail--azure .plat-what p:last-child { margin-bottom: 0; }
+
+/* Problem / solution — white, 5/2/5 with a dotted centre rule, image list icons. */
+.platform-detail--azure .aws-ps-section { background: transparent; padding: 0 0 64px; }
+.platform-detail--azure .aws-ps-grid { grid-template-columns: 5fr 2fr 5fr; gap: 0; align-items: stretch; }
+.platform-detail--azure .aws-ps-col--problem { grid-column: 1; grid-row: 1; }
+.platform-detail--azure .aws-ps-col--solution { grid-column: 3; grid-row: 1; }
+.platform-detail--azure .aws-ps-grid::before {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  width: 0;
+  height: 100%;
+  border-right: 1px dotted #b9c0cc;
+}
+.platform-detail--azure .aws-ps-col h2 { font-size: 28px; font-weight: 900; color: #132140; margin: 0 0 16px; }
+.platform-detail--azure .aws-ps-col--problem h2,
+.platform-detail--azure .aws-ps-col--solution h2 { color: #132140; }
+.platform-detail--azure .aws-ps-lead { font-size: 16px; line-height: 28px; color: var(--navy-text-muted); margin: 0 0 24px; }
+.platform-detail--azure .aws-ps-col ul { gap: 18px; }
+.platform-detail--azure .aws-ps-col li { display: flex; gap: 12px; align-items: flex-start; padding-left: 0; font-size: 16px; line-height: 28px; color: #334155; }
+.platform-detail--azure .aws-ps-col li::before { content: none; }
+.platform-detail--azure .aws-ps-icon { flex: none; width: 24px; height: 24px; margin-top: 2px; }
+
+/* Video band — grey field, 6/5 split with a one-column offset, pink CTA. */
+.platform-detail--azure .how-it-works { padding: 88px 0; }
+.platform-detail--azure .hiw-grid { grid-template-columns: 6fr 5fr; column-gap: 8.334%; }
+.platform-detail--azure .hiw-copy h2 { font-family: var(--font-head); font-size: 32px; line-height: 1.2; font-weight: 900; color: #12203f; margin: 0 0 20px; }
+.platform-detail--azure .hiw-copy p { font-size: 16px; line-height: 28px; color: #334155; }
+.platform-detail--azure .azure-video-cta { background: #e34168; color: #ffffff; border: 0; border-radius: 6px; font-weight: 700; }
+.platform-detail--azure .azure-video-cta:hover { background: #c72f55; color: #ffffff; }
+
+/* Icon-grid — flat navy field (no starfield), #212E4B cards, white bold heads. */
+.platform-detail--azure .why-band--detail { background: #0d1d3d; }
+.platform-detail--azure .why-band--detail > .hero-stars { display: none; }
+.platform-detail--azure .why-band--detail > .container { padding-top: 96px; padding-bottom: 104px; }
+.platform-detail--azure .why-band--detail .why-intro { width: 66.667%; }
+.platform-detail--azure .why-band--detail .why-intro .band-title { font-size: 40px; line-height: 1.2; font-weight: 900; color: #ffffff; }
+.platform-detail--azure .why-band--detail .why-intro p { color: #ffffff; }
+.platform-detail--azure .why-band--detail .why-grid { margin-top: 64px; }
+.platform-detail--azure .why-band--detail .why-card { background: #212e4b; border-radius: 10px; padding: 32px; }
+.platform-detail--azure .why-band--detail .why-card-icon { width: 80px; height: 80px; object-fit: contain; margin-bottom: 20px; }
+.platform-detail--azure .why-band--detail .why-card h3 { color: #ffffff; font-size: 20px; line-height: 28px; font-weight: 700; margin: 0 0 13px; }
+.platform-detail--azure .why-band--detail .why-card p { color: #ffffff; font-size: 16px; line-height: 28px; font-weight: 300; }
+.platform-detail--azure .why-band--detail .why-card--accent { background: #fabd14; }
+.platform-detail--azure .why-band--detail .why-card--accent h3,
+.platform-detail--azure .why-band--detail .why-card--accent p { color: #132140; }
+.platform-detail--azure .why-band--detail .why-card--accent .why-accent-cta { background: #132140; color: #ffffff; }
+.platform-detail--azure .why-band--detail .why-card--accent .why-accent-cta:hover,
+.platform-detail--azure .why-band--detail .why-card--accent .why-accent-cta:focus { background: #ffffff; color: #132140; }
+
+/* Case-study examples — centred 32px head, horizontal slider with edge arrows. */
+.platform-detail--azure .support-cases--detail { background: #ffffff; padding: 72px 0 80px; }
+.platform-detail--azure .support-cases--detail .section-title { font-size: 32px; line-height: 1.2; font-weight: 900; text-align: center; color: #132140; margin: 0 0 48px; }
+.platform-detail--azure .support-case-slider { position: relative; }
+.platform-detail--azure .support-cases--carousel .support-case-grid {
+  display: flex;
+  gap: 20px;
+  margin-top: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.platform-detail--azure .support-cases--carousel .support-case-grid::-webkit-scrollbar { display: none; }
+.platform-detail--azure .support-cases--carousel .support-case { flex: 0 0 calc(25% - 15px); scroll-snap-align: start; }
+.platform-detail--azure .support-case-art { background: #132140; border-radius: 10px; overflow: hidden; aspect-ratio: 12 / 5; display: flex; align-items: center; justify-content: center; }
+.platform-detail--azure .support-case-art img { width: 100%; height: 100%; object-fit: cover; }
+.platform-detail--azure .support-cases--detail .support-case h3 { color: #132140; font-size: 18px; line-height: 24px; font-weight: 700; margin: 16px 0 0; }
+.platform-detail--azure .support-cases--detail .support-case p { color: var(--navy-text-muted); font-size: 14px; line-height: 20px; font-weight: 300; font-style: normal; margin: 10px 0 0; }
+.platform-detail--azure .support-case-arrow {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  z-index: 3;
+  filter: drop-shadow(0 2px 6px rgba(19, 33, 64, 0.25));
+}
+.platform-detail--azure .support-case-arrow svg { display: block; width: 25px; height: 50px; }
+.platform-detail--azure .support-case-arrow--prev { left: 0; transform: translateY(-50%) rotate(180deg); }
+.platform-detail--azure .support-case-arrow--next { right: -3px; transform: translateY(-50%); }
+.platform-detail--azure .support-case-arrow:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
+.platform-detail--azure .support-case-arrow:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+
+/* Case slabs — flat navy / city photograph, external curved dividers, image art. */
+.platform-detail--azure .case-feature--flat { padding: 48px 0; background-size: cover; background-position: center bottom; }
+.platform-detail--azure .case-feature--flat > .hero-stars,
+.platform-detail--azure .case-feature--flat .case-wave { display: none; }
+.platform-detail--azure .case-feature--image .case-feature-art { padding-inline: 10px; }
+.platform-detail--azure .case-feature--image .case-feature-art img { width: 100%; max-width: 360px; height: auto; border-radius: 8px; }
+.platform-detail--azure .case-feature--flat .case-feature-line { background: linear-gradient(to right, transparent 49.7%, #f5a11d 49.7%, #f5a11d 50.3%, transparent 50.3%); }
+.platform-detail--azure .case-feature--flat .case-feature-label { color: #ffffff; font-size: 18px; line-height: 1.2; font-weight: 900; margin: 0 0 12px; }
+.platform-detail--azure .case-feature--flat h2 { color: #ffffff; font-size: 48px; line-height: 56px; font-weight: 900; margin: 0 0 16px; }
+.platform-detail--azure .case-feature--flat .case-feature-headline { color: #ffffff; font-size: 17px; line-height: 24px; font-weight: 600; margin: 0 0 20px; }
+.platform-detail--azure .case-feature--flat .case-feature-text { color: #ffffff; font-size: 16px; line-height: 28px; font-weight: 300; margin: 0 0 20px; }
+.platform-detail--azure .case-feature--flat .case-feature-cta { background: #ffffff; color: #12203f; }
+.platform-detail--azure .case-feature--flat .case-feature-cta:hover,
+.platform-detail--azure .case-feature--flat .case-feature-cta:focus { background: var(--amber); color: #132140; }
+
+/* Capability cards — warm paper cards on white, centred head + rule + closer. */
+.platform-detail--azure .cap-band--cards { width: 100vw; margin-left: calc(50% - 50vw); background: #ffffff; padding: 56px 0 72px; }
+.platform-detail--azure .cap-band--cards > .container { width: min(1170px, 100%); max-width: none; padding-inline: 30px; }
+.platform-detail--azure .cap-band--cards .band-title { font-size: 34px; line-height: 1.15; font-weight: 900; letter-spacing: -0.01em; color: #16264a; margin: 0 0 14px; }
+.platform-detail--azure .cap-band--cards .band-rule { width: 64px; height: 4px; margin: 0 auto 16px; background: #fabd14; }
+.platform-detail--azure .cap-band--cards .band-sub { font-size: 17px; line-height: 1.6; color: #42506b; max-width: 54ch; margin: 0 auto 48px; }
+.platform-detail--azure .cap-band--cards .cap-grid { max-width: 1300px; margin-inline: auto; gap: 24px; }
+.platform-detail--azure .cap-band--cards .cap-card { background: #f7f6f3; border-color: #ececea; border-radius: 14px; padding: 30px 32px; }
+.platform-detail--azure .cap-band--cards .cap-card h3 { color: #16264a; font-size: 18px; line-height: 1.3; font-weight: 800; margin: 0 0 12px; }
+.platform-detail--azure .cap-band--cards .cap-rule { width: 40px; height: 3px; margin: 0 0 20px; background: #fabd14; }
+.platform-detail--azure .cap-band--cards .cap-card ul { gap: 13px; }
+.platform-detail--azure .cap-band--cards .cap-card li { color: #42506b; font-size: 15px; line-height: 1.5; }
+.platform-detail--azure .cap-band--cards .cap-card li::before { color: #e0a200; }
+.platform-detail--azure .cap-band--cards .cap-closer { margin-top: 48px; text-align: center; }
+.platform-detail--azure .cap-band--cards .cap-closer p { font-size: 16px; line-height: 28px; color: #42506b; margin: 0 0 20px; }
+
+/* Reviews — white field, generous vertical rhythm. */
+.platform-detail--azure .reviews { background: #ffffff; padding: 80px 0; }
+
+/* FAQ — 48px head, pink plus, rocket artwork, glossary definition list. */
+.platform-detail--azure .support-faq--detail { padding: 80px 0; margin: 0; }
+.platform-detail--azure .support-faq--detail h2 { font-size: 48px; line-height: 56px; font-weight: 600; color: #132140; margin: 0 0 20px; }
+.platform-detail--azure .support-faq--detail .support-faq-intro { margin: 0 0 28px; }
+.platform-detail--azure .support-faq--detail .faq-plus::before,
+.platform-detail--azure .support-faq--detail .faq-plus::after { background: #e34168; }
+.platform-detail--azure .support-faq--detail .support-faq-art img { display: block; width: 100%; height: auto; }
+.platform-detail--azure .faq-answer { padding: 0 0 16px; }
+.platform-detail--azure .faq-answer p { padding: 0 0 16px; font-size: 16px; line-height: 28px; font-weight: 300; color: #132140; }
+.platform-detail--azure .faq-answer p:last-child { padding-bottom: 0; }
+.platform-detail--azure .faq-answer dl { margin: 0; display: grid; gap: 16px; }
+.platform-detail--azure .faq-answer dt { font-family: var(--font-head); font-size: 16px; line-height: 24px; font-weight: 700; color: #132140; }
+.platform-detail--azure .faq-answer dd { margin: 4px 0 0; font-size: 15px; line-height: 26px; font-weight: 300; color: var(--navy-text-muted); }
+
+/* Covers — dark-15 photograph, white centred head, padded cards, image icons. */
+.platform-detail--azure .pii-band--detail { background: #0d1d3d url("/icons/azure-1920x732_dark-15.jpg") center / cover no-repeat; padding: 100px 0; }
+.platform-detail--azure .pii-band--detail > .hero-stars { display: none; }
+.platform-detail--azure .pii-band--detail .band-title { color: #ffffff; font-size: 34px; line-height: 56px; font-weight: 500; margin: 0 0 24px; }
+.platform-detail--azure .pii-band--detail .pii-grid { margin-top: 48px; }
+.platform-detail--azure .pii-band--detail .pii-card { padding: 40px; background: rgba(13, 29, 61, 0.55); border-radius: 10px; }
+.platform-detail--azure .pii-band--detail .pii-icon { width: 80px; height: 80px; }
+.platform-detail--azure .pii-band--detail .pii-icon img { width: 80px; height: 80px; object-fit: contain; }
+.platform-detail--azure .pii-band--detail .pii-card h3 { color: #ffffff; font-size: 20px; line-height: 28px; font-weight: 600; margin: 24px 0 16px; }
+.platform-detail--azure .pii-band--detail .pii-card p { color: #ffffff; font-size: 16px; line-height: 28px; font-weight: 300; }
+
+@media (max-width: 991.98px) {
+  .platform-detail--azure .aws-ps-grid { grid-template-columns: 1fr; gap: 40px; }
+  .platform-detail--azure .aws-ps-grid::before { display: none; }
+  .platform-detail--azure .aws-ps-col--problem,
+  .platform-detail--azure .aws-ps-col--solution { grid-column: auto; grid-row: auto; }
+  .platform-detail--azure .hiw-grid { grid-template-columns: 1fr; gap: 28px; }
+  .platform-detail--azure .cap-band--cards .cap-grid { grid-template-columns: repeat(2, 1fr); }
+  .platform-detail--azure .support-cases--carousel .support-case { flex: 0 0 calc(50% - 10px); }
+  .platform-detail--azure .pii-band--detail .pii-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 767.98px) {
+  .platform-detail--azure .plat-what { padding: 48px 0 32px; }
+  .platform-detail--azure .plat-what h2 { font-size: 32px; }
+  .platform-detail--azure .why-band--detail .why-intro { width: 100%; }
+  .platform-detail--azure .why-band--detail .why-intro .band-title { font-size: 30px; }
+  .platform-detail--azure .why-band--detail .why-grid { grid-template-columns: 1fr; }
+  .platform-detail--azure .support-cases--carousel .support-case { flex: 0 0 100%; }
+  .platform-detail--azure .support-case-arrow--prev { left: 0; }
+  .platform-detail--azure .support-case-arrow--next { right: 0; }
+  .platform-detail--azure .cap-band--cards .cap-grid { grid-template-columns: 1fr; }
+  .platform-detail--azure .case-feature--flat h2 { font-size: 34px; line-height: 40px; }
+  .platform-detail--azure .support-faq--detail h2 { font-size: 34px; line-height: 42px; }
+  .platform-detail--azure .pii-band--detail { padding: 64px 0; }
+}

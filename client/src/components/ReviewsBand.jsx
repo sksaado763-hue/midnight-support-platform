@@ -43,11 +43,11 @@ const REVIEWS = [
   },
 ];
 
-export default function ReviewsBand() {
+export default function ReviewsBand({ reviews = REVIEWS }) {
   const trackRef = useRef(null);
   const [perView, setPerView] = useState(2);
   const [page, setPage] = useState(0);
-  const pages = Math.ceil(REVIEWS.length / perView);
+  const pages = Math.ceil(reviews.length / perView);
 
   useEffect(() => {
     const wide = window.matchMedia("(min-width: 768px)");
@@ -86,7 +86,12 @@ export default function ReviewsBand() {
               setPage(Math.round(track.scrollLeft / Math.max(pageStep(track), 1)));
             }}
           >
-            {REVIEWS.map((review) => (
+            {reviews.map((review) => {
+              const companyTo = review.companyUrl || review.to || `/case-studies/${review.slug}`;
+              const ctaTo = review.to || `/case-studies/${review.slug}`;
+              const companyExternal = /^https?:\/\//i.test(companyTo);
+              const ctaExternal = /^https?:\/\//i.test(ctaTo);
+              return (
               <article className="review" key={review.slug}>
                 <div className="review-wrap">
                   <div className="review-top">
@@ -97,13 +102,22 @@ export default function ReviewsBand() {
                     <p className="review-quote">{review.quote}</p>
                   </div>
                   <div className="review-bottom">
-                    <Link className="review-company" to={`/case-studies/${review.slug}`}>{review.client}</Link>
+                    {companyExternal ? (
+                      <a className="review-company" href={companyTo} target="_blank" rel="noopener noreferrer">{review.client}</a>
+                    ) : (
+                      <Link className="review-company" to={companyTo}>{review.client}</Link>
+                    )}
                     <p className="review-position">{review.role}</p>
-                    <Link className="btn review-cta" to={`/case-studies/${review.slug}`}>Read the case study</Link>
+                    {review.cta !== false && (ctaExternal ? (
+                      <a className="btn review-cta" href={ctaTo}>Read the case study</a>
+                    ) : (
+                      <Link className="btn review-cta" to={ctaTo}>Read the case study</Link>
+                    ))}
                   </div>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
         <ul className="review-dots">
@@ -112,7 +126,7 @@ export default function ReviewsBand() {
               <button
                 type="button"
                 className={`review-dot${page === index ? " is-active" : ""}`}
-                aria-label={`Show testimonials ${index * perView + 1} to ${Math.min((index + 1) * perView, REVIEWS.length)}`}
+                aria-label={`Show testimonials ${index * perView + 1} to ${Math.min((index + 1) * perView, reviews.length)}`}
                 aria-current={page === index || undefined}
                 onClick={() => showPage(index)}
               />

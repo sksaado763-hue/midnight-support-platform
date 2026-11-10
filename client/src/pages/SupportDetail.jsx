@@ -331,41 +331,189 @@ const PROVIDERS = [
   {
     slug: "azure-support",
     name: "Azure",
-    title: "24/7 support for Azure",
-    tagline: "AKS, App Service, Functions and Entra — watched, patched and answered for, every hour of every day.",
-    intro: "Azure estates tend to accrete: a subscription per project, an App Service plan per experiment, an Entra tenant nobody wants to own. We take the whole subscription group onto our rota so the estate stays legible and the alerts reach someone awake.",
-    capabilities: [
-      { title: "Every night", items: ["Alerting and incident response on a published rota", "Patch and runtime upgrades inside your approved window", "Backup verification and restore drills", "Certificate, domain and DNS expiry watch"] },
-      { title: "Every month", items: ["Subscription and cost review with a delete list", "Entra role and service-principal drift review", "Quota and scaling-policy check", "A plain-language report your finance team can read"] },
+    scene: "azure",
+    title: "Azure Managed Support & Hosting",
+    tagline: "24/7 support for mission-critical Azure environments",
+    heroClients: [
+      { name: "Tesco", src: "/icons/azure-Tesco.webp" },
+      { name: "Translink", src: "/icons/azure-Translink-scaled.png" },
+      { name: "Third Space", src: "/icons/azure-Third-Space-scaled.png" },
+      { name: "Paylocity", src: "/icons/azure-Paylocity.png" },
+      { name: "Emperor", src: "/icons/azure-Emperor.webp" },
+      { name: "Formica", src: "/icons/azure-Formica.webp" },
+      { name: "Riverside Health", src: "/icons/azure-Riverside-Health.svg" },
+      { name: "University of Chicago", src: "/icons/azure-Uni-of-Chicago.png" },
     ],
-    coverage: {
-      title: "The Azure work that happens while you sleep",
-      intro: "Subscriptions, tenants and the applications on top of them, handled by named engineers with a written handover at the end of every shift.",
-      groups: [
-        { title: "Compute & containers", items: ["AKS node pools patched in window", "App Service plans sized to traffic", "Functions scale-out limits watched", "Container apps and their quotas reviewed"] },
-        { title: "Data & storage", items: ["Azure SQL query and index reviews", "Cosmos DB throughput and partition keys", "Blob lifecycle and immutability checks", "Redis memory and failover watches"] },
-        { title: "Network & edge", items: ["Front Door health probes and routing", "Private endpoint reachability analysis", "VNet and NSG drift reviews", "Certificate and DNS expiry watch"] },
-        { title: "Identity & spend", items: ["Entra access reviews on a rota", "Stale service principals removed", "Licence sprawl counted and cut", "Subscription spend reviewed monthly"] },
-        { title: "Incident & response", items: ["Severity grading and SLA clocks", "Microsoft support cases chased", "Bridge calls during major incidents", "Post-incident write-ups with actions"] },
-        { title: "Change & governance", items: ["Policy exceptions logged and owned", "Landing-zone and blueprint checks", "Release windows agreed in writing", "Backup and restore drills scheduled"] },
-      ],
-      closer: {
-        text: "Send the subscriptions that matter and we will take those first — the rest follows on the same rota.",
-        cta: "Talk about your Azure estate",
-        to: "/contact",
+    whatTitle: <>What is 24/7 Azure support<br />and hosting?</>,
+    whatIntro: [
+      <><strong>We're your Azure infrastructure fire brigade.</strong> We monitor and triage your Azure cloud environment, the application it runs and any 3rd-party integrations. As the go-to support people, our mission is to reclaim the word downtime for putting your feet up. Whatever the architecture or support window, we've got you covered.</>,
+      "Here's how:",
+    ],
+    problemSolution: {
+      problem: {
+        title: "Your problem",
+        lead: "You've got an Azure stack you can't support around the clock – but you have some very good reasons",
+        icon: "/icons/azure-Cross-SVG.svg",
+        points: [
+          "Whatever support function you're using isn't full stack: it doesn't cover your CMS or third-party integrations",
+          "Your team isn't made of normal people and vampires: you can't cover your application 24/7, 365",
+          "Your devs need to focus on developing: every support ticket that comes through sees them downing tools and dropping balls",
+        ],
+      },
+      solution: {
+        title: "Our solution",
+        lead: "Your problems are what gets us out of bed in the morning – and not the night",
+        icon: "/icons/azure-Moon-SVG.svg",
+        points: [
+          "We offer true follow-the-sun support: our support teams are spread across 4 time zones so they're on any ticket in minutes",
+          "We're buck-stopping and full-stack: wherever the point of failure occurs is our wheelhouse; code, cloud or integration",
+          "24/7 support and incident management has been our raison d'être since day dot: we build intelligent runbooks and slot seamlessly into your existing team",
+        ],
       },
     },
-    fitWith: [
-      "You run production across several Azure subscriptions",
-      "Your alerts currently land on a distribution list",
-      "Compliance needs evidence of patching and backups, not promises",
-      "You want one rota covering Azure and the application on top of it",
+    video: {
+      title: "See how we cover your Azure environment",
+      lead: "This video will help you understand how we cover your Azure environment 24/7, 365, out of hours – or whenever you need.",
+      closer: "To explore your options in more detail…",
+      cta: "Take a look at our packages!",
+      to: "#packages",
+      poster: "/icons/azure-Downtime-gif.webp",
+    },
+    why: {
+      title: "Not your neighbourhood Azure support",
+      intro: <>But still pretty heroic. This isn't the kind of support offered by cookie-cutter, old-guard hosting companies. <strong>Here's how it works.</strong></>,
+      cards: [
+        { title: "Microservices experts", icon: "/icons/azure-puzzle-yellow-e1722955467926.webp", text: "While some teams struggle with microservice-based architectures, we excel through observability. Our approach ensures high availability and performance by providing deep insights." },
+        { title: "Container experts", icon: "/icons/azure-block-arrows-yellow-e1723042150435.webp", text: "What's a microservices expert without a little Kubernetes magic. Whether your containerised app is microservice-based or not. We're cloud-native support experts." },
+        { title: "SaaS experts", icon: "/icons/azure-route-yellow-e1723042373466.webp", text: "We specialise in supporting SaaS applications on Azure, ensuring high availability, optimal performance, and a seamless user experience. Our expertise helps you maximise the potential of Azure's services and infrastructure for your SaaS business." },
+        { title: "Follow-the-sun", icon: "/icons/azure-bed-yellow-e1723040297931.webp", text: "With teams of engineers across 4 time zones, we can always have an engineer on your ticket within minutes. When you clock off, we clock on." },
+        { title: "Full-stack", icon: "/icons/azure-handshake-yellow-e1723117997676.webp", text: "No piece of the puzzle is too small, too big or too complex for us to handle. Cloud, code, integrations, end-user requests. Whatever your support gap is we fill it." },
+        { title: "Tech-enabled; person-led", icon: "/icons/azure-puzzle-2-yellow-e1723457815994.webp", text: "We keep a watchful eye on your solution via proprietary support platform Mission Control. But we fix things with our own two hands. Working with JAM, you'll always find an expert in your solution at the other end of the phone or Slack channel." },
+        { title: "Backed by DevOps", icon: "/icons/azure-cog-arrow-yellow-e1723119842127.webp", text: "Our Azure support comes with the option for DevOps support. This can range from supplying DevOps engineers out of hours to owning and managing your pipeline end to end." },
+        { title: "Backed by best-in-show design", icon: "/icons/azure-hand-tick-yellow-e1722955432551.webp", text: "If your Azure environment is outdated, we can help you modernise and optimise it. Our team specialises in designing scalable, composable architectures using the latest Azure services and best practices." },
+      ],
+      accent: { title: "Hitting the mark?", icon: "/icons/azure-output-onlinepngtools-1.png", text: "If you like what you're hearing, there's plenty more where that came from. Get in touch with one of our Azure experts today and have your solution protected come rain or shine.", cta: "Give us a shout", to: "/contact" },
+    },
+    cases: {
+      title: "Read our Azure case studies",
+      carousel: true,
+      studies: [
+        { slug: "formica", client: "Formica", headline: "Building a solid managed hosting solution for this global company", image: "/icons/azure-Formica-V2.png", to: "https://www.justaftermidnight247.com/case-study/formica/" },
+        { slug: "translink", client: "Translink", headline: "Ensuring Northern Irish passengers a smooth journey", image: "/icons/azure-Translink-V2.png", to: "https://www.justaftermidnight247.com/case-study/translink/" },
+        { slug: "guide-dogs", client: "Guide Dogs", headline: "Working together with Guide Dogs to support their application and infrastructure", image: "/icons/azure-Guide-Dogs-V2.png", to: "https://www.justaftermidnight247.com/case-study/guide-dogs/" },
+        { slug: "tesco-plc", client: "Tesco PLC", headline: "Supporting 6 multinational Tesco sites around the clock", image: "/icons/azure-Tesco-V2-2.png", to: "https://www.justaftermidnight247.com/case-study/tesco-plc/" },
+      ],
+    },
+    caseStudy: {
+      split: "4-1-7",
+      study: {
+        slug: "tesco-plc", client: "Tesco", headline: "24/7 Azure support for Tesco's PLC sites", image: "/icons/azure-Tesco-V2-1.webp", bgColor: "#122142", dividers: { before: "#122142", after: "#122142" },
+        paragraphs: [
+          "Just After Midnight partnered with Radley Yeldar to provide 24/7 support for six of Tesco's key PLC sites hosted on Azure. These sites are critical for investor information, making uptime essential for Tesco's brand.",
+          "Our Azure-certified engineers quickly onboarded Tesco, ensuring rapid issue resolution in under 8 minutes with 24/7 monitoring and support.",
+        ],
+        to: "https://www.justaftermidnight247.com/case-study/tesco-plc/", cta: "Read our case study",
+      },
+    },
+    coverage: {
+      variant: "cards",
+      title: "Don't you wish you had a team that could handle it all?",
+      intro: "We're a one-and-done partner for delivering world-class applications",
+      groups: [
+        { title: "Incident and response management", items: ["Incident management (IM)", "Root cause analysis (RCA)", "Incident response management", "Incident triage", "Security incident response"] },
+        { title: "Service continuity and recovery", items: ["Application rollbacks", "Restarting services", "Backup and restore procedures", "Manual scaling of resources"] },
+        { title: "Access and security management", items: ["IP whitelisting", "Access management", "Password resets", "User account provisioning", "User removal", "Access control"] },
+        { title: "Quality and process improvement", items: ["Service validation and testing", "Knowledge base management", "Post-incident review (PIR)", "Vendor liaison", "Third-party escalation"] },
+        { title: "Observability and performance", items: ["System health checks", "Monitoring, alerts and telemetry", "Performance monitoring", "Network diagnostics and flow analysis", "End-to-end latency analysis", "Capacity monitoring and forecasting"] },
+        { title: "Service management and operations", items: ["SLA management", "Change management", "Patch management", "Downtime reporting", "Outage communication", "Configuration management", "Service request management", "Escalation management"] },
+      ],
+      closer: { text: "It's simple. You tell us your requirements and we plug in wherever you need us.", cta: "So, where can we help?", to: "#site-footer" },
+    },
+    slab2: {
+      split: "4-1-7",
+      study: {
+        slug: "formica", client: "Formica Group", headline: "Global Azure support for Formica's website", image: "/icons/azure-Formica.webp", background: "/icons/azure-JAM-City-BG-1.webp", dividers: { before: "#12203f" },
+        paragraphs: [
+          "Just After Midnight partnered with Formica Group to manage their global website using Azure, ensuring high availability and scalability across key regions like the USA, Europe, and Asia.",
+          "We deployed 7 Azure PaaS environments, providing 24/7 support and fast resolutions with a 30-minute SLA, helping Formica develop its future cloud strategy.",
+        ],
+        to: "https://www.justaftermidnight247.com/case-study/formica/",
+      },
+    },
+    reviews: [
+      { slug: "the-body-coach", client: "The Body Coach", role: "CEO", quote: "We want our users to be able to work out at a time that suits them, day or night. I can sleep easy knowing that Just After Midnight's team of experts are taking care of any issues with the app, so I can focus on what I do best", companyUrl: "https://www.thebodycoach.com/", to: "https://www.justaftermidnight247.com/case-study/the-body-coach-app/" },
+      { slug: "grey", client: "Grey", role: "CEO", quote: "Just After Midnight was recommended to Grey as a potential partner to leverage for an upcoming Super Bowl web activation the team was producing on behalf of Volvo Cars USA. Sam, Arif and team worked diligently on their side to architect a best-in-class AWS solution. The site ran without issue. I would definitely recommend JAM for any managed cloud solution!", companyUrl: "https://www.grey.com/", to: "https://www.justaftermidnight247.com/case-study/tums-super-bowl-campaign-2021/" },
+      { slug: "dla-piper", client: "DLA Piper", role: "CEO", quote: "I would not hesitate to recommend JAM based on the service they have provided to us. They have been very responsive and have done so in a positive and professional fashion. The team clearly have a thorough knowledge of Sitecore and AWS and have been able to explain things to us in language we can understand.", companyUrl: "https://www.dlapiper.com/en", to: "https://www.justaftermidnight247.com/case-study/dla-piper/" },
+      { slug: "banyan-tree", client: "Banyan Tree", role: "Head, Information Technology", quote: "Quick and fast support and consulting on the overall web, DevOps and hosting needs. Very helpful as always.", companyUrl: "https://www.banyantree.com/", cta: false },
+      { slug: "rooftop-film-club", client: "Rooftop Film Club", role: "Product Manager", quote: "JAM's excellent first-line service means no more late-night wake-up calls – responding to our clients and resolving issues any hour of the day.", companyUrl: "https://rooftopfilmclub.com/", to: "https://www.justaftermidnight247.com/case-study/rooftop-film-club/" },
+      { slug: "emperor", client: "Emperor", role: "Technical Director", quote: "Just After Midnight (JAM) has been providing us with 24/7/365 setup and support services to deliver the many financial reporting websites that we deliver each year. We count them as one of our critical trusted partners.", companyUrl: "https://emperor.works/", to: "https://www.justaftermidnight247.com/case-study/emperor/" },
     ],
-    faqs: [
-      { q: "Do you work with our Microsoft partner?", a: "Happily. They keep the licence relationship and the roadmap; we keep the nights and the handover." },
-      { q: "Can you take over a landing zone we did not build?", a: "Yes. We start read-only, map what exists against what the zone assumes, and write up the gaps before touching anything." },
-      { q: "What about hybrid estates?", a: "ExpressRoute and VPN links into on-premises are on the cover too, as long as we can see the Azure side of the wire." },
-    ],
+    faq: {
+      title: "24/7 Support FAQ",
+      intro: "For a no-nonsense look at what we support, take a look at our packages. Still have questions about our support? Take a look below.",
+      artwork: "/icons/azure-Rocket-stack2.webp",
+      items: [
+        { q: "What is Azure application support?", paragraphs: ["Application support means supporting everything in the application layer. App support engineers will be au fait with a wide array of languages, experience platforms (such as Kentico or Umbraco) as well as other dev-y stuff.", "When we provide app support, we make sure your app stays up, performs well and keeps delivering value to your customers."] },
+        { q: "What is Azure infrastructure support?", paragraphs: ["Same deal, but for your cloud. When we take care of your Azure infrastructure, we monitor and triage for any hiccups, ensuring it runs smoothly, cheaply or however you like it.", <>We also build, review and optimise cloud infrastructure. So if you're in the market for more than support, <Link to="/cloud">check out some of our other cloud services.</Link></>] },
+        { q: "What is full-stack support?", a: "Full-stack support is just the two above services combined. Although, with applications growing increasingly distributed, full-stack often means supporting 3rd-party integrations, too. That's why Mission Control (our bespoke full-stack solution) is indispensable." },
+        { q: "What is the difference between cloud support and DevOps?", a: "Cloud/infrastructure support has some crossover with both DevOps and CloudOps. Essentially, if you're looking to fine-tune your deployments, performance or cloud processes, we'll be able to help; what you call it is up to you!" },
+        { q: "How does it work?", paragraphs: ["Our process is simple, just get in touch and we'll take it from there. We work out what our support team will cover and when.", "Your business needs set the scope of the project. Maybe you need application support and incident resolution. Maybe you only need proactive monitoring so your own support teams can pick up tickets. It's up to you.", "From website security to app support, from website maintenance to the ongoing monitoring of your cloud services – our mission is to fit like a glove."] },
+        { q: "Need a glossary for our packages terms?", terms: [
+          { term: "Monitoring", definition: "Continuous tracking of your systems, applications, or cloud infrastructure to ensure optimal performance, uptime, and security. Monitoring includes real-time alerts for anomalies, potential bottlenecks, or system failures that may require immediate attention." },
+          { term: "L1 Communications", definition: "The first line of communication in support, dealing with basic technical issues. L1 support handles tasks such as troubleshooting simple problems, resetting passwords, and answering general user queries, before escalating more complex issues." },
+          { term: "<30 Minute Response Time", definition: "A commitment to acknowledge and respond to any support request or issue within 30 minutes, ensuring that problems are addressed swiftly to minimise downtime and potential impact on business operations." },
+          { term: "L2 Resolution", definition: "Level 2 support involves more advanced troubleshooting and technical expertise, dealing with complex issues that L1 cannot resolve, including application debugging, database issues, or network performance problems." },
+          { term: "Incident Reporting", definition: "After resolving an issue, we provide a detailed report outlining what happened, how it was addressed, and any preventive actions that should be taken in the future." },
+          { term: "Recommendations", definition: "Alongside solving problems, we offer expert suggestions to optimise your infrastructure or applications, from security improvements to performance enhancements based on our analysis." },
+          { term: "Infrastructure or Application Only", definition: "Choose to limit our support to your cloud infrastructure or specific applications. We can maintain your Azure environment or handle your custom eCommerce platform, based on your needs." },
+          { term: "Faster SLA Response Times", definition: "If the standard response time isn't enough for your business, we offer customisable Service Level Agreements with quicker response times to ensure issues are handled with the utmost urgency." },
+          { term: "Custom Code", definition: "Support for custom-built applications or software. Our team understands, troubleshoots, and optimises code that isn't part of off-the-shelf solutions." },
+          { term: "Custom Applications", definition: "Beyond standard platforms, we support fully bespoke applications, whether designed in-house or by a third-party developer, maintaining and optimising them to your needs." },
+          { term: "DevOps Support", definition: "Managing and automating your software development pipelines and infrastructure, including Continuous Integration/Continuous Deployment, infrastructure as code, and tools for faster, more reliable releases." },
+          { term: "Ticket Cap", definition: "Set a cap on the support requests we handle within a given time frame to control costs and prioritise critical issues while leaving routine tasks to your in-house team." },
+        ] },
+      ],
+      panel: { title: "Got more questions?", text: "Anything else? We're here to answer your questions about supporting mission-critical digital products 24/7, 365.", cta: "Drop us a line", to: "/contact" },
+    },
+    packages: {
+      title: "Our service packages",
+      intro: "It's simple – you pick the level of support you need and we provide it.",
+      introTail: { lead: "If you're in need of something bespoke, just", link: "get in touch", to: "/contact" },
+      tiers: [
+        { tab: "Simple reassurance", name: "FIRST-LINE SUPPORT", items: ["Monitoring", "L1 Communications", "<30 Minute Response Time"], cta: "Select package", hover: "Contact", to: "/contact?package=first-line" },
+        { tab: "Overnight & weekends", name: "OUT-OF-HOURS SUPPORT", items: ["Monitoring", "L1 Communications", "L2 Resolution", "Incident Reporting", "Recommendations", "<30 Minute Response Time"], cta: "Select package", hover: "Contact", to: "/contact?package=out-of-hours" },
+        { tab: "Complete cover", name: "24/7 SUPPORT", items: ["Monitoring", "L1 Communications", "L2 Resolution", "Incident Reporting", "Recommendations", "<30 Minute Response Time"], cta: "Select package", hover: "Contact", to: "/contact?package=24-7" },
+        { tab: "A tailored service", name: "CUSTOM & ADD-ONS", items: ["Infrastructure or Application Only", "Faster SLA Response Times", "Custom Code", "Custom Applications", "DevOps Support", "Ticket Cap", "Anything else? Chat to our team and we can make it work"], cta: "Learn more", hover: "Contact", to: "/contact?package=custom" },
+      ],
+      note: { lead: "Need build solutions, not support?", text: "If you're more interested in refactoring or modernising your infrastructure, check out", link: "our solutions page", to: "/cloud" },
+    },
+    covers: {
+      title: "Whatever your Azure project, we've got you covered.",
+      cards: [
+        { title: "Protect revenue and reputation", icon: <img src="/icons/azure-heart-shield-80x80-svg.svg" alt="" width="80" height="80" />, text: "The average cost of downtime is $5,600 per minute. We're not a budget option, but we're certainly cheaper than that. Next, factor in the cost to your reputation. Customers, partners and internal stakeholders can take a dim view of major outages. Get secured. Stop worrying." },
+        { title: "Save your team from burnout", icon: <img src="/icons/azure-superhero-shield-80x80-svg.svg" alt="" width="80" height="80" />, text: "One of the many support workarounds we encounter is phone-by-the-bed support. These kinds of rotas wear out solution- and design-oriented devs who enjoy building, not fixing. Realign your team and get them back to the what and when you hired them for." },
+        { title: "Innovate with confidence", icon: <img src="/icons/azure-lightbulb-80x80-svg.svg" alt="" width="80" height="80" />, text: "Without a robust support function, you can't innovate at pace. With a team who know your application like the backs of their hands, on call day and night, you can accelerate without worrying about a crash. Deploy features, refactor – go forward." },
+      ],
+    },
+    glance: {
+      eyebrow: "At a glance",
+      title: "Just After Midnight's support offering",
+      items: [
+        { q: "What technologies do you support?", a: <>We support cloud platforms (<strong>AWS, Azure, GCP, Alibaba Cloud</strong>), CMS and DXP platforms (<strong>Sitecore, Kentico, Umbraco, AEM, Optimizely, WordPress, Drupal, Magento</strong>), custom-built applications, edge/CDN networks, and third-party integrations including APIs.</> },
+        { q: "What support windows are available?", a: <><strong>24/7/365</strong> support, out-of-hours support and overnight support, weekends-only support, or a custom schedule built around your needs.</> },
+        { q: "What functions does your support team cover?", a: "Our support covers monitoring and alerting, incident management and triage, root cause analysis (RCA), SRE and DevOps support, observability, security incident response, backup and recovery, change and patch management, and third-party vendor escalation." },
+        { q: "What industries do you support?", a: "We work with businesses and organisations in SaaS, eCommerce, healthtech, legaltech, fintech, government, manufacturing, logistics, and digital agencies – and many more." },
+        { q: "What security accreditations do you hold?", a: <>We are <strong>ISO 27001</strong> certified, <strong>Cyber Essentials Plus</strong> verified, and <strong>PCI DSS</strong> compliant.</> },
+      ],
+    },
+    impacts: {
+      q: "What are the impacts of incidents on teams and revenue?",
+      a: "According to industry sources, downtime costs businesses between $540,000 (Splunk, The Hidden Costs of Downtime) and $2 million (New Relic, Observability Forecast 2025) per hour for many high-impact outages. Incidents also consume significant engineering capacity: the median engineering team spends 30% of its time addressing disruptions (New Relic, Observability Forecast 2024).",
+      sourcesHead: "Sources",
+      sources: ["Splunk, The Hidden Costs of Downtime (2000 Global Executives surveyed)", "New Relic, Observability Forecast 2025 (1,700 global technology professionals surveyed)", "New Relic Observability Forecast 2024 (1,700 global technology professionals surveyed)"],
+    },
+    insights: { title: "Latest Insights from JAM", cta: "See more articles", to: "/insights", variant: "blog" },
+    bands: ["intro", "problemSolution", "video", "why", "cases", "slab", "coverage", "slab2", "reviews", "faq", "packages", "covers", "glance", "impacts", "insights"],
   },
   {
     slug: "gcp-support",
@@ -1580,9 +1728,9 @@ export default function SupportDetail() {
     filmRef.current?.play().catch(() => {});
   };
   useTitle(provider ? `${provider.pageTitle || provider.title} | Just After Midnight` : "24/7 Support | Just After Midnight");
-  const { data: caseStudies } = useApi(provider?.caseStudy || provider?.cases ? "/api/case-studies" : null);
+  const { data: caseStudies } = useApi(provider?.caseStudy?.slug || provider?.cases?.slugs || provider?.slab2?.slug ? "/api/case-studies" : null);
   const { data: articles } = useApi(provider?.insights ? "/api/articles" : null);
-  const featured = provider?.caseStudy ? (caseStudies || []).find((study) => study.slug === provider.caseStudy.slug) : null;
+  const featured = provider?.caseStudy?.study || (caseStudies || []).find((study) => study.slug === provider?.caseStudy?.slug);
 
   if (!provider) return <NotFound />;
 
@@ -1682,7 +1830,10 @@ export default function SupportDetail() {
               <p className="aws-ps-lead">{provider.problemSolution.problem.lead}</p>
               <ul>
                 {provider.problemSolution.problem.points.map((pt) => (
-                  <li key={pt}>{pt}</li>
+                  <li key={pt}>
+                    {provider.problemSolution.problem.icon && <img className="aws-ps-icon" src={provider.problemSolution.problem.icon} alt="" width="24" height="24" decoding="async" />}
+                    {pt}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -1691,7 +1842,10 @@ export default function SupportDetail() {
               <p className="aws-ps-lead">{provider.problemSolution.solution.lead}</p>
               <ul>
                 {provider.problemSolution.solution.points.map((pt) => (
-                  <li key={pt}>{pt}</li>
+                  <li key={pt}>
+                    {provider.problemSolution.solution.icon && <img className="aws-ps-icon" src={provider.problemSolution.solution.icon} alt="" width="24" height="24" decoding="async" />}
+                    {pt}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -1713,7 +1867,17 @@ export default function SupportDetail() {
               </svg>
             </div>
           )}
-          <section className="how-it-works" style={provider.slug === "ecommerce" ? { backgroundColor: "#f2f2f2", marginTop: 0 } : undefined}>
+          {provider.scene === "azure" && (
+            <div className="global-curved-divider global-curved-divider--up">
+              <svg width="1920" height="73" viewBox="0 0 1920 73" fill="none">
+                <path d="M1920 72.9999L0 73.0012L3.42974e-06 33.7695L169.182 16.1465C375.835 -5.37986 584.165 -5.37991 790.818 16.1465L1129.18 51.3927C1335.83 72.9191 1544.16 72.9191 1750.82 51.3928L1920 33.7697L1920 72.9999Z" fill="#eaeaea" />
+              </svg>
+            </div>
+          )}
+          <section
+            className="how-it-works"
+            style={provider.slug === "ecommerce" ? { backgroundColor: "#f2f2f2", marginTop: 0 } : provider.scene === "azure" ? { backgroundColor: "#eaeaea", marginTop: 0 } : undefined}
+          >
             <div className="container">
               <div className="hiw-grid">
                 <div className="hiw-media reveal">
@@ -1721,7 +1885,7 @@ export default function SupportDetail() {
                     ref={filmRef}
                     className="hiw-video"
                     src="/video/brand-video.mp4"
-                    poster="/video/brand-poster.jpg"
+                    poster={provider.video.poster || "/video/brand-poster.jpg"}
                     preload="none"
                     controls={playing}
                     playsInline
@@ -1739,7 +1903,13 @@ export default function SupportDetail() {
                   <h2>{provider.video.title}</h2>
                   <p>{provider.video.lead}</p>
                   {provider.video.closer && <p>{provider.video.closer}</p>}
-                  {provider.video.cta && <Link to="/support" className="btn btn-navy btn-lg">{provider.video.cta}</Link>}
+                  {provider.video.cta && (
+                    provider.video.to?.startsWith("#") ? (
+                      <a href={provider.video.to} className={`btn btn-lg${provider.scene === "azure" ? " azure-video-cta" : " btn-navy"}`}>{provider.video.cta}</a>
+                    ) : (
+                      <Link to={provider.video.to || "/support"} className="btn btn-navy btn-lg">{provider.video.cta}</Link>
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -1748,6 +1918,13 @@ export default function SupportDetail() {
             <div className="global-curved-divider global-curved-divider--down" style={{ backgroundColor: "#132140" }}>
               <svg width="1920" height="89" viewBox="0 0 1920 89" fill="none">
                 <path d="M0 0H915.5H1920V55L1750.82 72.623C1544.17 94.1494 1335.83 94.1495 1129.18 72.6231L790.818 37.377C584.165 15.8506 375.835 15.8505 169.182 37.3769L0 55V0Z" fill="#f2f2f2" />
+              </svg>
+            </div>
+          )}
+          {provider.scene === "azure" && (
+            <div className="global-curved-divider global-curved-divider--down" style={{ backgroundColor: "#0d1d3d" }}>
+              <svg width="1920" height="89" viewBox="0 0 1920 89" fill="none">
+                <path d="M0 0H915.5H1920V55L1750.82 72.623C1544.17 94.1494 1335.83 94.1495 1129.18 72.6231L790.818 37.377C584.165 15.8506 375.835 15.8505 169.182 37.3769L0 55V0Z" fill="#eaeaea" />
               </svg>
             </div>
           )}
@@ -1891,8 +2068,9 @@ export default function SupportDetail() {
         <CaseStudiesBand
           variant="detail"
           tightHeader={provider.cases.tightHeader}
+          carousel={provider.cases.carousel}
           title={provider.cases.title}
-          studies={provider.cases.slugs.map((slug) => (caseStudies || []).find((study) => study.slug === slug)).filter(Boolean)}
+          studies={provider.cases.studies || (provider.cases.slugs || []).map((slug) => (caseStudies || []).find((study) => study.slug === slug)).filter(Boolean)}
         />
       ),
 
@@ -1913,12 +2091,13 @@ export default function SupportDetail() {
           intro={provider.faq.intro}
           faqs={provider.faq.items}
           panel={provider.faq.panel}
+          artwork={provider.faq.artwork}
         />
       ),
 
     coverage: provider.coverage && (
         <CapabilityBand
-          variant="detail"
+          variant={provider.coverage.variant || "detail"}
           title={provider.coverage.title}
           intro={provider.coverage.intro}
           groups={provider.coverage.groups}
@@ -1929,7 +2108,7 @@ export default function SupportDetail() {
 
     packages: provider.packages && (
         <PackageBand
-          id={provider.scene === "aws" ? "packages" : undefined}
+          id={["aws", "azure"].includes(provider.scene) ? "packages" : undefined}
           title={provider.packages.title}
           intro={provider.packages.intro}
           introTail={provider.packages.introTail}
@@ -1983,7 +2162,7 @@ export default function SupportDetail() {
 
     slab2: provider.slab2 && (
         <CaseFeature
-          study={(caseStudies || []).find((study) => study.slug === provider.slab2.slug)}
+          study={provider.slab2.study || (caseStudies || []).find((study) => study.slug === provider.slab2.slug)}
           variant="detail"
           split={provider.slab2.split}
         />
@@ -2012,7 +2191,7 @@ export default function SupportDetail() {
         />
       ),
 
-    reviews: provider.reviews && <ReviewsBand />,
+    reviews: provider.reviews && <ReviewsBand reviews={provider.reviews} />,
 
     whyGrid: provider.whyGrid && (
       <section className="aws-why-section">
@@ -2232,6 +2411,20 @@ export default function SupportDetail() {
             </svg>
           </div>
         </section>
+      ) : provider.scene === "azure" ? (
+        <section className="aws-hero azure-hero" aria-labelledby="azure-hero-title">
+          <div className="container">
+            <div className="aws-hero-copy">
+              <h1 id="azure-hero-title">{provider.title}</h1>
+              <p className="aws-hero-sub">{provider.tagline}</p>
+              <a href="#packages" className="btn aws-hero-cta">View packages <span aria-hidden="true">➔</span></a>
+              <div className="aws-hero-trust">
+                <p>Trusted by:</p>
+                <TrustLogos brands={provider.heroClients} variant="images" />
+              </div>
+            </div>
+          </div>
+        </section>
       ) : provider.scene === "ecom" ? (
         <section className="hero-banner ecom-hero" style={{ backgroundImage: "url(/icons/hero-ecom-bg.jpg)" }}>
           <div className="container">
@@ -2357,7 +2550,7 @@ export default function SupportDetail() {
         </section>
       )}
 
-      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}`}>
+      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}${provider.scene === "azure" ? " platform-detail--azure" : ""}`}>
         <div className="container">
           {bandOrder.map((key) => (
             <Fragment key={key}>{BANDS[key]}</Fragment>

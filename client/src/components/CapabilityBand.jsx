@@ -26,7 +26,7 @@ const CAP_STARS = Array.from({ length: 150 }, (_, i) => {
 export default function CapabilityBand({ title, intro, groups, closer, variant = "wide", titleScale = "h1" }) {
   if (variant !== "detail") {
     return (
-      <section className="cap-band">
+      <section className={`cap-band${variant === "cards" ? " cap-band--cards" : ""}`}>
         <div className="container">
           <h2 className="band-title band-title--dark band-title--center reveal">{title}</h2>
           <span className="band-rule band-rule--center" aria-hidden="true" />
@@ -42,6 +42,16 @@ export default function CapabilityBand({ title, intro, groups, closer, variant =
               </article>
             ))}
           </div>
+          {variant === "cards" && closer && (
+            <div className="cap-closer reveal">
+              <p>{closer.text}</p>
+              {closer.to?.startsWith("#") ? (
+                <a href={closer.to} className="btn btn-primary btn-lg">{closer.cta} <span aria-hidden="true">➔</span></a>
+              ) : (
+                <Link to={closer.to} className="btn btn-primary btn-lg">{closer.cta} <span aria-hidden="true">➔</span></Link>
+              )}
+            </div>
+          )}
         </div>
       </section>
     );
