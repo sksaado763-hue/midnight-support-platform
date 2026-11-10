@@ -19,9 +19,213 @@ const PROVIDERS = [
   {
     slug: "aws-support",
     name: "AWS",
-    title: "24/7 support for AWS",
-    tagline: "The cluster, the queues, the lambdas and the bill — watched, patched and answered for, every hour of every day.",
+    pageTitle: "AWS Managed Support & Hosting",
+    title: "AWS Managed Support & Hosting",
+    tagline: "24/7 support for mission-critical AWS environments",
     intro: "AWS rewards depth and punishes neglect. Most teams we meet run a competent estate that nobody has time to keep competent: images a year stale, roles wider than they need to be, a dashboard nobody opens. We take the whole thing onto our rota so your engineers stop being the on-call for infrastructure they inherited.",
+    whatTitle: "What is 24/7 AWS support and hosting?",
+    whatIntro: [
+      "Our AWS 24/7 support and hosting service is your first-line defence against downtime. And the only one you'll ever need. As the go-to support people, our job is to monitor and triage your AWS solution, the application that runs on top and any 3rd-party integrations.",
+      "From monolith to microservice, out-of-hours to 24/7, we've got you covered.",
+    ],
+    problemSolution: {
+      problem: {
+        title: "Your problem",
+        lead: "You have an AWS infrastructure you can't support around the clock – here's why",
+        points: [
+          "Your AWS support function isn't full-stack: so when something breaks in the murky waters between application and infrastructure – you're not covered",
+          "Your team can't work day and night (and nor should they): when you have a critical incident at 2:00am you're getting through to a phone on the nightstand",
+          "Your team isn't set up for incident management: your devs are constantly having to down tools for minor incidents because you don't have an evolved runbook",
+        ],
+      },
+      solution: {
+        title: "Our bread and butter",
+        lead: "Your problems are what gets us out of bed in the morning – and not the night",
+        points: [
+          "We offer true follow-the-sun support: with teams across 4 time zones we can promise a full-stack engineer on your ticket in minutes",
+          "We're buck-stopping and full-stack: when you sign up with Just After Midnight you're covered at the cloud, application and 3rd-party integration layer",
+          "24/7 support and incident management has been our raison d'être since day dot: we build intelligent runbooks to get your issues resolved fast",
+        ],
+      },
+    },
+    video: {
+      title: "See how we support your AWS solution",
+      lead: "This video will explain how we cover your AWS infrastructure, application and integrations 24/7, out of hours or whenever you need.",
+      closer: "To take a closer look at your support options and SLAs…",
+      cta: "View our packages",
+    },
+    whyGrid: {
+      title: "Not your neighborhood AWS support",
+      intro: "If you're reading this, you're looking for capital S support. Not the kind offered by cookie-cutter, old-guard hosting companies. Hero support.",
+      sub: "Here's how it works:",
+      cards: [
+        {
+          title: "Microservices experts",
+          text: "While some teams struggle with microservice-based architectures, we excel through observability. Our approach ensures high availability and performance by providing deep insights.",
+        },
+        {
+          title: "Container experts",
+          text: "What's a microservices expert without a little Kubernetes magic. Whether your containerised app is microservice-based or not. We're cloud-native support experts.",
+        },
+        {
+          title: "SaaS experts",
+          text: "We specialise in supporting SaaS applications on AWS, ensuring high availability, optimal performance, and a seamless user experience. Our expertise helps you maximise the potential of AWS services.",
+        },
+        {
+          title: "Follow-the-sun",
+          text: "With teams of engineers across 4 time zones, we can always have an engineer on your ticket within minutes. When you clock off, we clock on.",
+        },
+        {
+          title: "Full-stack",
+          text: "Full-stack support means the cloud, the application, and the 3rd-party integrations are all on the same rota. When something breaks in the gap between layers, we're already looking.",
+        },
+        {
+          title: "Tech-enabled; person-led",
+          text: "We've built our own tooling to make our engineers faster and more accurate. But a tool doesn't pick up the phone or write a post-incident review. A person does.",
+        },
+        {
+          title: "Backed by DevOps",
+          text: "Our DevOps engineers design, build and optimise the pipelines and the infrastructure. When support needs a permanent fix rather than a workaround, the build team is one desk away.",
+        },
+        {
+          title: "Backed by best-in-show design",
+          text: "Cloud architecture reviews, migration planning, cost optimisation. The team that designs the estate is the same team that supports it — so the decisions make sense at 3am.",
+        },
+        {
+          title: "Hitting the mark?",
+          text: "We'd love to hear about your AWS solution and show you how we can support it. Get in touch and one of the team will be right with you.",
+          cta: true,
+        },
+      ],
+    },
+    cases: {
+      title: "Read our AWS case studies",
+      slugs: ["body-coach", "dexerto", "rubies", "vodafone"],
+    },
+    caseStudy: { slug: "body-coach" },
+    awsCapabilities: {
+      title: "On our list, off your mind",
+      intro: "We're a one-and-done partner for delivering world-class applications",
+      closer: "It's simple. You tell us your requirements and we plug in wherever you need us.",
+      cta: { text: "So, where can we help?", to: "/contact" },
+      groups: [
+        {
+          title: "Incident and response management",
+          items: ["Incident management (IM)", "Root cause analysis (RCA)", "Incident response management", "Incident triage", "Security incident response", "Application rollbacks"],
+        },
+        {
+          title: "Service continuity and recovery",
+          items: ["Restarting services", "Backup and restore procedures", "Manual scaling of resources", "IP whitelisting", "Access management", "Password resets"],
+        },
+        {
+          title: "Access and security management",
+          items: ["User account provisioning", "User removal", "Access control", "Service validation and testing", "Knowledge base management", "Post-incident review (PIR)"],
+        },
+        {
+          title: "Quality and process improvement",
+          items: ["Vendor liaison/3rd-party escalation", "System health checks", "Monitoring, alerts and telemetry", "Performance monitoring", "Network diagnostics and flow analysis", "End-to-end latency analysis"],
+        },
+        {
+          title: "Observability and performance",
+          items: ["Capacity monitoring and forecasting", "SLA management", "Change management", "Patch management", "Downtime reporting", "Ticket management"],
+        },
+        {
+          title: "Service management and operations",
+          items: ["Outage communication", "Configuration management", "Service request management", "Escalation management"],
+        },
+      ],
+    },
+    packages: {
+      title: "Our service packages",
+      intro: "You pick the level of support you need and we provide it. If you're in need of something bespoke, just get in touch.",
+      tiers: [
+        {
+          tab: "Simple reassurance",
+          name: "FIRST-LINE SUPPORT",
+          items: [
+            "Monitoring",
+            "L1 Communications",
+            "<30 Minute Response Time",
+          ],
+          cta: "Select package",
+          hover: "Contact",
+          to: "/contact?package=first-line",
+        },
+        {
+          tab: "Overnight & weekends",
+          name: "OUT-OF-HOURS SUPPORT",
+          items: [
+            "Monitoring",
+            "L1 Communications",
+            "L2 Resolution",
+            "Incident Reporting",
+            "Recommendations",
+            "<30 Minute Response Time",
+          ],
+          cta: "Select package",
+          hover: "Contact",
+          to: "/contact?package=out-of-hours",
+        },
+        {
+          tab: "Complete coverage",
+          name: "24/7 SUPPORT",
+          items: [
+            "Monitoring",
+            "L1 Communications",
+            "L2 Resolution",
+            "Incident Reporting",
+            "Recommendations",
+            "Infrastructure or Application Only",
+            "Faster SLA Response Times",
+            "Custom Code",
+          ],
+          cta: "Select package",
+          hover: "Contact",
+          to: "/contact?package=24-7",
+        },
+        {
+          tab: "Beyond bespoke",
+          name: "CUSTOM & ADD-ONS",
+          items: [
+            "Custom Applications",
+            "DevOps Support",
+            "Ticket Cap",
+            "Everything in 24/7 plus bespoke add-ons",
+          ],
+          cta: "Select package",
+          hover: "Contact",
+          to: "/contact?package=custom",
+        },
+      ],
+      note: {
+        lead: "Need build solutions, not support?",
+        text: "If you're more interested in refactoring or modernising your infrastructure, check out our",
+        link: "solutions page",
+        to: "/cloud",
+      },
+    },
+    discussCta: {
+      title: "Prefer to discuss your AWS environment instead?",
+      text: "Grab 15 or 30 minutes with one of our specialists.",
+    },
+    valueProps: {
+      title: "Whatever your AWS project, we've got you covered.",
+      cards: [
+        {
+          title: "Protect revenue and reputation",
+          text: "The average cost of downtime is $5,600 per minute. We're not a budget option, but we're certainly cheaper than that. Next, factor in the cost to your reputation. Customers, partners and internal stakeholders can take a dim view of major outages. Get secured. Stop worrying.",
+        },
+        {
+          title: "Save your team from burnout",
+          text: "One of the many support workarounds we encounter is phone-by-the-bed support. These kinds of rotas wear out solution- and design-oriented devs who enjoy building, not fixing. Realign your team and get them back to what and when you hired them for.",
+        },
+        {
+          title: "Innovate with confidence",
+          text: "Without a robust support function, you can't innovate at pace. With a team who know your application like the backs of their hands, on call day and night, you can accelerate without worrying about crashing. Deploy features, refactor – go forward.",
+        },
+      ],
+    },
+    reviews: true,
     capabilities: [
       { title: "Every night", items: ["Alerting and incident response on a published rota", "Patching and runtime upgrades inside your approved window", "Backup verification and restore drills", "Certificate, domain and DNS expiry watch"] },
       { title: "Every month", items: ["Cost review with a written list of actions", "IAM and security-group drift review", "Capacity and scaling-policy check", "A plain-language report your finance team can read"] },
@@ -50,9 +254,57 @@ const PROVIDERS = [
       "You want one rota covering AWS and the application on top of it",
     ],
     faqs: [
+      { q: "What is application support?", a: "Application support means supporting everything in the application layer. App support engineers will be au fait with a wide array of languages, experience platforms (such as Kentico or Umbraco) as well as other dev-y stuff. When we provide app support, we make sure your app stays up, performs well and keeps delivering value to your customers." },
+      { q: "What is infrastructure support?", a: "Same deal, but for your cloud. When we take care of your AWS infrastructure, we monitor and triage for any hiccups, ensuring it runs smoothly, cheaply or however you like it. We also build, review and optimise cloud infrastructure. So if you're in the market for more than support, check out some of our other cloud services." },
+      { q: "What is full-stack support?", a: "Full-stack support is just the two above services combined. Although, with applications growing increasingly distributed, full-stack often means supporting 3rd-party integrations, too. That's why Mission Control (our bespoke full-stack solution) is indispensable." },
+      { q: "Aren't cloud support and DevOps the same thing?", a: "Not exactly. DevOps is about building and automating your delivery pipelines. Support is about keeping everything running once it's deployed. We do both, but they're different disciplines with different rotas." },
+      { q: "How does it work?", a: "We start with a discovery call to understand your stack, your pain points and your SLA requirements. Then we onboard read-only, write the runbook, and go live on the rota. Most teams are covered inside two weeks." },
       { q: "Do you need admin access on day one?", a: "No. We start read-only, write up what we find, and only take change access once you have approved the plan." },
       { q: "Can you work alongside our existing DevOps contractor?", a: "Yes. They keep the roadmap, we take the nights and the weekends, and the morning handover goes to both." },
-      { q: "What if we are mostly serverless?", a: "Then the rota leans on Lambda, Step Functions and queue depth instead of fleets — same cover, different dials." },
+    ],
+    glance: {
+      eyebrow: "At a glance",
+      title: "Just After Midnight's support offering",
+      items: [
+        {
+          q: "What technologies do you support?",
+          a: <>We support cloud platforms (<strong>AWS, Azure, GCP, Alibaba Cloud</strong>), CMS and DXP platforms (<strong>Sitecore, Kentico, Umbraco, AEM, Optimizely, WordPress, Drupal, Magento</strong>), custom-built applications, edge/CDN networks, and third-party integrations including APIs.</>,
+        },
+        {
+          q: "What support windows are available?",
+          a: <><strong>24/7/365</strong> support, out-of-hours support and overnight support, weekends-only support, or a custom schedule built around your needs.</>,
+        },
+        {
+          q: "What functions does your support team cover?",
+          a: "Our support covers monitoring and alerting, incident management and triage, root cause analysis (RCA), SRE and DevOps support, observability, security incident response, backup and recovery, change and patch management, and third-party vendor escalation.",
+        },
+        {
+          q: "What industries do you support?",
+          a: "We work with businesses and organisations in SaaS, eCommerce, healthtech, legaltech, fintech, government, manufacturing, logistics, and digital agencies – and many more.",
+        },
+        {
+          q: "What security accreditations do you hold?",
+          a: <>We are <strong>ISO 27001</strong> certified, <strong>Cyber Essentials Plus</strong> verified, and <strong>PCI DSS</strong> compliant.</>,
+        },
+      ],
+    },
+    impacts: {
+      q: "What are the impacts of incidents on teams and revenue?",
+      a: "According to industry sources, downtime costs businesses between $540,000 (Splunk, The Hidden Costs of Downtime) and $2 million (New Relic, Observability Forecast 2025) per hour for many high-impact outages. Incidents also consume significant engineering capacity: the median engineering team spends 30% of its time addressing disruptions (New Relic, Observability Forecast 2024).",
+      sourcesHead: "Sources",
+      sources: [
+        "Splunk, The Hidden Costs of Downtime (2000 Global Executives surveyed)",
+        "New Relic, Observability Forecast 2025 (1,700 global technology professionals surveyed)",
+        "New Relic Observability Forecast 2024 (1,700 global technology professionals surveyed)",
+      ],
+    },
+    bands: [
+      "intro", "problemSolution", "video", "whyGrid",
+      "cases", "slab", "awsCapabilities",
+      "packages", "discussCta",
+      "coverage", "capabilities", "fitWith",
+      "valueProps", "reviews", "faqSection",
+      "glance", "impacts", "others",
     ],
   },
   {
@@ -1389,12 +1641,43 @@ export default function SupportDetail() {
         <div className="plat-what reveal">
           <div>
             <h2>{provider.whatTitle || `What does ${provider.name} support from us mean?`}</h2>
-            <p>{provider.intro}</p>
+            {provider.whatIntro ? (
+              provider.whatIntro.map((para, i) => <p key={i}>{para}</p>)
+            ) : (
+              <p>{provider.intro}</p>
+            )}
           </div>
         </div>
       ),
 
     promise: provider.promise && <OutcomeBand variant="boxes" cards={provider.promise} />,
+
+    problemSolution: provider.problemSolution && (
+      <section className="aws-ps-section">
+        <div className="container">
+          <div className="aws-ps-grid">
+            <div className="aws-ps-col aws-ps-col--problem reveal">
+              <h2>{provider.problemSolution.problem.title}</h2>
+              <p className="aws-ps-lead">{provider.problemSolution.problem.lead}</p>
+              <ul>
+                {provider.problemSolution.problem.points.map((pt) => (
+                  <li key={pt}>{pt}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="aws-ps-col aws-ps-col--solution reveal">
+              <h2>{provider.problemSolution.solution.title}</h2>
+              <p className="aws-ps-lead">{provider.problemSolution.solution.lead}</p>
+              <ul>
+                {provider.problemSolution.solution.points.map((pt) => (
+                  <li key={pt}>{pt}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    ),
 
     slabEarly: provider.caseStudy?.slot === "early" && (
         <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
@@ -1708,6 +1991,92 @@ export default function SupportDetail() {
       ),
 
     reviews: provider.reviews && <ReviewsBand />,
+
+    whyGrid: provider.whyGrid && (
+      <section className="aws-why-section">
+        <div className="container">
+          <div className="aws-why-head reveal">
+            <h2>{provider.whyGrid.title}</h2>
+            <p>{provider.whyGrid.intro}</p>
+            {provider.whyGrid.sub && <p className="aws-why-sub">{provider.whyGrid.sub}</p>}
+          </div>
+          <div className="aws-why-grid">
+            {provider.whyGrid.cards.map((card) => (
+              <article className={`aws-why-card reveal${card.cta ? " aws-why-card--cta" : ""}`} key={card.title}>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+                {card.cta && (
+                  <Link to="/contact" className="btn btn-primary">
+                    Get in touch <span aria-hidden="true">➔</span>
+                  </Link>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ),
+
+    awsCapabilities: provider.awsCapabilities && (
+      <section className="ag-cap-section">
+        <div className="container">
+          <div className="ag-cap-head reveal">
+            <h2>{provider.awsCapabilities.title}</h2>
+            <p>{provider.awsCapabilities.intro}</p>
+          </div>
+          <div className="ag-cap-grid">
+            {provider.awsCapabilities.groups.map((group) => (
+              <div className="ag-cap-group reveal" key={group.title}>
+                <h4>{group.title}</h4>
+                <ul>
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="ag-cap-foot reveal">
+            {provider.awsCapabilities.closer && <p className="ag-cap-closer">{provider.awsCapabilities.closer}</p>}
+            {provider.awsCapabilities.cta && (
+              <Link to={provider.awsCapabilities.cta.to} className="btn btn-primary">
+                {provider.awsCapabilities.cta.text} <span aria-hidden="true">➔</span>
+              </Link>
+            )}
+          </div>
+        </div>
+      </section>
+    ),
+
+    discussCta: provider.discussCta && (
+      <section className="aws-discuss-section">
+        <div className="container">
+          <div className="aws-discuss reveal">
+            <h2>{provider.discussCta.title}</h2>
+            <p>{provider.discussCta.text}</p>
+            <Link to="/contact" className="btn btn-primary btn-lg">
+              Book a call <span aria-hidden="true">➔</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+    ),
+
+    valueProps: provider.valueProps && (
+      <section className="aws-value-section">
+        <div className="container">
+          <h2 className="aws-value-title reveal">{provider.valueProps.title}</h2>
+          <div className="aws-value-grid">
+            {provider.valueProps.cards.map((card) => (
+              <article className="aws-value-card reveal" key={card.title}>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ),
 
     agencyServices: provider.agencyServices && (
       <section className="ag-services-section">

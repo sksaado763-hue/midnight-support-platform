@@ -5440,3 +5440,240 @@ section.case-feature--detail { padding: 40px 0; }
   .ag-services-grid { grid-template-columns: 1fr; }
   .ag-cap-grid { grid-template-columns: 1fr; }
 }
+
+
+/* ============================================================
+   AWS-specific sections
+   ============================================================ */
+
+/* Problem / Solution two-column split */
+.aws-ps-section {
+  padding: 80px 0;
+  background: #f8fafd;
+}
+.aws-ps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.aws-ps-col h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 16px;
+}
+.aws-ps-col--problem h2 { color: #dc2626; }
+.aws-ps-col--solution h2 { color: #16a34a; }
+.aws-ps-lead {
+  font-family: Ubuntu, sans-serif;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #475569;
+  margin: 0 0 20px;
+}
+.aws-ps-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.aws-ps-col li {
+  font-family: Ubuntu, sans-serif;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 300;
+  color: #334155;
+  padding-left: 24px;
+  position: relative;
+}
+.aws-ps-col--problem li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 13px;
+}
+.aws-ps-col--solution li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #16a34a;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* "Not your neighborhood" 9-card grid */
+.aws-why-section {
+  padding: 80px 0;
+  background: #111a2b;
+}
+.aws-why-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 52px;
+}
+.aws-why-head h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(22px, 2.5vw, 34px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+.aws-why-head p {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #94a3b8;
+  margin: 0;
+}
+.aws-why-sub {
+  font-weight: 600 !important;
+  color: #fabd14 !important;
+  margin-top: 12px !important;
+}
+.aws-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.aws-why-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 28px 24px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.aws-why-card:hover {
+  border-color: rgba(250, 189, 20, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+.aws-why-card h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fabd14;
+  line-height: 1.35;
+  margin: 0 0 12px;
+}
+.aws-why-card p {
+  font-family: Ubuntu, sans-serif;
+  font-size: 14px;
+  line-height: 23px;
+  font-weight: 300;
+  color: #cbd5e1;
+  margin: 0;
+}
+.aws-why-card--cta {
+  background: rgba(250, 189, 20, 0.08);
+  border-color: rgba(250, 189, 20, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+.aws-why-card--cta p { margin-bottom: 20px; }
+.aws-why-card--cta .btn { margin-top: auto; align-self: flex-start; }
+
+/* Discuss CTA banner */
+.aws-discuss-section {
+  padding: 64px 0;
+  background: #fabd14;
+}
+.aws-discuss {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.aws-discuss h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+  color: #12203f;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+.aws-discuss p {
+  font-family: Ubuntu, sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #12203f;
+  margin: 0 0 24px;
+}
+.aws-discuss .btn {
+  background: #12203f !important;
+  color: #fabd14 !important;
+}
+.aws-discuss .btn:hover {
+  background: #ffffff !important;
+  color: #12203f !important;
+}
+
+/* Value Props 3-column */
+.aws-value-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+.aws-value-title {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 700;
+  color: #111a2b;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0 0 48px;
+}
+.aws-value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.aws-value-card {
+  background: #f8fafd;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 32px 28px;
+  border-top: 3px solid #fabd14;
+}
+.aws-value-card h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #111a2b;
+  line-height: 1.3;
+  margin: 0 0 14px;
+}
+.aws-value-card p {
+  font-family: Ubuntu, sans-serif;
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 300;
+  color: #475569;
+  margin: 0;
+}
+
+/* ag-cap-foot (shared by agency + AWS capabilities) */
+.ag-cap-foot {
+  text-align: center;
+  margin-top: 48px;
+}
+.ag-cap-foot .btn {
+  margin-top: 20px;
+}
+
+/* Responsive – AWS sections */
+@media (max-width: 991.98px) {
+  .aws-ps-grid { grid-template-columns: 1fr; gap: 40px; }
+  .aws-why-grid { grid-template-columns: repeat(2, 1fr); }
+  .aws-value-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .aws-why-grid { grid-template-columns: 1fr; }
+}
