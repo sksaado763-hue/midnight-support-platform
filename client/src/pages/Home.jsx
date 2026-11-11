@@ -30,7 +30,7 @@ const HERO_CARDS = [
     ),
   },
   {
-    to: "/cloud#devops",
+    to: "/cloud",
     title: "DevOps",
     copy: "Helping teams ship faster without trading away reliability or quality.",
     icon: (
@@ -86,42 +86,42 @@ const SERVICES = [
         label: "By Cloud Provider",
         to: "/cloud",
         children: [
-          { label: "AWS", to: "/cloud#aws" },
-          { label: "Azure", to: "/cloud#aws" },
-          { label: "GCP", to: "/cloud#aws" },
+          { label: "AWS", to: "/support/aws-support" },
+          { label: "Azure", to: "/support/azure-support" },
+          { label: "GCP", to: "/support/gcp-support" },
         ],
       },
       {
         label: "Cloud Consulting",
-        to: "/cloud#consulting",
+        to: "/cloud",
         children: [
-          { label: "Cost Optimisation", to: "/cloud#consulting" },
-          { label: "Well-Architected Review", to: "/cloud#consulting" },
+          { label: "Cost Optimisation", to: "/cloud" },
+          { label: "Well-Architected Review", to: "/cloud" },
         ],
       },
     ],
   },
   {
     title: "DevOps",
-    to: "/cloud#devops",
+    to: "/cloud",
     copy: "Helping teams ship faster without trading away reliability or quality.",
     icon: <path d="M8 34l6-6 6 4 7-10 6 6 7-12" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />,
     iconExtra: <circle cx="40" cy="12" r="3" fill="currentColor" />,
     groups: [
       {
         label: "DevOps Delivery",
-        to: "/cloud#devops",
+        to: "/cloud",
         children: [
-          { label: "CI/CD Pipelines", to: "/cloud#devops" },
-          { label: "Infrastructure as Code", to: "/cloud#devops" },
+          { label: "CI/CD Pipelines", to: "/cloud" },
+          { label: "Infrastructure as Code", to: "/cloud" },
         ],
       },
       {
         label: "Application Modernisation",
-        to: "/cloud#devops",
+        to: "/cloud",
         children: [
-          { label: "Platform Engineering", to: "/cloud#devops" },
-          { label: "Observability", to: "/cloud#devops" },
+          { label: "Platform Engineering", to: "/cloud" },
+          { label: "Observability", to: "/cloud" },
         ],
       },
     ],

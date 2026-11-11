@@ -157,8 +157,6 @@ body {
 .insight-card,
 .price-card,
 .industry-card,
-.provider-card,
-.consult-card,
 .case-card,
 .value-card,
 .team-card,
@@ -172,8 +170,7 @@ body {
 .contact-map,
 .packages-band,
 .message-item,
-.subscriber-item,
-.devops-feature { border: 1px solid var(--line); }
+.subscriber-item { border: 1px solid var(--line); }
 
 .insight-card,
 .price-card,
@@ -196,8 +193,6 @@ body {
 .insight-card:hover,
 .price-card:hover,
 .industry-card:hover,
-.provider-card:hover,
-.consult-card:hover,
 .case-card:hover,
 .value-card:hover,
 .team-card:hover,
@@ -320,7 +315,6 @@ body {
 .admin-count,
 .platform-badge--amber,
 .platform-badge--purple,
-.provider-badge strong,
 .new-badge,
 .social-links a:hover,
 .other-platform-chip--all:hover,
@@ -848,17 +842,14 @@ body {
 
 /* ---------- Midnight bands: light ink ---------- */
 .outcome-card--navy,
-.devops-feature,
 .packages-band,
 .statement { background: var(--navy); }
 
 .statement,
-.devops-feature,
 .outcome-card--navy,
 .platform-badge--navy { color: #ffffff; }
 
 .statement-text,
-.devops-feature p,
 .outcome-card--navy p { color: rgba(255, 255, 255, 0.82); }
 
 /* ---------- The "Most popular" flag: canary with midnight ink ---------- */
@@ -872,7 +863,6 @@ body {
 .contact-list a:hover { color: var(--navy-soft); }
 .faq-more a { border-bottom-color: var(--navy); }
 blockquote { border-left-color: var(--navy); }
-.consult-card,
 .ps-card--solution { border-top-color: var(--navy); }
 .feature-card { border-left-color: var(--navy); }
 .subscriber-item { border-left-color: var(--navy); }

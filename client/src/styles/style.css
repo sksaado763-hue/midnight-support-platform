@@ -3479,7 +3479,10 @@ section.case-feature--detail { padding: 40px 0; }
 .cloud-tile { display: block; height: 100%; padding: 32px; border-radius: 10px; background: #121f3f; color: #ffffff; }
 .cloud-tile--deep { background: #12203f; }
 .cloud-tile--cta { background: #e5af18; }
-.cloud-tile__icon { width: 80px; height: 80px; }
+/* The reference icon is an inline image, so its line box adds 8px under the
+   80px artwork; a block image needs that 8px spelled out to keep the h3 at
+   the same offset. */
+.cloud-tile__icon { display: block; width: 80px; height: 80px; margin-bottom: 8px; }
 .cloud-tile h3 { font-family: var(--font-head); font-size: 20px; line-height: 28px; font-weight: 700; margin: 20px 0 13px; }
 .cloud-tile h3 a { color: #ffffff; text-decoration: none; }
 .cloud-tile p { font-size: 16px; line-height: 28px; font-weight: 300; color: #ffffff; margin: 0 0 16px; padding-bottom: 14px; }
@@ -4215,8 +4218,8 @@ section.case-feature--detail { padding: 40px 0; }
 
 .platform-detail { background: var(--bg); padding: 60px 0 88px; overflow-x: clip; }
 
-.site-header.site-header--aws { margin-bottom: calc(-1 * var(--header-h)); background: transparent; }
-.site-header.site-header--aws.is-scrolled { background: #14213f; }
+.site-header.site-header--overlay { margin-bottom: calc(-1 * var(--header-h)); background: transparent; }
+.site-header.site-header--overlay.is-scrolled { background: #14213f; }
 .aws-hero {
   position: relative;
   overflow: hidden;
@@ -4568,8 +4571,8 @@ section.case-feature--detail { padding: 40px 0; }
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease,
     background-color 0.3s ease, color 0.3s ease;
 }
-.service-card:hover, .price-card:hover, .industry-card:hover, .provider-card:hover,
-.consult-card:hover, .value-card:hover, .team-card:hover, .platform-card:hover {
+.service-card:hover, .price-card:hover, .industry-card:hover,
+.value-card:hover, .team-card:hover, .platform-card:hover {
   transform: translateY(-8px);
 }
 .insight-card:hover, .case-card:hover { transform: translateY(-8px) scale(1.02); }
@@ -4659,7 +4662,7 @@ section.case-feature--detail { padding: 40px 0; }
   .btn-ghost:hover, .btn:hover span[aria-hidden="true"],
   .text-link:hover span[aria-hidden="true"] { transform: none; }
   .service-card:hover, .insight-card:hover, .case-card:hover, .price-card:hover,
-  .industry-card:hover, .provider-card:hover, .consult-card:hover, .value-card:hover,
+  .industry-card:hover, .value-card:hover,
   .team-card:hover, .platform-card:hover, .feature-card:hover, .logo-cell:hover,
   .other-platform-chip:hover, .tab:hover, .filter-chip:hover, .tag:hover,
   .social-links a:hover, .footer-col-list a:hover, .service-links a:hover,

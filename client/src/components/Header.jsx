@@ -22,9 +22,9 @@ const SUBMENUS = {
     to: "/cloud",
     blurb: "Managed cloud, consulting and DevOps delivery that scales with your team.",
     rows: [
-      { label: "Managed Cloud", to: "/cloud", links: [["AWS", "/cloud#aws"], ["Azure", "/cloud#azure"], ["GCP", "/cloud#gcp"]] },
-      { label: "Cloud consulting", to: "/cloud#consulting", links: [["Cost Optimisation", "/cloud#consulting"], ["Well-Architected Review", "/cloud#consulting"], ["Solution Architecture", "/cloud#consulting"], ["Cloud Migration", "/cloud#consulting"]] },
-      { label: "DevOps", to: "/cloud#devops", links: [["DevOps Consulting", "/cloud#devops"], ["Delivery & Automation", "/cloud#devops"], ["Application Modernisation", "/cloud#devops"]] },
+      { label: "Managed Cloud", to: "/cloud", links: [["AWS", "/support/aws-support"], ["Azure", "/support/azure-support"], ["GCP", "/support/gcp-support"]] },
+      { label: "Cloud consulting", to: "/cloud", links: [["Cost Optimisation", "/cloud"], ["Well-Architected Review", "/cloud"], ["Solution Architecture", "/cloud"], ["Cloud Migration", "/cloud"]] },
+      { label: "DevOps", to: "/cloud", links: [["DevOps Consulting", "/cloud"], ["Delivery & Automation", "/cloud"], ["Application Modernisation", "/cloud"]] },
     ],
   },
   platforms: {
@@ -97,9 +97,14 @@ function navActiveFor(pathname) {
   return "";
 }
 
+/* Pages whose hero paints the top of the document get a transparent header
+   pulled over it, instead of a navy bar stacked above the hero. */
+const OVERLAY_HEADER_PATHS = ["/support/aws-support", "/support/azure-support", "/cloud"];
+
 export default function Header() {
   const { pathname } = useLocation();
   const navActive = navActiveFor(pathname);
+  const overlayHeader = OVERLAY_HEADER_PATHS.includes(pathname);
   const [openMenus, setOpenMenus] = useState({});
   const [activeRows, setActiveRows] = useState({});
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -216,7 +221,7 @@ export default function Header() {
   }
 
   return (
-    <header className={`site-header${["/support/aws-support", "/support/azure-support"].includes(pathname) ? ` site-header--aws${pastTop ? " is-scrolled" : ""}` : ""}${hiddenOnScroll ? " is-hidden" : ""}`} id="masthead">
+    <header className={`site-header${overlayHeader ? ` site-header--overlay${pastTop ? " is-scrolled" : ""}` : ""}${hiddenOnScroll ? " is-hidden" : ""}`} id="masthead">
       <div className="header-inner" ref={headerInner}>
         <Link to="/" className="brand" aria-label="Just After Midnight — home" onClick={closeMobile}>
           <span className="brand-name">

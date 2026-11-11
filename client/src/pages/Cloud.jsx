@@ -6,20 +6,20 @@ const TILES = [
     icon: "/icons/cloud-people-consulting.svg",
     title: "Cloud Strategy Consultancy Services",
     to: "/contact",
-    text: "We start from what you are trying to ship and work backwards to the parts of cloud that earn their keep. You get a sequenced plan with costs, risks and owners attached.",
+    text: "Our specialists across AWS, Azure and GCP start from what you are trying to ship and work back to the parts of the estate that earn their keep. You get a sequenced roadmap with costs, risks and owners attached — and a straight answer on what to leave alone.",
   },
   {
     icon: "/icons/cloud-design.svg",
     title: "Cloud Design and Solution Architecture",
     to: "/contact",
-    text: "Landing zones, network topology and the failover story — drawn properly and pressure-tested before anyone writes a line of Terraform.",
+    text: "Landing zones, network topology and the failover story, drawn properly and pressure-tested before anyone writes a line of Terraform. We design for the tricky parts — multi-region, compliance-ready and event-driven — so the build starts from a clear plan.",
   },
   {
     icon: "/icons/cloud-web-application.svg",
     title: "Application Modernisation",
     to: "/contact",
     tone: "deep",
-    text: "Moving a working product onto containers and smaller services without a big-bang rewrite or a feature freeze.",
+    text: "Moving a working product onto containers and smaller services without a big-bang rewrite or a feature freeze. We sequence the work so the business keeps shipping while the foundations improve underneath it, and rollback stays boring.",
   },
   {
     icon: "/icons/cloud-architecture.svg",
@@ -31,7 +31,7 @@ const TILES = [
     icon: "/icons/cloud-cost-reducing.svg",
     title: "Cloud Cost Optimisation",
     to: "/contact",
-    text: "Right-sizing, commitment strategy and the guardrails that stop next quarter's bill quietly drifting back up again.",
+    text: "Right-sizing, commitment strategy and the guardrails that stop next quarter's bill quietly drifting back up again. We fix the causes rather than the symptoms, and leave the reporting in place so the savings hold.",
   },
   {
     icon: "/icons/cloud-search.svg",
