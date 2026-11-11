@@ -565,7 +565,7 @@ export default function Support() {
   return (
     <>
       {/* SECTION 1: HERO BANNER */}
-      <section className="page-hero page-hero--support">
+      <section className="page-hero page-hero--support page-hero--support-overview">
         <div className="hero-stars" aria-hidden="true">
           <svg viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice">
             <g fill="#ffffff">
@@ -590,9 +590,6 @@ export default function Support() {
           </div>
         </div>
       </section>
-
-      {/* SECTION 2 & 3: INTRO (SEO TEXT BLOCK) & DIVIDER */}
-      <CurvedDividerDown fill="#ffffff" bg="#12203f" />
 
       <section className="support-intro" style={{ background: "#ffffff", padding: "80px 0" }}>
         <div className="container support-intro-grid">

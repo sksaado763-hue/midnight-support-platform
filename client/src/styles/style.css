@@ -1840,6 +1840,14 @@ ul { list-style: none; }
 }
 /* Doubled class outranks skin.css's later `.page-hero` gradient import. */
 .page-hero.page-hero--support { background: #122142; }
+.page-hero--support-overview {
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 89% 98%, 82% 99.4%, 75% 99.8%, 69% 99.5%, 60% 97.8%, 40% 92%, 29% 90.3%, 20% 90.3%, 10% 92.1%, 0 95%);
+}
+@media (max-width: 1199.98px) {
+  .page-hero--support-overview {
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 89% 96%, 82% 96.7%, 75% 96.9%, 69% 96.8%, 60% 96.4%, 40% 95.5%, 29% 95.2%, 20% 95.2%, 10% 95.5%, 0 95%);
+  }
+}
 .page-hero--support .container { width: auto; padding-inline: clamp(24px, 6vw, 116px); }
 .page-hero--support .hero-stars svg { width: 100%; height: 100%; }
 .support-hero-title {
