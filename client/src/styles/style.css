@@ -5944,8 +5944,12 @@ section.case-feature--detail { padding: 40px 0; }
    hero, intro list, icon-grid and capability field diverge. */
 
 .gcp-hero {
-  background: #0d1d3d;
+  background: #0d1d3d url("/icons/gcp-1920x732_dark-17.jpg") center center / cover no-repeat;
   padding: calc(var(--header-h) + 72px) 0 88px;
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 89% 98%, 82% 99.4%, 75% 99.8%, 69% 99.5%, 60% 97.8%, 40% 92%, 29% 90.3%, 20% 90.3%, 10% 92.1%, 0 95%);
+}
+@media (max-width: 1199.98px) {
+  .gcp-hero { clip-path: polygon(0 0, 100% 0, 100% 95%, 89% 96%, 82% 96.7%, 75% 96.9%, 69% 96.8%, 60% 96.4%, 40% 95.5%, 29% 95.2%, 20% 95.2%, 10% 95.5%, 0 95%); }
 }
 .gcp-hero .gcp-hero-row { display: grid; grid-template-columns: minmax(0, 5.4fr) 3.6fr 3fr; align-items: center; }
 .gcp-hero .aws-hero-copy { width: 100%; }
@@ -5991,7 +5995,7 @@ section.case-feature--detail { padding: 40px 0; }
   .gcp-hero-art img { margin-left: 0; }
 }
 @media (max-width: 767.98px) {
-  .gcp-hero { padding-block: calc(var(--header-h) + 40px) 64px; background-position: 30% top; }
+  .gcp-hero { padding-block: calc(var(--header-h) + 40px) 64px; }
   .platform-detail--gcp .plat-what h2 { font-size: 32px; max-width: none; }
   .platform-detail--gcp .cap-band--dark { padding: 48px 0; }
   .platform-detail--gcp .cap-band--dark .cap-cols { margin-top: 40px; }
