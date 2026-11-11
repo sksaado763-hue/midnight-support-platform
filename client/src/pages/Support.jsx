@@ -1,300 +1,570 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
-import { useApi } from "../lib/api";
 import TrustLogos from "../components/TrustLogos";
 import CaseFeature from "../components/CaseFeature";
-import CapabilityBand from "../components/CapabilityBand";
 import CaseStudiesBand from "../components/CaseStudiesBand";
-import FaqBand from "../components/FaqBand";
+import ReviewsBand from "../components/ReviewsBand";
 import GlanceBand from "../components/GlanceBand";
 import ImpactBand from "../components/ImpactBand";
-import InsightsBand from "../components/InsightsBand";
-import OutcomeBand from "../components/OutcomeBand";
-import ReviewsBand from "../components/ReviewsBand";
-import WhyBand from "../components/WhyBand";
+
+/* =========================================================================
+   DIVIDER SVGS (Matching Live Reference)
+   ========================================================================= */
+function CurvedDividerDown({ fill = "#ffffff", bg = "transparent" }) {
+  return (
+    <div className="global-curved-divider global-curved-divider__down" style={{ background: bg, lineHeight: 0 }} aria-hidden="true">
+      <svg width="1920" height="89" viewBox="0 0 1920 89" fill="none" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: "clamp(46px, 4.67vw, 89px)" }}>
+        <path d="M0 0H915.5H1920V55L1750.82 72.623C1544.17 94.1494 1335.83 94.1495 1129.18 72.6231L790.818 37.377C584.165 15.8506 375.835 15.8505 169.182 37.3769L0 55V0Z" fill={fill} />
+      </svg>
+    </div>
+  );
+}
+
+function CurvedDividerUp({ fill = "#ffffff", bg = "transparent" }) {
+  return (
+    <div className="global-curved-divider global-curved-divider__up" style={{ background: bg, lineHeight: 0 }} aria-hidden="true">
+      <svg width="1920" height="73" viewBox="0 0 1920 73" fill="none" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: "clamp(38px, 3.8vw, 73px)" }}>
+        <path d="M1920 72.9999L0 73.0012L3.42974e-06 33.7695L169.182 16.1465C375.835 -5.37986 584.165 -5.37991 790.818 16.1465L1129.18 51.3927C1335.83 72.9191 1544.16 72.9191 1750.82 51.3928L1920 33.7697L1920 72.9999Z" fill={fill} />
+      </svg>
+    </div>
+  );
+}
+
+/* =========================================================================
+   PAGE CONSTANTS & DATA (Exact 1:1 match with Live Reference)
+   ========================================================================= */
 
 const MEANS = [
-  "One ticket queue across the front end, the services, the infrastructure and the APIs",
-  "Engineers on shift in every timezone, so nothing waits for morning",
-  "Response targets written into the contract, not promised in a call",
-  "A written handover after every incident, so your team wakes up to answers",
+  "Your uptime is protected around the clock",
+  "Your in-house team is free to focus on development instead of firefighting",
+  "Your customers get faster, smoother experiences – and they stick around",
+  "You get proactive monitoring, clear communication and a support model that fits your business",
 ];
 
 const SERVICES = [
   {
-    title: "24/7 Application Support",
+    title: "24/7 Application Support Services",
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <rect x="8" y="10" width="32" height="24" rx="3" stroke="currentColor" strokeWidth="3" />
-        <path d="M20 40h8M24 34v6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        <path d="M17 24l4 4 8-9" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <svg viewBox="0 0 80 80" width="80" height="80" fill="none" aria-hidden="true">
+        <rect x="8" y="12" width="64" height="42" rx="6" stroke="#fabd14" strokeWidth="3" />
+        <path d="M28 68h24M40 54v14" stroke="#fabd14" strokeWidth="3.5" strokeLinecap="round" />
+        <path d="M24 33l10 10 22-20" stroke="#fabd14" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     paras: [
-      "When the product is the business, someone has to understand the code behind it. Our engineers monitor user journeys, triage bugs at code level and stay on the incident until it is closed.",
-      "Performance regressions, failing releases, broken integrations: we catch them in the metrics first, and we tell you in plain language what happened and what we changed.",
+      "When your application is the face of your business, you need a support team who understands the technology behind it.",
+      "We provide application performance monitoring, bug triage, optimisation and incident management for custom applications, SaaS products, CMS platforms and more.",
+      "We manage complex dependencies, like APIs, queues, databases and integrations, with full transparency and real-time communication with named engineers during critical events.",
     ],
   },
   {
-    title: "24/7 Cloud Support",
+    title: "24/7 Cloud Support Services",
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M14 34h20a7 7 0 0 0 .6-13.97A10 10 0 0 0 15 17.8 8 8 0 0 0 14 34z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
-        <path d="M19 26l4 4 7-8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <svg viewBox="0 0 80 80" width="80" height="80" fill="none" aria-hidden="true">
+        <path d="M22 56h36a14 14 0 0 0 2-27.8A18 18 0 0 0 24 24a14 14 0 0 0-2 32z" stroke="#fabd14" strokeWidth="3" strokeLinejoin="round" />
+        <path d="M30 42l8 8 14-14" stroke="#fabd14" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     paras: [
-      "AWS, Azure and GCP infrastructure looked after by people who operate it daily: patching, scaling, cost control and security hygiene, plus the boring checks that stop outages.",
-      "We keep the pipeline healthy too — deployments, rollbacks, infrastructure as code and the alerts that make sense of it all at 3am.",
+      "We manage and monitor cloud infrastructure across AWS, Azure and GCP including hosting, networking, scaling, performance optimisation and cloud operations.",
+      "Our cloud support services include infrastructure monitoring, platform performance alerts, security checks, cost and resource optimisation, incident response and recovery and a whole lot more.",
+      "Your infrastructure stays secure, fast and operational. No matter the time of day.",
     ],
   },
   {
-    title: "24/7 Website & CMS Support",
+    title: "24/7 Website Support Services",
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <rect x="8" y="10" width="32" height="28" rx="3" stroke="currentColor" strokeWidth="3" />
-        <path d="M8 18h32" stroke="currentColor" strokeWidth="3" />
-        <circle cx="14" cy="14" r="1.6" fill="currentColor" />
-        <circle cx="20" cy="14" r="1.6" fill="currentColor" />
-        <path d="M15 26h10M15 31h18" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      <svg viewBox="0 0 80 80" width="80" height="80" fill="none" aria-hidden="true">
+        <rect x="8" y="14" width="64" height="48" rx="6" stroke="#fabd14" strokeWidth="3" />
+        <path d="M8 28h64" stroke="#fabd14" strokeWidth="3" />
+        <circle cx="20" cy="21" r="2.5" fill="#fabd14" />
+        <circle cx="28" cy="21" r="2.5" fill="#fabd14" />
+        <path d="M22 40h20M22 48h32" stroke="#fabd14" strokeWidth="3.5" strokeLinecap="round" />
       </svg>
     ),
     paras: [
-      "Campaign pages, commerce fronts and content platforms that have to survive launch day. We watch checkout flows, form submissions and Core Web Vitals as closely as server health.",
-      "Plugin and platform regressions get a fast path to fix, and editorial teams get a support desk that speaks CMS, not just infrastructure.",
+      "We have a speciality for keeping mission-critical websites stable, fast and secure around the clock.",
+      "We monitor uptime, performance, hosting platforms, third-party tools, CDN activity, caching layers and everything else that keeps your site live.",
+      "Our 24/7 website support helps businesses improve customer satisfaction, reduce downtime costs and meet the ever-rising expectations for always-online digital experiences. Perfect for WordPress, Drupal, Sitecore, headless sites, eCommerce platforms, APIs, marketing sites and high-traffic global websites.",
     ],
   },
   {
-    title: "24/7 Full-Stack Support",
+    title: "24/7 Full-Stack Support Services",
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M24 8l14 7-14 7-14-7 14-7z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
-        <path d="M10 24l14 7 14-7M10 32l14 7 14-7" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+      <svg viewBox="0 0 80 80" width="80" height="80" fill="none" aria-hidden="true">
+        <path d="M40 12l26 13-26 13-26-13 26-13z" stroke="#fabd14" strokeWidth="3" strokeLinejoin="round" />
+        <path d="M14 42l26 13 26-13M14 55l26 13 26-13" stroke="#fabd14" strokeWidth="3" strokeLinejoin="round" />
       </svg>
     ),
     paras: [
-      "One agreement across every layer: front end, services, data, cloud and third-party APIs. No blame tennis between vendors, because there is only one queue and it is ours.",
-      "Best value for teams whose product spans several stacks and who want a single named team accountable for all of them.",
+      "Full-stack support means everything: one team managing your entire digital ecosystem.",
+      "Applications, websites, cloud hosting, integrations, DevOps pipelines, APIs, security, performance and everything in between.",
+      "We offer support, monitoring, incident management and proactive improvements under a single SLA. We handle even the most complex multi-service environments, keeping every layer aligned, visible and supported around the clock.",
+      "You name it. We watch it. If it breaks. We fix it.",
     ],
   },
 ];
 
-const REASONS = [
+const CASE_STUDIES = [
   {
-    title: "Because the 3am page goes to someone already awake",
-    text: "Follow-the-sun shifts mean your incident lands on an engineer mid-shift, not on a phone ringing in an empty house.",
+    client: "The Body Coach",
+    headline: "Protecting the biggest health app launch of the year 24/7 – without breaking a sweat",
+    to: "https://www.justaftermidnight247.com/case-study/the-body-coach-app/",
+    image: "/icons/gcp-Body-Coach-V2.png",
   },
   {
-    title: "Because fixes arrive with a written handover",
-    text: "What broke, what we changed, what we are watching. Your morning starts with answers instead of archaeology.",
+    client: "TUMS® Super Bowl Campaign",
+    headline: "Ensuring 100% success for a major Super Bowl campaign.",
+    to: "https://www.justaftermidnight247.com/case-study/tums-super-bowl-campaign-2021/",
+    image: "/icons/azure-JAM-City-BG-1.webp",
   },
   {
-    title: "Because your roadmap time stays yours",
-    text: "We absorb the interrupts — the patches, the tickets, the odd fires — so your in-house team ships what it planned to.",
+    client: "Emperor",
+    headline: "Migrating and supporting over 130 enterprise sites for a specialist digital agency",
+    to: "https://www.justaftermidnight247.com/case-study/emperor/",
+    image: "/icons/azure-Emperor.webp",
   },
   {
-    title: "Because audits get evidence, not anecdotes",
-    text: "Incident records, change logs and review notes are kept properly, so compliance questions become exports, not panic.",
+    client: "Guide Dogs",
+    headline: "Working together with Guide Dogs to support their application and infrastructure",
+    to: "https://www.justaftermidnight247.com/case-study/guide-dogs/",
+    image: "/icons/azure-Guide-Dogs-V2.png",
+  },
+];
+
+const WHY_CARDS = [
+  {
+    title: "Because you don’t worry about out-of-hours incidents, ever",
+    text: "We follow the sun. That means teams of .NET devs and cloud engineers in every timezone. Whenever your issue, we have the right person on the job in minutes.",
   },
   {
-    title: "Because cover extends to your pipeline",
-    text: "Deployments, rollbacks and pipeline health ride on the same shifts — round-the-clock DevOps engineers, or the whole practice as a service.",
+    title: "Because you don’t worry about that API",
+    text: "Or this third-party shopping cart. We’re full-stack. That means we monitor and triage anything and everything.",
+  },
+  {
+    title: "Because you taught us",
+    text: "We build intelligent runbooks based on in-depth knowledge of your technology stack. We’re tech-enabled and person-led.",
+  },
+  {
+    title: "Because your internal team can finally focus",
+    text: "Our partners love their dev teams. When you offload support, they get back to what they signed up for.",
+  },
+  {
+    title: "Because you stay compliant and regulation-ready",
+    text: "HIPAA compliance in healthcare. Data protection in legal tech. Our partners are supported to meet their industry challenges.",
+  },
+  {
+    title: "Because your architecture is supported end-to-end",
+    text: "With us leading the charge. With us holding the rear. We support complex, event-driven architectures. We also build and migrate them.",
+  },
+  {
+    title: "Because now your DevOps pipeline stays healthy",
+    text: "Our 24/7 support service extends to DevOps. We support and monitor existing pipelines, supply DevOps engineers out of hours or take the lead with DevOps as a service.",
+  },
+  {
+    title: "Because you’ve stopped Googling",
+    text: "DevOps partner. Microservices observability. Disaster recovery planning. We’re a one-and-done, buck-stopping partner.",
+  },
+  {
+    title: "Because you have great taste in support providers",
+    text: "If you like what you’re hearing, there’s plenty more where that came from. Whatever your support gap, we close it.",
   },
 ];
 
 const CAPABILITIES = [
   {
-    title: "Incident & response management",
-    items: ["Severity grading and SLA clocks", "Bridge calls during major incidents", "Vendor and provider chasing", "Post-incident write-ups"],
+    title: "Incident and response management",
+    items: [
+      "Incident management (IM)",
+      "Root cause analysis (RCA)",
+      "Incident response management",
+      "Incident triage",
+      "Security incident response",
+    ],
   },
   {
-    title: "Service continuity & recovery",
-    items: ["Backup and restore drills", "Failover and redundancy checks", "Rollback plans for every release", "Disaster recovery runbooks"],
+    title: "Service continuity and recovery",
+    items: [
+      "Application rollbacks",
+      "Restarting services",
+      "Backup and restore procedures",
+      "Manual scaling of resources",
+    ],
   },
   {
-    title: "Access & security management",
-    items: ["Patching and update windows", "Least-privilege access reviews", "Secret and certificate rotation", "WAF, CDN and edge rules"],
+    title: "Access and security management",
+    items: [
+      "IP whitelisting",
+      "Access management",
+      "Password resets",
+      "User account provisioning",
+      "User removal",
+      "Access control",
+    ],
   },
   {
-    title: "Quality & process improvement",
-    items: ["Code-level bug triage", "Regression and release checklists", "Performance budgets on key journeys", "Recurring-issue root cause work"],
+    title: "Quality and process improvement",
+    items: [
+      "Service validation and testing",
+      "Knowledge base management",
+      "Post-incident review (PIR)",
+      "Vendor liaison",
+      "Third-party escalation",
+    ],
   },
   {
-    title: "Observability & performance",
-    items: ["Journey-level monitoring", "Alert tuning that kills noise", "Dashboards your team can read", "SLO and uptime reporting"],
+    title: "Observability and performance",
+    items: [
+      "System health checks",
+      "Monitoring, alerts and telemetry",
+      "Performance monitoring",
+      "Network diagnostics and flow analysis",
+      "End-to-end latency analysis",
+      "Capacity monitoring and forecasting",
+    ],
   },
   {
-    title: "Service management & operations",
-    items: ["Ticket queue with contractual targets", "Scheduled change management", "Asset, domain and licence inventory", "Monthly service reviews"],
+    title: "Service management and operations",
+    items: [
+      "SLA management",
+      "Change management",
+      "Patch management",
+      "Downtime reporting",
+      "Outage communication",
+      "Configuration management",
+      "Service request management",
+      "Escalation management",
+    ],
+  },
+];
+
+const FORD_CASE = {
+  client: "Ford",
+  headline: "Around-the-clock support for 40+ websites",
+  paragraphs: [
+    "Saving Ford a cool $40 million by consulting on platform stability and then supplying our own team to watch out for any additional issues 24/7, 365.",
+  ],
+  to: "https://www.justaftermidnight247.com/case-study/ford/",
+  image: "/icons/gcp-Ford-V2-2.webp",
+  cta: "Read case study",
+};
+
+const PACKAGES = [
+  {
+    tab: "Simple Reassurance",
+    name: "FIRST-LINE SUPPORT",
+    items: [
+      "Monitoring",
+      "L1 Communications",
+      "<30 Minute Response Time",
+    ],
+    ctaText: "Select package",
+    ctaHover: "Contact",
+    to: "/contact?package=First-Line%20Support",
+  },
+  {
+    tab: "Overnight & weekends",
+    name: "OUT-OF-HOURS SUPPORT",
+    items: [
+      "Monitoring",
+      "L1 Communications",
+      "L2 Resolution",
+      "Incident Reporting",
+      "Recommendations",
+      "<30 Minute Response Time",
+    ],
+    ctaText: "Select package",
+    ctaHover: "Contact",
+    to: "/contact?package=Out-of-Hours%20Support",
+  },
+  {
+    tab: "Complete cover",
+    name: "24/7 SUPPORT",
+    items: [
+      "Monitoring",
+      "L1 Communications",
+      "L2 Resolution",
+      "Incident Reporting",
+      "Recommendations",
+      "<30 Minute Response Time",
+    ],
+    ctaText: "Select package",
+    ctaHover: "Contact",
+    to: "/contact?package=24%2F7%20Support",
+    featured: true,
+  },
+  {
+    tab: "A tailored service",
+    name: "CUSTOM & ADD-ONS",
+    items: [
+      "Infrastructure or Application Only",
+      "Faster SLA Response Times",
+      "Custom Code",
+      "Custom Applications",
+      "DevOps Support",
+      "Ticket Caps",
+      "Anything else? Just ask",
+    ],
+    ctaText: "Get in touch",
+    ctaHover: "Contact",
+    to: "/contact?package=Custom",
   },
 ];
 
 const FAQS = [
   {
-    q: "What does 24/7 actually cover?",
-    a: "Watching the metrics, picking up incidents and fixing what broke, across whichever layers sit in your agreement — application, website, cloud or all three. Planned changes and maintenance slots are included too; the package you pick sets response targets and how much change work is bundled.",
+    q: "What is application support?",
+    paragraphs: [
+      "Application support means supporting everything in the application layer. App support engineers will be au fait with a wide array of languages, experience platforms as well as other dev-y stuff.",
+      "When we provide app support, we make sure your app stays up, performs well and keeps delivering value to your customers.",
+    ],
   },
   {
-    q: "How fast is fast?",
-    a: "Each package carries contractual response times for each severity level, and the clock runs at 3am exactly as it does at 3pm. Ask us for the SLA document and you will see the numbers before you sign anything.",
+    q: "What is infrastructure support?",
+    paragraphs: [
+      "Same deal, but for your cloud. When we take care of your infrastructure, we monitor and triage for any hiccups or service disruptions, ensuring it runs smoothly, cheaply, or however you like it. Cloud support services means everything from incident management to routine maintenance, ensuring your cloud infrastructure is always optimised.",
+      "However, we also build, review, and optimise cloud infrastructure.",
+      "So if you’re in the market for more than support, check out some of our other cloud services. Whether it’s integrating cloud-native services or modernising a cloud-based application, we’ve got you covered. And if you’re unsure about where to start, we offer a free consultation to help assess your needs.",
+    ],
   },
   {
-    q: "Do you replace our in-house team?",
-    a: "No. We take the interrupts — nights, weekends, patches, tickets, fires — so your team keeps its roadmap. Most customers treat us as the night shift and the safety net, not as a replacement.",
+    q: "What is full-stack support?",
+    paragraphs: [
+      "Full-stack support is just the two above services combined. Although, with applications growing increasingly distributed, full-stack often means supporting 3rd-party integrations, too. That’s why Mission Control (our bespoke full-stack solution) is indispensable.",
+    ],
   },
   {
-    q: "Which platforms and clouds do you support?",
-    a: "AWS, Azure and GCP, plus the CMS and commerce platforms behind most customer-facing sites — Sitecore, Kentico, Umbraco, AEM, Magento, Optimizely, WordPress and custom applications. If yours is not listed, ask: we onboard new stacks regularly.",
+    q: "Aren’t cloud support and DevOps the same thing?",
+    paragraphs: [
+      "Cloud/infrastructure support has some crossover with both DevOps and CloudOps. Essentially, if you’re looking to fine-tune your deployments, performance or cloud processes, we’ll be able to help; what you call it is up to you!",
+    ],
   },
   {
-    q: "How does onboarding work?",
-    a: "We start with a review of your stack, then document the journeys, runbooks and alerts that matter. Access is granted least-privilege, monitoring goes in, and the first shift rota is agreed before we take the pager.",
+    q: "How does it work?",
+    paragraphs: [
+      "Our process is simple, just get in touch and we’ll take it from there. We work out what our support team will cover and when.",
+      "Your business needs set the scope of the project. Maybe you need application support and incident resolution. Maybe you only need proactive monitoring so your own support teams can pick up tickets.",
+      "It’s up to you. From website security to app support, from website maintenance to the ongoing monitoring of your cloud services – our mission is to fit like a glove.",
+    ],
   },
   {
-    q: "What if we only need nights or weekends?",
-    a: "Then do not pay for round-the-clock cover. Out-of-hours and first-line packages exist precisely for teams who are fine in office hours and want someone trustworthy holding the rest.",
+    q: "Need a glossary for our packages terms?",
+    terms: [
+      {
+        term: "Monitoring",
+        definition: "Continuous tracking of your systems, applications, or cloud infrastructure to ensure optimal performance, uptime, and security. Monitoring includes real-time alerts for anomalies, potential bottlenecks, or system failures that may require immediate attention.",
+      },
+      {
+        term: "L1 Communications",
+        definition: "This refers to the first line of communication in support, dealing with basic technical issues. L1 support typically handles tasks such as troubleshooting simple problems, resetting passwords, and answering general user queries, before escalating more complex issues to higher levels.",
+      },
+      {
+        term: "<30 Minute Response Time",
+        definition: "A commitment to acknowledge and respond to any support request or issue within 30 minutes, ensuring that problems are addressed swiftly to minimise downtime and potential impact on business operations.",
+      },
+      {
+        term: "L2 Resolution",
+        definition: "Level 2 (L2) support involves more advanced troubleshooting and technical expertise, often dealing with more complex issues that L1 cannot resolve. This could include in-depth application debugging, database issues, or network performance problems.",
+      },
+      {
+        term: "Incident Reporting",
+        definition: "After resolving an issue, we provide a detailed report outlining what happened, how it was addressed, and any preventive actions that should be taken in the future. This helps in improving processes and avoiding recurring incidents.",
+      },
+      {
+        term: "Recommendations",
+        definition: "Alongside solving problems, we offer expert suggestions to optimise your infrastructure or applications. These could range from security improvements to performance enhancements, based on our analysis of your systems and their behaviour during incidents.",
+      },
+      {
+        term: "Infrastructure or Application Only",
+        definition: "You can choose to limit our support to just your cloud infrastructure or specific applications. For example, we can focus solely on maintaining your AWS environment or handle only your custom eCommerce platform, based on your needs.",
+      },
+      {
+        term: "Faster SLA Response Times",
+        definition: "If the standard <30 minute response time isn’t enough for your business, we offer customisable Service Level Agreements (SLAs) with even quicker response times to ensure issues are handled with the utmost urgency.",
+      },
+      {
+        term: "Custom Code",
+        definition: "We provide support for custom-built applications or software. This means our team is skilled in understanding, troubleshooting, and optimising code that isn’t part of off-the-shelf solutions, ensuring your unique systems run smoothly.",
+      },
+      {
+        term: "Custom Applications",
+        definition: "Beyond just supporting standard platforms, we specialise in supporting fully bespoke applications. Whether your app is designed in-house or by a third-party developer, we ensure it’s maintained and optimised according to your specific needs.",
+      },
+      {
+        term: "DevOps Support",
+        definition: "Our DevOps support focuses on managing and automating your software development pipelines and infrastructure. This includes Continuous Integration/Continuous Deployment (CI/CD), infrastructure as code (IaC), and other tools that streamline operations and enable faster, more reliable releases.",
+      },
+      {
+        term: "Ticket Cap",
+        definition: "If you want to manage the number of support requests, we can set a cap on how many tickets we’ll handle within a given time frame. This allows you to control costs and prioritise critical issues while leaving routine tasks to your in-house team.",
+      },
+    ],
+  },
+  {
+    q: "More questions?",
+    paragraphs: [
+      "Just drop us a line to see how we can help. A member of our team will be right with you.",
+    ],
   },
 ];
 
-const OUTCOMES = [
+const VALUE_CARDS = [
   {
-    title: "Protect revenue and reputation",
+    title: "Protect your revenue and reputation; say goodbye to downtime",
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M24 6l14 6v10c0 9-6 16-14 20-8-4-14-11-14-20V12l14-6z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
-        <path d="M17 24l5 5 9-10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      <svg viewBox="0 0 64 64" width="64" height="64" fill="none" aria-hidden="true">
+        <path d="M32 6L52 14v16c0 14-8 24-20 28C20 54 12 44 12 30V14l20-8z" stroke="#fabd14" strokeWidth="3" strokeLinejoin="round" />
+        <path d="M22 30l8 8 14-14" stroke="#fabd14" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    text: "Downtime is abandoned baskets, missed calls and a headline you did not write. Cover that never sleeps keeps the trading hours you did not plan for as safe as the ones you did.",
+    text: "The average cost of downtime is $5,600 per minute. We’re not a budget option. But we’re cheaper than that. For less than a rough quarter million per hour, you could invest in a full-stack support service to ensure smooth delivery.",
   },
   {
-    title: "Ship changes with confidence",
+    title: "Innovate with confidence; take the leash off your team",
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <path d="M24 6c8 6 12 14 12 22l-12 10-12-10c0-8 4-16 12-22z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
-        <circle cx="24" cy="22" r="5" stroke="currentColor" strokeWidth="2.2" />
-        <path d="M12 28l-4 10 10-4M36 28l4 10-10-4" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+      <svg viewBox="0 0 64 64" width="64" height="64" fill="none" aria-hidden="true">
+        <path d="M32 54s-18-11-18-24a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 13-18 24-18 24z" stroke="#fabd14" strokeWidth="3" strokeLinejoin="round" />
+        <path d="M24 30l6 6 12-12" stroke="#fabd14" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    text: "Release checklists, rollback drills and pre-release checks mean your team can deploy on a Friday and still sleep that night. Someone is watching the metrics either way.",
+    text: "When your team aren’t dealing with patching, bugs, incidents, rollbacks, 5 am meltdowns and general chaos – they can make some pretty neat stuff. Whether you’re a SaaS product or an eCommerce brand. Whether it’s about new features or fabulous dynamic content. You didn’t hire a team to down tools and fix bugs. We did. And they’re great at it.",
   },
   {
-    title: "Spend less on firefighting",
+    title: "Lower your costs; boost your performance",
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="2.2" />
-        <path d="M24 14v20M29 19c-1.5-2-4-2.4-6-1.6-2.6 1-3.4 4.4-1 6 2.6 1.8 7 1.4 7 4.8 0 2.6-3 4-6 3.2-1.6-.4-2.8-1.4-3.4-2.6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+      <svg viewBox="0 0 64 64" width="64" height="64" fill="none" aria-hidden="true">
+        <circle cx="32" cy="32" r="24" stroke="#fabd14" strokeWidth="3" />
+        <path d="M32 18v28M39 24c-2-2.5-5.5-3-8.5-2-3.5 1.3-4.5 5.5-1.3 7.5 3.5 2.2 9.5 1.8 9.5 6 0 3.3-4 5-8 4-2.2-.5-3.8-1.8-4.7-3.3" stroke="#fabd14" strokeWidth="3" strokeLinecap="round" />
       </svg>
     ),
-    text: "Recurring incidents get root-cause work, alert noise gets tuned away, and capacity gets planned before it becomes an emergency. The queue shrinks month on month.",
+    text: "Everyone’s favourite oxymoron. Pay less, get better stuff. The fact is few have really embraced cloud native. And there’s a very real possibility that there are cost savings to be had. Alongside a boost in performance. If you’re not a fully modularised, microservice serverless wonder – you could be. And if you already are, you need someone like us to support you, anyway.",
   },
 ];
 
 const INDUSTRIES = [
   {
-    title: "SaaS & Platform Products",
+    title: "SaaS & Digital Products",
     paragraphs: [
-      "The roadmap is the point of the business, so nights should not be spent on rollback tickets. We take the queue, the alerts and the first line of the incident call, and your engineers wake up to a written picture rather than a thread of guesses.",
-      "Journey-level monitoring, deploy checks and pre-release drills, follow-the-sun rotations across your application, APIs and cloud accounts.",
+      "For SaaS platforms, performance and uptime are the product. Users expect instant response times, seamless onboarding and zero disruption. If they don’t get it, churn follows fast. But you know all this.",
+      "We provide always-on monitoring, real-time incident response and full-stack visibility across your application, APIs, integrations and cloud infrastructure.",
+      "With tight SLAs, global coverage and deep support for modern architectures (microservices, serverless, containers), we keep your platform reliable while your team focuses on shipping new features, not firefighting.",
     ],
   },
   {
-    title: "Commerce & Marketplaces",
+    title: "Healthcare & HealthTech",
     paragraphs: [
-      "Peak is where the money is, and it never arrives on the schedule you planned. Cart, checkout and payment paths stay watched end to end, with someone awake who has the access to act on them.",
-      "Pre-peak load testing, war-room cover through the trading window, and a fast path back to a working storefront when a plugin or a release breaks it.",
+      "If you’re operating in healthcare, you’re operating in one of the most regulated spaces in the world. Healthcare and HealthTech organisations must balance availability, security and regulatory compliance, all while supporting critical patient-facing and clinician-facing systems.",
+      "We provide round-the-clock support designed for sensitive, highly audited environments. Our team delivers real-time monitoring, rapid incident response, rigorous access control and infrastructure management that supports HIPAA, GDPR and local regulatory frameworks.",
+      "Whether you’re scaling a telemedicine product, securing patient portals or maintaining hospital-grade integrations, we keep your digital services reliable, resilient and compliant 24/7.",
     ],
   },
   {
-    title: "Digital Agencies",
+    title: "Legal & LegalTech",
     paragraphs: [
-      "White-label cover for every client site you ship. We stay invisible, your clients stay happy, and Monday mornings stop starting with an outage report.",
-      "One agreement across the whole portfolio, updates written in your brand voice, and specialists who know the CMS your clients are actually running.",
+      "Legal platforms operate in one of the tightest regulatory environments, where uptime, data integrity and confidentiality are non-negotiable.",
+      "We deliver 24/7 monitoring, incident management, infrastructure support and secure operational processes across case-management systems, client portals, document platforms and custom LegalTech applications.",
+      "With experience supporting organisations handling sensitive, jurisdiction-specific data, we help maintain availability, compliance and trust. Even as your systems evolve.",
     ],
   },
   {
-    title: "Health & Care Platforms",
+    title: "Retail & eCommerce",
     paragraphs: [
-      "Clinical and patient-facing systems do not get to be slow, and the records behind them are the most sensitive you own. Availability, access control and evidence all have to hold at three in the morning.",
-      "Monitoring and incident management across portals, booking flows and integrations, with the audit trail and data-handling discipline the sector is inspected against.",
+      "High-traffic trading windows, flash sales and unpredictable demand mean uptime isn’t negotiable. Every second of slow performance affects conversions, customer satisfaction and revenue.",
+      "We provide always-on monitoring, rapid incident management and full-stack visibility across your storefront, APIs, payments and inventory integrations.",
+      "Whether you’re running a modern composable stack or a legacy platform with multiple moving parts, we keep your customer experience fast, stable and secure, day, night and peak season.",
     ],
   },
   {
-    title: "Fintech & Payments",
+    title: "Agencies",
     paragraphs: [
-      "Downtime here is not an inconvenience, it is a trust problem. Transactions, balances and identity flows have to answer, and someone has to be accountable when they do not.",
-      "Rapid triage against tight SLAs, cover that reaches your payment, fraud and banking integrations, and the evidence trail regulators will ask for afterwards.",
+      "Agencies love bold ideas. Your clients love reliability. Your team can’t be awake 24/7. And that’s where we come in.",
+      "We provide around-the-clock cover for complex client websites, campaigns, apps and cloud platforms. From high-traffic campaigns to enterprise CMS builds, we monitor, triage and resolve issues while you sleep, pitch or deliver the next sprint.",
+      "We integrate smoothly with your in-house developers and workflows, giving your clients uptime insurance and giving your team the breathing room they need.",
     ],
   },
   {
-    title: "Public Sector & Education",
+    title: "Financial Services & FinTech",
     paragraphs: [
-      "Citizens and students arrive in waves nobody forecast, on systems nobody is allowed to rewrite. Legacy stacks, multi-vendor estates and procurement paperwork are normal here, not exceptions.",
-      "Full-stack cover across public portals and internal services, transparent reporting, and engineers who work inside change windows and access rules instead of around them.",
+      "In financial services, downtime isn’t just inconvenient. It damages trust. Platforms must be stable, fast and secure while meeting strict regulatory requirements and handling sensitive customer data.",
+      "We deliver round-the-clock support built for high-stakes environments. That includes advanced monitoring, rapid incident triage, tight SLAs, secure operational practices and support for identity, payment and fraud-prevention integrations.",
+      "Whether you’re powering transactions, customer portals or mobile banking apps, we help ensure reliability and compliance go hand in hand.",
     ],
   },
   {
-    title: "Travel & Hospitality",
+    title: "Government & Public Sector",
     paragraphs: [
-      "Bookings do not respect time zones, and neither do the people whose flights just changed. A slow search or a failed payment at midnight is a customer calling you at four.",
-      "Overnight cover for booking engines, inventory feeds and partner integrations, with the handover written down before your day team logs on.",
+      "Government platforms face unique pressures: high visibility, strict compliance, legacy systems, multi-vendor environments and unpredictable spikes in citizen demand.",
+      "We provide full-stack monitoring, rapid response and support tailored to public-sector operations. Our engineers understand the importance of transparency, system resilience and secure access controls.",
+      "From public-facing portals to critical internal systems, we help government teams maintain reliable digital services without adding pressure to in-house staff.",
     ],
   },
   {
-    title: "Media & Communities",
+    title: "Manufacturing & Logistics",
     paragraphs: [
-      "Traffic spikes on a story you did not plan for. The stream, the paywall and the comment stack all have to hold while the audience doubles twice before breakfast.",
-      "Elastic monitoring, cache and CDN triage, and moderation-tooling support, so the release you never expected still reads as a good night.",
+      "Manufacturing and supply-chain operations depend on platforms that can’t go offline. Warehouse management systems to tracking portals, ordering interfaces and internal applications… to name a few.",
+      "We support the digital backbone that keeps products moving. With proactive monitoring, 24/7 incident response and deep support for complex integrations (ERP, IoT feeds, APIs, data pipelines), we help ensure continuity, accuracy and real-time visibility. You stay efficient, even when demand spikes or systems evolve.",
     ],
   },
 ];
 
 const GLANCE = [
   {
-    q: "Who actually picks up at three in the morning?",
-    a: <>One of our own engineers, <strong>on shift and named on the rota</strong>. Not a queue, not a triage desk reading from a script — the person who answers has already seen the service, the last deploy and the alert that fired before anyone noticed.</>,
+    q: "What technologies do you support?",
+    a: (
+      <>
+        We support cloud platforms (<strong>AWS, Azure, GCP, Alibaba Cloud</strong>), CMS and DXP platforms (<strong>Sitecore, Kentico, Umbraco, AEM, Optimizely, WordPress, Drupal, Magento</strong>), custom-built applications, edge/CDN networks, and third-party integrations including APIs.
+      </>
+    ),
   },
   {
-    q: "What counts as an incident?",
-    a: <>Anything that stops your users doing the thing they came to do: a payroll run that failed, a checkout that throws, a job that never fired, a certificate that expired on the way through. If it costs you money or trust overnight, we treat it as one.</>,
+    q: "What support windows are available?",
+    a: (
+      <>
+        <strong>24/7/365</strong> support, out-of-hours support and overnight support, weekends-only support, or a custom schedule built around your needs.
+      </>
+    ),
   },
   {
-    q: "What do you need from us before the first night?",
-    a: <>Read access to the stack, a runbook if you keep one, and a way in to whoever alerts. We spend the first fortnight <strong>reading, not changing</strong> — by the time someone quotes you a plan, they have already been through your code.</>,
+    q: "What functions does your support team cover?",
+    a: "Our support covers monitoring and alerting, incident management and triage, root cause analysis (RCA), SRE and DevOps support, observability, security incident response, backup and recovery, change and patch management, and third-party vendor escalation.",
   },
   {
-    q: "What do we get told afterwards?",
-    a: <>A written handover every morning: what broke, what changed, and what is still waiting on a decision from you. Nothing closes until it is written down, so nobody has to rebuild last night from a thread.</>,
+    q: "What industries do you support?",
+    a: "We work with businesses and organisations in SaaS, eCommerce, healthtech, legaltech, fintech, government, manufacturing, logistics, and digital agencies – and many more.",
   },
   {
-    q: "And if it turns out not to be your problem?",
-    a: <>We say so. Plenty of calls end with <strong>that one is upstream</strong> and a name to chase. You will never pay us to sit on something that was never ours to fix.</>,
+    q: "What security accreditations do you hold?",
+    a: (
+      <>
+        We are <strong>ISO 27001</strong> certified, <strong>Cyber Essentials Plus</strong> verified, and <strong>PCI DSS</strong> compliant.
+      </>
+    ),
   },
 ];
 
 const IMPACT = {
-  q: "What does an hour of downtime really cost?",
-  a: <>Never just the hour. It is the checkout that stayed broken while the fix waited for a review, the payroll run that missed its window, the Monday spent rebuilding trust in a queue that failed on Friday. Across every incident we have taken over since 2019, the median service sat dark for four hours before anyone outside the team noticed — and the fix, once someone finally started, took twenty minutes.</>,
-  sourcesHead: "Where those numbers come from",
+  q: "What are the impacts of incidents on teams and revenue?",
+  a: "According to industry sources, downtime costs businesses between $540,000 (Splunk, The Hidden Costs of Downtime) and $2 million (New Relic, Observability Forecast 2025) per hour for many high-impact outages. Incidents also consume significant engineering capacity: the median engineering team spends 30% of its time addressing disruptions (New Relic, Observability Forecast 2024).",
+  sourcesHead: "Sources",
   sources: [
-    "Our own incident log, 2019 to today: every night we have carried the pager",
-    "Post-incident reviews written for clients and republished here with their permission",
-    "Handover notes from the first fortnight of each engagement, before and after we arrived",
+    "Splunk, The Hidden Costs of Downtime (2000 Global Executives surveyed)",
+    "New Relic, Observability Forecast 2025 (1,700 global technology professionals surveyed)",
+    "New Relic Observability Forecast 2024 (1,700 global technology professionals surveyed)",
   ],
 };
 
-export default function Support() {
-  useTitle("24/7 Support Services | Just After Midnight");
-  const { data: packages } = useApi("/api/packages");
-  const { data: caseStudies } = useApi("/api/case-studies");
-  const { data: articles } = useApi("/api/articles");
-  const featured = (caseStudies || [])[0];
+/* =========================================================================
+   SUPPORT PAGE COMPONENT
+   ========================================================================= */
 
-  const [openIndustry, setOpenIndustry] = useState(-1);
+export default function Support() {
+  useTitle("24/7 Support Services for Applications, Websites & Cloud | Just After Midnight");
+  const [openIndustry, setOpenIndustry] = useState(0);
 
   return (
     <>
+      {/* SECTION 1: HERO BANNER */}
       <section className="page-hero page-hero--support">
         <div className="hero-stars" aria-hidden="true">
           <svg viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice">
@@ -309,29 +579,28 @@ export default function Support() {
           </svg>
         </div>
         <div className="container">
-          <h1 className="page-hero-title support-hero-title reveal">24/7 support that stays awake so your platform never goes dark</h1>
-          <p className="page-hero-sub support-hero-sub reveal">Around-the-clock monitoring, triage and fixes for your application, website and cloud.</p>
+          <h1 className="page-hero-title support-hero-title reveal">24/7 Support Services for Applications, Websites &amp; Cloud</h1>
+          <p className="page-hero-sub support-hero-sub reveal">Around-the-clock reliability for brands, agencies and digital products</p>
           <div className="hero-actions reveal">
-            <Link to="/support#compare" className="btn btn-primary support-hero-cta">Compare packages <span aria-hidden="true">➔</span></Link>
+            <a href="#packages" className="btn btn-primary support-hero-cta">View packages <span aria-hidden="true">➔</span></a>
           </div>
           <div className="support-hero-trust reveal">
             <p className="trust-label">Trusted by:</p>
             <TrustLogos />
           </div>
         </div>
-        <div className="support-hero-divider" aria-hidden="true">
-          <svg viewBox="0 0 1920 160" preserveAspectRatio="none">
-            <path d="M0 68 C180 24 320 0 480 0 C700 0 1120 135 1450 135 C1660 135 1790 100 1920 69 L1920 160 L0 160 Z" fill="var(--bg)" />
-          </svg>
-        </div>
       </section>
 
-      <section className="support-intro">
+      {/* SECTION 2 & 3: INTRO (SEO TEXT BLOCK) & DIVIDER */}
+      <CurvedDividerDown fill="#ffffff" bg="#12203f" />
+
+      <section className="support-intro" style={{ background: "#ffffff", padding: "80px 0" }}>
         <div className="container support-intro-grid">
           <div className="support-intro-copy reveal">
-            <h2>Always-on cover for the platforms your revenue runs on</h2>
-            <p>We look after the digital platforms your customers actually touch, for teams that cannot afford downtime — front end, services, infrastructure, and the third-party APIs hanging off all three.</p>
-            <p>Real engineers, real shift rotas and response targets written into the contract. When something breaks, the person who picks it up already has the runbook, the access and the context to fix it.</p>
+            <h2>Always-on support for mission-critical digital platforms</h2>
+            <p>We’re Just After Midnight, specialists in 24/7 website support, application support and cloud support for teams that can’t afford downtime.</p>
+            <p>Our job is simple: we provide tech-enabled, 24/7 support for mission-critical, customer-facing digital platforms. Our support team monitors, manages and resolves technical issues across every layer of your stack: the website, the app, the cloud infrastructure and every third-party integration in between.</p>
+            <p>With full transparency, real engineers and industry-leading response times, we keep your platforms online, fast, secure and performing.</p>
           </div>
           <div className="means-card reveal">
             <h3>That means:</h3>
@@ -350,148 +619,282 @@ export default function Support() {
         </div>
       </section>
 
-      <section className="svc-band">
-        <div className="svc-band-wave" aria-hidden="true">
-          <svg viewBox="0 0 1920 101" preserveAspectRatio="none">
-            <path d="M0 0H1920V69C1790 84 1660 101 1450 101C1120 101 700 34 480 34C320 34 180 46 0 68Z" fill="var(--bg)" />
-          </svg>
-        </div>
-        <div className="svc-head">
-          <h2 className="band-title reveal">Our support services</h2>
-          <span className="band-rule" aria-hidden="true" />
-          <p className="band-sub reveal">Choose your layers. Choose your hours.</p>
-          <p className="band-sub reveal">Overnights only? Weekends only? Every hour of every day? We cover them all.</p>
-          <p className="band-sub band-sub--last reveal">The same engineers sit behind every option, working a written incident process with monitoring that pages us before your users notice.</p>
-        </div>
+      {/* SECTION 4 & 5: OUR SUPPORT SERVICES & DIVIDER */}
+      <CurvedDividerDown fill="#12203f" bg="#ffffff" />
+
+      <section className="svc-band" style={{ background: "#12203f", padding: "80px 0 100px" }}>
         <div className="container">
+          <div className="svc-head" style={{ paddingInline: 0, marginBottom: "40px" }}>
+            <h2 className="band-title reveal" style={{ color: "#ffffff", fontSize: "32px", fontWeight: 900 }}>Our support services</h2>
+            <div style={{ width: "56px", height: "4px", background: "#fabd14", borderRadius: "2px", margin: "0 0 22px" }} />
+            <p className="band-sub reveal" style={{ color: "#c2ccde" }}>Pick your stack. Pick your coverage.</p>
+            <p className="band-sub reveal" style={{ color: "#c2ccde" }}>Just overnights? Weekends? 24 hours a day, 7 days a week? We can do it all.</p>
+            <p className="band-sub band-sub--last reveal" style={{ color: "#c2ccde" }}>Each service is delivered by our global support team, following a proven incident management process and using industry-leading monitoring technologies.</p>
+          </div>
           <div className="svc-grid">
             {SERVICES.map((service) => (
-              <article className="svc-card reveal" key={service.title}>
-                <span className="svc-icon">{service.icon}</span>
-                <h3>{service.title}</h3>
-                <span className="svc-rule" aria-hidden="true" />
-                {service.paras.map((para) => <p key={para.slice(0, 24)}>{para}</p>)}
-                <Link to="/support#compare" className="btn btn-primary svc-cta">View packages <span aria-hidden="true">➔</span></Link>
+              <article className="svc-card reveal" key={service.title} style={{ background: "#1a2b4e", border: "1px solid #e7e7e4", borderRadius: "14px", padding: "30px" }}>
+                <span className="svc-icon" style={{ display: "block", marginBottom: "16px" }}>{service.icon}</span>
+                <h3 style={{ color: "#ffffff", fontSize: "20px", fontWeight: 800, margin: "0 0 12px" }}>{service.title}</h3>
+                <span className="svc-rule" aria-hidden="true" style={{ width: "44px", height: "3px", background: "#fabd14", borderRadius: "2px", margin: "0 0 22px" }} />
+                {service.paras.map((para, idx) => (
+                  <p key={idx} style={{ color: "#ffffff", lineHeight: 1.6, marginBottom: idx === service.paras.length - 1 ? "24px" : "15px" }}>{para}</p>
+                ))}
+                <a href="#packages" className="btn btn-primary svc-cta" style={{ marginTop: "auto", background: "#fabd14", color: "#12203f", fontWeight: 800, borderRadius: "8px", padding: "11px 22px" }}>
+                  View packages <span aria-hidden="true">➔</span>
+                </a>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="maint-band">
-        <div className="maint-wave maint-wave--top" aria-hidden="true">
-          <svg viewBox="0 0 1920 58" preserveAspectRatio="none">
-            <path d="M0 0H1920V21C1810 32 1700 41 1560 49C1440 55 1340 55 1220 47C1080 37 1000 27 900 15C820 5 760 0 620 0H260C180 0 90 6 0 14Z" fill="#12203f" />
-          </svg>
-        </div>
-        <div className="container maint-inner">
-          <h2 className="reveal">Pair support with ongoing maintenance</h2>
-          <p className="reveal">Stability is only half the job. Every plan above can run alongside our managed services, so the engineers who close tonight's incident also ship the upgrades, patches and performance work that prevent tomorrow's.</p>
-          <Link to="/cloud" className="btn maint-cta reveal">See cloud & DevOps <span aria-hidden="true">➔</span></Link>
-        </div>
-        <span className="maint-badge" aria-hidden="true">
-          <svg viewBox="0 0 66 66" fill="none">
-            <circle cx="33" cy="33" r="33" fill="#132140" />
-            <circle cx="35" cy="38" r="16.5" stroke="#ffffff" strokeWidth="3.2" />
-            <path d="M28 38.5l5 5L46 30" stroke="#ffffff" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx="21" cy="17" r="2.6" fill="#ffffff" />
-            <circle cx="28.5" cy="12.5" r="2.6" fill="#ffffff" />
-          </svg>
-        </span>
-        <div className="maint-wave maint-wave--bottom" aria-hidden="true">
-          <svg viewBox="0 0 1920 89" preserveAspectRatio="none">
-            <path d="M0 55L169.182 37.3769C375.835 15.8505 584.165 15.8506 790.818 37.377L1129.18 72.6231C1335.83 94.1495 1544.17 94.1494 1750.82 72.623L1920 55V89H0Z" fill="var(--bg)" />
-          </svg>
+      {/* SECTION 6 & 7: NEED ONGOING MAINTENANCE, TOO? & DIVIDER */}
+      <CurvedDividerDown fill="#ffffff" bg="#12203f" />
+
+      <section className="small-cta" style={{ background: "#ffffff", padding: "70px 0" }}>
+        <div className="container" style={{ maxWidth: "860px", margin: "0 auto", textAlign: "center" }}>
+          <h2 className="reveal" style={{ color: "#12203f", fontSize: "32px", fontWeight: 800, marginBottom: "20px" }}>Need ongoing maintenance, too?</h2>
+          <p className="reveal" style={{ color: "#334155", fontSize: "16px", lineHeight: "28px", marginBottom: "32px" }}>
+            We’re proactive about performance. Our 24/7 application support, website support and cloud support can be paired with ongoing managed services, ensuring your cloud environment is optimised, keeping your site up-to-date and delivering high performance.
+          </p>
+          <div className="reveal">
+            <Link to="/cloud" className="btn" style={{ display: "inline-flex", alignItems: "center", gap: "10px", background: "#132140", color: "#ffffff", fontFamily: "Montserrat, sans-serif", fontWeight: 900, fontSize: "15px", padding: "16px 28px", borderRadius: "6px", textDecoration: "none" }}>
+              Learn about Managed Services <span aria-hidden="true">➔</span>
+            </Link>
+          </div>
         </div>
       </section>
 
-      <CaseStudiesBand title="Proof, not promises" studies={caseStudies} />
+      {/* SECTION 8 & 9: READ OUR CASE STUDIES & DIVIDER */}
+      <CurvedDividerDown fill="#f8fafd" bg="#ffffff" />
 
-      <WhyBand
-        title="Why teams hand us the night"
-        intro="Nobody hands over their out-of-hours rota lightly. Support was the whole reason we existed, and it has been our job every hour of every day since — mission-critical retail, hyperscale SaaS, platforms that cannot stop trading. This is why the handover sticks:"
-        cards={REASONS}
-        accent={{
-          title: "Because you picked the right partner first time",
-          text: "Convinced so far? There is more on the packages page — and if your gap is not covered here, tell us and we will shape it.",
-          cta: "View packages",
-          to: "/support#compare",
-        }}
-      />
+      <div style={{ background: "#f8fafd", padding: "40px 0 20px" }}>
+        <CaseStudiesBand title="Read our case studies" studies={CASE_STUDIES} />
+      </div>
 
-      <CapabilityBand
-        title="What the support desk actually does"
-        intro="The routines that keep platforms healthy, handled by one team before they become incidents."
-        groups={CAPABILITIES}
-      />
+      {/* SECTION 10: WHY WE'RE THE BEST (9 CARDS ON DARK NAVY) */}
+      <CurvedDividerDown fill="#111a2b" bg="#f8fafd" />
 
-      <CaseFeature study={featured} />
-
-      <section className="pricing" id="compare">
+      <section className="aws-why-section" style={{ background: "#111a2b", padding: "80px 0 100px" }}>
         <div className="container">
-          <h2 className="section-title reveal">Our service packages</h2>
-          <p className="pricing-intro reveal">Monitoring, graded response and senior engineers come with every tier. What changes is how fast we pick up, how much of the routine work we take off your plate, and how deep the reporting goes. None of the three quite fit? Tell us what you run and we will shape the agreement around it.</p>
-          <div className="pricing-grid">
-            {(packages || []).map((pkg) => (
-              <article className={`price-card reveal${pkg.featured ? " is-featured" : ""}`} key={pkg.name}>
-                {pkg.featured && <p className="price-flag">Most popular</p>}
-                <h2 className="price-name">{pkg.name}</h2>
-                <p className="price-tagline">{pkg.tagline}</p>
-                <p className="price-amount">{pkg.price}<span>{pkg.period}</span></p>
-                <ul className="price-features">
-                  {pkg.features.map((feature) => (
-                    <li key={feature}><span className="tick" aria-hidden="true">✓</span>{feature}</li>
+          <div className="why-intro reveal" style={{ maxWidth: "820px", margin: "0 auto 54px", textAlign: "center" }}>
+            <h2 style={{ color: "#fabd14", fontSize: "36px", fontWeight: 800, marginBottom: "20px" }}>Why we’re the best</h2>
+            <p style={{ color: "#ffffff", fontSize: "16px", lineHeight: "28px", fontWeight: 300 }}>
+              A bold claim. But not a baseless one. We were founded to do 24/7 support. And we’ve done it pretty successfully for the past near-decade. We’ve worked with global brands on mission-critical sites. We’ve supported hyperscale SaaS products. We’ve helped major software companies deploy and deliver their products. This is why we’re the best:
+            </p>
+          </div>
+          <div className="aws-why-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+            {WHY_CARDS.map((card, idx) => (
+              <article className="aws-why-card reveal" key={idx} style={{ background: "#122140", borderRadius: "12px", padding: "32px", border: "1px solid rgba(255,255,255,0.06)" }}>
+                <h4 style={{ color: "#fabd14", fontSize: "18px", fontWeight: 700, lineHeight: 1.35, marginBottom: "14px" }}>
+                  {card.title}
+                </h4>
+                <p style={{ color: "#ffffff", fontSize: "15px", lineHeight: "24px", fontWeight: 300, margin: 0 }}>
+                  {card.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 11 & 12: 24/7 SUPPORT SERVICE CAPABILITIES & DIVIDER */}
+      <CurvedDividerDown fill="#ffffff" bg="#111a2b" />
+
+      <section className="cap-band" style={{ background: "#ffffff", padding: "80px 0 90px" }}>
+        <div className="container">
+          <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 48px" }}>
+            <h2 style={{ fontWeight: 900, fontSize: "34px", lineHeight: 1.15, color: "#16264a", margin: "0 0 14px" }}>
+              24/7 support service capabilities
+            </h2>
+            <div style={{ width: "64px", height: "4px", background: "#fabd14", borderRadius: "2px", margin: "0 auto 16px" }} />
+            <p style={{ fontSize: "17px", lineHeight: 1.6, color: "#42506b", margin: 0 }}>
+              If your team can’t be everywhere at once, that’s where we step in.
+            </p>
+          </div>
+          <div className="cap-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+            {CAPABILITIES.map((group) => (
+              <article className="cap-card reveal" key={group.title} style={{ background: "#f7f6f3", border: "1px solid #ececea", borderRadius: "14px", padding: "30px 32px" }}>
+                <h3 style={{ fontWeight: 800, fontSize: "18px", lineHeight: 1.3, color: "#16264a", margin: "0 0 12px" }}>{group.title}</h3>
+                <div style={{ width: "40px", height: "3px", background: "#fabd14", borderRadius: "2px", margin: "0 0 20px" }} />
+                <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+                  {group.items.map((item) => (
+                    <li key={item} style={{ display: "flex", gap: "12px", alignItems: "flex-start", marginBottom: "13px" }}>
+                      <span style={{ color: "#e0a200", fontWeight: 900, fontSize: "15px", lineHeight: 1.5, flex: "none" }}>✓</span>
+                      <span style={{ fontSize: "15px", lineHeight: 1.5, color: "#42506b" }}>{item}</span>
+                    </li>
                   ))}
                 </ul>
-                <Link to={`/contact?package=${encodeURIComponent(pkg.name)}`} className={`btn ${pkg.featured ? "btn-primary" : "btn-ghost"}`}>
-                  {pkg.cta} <span aria-hidden="true">➔</span>
-                </Link>
               </article>
             ))}
           </div>
-          <p className="pricing-note reveal">All prices ex-GST. Response times are contractual commitments, not best-effort promises — ask us for the SLA document.</p>
         </div>
       </section>
 
-      <section className="price-prose">
+      {/* SECTION 13 & 14: CASE STUDY FORD & DIVIDER */}
+      <CurvedDividerDown fill="#12203f" bg="#ffffff" />
+
+      <CaseFeature study={FORD_CASE} variant="wide" />
+
+      {/* SECTION 15, 16 & 17: PACKAGES & PRICING */}
+      <CurvedDividerDown fill="#ffffff" bg="#12203f" />
+
+      <section className="pkg-intro" id="packages" style={{ background: "#ffffff", padding: "70px 0 20px" }}>
         <div className="container">
-          <h2 className="reveal">What you actually pay for</h2>
-          <div className="price-prose-body reveal">
-            <p>No rate card written for somebody else&rsquo;s client has ever fitted your estate. Send us the stacks, the panels and the traffic you carry, and the quote comes back shaped around that instead.</p>
-            <p>Four tiers cover the ground between an office-hours desk and a rota that never closes. Take one, blend two, or point us at the single awkward corner of the platform that nobody on your side wants to own.</p>
-            <p>Reporting cadence, an engineer watching the 2am deploy, escalation written into the agreement — the shape of the week is yours to choose. Most quotes leave here inside a working day.</p>
+          <div className="pkg-intro-copy reveal" style={{ maxWidth: "840px", margin: "0 auto", textAlign: "center" }}>
+            <h2 style={{ fontSize: "36px", fontWeight: 800, color: "#12203f", marginBottom: "18px" }}>Our service packages</h2>
+            <p style={{ fontSize: "16px", lineHeight: "28px", color: "#475569" }}>
+              All plans include monitoring, alerting, incident response and support from senior engineers. Select the tier that matches your requirements.
+            </p>
           </div>
         </div>
       </section>
 
-      <InsightsBand
-        title="Field notes from the night shift"
-        cta="Read the insights"
-        to="/insights"
-        articles={articles || []}
-      />
-
-      <FaqBand
-        title="24/7 Support FAQ"
-        intro="The short version of everything customers ask before signing. For the full detail on what each tier includes, compare the packages above."
-        faqs={FAQS}
-        cta="Ask us something else"
-      />
-
-      <OutcomeBand title="What good cover buys you" cards={OUTCOMES} />
-
-      <ReviewsBand />
-
-      <section className="ind-band" id="industries">
-        <div className="band-wave band-wave--top" aria-hidden="true">
-          <svg viewBox="0 0 1920 88" preserveAspectRatio="none">
-            <path d="M0 0H1920V55L1750.82 72.623C1544.17 94.1494 1335.83 94.1495 1129.18 72.6231L790.818 37.377C584.165 15.8506 375.835 15.8505 169.182 37.3769L0 55V0Z" fill="var(--bg)" />
-          </svg>
+      <section className="pkg-table" style={{ background: "#ffffff", padding: "20px 0 60px" }}>
+        <div className="container">
+          <div className="pkg-grid">
+            {PACKAGES.map((pkg) => (
+              <div className={`pkg-col${pkg.featured ? " is-featured" : ""}`} key={pkg.name}>
+                <div className="pkg-tab">{pkg.tab}</div>
+                <h2 className="pkg-name">{pkg.name}</h2>
+                <ul className="pkg-list">
+                  {pkg.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <Link to={pkg.to} className="btn btn-primary pkg-cta">
+                  <span className="pkg-cta-hover">{pkg.ctaHover}</span>
+                  <span className="pkg-cta-text">{pkg.ctaText}</span>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
+
+      <section className="pkg-note" style={{ background: "#ffffff", padding: "0 0 60px" }}>
+        <div className="container" style={{ maxWidth: "860px", margin: "0 auto" }}>
+          <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#12203f", marginBottom: "16px" }}>Pricing</h3>
+          <p style={{ color: "#334155", fontSize: "15px", lineHeight: "26px", marginBottom: "14px" }}>
+            You only pay for what you actually need. No generic pricing. Tell us a bit about your environment and we’ll send a personalised quote within 24 hours.
+          </p>
+          <p style={{ color: "#334155", fontSize: "15px", lineHeight: "26px", marginBottom: "14px" }}>
+            Our four tiers of support can fit any brand, agency or enterprise like a glove. Need first-line support for a hundred sites or a custom solution for one piece of your stack? We can make it work.
+          </p>
+          <p style={{ color: "#334155", fontSize: "15px", lineHeight: "26px", marginBottom: "14px" }}>
+            We’re the go-to support people for brands and their agencies – and you don’t earn a moniker like that without a little flexibility. Whether you need weekly or monthly reporting, a DevOps engineer to supervise out-of-hours deployments or 24/7 service desk cover for a custom digital product, chances are, we’ve been there, done that and worn the proverbial T-shirt.
+          </p>
+          <p style={{ color: "#334155", fontSize: "15px", lineHeight: "26px", margin: 0 }}>
+            <strong>Need build solutions, not support?</strong> If you’re more interested in refactoring or modernising your infrastructure, check out <Link to="/cloud" style={{ color: "#fabd14", fontWeight: 700, textDecoration: "underline" }}>our solutions page</Link>.
+          </p>
+        </div>
+      </section>
+
+      {/* SECTION 18 & 19: FAQ & DIVIDER */}
+      <section className="support-faq" style={{ background: "#f8fafd", padding: "80px 0" }}>
+        <div className="container support-faq-grid">
+          <div className="support-faq-col">
+            <h2 className="reveal" style={{ fontSize: "36px", fontWeight: 800, color: "#12203f", marginBottom: "18px" }}>24/7 Support FAQ</h2>
+            <p className="support-faq-intro reveal" style={{ fontSize: "16px", lineHeight: "26px", color: "#475569", marginBottom: "36px" }}>
+              For a no-nonsense look at what we support, take a look at our packages. Still have questions? Here are the answers to our most common ones:
+            </p>
+            <div className="faq-list reveal">
+              {FAQS.map((faq, i) => (
+                <details className="faq-item" key={faq.q} open={i === 0}>
+                  <summary>
+                    {faq.q}
+                    <span className="faq-plus" aria-hidden="true" />
+                  </summary>
+                  <div className="faq-answer">
+                    {faq.paragraphs?.map((p, idx) => (
+                      <p key={idx}>{p}</p>
+                    ))}
+                    {faq.terms && (
+                      <dl>
+                        {faq.terms.map(({ term, definition }) => (
+                          <div key={term} style={{ marginBottom: "16px" }}>
+                            <dt style={{ fontWeight: 700, color: "#12203f", marginBottom: "4px" }}>{term}:</dt>
+                            <dd style={{ margin: 0, color: "#475569", lineHeight: 1.6 }}>{definition}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    )}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+          <div className="support-faq-art reveal" aria-hidden="true">
+            <svg viewBox="0 0 727 620" role="presentation" focusable="false">
+              <defs>
+                <mask id="faq-moon">
+                  <rect x="0" y="0" width="727" height="620" fill="#ffffff" />
+                  <circle cx="203" cy="130" r="48" fill="#000000" />
+                </mask>
+              </defs>
+              <ellipse cx="235" cy="612" rx="186" ry="16" fill="rgba(19,33,64,0.10)" />
+              <ellipse cx="582" cy="572" rx="130" ry="15" fill="rgba(19,33,64,0.10)" />
+              <path d="M582 470V330" stroke="var(--sky)" strokeWidth="34" strokeLinecap="round" />
+              <rect x="470" y="470" width="224" height="96" rx="14" fill="#132140" />
+              <ellipse cx="582" cy="470" rx="112" ry="22" fill="var(--navy-soft)" />
+              <g className="faq-lift">
+                <circle cx="235" cy="150" r="78" fill="rgba(250,189,20,0.14)" />
+                <circle cx="235" cy="150" r="58" fill="var(--amber)" mask="url(#faq-moon)" />
+                <path d="M582 330 346 178" stroke="var(--sky)" strokeWidth="28" strokeLinecap="round" />
+                <circle cx="346" cy="178" r="15" fill="#132140" />
+                <path d="M346 178C336 152 318 128 286 118" stroke="#132140" strokeWidth="14" fill="none" strokeLinecap="round" />
+                <path d="M346 178c-16 18-40 22-66 12" stroke="#132140" strokeWidth="14" fill="none" strokeLinecap="round" />
+              </g>
+              <circle cx="582" cy="330" r="21" fill="#132140" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 20 & 21: VALUE PROPOSITIONS & DIVIDER */}
+      <CurvedDividerDown fill="#12203f" bg="#f8fafd" />
+
+      <section className="support-value-section" style={{ background: "#12203f", padding: "80px 0 100px" }}>
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: "50px" }}>
+            <h2 className="reveal" style={{ color: "#fabd14", fontSize: "32px", fontWeight: 800 }}>
+              Protect, innovate and perform with our 24/7 support service
+            </h2>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+            {VALUE_CARDS.map((card, idx) => (
+              <article className="reveal" key={idx} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "14px", padding: "34px 28px" }}>
+                <div style={{ marginBottom: "20px" }}>{card.icon}</div>
+                <h3 style={{ color: "#fabd14", fontSize: "19px", fontWeight: 700, lineHeight: 1.35, marginBottom: "16px" }}>
+                  {card.title}
+                </h3>
+                <p style={{ color: "#ffffff", fontSize: "15px", lineHeight: "25px", fontWeight: 300, margin: 0 }}>
+                  {card.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 22 & 23: REVIEWS & DIVIDER */}
+      <CurvedDividerDown fill="#ffffff" bg="#12203f" />
+
+      <div style={{ background: "#ffffff", padding: "40px 0" }}>
+        <ReviewsBand />
+      </div>
+
+      {/* SECTION 24 & 25: INDUSTRIES WE SUPPORT & DIVIDER */}
+      <CurvedDividerDown fill="#12203f" bg="#ffffff" />
+
+      <section className="ind-band" id="industries" style={{ background: "#12203f", padding: "80px 0" }}>
         <div className="container ind-band-grid">
           <div className="ind-band-copy reveal">
-            <h2>Industries we support</h2>
-            <p>Every organisation breaks differently. These are the sectors we know best — and why their queues look the way they do.</p>
+            <h1 style={{ color: "#ffffff", fontSize: "36px", fontWeight: 800, marginBottom: "16px" }}>Industries we support</h1>
+            <p style={{ color: "#ffffff", fontSize: "16px", lineHeight: "26px", marginBottom: "32px" }}>
+              Every organisation is different. And that’s exactly why we build support around you.
+            </p>
             <div className="ind-acc">
               {INDUSTRIES.map((industry, index) => {
                 const open = openIndustry === index;
@@ -504,12 +907,14 @@ export default function Support() {
                       aria-controls={`industry-${index}`}
                       onClick={() => setOpenIndustry(open ? -1 : index)}
                     >
-                      <h3>{industry.title}</h3>
-                      <span className="ind-plus" aria-hidden="true" />
+                      <h3 style={{ color: "#e34168", fontSize: "18px", fontWeight: 700 }}>{industry.title}</h3>
+                      <span className="ind-plus" aria-hidden="true" style={{ color: "#e34168" }} />
                     </button>
                     <div className="ind-body" id={`industry-${index}`} role="region">
                       <div className="ind-body-inner">
-                        {industry.paragraphs.map((text) => <p key={text}>{text}</p>)}
+                        {industry.paragraphs.map((text, pidx) => (
+                          <p key={pidx} style={{ color: "#ffffff", fontSize: "15px", lineHeight: "24px", marginBottom: "12px" }}>{text}</p>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -517,56 +922,30 @@ export default function Support() {
               })}
             </div>
           </div>
-          <div className="ind-art reveal" aria-hidden="true">
-            <svg viewBox="0 0 540 591" fill="none">
-              <g fill="#ffffff">
-                <circle cx="416" cy="172" r="6" />
-                <circle cx="404" cy="196" r="8" />
-                <circle cx="390" cy="224" r="10" />
-                <circle cx="373" cy="256" r="13" />
-                <circle cx="352" cy="292" r="16" />
-                <circle cx="328" cy="330" r="19" />
-                <circle cx="302" cy="368" r="22" />
-                <circle cx="274" cy="406" r="24" />
-                <circle cx="348" cy="232" r="4" />
-                <circle cx="240" cy="465" r="26" />
-                <circle cx="258" cy="436" r="25" />
-                <circle cx="200" cy="487" r="30" />
-                <circle cx="152" cy="503" r="36" />
-                <circle cx="104" cy="517" r="28" />
-                <circle cx="66" cy="533" r="20" />
-                <circle cx="86" cy="486" r="6" />
-                <circle cx="130" cy="541" r="32" />
-                <circle cx="188" cy="533" r="26" />
-                <circle cx="232" cy="523" r="20" />
-                <ellipse cx="146" cy="545" rx="92" ry="26" />
-              </g>
-              <g transform="translate(452 118) rotate(35)">
-                <path d="M-20 6C-33 18 -41 36 -44 54L-20 44Z" fill="var(--amber)" />
-                <path d="M20 6C33 18 41 36 44 54L20 44Z" fill="var(--amber)" />
-                <path d="M-13 42H13L18 58H-18Z" fill="var(--navy-soft)" />
-                <path d="M0 -66C14 -48 22 -28 22 -8V32C22 39 17 44 10 44H-10C-17 44 -22 39 -22 32V-8C-22 -28 -14 -48 0 -66Z" fill="#ffffff" />
-                <path d="M0 -66C9 -54 15 -41 18 -30H-18C-15 -41 -9 -54 0 -66Z" fill="var(--amber)" />
-                <path d="M-22 14H22V24H-22Z" fill="var(--amber)" />
-                <circle cx="0" cy="-6" r="12" fill="var(--navy-soft)" />
-                <circle cx="0" cy="-6" r="12" stroke="var(--amber)" strokeWidth="3.5" />
-              </g>
-            </svg>
+          <div className="ind-art reveal" aria-hidden="true" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img src="/icons/azure-Rocket-stack2.webp" alt="Rocket" style={{ maxWidth: "100%", height: "auto", objectFit: "contain" }} />
           </div>
         </div>
-        <div className="container ind-cta reveal">
-          <h3>Not in the list?</h3>
-          <p>Everyone fits a category eventually. <Link to="/contact">Tell us what you run</Link> and we will show you what cover looks like for it.</p>
-        </div>
-        <div className="band-wave band-wave--bottom" aria-hidden="true">
-          <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
-            <path d="M0 73H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
-          </svg>
+        <div className="container how-it-works-cta reveal" style={{ marginTop: "48px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "28px 36px" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "24px" }}>
+            <h3 style={{ color: "#ffffff", fontSize: "20px", fontWeight: 800, margin: 0, minWidth: "180px" }}>Not listed here?</h3>
+            <p style={{ color: "#ffffff", fontSize: "15px", lineHeight: "24px", margin: 0, flex: 1 }}>
+              Don’t fit neatly into a category? That’s normal. We’ve supported hundreds of unique platforms.{" "}
+              <Link to="/contact" style={{ color: "#fabd14", fontWeight: 700, textDecoration: "underline" }}>
+                Reach out
+              </Link>{" "}
+              and we’ll show you how we can support yours.
+            </p>
+          </div>
         </div>
       </section>
 
-      <GlanceBand eyebrow="The short version" title="The questions we get asked first" items={GLANCE} />
+      {/* SECTION 26: GLANCE BAND */}
+      <CurvedDividerDown fill="#ffffff" bg="#12203f" />
 
+      <GlanceBand eyebrow="At a glance" title="Just After Midnight’s support offering" items={GLANCE} />
+
+      {/* SECTION 27: IMPACTS BAND */}
       <ImpactBand
         question={IMPACT.q}
         answer={IMPACT.a}
