@@ -57,11 +57,11 @@ const SERVICES = [
     groups: [
       {
         label: "Support Packages",
-        to: "/support",
+        to: "/support/our-packages",
         children: [
-          { label: "Silver", to: "/support" },
-          { label: "Gold", to: "/support" },
-          { label: "Platinum", to: "/support" },
+          { label: "Silver", to: "/support/our-packages" },
+          { label: "Gold", to: "/support/our-packages" },
+          { label: "Platinum", to: "/support/our-packages" },
         ],
       },
       {

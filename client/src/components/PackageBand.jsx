@@ -14,22 +14,24 @@ import { Link } from "react-router-dom";
    below where the agencies page does, and it finishes its copy with an accent
    link the agencies page leaves as plain text. Both come in as props so the
    geometry stays one component. */
-export default function PackageBand({ id, title, intro, introTail, introGap, tiers, note }) {
+export default function PackageBand({ id, title, intro, introTail, introGap, tiers, note, withIntro = true }) {
   return (
     <section className="pkg-band" id={id}>
-      <div className={`pkg-intro${introGap ? " pkg-intro--gap" : ""}`}>
-        <div className="container">
-          <div className="pkg-intro-copy reveal">
-            <h2>{title}</h2>
-            <p>
-              {intro}
-              {introTail && (
-                <> {introTail.lead} <Link className="pkg-intro-cta" to={introTail.to}>{introTail.link}</Link>.</>
-              )}
-            </p>
+      {withIntro && (
+        <div className={`pkg-intro${introGap ? " pkg-intro--gap" : ""}`}>
+          <div className="container">
+            <div className="pkg-intro-copy reveal">
+              <h2>{title}</h2>
+              <p>
+                {intro}
+                {introTail && (
+                  <> {introTail.lead} <Link className="pkg-intro-cta" to={introTail.to}>{introTail.link}</Link>.</>
+                )}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="pkg-table">
         <div className="container">
@@ -39,7 +41,7 @@ export default function PackageBand({ id, title, intro, introTail, introGap, tie
                 <span className="pkg-tab">{tier.tab}</span>
                 <h3 className="pkg-name">{tier.name}</h3>
                 <ul className="pkg-list">
-                  {tier.items.map((item) => <li key={item}>{item}</li>)}
+                  {tier.items.map((item, index) => <li key={`${tier.name}-${index}`}>{item}</li>)}
                 </ul>
                 <Link to={tier.to} className="btn btn-primary pkg-cta">
                   <span className="pkg-cta-hover">{tier.hover}</span>

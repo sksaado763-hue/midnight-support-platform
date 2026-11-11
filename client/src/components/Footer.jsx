@@ -7,7 +7,7 @@ const COLUMNS = [
     label: "Our services",
     title: "Our Services",
     links: [
-      ["Support Packages", "/support"],
+      ["Support Packages", "/support/our-packages"],
       ["Managed Cloud & DevOps", "/cloud"],
       ["Platform Support", "/platforms"],
       ["Case Studies", "/case-studies"],

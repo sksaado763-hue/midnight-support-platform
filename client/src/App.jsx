@@ -6,6 +6,7 @@ import { useReveal } from "./lib/useReveal";
 import Home from "./pages/Home";
 import Support from "./pages/Support";
 import SupportDetail from "./pages/SupportDetail";
+import SupportPackages from "./pages/SupportPackages";
 import Cloud from "./pages/Cloud";
 import CloudCostOptimisation from "./pages/CloudCostOptimisation";
 import Platforms from "./pages/Platforms";
@@ -58,6 +59,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/support/our-packages" element={<SupportPackages />} />
           <Route path="/support/:slug" element={<SupportDetail />} />
           <Route path="/cloud" element={<Cloud />} />
           <Route path="/cloud/cloud-consulting/cost-optimisation" element={<CloudCostOptimisation />} />

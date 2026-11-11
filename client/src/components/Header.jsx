@@ -10,7 +10,7 @@ const SUBMENUS = {
     to: "/support",
     blurb: "Monitoring, triage and resolution for your full stack, every hour of every day.",
     rows: [
-      { label: "Support Packages", to: "/support", links: [["Compare Packages", "/support#compare"]] },
+      { label: "Support Packages", to: "/support/our-packages", links: [["Compare Packages", "/support/our-packages#packages"]] },
       { label: "By industry", to: "/support/agencies", links: [["Agencies", "/support/agencies"], ["SaaS Platforms", "/support/saas-platforms"], ["eCommerce", "/support/ecommerce"]] },
       { label: "By cloud provider", to: "/support/aws-support", links: [["24/7 Support for AWS", "/support/aws-support"], ["24/7 Support for Azure", "/support/azure-support"], ["24/7 Support for GCP", "/support/gcp-support"]] },
     ],
@@ -99,7 +99,7 @@ function navActiveFor(pathname) {
 
 /* Pages whose hero paints the top of the document get a transparent header
    pulled over it, instead of a navy bar stacked above the hero. */
-const OVERLAY_HEADER_PATHS = ["/support/aws-support", "/support/azure-support", "/cloud", "/cloud/cloud-consulting/cost-optimisation"];
+const OVERLAY_HEADER_PATHS = ["/support/aws-support", "/support/azure-support", "/cloud", "/cloud/cloud-consulting/cost-optimisation", "/support/our-packages"];
 
 export default function Header() {
   const { pathname } = useLocation();
