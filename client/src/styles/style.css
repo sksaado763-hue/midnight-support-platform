@@ -5722,19 +5722,22 @@ section.case-feature--detail { padding: 40px 0; }
    Specificity carries an extra class to outrank the equal-specificity overrides
    in skin.css. */
 
-/* Hero — solid dark navy, left/top anchored, no badges or wave divider. */
+/* Hero — the reference paints a single starfield-and-arcs JPG from its left
+   top edge, then hands it to the page with the theme's hero clip-path wave
+   (deep above 1200px, shallow below). */
 .azure-hero {
-  background: #0d1d3d;
+  background: #0d1d3d url("/icons/azure-1920x732_dark-11.jpg") left top / cover no-repeat;
   padding: calc(var(--header-h) + 72px) 0 72px;
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 89% 98%, 82% 99.4%, 75% 99.8%, 69% 99.5%, 60% 97.8%, 40% 92%, 29% 90.3%, 20% 90.3%, 10% 92.1%, 0 95%);
+}
+@media (max-width: 1199.98px) {
+  .azure-hero { clip-path: polygon(0 0, 100% 0, 100% 95%, 89% 96%, 82% 96.7%, 75% 96.9%, 69% 96.8%, 60% 96.4%, 40% 95.5%, 29% 95.2%, 20% 95.2%, 10% 95.5%, 0 95%); }
 }
 .azure-hero .aws-hero-copy { width: 475px; }
 .azure-hero h1 { font-weight: 900; letter-spacing: -0.01em; }
 .azure-hero .aws-hero-trust { margin-top: 33px; }
-@media (min-width: 1200px) {
-  .azure-hero { background: #0d1d3d; }
-}
 @media (max-width: 767.98px) {
-  .azure-hero { padding-block: calc(var(--header-h) + 40px) 56px; background-position: 30% top; }
+  .azure-hero { padding-block: calc(var(--header-h) + 40px) 56px; }
   .azure-hero .aws-hero-copy { width: 100%; }
 }
 
