@@ -673,10 +673,10 @@ export default function Support() {
         <CaseStudiesBand title="Read our case studies" studies={CASE_STUDIES} />
       </div>
 
-      {/* SECTION 10: WHY WE'RE THE BEST (9 CARDS ON DARK NAVY) */}
+      {/* SECTION 10: WHY WE'RE THE BEST (9 CARDS ON DARK NAVY, CARD 9 CANARY YELLOW) */}
       <CurvedDividerDown fill="#111a2b" bg="#f8fafd" />
 
-      <section className="aws-why-section" style={{ background: "#111a2b", padding: "80px 0 100px" }}>
+      <section className="aws-why-section" style={{ background: "#111a2b", padding: "90px 0 110px" }}>
         <div className="container">
           <div className="why-intro reveal" style={{ maxWidth: "820px", margin: "0 auto 54px", textAlign: "center" }}>
             <h2 style={{ color: "#fabd14", fontSize: "36px", fontWeight: 800, marginBottom: "20px" }}>Why we’re the best</h2>
@@ -685,16 +685,73 @@ export default function Support() {
             </p>
           </div>
           <div className="aws-why-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
-            {WHY_CARDS.map((card, idx) => (
-              <article className="aws-why-card reveal" key={idx} style={{ background: "#122140", borderRadius: "12px", padding: "32px", border: "1px solid rgba(255,255,255,0.06)" }}>
-                <h4 style={{ color: "#fabd14", fontSize: "18px", fontWeight: 700, lineHeight: 1.35, marginBottom: "14px" }}>
-                  {card.title}
-                </h4>
-                <p style={{ color: "#ffffff", fontSize: "15px", lineHeight: "24px", fontWeight: 300, margin: 0 }}>
-                  {card.text}
-                </p>
-              </article>
-            ))}
+            {WHY_CARDS.map((card, idx) => {
+              const isLast = idx === WHY_CARDS.length - 1;
+              if (isLast) {
+                return (
+                  <article
+                    className="aws-why-card reveal"
+                    key={idx}
+                    style={{
+                      background: "#fabd14",
+                      borderRadius: "12px",
+                      padding: "32px",
+                      border: "none",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      justifyContent: "flex-start",
+                    }}
+                  >
+                    <h4 style={{ color: "#12203f", fontSize: "18px", fontWeight: 800, lineHeight: 1.35, marginBottom: "14px" }}>
+                      {card.title}
+                    </h4>
+                    <p style={{ color: "#12203f", fontSize: "15px", lineHeight: "24px", fontWeight: 400, margin: "0 0 28px" }}>
+                      {card.text}
+                    </p>
+                    <a
+                      href="#packages"
+                      className="btn"
+                      style={{
+                        marginTop: "auto",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        background: "#12203f",
+                        color: "#ffffff",
+                        padding: "12px 24px",
+                        borderRadius: "6px",
+                        fontWeight: 700,
+                        fontSize: "14px",
+                        textDecoration: "none",
+                      }}
+                    >
+                      View packages <span aria-hidden="true">➔</span>
+                    </a>
+                  </article>
+                );
+              }
+
+              return (
+                <article
+                  className="aws-why-card reveal"
+                  key={idx}
+                  style={{
+                    background: "#122140",
+                    borderRadius: "12px",
+                    padding: "32px",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                >
+                  <h4 style={{ color: "#fabd14", fontSize: "18px", fontWeight: 700, lineHeight: 1.35, marginBottom: "14px" }}>
+                    {card.title}
+                  </h4>
+                  <p style={{ color: "#ffffff", fontSize: "15px", lineHeight: "24px", fontWeight: 300, margin: 0 }}>
+                    {card.text}
+                  </p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

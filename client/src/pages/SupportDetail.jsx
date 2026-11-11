@@ -432,7 +432,7 @@ const PROVIDERS = [
     slab2: {
       split: "4-1-7",
       study: {
-        slug: "formica", client: "Formica Group", headline: "Global Azure support for Formica's website", image: "/icons/azure-Formica.webp", background: "/icons/azure-JAM-City-BG-1.webp", dividers: { before: "#12203f" },
+        slug: "formica", client: "Formica Group", headline: "Global Azure support for Formica's website", image: "/icons/azure-Formica.webp", bgColor: "#12203f", dividers: { before: "#12203f" },
         paragraphs: [
           "Just After Midnight partnered with Formica Group to manage their global website using Azure, ensuring high availability and scalability across key regions like the USA, Europe, and Asia.",
           "We deployed 7 Azure PaaS environments, providing 24/7 support and fast resolutions with a 30-minute SLA, helping Formica develop its future cloud strategy.",
@@ -587,7 +587,7 @@ const PROVIDERS = [
     caseStudy: {
       split: "4-1-7",
       study: {
-        slug: "nba-ultimate-5", client: "NBA Ultimate 5", headline: "24/7 GCP support for game launch", image: "/icons/gcp-NBA-1-1.png", background: "/icons/gcp-JAM-City-BG-MW.webp", dividers: { before: "#122142", after: "#122142" },
+        slug: "nba-ultimate-5", client: "NBA Ultimate 5", headline: "24/7 GCP support for game launch", image: "/icons/gcp-NBA-1-1.png", bgColor: "#122142", dividers: { before: "#122142", after: "#122142" },
         paragraphs: [
           "Just After Midnight provided 24/7 support for the NBA's Ultimate 5 game using Google Cloud Platform. The game's backend, built on Firebase, leveraged GCP's serverless architecture to ensure high scalability and stability during traffic peaks.",
           "Our team monitored the infrastructure and ran tests to handle up to 1 million sessions, ensuring zero P1 issues throughout the event with rapid response times.",
@@ -612,7 +612,7 @@ const PROVIDERS = [
     slab2: {
       split: "4-1-7",
       study: {
-        slug: "mpb", client: "MPB", headline: "24/7 GCP support for e-commerce platform", image: "/icons/gcp-MPB-2.webp", background: "/icons/gcp-JAM-City-BG-MW.webp", dividers: { before: "#12203f" },
+        slug: "mpb", client: "MPB", headline: "24/7 GCP support for e-commerce platform", image: "/icons/gcp-MPB-2.webp", bgColor: "#12203f", dividers: { before: "#12203f" },
         paragraphs: [
           "MPB required 24/7 support for their GCP-hosted platform to ensure uptime and safeguard revenue.",
           "Just After Midnight delivered full-stack support, scaling our services as platform documentation developed. Using Prometheus, we monitored SLO-based alerts for precise incident management and rapid response.",
@@ -2590,7 +2590,7 @@ export default function SupportDetail() {
           </div>
         </section>
       ) : provider.scene === "ecom" ? (
-        <section className="hero-banner ecom-hero" style={{ backgroundImage: "url(/icons/hero-ecom-bg.jpg)" }}>
+        <section className="hero-banner ecom-hero" style={{ backgroundColor: "#12203f" }}>
           <div className="container">
             <div className="ecom-hero-row">
               <div className="ecom-hero-col">

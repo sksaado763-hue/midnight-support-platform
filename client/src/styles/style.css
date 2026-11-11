@@ -3479,11 +3479,10 @@ section.case-feature--detail { padding: 40px 0; }
 .cloud-tile { display: block; height: 100%; padding: 32px; border-radius: 10px; background: #121f3f; color: #ffffff; }
 .cloud-tile--deep { background: #12203f; }
 .cloud-tile--cta { background: #e5af18; }
-/* The reference icon is an inline image, so its line box adds 8px under the
-   80px artwork; a block image needs that 8px spelled out to keep the h3 at
-   the same offset. */
-.cloud-tile__icon { display: block; width: 80px; height: 80px; margin-bottom: 8px; }
-.cloud-tile h3 { font-family: var(--font-head); font-size: 20px; line-height: 28px; font-weight: 700; margin: 20px 0 13px; }
+.cloud-tile__icon { display: block; width: 80px; height: 80px; }
+/* 28px above the title: the reference icon is inline, so its line box already
+   adds 8px under the 80px artwork before the title's own 20px margin. */
+.cloud-tile h3 { font-family: var(--font-head); font-size: 20px; line-height: 28px; font-weight: 700; margin: 28px 0 13px; }
 .cloud-tile h3 a { color: #ffffff; text-decoration: none; }
 .cloud-tile p { font-size: 16px; line-height: 28px; font-weight: 300; color: #ffffff; margin: 0 0 16px; padding-bottom: 14px; }
 .cloud-tile--cta h3 a,
@@ -5588,13 +5587,37 @@ section.case-feature--detail { padding: 40px 0; }
   margin: 0;
 }
 .aws-why-card--cta {
-  background: rgba(250, 189, 20, 0.08);
-  border-color: rgba(250, 189, 20, 0.25);
+  background: #fabd14 !important;
+  border-color: #fabd14 !important;
   display: flex;
   flex-direction: column;
 }
-.aws-why-card--cta p { margin-bottom: 20px; }
-.aws-why-card--cta .btn { margin-top: auto; align-self: flex-start; }
+.aws-why-card--cta h3 {
+  color: #12203f !important;
+  font-weight: 800 !important;
+}
+.aws-why-card--cta p {
+  color: #12203f !important;
+  font-weight: 400 !important;
+  margin-bottom: 24px;
+}
+.aws-why-card--cta .btn {
+  margin-top: auto;
+  align-self: flex-start;
+  background: #12203f !important;
+  color: #ffffff !important;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.aws-why-card--cta .btn:hover {
+  background: #ffffff !important;
+  color: #12203f !important;
+}
 
 /* Discuss CTA banner */
 .aws-discuss-section {
@@ -5699,16 +5722,16 @@ section.case-feature--detail { padding: 40px 0; }
    Specificity carries an extra class to outrank the equal-specificity overrides
    in skin.css. */
 
-/* Hero — dark-11 photograph, left/top anchored, no badges or wave divider. */
+/* Hero — solid dark navy, left/top anchored, no badges or wave divider. */
 .azure-hero {
-  background: #0d1d3d url("/icons/azure-1920x732_dark-11.jpg") left top / cover no-repeat;
+  background: #0d1d3d;
   padding: calc(var(--header-h) + 72px) 0 72px;
 }
 .azure-hero .aws-hero-copy { width: 475px; }
 .azure-hero h1 { font-weight: 900; letter-spacing: -0.01em; }
 .azure-hero .aws-hero-trust { margin-top: 33px; }
 @media (min-width: 1200px) {
-  .azure-hero { background: #0d1d3d url("/icons/azure-1920x732_dark-11.jpg") left top / cover no-repeat; }
+  .azure-hero { background: #0d1d3d; }
 }
 @media (max-width: 767.98px) {
   .azure-hero { padding-block: calc(var(--header-h) + 40px) 56px; background-position: 30% top; }
@@ -5874,8 +5897,8 @@ section.case-feature--detail { padding: 40px 0; }
 :is(.platform-detail--azure, .platform-detail--gcp) .faq-answer dt { font-family: var(--font-head); font-size: 16px; line-height: 24px; font-weight: 700; color: #132140; }
 :is(.platform-detail--azure, .platform-detail--gcp) .faq-answer dd { margin: 4px 0 0; font-size: 15px; line-height: 26px; font-weight: 300; color: var(--navy-text-muted); }
 
-/* Covers — dark-15 photograph, white centred head, padded cards, image icons. */
-:is(.platform-detail--azure, .platform-detail--gcp) .pii-band--detail { background: #0d1d3d url("/icons/azure-1920x732_dark-15.jpg") center / cover no-repeat; padding: 64px 0; }
+/* Covers — solid dark navy, white centred head, padded cards, image icons. */
+:is(.platform-detail--azure, .platform-detail--gcp) .pii-band--detail { background: #0d1d3d; padding: 64px 0; }
 :is(.platform-detail--azure, .platform-detail--gcp) .pii-band--detail > .hero-stars { display: none; }
 :is(.platform-detail--azure, .platform-detail--gcp) .pii-band--detail .band-title { color: #ffffff; font-size: 34px; line-height: 56px; font-weight: 500; margin: 0 0 24px; }
 :is(.platform-detail--azure, .platform-detail--gcp) .pii-band--detail .pii-grid { margin-top: 32px; }
@@ -5918,7 +5941,7 @@ section.case-feature--detail { padding: 40px 0; }
    hero, intro list, icon-grid and capability field diverge. */
 
 .gcp-hero {
-  background: #0d1d3d url("/icons/gcp-1920x732_dark-17.jpg") center / cover no-repeat;
+  background: #0d1d3d;
   padding: calc(var(--header-h) + 72px) 0 88px;
 }
 .gcp-hero .gcp-hero-row { display: grid; grid-template-columns: minmax(0, 5.4fr) 3.6fr 3fr; align-items: center; }
@@ -5934,7 +5957,7 @@ section.case-feature--detail { padding: 40px 0; }
 .platform-detail--gcp .plat-what-list li { list-style: disc; font-size: 16px; line-height: 28px; color: var(--navy-text-muted); }
 .platform-detail--gcp .plat-what-closer { font-weight: 700; color: #132140; }
 
-.platform-detail--gcp .why-band--detail { background: #0d1d3d url("/icons/gcp-Dark-space-icon-grid-V2.webp") center / cover no-repeat; }
+.platform-detail--gcp .why-band--detail { background: #0d1d3d; }
 .platform-detail--gcp .why-band--detail .why-intro { width: 100%; text-align: center; }
 .platform-detail--gcp .why-band--detail .why-intro .band-title { text-align: center; }
 .platform-detail--gcp .why-band--detail .why-card { background: #121f3f; }
@@ -5943,7 +5966,7 @@ section.case-feature--detail { padding: 40px 0; }
 .platform-detail--gcp .cap-band--dark {
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  background: #0d1d3d url("/icons/gcp-Dark-no-graphic-1.webp") center / cover no-repeat;
+  background: #0d1d3d;
   padding: 64px 0 56px;
 }
 .platform-detail--gcp .cap-band--dark > .hero-stars { display: none; }

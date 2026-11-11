@@ -6,7 +6,7 @@ const TILES = [
     icon: "/icons/cloud-people-consulting.svg",
     title: "Cloud Strategy Consultancy Services",
     to: "/contact",
-    text: "Our specialists across AWS, Azure and GCP start from what you are trying to ship and work back to the parts of the estate that earn their keep. You get a sequenced roadmap with costs, risks and owners attached — and a straight answer on what to leave alone.",
+    text: "Our specialists across AWS, Azure and GCP start from what you are trying to ship and work back to the parts of the estate that earn their keep. You get a sequenced roadmap with costs, risks and owners attached — and a straight answer on what to leave alone. The roadmap is yours to keep, whoever ends up doing the build.",
   },
   {
     icon: "/icons/cloud-design.svg",
