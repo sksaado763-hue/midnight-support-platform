@@ -2287,7 +2287,7 @@ ul { list-style: none; }
 .support-intro-copy h2 {
   margin: 0 0 clamp(34px, 3.35vw, 64px);
   font-size: clamp(34px, 4.04vw, 77px);
-  line-height: 1.65;
+  line-height: 1.12;
   font-weight: 900;
   letter-spacing: -0.015em;
   max-width: 11.1em;
