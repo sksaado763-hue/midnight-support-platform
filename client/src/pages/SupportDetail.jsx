@@ -2191,7 +2191,7 @@ export default function SupportDetail() {
         />
       ),
 
-    reviews: provider.reviews && <ReviewsBand reviews={provider.reviews} />,
+    reviews: provider.reviews && <ReviewsBand reviews={Array.isArray(provider.reviews) ? provider.reviews : undefined} />,
 
     whyGrid: provider.whyGrid && (
       <section className="aws-why-section">
