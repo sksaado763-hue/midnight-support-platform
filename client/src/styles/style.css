@@ -1872,6 +1872,9 @@ ul { list-style: none; }
 }
 /* The strip sits above a flowing wave that hands the navy over to the page. */
 .support-hero-trust { margin-top: clamp(64px, 7vw, 130px); }
+@media (min-width: 768px) {
+  .page-hero--support-overview .support-hero-trust { width: 50%; }
+}
 .page-hero--support .trust-label {
   font-size: clamp(16px, 1.2vw, 23px);
   line-height: 1.4;
