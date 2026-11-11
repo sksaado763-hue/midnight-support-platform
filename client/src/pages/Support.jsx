@@ -12,8 +12,9 @@ import ImpactBand from "../components/ImpactBand";
    DIVIDER SVGS (Matching Live Reference)
    ========================================================================= */
 function CurvedDividerDown({ fill = "#ffffff", bg = "transparent" }) {
+  // Match and overlap the neighbouring colours to prevent subpixel seams.
   return (
-    <div className="global-curved-divider global-curved-divider__down" style={{ background: bg, lineHeight: 0 }} aria-hidden="true">
+    <div className="global-curved-divider global-curved-divider__down" style={{ background: `linear-gradient(${fill} 2px, ${bg} 2px)`, lineHeight: 0, width: "100%", margin: "-1px 0" }} aria-hidden="true">
       <svg width="1920" height="89" viewBox="0 0 1920 89" fill="none" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: "clamp(46px, 4.67vw, 89px)" }}>
         <path d="M0 0H915.5H1920V55L1750.82 72.623C1544.17 94.1494 1335.83 94.1495 1129.18 72.6231L790.818 37.377C584.165 15.8506 375.835 15.8505 169.182 37.3769L0 55V0Z" fill={fill} />
       </svg>
@@ -617,7 +618,7 @@ export default function Support() {
       </section>
 
       {/* SECTION 4 & 5: OUR SUPPORT SERVICES & DIVIDER */}
-      <CurvedDividerDown fill="#12203f" bg="#ffffff" />
+      <CurvedDividerDown bg="#12203f" fill="#ffffff" />
 
       <section className="svc-band" style={{ background: "#12203f", padding: "80px 0 100px" }}>
         <div className="container">
@@ -647,7 +648,7 @@ export default function Support() {
       </section>
 
       {/* SECTION 6 & 7: NEED ONGOING MAINTENANCE, TOO? & DIVIDER */}
-      <CurvedDividerDown fill="#ffffff" bg="#12203f" />
+      <CurvedDividerDown bg="#ffffff" fill="#12203f" />
 
       <section className="small-cta" style={{ background: "#ffffff", padding: "70px 0" }}>
         <div className="container" style={{ maxWidth: "860px", margin: "0 auto", textAlign: "center" }}>
@@ -664,14 +665,14 @@ export default function Support() {
       </section>
 
       {/* SECTION 8 & 9: READ OUR CASE STUDIES & DIVIDER */}
-      <CurvedDividerDown fill="#f8fafd" bg="#ffffff" />
+      <CurvedDividerDown bg="#f8fafd" fill="#ffffff" />
 
       <div style={{ background: "#f8fafd", padding: "40px 0 20px" }}>
         <CaseStudiesBand title="Read our case studies" studies={CASE_STUDIES} />
       </div>
 
       {/* SECTION 10: WHY WE'RE THE BEST (9 CARDS ON DARK NAVY, CARD 9 CANARY YELLOW) */}
-      <CurvedDividerDown fill="#111a2b" bg="#f8fafd" />
+      <CurvedDividerDown bg="#111a2b" fill="#f8fafd" />
 
       <section className="aws-why-section" style={{ background: "#111a2b", padding: "90px 0 110px" }}>
         <div className="container">
@@ -754,7 +755,7 @@ export default function Support() {
       </section>
 
       {/* SECTION 11 & 12: 24/7 SUPPORT SERVICE CAPABILITIES & DIVIDER */}
-      <CurvedDividerDown fill="#ffffff" bg="#111a2b" />
+      <CurvedDividerDown bg="#ffffff" fill="#111a2b" />
 
       <section className="cap-band" style={{ background: "#ffffff", padding: "80px 0 90px" }}>
         <div className="container">
@@ -786,14 +787,9 @@ export default function Support() {
         </div>
       </section>
 
-      {/* SECTION 13 & 14: CASE STUDY FORD & DIVIDER */}
-      <CurvedDividerDown fill="#12203f" bg="#ffffff" />
-
       <CaseFeature study={FORD_CASE} variant="wide" />
 
       {/* SECTION 15, 16 & 17: PACKAGES & PRICING */}
-      <CurvedDividerDown fill="#ffffff" bg="#12203f" />
-
       <section className="pkg-intro" id="packages" style={{ background: "#ffffff", padding: "70px 0 20px" }}>
         <div className="container">
           <div className="pkg-intro-copy reveal" style={{ maxWidth: "840px", margin: "0 auto", textAlign: "center" }}>
@@ -907,7 +903,7 @@ export default function Support() {
       </section>
 
       {/* SECTION 20 & 21: VALUE PROPOSITIONS & DIVIDER */}
-      <CurvedDividerDown fill="#12203f" bg="#f8fafd" />
+      <CurvedDividerDown bg="#12203f" fill="#f8fafd" />
 
       <section className="support-value-section" style={{ background: "#12203f", padding: "80px 0 100px" }}>
         <div className="container">
@@ -933,14 +929,14 @@ export default function Support() {
       </section>
 
       {/* SECTION 22 & 23: REVIEWS & DIVIDER */}
-      <CurvedDividerDown fill="#ffffff" bg="#12203f" />
+      <CurvedDividerDown bg="#ffffff" fill="#12203f" />
 
       <div style={{ background: "#ffffff", padding: "40px 0" }}>
         <ReviewsBand />
       </div>
 
       {/* SECTION 24 & 25: INDUSTRIES WE SUPPORT & DIVIDER */}
-      <CurvedDividerDown fill="#12203f" bg="#ffffff" />
+      <CurvedDividerDown bg="#12203f" fill="#ffffff" />
 
       <section className="ind-band" id="industries" style={{ background: "#12203f", padding: "80px 0" }}>
         <div className="container ind-band-grid">
@@ -995,7 +991,7 @@ export default function Support() {
       </section>
 
       {/* SECTION 26: GLANCE BAND */}
-      <CurvedDividerDown fill="#ffffff" bg="#12203f" />
+      <CurvedDividerDown bg="#ffffff" fill="#12203f" />
 
       <GlanceBand eyebrow="At a glance" title="Just After Midnight’s support offering" items={GLANCE} />
 
