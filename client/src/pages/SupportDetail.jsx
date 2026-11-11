@@ -518,41 +518,182 @@ const PROVIDERS = [
   {
     slug: "gcp-support",
     name: "GCP",
-    title: "24/7 support for GCP",
-    tagline: "GKE, Cloud Run, BigQuery and the projects around them — watched, patched and answered for, every hour of every day.",
-    intro: "GCP is where data-heavy products live, and where idle projects go to accumulate cost. We take the organisation onto our rota: the clusters, the pipelines, the IAM bindings and the budget alerts that currently nobody owns.",
-    capabilities: [
-      { title: "Every night", items: ["Alerting and incident response on a published rota", "GKE and Cloud Run upgrades inside your approved window", "Backup verification and restore drills", "Pipeline failure triage with a morning note"] },
-      { title: "Every month", items: ["Project and billing review with a delete list", "IAM and service-account drift review", "Quota and autoscaling check", "A plain-language report your finance team can read"] },
+    scene: "gcp",
+    title: "GCP Infrastructure Support Specialists",
+    tagline: "24/7 support of your GCP infrastructure with DevOps management",
+    heroArt: { src: "/icons/gcp-GCP.webp", label: "Specialist support provider" },
+    whatTitle: "24/7 GCP infrastructure support specialists for teams who…",
+    whatBullets: [
+      "…Love focusing on delivering their application; not fixing it.",
+      "Love developing new features; not building a DevOps pipeline from scratch.",
+      "Love regular bedtimes; not waking up at 5am to manage an incident.",
     ],
-    coverage: {
-      title: "The GCP work that happens while you sleep",
-      intro: "Clusters, pipelines and the projects around them, watched by named engineers who hand over in writing before your day starts.",
-      groups: [
-        { title: "Compute & services", items: ["GKE upgrades staged and watched", "Cloud Run instance limits tuned", "Cloud Functions timeouts reviewed", "Spot capacity and preemption handled"] },
-        { title: "Data & pipelines", items: ["BigQuery job failures triaged", "Cloud SQL failover tested, not assumed", "Pub/Sub backlogs alarmed and cleared", "Dataflow reruns with a morning note"] },
-        { title: "Network & edge", items: ["Load-balancer health and serving paths", "Cloud CDN hit ratios reviewed", "VPN and Interconnect tunnels watched", "Bucket IAM conditions audited"] },
-        { title: "Identity & spend", items: ["Service-account keys rotated", "Organisation-policy drift reviewed", "Budget alerts per project, with owners", "Idle projects found and shut down"] },
-        { title: "Incident & response", items: ["Severity grading and SLA clocks", "Google Cloud cases opened and chased", "Bridge calls during major incidents", "Post-incident write-ups with actions"] },
-        { title: "Change & releases", items: ["Deployment watches through your window", "Rollback rehearsed every quarter", "Maintenance slots agreed in writing", "A change log your auditors can read"] },
-      ],
-      closer: {
-        text: "Name the projects that carry revenue and we will start there; the rest of the organisation follows.",
-        cta: "Talk about your GCP estate",
-        to: "/contact",
+    whatCloser: "Here's how we do it:",
+    problemSolution: {
+      problem: {
+        title: "Your problem",
+        lead: "You have a great application hosted on GCP – and not so great infrastructure support function",
+        icon: "/icons/azure-Cross-SVG.svg",
+        points: [
+          "Your team don't want to work night shifts (and nor should they); when an incident occurs out of hours, you're high and dry",
+          "Your support function isn't full stack; when an issue occurs in the grey area between your CMS and cloud, you're in it alone",
+          "You're not supported where you need it most: from DevOps to containerisation, you could be going the extra mile",
+        ],
+      },
+      solution: {
+        title: "Our solution",
+        lead: "Customer-centric 24/7 infrastructure support of your GCP environment",
+        icon: "/icons/azure-Moon-SVG.svg",
+        points: [
+          "Our team doesn't work nights either, they don't have to – with offices all over the world we provide 24/7 follow-the-sun coverage",
+          "Our support is full-stack: we cover your GCP infrastructure, your DevOps pipeline, your third-party integrations",
+          "We lead on cloud-native: from adopting full CI/CD to refactoring to microservices, we've got you covered",
+        ],
       },
     },
-    fitWith: [
-      "Your product lives on GKE or Cloud Run with no platform team",
-      "BigQuery pipelines currently fail without anyone noticing",
-      "Your organisation has more projects than anyone can list",
-      "You want one rota covering GCP and the application on top of it",
+    video: {
+      title: "See how we support your GCP solution",
+      lead: "This video will explain how we cover your GCP infrastructure, application and integrations 24/7, out of hours or whenever you need.",
+      closer: "To take a closer look at your support options and SLAs…",
+      cta: "View our packages!",
+      to: "#packages",
+      poster: "/icons/azure-Downtime-gif.webp",
+    },
+    why: {
+      title: "Not your neighbourhood GCP support",
+      intro: <>Some MSPs take a chunk of cloud spend and call it a day. When there's an outage, they'll fix it. But only if the point of failure occurs strictly within the cloud. That's no good. <strong>Here's what is:</strong></>,
+      cards: [
+        { title: "Not worrying about that microservice", icon: "/icons/azure-puzzle-yellow-e1722955467926.webp", text: "Or that CMS plugin. We monitor and triage your GCP infrastructure, 3rd-party integrations and application layer. Whatever you want covered, we got it." },
+        { title: "Not worrying about out-of-hours", icon: "/icons/azure-block-arrows-yellow-e1723042150435.webp", text: "No one wants a 3 am alert. We certainly don't. With offices in 4 time zones, our engineers are on the ticket in seconds. Well rested and ready to go." },
+        { title: "Not worrying about going forward", icon: "/icons/azure-route-yellow-e1723042373466.webp", text: "Composable cloud-native architectures can be tricky for teams to support. Not for us. Innovate with confidence. We got your back." },
+        { title: "Deploying like a burst water main", icon: "/icons/azure-bed-yellow-e1723040297931.webp", text: "GCP DevOps support and adoption is a number one concern for many of our customers. From supporting your GKE to a full build, we've got you covered." },
+        { title: "Unleashing your internal team", icon: "/icons/azure-puzzle-2-yellow-e1723457815994.webp", text: "When they're not worried about downtime, turns out your internal team can come up with some pretty neat stuff." },
+        { title: "Smashing industry requirements", icon: "/icons/azure-handshake-yellow-e1723117997676.webp", text: "From HIPAA compliance in healthtech to headless eCommerce, we help our partners embrace the tech leading their industries." },
+        { title: "Growing your environment", icon: "/icons/azure-cog-arrow-yellow-e1723119842127.webp", text: "We help teams adopt microservice-based architectures, full CI/CD pipelines and more. We support your infrastructure. We can also lead on it." },
+        { title: "Shrinking your bill", icon: "/icons/azure-hand-tick-yellow-e1722955432551.webp", text: "If your environment isn't optimised for cost, don't worry about it. It will be soon. We can quickly identify savings on your GCP bill." },
+      ],
+      accent: { title: "Giving us an opportunity", icon: "/icons/azure-output-onlinepngtools-1.png", text: "If you like what you're hearing, there's plenty more where that came from. Get in touch with one of our GCP experts today and have your solution protected come rain or shine.", cta: "Give us a shout", to: "/contact" },
+    },
+    cases: {
+      title: "Read our case studies",
+      carousel: true,
+      studies: [
+        { slug: "nba-ultimate-5", client: "NBA Ultimate 5", headline: "Achieving a seamless game experience for basketball fans", image: "/icons/gcp-NBA-1.webp", to: "https://www.justaftermidnight247.com/case-study/nba-ultimate-5/" },
+        { slug: "mpb", client: "MPB", headline: "Full-stack out-of-hours support for a specialist e-commerce platform.", image: "/icons/gcp-MPB.webp", to: "https://www.justaftermidnight247.com/case-study/mpb/" },
+        { slug: "ford", client: "Ford", headline: "$40 million in sales protected and 1000's of hours saved for blue-chip automotive brand", image: "/icons/gcp-Ford-V2-2.webp", to: "https://www.justaftermidnight247.com/case-study/ford/" },
+        { slug: "the-body-coach", client: "The Body Coach", headline: "Protecting the biggest health app launch of the year 24/7 – without breaking a sweat", image: "/icons/gcp-Body-Coach-V2.png", to: "https://www.justaftermidnight247.com/case-study/the-body-coach-app/" },
+      ],
+    },
+    caseStudy: {
+      split: "4-1-7",
+      study: {
+        slug: "nba-ultimate-5", client: "NBA Ultimate 5", headline: "24/7 GCP support for game launch", image: "/icons/gcp-NBA-1-1.png", background: "/icons/gcp-JAM-City-BG-MW.webp", dividers: { before: "#122142", after: "#122142" },
+        paragraphs: [
+          "Just After Midnight provided 24/7 support for the NBA's Ultimate 5 game using Google Cloud Platform. The game's backend, built on Firebase, leveraged GCP's serverless architecture to ensure high scalability and stability during traffic peaks.",
+          "Our team monitored the infrastructure and ran tests to handle up to 1 million sessions, ensuring zero P1 issues throughout the event with rapid response times.",
+        ],
+        to: "https://www.justaftermidnight247.com/case-study/nba-ultimate-5/", cta: "Read our case study",
+      },
+    },
+    coverage: {
+      variant: "dark",
+      title: "Don't you wish you had a team that could handle it all?",
+      intro: "We've got you covered – here's what we can do for you:",
+      groups: [
+        { title: "Incident and response management", items: ["Incident management (IM)", "Root cause analysis (RCA)", "Incident response management", "Incident triage", "Security incident response"] },
+        { title: "Service continuity and recovery", items: ["Application rollbacks", "Restarting services", "Backup and restore procedures", "Manual scaling of resources"] },
+        { title: "Access and security management", items: ["IP whitelisting", "Access management", "Password resets", "User account provisioning", "User removal", "Access control"] },
+        { title: "Quality and process improvement", items: ["Service validation and testing", "Knowledge base management", "Post-incident review (PIR)", "Vendor liaison/3rd-party escalation"] },
+        { title: "Observability and performance", items: ["System health checks", "Monitoring, alerts and telemetry", "Performance monitoring", "Network diagnostics and flow analysis", "End-to-end latency analysis", "Capacity monitoring and forecasting"] },
+        { title: "Service management and operations", items: ["SLA management", "Change management", "Patch management", "Downtime reporting", "Ticket management", "Outage communication", "Configuration management", "Service request management", "Escalation management"] },
+      ],
+      closer: { text: "It's simple – you tell us your requirements and we plug in wherever you need us.", cta: "So, where can we help?", to: "#site-footer" },
+    },
+    slab2: {
+      split: "4-1-7",
+      study: {
+        slug: "mpb", client: "MPB", headline: "24/7 GCP support for e-commerce platform", image: "/icons/gcp-MPB-2.webp", background: "/icons/gcp-JAM-City-BG-MW.webp", dividers: { before: "#12203f" },
+        paragraphs: [
+          "MPB required 24/7 support for their GCP-hosted platform to ensure uptime and safeguard revenue.",
+          "Just After Midnight delivered full-stack support, scaling our services as platform documentation developed. Using Prometheus, we monitored SLO-based alerts for precise incident management and rapid response.",
+        ],
+        to: "https://www.justaftermidnight247.com/case-study/mpb/",
+      },
+    },
+    reviews: [
+      { slug: "the-body-coach", client: "The Body Coach", role: "CEO", quote: "We want our users to be able to work out at a time that suits them, day or night. I can sleep easy knowing that Just After Midnight's team of experts are taking care of any issues with the app, so I can focus on what I do best", companyUrl: "https://www.thebodycoach.com/", to: "https://www.justaftermidnight247.com/case-study/the-body-coach-app/" },
+      { slug: "grey", client: "Grey", role: "CEO", quote: "Just After Midnight was recommended to Grey as a potential partner to leverage for an upcoming Super Bowl web activation the team was producing on behalf of Volvo Cars USA. Sam, Arif and team worked diligently on their side to architect a best-in-class AWS solution. The site ran without issue. I would definitely recommend JAM for any managed cloud solution!", companyUrl: "https://www.grey.com/", to: "https://www.justaftermidnight247.com/case-study/tums-super-bowl-campaign-2021/" },
+      { slug: "dla-piper", client: "DLA Piper", role: "CEO", quote: "I would not hesitate to recommend JAM based on the service they have provided to us. They have been very responsive and have done so in a positive and professional fashion. The team clearly have a thorough knowledge of Sitecore and AWS and have been able to explain things to us in language we can understand.", companyUrl: "https://www.dlapiper.com/en", to: "https://www.justaftermidnight247.com/case-study/dla-piper/" },
+      { slug: "banyan-tree", client: "Banyan Tree", role: "Head, Information Technology", quote: "Quick and fast support and consulting on the overall web, DevOps and hosting needs. Very helpful as always.", companyUrl: "https://www.banyantree.com/", cta: false },
+      { slug: "rooftop-film-club", client: "Rooftop Film Club", role: "Product Manager", quote: "JAM's excellent first-line service means no more late-night wake-up calls – responding to our clients and resolving issues any hour of the day.", companyUrl: "https://rooftopfilmclub.com/", to: "https://www.justaftermidnight247.com/case-study/rooftop-film-club/" },
+      { slug: "emperor", client: "Emperor", role: "Technical Director", quote: "Just After Midnight (JAM) has been providing us with 24/7/365 setup and support services to deliver the many financial reporting websites that we deliver each year. We count them as one of our critical trusted partners.", companyUrl: "https://emperor.works/", to: "https://www.justaftermidnight247.com/case-study/emperor/" },
     ],
-    faqs: [
-      { q: "We use GCP mostly for data, not hosting. Is that enough?", a: "It is. Pipeline and warehouse cover is most of what we do on GCP for half of our clients." },
-      { q: "Can you share cover with our BigQuery consultant?", a: "Yes. They own the models, we own the nights, and the morning handover reaches both." },
-      { q: "Do you cover multi-cloud estates?", a: "One rota can carry AWS, Azure and GCP together — most clients start with the provider that hurts and add the others later." },
-    ],
+    faq: {
+      title: "FAQ",
+      intro: <>For a no-nonsense look at what we support, take a look at <a href="#packages">our packages</a>. Still have questions about how our support services work? Take a look below.</>,
+      artwork: "/icons/azure-Rocket-stack2.webp",
+      items: [
+        { q: "What is application support?", paragraphs: ["Application support means supporting everything in the application layer. App support engineers will be au fait with a wide array of languages, experience platforms (such as Kentico or Umbraco) as well as other dev-y stuff.", "When we provide app support, we make sure your app stays up, performs well and keeps delivering value to your customers."] },
+        { q: "What is infrastucture support?", paragraphs: ["Same deal, but for your cloud. When we take care of your infrastructure, we monitor and triage for any hiccups, ensuring it runs smoothly, cheaply or however you like it.", <>We also build, review and optimise cloud infrastructure. So if you're in the market for more than support, <Link to="/cloud">check out some of our other cloud services.</Link></>] },
+        { q: "What is full-stack support?", a: "Full-stack support is just the two above services combined. Although, with applications growing increasingly distributed, full-stack often means supporting 3rd-party integrations, too. That's why Mission Control (our bespoke full-stack solution) is indispensable." },
+        { q: "Aren't cloud support and DevOps the same thing?", a: "Cloud/infrastructure support has some crossover with both DevOps and CloudOps. Essentially, if you're looking to fine-tune your deployments, performance or cloud processes, we'll be able to help; what you call it is up to you!" },
+        { q: "How does it work?", paragraphs: ["Our process is simple, just get in touch and we'll take it from there. We work out what our support team will cover and when.", "Your business needs set the scope of the project. Maybe you need application support and incident resolution. Maybe you only need proactive monitoring so your own support teams can pick up tickets. It's up to you.", "From website security to app support, from website maintenance to the ongoing monitoring of your cloud services – our mission is to fit like a glove."] },
+        { q: "Need a glossary for our packages terms?", terms: [
+          { term: "Monitoring", definition: "Continuous tracking of your systems, applications, or cloud infrastructure to ensure optimal performance, uptime, and security. Monitoring includes real-time alerts for anomalies, potential bottlenecks, or system failures that may require immediate attention." },
+          { term: "L1 Communications", definition: "The first line of communication in support, dealing with basic technical issues. L1 support typically handles tasks such as troubleshooting simple problems, resetting passwords, and answering general user queries, before escalating more complex issues to higher levels." },
+          { term: "<30 Minute Response Time", definition: "A commitment to acknowledge and respond to any support request or issue within 30 minutes, ensuring that problems are addressed swiftly to minimise downtime and potential impact on business operations." },
+          { term: "L2 Resolution", definition: "Level 2 support involves more advanced troubleshooting and technical expertise, often dealing with more complex issues that L1 cannot resolve. This could include in-depth application debugging, database issues, or network performance problems." },
+          { term: "Incident Reporting", definition: "After resolving an issue, we provide a detailed report outlining what happened, how it was addressed, and any preventive actions that should be taken in the future. This helps in improving processes and avoiding recurring incidents." },
+          { term: "Recommendations", definition: "Alongside solving problems, we offer expert suggestions to optimise your infrastructure or applications. These could range from security improvements to performance enhancements, based on our analysis of your systems." },
+          { term: "Infrastructure or Application Only", definition: "You can choose to limit our support to just your cloud infrastructure or specific applications. For example, we can focus solely on maintaining your GCP environment or handle only your custom eCommerce platform, based on your needs." },
+          { term: "Faster SLA Response Times", definition: "If the standard <30 minute response time isn't enough for your business, we offer customisable Service Level Agreements with even quicker response times to ensure issues are handled with the utmost urgency." },
+          { term: "Custom Code", definition: "Support for custom-built applications or software. Our team is skilled in understanding, troubleshooting, and optimising code that isn't part of off-the-shelf solutions, ensuring your unique systems run smoothly." },
+          { term: "Custom Applications", definition: "Beyond supporting standard platforms, we support fully bespoke applications. Whether your app is designed in-house or by a third-party developer, we ensure it's maintained and optimised according to your specific needs." },
+          { term: "DevOps Support", definition: "Managing and automating your software development pipelines and infrastructure, including Continuous Integration/Continuous Deployment, infrastructure as code, and other tools that streamline operations and enable faster, more reliable releases." },
+          { term: "Ticket Cap", definition: "If you want to manage the number of support requests, we can set a cap on how many tickets we'll handle within a given time frame. This lets you control costs and prioritise critical issues while leaving routine tasks to your in-house team." },
+        ] },
+      ],
+      panel: { title: "More questions?", text: "Drop us a line and we'll be in touch to answer any questions about how we can support your application 24/7, 365.", cta: "Drop us a line", to: "/contact" },
+    },
+    packages: {
+      title: "Our service packages",
+      intro: "It's simple – you pick the level of support you need and we provide it.",
+      introTail: { lead: "If you're in need of something bespoke, just", link: "get in touch", to: "/contact" },
+      tiers: [
+        { tab: "Simple reassurance", name: "FIRST-LINE SUPPORT", items: ["Monitoring", "L1 Communications", "<30 Minute Response Time"], cta: "Select package", hover: "Contact", to: "/contact?package=first-line" },
+        { tab: "Overnight & weekends", name: "OUT-OF-HOURS SUPPORT", items: ["Monitoring", "L1 Communications", "L2 Resolution", "Incident Reporting", "Recommendations", "<30 Minute Response Time"], cta: "Select package", hover: "Contact", to: "/contact?package=out-of-hours" },
+        { tab: "Complete cover", name: "24/7 SUPPORT", items: ["Monitoring", "L1 Communications", "L2 Resolution", "Incident Reporting", "Recommendations", "<30 Minute Response Time"], cta: "Select package", hover: "Contact", to: "/contact?package=24-7" },
+        { tab: "A tailored service", name: "CUSTOM & ADD-ONS", items: ["Infrastructure or Application Only", "Faster SLA Response Times", "Custom Code", "Custom Applications", "DevOps Support", "Ticket Cap", "Anything else? Chat to our team and we can make it work"], cta: "Learn more", hover: "Contact", to: "/contact?package=custom" },
+      ],
+      note: { lead: "Need build solutions, not support?", text: "If you're more interested in refactoring or modernising your infrastructure, check out", link: "our solutions page", to: "/cloud" },
+    },
+    covers: {
+      title: "Whatever your GCP project, we've got you covered.",
+      cards: [
+        { title: "Protect revenue and reputation", icon: <img src="/icons/azure-heart-shield-80x80-svg.svg" alt="" width="80" height="80" />, text: "The average cost of downtime is $5,600 per minute. We're not a budget option, but we're certainly cheaper than that. Next, factor in the cost to your reputation. Customers, partners and internal stakeholders can take a dim view of major outages. Get secured. Stop worrying." },
+        { title: "Save your team from burnout", icon: <img src="/icons/azure-superhero-shield-80x80-svg.svg" alt="" width="80" height="80" />, text: "One of the many support workarounds we encounter is phone-by-the-bed support. These kinds of rotas wear out solution- and design-oriented devs who enjoy building, not fixing. Realign your team and get them back to the what and when you hired them for." },
+        { title: "Innovate with confidence", icon: <img src="/icons/azure-lightbulb-80x80-svg.svg" alt="" width="80" height="80" />, text: "Without a robust support function, you can't innovate at pace. With a team who know your application like the backs of their hands, on call day and night, you can accelerate without worrying about a crash. Deploy features, refactor – go forward." },
+      ],
+    },
+    glance: {
+      eyebrow: "At a glance",
+      title: "Just After Midnight's support offering",
+      items: [
+        { q: "What technologies do you support?", a: <>We support cloud platforms (<strong>AWS, Azure, GCP, Alibaba Cloud</strong>), CMS and DXP platforms (<strong>Sitecore, Kentico, Umbraco, AEM, Optimizely, WordPress, Drupal, Magento</strong>), custom-built applications, edge/CDN networks, and third-party integrations including APIs.</> },
+        { q: "What support windows are available?", a: <><strong>24/7/365</strong> support, out-of-hours support and overnight support, weekends-only support, or a custom schedule built around your needs.</> },
+        { q: "What functions does your support team cover?", a: "Our support covers monitoring and alerting, incident management and triage, root cause analysis (RCA), SRE and DevOps support, observability, security incident response, backup and recovery, change and patch management, and third-party vendor escalation." },
+        { q: "What industries do you support?", a: "We work with businesses and organisations in SaaS, eCommerce, healthtech, legaltech, fintech, government, manufacturing, logistics, and digital agencies – and many more." },
+        { q: "What security accreditations do you hold?", a: <>We are <strong>ISO 27001</strong> certified, <strong>Cyber Essentials Plus</strong> verified, and <strong>PCI DSS</strong> compliant.</> },
+      ],
+    },
+    impacts: {
+      q: "What are the impacts of incidents on teams and revenue?",
+      a: "According to industry sources, downtime costs businesses between $540,000 (Splunk, The Hidden Costs of Downtime) and $2 million (New Relic, Observability Forecast 2025) per hour for many high-impact outages. Incidents also consume significant engineering capacity: the median engineering team spends 30% of its time addressing disruptions (New Relic, Observability Forecast 2024).",
+      sourcesHead: "Sources",
+      sources: ["Splunk, The Hidden Costs of Downtime (2000 Global Executives surveyed)", "New Relic, Observability Forecast 2025 (1,700 global technology professionals surveyed)", "New Relic Observability Forecast 2024 (1,700 global technology professionals surveyed)"],
+    },
+    insights: { title: "Latest Insights from JAM", cta: "See more articles", to: "/insights", variant: "blog" },
+    bands: ["intro", "problemSolution", "video", "why", "cases", "coverage", "packages", "covers", "reviews", "slab", "faq", "slab2", "insights", "glance", "impacts"],
   },
 ];
 
@@ -1812,6 +1953,13 @@ export default function SupportDetail() {
             <h2>{provider.whatTitle || `What does ${provider.name} support from us mean?`}</h2>
             {provider.whatIntro ? (
               provider.whatIntro.map((para, i) => <p key={i}>{para}</p>)
+            ) : provider.whatBullets ? (
+              <>
+                <ul className="plat-what-list">
+                  {provider.whatBullets.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+                {provider.whatCloser && <p className="plat-what-closer">{provider.whatCloser}</p>}
+              </>
             ) : (
               <p>{provider.intro}</p>
             )}
@@ -1876,7 +2024,7 @@ export default function SupportDetail() {
           )}
           <section
             className="how-it-works"
-            style={provider.slug === "ecommerce" ? { backgroundColor: "#f2f2f2", marginTop: 0 } : provider.scene === "azure" ? { backgroundColor: "#eaeaea", marginTop: 0 } : undefined}
+            style={provider.slug === "ecommerce" ? { backgroundColor: "#f2f2f2", marginTop: 0 } : ["azure", "gcp"].includes(provider.scene) ? { backgroundColor: "#eaeaea", marginTop: 0 } : undefined}
           >
             <div className="container">
               <div className="hiw-grid">
@@ -2108,7 +2256,7 @@ export default function SupportDetail() {
 
     packages: provider.packages && (
         <PackageBand
-          id={["aws", "azure"].includes(provider.scene) ? "packages" : undefined}
+          id={["aws", "azure", "gcp"].includes(provider.scene) ? "packages" : undefined}
           title={provider.packages.title}
           intro={provider.packages.intro}
           introTail={provider.packages.introTail}
@@ -2425,6 +2573,22 @@ export default function SupportDetail() {
             </div>
           </div>
         </section>
+      ) : provider.scene === "gcp" ? (
+        <section className="aws-hero gcp-hero" aria-labelledby="gcp-hero-title">
+          <div className="container">
+            <div className="gcp-hero-row">
+              <div className="aws-hero-copy">
+                <h1 id="gcp-hero-title">{provider.title}</h1>
+                <p className="aws-hero-sub">{provider.tagline}</p>
+                <a href="#site-footer" className="btn aws-hero-cta">GET IN TOUCH <span aria-hidden="true">➔</span></a>
+              </div>
+              <div className="gcp-hero-art">
+                <img src={provider.heroArt.src} alt="" width="210" height="210" decoding="async" />
+                <p>{provider.heroArt.label}</p>
+              </div>
+            </div>
+          </div>
+        </section>
       ) : provider.scene === "ecom" ? (
         <section className="hero-banner ecom-hero" style={{ backgroundImage: "url(/icons/hero-ecom-bg.jpg)" }}>
           <div className="container">
@@ -2550,7 +2714,7 @@ export default function SupportDetail() {
         </section>
       )}
 
-      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}${provider.scene === "azure" ? " platform-detail--azure" : ""}`}>
+      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}${provider.scene === "azure" ? " platform-detail--azure" : ""}${provider.scene === "gcp" ? " platform-detail--gcp" : ""}`}>
         <div className="container">
           {bandOrder.map((key) => (
             <Fragment key={key}>{BANDS[key]}</Fragment>
