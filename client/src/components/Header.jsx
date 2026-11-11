@@ -23,7 +23,7 @@ const SUBMENUS = {
     blurb: "Managed cloud, consulting and DevOps delivery that scales with your team.",
     rows: [
       { label: "Managed Cloud", to: "/cloud", links: [["AWS", "/support/aws-support"], ["Azure", "/support/azure-support"], ["GCP", "/support/gcp-support"]] },
-      { label: "Cloud consulting", to: "/cloud", links: [["Cost Optimisation", "/cloud"], ["Well-Architected Review", "/cloud"], ["Solution Architecture", "/cloud"], ["Cloud Migration", "/cloud"]] },
+      { label: "Cloud consulting", to: "/cloud", links: [["Cost Optimisation", "/cloud/cloud-consulting/cost-optimisation"], ["Well-Architected Review", "/cloud"], ["Solution Architecture", "/cloud"], ["Cloud Migration", "/cloud"]] },
       { label: "DevOps", to: "/cloud", links: [["DevOps Consulting", "/cloud"], ["Delivery & Automation", "/cloud"], ["Application Modernisation", "/cloud"]] },
     ],
   },
@@ -99,7 +99,7 @@ function navActiveFor(pathname) {
 
 /* Pages whose hero paints the top of the document get a transparent header
    pulled over it, instead of a navy bar stacked above the hero. */
-const OVERLAY_HEADER_PATHS = ["/support/aws-support", "/support/azure-support", "/cloud"];
+const OVERLAY_HEADER_PATHS = ["/support/aws-support", "/support/azure-support", "/cloud", "/cloud/cloud-consulting/cost-optimisation"];
 
 export default function Header() {
   const { pathname } = useLocation();

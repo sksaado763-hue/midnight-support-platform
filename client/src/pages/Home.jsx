@@ -95,7 +95,7 @@ const SERVICES = [
         label: "Cloud Consulting",
         to: "/cloud",
         children: [
-          { label: "Cost Optimisation", to: "/cloud" },
+          { label: "Cost Optimisation", to: "/cloud/cloud-consulting/cost-optimisation" },
           { label: "Well-Architected Review", to: "/cloud" },
         ],
       },

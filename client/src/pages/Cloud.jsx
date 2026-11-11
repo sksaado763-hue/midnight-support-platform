@@ -30,7 +30,7 @@ const TILES = [
   {
     icon: "/icons/cloud-cost-reducing.svg",
     title: "Cloud Cost Optimisation",
-    to: "/contact",
+    to: "/cloud/cloud-consulting/cost-optimisation",
     text: "Right-sizing, commitment strategy and the guardrails that stop next quarter's bill quietly drifting back up again. We fix the causes rather than the symptoms, and leave the reporting in place so the savings hold.",
   },
   {
