@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { InsightCard } from "./Cards";
+import BandSeam from "./BandSeam";
 
 /* The reference draws this slab's grey "wave" with no image at all — it is a
    flat polygon clipped over the white section, with the curve sampled at nine
@@ -8,13 +9,14 @@ import { InsightCard } from "./Cards";
    are white boxes wearing a 5px white border, artwork bleeding into the top
    corners and the copy panel pulled 20px up over it, and the tag row sits in an
    inset grey panel at the foot of the card. */
-export default function InsightsBand({ title, cta, to, articles = [], variant = "blog" }) {
+export default function InsightsBand({ title, cta, to, articles = [], variant = "blog", curveTop = false }) {
   const plain = variant === "plain";
   const byDate = [...articles].sort((a, b) => (a.date < b.date ? 1 : -1));
   const recent = new Set(byDate.slice(0, 2).map((article) => article.slug));
 
   return (
-    <section className={`insight-band${plain ? " insight-band--plain" : ""}`}>
+    <section className={`insight-band${plain ? " insight-band--plain" : ""}${curveTop ? " insight-band--curved" : ""}`}>
+      {curveTop && <BandSeam fill="var(--navy)" />}
       {!plain && <div className="insight-band-wave" aria-hidden="true" />}
       <svg className="insight-band-flair" viewBox="0 0 221 200" aria-hidden="true">
         <path

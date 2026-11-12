@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BandSeam from "./BandSeam";
 
 /* The reference's starfield is a cover-positioned texture of blurred dots: a
    bright core about 3px across, a halo roughly twice as wide, none brighter
@@ -75,13 +76,7 @@ export default function CapabilityBand({ title, intro, groups, closer, variant =
           </g>
         </svg>
       </div>
-      {curveTop && (
-        <div className="band-curve" aria-hidden="true">
-          <svg viewBox="0 0 1920 89" preserveAspectRatio="none">
-            <path d="M0 0H1920V50.5C1760 68.1 1600 84 1440 84C1280 84 1120 68.1 960 50.5C800 68.1 640 17 480 17C320 17 160 33 0 50.5Z" fill="var(--bg)" />
-          </svg>
-        </div>
-      )}
+      {curveTop && <BandSeam />}
       <div className="container">
         <div className={`cap-head reveal${titleScale === "h2" ? " cap-head--h2" : ""}`}>
           <h2>{title}</h2>

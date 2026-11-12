@@ -6218,11 +6218,17 @@ section.case-feature--detail { padding: 40px 0; }
 /* The white band sits between the navy case slab and the navy coverage band on
    this page, so both of its seams take the /support dividers' sine crest rather
    than a straight edge: the navy wave caps the icon-grid, the white one caps the
-   coverage band it hands over to. The extra top padding keeps the copy clear of
-   the crests. */
+   coverage band it hands over to. Every other navy band on the page follows the
+   same rule — both case slabs wave in from the white band above, the packages
+   table waves out of the coverage band, and the reading list waves out of the
+   second slab. The extra top padding keeps each band's copy clear of the crest. */
 .band-curve { position: absolute; left: 0; right: 0; top: -1px; line-height: 0; pointer-events: none; }
 .band-curve svg { display: block; width: 100%; height: clamp(46px, 4.67vw, 89px); }
+.platform-detail--net .case-feature--curved { padding-top: 64px; }
+.platform-detail--net .pkg-band--curved { position: relative; padding-top: 24px; }
 @media (min-width: 768px) {
   .platform-detail--net .why-band--curved > .container { padding-top: 124px; }
   .platform-detail--net .cap-band--curved { padding-top: 88px; }
+  .platform-detail--net .case-feature--curved { padding-top: 124px; }
+  .platform-detail--net .pkg-band--curved { padding-top: 84px; }
 }

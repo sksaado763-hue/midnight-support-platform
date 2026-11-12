@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import BandSeam from "./BandSeam";
 
 /* The reference's case-study block: a navy starfield slab, the client in a
    hand-drawn oval, an amber rule, then the story and a white CTA. Shared by
    /support and the 24/7 support sub-pages so the treatment cannot drift.
    `split` carries the reference's own 12-column spans for the page it sits on. */
-export default function CaseFeature({ study, variant = "wide", split = "3-1-8" }) {
+export default function CaseFeature({ study, variant = "wide", split = "3-1-8", curveTop = false }) {
   if (!study) return null;
   const detail = variant === "detail";
   const ctaTo = study.to || `/case-studies/${study.slug}`;
@@ -16,7 +17,7 @@ export default function CaseFeature({ study, variant = "wide", split = "3-1-8" }
   };
   const section = (
     <section
-      className={`case-feature${detail ? " case-feature--detail" : ""}${detail ? ` case-feature--split-${split}` : ""}${study.image ? " case-feature--image" : ""}${flat ? " case-feature--flat" : ""}`}
+      className={`case-feature${detail ? " case-feature--detail" : ""}${detail ? ` case-feature--split-${split}` : ""}${study.image ? " case-feature--image" : ""}${flat ? " case-feature--flat" : ""}${curveTop ? " case-feature--curved" : ""}`}
       style={Object.keys(sectionStyle).length ? sectionStyle : undefined}
     >
       <div className="hero-stars" aria-hidden="true">
@@ -30,6 +31,7 @@ export default function CaseFeature({ study, variant = "wide", split = "3-1-8" }
           </g>
         </svg>
       </div>
+      {curveTop && <BandSeam />}
       <div className="case-wave case-wave--top" aria-hidden="true">
         <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
           <path d="M0 0H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BandSeam from "./BandSeam";
 
 /* The reference's packages block is three sections that read as one: a centred
    title over a narrower copy column, a borderless-gap table of four equal
@@ -14,9 +15,10 @@ import { Link } from "react-router-dom";
    below where the agencies page does, and it finishes its copy with an accent
    link the agencies page leaves as plain text. Both come in as props so the
    geometry stays one component. */
-export default function PackageBand({ id, title, intro, introTail, introGap, tiers, note, withIntro = true }) {
+export default function PackageBand({ id, title, intro, introTail, introGap, tiers, note, withIntro = true, curveTop = false }) {
   return (
-    <section className="pkg-band" id={id}>
+    <section className={`pkg-band${curveTop ? " pkg-band--curved" : ""}`} id={id}>
+      {curveTop && <BandSeam fill="var(--navy)" />}
       {withIntro && (
         <div className={`pkg-intro${introGap ? " pkg-intro--gap" : ""}`}>
           <div className="container">

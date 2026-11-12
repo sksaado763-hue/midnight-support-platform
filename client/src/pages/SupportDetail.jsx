@@ -1138,15 +1138,15 @@ const INDUSTRIES = [
         text: "Stability work is not only watching. We pull apart the monolith edges that slow every release, move the jobs that block deploys behind flags, and take the waste out of a cloud bill that grew faster than the product. The reliability review is where that list gets written, and where it gets closed. The platform you renew on need not be the one you started with.",
       },
     ],
-    caseStudy: { slug: "absolute-software", split: "4-1-7", slot: "early" },
+    caseStudy: { slug: "absolute-software", split: "4-1-7", slot: "early", curveTop: true },
     /* The reference runs the same case-study template twice on this page, the
        second copy after the FAQ. A different study keeps the page from naming
        the same client in two places. */
-    slab2: { slug: "gosalary", split: "4-1-7" },
+    slab2: { slug: "gosalary", split: "4-1-7", curveTop: true },
     /* The reference slips its reading list between the second slab and the
        at-a-glance card. The cards themselves come from the same article feed
        /support runs, so this page only supplies the framing. */
-    insights: { title: "Field notes for a platform that cannot go quiet", variant: "plain" },
+    insights: { title: "Field notes for a platform that cannot go quiet", variant: "plain", curveTop: true },
     /* The reference closes every support page with the same two slabs — the
        at-a-glance card and the impact/sources row — and /support runs the same
        pair. The questions here are the spec-sheet ones a buyer asks before a
@@ -1260,6 +1260,7 @@ const INDUSTRIES = [
        closing link is an accent rather than plain ink. */
     packages: {
       introGap: true,
+      curveTop: true,
       title: "How much of the clock do we carry?",
       intro: "Four ways to put engineers behind a platform that never closes. Take one as written, blend two, or point us at the corner of the stack nobody on your team wants to own.",
       introTail: { lead: "We cut the agreement around that — just", link: "tell us what you run", to: "/contact" },
@@ -2005,7 +2006,7 @@ export default function SupportDetail() {
     ),
 
     slabEarly: provider.caseStudy?.slot === "early" && (
-        <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
+        <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} curveTop={provider.caseStudy.curveTop} />
       ),
 
     video: provider.video && (
@@ -2267,6 +2268,7 @@ export default function SupportDetail() {
           introGap={provider.packages.introGap}
           tiers={provider.packages.tiers}
           note={provider.packages.note}
+          curveTop={provider.packages.curveTop}
         />
       ),
 
@@ -2309,7 +2311,7 @@ export default function SupportDetail() {
       ),
 
     slab: provider.caseStudy && provider.caseStudy.slot !== "early" && (
-        <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
+        <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} curveTop={provider.caseStudy.curveTop} />
       ),
 
     slab2: provider.slab2 && (
@@ -2317,6 +2319,7 @@ export default function SupportDetail() {
           study={provider.slab2.study || (caseStudies || []).find((study) => study.slug === provider.slab2.slug)}
           variant="detail"
           split={provider.slab2.split}
+          curveTop={provider.slab2.curveTop}
         />
       ),
 
@@ -2327,6 +2330,7 @@ export default function SupportDetail() {
           to={provider.insights.to}
           articles={articles || []}
           variant={provider.insights.variant}
+          curveTop={provider.insights.curveTop}
         />
       ),
 
