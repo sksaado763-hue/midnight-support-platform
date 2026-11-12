@@ -1989,17 +1989,19 @@ ul { list-style: none; }
 .page-hero--net .container {
   position: relative;
   z-index: 2;
-  width: min(1140px, 100%);
+  width: min(1170px, 100%);
   margin-inline: auto;
-  padding-inline: 20px;
+  padding-inline: 30px;
 }
 .page-hero--net .hero-copy { max-width: 475px; }
+/* Same headline as the Azure detail hero, so the two pages open on the same
+   block: 48/56 at 900 with the -0.01em tracking, unconstrained by the old
+   15ch measure so the 475px column does the wrapping. */
 .page-hero--net .support-hero-title {
-  font-size: clamp(26px, 1.8vw, 34px);
-  line-height: clamp(32px, 2.33vw, 44px);
-  font-weight: 500;
-  letter-spacing: 0;
-  max-width: 15ch;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
 }
 .page-hero--net .support-hero-sub {
   margin-top: 12px;
@@ -2063,9 +2065,11 @@ ul { list-style: none; }
    the scene carries on the starfield alone and the copy takes the measure. */
 @media (max-width: 991.98px) {
   .page-hero--net { min-height: 0; padding: 120px 0 40px; }
-  .page-hero--net .container { padding-inline: 24px; }
   .page-hero--net .hero-copy { max-width: none; }
   .net-art { display: none; }
+}
+@media (max-width: 767.98px) {
+  .page-hero--net .support-hero-title { font-size: 36px; line-height: 42px; }
 }
 
 /* Platforms hero, measured 1:1 off the reference capture at 1908px: 199px
