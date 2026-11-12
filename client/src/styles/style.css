@@ -2431,6 +2431,9 @@ section.statement { padding: var(--section-pad) 0 0; }
   text-align: center;
 }
 .support-case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 1.3vw, 25px); }
+/* The value row used to take its columns from an inline style, which no media
+   query could reach; the grid now lives here so it can step down with the rest. */
+.support-value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .support-case-grid .support-case { display: block; border: 0; border-radius: 0; padding: 0; background: none; text-decoration: none; text-align: center; }
 .support-case-grid .support-case:hover { box-shadow: none; }
 .support-case-art {
@@ -2582,6 +2585,9 @@ section.why-band { background: linear-gradient(180deg, #12203f 0 26%, #173677 40
 .cap-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
 .cap-card li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5; }
 .cap-card li::before { content: "✓"; font-weight: 900; flex: none; }
+/* The overview page's own markup already ships the tick, so the shared
+   pseudo-element would double it. */
+.support-overview .cap-card li::before { content: none; }
 
 /* The same list at the reference's detail scale — `.seo-text-block` painted on
    the flat starfield field, so 40px at both ends of the slab and no card chrome.
@@ -3261,6 +3267,7 @@ section.case-feature--detail { padding: 40px 0; }
   .svc-grid,
   .why-grid,
   .cap-grid,
+  .support-value-grid,
   .support-case-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -3413,7 +3420,16 @@ section.case-feature--detail { padding: 40px 0; }
   .svc-grid,
   .why-grid,
   .cap-grid,
+  .support-value-grid,
   .support-case-grid { grid-template-columns: 1fr; }
+}
+
+/* Under 360 the reference's 40px plate padding eats a third of the text column;
+   this is a guard for the narrowest phones, not a change to its mobile tier. */
+@media (max-width: 359.98px) {
+  .glance-card,
+  .impact-card,
+  .impact-sources { padding: 24px; }
 }
 
 /* The sub-page case row walks its own tiers, taken from the container widths and

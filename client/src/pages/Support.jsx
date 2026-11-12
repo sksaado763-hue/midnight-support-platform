@@ -564,7 +564,7 @@ export default function Support() {
   const [openIndustry, setOpenIndustry] = useState(0);
 
   return (
-    <>
+    <div className="support-overview">
       {/* SECTION 1: HERO BANNER */}
       <section className="page-hero page-hero--support page-hero--support-overview">
         <div className="hero-stars" aria-hidden="true">
@@ -592,7 +592,7 @@ export default function Support() {
         </div>
       </section>
 
-      <section className="support-intro" style={{ background: "#ffffff", padding: "80px 0" }}>
+      <section className="support-intro" style={{ background: "#ffffff", padding: "clamp(48px, 8vw, 80px) 0" }}>
         <div className="container support-intro-grid">
           <div className="support-intro-copy reveal">
             <h2>Always-on support for mission-critical digital platforms</h2>
@@ -620,10 +620,10 @@ export default function Support() {
       {/* SECTION 4 & 5: OUR SUPPORT SERVICES & DIVIDER */}
       <CurvedDividerDown bg="#12203f" fill="#ffffff" />
 
-      <section className="svc-band" style={{ background: "#12203f", padding: "80px 0 100px" }}>
+      <section className="svc-band" style={{ background: "#12203f", padding: "clamp(48px, 8vw, 80px) 0 clamp(56px, 9vw, 100px)" }}>
         <div className="container">
           <div className="svc-head" style={{ paddingInline: 0, marginBottom: "40px" }}>
-            <h2 className="band-title reveal" style={{ color: "#ffffff", fontSize: "32px", fontWeight: 900 }}>Our support services</h2>
+            <h2 className="band-title reveal" style={{ color: "#ffffff", fontSize: "clamp(28px, 4.2vw, 32px)", fontWeight: 900 }}>Our support services</h2>
             <div style={{ width: "56px", height: "4px", background: "#fabd14", borderRadius: "2px", margin: "0 0 22px" }} />
             <p className="band-sub reveal" style={{ color: "#c2ccde" }}>Pick your stack. Pick your coverage.</p>
             <p className="band-sub reveal" style={{ color: "#c2ccde" }}>Just overnights? Weekends? 24 hours a day, 7 days a week? We can do it all.</p>
@@ -631,7 +631,7 @@ export default function Support() {
           </div>
           <div className="svc-grid">
             {SERVICES.map((service) => (
-              <article className="svc-card reveal" key={service.title} style={{ background: "#1a2b4e", border: "1px solid #e7e7e4", borderRadius: "14px", padding: "30px" }}>
+              <article className="svc-card reveal" key={service.title} style={{ background: "#1a2b4e", border: "1px solid #e7e7e4", borderRadius: "14px", padding: "clamp(20px, 3vw, 30px)" }}>
                 <span className="svc-icon" style={{ display: "block", marginBottom: "16px" }}>{service.icon}</span>
                 <h3 style={{ color: "#ffffff", fontSize: "20px", fontWeight: 800, margin: "0 0 12px" }}>{service.title}</h3>
                 <span className="svc-rule" aria-hidden="true" style={{ width: "44px", height: "3px", background: "#fabd14", borderRadius: "2px", margin: "0 0 22px" }} />
@@ -650,9 +650,9 @@ export default function Support() {
       {/* SECTION 6 & 7: NEED ONGOING MAINTENANCE, TOO? & DIVIDER */}
       <CurvedDividerDown bg="#ffffff" fill="#12203f" />
 
-      <section className="small-cta" style={{ background: "#ffffff", padding: "70px 0" }}>
+      <section className="small-cta" style={{ background: "#ffffff", padding: "clamp(48px, 8vw, 70px) 0" }}>
         <div className="container" style={{ maxWidth: "860px", margin: "0 auto", textAlign: "center" }}>
-          <h2 className="reveal" style={{ color: "#12203f", fontSize: "32px", fontWeight: 800, marginBottom: "20px" }}>Need ongoing maintenance, too?</h2>
+          <h2 className="reveal" style={{ color: "#12203f", fontSize: "clamp(28px, 4.2vw, 32px)", fontWeight: 800, marginBottom: "20px" }}>Need ongoing maintenance, too?</h2>
           <p className="reveal" style={{ color: "#334155", fontSize: "16px", lineHeight: "28px", marginBottom: "32px" }}>
             We’re proactive about performance. Our 24/7 application support, website support and cloud support can be paired with ongoing managed services, ensuring your cloud environment is optimised, keeping your site up-to-date and delivering high performance.
           </p>
@@ -674,15 +674,15 @@ export default function Support() {
       {/* SECTION 10: WHY WE'RE THE BEST (9 CARDS ON DARK NAVY, CARD 9 CANARY YELLOW) */}
       <CurvedDividerDown bg="#111a2b" fill="#f8fafd" />
 
-      <section className="aws-why-section" style={{ background: "#111a2b", padding: "90px 0 110px" }}>
+      <section className="aws-why-section" style={{ background: "#111a2b", padding: "clamp(48px, 8vw, 90px) 0 clamp(56px, 9vw, 110px)" }}>
         <div className="container">
           <div className="why-intro reveal" style={{ maxWidth: "820px", margin: "0 auto 54px", textAlign: "center" }}>
-            <h2 style={{ color: "#fabd14", fontSize: "36px", fontWeight: 800, marginBottom: "20px" }}>Why we’re the best</h2>
+            <h2 style={{ color: "#fabd14", fontSize: "clamp(28px, 4.7vw, 36px)", fontWeight: 800, marginBottom: "20px" }}>Why we’re the best</h2>
             <p style={{ color: "#ffffff", fontSize: "16px", lineHeight: "28px", fontWeight: 300 }}>
               A bold claim. But not a baseless one. We were founded to do 24/7 support. And we’ve done it pretty successfully for the past near-decade. We’ve worked with global brands on mission-critical sites. We’ve supported hyperscale SaaS products. We’ve helped major software companies deploy and deliver their products. This is why we’re the best:
             </p>
           </div>
-          <div className="aws-why-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+          <div className="aws-why-grid">
             {WHY_CARDS.map((card, idx) => {
               const isLast = idx === WHY_CARDS.length - 1;
               if (isLast) {
@@ -693,7 +693,7 @@ export default function Support() {
                     style={{
                       background: "#fabd14",
                       borderRadius: "12px",
-                      padding: "32px",
+                      padding: "clamp(20px, 3vw, 32px)",
                       border: "none",
                       display: "flex",
                       flexDirection: "column",
@@ -737,7 +737,7 @@ export default function Support() {
                   style={{
                     background: "#122140",
                     borderRadius: "12px",
-                    padding: "32px",
+                    padding: "clamp(20px, 3vw, 32px)",
                     border: "1px solid rgba(255,255,255,0.08)",
                   }}
                 >
@@ -757,10 +757,10 @@ export default function Support() {
       {/* SECTION 11 & 12: 24/7 SUPPORT SERVICE CAPABILITIES & DIVIDER */}
       <CurvedDividerDown bg="#ffffff" fill="#111a2b" />
 
-      <section className="cap-band" style={{ background: "#ffffff", padding: "80px 0 90px" }}>
+      <section className="cap-band" style={{ background: "#ffffff", padding: "clamp(48px, 8vw, 80px) 0 clamp(56px, 9vw, 90px)" }}>
         <div className="container">
           <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 48px" }}>
-            <h2 style={{ fontWeight: 900, fontSize: "34px", lineHeight: 1.15, color: "#16264a", margin: "0 0 14px" }}>
+            <h2 style={{ fontWeight: 900, fontSize: "clamp(28px, 4.5vw, 34px)", lineHeight: 1.15, color: "#16264a", margin: "0 0 14px" }}>
               24/7 support service capabilities
             </h2>
             <div style={{ width: "64px", height: "4px", background: "#fabd14", borderRadius: "2px", margin: "0 auto 16px" }} />
@@ -768,9 +768,9 @@ export default function Support() {
               If your team can’t be everywhere at once, that’s where we step in.
             </p>
           </div>
-          <div className="cap-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+          <div className="cap-grid">
             {CAPABILITIES.map((group) => (
-              <article className="cap-card reveal" key={group.title} style={{ background: "#f7f6f3", border: "1px solid #ececea", borderRadius: "14px", padding: "30px 32px" }}>
+              <article className="cap-card reveal" key={group.title} style={{ background: "#f7f6f3", border: "1px solid #ececea", borderRadius: "14px", padding: "30px clamp(20px, 3vw, 32px)" }}>
                 <h3 style={{ fontWeight: 800, fontSize: "18px", lineHeight: 1.3, color: "#16264a", margin: "0 0 12px" }}>{group.title}</h3>
                 <div style={{ width: "40px", height: "3px", background: "#fabd14", borderRadius: "2px", margin: "0 0 20px" }} />
                 <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
@@ -790,10 +790,10 @@ export default function Support() {
       <CaseFeature study={FORD_CASE} variant="wide" />
 
       {/* SECTION 15, 16 & 17: PACKAGES & PRICING */}
-      <section className="pkg-intro" id="packages" style={{ background: "#ffffff", padding: "70px 0 20px" }}>
+      <section className="pkg-intro" id="packages" style={{ background: "#ffffff", padding: "clamp(48px, 8vw, 70px) 0 20px" }}>
         <div className="container">
           <div className="pkg-intro-copy reveal" style={{ maxWidth: "840px", margin: "0 auto", textAlign: "center" }}>
-            <h2 style={{ fontSize: "36px", fontWeight: 800, color: "#12203f", marginBottom: "18px" }}>Our service packages</h2>
+            <h2 style={{ fontSize: "clamp(28px, 4.7vw, 36px)", fontWeight: 800, color: "#12203f", marginBottom: "18px" }}>Our service packages</h2>
             <p style={{ fontSize: "16px", lineHeight: "28px", color: "#475569" }}>
               All plans include monitoring, alerting, incident response and support from senior engineers. Select the tier that matches your requirements.
             </p>
@@ -842,10 +842,10 @@ export default function Support() {
       </section>
 
       {/* SECTION 18 & 19: FAQ & DIVIDER */}
-      <section className="support-faq" style={{ background: "#f8fafd", padding: "80px 0" }}>
+      <section className="support-faq" style={{ background: "#f8fafd", padding: "clamp(48px, 8vw, 80px) 0" }}>
         <div className="container support-faq-grid">
           <div className="support-faq-col">
-            <h2 className="reveal" style={{ fontSize: "36px", fontWeight: 800, color: "#12203f", marginBottom: "18px" }}>24/7 Support FAQ</h2>
+            <h2 className="reveal" style={{ fontSize: "clamp(28px, 4.7vw, 36px)", fontWeight: 800, color: "#12203f", marginBottom: "18px" }}>24/7 Support FAQ</h2>
             <p className="support-faq-intro reveal" style={{ fontSize: "16px", lineHeight: "26px", color: "#475569", marginBottom: "36px" }}>
               For a no-nonsense look at what we support, take a look at our packages. Still have questions? Here are the answers to our most common ones:
             </p>
@@ -905,16 +905,16 @@ export default function Support() {
       {/* SECTION 20 & 21: VALUE PROPOSITIONS & DIVIDER */}
       <CurvedDividerDown bg="#12203f" fill="#f8fafd" />
 
-      <section className="support-value-section" style={{ background: "#12203f", padding: "80px 0 100px" }}>
+      <section className="support-value-section" style={{ background: "#12203f", padding: "clamp(48px, 8vw, 80px) 0 clamp(56px, 9vw, 100px)" }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "50px" }}>
-            <h2 className="reveal" style={{ color: "#fabd14", fontSize: "32px", fontWeight: 800 }}>
+            <h2 className="reveal" style={{ color: "#fabd14", fontSize: "clamp(28px, 4.2vw, 32px)", fontWeight: 800 }}>
               Protect, innovate and perform with our 24/7 support service
             </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+          <div className="support-value-grid">
             {VALUE_CARDS.map((card, idx) => (
-              <article className="reveal" key={idx} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "14px", padding: "34px 28px" }}>
+              <article className="reveal" key={idx} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "14px", padding: "clamp(24px, 3vw, 34px) clamp(20px, 3vw, 28px)" }}>
                 <div style={{ marginBottom: "20px" }}>{card.icon}</div>
                 <h3 style={{ color: "#fabd14", fontSize: "19px", fontWeight: 700, lineHeight: 1.35, marginBottom: "16px" }}>
                   {card.title}
@@ -938,10 +938,10 @@ export default function Support() {
       {/* SECTION 24 & 25: INDUSTRIES WE SUPPORT & DIVIDER */}
       <CurvedDividerDown bg="#12203f" fill="#ffffff" />
 
-      <section className="ind-band" id="industries" style={{ background: "#12203f", padding: "80px 0" }}>
+      <section className="ind-band" id="industries" style={{ background: "#12203f", padding: "clamp(48px, 8vw, 80px) 0" }}>
         <div className="container ind-band-grid">
           <div className="ind-band-copy reveal">
-            <h1 style={{ color: "#ffffff", fontSize: "36px", fontWeight: 800, marginBottom: "16px" }}>Industries we support</h1>
+            <h1 style={{ color: "#ffffff", fontSize: "clamp(28px, 4.7vw, 36px)", fontWeight: 800, marginBottom: "16px" }}>Industries we support</h1>
             <p style={{ color: "#ffffff", fontSize: "16px", lineHeight: "26px", marginBottom: "32px" }}>
               Every organisation is different. And that’s exactly why we build support around you.
             </p>
@@ -976,7 +976,7 @@ export default function Support() {
             <img src="/icons/azure-Rocket-stack2.webp" alt="Rocket" style={{ maxWidth: "100%", height: "auto", objectFit: "contain" }} />
           </div>
         </div>
-        <div className="container how-it-works-cta reveal" style={{ marginTop: "48px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "28px 36px" }}>
+        <div className="container how-it-works-cta reveal" style={{ marginTop: "48px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "clamp(20px, 3vw, 28px) clamp(20px, 4vw, 36px)" }}>
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "24px" }}>
             <h3 style={{ color: "#ffffff", fontSize: "20px", fontWeight: 800, margin: 0, minWidth: "180px" }}>Not listed here?</h3>
             <p style={{ color: "#ffffff", fontSize: "15px", lineHeight: "24px", margin: 0, flex: 1 }}>
@@ -1002,6 +1002,6 @@ export default function Support() {
         sourcesHead={IMPACT.sourcesHead}
         sources={IMPACT.sources}
       />
-    </>
+    </div>
   );
 }
