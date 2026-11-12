@@ -1189,6 +1189,7 @@ const INDUSTRIES = [
     },
     why: {
       title: "How the cover actually holds",
+      curveTop: true,
       intro: "Holds against what? A p1 at four in the morning, a canary that never went green, a vendor that changed its API contract without telling anyone, an audit asking for evidence from a quarter you have already forgotten. This is the machinery behind the promise:",
       cards: [
         {
@@ -1235,6 +1236,7 @@ const INDUSTRIES = [
     coverage: {
       title: "The reliability work that happens while you sleep",
       titleScale: "h2",
+      curveTop: true,
       intro: "Alerts that page a named engineer, triage that reaches the code, and a handover your stand-up can read out loud. The routine looks like this:",
       groups: [
         { title: "Availability & journeys", items: ["Synthetic signup and checkout runs", "Real-user speed budgets per release", "Error budgets tracked, not estimated", "A status page that tells the truth"] },
@@ -2209,6 +2211,7 @@ export default function SupportDetail() {
           intro={provider.why.intro}
           cards={provider.why.cards}
           accent={provider.why.accent}
+          curveTop={provider.why.curveTop}
         />
       ),
 
@@ -2251,6 +2254,7 @@ export default function SupportDetail() {
           groups={provider.coverage.groups}
           closer={provider.coverage.closer}
           titleScale={provider.coverage.titleScale}
+          curveTop={provider.coverage.curveTop}
         />
       ),
 

@@ -23,7 +23,7 @@ const CAP_STARS = Array.from({ length: 150 }, (_, i) => {
    where the same block sits on the starfield and closes with a centred line and
    a canary button. `titleScale` is the heading level the reference's own editor
    left on that page: an h1 on agencies, a smaller h2 on SaaS. */
-export default function CapabilityBand({ title, intro, groups, closer, variant = "wide", titleScale = "h1" }) {
+export default function CapabilityBand({ title, intro, groups, closer, variant = "wide", titleScale = "h1", curveTop = false }) {
   if (variant !== "detail" && variant !== "dark") {
     return (
       <section className={`cap-band${variant === "cards" ? " cap-band--cards" : ""}`}>
@@ -58,7 +58,7 @@ export default function CapabilityBand({ title, intro, groups, closer, variant =
   }
 
   return (
-    <section className={`cap-band cap-band--detail${variant === "dark" ? " cap-band--dark" : ""}`}>
+    <section className={`cap-band cap-band--detail${variant === "dark" ? " cap-band--dark" : ""}${curveTop ? " cap-band--curved" : ""}`}>
       <div className="hero-stars" aria-hidden="true">
         <svg viewBox="0 0 1911 950" preserveAspectRatio="xMidYMid slice">
           <defs>
@@ -75,6 +75,13 @@ export default function CapabilityBand({ title, intro, groups, closer, variant =
           </g>
         </svg>
       </div>
+      {curveTop && (
+        <div className="band-curve" aria-hidden="true">
+          <svg viewBox="0 0 1920 89" preserveAspectRatio="none">
+            <path d="M0 0H1920V50.5C1760 68.1 1600 84 1440 84C1280 84 1120 68.1 960 50.5C800 68.1 640 17 480 17C320 17 160 33 0 50.5Z" fill="var(--bg)" />
+          </svg>
+        </div>
+      )}
       <div className="container">
         <div className={`cap-head reveal${titleScale === "h2" ? " cap-head--h2" : ""}`}>
           <h2>{title}</h2>

@@ -20,11 +20,12 @@ const WHY_STARS = Array.from({ length: 140 }, (_, i) => {
 
 /* Reference `.icon-grid`: the starfield band of reason cards, on /support at the
    wide scale and on its sub-pages at the narrower detail scale — the same block
-   the reference itself ships twice. */
-export default function WhyBand({ title, intro, cards, accent, variant = "wide" }) {
+   the reference itself ships twice. `curveTop` caps the band with the navy of
+   the slab above it on a sine crest, for pages where the section is white. */
+export default function WhyBand({ title, intro, cards, accent, variant = "wide", curveTop = false }) {
   const detail = variant === "detail";
   return (
-    <section className={`why-band${detail ? " why-band--detail" : ""}`}>
+    <section className={`why-band${detail ? " why-band--detail" : ""}${curveTop ? " why-band--curved" : ""}`}>
       <div className="hero-stars" aria-hidden="true">
         <svg viewBox="0 0 1911 1765" preserveAspectRatio="xMidYMid slice">
           <defs>
@@ -78,6 +79,13 @@ export default function WhyBand({ title, intro, cards, accent, variant = "wide" 
         <div className="band-wave band-wave--top" aria-hidden="true">
           <svg viewBox="0 0 1920 73" preserveAspectRatio="none">
             <path d="M0 0H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="var(--bg)" />
+          </svg>
+        </div>
+      )}
+      {curveTop && (
+        <div className="band-curve" aria-hidden="true">
+          <svg viewBox="0 0 1920 89" preserveAspectRatio="none">
+            <path d="M0 0H1920V50.5C1760 68.1 1600 84 1440 84C1280 84 1120 68.1 960 50.5C800 68.1 640 17 480 17C320 17 160 33 0 50.5Z" fill="#111a2b" />
           </svg>
         </div>
       )}

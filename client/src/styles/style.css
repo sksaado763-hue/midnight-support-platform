@@ -6214,3 +6214,15 @@ section.case-feature--detail { padding: 40px 0; }
 .platform-detail--net .why-band--detail > .hero-stars { display: none; }
 .platform-detail--net .why-band--detail .why-intro .band-title { color: #132140; }
 .platform-detail--net .why-band--detail .why-intro p { color: #132140; }
+
+/* The white band sits between the navy case slab and the navy coverage band on
+   this page, so both of its seams take the /support dividers' sine crest rather
+   than a straight edge: the navy wave caps the icon-grid, the white one caps the
+   coverage band it hands over to. The extra top padding keeps the copy clear of
+   the crests. */
+.band-curve { position: absolute; left: 0; right: 0; top: -1px; line-height: 0; pointer-events: none; }
+.band-curve svg { display: block; width: 100%; height: clamp(46px, 4.67vw, 89px); }
+@media (min-width: 768px) {
+  .platform-detail--net .why-band--curved > .container { padding-top: 124px; }
+  .platform-detail--net .cap-band--curved { padding-top: 88px; }
+}
