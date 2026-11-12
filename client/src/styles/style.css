@@ -6202,3 +6202,15 @@ section.case-feature--detail { padding: 40px 0; }
   .pkg-page-pricing h3 { font-size: 16px; line-height: 22px; }
   .pkg-page-pricing p { margin-bottom: 10px; font-size: 14px; line-height: 18px; }
 }
+
+/* ===== SaaS support detail page =====
+   The icon-grid on this page carries the page's own look rather than the
+   reference texture: the navy→royal-blue field would sit between the white
+   promise cards and the navy coverage checklist as a third colour, so the band
+   takes the white page background and the ink switches to the body navy. The
+   cards keep their opaque plates, and the starfield goes with the field — its
+   white dots and planets have nothing to sit on. */
+.platform-detail--net .why-band--detail { background: none; }
+.platform-detail--net .why-band--detail > .hero-stars { display: none; }
+.platform-detail--net .why-band--detail .why-intro .band-title { color: #132140; }
+.platform-detail--net .why-band--detail .why-intro p { color: #132140; }

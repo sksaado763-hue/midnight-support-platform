@@ -2714,7 +2714,7 @@ export default function SupportDetail() {
         </section>
       )}
 
-      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}${provider.scene === "azure" ? " platform-detail--azure" : ""}${provider.scene === "gcp" ? " platform-detail--gcp" : ""}`}>
+      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}${provider.scene === "azure" ? " platform-detail--azure" : ""}${provider.scene === "gcp" ? " platform-detail--gcp" : ""}${provider.scene === "net" ? " platform-detail--net" : ""}`}>
         <div className="container">
           {bandOrder.map((key) => (
             <Fragment key={key}>{BANDS[key]}</Fragment>
