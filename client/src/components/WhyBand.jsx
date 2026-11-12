@@ -23,7 +23,7 @@ const WHY_STARS = Array.from({ length: 140 }, (_, i) => {
    wide scale and on its sub-pages at the narrower detail scale — the same block
    the reference itself ships twice. `curveTop` caps the band with the navy of
    the slab above it on a sine crest, for pages where the section is white. */
-export default function WhyBand({ title, intro, cards, accent, variant = "wide", curveTop = false }) {
+export default function WhyBand({ title, intro, cards, accent, variant = "wide", curveTop = false, curveFill = "var(--navy)" }) {
   const detail = variant === "detail";
   return (
     <section className={`why-band${detail ? " why-band--detail" : ""}${curveTop ? " why-band--curved" : ""}`}>
@@ -83,7 +83,7 @@ export default function WhyBand({ title, intro, cards, accent, variant = "wide",
           </svg>
         </div>
       )}
-      {curveTop && <BandSeam fill="var(--navy)" />}
+      {curveTop && <BandSeam fill={curveFill} />}
       <div className="container">
         <div className="why-intro reveal">
           <h2 className="band-title band-title--center">{title}</h2>

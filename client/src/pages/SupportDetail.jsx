@@ -2,6 +2,7 @@ import { Fragment, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import { useApi, postJson } from "../lib/api";
+import BandSeam from "../components/BandSeam";
 import CaseFeature from "../components/CaseFeature";
 import CapabilityBand from "../components/CapabilityBand";
 import CaseStudiesBand from "../components/CaseStudiesBand";
@@ -721,8 +722,10 @@ const INDUSTRIES = [
       closer: "Want the cover levels and their response clocks side by side?",
       cta: "See the packages",
     },
-    caseStudy: { slug: "dexerto" },
+    caseStudy: { slug: "dexerto", curveTop: true },
     why: {
+      curveTop: true,
+      curveFill: "#e9e9e9",
       title: "Why agencies keep us on the retainer",
       intro: "You sold the client a platform, not an on-call rota. Ten sites, ten stacks and one team that has to be somewhere else — that is the arithmetic we were built for. Here is what changes once the desk is ours:",
       cards: [
@@ -767,10 +770,13 @@ const INDUSTRIES = [
       },
     },
     cases: {
+      curveTop: true,
+      curveFill: "var(--navy)",
       title: "Proof your renewals can quote",
       slugs: ["dexerto", "third-space", "gosalary", "absolute-software"],
     },
     covers: {
+      curveTop: true,
       title: "Built by people who have run the agency side",
       intro: "Before there was a rota, there was a studio desk: client emergencies answered at two in the morning between build tickets, and a support promise nobody had staffed. Every routine here was written against that gap.",
       cards: [
@@ -848,6 +854,7 @@ const INDUSTRIES = [
       ],
     },
     coverage: {
+      curveTop: true,
       title: "The cover that runs on every site you have shipped",
       intro: "One rota across the portfolio, graded by the retainer you signed rather than by who shouts first. This is what actually lands on our desk:",
       groups: [
@@ -865,6 +872,7 @@ const INDUSTRIES = [
       },
     },
     packages: {
+      curveTop: true,
       title: "Pick the cover your portfolio needs",
       intro: "Four ways to put the night desk behind your client sites, priced by how much of the rota we carry rather than by how many tickets arrive. None of them quite fit? Tell us what you run and we cut the agreement to match.",
       tiers: [
@@ -936,6 +944,7 @@ const INDUSTRIES = [
       },
     },
     agencyServices: {
+      curveTop: true,
       title: "We provide outsourced hosting and support to digital agencies just like yours",
       intro: "With .NET developers and certified cloud engineers ready at the drop of a hat, we're always on so you can switch off.",
       cards: [
@@ -993,6 +1002,7 @@ const INDUSTRIES = [
       ],
     },
     partnerProgramme: {
+      curveTop: true,
       title: "What is the JAM Partner Programme?",
       intro: "The JAM Partner Programme is a place for the likes of Grey, Ogilvy (and yourselves) to get discounts, new business and exclusive event invites.",
       sub: "Depending on how many projects you share with us, you'll be awarded a Crescent Moon, Half Moon or Full Moon Membership.",
@@ -2213,6 +2223,7 @@ export default function SupportDetail() {
           cards={provider.why.cards}
           accent={provider.why.accent}
           curveTop={provider.why.curveTop}
+          curveFill={provider.why.curveFill}
         />
       ),
 
@@ -2223,6 +2234,8 @@ export default function SupportDetail() {
           carousel={provider.cases.carousel}
           title={provider.cases.title}
           studies={provider.cases.studies || (provider.cases.slugs || []).map((slug) => (caseStudies || []).find((study) => study.slug === slug)).filter(Boolean)}
+          curveTop={provider.cases.curveTop}
+          curveFill={provider.cases.curveFill}
         />
       ),
 
@@ -2232,6 +2245,8 @@ export default function SupportDetail() {
           title={provider.covers.title}
           intro={provider.covers.intro}
           cards={provider.covers.cards}
+          curveTop={provider.covers.curveTop}
+          curveFill={provider.covers.curveFill}
         />
       ),
 
@@ -2436,7 +2451,8 @@ export default function SupportDetail() {
     ),
 
     agencyServices: provider.agencyServices && (
-      <section className="ag-services-section">
+      <section className={`ag-services-section${provider.agencyServices.curveTop ? " ag-services-section--curved" : ""}`}>
+        {provider.agencyServices.curveTop && <BandSeam fill="var(--navy)" bleed />}
         <div className="container">
           <div className="ag-services-head reveal">
             <h2>{provider.agencyServices.title}</h2>
@@ -2487,7 +2503,8 @@ export default function SupportDetail() {
     ),
 
     partnerBand: provider.partnerProgramme && (
-      <section className="ag-partner-section">
+      <section className={`ag-partner-section${provider.partnerProgramme.curveTop ? " ag-partner-section--curved" : ""}`}>
+        {provider.partnerProgramme.curveTop && <BandSeam fill="var(--navy)" bleed />}
         <div className="container">
           <div className="ag-partner-grid">
             <div className="ag-partner-copy reveal">
@@ -2722,7 +2739,7 @@ export default function SupportDetail() {
         </section>
       )}
 
-      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}${provider.scene === "azure" ? " platform-detail--azure" : ""}${provider.scene === "gcp" ? " platform-detail--gcp" : ""}${provider.scene === "net" ? " platform-detail--net" : ""}`}>
+      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}${provider.scene === "azure" ? " platform-detail--azure" : ""}${provider.scene === "gcp" ? " platform-detail--gcp" : ""}${provider.scene === "net" ? " platform-detail--net" : ""}${provider.scene === "city" ? " platform-detail--city" : ""}`}>
         <div className="container">
           {bandOrder.map((key) => (
             <Fragment key={key}>{BANDS[key]}</Fragment>

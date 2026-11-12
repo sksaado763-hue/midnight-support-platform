@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import BandSeam from "./BandSeam";
 
 const ARROW = (
   <svg xmlns="http://www.w3.org/2000/svg" width="25" height="50" viewBox="0 0 25 50" fill="none" aria-hidden="true" focusable="false">
@@ -8,7 +9,7 @@ const ARROW = (
   </svg>
 );
 
-export default function CaseStudiesBand({ title, studies, variant = "wide", tightHeader, carousel = false }) {
+export default function CaseStudiesBand({ title, studies, variant = "wide", tightHeader, carousel = false, curveTop = false, curveFill = "var(--bg)" }) {
   const gridRef = useRef(null);
   const [bounds, setBounds] = useState({ prev: false, next: false });
 
@@ -39,7 +40,8 @@ export default function CaseStudiesBand({ title, studies, variant = "wide", tigh
   }
 
   return (
-    <section className={`support-cases${variant === "detail" ? " support-cases--detail" : ""}${tightHeader ? " support-cases--tight" : ""}${carousel ? " support-cases--carousel" : ""}`}>
+    <section className={`support-cases${variant === "detail" ? " support-cases--detail" : ""}${tightHeader ? " support-cases--tight" : ""}${carousel ? " support-cases--carousel" : ""}${curveTop ? " support-cases--curved" : ""}`}>
+      {curveTop && <BandSeam fill={curveFill} />}
       <div className="container">
         <h2 className="section-title reveal">{title}</h2>
         <div className="support-case-slider">

@@ -6232,3 +6232,27 @@ section.case-feature--detail { padding: 40px 0; }
   .platform-detail--net .case-feature--curved { padding-top: 124px; }
   .platform-detail--net .pkg-band--curved { padding-top: 84px; }
 }
+
+/* The agencies page follows the same rule on its own navy bands: the grey video
+   band waves into the icon-grid, and each navy band hands a crest to the section
+   below it — white bands take navy, navy bands take white. The two agency blocks
+   (services, partner programme) sit inset in the page container, so their crests
+   bleed to the viewport while the blocks themselves stay inset. */
+.band-curve--bleed { left: 50%; right: auto; width: 100vw; transform: translateX(-50%); }
+.platform-detail--city .support-cases--curved { position: relative; padding-top: 64px; }
+.platform-detail--city .pii-band--curved { padding-top: 64px; }
+.platform-detail--city .cap-band--curved { padding-top: 64px; }
+.platform-detail--city .case-feature--curved { padding-top: 64px; }
+.platform-detail--city .pkg-band--curved { position: relative; padding-top: 24px; }
+.platform-detail--city .ag-services-section--curved { position: relative; padding-top: 80px; }
+.platform-detail--city .ag-partner-section--curved { position: relative; padding-top: 80px; border-top: 0; }
+@media (min-width: 768px) {
+  .platform-detail--city .why-band--curved > .container { padding-top: 124px; }
+  .platform-detail--city .support-cases--curved { padding-top: 124px; }
+  .platform-detail--city .pii-band--curved { padding-top: 124px; }
+  .platform-detail--city .cap-band--curved { padding-top: 124px; }
+  .platform-detail--city .case-feature--curved { padding-top: 124px; }
+  .platform-detail--city .pkg-band--curved { padding-top: 84px; }
+  .platform-detail--city .ag-services-section--curved { padding-top: 124px; }
+  .platform-detail--city .ag-partner-section--curved { padding-top: 124px; }
+}
