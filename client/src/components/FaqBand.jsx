@@ -11,7 +11,7 @@ export default function FaqBand({ title, intro, faqs, cta, panel, variant = "wid
       <div className="container support-faq-grid">
         <div className="support-faq-col">
           <h2 className="reveal">{title}</h2>
-          <p className="support-faq-intro reveal">{intro}</p>
+          {intro && <p className="support-faq-intro reveal">{intro}</p>}
           <div className="faq-list reveal">
             {faqs.map((faq, i) => (
               <details className="faq-item" key={faq.q} open={detail && i === 0}>
@@ -75,8 +75,15 @@ export default function FaqBand({ title, intro, faqs, cta, panel, variant = "wid
         <div className="faq-panel reveal">
           <h3>{panel.title}</h3>
           <p>
-            {panel.text}{" "}
-            <Link to={panel.to}>{panel.cta}</Link>
+            {panel.linkFirst ? (
+              <>
+                <Link to={panel.to}>{panel.cta}</Link> {panel.text}
+              </>
+            ) : (
+              <>
+                {panel.text} <Link to={panel.to}>{panel.cta}</Link>
+              </>
+            )}
           </p>
         </div>
       )}

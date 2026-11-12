@@ -9,6 +9,7 @@ import SupportDetail from "./pages/SupportDetail";
 import SupportPackages from "./pages/SupportPackages";
 import Cloud from "./pages/Cloud";
 import CloudCostOptimisation from "./pages/CloudCostOptimisation";
+import CloudPartnersAws from "./pages/CloudPartnersAws";
 import Platforms from "./pages/Platforms";
 import PlatformDetail from "./pages/PlatformDetail";
 import CaseStudies from "./pages/CaseStudies";
@@ -63,6 +64,7 @@ export default function App() {
           <Route path="/support/:slug" element={<SupportDetail />} />
           <Route path="/cloud" element={<Cloud />} />
           <Route path="/cloud/cloud-consulting/cost-optimisation" element={<CloudCostOptimisation />} />
+          <Route path="/cloud/cloud-partners/aws" element={<CloudPartnersAws />} />
           <Route path="/platforms" element={<Platforms />} />
           <Route path="/platforms/:slug" element={<PlatformDetail />} />
           <Route path="/case-studies" element={<CaseStudies />} />

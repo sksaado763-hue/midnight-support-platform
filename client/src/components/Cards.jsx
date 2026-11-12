@@ -48,7 +48,7 @@ export function ArticleArt({ theme }) {
 
 export function InsightCard({ article, withBadge = false, isNew = false, variant }) {
   const isBlog = variant === "blog";
-  const isPlain = variant === "plain";
+  const isPlain = variant === "plain" || variant === "navy";
   const isBand = isBlog || isPlain;
   return (
     <article className={`insight-card reveal${isBlog ? " insight-card--blog" : ""}${isPlain ? " insight-card--plain" : ""}`}>

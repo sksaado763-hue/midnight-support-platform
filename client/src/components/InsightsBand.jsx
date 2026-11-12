@@ -10,14 +10,17 @@ import BandSeam from "./BandSeam";
    corners and the copy panel pulled 20px up over it, and the tag row sits in an
    inset grey panel at the foot of the card. */
 export default function InsightsBand({ title, cta, to, articles = [], variant = "blog", curveTop = false }) {
-  const plain = variant === "plain";
+  /* "navy" keeps this band's grey wave but turns the cards round like the flat
+     grey instance: their launch page runs the wave field with the same navy
+     plates the SaaS slab uses. */
+  const flat = variant === "plain" || variant === "navy";
   const byDate = [...articles].sort((a, b) => (a.date < b.date ? 1 : -1));
   const recent = new Set(byDate.slice(0, 2).map((article) => article.slug));
 
   return (
-    <section className={`insight-band${plain ? " insight-band--plain" : ""}${curveTop ? " insight-band--curved" : ""}`}>
+    <section className={`insight-band${variant === "plain" ? " insight-band--plain" : ""}${variant === "navy" ? " insight-band--navy" : ""}${curveTop ? " insight-band--curved" : ""}`}>
       {curveTop && <BandSeam fill="var(--navy)" />}
-      {!plain && <div className="insight-band-wave" aria-hidden="true" />}
+      {variant === "blog" || variant === "navy" ? <div className="insight-band-wave" aria-hidden="true" /> : null}
       <svg className="insight-band-flair" viewBox="0 0 221 200" aria-hidden="true">
         <path
           className="flair-moon"
@@ -51,7 +54,7 @@ export default function InsightsBand({ title, cta, to, articles = [], variant = 
               key={article.slug}
               article={article}
               variant={variant}
-              withBadge={!plain}
+              withBadge={!flat}
               isNew={recent.has(article.slug)}
             />
           ))}
