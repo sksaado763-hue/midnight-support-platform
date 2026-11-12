@@ -943,33 +943,6 @@ const INDUSTRIES = [
         to: "/cloud",
       },
     },
-    agencyServices: {
-      curveTop: true,
-      title: "We provide outsourced hosting and support to digital agencies just like yours",
-      intro: "With .NET developers and certified cloud engineers ready at the drop of a hat, we're always on so you can switch off.",
-      cards: [
-        {
-          title: "Website support for agencies",
-          text: "We support major mission-critical client websites 24/7, full-stack or out-of-hours. We monitor and triage according to an industry-leading SLA.",
-        },
-        {
-          title: "CMS support for agencies, from WordPress to AEM",
-          text: "We support websites and major applications built on a variety of platforms. From HIPAA compliance on Sitecore to composability challenges on AEM, we've got you covered.",
-        },
-        {
-          title: "Cloud-native leadership and infrastructure support",
-          text: "We support all major public cloud providers. We also design, build and migrate cloud-native solutions in line with client goals.",
-        },
-        {
-          title: "White label support for agencies",
-          text: "Our job is to act as a seamless extension of your team. If that means being so seamless we're invisible, that's up to you.",
-        },
-        {
-          title: "Fully outsourced client support and end-user requests",
-          text: "Depending on the situation, we can handle end-user requests and jump on tickets directly with your customers.",
-        },
-      ],
-    },
     agencyCapabilities: {
       title: "Don't you wish you had a team that could handle it all?",
       intro: "We've got you covered – here's what we can do for you:",
@@ -1061,7 +1034,7 @@ const INDUSTRIES = [
     },
     bands: [
       "intro", "video", "why", "cases", "covers",
-      "agencyServices", "agencyCapabilities",
+      "agencyCapabilities",
       "faq", "coverage", "packages",
       "slab", "partnerBand",
       "reviews", "faqSection",
@@ -2441,32 +2414,6 @@ export default function SupportDetail() {
           <div className="aws-value-grid">
             {provider.valueProps.cards.map((card) => (
               <article className="aws-value-card reveal" key={card.title}>
-                <h3>{card.title}</h3>
-                <p>{card.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-    ),
-
-    agencyServices: provider.agencyServices && (
-      <section className={`ag-services-section${provider.agencyServices.curveTop ? " ag-services-section--curved" : ""}`}>
-        {provider.agencyServices.curveTop && <BandSeam fill="var(--navy)" bleed />}
-        <div className="container">
-          <div className="ag-services-head reveal">
-            <h2>{provider.agencyServices.title}</h2>
-            <p>{provider.agencyServices.intro}</p>
-          </div>
-          <div className="ag-services-grid">
-            {provider.agencyServices.cards.map((card) => (
-              <article className="ag-service-card reveal" key={card.title}>
-                <div className="ag-service-icon-wrap">
-                  <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" width="32" height="32">
-                    <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="2" />
-                    <path d="M16 24l5 5 11-10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
               </article>
