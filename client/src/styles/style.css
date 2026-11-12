@@ -6239,6 +6239,10 @@ section.case-feature--detail { padding: 40px 0; }
    (services, partner programme) sit inset in the page container, so their crests
    bleed to the viewport while the blocks themselves stay inset. */
 .band-curve--bleed { left: 50%; right: auto; width: 100vw; transform: translateX(-50%); }
+.platform-detail--city .why-band--detail {
+  background: #121f3f url("/icons/agencies-Dark-space-icon-grid.webp") center / cover no-repeat;
+}
+.platform-detail--city .why-band--detail > .hero-stars { display: none; }
 .platform-detail--city .support-cases--curved { position: relative; padding-top: 64px; }
 .platform-detail--city .pii-band--curved { padding-top: 64px; }
 .platform-detail--city .cap-band--curved { padding-top: 64px; }
