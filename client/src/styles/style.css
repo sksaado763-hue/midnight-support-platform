@@ -4822,8 +4822,12 @@ section.case-feature--detail { padding: 40px 0; }
 
 /* Services 6-Grid */
 .ecom-services-section {
-  background-color: #132140;
-  padding: 80px 0 100px;
+  /* The reference stops the navy field on a flat edge partway down the last
+     row of cards, so the cards overhang onto the white band below instead of
+     the navy wrapping them. The hard gradient stop is that edge; the section
+     keeps no bottom padding so the grid's last row reaches it. */
+  background: linear-gradient(to bottom, #132140 0, #132140 calc(100% - 100px), #ffffff calc(100% - 100px), #ffffff 100%);
+  padding: 80px 0 0;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   position: relative;
