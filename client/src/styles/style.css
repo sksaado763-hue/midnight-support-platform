@@ -1896,10 +1896,11 @@ ul { list-style: none; }
 .support-hero-divider svg { display: block; width: 100%; height: 100%; }
 
 /* Agencies hero, measured off the reference's agency page at 1889: a 630px
-   field with 160px above the copy, a 5/12 column of 475px, a 34/44 headline,
-   a 17/24 standfirst 12px from it and one 56px amber button. Their hero paints
-   the scene as a single background photo; ours draws it in layers so the
-   skyline, the rocket and the copy can each move on their own breakpoint. */
+   field with 160px above the copy, a 5/12 column of 475px, a 48/56 headline
+   shared with the SaaS hero, a 17/24 standfirst 12px from it and one 56px amber
+   button. Their hero paints the scene as a single background photo; ours draws
+   it in layers so the skyline, the rocket and the copy can each move on their
+   own breakpoint. */
 .page-hero--city {
   min-height: clamp(520px, 33.35vw, 630px);
   padding: clamp(104px, 8.47vw, 160px) 0 clamp(104px, 8.47vw, 160px);
@@ -1916,11 +1917,10 @@ ul { list-style: none; }
   padding-top: 50px;
 }
 .page-hero--city .support-hero-title {
-  font-size: clamp(26px, 1.8vw, 34px);
-  line-height: clamp(32px, 2.33vw, 44px);
-  font-weight: 500;
-  letter-spacing: 0;
-  max-width: 15ch;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
 }
 .page-hero--city .support-hero-sub {
   margin-top: 12px;
@@ -1975,6 +1975,9 @@ ul { list-style: none; }
   /* The measure is too narrow to hold the copy and the rocket side by side,
      so below the flip the town carries the scene on its own. */
   .city-art { display: none; }
+}
+@media (max-width: 767.98px) {
+  .page-hero--city .support-hero-title { font-size: 36px; line-height: 42px; }
 }
 
 /* SaaS hero, measured off the reference's SaaS page at 1889: the same 5/12
