@@ -2450,6 +2450,7 @@ section.statement { padding: var(--section-pad) 0 0; }
   height: clamp(84px, 6.88vw, 132px);
   padding-inline: 14px;
   border-radius: 5px;
+  overflow: hidden;
   background:
     radial-gradient(1.5px 1.5px at 18% 22%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
     radial-gradient(1px 1px at 72% 14%, rgba(255, 255, 255, 0.4) 50%, transparent 51%),
@@ -2458,6 +2459,9 @@ section.statement { padding: var(--section-pad) 0 0; }
     radial-gradient(1px 1px at 55% 40%, rgba(255, 255, 255, 0.3) 50%, transparent 51%),
     linear-gradient(180deg, #121f3f 0%, #152a5a 100%);
 }
+/* Artwork must fill the tile, not keep its natural ratio: the tile is a fixed
+   letterbox, so an unconstrained img spills over the title and the card copy. */
+.support-case-art img { width: 100%; height: 100%; object-fit: cover; }
 .support-case-word { color: #ffffff; font-size: clamp(16px, 1.46vw, 28px); line-height: 1.15; font-weight: 800; letter-spacing: 0.01em; }
 .support-case-grid .support-case h3 { margin: clamp(14px, 1.04vw, 20px) 0 0; font-size: clamp(17px, 1.31vw, 25px); line-height: 1.25; font-weight: 700; color: #132140; }
 .support-case-grid .support-case p { margin: clamp(16px, 1.3vw, 25px) 0 0; font-size: clamp(13px, 0.94vw, 18px); line-height: 1.55; font-style: italic; color: #000000; }
