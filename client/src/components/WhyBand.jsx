@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import BandSeam from "./BandSeam";
 
 /* The reference's starfield is a cover-positioned texture of blurred dots: a
    bright core about 3px across, a halo roughly twice as wide, none brighter
@@ -21,12 +20,11 @@ const WHY_STARS = Array.from({ length: 140 }, (_, i) => {
 
 /* Reference `.icon-grid`: the starfield band of reason cards, on /support at the
    wide scale and on its sub-pages at the narrower detail scale — the same block
-   the reference itself ships twice. `curveTop` caps the band with the navy of
-   the slab above it on a sine crest, for pages where the section is white. */
-export default function WhyBand({ title, intro, cards, accent, variant = "wide", curveTop = false, curveFill = "var(--navy)" }) {
+   the reference itself ships twice. */
+export default function WhyBand({ title, intro, cards, accent, variant = "wide" }) {
   const detail = variant === "detail";
   return (
-    <section className={`why-band${detail ? " why-band--detail" : ""}${curveTop ? " why-band--curved" : ""}`}>
+    <section className={`why-band${detail ? " why-band--detail" : ""}`}>
       <div className="hero-stars" aria-hidden="true">
         <svg viewBox="0 0 1911 1765" preserveAspectRatio="xMidYMid slice">
           <defs>
@@ -83,7 +81,6 @@ export default function WhyBand({ title, intro, cards, accent, variant = "wide",
           </svg>
         </div>
       )}
-      {curveTop && <BandSeam fill={curveFill} />}
       <div className="container">
         <div className="why-intro reveal">
           <h2 className="band-title band-title--center">{title}</h2>

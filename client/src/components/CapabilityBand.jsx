@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import BandSeam from "./BandSeam";
 
 /* The reference's starfield is a cover-positioned texture of blurred dots: a
    bright core about 3px across, a halo roughly twice as wide, none brighter
@@ -24,7 +23,7 @@ const CAP_STARS = Array.from({ length: 150 }, (_, i) => {
    where the same block sits on the starfield and closes with a centred line and
    a canary button. `titleScale` is the heading level the reference's own editor
    left on that page: an h1 on agencies, a smaller h2 on SaaS. */
-export default function CapabilityBand({ title, intro, groups, closer, variant = "wide", titleScale = "h1", curveTop = false }) {
+export default function CapabilityBand({ title, intro, groups, closer, variant = "wide", titleScale = "h1" }) {
   if (variant !== "detail" && variant !== "dark") {
     return (
       <section className={`cap-band${variant === "cards" ? " cap-band--cards" : ""}`}>
@@ -59,7 +58,7 @@ export default function CapabilityBand({ title, intro, groups, closer, variant =
   }
 
   return (
-    <section className={`cap-band cap-band--detail${variant === "dark" ? " cap-band--dark" : ""}${curveTop ? " cap-band--curved" : ""}`}>
+    <section className={`cap-band cap-band--detail${variant === "dark" ? " cap-band--dark" : ""}`}>
       <div className="hero-stars" aria-hidden="true">
         <svg viewBox="0 0 1911 950" preserveAspectRatio="xMidYMid slice">
           <defs>
@@ -76,7 +75,6 @@ export default function CapabilityBand({ title, intro, groups, closer, variant =
           </g>
         </svg>
       </div>
-      {curveTop && <BandSeam />}
       <div className="container">
         <div className={`cap-head reveal${titleScale === "h2" ? " cap-head--h2" : ""}`}>
           <h2>{title}</h2>

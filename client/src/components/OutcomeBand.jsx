@@ -2,18 +2,17 @@
    /support, the same slab at detail scale on its sub-pages, and a plain white
    two-up version with no heading. All three are this component — the variant
    picks the skin, the card count picks the grid. */
-import BandSeam from "./BandSeam";
 
 const PII_STARS = Array.from({ length: 84 }, (_, i) => {
   const rnd = (n) => { const s = Math.sin(i * 12.9898 + n * 78.233) * 43758.5453; return s - Math.floor(s); };
   return { cx: rnd(1) * 1911, cy: Math.pow(rnd(2), 1.7) * 720, r: 0.9 + rnd(3) * 2.1, o: 0.18 + rnd(4) * 0.62 };
 });
 
-export default function OutcomeBand({ title, intro, cards, variant = "wide", curveTop = false, curveFill = "var(--bg)" }) {
+export default function OutcomeBand({ title, intro, cards, variant = "wide" }) {
   const detail = variant === "detail";
   const boxes = variant === "boxes";
   return (
-    <section className={`pii-band${detail ? " pii-band--detail" : ""}${boxes ? " pii-band--boxes" : ""}${curveTop ? " pii-band--curved" : ""}`}>
+    <section className={`pii-band${detail ? " pii-band--detail" : ""}${boxes ? " pii-band--boxes" : ""}`}>
       {!boxes && (
         <div className="hero-stars" aria-hidden="true">
           <svg viewBox="0 0 1911 760" preserveAspectRatio="xMidYMid slice">
@@ -25,7 +24,6 @@ export default function OutcomeBand({ title, intro, cards, variant = "wide", cur
           </svg>
         </div>
       )}
-      {curveTop && <BandSeam fill={curveFill} />}
       {!detail && !boxes && (
         <div className="band-wave band-wave--top" aria-hidden="true">
           <svg viewBox="0 0 1920 73" preserveAspectRatio="none">

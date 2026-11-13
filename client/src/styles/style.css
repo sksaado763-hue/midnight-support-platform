@@ -6146,49 +6146,20 @@ section.case-feature--detail { padding: 40px 0; }
 .platform-detail--net .why-band--detail .why-intro .band-title { color: #132140; }
 .platform-detail--net .why-band--detail .why-intro p { color: #132140; }
 
-/* The white band sits between the navy case slab and the navy coverage band on
-   this page, so both of its seams take the /support dividers' sine crest rather
-   than a straight edge: the navy wave caps the icon-grid, the white one caps the
-   coverage band it hands over to. Every other navy band on the page follows the
-   same rule — both case slabs wave in from the white band above, the packages
-   table waves out of the coverage band, and the reading list waves out of the
-   second slab. The extra top padding keeps each band's copy clear of the crest. */
-.band-curve { position: absolute; left: 0; right: 0; top: -1px; line-height: 0; pointer-events: none; }
-.band-curve svg { display: block; width: 100%; height: clamp(46px, 4.67vw, 89px); }
-.platform-detail--net .case-feature--curved { padding-top: 64px; }
-.platform-detail--net .pkg-band--curved { position: relative; padding-top: 24px; }
-@media (min-width: 768px) {
-  .platform-detail--net .why-band--curved > .container { padding-top: 124px; }
-  .platform-detail--net .cap-band--curved { padding-top: 88px; }
-  .platform-detail--net .case-feature--curved { padding-top: 124px; }
-  .platform-detail--net .pkg-band--curved { padding-top: 84px; }
+/* The SaaS intro statement reads as the page's lead claim, so its heading takes
+   the hero scale and the block carries its own bottom padding before the promise
+   cards rather than the tight 20px the split intro uses elsewhere. */
+.platform-detail--net .seo-intro--split { margin-bottom: 0; padding-bottom: 64px; }
+@media (min-width: 992px) {
+  .platform-detail--net .seo-intro--split .seo-intro-title { font-size: 48px; line-height: 1.15; }
 }
 
-/* The agencies page follows the same rule on its own navy bands: the grey video
-   band waves into the icon-grid, and each navy band hands a crest to the section
-   below it — white bands take navy, navy bands take white. The two agency blocks
-   (services, partner programme) sit inset in the page container, so their crests
-   bleed to the viewport while the blocks themselves stay inset. */
-.band-curve--bleed { left: 50%; right: auto; width: 100vw; transform: translateX(-50%); }
+/* The agencies icon-grid wears the reference starfield artwork as a cover
+   background, so the band's own generated stars are hidden. */
 .platform-detail--city .why-band--detail {
   background: #121f3f url("/icons/agencies-Dark-space-icon-grid.webp") center / cover no-repeat;
 }
 .platform-detail--city .why-band--detail > .hero-stars { display: none; }
-.platform-detail--city .support-cases--curved { position: relative; padding-top: 64px; }
-.platform-detail--city .pii-band--curved { padding-top: 64px; }
-.platform-detail--city .cap-band--curved { padding-top: 64px; }
-.platform-detail--city .case-feature--curved { padding-top: 64px; }
-.platform-detail--city .pkg-band--curved { position: relative; padding-top: 24px; }
-.platform-detail--city .ag-partner-section--curved { position: relative; padding-top: 80px; border-top: 0; }
-@media (min-width: 768px) {
-  .platform-detail--city .why-band--curved > .container { padding-top: 124px; }
-  .platform-detail--city .support-cases--curved { padding-top: 124px; }
-  .platform-detail--city .pii-band--curved { padding-top: 124px; }
-  .platform-detail--city .cap-band--curved { padding-top: 124px; }
-  .platform-detail--city .case-feature--curved { padding-top: 124px; }
-  .platform-detail--city .pkg-band--curved { padding-top: 84px; }
-  .platform-detail--city .ag-partner-section--curved { padding-top: 124px; }
-}
 
 /* ===== /cloud/cloud-partners/aws =====
    Reference: a photo hero over a white intro split 570/190/380, then a grey

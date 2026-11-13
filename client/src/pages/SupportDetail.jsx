@@ -2,7 +2,6 @@ import { Fragment, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useTitle } from "../lib/useReveal";
 import { useApi, postJson } from "../lib/api";
-import BandSeam from "../components/BandSeam";
 import CaseFeature from "../components/CaseFeature";
 import CapabilityBand from "../components/CapabilityBand";
 import CaseStudiesBand from "../components/CaseStudiesBand";
@@ -722,10 +721,8 @@ const INDUSTRIES = [
       closer: "Want the cover levels and their response clocks side by side?",
       cta: "See the packages",
     },
-    caseStudy: { slug: "dexerto", curveTop: true },
+    caseStudy: { slug: "dexerto" },
     why: {
-      curveTop: true,
-      curveFill: "#e9e9e9",
       title: "Why agencies keep us on the retainer",
       intro: "You sold the client a platform, not an on-call rota. Ten sites, ten stacks and one team that has to be somewhere else — that is the arithmetic we were built for. Here is what changes once the desk is ours:",
       cards: [
@@ -770,13 +767,10 @@ const INDUSTRIES = [
       },
     },
     cases: {
-      curveTop: true,
-      curveFill: "var(--navy)",
       title: "Proof your renewals can quote",
       slugs: ["dexerto", "third-space", "gosalary", "absolute-software"],
     },
     covers: {
-      curveTop: true,
       title: "Built by people who have run the agency side",
       intro: "Before there was a rota, there was a studio desk: client emergencies answered at two in the morning between build tickets, and a support promise nobody had staffed. Every routine here was written against that gap.",
       cards: [
@@ -854,7 +848,6 @@ const INDUSTRIES = [
       ],
     },
     coverage: {
-      curveTop: true,
       title: "The cover that runs on every site you have shipped",
       intro: "One rota across the portfolio, graded by the retainer you signed rather than by who shouts first. This is what actually lands on our desk:",
       groups: [
@@ -872,7 +865,6 @@ const INDUSTRIES = [
       },
     },
     packages: {
-      curveTop: true,
       title: "Pick the cover your portfolio needs",
       intro: "Four ways to put the night desk behind your client sites, priced by how much of the rota we carry rather than by how many tickets arrive. None of them quite fit? Tell us what you run and we cut the agreement to match.",
       tiers: [
@@ -944,7 +936,6 @@ const INDUSTRIES = [
       },
     },
     partnerProgramme: {
-      curveTop: true,
       title: "What is the JAM Partner Programme?",
       intro: "The JAM Partner Programme is a place for the likes of Grey, Ogilvy (and yourselves) to get discounts, new business and exclusive event invites.",
       sub: "Depending on how many projects you share with us, you'll be awarded a Crescent Moon, Half Moon or Full Moon Membership.",
@@ -1089,15 +1080,15 @@ const INDUSTRIES = [
         text: "Stability work is not only watching. We pull apart the monolith edges that slow every release, move the jobs that block deploys behind flags, and take the waste out of a cloud bill that grew faster than the product. The reliability review is where that list gets written, and where it gets closed. The platform you renew on need not be the one you started with.",
       },
     ],
-    caseStudy: { slug: "absolute-software", split: "4-1-7", slot: "early", curveTop: true },
+    caseStudy: { slug: "absolute-software", split: "4-1-7", slot: "early" },
     /* The reference runs the same case-study template twice on this page, the
        second copy after the FAQ. A different study keeps the page from naming
        the same client in two places. */
-    slab2: { slug: "gosalary", split: "4-1-7", curveTop: true },
+    slab2: { slug: "gosalary", split: "4-1-7" },
     /* The reference slips its reading list between the second slab and the
        at-a-glance card. The cards themselves come from the same article feed
        /support runs, so this page only supplies the framing. */
-    insights: { title: "Field notes for a platform that cannot go quiet", variant: "plain", curveTop: true },
+    insights: { title: "Field notes for a platform that cannot go quiet", variant: "plain" },
     /* The reference closes every support page with the same two slabs — the
        at-a-glance card and the impact/sources row — and /support runs the same
        pair. The questions here are the spec-sheet ones a buyer asks before a
@@ -1140,7 +1131,6 @@ const INDUSTRIES = [
     },
     why: {
       title: "How the cover actually holds",
-      curveTop: true,
       intro: "Holds against what? A p1 at four in the morning, a canary that never went green, a vendor that changed its API contract without telling anyone, an audit asking for evidence from a quarter you have already forgotten. This is the machinery behind the promise:",
       cards: [
         {
@@ -1187,7 +1177,6 @@ const INDUSTRIES = [
     coverage: {
       title: "The reliability work that happens while you sleep",
       titleScale: "h2",
-      curveTop: true,
       intro: "Alerts that page a named engineer, triage that reaches the code, and a handover your stand-up can read out loud. The routine looks like this:",
       groups: [
         { title: "Availability & journeys", items: ["Synthetic signup and checkout runs", "Real-user speed budgets per release", "Error budgets tracked, not estimated", "A status page that tells the truth"] },
@@ -1211,7 +1200,6 @@ const INDUSTRIES = [
        closing link is an accent rather than plain ink. */
     packages: {
       introGap: true,
-      curveTop: true,
       title: "How much of the clock do we carry?",
       intro: "Four ways to put engineers behind a platform that never closes. Take one as written, blend two, or point us at the corner of the stack nobody on your team wants to own.",
       introTail: { lead: "We cut the agreement around that — just", link: "tell us what you run", to: "/contact" },
@@ -1957,7 +1945,7 @@ export default function SupportDetail() {
     ),
 
     slabEarly: provider.caseStudy?.slot === "early" && (
-        <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} curveTop={provider.caseStudy.curveTop} />
+        <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
       ),
 
     video: provider.video && (
@@ -2163,8 +2151,6 @@ export default function SupportDetail() {
           intro={provider.why.intro}
           cards={provider.why.cards}
           accent={provider.why.accent}
-          curveTop={provider.why.curveTop}
-          curveFill={provider.why.curveFill}
         />
       ),
 
@@ -2175,8 +2161,6 @@ export default function SupportDetail() {
           carousel={provider.cases.carousel}
           title={provider.cases.title}
           studies={provider.cases.studies || (provider.cases.slugs || []).map((slug) => (caseStudies || []).find((study) => study.slug === slug)).filter(Boolean)}
-          curveTop={provider.cases.curveTop}
-          curveFill={provider.cases.curveFill}
         />
       ),
 
@@ -2186,8 +2170,6 @@ export default function SupportDetail() {
           title={provider.covers.title}
           intro={provider.covers.intro}
           cards={provider.covers.cards}
-          curveTop={provider.covers.curveTop}
-          curveFill={provider.covers.curveFill}
         />
       ),
 
@@ -2211,7 +2193,6 @@ export default function SupportDetail() {
           groups={provider.coverage.groups}
           closer={provider.coverage.closer}
           titleScale={provider.coverage.titleScale}
-          curveTop={provider.coverage.curveTop}
         />
       ),
 
@@ -2224,7 +2205,6 @@ export default function SupportDetail() {
           introGap={provider.packages.introGap}
           tiers={provider.packages.tiers}
           note={provider.packages.note}
-          curveTop={provider.packages.curveTop}
         />
       ),
 
@@ -2267,7 +2247,7 @@ export default function SupportDetail() {
       ),
 
     slab: provider.caseStudy && provider.caseStudy.slot !== "early" && (
-        <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} curveTop={provider.caseStudy.curveTop} />
+        <CaseFeature study={featured} variant="detail" split={provider.caseStudy.split} />
       ),
 
     slab2: provider.slab2 && (
@@ -2275,7 +2255,6 @@ export default function SupportDetail() {
           study={provider.slab2.study || (caseStudies || []).find((study) => study.slug === provider.slab2.slug)}
           variant="detail"
           split={provider.slab2.split}
-          curveTop={provider.slab2.curveTop}
         />
       ),
 
@@ -2286,7 +2265,6 @@ export default function SupportDetail() {
           to={provider.insights.to}
           articles={articles || []}
           variant={provider.insights.variant}
-          curveTop={provider.insights.curveTop}
         />
       ),
 
@@ -2392,8 +2370,7 @@ export default function SupportDetail() {
     ),
 
     partnerBand: provider.partnerProgramme && (
-      <section className={`ag-partner-section${provider.partnerProgramme.curveTop ? " ag-partner-section--curved" : ""}`}>
-        {provider.partnerProgramme.curveTop && <BandSeam fill="var(--navy)" bleed />}
+      <section className="ag-partner-section">
         <div className="container">
           <div className="ag-partner-grid">
             <div className="ag-partner-copy reveal">
