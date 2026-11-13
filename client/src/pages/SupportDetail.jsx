@@ -1766,6 +1766,18 @@ function EcomConsultationForm() {
         .
       </p>
 
+      <div className="ecom-recaptcha" role="img" aria-label="protected by reCAPTCHA">
+        <span className="ecom-recaptcha-label">protected by reCAPTCHA</span>
+        <span className="ecom-recaptcha-logo" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <path fill="#4285f4" d="M24 8a16 16 0 0 1 16 16h-7a9 9 0 0 0-9-9c-2.6 0-5 1-6.8 2.7l-4.9-4.9A15.9 15.9 0 0 1 24 8z" />
+            <path fill="#4285f4" d="M40 24H30l10 11z" />
+            <path fill="#9aa0a6" d="M24 40A16 16 0 0 1 8 24h7a9 9 0 0 0 9 9c2.6 0 5-1 6.8-2.7l4.9 4.9A15.9 15.9 0 0 1 24 40z" />
+            <path fill="#9aa0a6" d="M8 24h10L8 13z" />
+          </svg>
+        </span>
+      </div>
+
       <button type="submit" className="btn ecom-btn-yellow ecom-hs-submit" disabled={submitting}>
         {submitting ? "Submitting…" : "Submit"}
       </button>

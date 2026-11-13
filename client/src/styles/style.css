@@ -5192,6 +5192,39 @@ section.case-feature--detail { padding: 40px 0; }
   margin-top: 4px;
 }
 
+/* The reference form sits Google's inline reCAPTCHA badge between the privacy
+   notice and the submit button: a blue "protected by reCAPTCHA" panel butted
+   against a white tile carrying the two-arrow mark, on a soft drop shadow. */
+.ecom-recaptcha {
+  display: inline-flex;
+  align-items: stretch;
+  align-self: flex-start;
+  width: max-content;
+  margin: 18px 0 26px;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.35);
+}
+.ecom-recaptcha-label {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
+  background: #1a73e8;
+  color: #ffffff;
+  font-family: Ubuntu, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+.ecom-recaptcha-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #ffffff;
+}
+.ecom-recaptcha-logo svg { display: block; width: 40px; height: 40px; }
+
 /* Why Choose Us (eCommerce) */
 .ecom-why-section {
   padding: 80px 0;
