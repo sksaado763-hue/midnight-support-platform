@@ -943,37 +943,6 @@ const INDUSTRIES = [
         to: "/cloud",
       },
     },
-    agencyCapabilities: {
-      title: "Don't you wish you had a team that could handle it all?",
-      intro: "We've got you covered – here's what we can do for you:",
-      closer: "It's simple – you tell us your requirements and we plug in wherever you need us.",
-      groups: [
-        {
-          title: "Incident and response management",
-          items: ["Incident management (IM)", "Root cause analysis (RCA)", "Incident response management", "Incident triage", "Security incident response", "Application rollbacks"],
-        },
-        {
-          title: "Service continuity and recovery",
-          items: ["Restarting services", "Backup and restore procedures", "Manual scaling of resources", "IP whitelisting", "Access management", "Password resets"],
-        },
-        {
-          title: "Access and security management",
-          items: ["User account provisioning", "User removal", "Access control", "Service validation and testing", "Knowledge base management", "Post-incident review (PIR)"],
-        },
-        {
-          title: "Quality and process improvement",
-          items: ["Vendor liaison/3rd-party escalation", "System health checks", "Monitoring, alerts and telemetry", "Performance monitoring", "Network diagnostics and flow analysis", "End-to-end latency analysis"],
-        },
-        {
-          title: "Observability and performance",
-          items: ["Capacity monitoring and forecasting", "SLA management", "Change management", "Patch management", "Downtime reporting", "Ticket management"],
-        },
-        {
-          title: "Service management and operations",
-          items: ["Outage communication", "Configuration management", "Service request management", "Escalation management"],
-        },
-      ],
-    },
     partnerProgramme: {
       curveTop: true,
       title: "What is the JAM Partner Programme?",
@@ -1034,7 +1003,6 @@ const INDUSTRIES = [
     },
     bands: [
       "intro", "video", "why", "cases", "covers",
-      "agencyCapabilities",
       "faq", "coverage", "packages",
       "slab", "partnerBand",
       "reviews", "faqSection",
@@ -2419,32 +2387,6 @@ export default function SupportDetail() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-    ),
-
-    agencyCapabilities: provider.agencyCapabilities && (
-      <section className="ag-cap-section">
-        <div className="container">
-          <div className="ag-cap-head reveal">
-            <h2>{provider.agencyCapabilities.title}</h2>
-            <p>{provider.agencyCapabilities.intro}</p>
-          </div>
-          <div className="ag-cap-grid">
-            {provider.agencyCapabilities.groups.map((group) => (
-              <div className="ag-cap-group reveal" key={group.title}>
-                <h4>{group.title}</h4>
-                <ul>
-                  {group.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          {provider.agencyCapabilities.closer && (
-            <p className="ag-cap-closer reveal">{provider.agencyCapabilities.closer}</p>
-          )}
         </div>
       </section>
     ),
