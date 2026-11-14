@@ -5612,8 +5612,17 @@ section.case-feature--detail { padding: 40px 0; }
 
 /* "Not your neighborhood" 9-card grid */
 .aws-why-section {
+  position: relative;
+  isolation: isolate;
   padding: 80px 0;
-  background: #111a2b;
+}
+.aws-why-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc(50% - 50vw);
+  background: linear-gradient(to bottom, #111a2b 0 calc(100% - 180px), #ffffff calc(100% - 180px) 100%);
+  pointer-events: none;
 }
 .aws-why-head {
   text-align: center;
@@ -5647,7 +5656,7 @@ section.case-feature--detail { padding: 40px 0; }
   gap: 24px;
 }
 .aws-why-card {
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(rgba(255, 255, 255, 0.04) 0 0), #111a2b;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 28px 24px;
