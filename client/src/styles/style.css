@@ -6201,6 +6201,7 @@ section.case-feature--detail { padding: 40px 0; }
 
 /* Icon-grid — flat navy field (no starfield), #212E4B cards, white bold heads. */
 :is(.platform-detail--azure, .platform-detail--gcp) .why-band--detail { background: #0d1d3d; }
+.platform-detail--azure .why-band--detail { background: linear-gradient(to bottom, #132140 0 calc(100% - 168px), #ffffff calc(100% - 168px) 100%); }
 :is(.platform-detail--azure, .platform-detail--gcp) .why-band--detail > .hero-stars { display: none; }
 :is(.platform-detail--azure, .platform-detail--gcp) .why-band--detail > .container { padding-top: 64px; padding-bottom: 68px; }
 :is(.platform-detail--azure, .platform-detail--gcp) .why-band--detail .why-intro { width: 66.667%; }

@@ -2031,7 +2031,7 @@ export default function SupportDetail() {
             </div>
           )}
           {provider.scene === "azure" && (
-            <div className="global-curved-divider global-curved-divider--down" style={{ backgroundColor: "#0d1d3d" }}>
+            <div className="global-curved-divider global-curved-divider--down" style={{ backgroundColor: "#132140" }}>
               <svg width="1920" height="89" viewBox="0 0 1920 89" fill="none">
                 <path d="M0 0H915.5H1920V55L1750.82 72.623C1544.17 94.1494 1335.83 94.1495 1129.18 72.6231L790.818 37.377C584.165 15.8506 375.835 15.8505 169.182 37.3769L0 55V0Z" fill="#eaeaea" />
               </svg>
