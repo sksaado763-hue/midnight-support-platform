@@ -5622,39 +5622,207 @@ section.case-feature--detail { padding: 40px 0; }
   color: #12203f !important;
 }
 
-/* Discuss CTA banner */
-.aws-discuss-section {
-  padding: 64px 0;
-  background: #fabd14;
-}
-.aws-discuss {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-.aws-discuss h2 {
+/* Consultation band: the reference wraps its HubSpot meetings embed in a navy
+   strip between two curved dividers; we draw the widget instead of embedding
+   it, so the card, calendar and side panel are all replica markup. */
+.book-section {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background: #121f3d;
+  padding: 64px 24px;
   font-family: Montserrat, sans-serif;
-  font-size: clamp(20px, 2.2vw, 28px);
-  font-weight: 700;
-  color: #12203f;
-  line-height: 1.25;
+}
+.book-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+.book-inner h2 {
+  font-weight: 900;
+  font-size: clamp(22px, 2.5vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #ffffff;
   margin: 0 0 12px;
 }
-.aws-discuss p {
+.book-inner > p {
   font-family: Ubuntu, sans-serif;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 1.6;
+  color: #c2ccde;
+  max-width: 54ch;
+  margin: 0 auto 36px;
+}
+.book-card {
+  width: min(650px, 100%);
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+.book-widget {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #e5e8ec;
+  min-height: 474px;
+}
+.book-cal {
+  background: #12203f;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.book-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+}
+.book-avatar svg { display: block; }
+.book-name {
+  margin: 12px 0 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+.book-month {
+  margin: 14px 0 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.book-month span[aria-hidden="true"] {
+  color: #55607a;
   font-weight: 400;
-  color: #12203f;
-  margin: 0 0 24px;
 }
-.aws-discuss .btn {
-  background: #12203f !important;
-  color: #fabd14 !important;
+.book-dow {
+  margin-top: 18px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  color: #cfd6e4;
+  font-size: 10px;
+  font-weight: 700;
 }
-.aws-discuss .btn:hover {
-  background: #ffffff !important;
-  color: #12203f !important;
+.book-days {
+  position: relative;
+  margin-top: 12px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 16px;
+  color: #4d586f;
+  font-size: 11px;
+}
+.book-none {
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 12px 16px;
+  background: #ffffff;
+  color: #33475b;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+.book-side {
+  background: #ffffff;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.book-label {
+  margin: 0;
+  color: #33475b;
+  font-size: 12px;
+  font-weight: 700;
+}
+.book-loc {
+  margin: 6px 0 0;
+  color: #536475;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.book-field--gap { margin-top: 18px; }
+.book-durs {
+  margin-top: 8px;
+  display: flex;
+}
+.book-dur {
+  padding: 6px 16px;
+  border: 1px solid #d5dae0;
+  margin-left: -1px;
+  background: #ffffff;
+  color: #9aa6b2;
+  font-size: 11px;
+}
+.book-dur--on {
+  margin-left: 0;
+  background: #cbd6e2;
+  border-color: #cbd6e2;
+  color: #6a7a8c;
+}
+.book-rule {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #e6e9ee;
+  margin: 22px 0 0;
+}
+.book-gone {
+  align-self: center;
+  margin: 26px 0 0;
+  text-align: center;
+  color: #33475b;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.book-mail-note {
+  align-self: center;
+  margin: 12px 0 0;
+  max-width: 34ch;
+  text-align: center;
+  color: #71809c;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.book-mail {
+  align-self: center;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #0091ae;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.book-mail:hover { text-decoration: underline; }
+
+@media (max-width: 700px) {
+  .book-section { padding: 48px 16px; }
+  .book-card { padding: 16px; }
+  .book-widget { grid-template-columns: 1fr; min-height: 0; }
+  .book-side { padding: 24px 18px; }
+}
+@media (max-width: 420px) {
+  .book-days { row-gap: 10px; }
+  .book-none { width: 170px; white-space: normal; }
 }
 
 /* Value Props 3-column */

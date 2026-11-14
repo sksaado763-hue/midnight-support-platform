@@ -322,9 +322,9 @@ const PROVIDERS = [
     bands: [
       "intro", "problemSolution", "video", "whyGrid",
       "cases", "slab", "awsCapabilities",
-      "packages", "discussCta",
+      "packages",
       "coverage", "capabilities", "fitWith",
-      "valueProps", "reviews", "faqSection",
+      "valueProps", "reviews", "discussCta", "faqSection",
       "glance", "impacts", "others",
     ],
   },
@@ -2352,17 +2352,73 @@ export default function SupportDetail() {
     ),
 
     discussCta: provider.discussCta && (
-      <section className="aws-discuss-section">
-        <div className="container">
-          <div className="aws-discuss reveal">
-            <h2>{provider.discussCta.title}</h2>
-            <p>{provider.discussCta.text}</p>
-            <Link to="/contact" className="btn btn-primary btn-lg">
-              Book a call <span aria-hidden="true">➔</span>
-            </Link>
-          </div>
+      <>
+        <div className="global-curved-divider" style={{ backgroundColor: "#ffffff" }} aria-hidden="true">
+          <svg width="1920" height="73" viewBox="0 0 1920 73" fill="none">
+            <path d="M1920 72.9999L0 73.0012L3.42974e-06 33.7695L169.182 16.1465C375.835 -5.37986 584.165 -5.37991 790.818 16.1465L1129.18 51.3927C1335.83 72.9191 1544.16 72.9191 1750.82 51.3928L1920 33.7697L1920 72.9999Z" fill="#121f3d" />
+          </svg>
         </div>
-      </section>
+        <section className="book-section">
+          <div className="book-inner">
+            <h2 className="reveal">{provider.discussCta.title}</h2>
+            <p className="reveal">{provider.discussCta.text}</p>
+            <div className="book-card reveal">
+              <div className="book-widget">
+                <div className="book-cal">
+                  <span className="book-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 56 56" width="56" height="56">
+                      <circle cx="28" cy="28" r="28" fill="#dfe3e8" />
+                      <circle cx="28" cy="21" r="10" fill="#b9c1cb" />
+                      <path d="M7 52c2.5-12 10.5-18 21-18s18.5 6 21 18z" fill="#b9c1cb" />
+                    </svg>
+                  </span>
+                  <p className="book-name">Meet with Matt Hill</p>
+                  <p className="book-month"><span aria-hidden="true">‹</span><span>November 2026</span><span aria-hidden="true">›</span></p>
+                  <div className="book-dow" aria-hidden="true">
+                    {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((d) => <span key={d}>{d}</span>)}
+                  </div>
+                  <div className="book-days" aria-hidden="true">
+                    {Array.from({ length: 30 }, (_, i) => <span key={i}>{i + 1}</span>)}
+                    <p className="book-none">No available dates in November</p>
+                  </div>
+                </div>
+                <div className="book-side">
+                  <div className="book-field">
+                    <p className="book-label">Meeting location</p>
+                    <p className="book-loc">
+                      <svg viewBox="0 0 12 14" width="10" height="12" fill="none" aria-hidden="true">
+                        <path d="M6 0C2.7 0 0 2.6 0 5.9 0 10.3 6 14 6 14s6-3.7 6-8.1C12 2.6 9.3 0 6 0Zm0 8.2a2.4 2.4 0 1 1 0-4.8 2.4 2.4 0 0 1 0 4.8Z" fill="#536475" />
+                      </svg>
+                      Teams
+                    </p>
+                  </div>
+                  <div className="book-field book-field--gap">
+                    <p className="book-label">How long do you need?</p>
+                    <div className="book-durs">
+                      <span className="book-dur book-dur--on">30 mins</span>
+                      <span className="book-dur">15 mins</span>
+                    </div>
+                  </div>
+                  <hr className="book-rule" />
+                  <p className="book-gone">There are no more available times<br />with Matt Hill.</p>
+                  <p className="book-mail-note">You can still request a meeting by emailing them at</p>
+                  <a className="book-mail" href="mailto:matthew.hill@justaftermidnight.com">
+                    matthew.hill@justaftermidnight.com
+                    <svg viewBox="0 0 12 12" width="10" height="10" fill="none" aria-hidden="true">
+                      <path d="M2 10 10 2M4 2h6v6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div className="global-curved-divider" style={{ backgroundColor: "#ffffff" }} aria-hidden="true">
+          <svg width="1920" height="89" viewBox="0 0 1920 89" fill="none">
+            <path d="M0 0H915.5H1920V55L1750.82 72.623C1544.17 94.1494 1335.83 94.1495 1129.18 72.6231L790.818 37.377C584.165 15.8506 375.835 15.8505 169.182 37.3769L0 55V0Z" fill="#121f3d" />
+          </svg>
+        </div>
+      </>
     ),
 
     valueProps: provider.valueProps && (
