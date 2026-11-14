@@ -5621,7 +5621,7 @@ section.case-feature--detail { padding: 40px 0; }
   position: absolute;
   z-index: -1;
   inset: 0 calc(50% - 50vw);
-  background: linear-gradient(to bottom, #111a2b 0 calc(100% - 180px), #ffffff calc(100% - 180px) 100%);
+  background: linear-gradient(to bottom, #132140 0 calc(100% - 180px), #ffffff calc(100% - 180px) 100%);
   pointer-events: none;
 }
 .aws-why-head {
@@ -5656,7 +5656,7 @@ section.case-feature--detail { padding: 40px 0; }
   gap: 24px;
 }
 .aws-why-card {
-  background: linear-gradient(rgba(255, 255, 255, 0.04) 0 0), #111a2b;
+  background: #212e4b;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 28px 24px;
