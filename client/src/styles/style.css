@@ -5626,7 +5626,10 @@ section.case-feature--detail { padding: 40px 0; }
    strip between two curved dividers; we draw the widget instead of embedding
    it, so the card, calendar and side panel are all replica markup. */
 .book-section {
+  position: relative;
+  z-index: 3;
   width: 100vw;
+  margin-top: -1px;
   margin-left: calc(50% - 50vw);
   background: #121f3d;
   padding: 64px 24px;
@@ -5699,10 +5702,20 @@ section.case-feature--detail { padding: 40px 0; }
   align-items: center;
   gap: 16px;
 }
-.book-month span[aria-hidden="true"] {
-  color: #55607a;
-  font-weight: 400;
+.book-nav {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: #cfd6e4;
+  font: 400 18px/1 Montserrat, sans-serif;
+  cursor: pointer;
 }
+.book-nav:hover:not(:disabled) { background: rgba(255, 255, 255, 0.12); color: #ffffff; }
+.book-nav:disabled { color: #3a4560; cursor: default; }
+.book-nav:focus-visible,
+.book-day:focus-visible { outline: 2px solid #fabd14; outline-offset: 1px; }
 .book-dow {
   margin-top: 18px;
   width: 100%;
@@ -5718,10 +5731,30 @@ section.case-feature--detail { padding: 40px 0; }
   width: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  row-gap: 16px;
+  justify-items: center;
+  row-gap: 8px;
   color: #4d586f;
   font-size: 11px;
 }
+.book-day {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: #4d586f;
+  font: 400 11px/1 Montserrat, sans-serif;
+}
+.book-day.is-open {
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.book-day.is-open:hover:not(:disabled) { background: rgba(255, 255, 255, 0.14); }
+.book-day.is-selected,
+.book-day.is-selected:hover:not(:disabled) { background: #fabd14; color: #12203f; }
+.book-day.is-open:disabled:not(.is-selected) { color: #8994ab; cursor: default; }
 .book-none {
   position: absolute;
   top: 34%;
@@ -5769,13 +5802,16 @@ section.case-feature--detail { padding: 40px 0; }
   margin-left: -1px;
   background: #ffffff;
   color: #9aa6b2;
-  font-size: 11px;
+  font: 400 11px/1.4 Montserrat, sans-serif;
+  cursor: pointer;
 }
+.book-dur:first-child { margin-left: 0; }
+.book-dur:hover:not(.book-dur--on) { color: #33475b; }
 .book-dur--on {
-  margin-left: 0;
   background: #cbd6e2;
   border-color: #cbd6e2;
-  color: #6a7a8c;
+  color: #33475b;
+  font-weight: 600;
 }
 .book-rule {
   width: 100%;
@@ -5813,6 +5849,110 @@ section.case-feature--detail { padding: 40px 0; }
   text-decoration: none;
 }
 .book-mail:hover { text-decoration: underline; }
+.book-side button:focus-visible,
+.book-input input:focus-visible { outline: 2px solid #0091ae; outline-offset: 1px; }
+.book-times { width: 100%; margin-top: 18px; }
+.book-day-title {
+  margin: 0;
+  color: #33475b;
+  font-size: 14px;
+  font-weight: 700;
+}
+.book-tz {
+  margin: 4px 0 0;
+  color: #71809c;
+  font-size: 11px;
+}
+.book-slots {
+  margin-top: 12px;
+  max-height: 164px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding-right: 4px;
+}
+.book-slot {
+  padding: 9px 6px;
+  border: 1px solid #0091ae;
+  border-radius: 3px;
+  background: #ffffff;
+  color: #0091ae;
+  font: 600 12px/1.2 Montserrat, sans-serif;
+  cursor: pointer;
+}
+.book-slot:hover { background: #0091ae; color: #ffffff; }
+.book-form,
+.book-done { width: 100%; display: flex; flex-direction: column; }
+.book-back {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #0091ae;
+  font: 600 12px/1.4 Montserrat, sans-serif;
+  cursor: pointer;
+}
+.book-back:hover:not(:disabled) { text-decoration: underline; }
+.book-summary {
+  margin: 6px 0 0;
+  color: #536475;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.book-input { margin-top: 10px; display: flex; flex-direction: column; gap: 5px; }
+.book-input label {
+  color: #33475b;
+  font-size: 12px;
+  font-weight: 600;
+}
+.book-input input {
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid #cbd6e2;
+  border-radius: 3px;
+  background: #f5f8fa;
+  color: #33475b;
+  font: 400 13px Montserrat, sans-serif;
+}
+.book-input input:focus { border-color: #0091ae; background: #ffffff; outline: none; }
+.book-input input[aria-invalid="true"] { border-color: #b42318; }
+.book-error {
+  margin: 0;
+  color: #b42318;
+  font-size: 11px;
+}
+.book-submit {
+  margin-top: 16px;
+  height: 38px;
+  border: 0;
+  border-radius: 5px;
+  background: #fabd14;
+  color: #12203f;
+  font: 700 13px Montserrat, sans-serif;
+  cursor: pointer;
+}
+.book-submit:hover:not(:disabled) { background: #e0ab17; }
+.book-submit:disabled { opacity: 0.7; cursor: default; }
+.book-status {
+  margin: 8px 0 0;
+  min-height: 1em;
+  color: #b42318;
+  font-size: 12px;
+}
+.book-done { align-items: center; text-align: center; margin-top: 40px; }
+.book-done-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #e6f6f1;
+  color: #00875a;
+  display: grid;
+  place-items: center;
+}
+.book-done .book-gone { margin-top: 14px; }
+.book-again { align-self: center; margin: 18px 0 0; }
 
 @media (max-width: 700px) {
   .book-section { padding: 48px 16px; }
@@ -5821,7 +5961,7 @@ section.case-feature--detail { padding: 40px 0; }
   .book-side { padding: 24px 18px; }
 }
 @media (max-width: 420px) {
-  .book-days { row-gap: 10px; }
+  .book-days { row-gap: 6px; }
   .book-none { width: 170px; white-space: normal; }
 }
 
