@@ -23,7 +23,7 @@ const SUBMENUS = {
     blurb: "Managed cloud, consulting and DevOps delivery that scales with your team.",
     rows: [
       { label: "Managed Cloud", to: "/cloud", links: [["AWS", "/support/aws-support"], ["Azure", "/support/azure-support"], ["GCP", "/support/gcp-support"]] },
-      { label: "Cloud consulting", to: "/cloud", links: [["Cost Optimisation", "/cloud/cloud-consulting/cost-optimisation"], ["Well-Architected Review", "/cloud"], ["Solution Architecture", "/cloud"], ["Cloud Migration", "/cloud"]] },
+      { label: "Cloud consulting", to: "/cloud", links: [["Cost Optimisation", "/cloud/cloud-consulting/cost-optimisation"], ["Well-Architected Review", "/cloud/cloud-consulting/aws-well-architected-review"], ["Solution Architecture", "/cloud"], ["Cloud Migration", "/cloud"]] },
       { label: "DevOps", to: "/cloud", links: [["DevOps Consulting", "/cloud"], ["Delivery & Automation", "/cloud"], ["Application Modernisation", "/cloud"]] },
     ],
   },

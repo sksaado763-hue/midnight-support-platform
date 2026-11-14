@@ -67,11 +67,20 @@ function FieldError({ name, errors, touched }) {
   );
 }
 
-export function ContactPageForm({ presetPackage = "" }) {
+export function ContactPageForm({
+  presetPackage = "",
+  formId = "contact-form",
+  heading = "Send us a message",
+  intro = "Tell us what you're running, what hurts, and when it hurts most. A cloud engineer will get back to you within one working day.",
+  messageLabel = "Message",
+  placeholder,
+  topic = "",
+  submitLabel = "Submit now",
+}) {
   const [status, setStatus] = useState(null);
-  const messagePlaceholder = presetPackage
+  const messagePlaceholder = placeholder || (presetPackage
     ? `We're interested in the ${presetPackage} package for our platform. Tell us what you're running…`
-    : "Tell us what you're running, what hurts, and when it hurts most.";
+    : "Tell us what you're running, what hurts, and when it hurts most.");
 
   return (
     <Formik
@@ -85,6 +94,7 @@ export function ContactPageForm({ presetPackage = "" }) {
             company: values.company.trim(),
             email: values.email.trim(),
             message: values.message.trim(),
+            ...(topic ? { topic } : {}),
           });
           if (ok && body && body.ok) {
             if (values.marketing) {
@@ -104,10 +114,10 @@ export function ContactPageForm({ presetPackage = "" }) {
       }}
     >
       {({ errors, touched, isSubmitting }) => (
-        <Form className="contact-form enquiry-form reveal" id="contact-form" noValidate>
+        <Form className="contact-form enquiry-form reveal" id={formId} noValidate>
           <div className="enquiry-head">
-            <h2>Send us a message</h2>
-            <p>Tell us what you're running, what hurts, and when it hurts most. A cloud engineer will get back to you within one working day.</p>
+            <h2>{heading}</h2>
+            <p>{intro}</p>
           </div>
 
           <div className="form-row form-row--split">
@@ -151,7 +161,7 @@ export function ContactPageForm({ presetPackage = "" }) {
           </div>
 
           <div className="form-row form-row--grow">
-            <label htmlFor="cf-message">Message<span className="req" aria-hidden="true"> *</span></label>
+            <label htmlFor="cf-message">{messageLabel}<span className="req" aria-hidden="true"> *</span></label>
             <Field
               as="textarea"
               id="cf-message"
@@ -183,9 +193,9 @@ export function ContactPageForm({ presetPackage = "" }) {
 
           <div className="enquiry-actions">
             <button type="submit" className="btn btn-primary enquiry-submit" disabled={isSubmitting}>
-              {isSubmitting ? "Sending…" : "Submit now"}
+              {isSubmitting ? "Sending…" : submitLabel}
             </button>
-            <p className={`form-status${status ? (status.ok ? " is-ok" : " is-error") : ""}`} id="contact-form-status" role="status">
+            <p className={`form-status${status ? (status.ok ? " is-ok" : " is-error") : ""}`} id={`${formId}-status`} role="status">
               {status ? status.text : ""}
             </p>
           </div>

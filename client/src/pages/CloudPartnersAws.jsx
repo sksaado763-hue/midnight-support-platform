@@ -63,7 +63,7 @@ const AWS_SERVICES = [
   {
     icon: "/icons/aws-cp-consulting-puzzle.svg",
     title: "AWS Well Architected Review",
-    to: "https://www.justaftermidnight247.com/cloud/cloud-consulting/aws-well-architected-review/",
+    to: "/cloud/cloud-consulting/aws-well-architected-review",
     text: "We take you through an AWS Well Architected Review. This is a simple road map to lower costs, faster deployments and a better and more optimised solution.",
   },
   {

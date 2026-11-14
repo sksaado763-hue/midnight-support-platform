@@ -9,6 +9,7 @@ import SupportDetail from "./pages/SupportDetail";
 import SupportPackages from "./pages/SupportPackages";
 import Cloud from "./pages/Cloud";
 import CloudCostOptimisation from "./pages/CloudCostOptimisation";
+import CloudWellArchitectedReview from "./pages/CloudWellArchitectedReview";
 import CloudPartnersAws from "./pages/CloudPartnersAws";
 import Platforms from "./pages/Platforms";
 import PlatformDetail from "./pages/PlatformDetail";
@@ -64,6 +65,7 @@ export default function App() {
           <Route path="/support/:slug" element={<SupportDetail />} />
           <Route path="/cloud" element={<Cloud />} />
           <Route path="/cloud/cloud-consulting/cost-optimisation" element={<CloudCostOptimisation />} />
+          <Route path="/cloud/cloud-consulting/aws-well-architected-review" element={<CloudWellArchitectedReview />} />
           <Route path="/cloud/cloud-partners/aws" element={<CloudPartnersAws />} />
           <Route path="/platforms" element={<Platforms />} />
           <Route path="/platforms/:slug" element={<PlatformDetail />} />
