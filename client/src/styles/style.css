@@ -5526,6 +5526,90 @@ section.case-feature--detail { padding: 40px 0; }
   font-size: 15px;
 }
 
+@font-face {
+  font-family: "Montserrat Black";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC73w5aXo.woff2") format("woff2");
+}
+.aws-overview { display: grid; gap: 40px; }
+.platform-detail--aws .aws-overview h2 { font-family: "Montserrat Black", var(--font-head); }
+.platform-detail--aws .plat-what {
+  display: block;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+.platform-detail--aws .plat-what h2 {
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  margin: 0 0 32px;
+}
+.platform-detail--aws .plat-what p {
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text);
+  margin: 0 0 20px;
+}
+.platform-detail--aws .plat-what p:last-child { margin-bottom: 0; }
+.platform-detail--aws .aws-ps-section { background: transparent; padding: 0; }
+.platform-detail--aws .aws-ps-section > .container { width: 100%; padding: 0; }
+.platform-detail--aws .aws-ps-grid {
+  grid-template-columns: 5fr 2fr 5fr;
+  gap: 0;
+  margin-inline: -10px;
+}
+.platform-detail--aws .aws-ps-grid::before {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  border-right: 1px dotted var(--text);
+}
+.platform-detail--aws .aws-ps-col { min-width: 0; padding-inline: 10px; }
+.platform-detail--aws .aws-ps-col--problem { grid-column: 1; grid-row: 1; }
+.platform-detail--aws .aws-ps-col--solution { grid-column: 3; grid-row: 1; }
+.platform-detail--aws .aws-ps-col h2 {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+.platform-detail--aws .aws-ps-lead {
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: var(--text);
+  margin: 0 0 20px;
+}
+.platform-detail--aws .aws-ps-col ul { gap: 12px; padding-bottom: 12px; }
+.platform-detail--aws .aws-ps-col li {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding-left: 5px;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text);
+}
+.platform-detail--aws .aws-ps-col li::before { content: none; }
+.platform-detail--aws .aws-ps-icon { flex: none; width: 25px; height: 25px; margin-top: 3px; }
+@media (max-width: 767.98px) {
+  .platform-detail--aws .plat-what h2 { font-size: 32px; }
+  .platform-detail--aws .aws-ps-grid { grid-template-columns: 1fr; gap: 32px; }
+  .platform-detail--aws .aws-ps-grid::before { display: none; }
+  .platform-detail--aws .aws-ps-col--problem,
+  .platform-detail--aws .aws-ps-col--solution { grid-column: auto; grid-row: auto; }
+  .platform-detail--aws .aws-ps-col h2 { font-size: 28px; }
+  .platform-detail--aws .aws-ps-col li { gap: 16px; }
+}
+
 /* "Not your neighborhood" 9-card grid */
 .aws-why-section {
   padding: 80px 0;

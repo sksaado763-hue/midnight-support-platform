@@ -45,14 +45,16 @@ const PROVIDERS = [
     title: "AWS Managed Support & Hosting",
     tagline: "24/7 support for mission-critical AWS environments",
     intro: "AWS rewards depth and punishes neglect. Most teams we meet run a competent estate that nobody has time to keep competent: images a year stale, roles wider than they need to be, a dashboard nobody opens. We take the whole thing onto our rota so your engineers stop being the on-call for infrastructure they inherited.",
-    whatTitle: "What is 24/7 AWS support and hosting?",
+    whatTitle: <>What is 24/7 AWS support<br />and hosting?</>,
     whatIntro: [
       "Our AWS 24/7 support and hosting service is your first-line defence against downtime. And the only one you'll ever need. As the go-to support people, our job is to monitor and triage your AWS solution, the application that runs on top and any 3rd-party integrations.",
       "From monolith to microservice, out-of-hours to 24/7, we've got you covered.",
     ],
+    whatCloser: "Here’s how:",
     problemSolution: {
       problem: {
         title: "Your problem",
+        icon: "/icons/azure-Cross-SVG.svg",
         lead: "You have an AWS infrastructure you can't support around the clock – here's why",
         points: [
           "Your AWS support function isn't full-stack: so when something breaks in the murky waters between application and infrastructure – you're not covered",
@@ -62,6 +64,7 @@ const PROVIDERS = [
       },
       solution: {
         title: "Our bread and butter",
+        icon: "/icons/azure-Moon-SVG.svg",
         lead: "Your problems are what gets us out of bed in the morning – and not the night",
         points: [
           "We offer true follow-the-sun support: with teams across 4 time zones we can promise a full-stack engineer on your ticket in minutes",
@@ -321,7 +324,7 @@ const PROVIDERS = [
       ],
     },
     bands: [
-      "intro", "problemSolution", "video", "whyGrid",
+      "awsOverview", "video", "whyGrid",
       "cases", "slab", "awsCapabilities",
       "packages",
       "coverage", "capabilities", "fitWith",
@@ -1907,7 +1910,10 @@ export default function SupportDetail() {
           <div>
             <h2>{provider.whatTitle || `What does ${provider.name} support from us mean?`}</h2>
             {provider.whatIntro ? (
-              provider.whatIntro.map((para, i) => <p key={i}>{para}</p>)
+              <>
+                {provider.whatIntro.map((para, i) => <p key={i}>{para}</p>)}
+                {provider.whatCloser && <p><strong>{provider.whatCloser}</strong></p>}
+              </>
             ) : provider.whatBullets ? (
               <>
                 <ul className="plat-what-list">
@@ -2631,7 +2637,11 @@ export default function SupportDetail() {
       <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}${provider.scene === "azure" ? " platform-detail--azure" : ""}${provider.scene === "gcp" ? " platform-detail--gcp" : ""}${provider.scene === "net" ? " platform-detail--net" : ""}${provider.scene === "city" ? " platform-detail--city" : ""}`}>
         <div className="container">
           {bandOrder.map((key) => (
-            <Fragment key={key}>{BANDS[key]}</Fragment>
+            <Fragment key={key}>
+              {key === "awsOverview" ? (
+                <div className="aws-overview">{BANDS.intro}{BANDS.problemSolution}</div>
+              ) : BANDS[key]}
+            </Fragment>
           ))}
         </div>
       </section>
