@@ -6282,12 +6282,14 @@ section.case-feature--detail { padding: 40px 0; }
 :is(.platform-detail--azure, .platform-detail--gcp) .reviews { background: #ffffff; padding: 56px 0; }
 
 /* FAQ — 48px head, pink plus, rocket artwork, glossary definition list. */
-:is(.platform-detail--azure, .platform-detail--gcp) .support-faq--detail { padding: 56px 0; margin: 0; }
+:is(.platform-detail--azure, .platform-detail--gcp) .support-faq--detail { padding: 56px 0; margin-block: 0; }
 :is(.platform-detail--azure, .platform-detail--gcp) .support-faq--detail h2 { font-size: 48px; line-height: 56px; font-weight: 600; color: #132140; margin: 0 0 20px; }
 :is(.platform-detail--azure, .platform-detail--gcp) .support-faq--detail .support-faq-intro { margin: 0 0 28px; }
 :is(.platform-detail--azure, .platform-detail--gcp) .support-faq--detail .faq-plus::before,
 :is(.platform-detail--azure, .platform-detail--gcp) .support-faq--detail .faq-plus::after { background: #e34168; }
-:is(.platform-detail--azure, .platform-detail--gcp) .support-faq--detail .support-faq-art img { display: block; width: 100%; height: auto; }
+:is(.platform-detail--azure, .platform-detail--gcp) .support-faq--detail .support-faq-art img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
+:is(.platform-detail--azure, .platform-detail--gcp) .support-faq-intro,
+:is(.platform-detail--azure, .platform-detail--gcp) .support-faq .faq-item > p { font-size: 16px; line-height: 28px; }
 :is(.platform-detail--azure, .platform-detail--gcp) .faq-answer { padding: 0 0 16px; }
 :is(.platform-detail--azure, .platform-detail--gcp) .faq-answer p { padding: 0 0 16px; font-size: 16px; line-height: 28px; font-weight: 300; color: #132140; }
 :is(.platform-detail--azure, .platform-detail--gcp) .faq-answer p:last-child { padding-bottom: 0; }

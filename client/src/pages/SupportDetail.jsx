@@ -633,14 +633,14 @@ const PROVIDERS = [
       { slug: "emperor", client: "Emperor", role: "Technical Director", quote: "Just After Midnight (JAM) has been providing us with 24/7/365 setup and support services to deliver the many financial reporting websites that we deliver each year. We count them as one of our critical trusted partners.", companyUrl: "https://emperor.works/", to: "https://www.justaftermidnight247.com/case-study/emperor/" },
     ],
     faq: {
-      title: "FAQ",
-      intro: <>For a no-nonsense look at what we support, take a look at <a href="#packages">our packages</a>. Still have questions about how our support services work? Take a look below.</>,
+      title: "24/7 Support FAQ",
+      intro: <>For a no-nonsense look at what we support, take a look at <a href="#packages">our packages</a>. Still have questions about our support? Take a look below.</>,
       artwork: "/icons/azure-Rocket-stack2.webp",
       items: [
-        { q: "What is application support?", paragraphs: ["Application support means supporting everything in the application layer. App support engineers will be au fait with a wide array of languages, experience platforms (such as Kentico or Umbraco) as well as other dev-y stuff.", "When we provide app support, we make sure your app stays up, performs well and keeps delivering value to your customers."] },
-        { q: "What is infrastucture support?", paragraphs: ["Same deal, but for your cloud. When we take care of your infrastructure, we monitor and triage for any hiccups, ensuring it runs smoothly, cheaply or however you like it.", <>We also build, review and optimise cloud infrastructure. So if you're in the market for more than support, <Link to="/cloud">check out some of our other cloud services.</Link></>] },
+        { q: "What is GCP application support?", paragraphs: ["Application support means supporting everything in the application layer. App support engineers will be au fait with a wide array of languages, experience platforms (such as Kentico or Umbraco) as well as other dev-y stuff.", "When we provide app support, we make sure your app stays up, performs well and keeps delivering value to your customers."] },
+        { q: "What is GCP infrastructure support?", paragraphs: ["Same deal, but for your cloud. When we take care of your GCP infrastructure, we monitor and triage for any hiccups, ensuring it runs smoothly, cheaply or however you like it.", <>We also build, review and optimise cloud infrastructure. So if you're in the market for more than support, <Link to="/cloud">check out some of our other cloud services.</Link></>] },
         { q: "What is full-stack support?", a: "Full-stack support is just the two above services combined. Although, with applications growing increasingly distributed, full-stack often means supporting 3rd-party integrations, too. That's why Mission Control (our bespoke full-stack solution) is indispensable." },
-        { q: "Aren't cloud support and DevOps the same thing?", a: "Cloud/infrastructure support has some crossover with both DevOps and CloudOps. Essentially, if you're looking to fine-tune your deployments, performance or cloud processes, we'll be able to help; what you call it is up to you!" },
+        { q: "What is the difference between cloud support and DevOps?", a: "Cloud/infrastructure support has some crossover with both DevOps and CloudOps. Essentially, if you're looking to fine-tune your deployments, performance or cloud processes, we'll be able to help; what you call it is up to you!" },
         { q: "How does it work?", paragraphs: ["Our process is simple, just get in touch and we'll take it from there. We work out what our support team will cover and when.", "Your business needs set the scope of the project. Maybe you need application support and incident resolution. Maybe you only need proactive monitoring so your own support teams can pick up tickets. It's up to you.", "From website security to app support, from website maintenance to the ongoing monitoring of your cloud services – our mission is to fit like a glove."] },
         { q: "Need a glossary for our packages terms?", terms: [
           { term: "Monitoring", definition: "Continuous tracking of your systems, applications, or cloud infrastructure to ensure optimal performance, uptime, and security. Monitoring includes real-time alerts for anomalies, potential bottlenecks, or system failures that may require immediate attention." },
@@ -657,7 +657,7 @@ const PROVIDERS = [
           { term: "Ticket Cap", definition: "If you want to manage the number of support requests, we can set a cap on how many tickets we'll handle within a given time frame. This lets you control costs and prioritise critical issues while leaving routine tasks to your in-house team." },
         ] },
       ],
-      panel: { title: "More questions?", text: "Drop us a line and we'll be in touch to answer any questions about how we can support your application 24/7, 365.", cta: "Drop us a line", to: "/contact" },
+      panel: { title: "Got more questions?", text: "Anything else? We're here to answer your questions about supporting mission-critical digital products 24/7, 365.", cta: "Drop us a line", to: "/contact" },
     },
     packages: {
       title: "Our service packages",
