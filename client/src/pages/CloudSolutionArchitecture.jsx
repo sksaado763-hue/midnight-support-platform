@@ -146,7 +146,7 @@ const SERVICES = [
     icon: "/icons/sa-icon-migration.png",
     title: "Cloud Migration Services",
     text: "Moving to the cloud for the first time? Switching providers? We’ll handle the whole journey.",
-    to: "https://www.justaftermidnight247.com/cloud/solution-architecture/cloud-migration/",
+    to: "/cloud/cloud-migration",
   },
   {
     icon: "/icons/sa-icon-devops-1.png",
@@ -402,7 +402,11 @@ export default function CloudSolutionArchitecture() {
               <article className="sa-more__card reveal" key={service.title}>
                 <img src={service.icon} alt="" width="80" height="80" loading="lazy" decoding="async" />
                 <h3>
-                  <a href={service.to} target="_blank" rel="noopener noreferrer">{service.title} <span aria-hidden="true">➔</span></a>
+                  {/^https?:\/\//i.test(service.to) ? (
+                    <a href={service.to} target="_blank" rel="noopener noreferrer">{service.title} <span aria-hidden="true">➔</span></a>
+                  ) : (
+                    <Link to={service.to}>{service.title} <span aria-hidden="true">➔</span></Link>
+                  )}
                 </h3>
                 <p>{service.text}</p>
                 <p aria-hidden="true">&nbsp;</p>
