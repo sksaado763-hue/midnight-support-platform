@@ -6920,14 +6920,14 @@ section.case-feature--detail { padding: 40px 0; }
 
 .sa-hero-logos { margin-top: 33px; padding-inline: 10px; overflow: hidden; }
 .sa-hero-track {
-  --sa-step: 610px;
+  --sa-step: 305px;
   display: flex;
   width: max-content;
   animation: sa-marquee 26s linear infinite;
 }
 .sa-hero-logos:hover .sa-hero-track { animation-play-state: paused; }
-.sa-hero-set { display: flex; align-items: center; gap: 30px; padding-right: 30px; }
-.sa-hero-set img { flex: none; width: 92px; height: 90px; object-fit: contain; }
+.sa-hero-set { display: flex; align-items: center; gap: 15px; padding-right: 15px; }
+.sa-hero-set img { flex: none; width: 46px; height: 45px; object-fit: contain; }
 @keyframes sa-marquee {
   to { transform: translateX(calc(-1 * var(--sa-step))); }
 }
@@ -7127,9 +7127,9 @@ section.case-feature--detail { padding: 40px 0; }
 
 @media (max-width: 767.98px) {
   .sa-hero-logos { margin-top: 26px; padding-inline: 0; }
-  .sa-hero-track { --sa-step: 460px; animation-duration: 20s; }
-  .sa-hero-set { gap: 20px; padding-right: 20px; }
-  .sa-hero-set img { width: 72px; height: 70px; }
+  .sa-hero-track { --sa-step: 230px; animation-duration: 20s; }
+  .sa-hero-set { gap: 10px; padding-right: 10px; }
+  .sa-hero-set img { width: 36px; height: 35px; }
   .sa-hero .cloud-hero__sub { font-size: 16px; line-height: 22px; }
 
   .sa-intro { margin: 24px 0; padding: 24px 0; }
