@@ -5,13 +5,13 @@ const TILES = [
   {
     icon: "/icons/cloud-people-consulting.svg",
     title: "Cloud Strategy Consultancy Services",
-    to: "/contact",
+    to: "/cloud/cloud-consulting",
     text: "Our specialists across AWS, Azure, GCP and Alibaba Cloud start from what you are trying to ship and work back to the parts of the estate that earn their keep. You get a sequenced roadmap with costs, risks and owners attached — and a straight answer on what to leave alone. The roadmap is yours to keep, whoever ends up doing the build.",
   },
   {
     icon: "/icons/cloud-design.svg",
     title: "Cloud Design and Solution Architecture",
-    to: "/contact",
+    to: "/cloud/solution-architecture",
     text: "Landing zones, network topology and the failover story, drawn properly and pressure-tested before anyone writes a line of Terraform. We design for the tricky parts — multi-region, compliance-ready and event-driven — so the build starts from a clear plan.",
   },
   {
