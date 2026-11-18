@@ -78,7 +78,7 @@ const SERVICES = [
   {
     title: "Managed Cloud",
     to: "/cloud",
-    copy: "Specialist consulting, design and delivery on AWS, Azure and GCP.",
+    copy: "Specialist consulting, design and delivery on AWS, Azure, GCP and Alibaba Cloud.",
     icon: <path d="M14 30a8 8 0 0 1 .6-15.9A10 10 0 0 1 34 17a7 7 0 0 1-1 13H14z" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />,
     iconExtra: <path d="M17 37l4-5m5 5l-3-4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />,
     groups: [
@@ -89,6 +89,7 @@ const SERVICES = [
           { label: "AWS", to: "/support/aws-support" },
           { label: "Azure", to: "/support/azure-support" },
           { label: "GCP", to: "/support/gcp-support" },
+          { label: "Alibaba Cloud", to: "/support/alibaba-cloud-support" },
         ],
       },
       {

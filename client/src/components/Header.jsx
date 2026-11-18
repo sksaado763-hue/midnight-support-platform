@@ -12,7 +12,7 @@ const SUBMENUS = {
     rows: [
       { label: "Support Packages", to: "/support/our-packages", links: [["Compare Packages", "/support/our-packages#packages"]] },
       { label: "By industry", to: "/support/agencies", links: [["Agencies", "/support/agencies"], ["SaaS Platforms", "/support/saas-platforms"], ["eCommerce", "/support/ecommerce"]] },
-      { label: "By cloud provider", to: "/support/aws-support", links: [["24/7 Support for AWS", "/support/aws-support"], ["24/7 Support for Azure", "/support/azure-support"], ["24/7 Support for GCP", "/support/gcp-support"]] },
+      { label: "By cloud provider", to: "/support/aws-support", links: [["24/7 Support for AWS", "/support/aws-support"], ["24/7 Support for Azure", "/support/azure-support"], ["24/7 Support for GCP", "/support/gcp-support"], ["24/7 Support for Alibaba Cloud", "/support/alibaba-cloud-support"]] },
     ],
   },
   cloud: {
@@ -22,7 +22,7 @@ const SUBMENUS = {
     to: "/cloud",
     blurb: "Managed cloud, consulting and DevOps delivery that scales with your team.",
     rows: [
-      { label: "Managed Cloud", to: "/cloud", links: [["AWS", "/support/aws-support"], ["Azure", "/support/azure-support"], ["GCP", "/support/gcp-support"]] },
+      { label: "Managed Cloud", to: "/cloud", links: [["AWS", "/support/aws-support"], ["Azure", "/support/azure-support"], ["GCP", "/support/gcp-support"], ["Alibaba Cloud", "/support/alibaba-cloud-support"]] },
       { label: "Cloud consulting", to: "/cloud", links: [["Cost Optimisation", "/cloud/cloud-consulting/cost-optimisation"], ["Well-Architected Review", "/cloud/cloud-consulting/aws-well-architected-review"], ["Solution Architecture", "/cloud"], ["Cloud Migration", "/cloud"]] },
       { label: "DevOps", to: "/cloud", links: [["DevOps Consulting", "/cloud"], ["Delivery & Automation", "/cloud"], ["Application Modernisation", "/cloud"]] },
     ],
@@ -99,7 +99,7 @@ function navActiveFor(pathname) {
 
 /* Pages whose hero paints the top of the document get a transparent header
    pulled over it, instead of a navy bar stacked above the hero. */
-const OVERLAY_HEADER_PATHS = ["/support/aws-support", "/support/azure-support", "/support/gcp-support", "/cloud", "/cloud/cloud-consulting/cost-optimisation", "/support/our-packages"];
+const OVERLAY_HEADER_PATHS = ["/support/aws-support", "/support/azure-support", "/support/gcp-support", "/support/alibaba-cloud-support", "/cloud", "/cloud/cloud-consulting/cost-optimisation", "/support/our-packages"];
 
 export default function Header() {
   const { pathname } = useLocation();

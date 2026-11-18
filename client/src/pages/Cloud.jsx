@@ -6,7 +6,7 @@ const TILES = [
     icon: "/icons/cloud-people-consulting.svg",
     title: "Cloud Strategy Consultancy Services",
     to: "/contact",
-    text: "Our specialists across AWS, Azure and GCP start from what you are trying to ship and work back to the parts of the estate that earn their keep. You get a sequenced roadmap with costs, risks and owners attached — and a straight answer on what to leave alone. The roadmap is yours to keep, whoever ends up doing the build.",
+    text: "Our specialists across AWS, Azure, GCP and Alibaba Cloud start from what you are trying to ship and work back to the parts of the estate that earn their keep. You get a sequenced roadmap with costs, risks and owners attached — and a straight answer on what to leave alone. The roadmap is yours to keep, whoever ends up doing the build.",
   },
   {
     icon: "/icons/cloud-design.svg",
@@ -25,7 +25,7 @@ const TILES = [
     icon: "/icons/cloud-architecture.svg",
     title: "Managed Cloud",
     to: "/support",
-    text: "We run your AWS, Azure or GCP estate end to end — monitoring, patching, capacity and the on-call rota — so your engineers spend the week building.",
+    text: "We run your AWS, Azure, GCP or Alibaba Cloud estate end to end — monitoring, patching, capacity and the on-call rota — so your engineers spend the week building.",
   },
   {
     icon: "/icons/cloud-cost-reducing.svg",

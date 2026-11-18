@@ -699,6 +699,193 @@ const PROVIDERS = [
     insights: { title: "Latest Insights from JAM", cta: "See more articles", to: "/insights", variant: "blog" },
     bands: ["intro", "problemSolution", "video", "why", "cases", "coverage", "packages", "covers", "reviews", "slab", "faq", "slab2", "insights", "glance", "impacts"],
   },
+  {
+    slug: "alibaba-cloud-support",
+    name: "Alibaba Cloud",
+    scene: "alibaba",
+    title: "Alibaba Cloud 24/7 Managed Support & Hosting",
+    tagline: "Official European partner with certified engineers providing round-the-clock infrastructure, DevOps, and China-gateway support",
+    heroArt: { src: "/icons/sa-logo-alibaba.png", label: "Official Alibaba Cloud Partner" },
+    heroClients: [
+      { name: "Formica", src: "/icons/azure-Formica.webp" },
+      { name: "Emperor", src: "/icons/azure-Emperor.webp" },
+      { name: "Tesco", src: "/icons/azure-Tesco.webp" },
+      { name: "Third Space", src: "/icons/azure-Third-Space-scaled.png" },
+      { name: "Paylocity", src: "/icons/azure-Paylocity.png" },
+      { name: "Translink", src: "/icons/azure-Translink-scaled.png" },
+    ],
+    whatTitle: "24/7 Alibaba Cloud infrastructure and gateway support for teams who…",
+    whatBullets: [
+      "…Need enterprise-grade reliability and 99.99% uptime in China and across APAC.",
+      "Want Western-standard SLAs and transparent communication combined with China-native regulatory compliance (ICP, MLPS, cybersecurity).",
+      "Love regular bedtimes — leaving 24/7/365 infrastructure monitoring and out-of-hours triage to certified experts.",
+    ],
+    whatCloser: "Here's how we do it:",
+    problemSolution: {
+      problem: {
+        title: "Your problem",
+        lead: "Supporting an Alibaba Cloud environment across time zones and regulatory boundaries is tough",
+        icon: "/icons/azure-Cross-SVG.svg",
+        points: [
+          "Your engineering team is based in the West and struggles with APAC time-zone coverage, leading to 3am wake-up calls and burnout",
+          "Navigating China's unique internet ecosystem (Great Firewall, ICP filing, local DNS, latency) requires deep regional know-how",
+          "When an incident occurs in the grey area between your CMS, API integrations, and Alibaba Cloud, traditional MSPs point fingers",
+        ],
+      },
+      solution: {
+        title: "Our solution",
+        lead: "Certified Alibaba Cloud engineers backed by true 24/7/365 follow-the-sun support",
+        icon: "/icons/azure-Moon-SVG.svg",
+        points: [
+          "As one of Alibaba Cloud's earliest European partners, our accredited engineers manage your estate with proven regional expertise",
+          "True follow-the-sun coverage across 4 global time zones so your team never gets woken up out of hours",
+          "Full-stack and buck-stopping: we support Alibaba Cloud ECS, Serverless, ApsaraDB, SLB, CDN, and your application layer",
+        ],
+      },
+    },
+    video: {
+      title: "See how we protect your Alibaba Cloud environment",
+      lead: "Discover how our global operations center provides 24/7 monitoring, incident triage, and continuous optimization for Alibaba Cloud.",
+      closer: "To take a closer look at your support options and SLAs…",
+      cta: "View our packages!",
+      to: "#packages",
+      poster: "/icons/azure-Downtime-gif.webp",
+    },
+    why: {
+      title: "Why we're the best for Alibaba Cloud",
+      intro: <>Some MSPs take a cut of cloud spend and only step in when something breaks strictly in the cloud. That's not enough. <strong>Here's why teams trust Just After Midnight:</strong></>,
+      cards: [
+        { title: "Official European partner", icon: "/icons/azure-handshake-yellow-e1723117997676.webp", text: "As one of the first European partners for Alibaba Cloud, our accredited engineers possess deep, verified platform expertise." },
+        { title: "True 24/7 follow-the-sun", icon: "/icons/azure-block-arrows-yellow-e1723042150435.webp", text: "With offices across 4 time zones (UK, US, Singapore, Australia), our engineers respond to any alert in minutes, day or night." },
+        { title: "Bridging East and West", icon: "/icons/azure-route-yellow-e1723042373466.webp", text: "We help Western enterprises, startups and agencies deploy, connect, and optimize applications for users in China and APAC." },
+        { title: "Full-stack buck-stopping support", icon: "/icons/azure-puzzle-yellow-e1722955467926.webp", text: "We don't draw lines at the cloud edge. We monitor and triage the infrastructure, database, application code, CMS, and APIs." },
+        { title: "Regulatory & ICP compliance", icon: "/icons/azure-hand-tick-yellow-e1722955432551.webp", text: "From ICP filing and MLPS security compliance to China cybersecurity regulations, we guide you through every legal hurdle." },
+        { title: "China Gateway & latency tuning", icon: "/icons/azure-cog-arrow-yellow-e1723119842127.webp", text: "We optimize network routing, Cloud Enterprise Network (CEN), Express Connect, and Alibaba Cloud CDN for blazing fast speed." },
+        { title: "DevOps & cloud-native automation", icon: "/icons/azure-bed-yellow-e1723040297931.webp", text: "From Terraform infrastructure-as-code to Alibaba Cloud Container Service for Kubernetes (ACK) and CI/CD pipelines, we've got you covered." },
+        { title: "Alibaba Cloud cost optimisation", icon: "/icons/azure-puzzle-2-yellow-e1723457815994.webp", text: "We audit your resource utilization, rightsizing ECS instances and storage tiers to drive down monthly cloud expenditure." },
+      ],
+      accent: {
+        title: "Because you have great taste in support providers",
+        icon: "/icons/azure-output-onlinepngtools-1.png",
+        text: "If you like what you're hearing, there's plenty more where that came from. Whatever your support gap, we close it.",
+        cta: "View packages",
+        to: "#packages",
+      },
+    },
+    cases: {
+      title: "Read our case studies",
+      carousel: true,
+      studies: [
+        { slug: "formica", client: "Formica", headline: "Building a solid managed hosting solution for this global company", image: "/icons/azure-Formica-V2.png", to: "https://www.justaftermidnight247.com/case-study/formica/" },
+        { slug: "emperor", client: "Emperor", headline: "Supporting mission-critical financial reporting platforms around the clock", image: "/icons/azure-Emperor.webp", to: "https://www.justaftermidnight247.com/case-study/emperor/" },
+        { slug: "mpb", client: "MPB", headline: "Full-stack out-of-hours support for a specialist global e-commerce platform.", image: "/icons/gcp-MPB.webp", to: "https://www.justaftermidnight247.com/case-study/mpb/" },
+        { slug: "tesco-plc", client: "Tesco PLC", headline: "Supporting multinational corporate web estates around the clock", image: "/icons/azure-Tesco-V2-2.png", to: "https://www.justaftermidnight247.com/case-study/tesco-plc/" },
+      ],
+    },
+    caseStudy: {
+      split: "4-1-7",
+      study: {
+        slug: "formica", client: "Formica Group", headline: "Global cloud support for Formica's digital infrastructure", image: "/icons/azure-Formica.webp", bgColor: "#12203f", dividers: { before: "#12203f" },
+        paragraphs: [
+          "Just After Midnight provides 24/7/365 full-stack infrastructure and application support for Formica Group's multinational digital estate, ensuring high availability, peak stability, and seamless global routing.",
+          "Our team monitors infrastructure health, automated backups, and critical endpoints across global time zones, eliminating downtime and allowing internal engineering teams to focus on continuous delivery.",
+        ],
+        to: "https://www.justaftermidnight247.com/case-study/formica/", cta: "Read our case study",
+      },
+    },
+    coverage: {
+      variant: "dark",
+      title: "Don't you wish you had a team that could handle it all?",
+      intro: "We've got you covered – here's what we can do for you:",
+      groups: [
+        { title: "Incident and response management", items: ["Incident management (IM)", "Root cause analysis (RCA)", "Incident response management", "Incident triage", "Security incident response"] },
+        { title: "Service continuity and recovery", items: ["Application rollbacks", "Restarting services", "Backup and restore procedures", "Manual scaling of resources"] },
+        { title: "Access and security management", items: ["IP whitelisting", "Access management", "Password resets", "User account provisioning", "User removal", "Access control"] },
+        { title: "Quality and process improvement", items: ["Service validation and testing", "Knowledge base management", "Post-incident review (PIR)", "Vendor liaison/3rd-party escalation"] },
+        { title: "Observability and performance", items: ["System health checks", "Monitoring, alerts and telemetry", "Performance monitoring", "Network diagnostics and flow analysis", "End-to-end latency analysis", "Capacity monitoring and forecasting"] },
+        { title: "Service management and operations", items: ["SLA management", "Change management", "Patch management", "Downtime reporting", "Ticket management", "Outage communication", "Configuration management", "Service request management", "Escalation management"] },
+      ],
+      closer: { text: "It's simple – you tell us your requirements and we plug in wherever you need us.", cta: "So, where can we help?", to: "#site-footer" },
+    },
+    slab2: {
+      split: "4-1-7",
+      study: {
+        slug: "emperor", client: "Emperor", headline: "24/7/365 infrastructure and setup support for global web properties", image: "/icons/azure-Emperor.webp", bgColor: "#122142", dividers: { before: "#122142" },
+        paragraphs: [
+          "Emperor relies on Just After Midnight for 24/7/365 setup, monitoring, and support services to deliver high-stakes digital products and financial reporting platforms each year.",
+          "Our dedicated engineers provide rapid, follow-the-sun incident resolution, infrastructure scaling, and proactive telemetry, ensuring continuous uptime during high-traffic reporting windows.",
+        ],
+        to: "https://www.justaftermidnight247.com/case-study/emperor/",
+      },
+    },
+    reviews: [
+      { slug: "banyan-tree", client: "Banyan Tree", role: "Head, Information Technology", quote: "Quick and fast support and consulting on the overall web, DevOps and hosting needs. Very helpful as always.", companyUrl: "https://www.banyantree.com/", cta: false },
+      { slug: "emperor", client: "Emperor", role: "Technical Director", quote: "Just After Midnight (JAM) has been providing us with 24/7/365 setup and support services to deliver the many financial reporting websites that we deliver each year. We count them as one of our critical trusted partners.", companyUrl: "https://emperor.works/", to: "https://www.justaftermidnight247.com/case-study/emperor/" },
+      { slug: "the-body-coach", client: "The Body Coach", role: "CEO", quote: "We want our users to be able to work out at a time that suits them, day or night. I can sleep easy knowing that Just After Midnight's team of experts are taking care of any issues with the app, so I can focus on what I do best", companyUrl: "https://www.thebodycoach.com/", to: "https://www.justaftermidnight247.com/case-study/the-body-coach-app/" },
+      { slug: "dla-piper", client: "DLA Piper", role: "CEO", quote: "I would not hesitate to recommend JAM based on the service they have provided to us. They have been very responsive and have done so in a positive and professional fashion. The team clearly have a thorough knowledge and have been able to explain things to us in language we can understand.", companyUrl: "https://www.dlapiper.com/en", to: "https://www.justaftermidnight247.com/case-study/dla-piper/" },
+    ],
+    faq: {
+      title: "24/7 Alibaba Cloud Support FAQ",
+      intro: <>For a no-nonsense look at what we support, take a look at <a href="#packages">our packages</a>. Still have questions about our Alibaba Cloud support? Take a look below.</>,
+      artwork: "/icons/azure-Rocket-stack2.webp",
+      items: [
+        { q: "What is Alibaba Cloud managed support?", paragraphs: ["Alibaba Cloud managed support means our team of accredited engineers manages, monitors, and supports your entire Alibaba Cloud infrastructure and application layer 24/7/365.", "From Elastic Compute Service (ECS) and Serverless to ApsaraDB, Server Load Balancer (SLB), and CDN, we ensure your services stay up, perform optimally, and deliver consistent value to your users."] },
+        { q: "How do you help with China compliance and ICP licensing?", paragraphs: ["Operating web properties in Mainland China requires navigating specific regulatory standards, including obtaining an Internet Content Provider (ICP) filing or commercial license, and meeting Multi-Level Protection Scheme (MLPS) compliance.", "We provide expert guidance on structuring your architecture, securing necessary documentation, and configuring local DNS and CDN routing to remain compliant."] },
+        { q: "What is full-stack support?", a: "Full-stack support combines infrastructure management with application-level care. We don't stop at the cloud layer: we support your code, CMS, DXP platforms, and third-party API integrations, resolving issues wherever the point of failure occurs." },
+        { q: "Can you support hybrid or multi-cloud setups?", a: "Yes. Many of our clients run AWS, Azure, or GCP in Western markets while utilizing Alibaba Cloud in China and APAC. We provide a single, unified 24/7 support function across all your cloud providers with centralized monitoring and consistent SLAs." },
+        { q: "How does your 24/7 follow-the-sun model work?", paragraphs: ["Our support engineers are distributed across four global hubs: the UK, the US, Singapore, and Australia.", "This means day shifts handover seamlessly to day shifts across time zones, guaranteeing that an awake, alert engineer responds to any incident within our guaranteed 30-minute SLA — without relying on exhausted overnight on-call rotas."] },
+        { q: "Need a glossary for our packages terms?", terms: [
+          { term: "Monitoring", definition: "Continuous tracking of your Alibaba Cloud infrastructure, ECS instances, databases, and application endpoints with real-time alerting for anomalies, latency spikes, or outages." },
+          { term: "L1 Communications", definition: "The first line of communication in support, triaging incoming alerts, executing standard runbooks, and communicating updates swiftly." },
+          { term: "<30 Minute Response Time", definition: "A contractual commitment to acknowledge and begin diagnosing any support request or high-priority incident within 30 minutes, 24/7/365." },
+          { term: "L2 Resolution", definition: "Advanced engineering troubleshooting covering in-depth application debugging, database failovers, network bottlenecks, and cloud configuration fixes." },
+          { term: "Incident Reporting", definition: "Detailed post-incident reports (PIR) explaining the root cause, immediate remediation steps, and proactive architectural recommendations to prevent recurrence." },
+          { term: "Recommendations", definition: "Actionable guidance on cost optimization, security hardening, and performance improvements tailored to your Alibaba Cloud workloads." },
+          { term: "DevOps Support", definition: "Assistance with CI/CD pipelines, containerization on ACK, Terraform automation, and infrastructure-as-code management." },
+        ] },
+      ],
+      panel: { title: "Got more questions?", text: "Anything else? We're here to answer your questions about supporting mission-critical digital products on Alibaba Cloud 24/7, 365.", cta: "Drop us a line", to: "/contact" },
+    },
+    packages: {
+      title: "Our service packages",
+      intro: "It's simple – you pick the level of support you need and we provide it.",
+      introTail: { lead: "If you're in need of something bespoke, just", link: "get in touch", to: "/contact" },
+      tiers: [
+        { tab: "Simple reassurance", name: "FIRST-LINE SUPPORT", items: ["Monitoring", "L1 Communications", "<30 Minute Response Time"], cta: "Select package", hover: "Contact", to: "/contact?package=first-line" },
+        { tab: "Overnight & weekends", name: "OUT-OF-HOURS SUPPORT", items: ["Monitoring", "L1 Communications", "L2 Resolution", "Incident Reporting", "Recommendations", "<30 Minute Response Time"], cta: "Select package", hover: "Contact", to: "/contact?package=out-of-hours" },
+        { tab: "Complete cover", name: "24/7 SUPPORT", items: ["Monitoring", "L1 Communications", "L2 Resolution", "Incident Reporting", "Recommendations", "<30 Minute Response Time"], cta: "Select package", hover: "Contact", to: "/contact?package=24-7" },
+        { tab: "A tailored service", name: "CUSTOM & ADD-ONS", items: ["Infrastructure or Application Only", "Faster SLA Response Times", "Custom Code", "Custom Applications", "DevOps Support", "Ticket Cap", "Anything else? Chat to our team and we can make it work"], cta: "Learn more", hover: "Contact", to: "/contact?package=custom" },
+      ],
+      note: { lead: "Need build solutions, not support?", text: "If you're more interested in refactoring or modernising your infrastructure, check out", link: "our solutions page", to: "/cloud" },
+    },
+    covers: {
+      title: "Whatever your Alibaba Cloud project, we've got you covered.",
+      cards: [
+        { title: "Protect revenue and reputation in APAC", icon: <img src="/icons/azure-heart-shield-80x80-svg.svg" alt="" width="80" height="80" />, text: "Downtime during APAC business hours directly impacts global revenue and brand reputation. With round-the-clock proactive monitoring and rapid incident resolution, your digital storefronts and APIs remain uninterrupted." },
+        { title: "Save your engineers from midnight burnout", icon: <img src="/icons/azure-superhero-shield-80x80-svg.svg" alt="" width="80" height="80" />, text: "Don't force your Western developers onto 3am on-call rotas to handle China time-zone incidents. Our global follow-the-sun operations take the strain so your builders can focus on shipping features." },
+        { title: "Expand into China with confidence", icon: <img src="/icons/azure-lightbulb-80x80-svg.svg" alt="" width="80" height="80" />, text: "Deploying in China can feel like entering uncharted territory. With certified Alibaba Cloud experts by your side, you gain proven architecture, local compliance guidance, and seamless integration with your global stack." },
+      ],
+    },
+    glance: {
+      eyebrow: "At a glance",
+      title: "Just After Midnight's support offering",
+      items: [
+        { q: "What technologies do you support?", a: <>We support cloud platforms (<strong>AWS, Azure, GCP, Alibaba Cloud</strong>), CMS and DXP platforms (<strong>Sitecore, Kentico, Umbraco, AEM, Optimizely, WordPress, Drupal, Magento</strong>), custom-built applications, edge/CDN networks, and third-party integrations including APIs.</> },
+        { q: "What support windows are available?", a: <><strong>24/7/365</strong> support, out-of-hours support and overnight support, weekends-only support, or a custom schedule built around your needs.</> },
+        { q: "What functions does your support team cover?", a: "Our support covers monitoring and alerting, incident management and triage, root cause analysis (RCA), SRE and DevOps support, observability, security incident response, backup and recovery, change and patch management, and third-party vendor escalation." },
+        { q: "What industries do you support?", a: "We work with businesses and organisations in SaaS, eCommerce, healthtech, legaltech, fintech, government, manufacturing, logistics, and digital agencies – and many more." },
+        { q: "What security accreditations do you hold?", a: <>We are <strong>ISO 27001</strong> certified, <strong>Cyber Essentials Plus</strong> verified, and <strong>PCI DSS</strong> compliant.</> },
+      ],
+    },
+    impacts: {
+      q: "What are the impacts of incidents on teams and revenue?",
+      a: "According to industry sources, downtime costs businesses between $540,000 (Splunk, The Hidden Costs of Downtime) and $2 million (New Relic, Observability Forecast 2025) per hour for many high-impact outages. Incidents also consume significant engineering capacity: the median engineering team spends 30% of its time addressing disruptions (New Relic, Observability Forecast 2024).",
+      sourcesHead: "Sources",
+      sources: ["Splunk, The Hidden Costs of Downtime (2000 Global Executives surveyed)", "New Relic, Observability Forecast 2025 (1,700 global technology professionals surveyed)", "New Relic Observability Forecast 2024 (1,700 global technology professionals surveyed)"],
+    },
+    insights: { title: "Latest Insights from JAM", cta: "See more articles", to: "/insights", variant: "blog" },
+    bands: ["intro", "problemSolution", "video", "why", "cases", "coverage", "packages", "covers", "reviews", "slab", "faq", "slab2", "insights", "glance", "impacts"],
+  },
 ];
 
 const INDUSTRIES = [
@@ -1985,7 +2172,7 @@ export default function SupportDetail() {
           )}
           <section
             className="how-it-works"
-            style={provider.slug === "ecommerce" ? { backgroundColor: "#f2f2f2", marginTop: 0 } : ["azure", "gcp"].includes(provider.scene) ? { backgroundColor: "#eaeaea", marginTop: 0 } : undefined}
+            style={provider.slug === "ecommerce" ? { backgroundColor: "#f2f2f2", marginTop: 0 } : ["azure", "gcp", "alibaba"].includes(provider.scene) ? { backgroundColor: "#eaeaea", marginTop: 0 } : undefined}
           >
             <div className="container">
               <div className="hiw-grid">
@@ -2217,7 +2404,7 @@ export default function SupportDetail() {
 
     packages: provider.packages && (
         <PackageBand
-          id={["aws", "azure", "gcp"].includes(provider.scene) ? "packages" : undefined}
+          id={["aws", "azure", "gcp", "alibaba"].includes(provider.scene) ? "packages" : undefined}
           title={provider.packages.title}
           intro={provider.packages.intro}
           introTail={provider.packages.introTail}
@@ -2509,6 +2696,28 @@ export default function SupportDetail() {
             </div>
           </div>
         </section>
+      ) : provider.scene === "alibaba" ? (
+        <section className="aws-hero alibaba-hero" aria-labelledby="alibaba-hero-title">
+          <div className="container">
+            <div className="gcp-hero-row alibaba-hero-row">
+              <div className="aws-hero-copy">
+                <h1 id="alibaba-hero-title">{provider.title}</h1>
+                <p className="aws-hero-sub">{provider.tagline}</p>
+                <a href="#site-footer" className="btn aws-hero-cta">GET IN TOUCH <span aria-hidden="true">➔</span></a>
+                {provider.heroClients && (
+                  <div className="aws-hero-trust">
+                    <p>Trusted by:</p>
+                    <TrustLogos brands={provider.heroClients} variant="images" />
+                  </div>
+                )}
+              </div>
+              <div className="gcp-hero-art alibaba-hero-art">
+                <img src={provider.heroArt.src} alt="Alibaba Cloud" width="220" height="220" decoding="async" style={{ objectFit: "contain", filter: "brightness(1.05)" }} />
+                <p>{provider.heroArt.label}</p>
+              </div>
+            </div>
+          </div>
+        </section>
       ) : provider.scene === "ecom" ? (
         <section className="hero-banner ecom-hero" style={{ backgroundColor: "#12203f" }}>
           <div className="container">
@@ -2634,7 +2843,7 @@ export default function SupportDetail() {
         </section>
       )}
 
-      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}${provider.scene === "azure" ? " platform-detail--azure" : ""}${provider.scene === "gcp" ? " platform-detail--gcp" : ""}${provider.scene === "net" ? " platform-detail--net" : ""}${provider.scene === "city" ? " platform-detail--city" : ""}`}>
+      <section className={`platform-detail${provider.slug === "aws-support" ? " platform-detail--aws" : ""}${provider.scene === "azure" ? " platform-detail--azure" : ""}${provider.scene === "gcp" ? " platform-detail--gcp" : ""}${provider.scene === "alibaba" ? " platform-detail--alibaba" : ""}${provider.scene === "net" ? " platform-detail--net" : ""}${provider.scene === "city" ? " platform-detail--city" : ""}`}>
         <div className="container">
           {bandOrder.map((key) => (
             <Fragment key={key}>
