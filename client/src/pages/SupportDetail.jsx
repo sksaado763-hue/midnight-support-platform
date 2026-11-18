@@ -125,7 +125,37 @@ const PROVIDERS = [
     },
     cases: {
       title: "Read our AWS case studies",
-      slugs: ["body-coach", "dexerto", "rubies", "vodafone"],
+      carousel: true,
+      studies: [
+        {
+          slug: "the-body-coach",
+          client: "The Body Coach",
+          headline: "Protecting the biggest health app launch of the year 24/7 – without breaking a sweat",
+          image: "/icons/aws-case-body-coach.png",
+          to: "https://www.justaftermidnight247.com/case-study/the-body-coach-app/",
+        },
+        {
+          slug: "tums",
+          client: "TUMS® Super Bowl Campaign",
+          headline: "Ensuring 100% success for a major Super Bowl campaign.",
+          image: "/icons/aws-case-tums.png",
+          to: "https://www.justaftermidnight247.com/case-study/tums-super-bowl-campaign-2021/",
+        },
+        {
+          slug: "rubies",
+          client: "Rubies",
+          headline: "Modernising a legacy stack with a seamless migration to AWS",
+          image: "/icons/aws-case-rubies.png",
+          to: "https://www.justaftermidnight247.com/case-study/rubies/",
+        },
+        {
+          slug: "vodafone",
+          client: "Vodafone",
+          headline: "Transforming the DevOps approach for Vodafone eCommerce",
+          image: "/icons/aws-case-vodafone.webp",
+          to: "https://www.justaftermidnight247.com/case-study/vodafone/",
+        },
+      ],
     },
     caseStudy: { slug: "body-coach" },
     awsCapabilities: {

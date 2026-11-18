@@ -1,0 +1,10 @@
+.tmp-ref
+.tmp-ref/
+node_modules
+node_modules/
+client/dist
+client/dist/
+client/node_modules
+client/node_modules/
+.git
+.vercel

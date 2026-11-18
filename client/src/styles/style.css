@@ -6224,10 +6224,10 @@ section.case-feature--detail { padding: 40px 0; }
 :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .why-band--detail .why-card--accent .why-accent-cta:focus { background: #ffffff; color: #132140; }
 
 /* Case-study examples — centred 32px head, horizontal slider with edge arrows. */
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--detail { background: #ffffff; padding: 44px 0 52px; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--detail .section-title { font-size: 32px; line-height: 1.2; font-weight: 900; text-align: center; color: #132140; margin: 0 0 32px; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-slider { position: relative; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--carousel .support-case-grid {
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--detail { background: #ffffff; padding: 44px 0 52px; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--detail .section-title { font-size: 32px; line-height: 1.2; font-weight: 900; text-align: center; color: #132140; margin: 0 0 32px; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-slider { position: relative; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--carousel .support-case-grid {
   display: flex;
   gap: 20px;
   margin-top: 0;
@@ -6236,13 +6236,13 @@ section.case-feature--detail { padding: 40px 0; }
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--carousel .support-case-grid::-webkit-scrollbar { display: none; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--carousel .support-case { flex: 0 0 calc(25% - 15px); scroll-snap-align: start; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-art { background: #132140; border-radius: 10px; overflow: hidden; aspect-ratio: 12 / 5; display: flex; align-items: center; justify-content: center; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-art img { width: 100%; height: 100%; object-fit: cover; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--detail .support-case h3 { color: #132140; font-size: 18px; line-height: 24px; font-weight: 700; margin: 16px 0 0; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--detail .support-case p { color: var(--navy-text-muted); font-size: 14px; line-height: 20px; font-weight: 300; font-style: normal; margin: 10px 0 0; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow {
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--carousel .support-case-grid::-webkit-scrollbar { display: none; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--carousel .support-case { flex: 0 0 calc(25% - 15px); scroll-snap-align: start; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-art { background: #132140; border-radius: 10px; overflow: hidden; aspect-ratio: 12 / 5; display: flex; align-items: center; justify-content: center; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-art img { width: 100%; height: 100%; object-fit: cover; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--detail .support-case h3 { color: #132140; font-size: 18px; line-height: 24px; font-weight: 700; margin: 16px 0 0; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--detail .support-case p { color: var(--navy-text-muted); font-size: 14px; line-height: 20px; font-weight: 300; font-style: normal; margin: 10px 0 0; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow {
   position: absolute;
   top: 38%;
   transform: translateY(-50%);
@@ -6255,11 +6255,11 @@ section.case-feature--detail { padding: 40px 0; }
   z-index: 3;
   filter: drop-shadow(0 2px 6px rgba(19, 33, 64, 0.25));
 }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow svg { display: block; width: 25px; height: 50px; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow--prev { left: 0; transform: translateY(-50%) rotate(180deg); }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow--next { right: -3px; transform: translateY(-50%); }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
-:is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow svg { display: block; width: 25px; height: 50px; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow--prev { left: 0; transform: translateY(-50%) rotate(180deg); }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow--next { right: -3px; transform: translateY(-50%); }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
+:is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
 
 /* Case slabs — flat navy / city photograph, external curved dividers, image art. */
 :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .case-feature--flat { padding: 36px 0; background-size: cover; background-position: center bottom; }
@@ -6332,7 +6332,7 @@ section.case-feature--detail { padding: 40px 0; }
   :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .aws-ps-col--solution { grid-column: auto; grid-row: auto; }
   :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .hiw-grid { grid-template-columns: 1fr; gap: 28px; }
   :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .cap-band--cards .cap-grid { grid-template-columns: repeat(2, 1fr); }
-  :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--carousel .support-case { flex: 0 0 calc(50% - 10px); }
+  :is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--carousel .support-case { flex: 0 0 calc(50% - 10px); }
   :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .pii-band--detail .pii-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 767.98px) {
@@ -6341,9 +6341,9 @@ section.case-feature--detail { padding: 40px 0; }
   :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .why-band--detail .why-intro { width: 100%; }
   :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .why-band--detail .why-intro .band-title { font-size: 30px; }
   :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .why-band--detail .why-grid { grid-template-columns: 1fr; }
-  :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--carousel .support-case { flex: 0 0 100%; }
-  :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow--prev { left: 0; }
-  :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow--next { right: 0; }
+  :is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-cases--carousel .support-case { flex: 0 0 100%; }
+  :is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow--prev { left: 0; }
+  :is(.platform-detail--aws, .platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-case-arrow--next { right: 0; }
   :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .cap-band--cards .cap-grid { grid-template-columns: 1fr; }
   :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .case-feature--flat h2 { font-size: 34px; line-height: 40px; }
   :is(.platform-detail--azure, .platform-detail--gcp, .platform-detail--alibaba) .support-faq--detail h2 { font-size: 34px; line-height: 42px; }
