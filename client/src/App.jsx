@@ -10,6 +10,7 @@ import SupportPackages from "./pages/SupportPackages";
 import Cloud from "./pages/Cloud";
 import CloudCostOptimisation from "./pages/CloudCostOptimisation";
 import CloudSolutionArchitecture from "./pages/CloudSolutionArchitecture";
+import CloudMigration from "./pages/CloudMigration";
 import CloudWellArchitectedReview from "./pages/CloudWellArchitectedReview";
 import CloudConsulting from "./pages/CloudConsulting";
 import CloudPartnersAws from "./pages/CloudPartnersAws";
@@ -71,6 +72,7 @@ export default function App() {
           <Route path="/cloud/cloud-consulting/cost-optimisation" element={<CloudCostOptimisation />} />
           <Route path="/cloud/cloud-consulting/aws-well-architected-review" element={<CloudWellArchitectedReview />} />
           <Route path="/cloud/solution-architecture" element={<CloudSolutionArchitecture />} />
+          <Route path="/cloud/cloud-migration" element={<CloudMigration />} />
           <Route path="/cloud/cloud-partners/aws" element={<CloudPartnersAws />} />
           <Route path="/cloud/alibaba-cloud" element={<CloudAlibabaCloud />} />
           <Route path="/cloud/cloud-partners/alibaba-cloud" element={<CloudAlibabaCloud />} />
