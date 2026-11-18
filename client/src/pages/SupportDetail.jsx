@@ -158,38 +158,6 @@ const PROVIDERS = [
       ],
     },
     caseStudy: { slug: "body-coach" },
-    awsCapabilities: {
-      title: "On our list, off your mind",
-      intro: "We're a one-and-done partner for delivering world-class applications",
-      closer: "It's simple. You tell us your requirements and we plug in wherever you need us.",
-      cta: { text: "So, where can we help?", to: "/contact" },
-      groups: [
-        {
-          title: "Incident and response management",
-          items: ["Incident management (IM)", "Root cause analysis (RCA)", "Incident response management", "Incident triage", "Security incident response", "Application rollbacks"],
-        },
-        {
-          title: "Service continuity and recovery",
-          items: ["Restarting services", "Backup and restore procedures", "Manual scaling of resources", "IP whitelisting", "Access management", "Password resets"],
-        },
-        {
-          title: "Access and security management",
-          items: ["User account provisioning", "User removal", "Access control", "Service validation and testing", "Knowledge base management", "Post-incident review (PIR)"],
-        },
-        {
-          title: "Quality and process improvement",
-          items: ["Vendor liaison/3rd-party escalation", "System health checks", "Monitoring, alerts and telemetry", "Performance monitoring", "Network diagnostics and flow analysis", "End-to-end latency analysis"],
-        },
-        {
-          title: "Observability and performance",
-          items: ["Capacity monitoring and forecasting", "SLA management", "Change management", "Patch management", "Downtime reporting", "Ticket management"],
-        },
-        {
-          title: "Service management and operations",
-          items: ["Outage communication", "Configuration management", "Service request management", "Escalation management"],
-        },
-      ],
-    },
     packages: {
       title: "Our service packages",
       intro: "You pick the level of support you need and we provide it. If you're in need of something bespoke, just get in touch.",
@@ -355,7 +323,7 @@ const PROVIDERS = [
     },
     bands: [
       "awsOverview", "video", "whyGrid",
-      "cases", "slab", "awsCapabilities",
+      "cases", "slab",
       "packages",
       "coverage", "capabilities", "fitWith",
       "valueProps", "reviews", "discussCta", "faqSection",
@@ -2539,37 +2507,6 @@ export default function SupportDetail() {
                 )}
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-    ),
-
-    awsCapabilities: provider.awsCapabilities && (
-      <section className="ag-cap-section">
-        <div className="container">
-          <div className="ag-cap-head reveal">
-            <h2>{provider.awsCapabilities.title}</h2>
-            <p>{provider.awsCapabilities.intro}</p>
-          </div>
-          <div className="ag-cap-grid">
-            {provider.awsCapabilities.groups.map((group) => (
-              <div className="ag-cap-group reveal" key={group.title}>
-                <h4>{group.title}</h4>
-                <ul>
-                  {group.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="ag-cap-foot reveal">
-            {provider.awsCapabilities.closer && <p className="ag-cap-closer">{provider.awsCapabilities.closer}</p>}
-            {provider.awsCapabilities.cta && (
-              <Link to={provider.awsCapabilities.cta.to} className="btn btn-primary">
-                {provider.awsCapabilities.cta.text} <span aria-hidden="true">➔</span>
-              </Link>
-            )}
           </div>
         </div>
       </section>
