@@ -24,7 +24,7 @@ const SUBMENUS = {
     rows: [
       { label: "Managed Cloud", to: "/cloud", links: [["AWS", "/support/aws-support"], ["Azure", "/support/azure-support"], ["GCP", "/support/gcp-support"], ["Alibaba Cloud", "/cloud/alibaba-cloud"]] },
       { label: "Cloud consulting", to: "/cloud/cloud-consulting", links: [["Cost Optimisation", "/cloud/cloud-consulting/cost-optimisation"], ["Well-Architected Review", "/cloud/cloud-consulting/aws-well-architected-review"], ["Solution Architecture", "/cloud/solution-architecture"], ["Cloud Migration", "/cloud/cloud-migration"]] },
-      { label: "DevOps", to: "/cloud", links: [["DevOps Consulting", "/cloud"], ["Delivery & Automation", "/cloud"], ["Application Modernisation", "/cloud"]] },
+      { label: "DevOps", to: "/cloud", links: [["DevOps Consulting", "/cloud"], ["Delivery & Automation", "/cloud"], ["Application Modernisation", "/cloud/solution-architecture/application-modernisation"]] },
     ],
   },
   platforms: {

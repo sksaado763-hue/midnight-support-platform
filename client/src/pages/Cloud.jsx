@@ -17,7 +17,7 @@ const TILES = [
   {
     icon: "/icons/cloud-web-application.svg",
     title: "Application Modernisation",
-    to: "/contact",
+    to: "/cloud/solution-architecture/application-modernisation",
     tone: "deep",
     text: "Moving a working product onto containers and smaller services without a big-bang rewrite or a feature freeze. We sequence the work so the business keeps shipping while the foundations improve underneath it, and rollback stays boring.",
   },

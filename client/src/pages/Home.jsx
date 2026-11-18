@@ -119,7 +119,7 @@ const SERVICES = [
       },
       {
         label: "Application Modernisation",
-        to: "/cloud",
+        to: "/cloud/solution-architecture/application-modernisation",
         children: [
           { label: "Platform Engineering", to: "/cloud" },
           { label: "Observability", to: "/cloud" },
