@@ -7964,3 +7964,103 @@ section.case-feature--detail { padding: 40px 0; }
   .dv-faq__cta h3 { font-size: 16px; line-height: 22px; }
   .dv-faq__cta p { font-size: 14px; line-height: 18px; }
 }
+
+/* ---------- DevOps Delivery page ---------- */
+/* Replica of /devops-delivery-services/: photo hero with the SaaS grid, the
+   white split intro with the moon list, a six-card white icon grid, the grey
+   "biggest difference" split with the tick list, the navy four-step method,
+   then the shared reviews slider, the four-shield why grid and insights. */
+.dd-hero {
+  background-image: url("/icons/dd-hero.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+}
+.dd-hero .cloud-hero__text { max-width: 475px; }
+.dd-hero__sub { font-size: 16px; line-height: 28px; font-weight: 300; margin: 0 0 24px; }
+.dd-hero .btn { text-transform: uppercase; background: #fabd14; color: #12203f; }
+.dd-hero .btn:hover,
+.dd-hero .btn:focus { background: #12203f; color: #fabd14; }
+
+.dd-intro { padding: 40px 0; }
+.dd-intro .cost-intro__lead p { margin-bottom: 20px; }
+.dd-intro .cost-intro__lead p:last-child { margin-bottom: 0; }
+
+.dd-grid { padding-bottom: 80px; }
+.dd-grid__intro { max-width: 760px; margin-inline: auto; padding-inline: 10px; text-align: center; }
+.dd-grid__intro h2 { font-size: 34px; line-height: 56px; font-weight: 500; color: #132140; margin: 0; }
+.dd-grid__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 55px;
+}
+.dd-grid__card { padding: 32px; border-radius: 10px; background: #ffffff; }
+.dd-grid__card img { display: block; width: 80px; height: 80px; object-fit: contain; }
+.dd-grid__card h3 { font-size: 20px; line-height: 28px; font-weight: 700; color: #132140; margin: 20px 0 13px; }
+.dd-card-rule { display: block; width: 48px; height: 3px; margin-top: 10px; background: #fabd14; }
+.dd-grid__card p { font-size: 16px; line-height: 28px; font-weight: 300; color: #132140; margin: 0; }
+
+.dd-diff { padding: 80px 0; background: #efefef; }
+.dd-diff__head { padding-inline: 10px; }
+.dd-diff__head h2 { font-size: 34px; line-height: 56px; font-weight: 500; color: #132140; margin: 0 0 44px; }
+.dd-diff__split { display: grid; grid-template-columns: 475fr 95fr 570fr; }
+.dd-diff__col { padding-inline: 10px; }
+.dd-diff__col h3 { font-size: 20px; line-height: 28px; font-weight: 700; color: #132140; margin: 0 0 24px; }
+.dd-diff__col p { font-size: 16px; line-height: 28px; font-weight: 300; color: #132140; margin: 0 0 20px; }
+.dd-diff__split > :nth-child(3) p:last-child { margin-bottom: 0; }
+.dd-diff__rule { margin-inline: 10px; width: calc(50% - 10px); border-right: 1px solid #132140; }
+.dd-list .seo-intro-mark { width: 25px; height: 25px; margin-top: 3px; }
+
+.dd-divider--navy { background: #12203f; }
+
+.dd-steps { padding: 80px 0; background: #12203f; }
+.dd-steps__head { padding-inline: 10px; }
+.dd-steps__head img { display: block; width: 80px; height: 80px; object-fit: contain; }
+.dd-steps__head h2 { font-size: 34px; line-height: 56px; font-weight: 500; color: #ffffff; margin: 24px 0 44px; }
+.dd-steps__grid { display: grid; grid-template-columns: 475fr 95fr 475fr 95fr; }
+.dd-steps__col { padding-inline: 10px; }
+.dd-steps__rule { margin-inline: 10px; width: calc(50% - 10px); border-right: 1px solid #132140; }
+.dd-step + .dd-step { margin-top: 48px; }
+.dd-step h3 { font-size: 20px; line-height: 28px; font-weight: 700; color: #ffffff; margin: 0 0 12px; }
+.dd-step__rule { display: block; width: 48px; height: 3px; margin-bottom: 20px; background: #fabd14; }
+.dd-step p { font-size: 16px; line-height: 28px; font-weight: 300; color: #ffffff; margin: 0; }
+
+.dd-why .cost-why__card h3 { margin-top: 32px; }
+.dd-why .cost-why__card p { margin-top: 15px; }
+
+@media (max-width: 991.98px) {
+  .dd-grid__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dd-diff__split { grid-template-columns: minmax(0, 1fr); row-gap: 32px; }
+  .dd-diff__rule { display: none; }
+  .dd-steps__grid { grid-template-columns: minmax(0, 1fr); row-gap: 40px; }
+  .dd-steps__rule { display: none; }
+}
+
+@media (max-width: 767.98px) {
+  .dd-hero__sub { font-size: 14px; line-height: 18px; }
+
+  .dd-intro { padding: 32px 0 12px; }
+
+  .dd-grid { padding-bottom: 48px; }
+  .dd-grid__intro { padding-inline: 0; }
+  .dd-grid__intro h2 { font-size: 24px; line-height: 34px; }
+  .dd-grid__cards { grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 36px; }
+  .dd-grid__card { padding: 24px 20px; }
+  .dd-grid__card h3 { font-size: 16px; line-height: 22px; margin: 16px 0 10px; }
+  .dd-grid__card p { font-size: 14px; line-height: 18px; }
+
+  .dd-diff { padding: 48px 0; }
+  .dd-diff__head { padding-inline: 0; }
+  .dd-diff__head h2 { font-size: 24px; line-height: 34px; margin-bottom: 28px; }
+  .dd-diff__col { padding-inline: 0; }
+  .dd-diff__col h3 { font-size: 16px; line-height: 22px; margin-bottom: 10px; }
+  .dd-diff__col p { font-size: 14px; line-height: 18px; margin-bottom: 14px; }
+
+  .dd-steps { padding: 48px 0; }
+  .dd-steps__head { padding-inline: 0; }
+  .dd-steps__head h2 { font-size: 24px; line-height: 34px; margin: 20px 0 28px; }
+  .dd-step + .dd-step { margin-top: 32px; }
+  .dd-step h3 { font-size: 16px; line-height: 22px; margin-bottom: 10px; }
+  .dd-step p { font-size: 14px; line-height: 18px; }
+}

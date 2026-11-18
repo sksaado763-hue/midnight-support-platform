@@ -13,6 +13,7 @@ import CloudSolutionArchitecture from "./pages/CloudSolutionArchitecture";
 import CloudMigration from "./pages/CloudMigration";
 import ApplicationModernisation from "./pages/ApplicationModernisation";
 import DevOpsConsulting from "./pages/DevOpsConsulting";
+import DevOpsDelivery from "./pages/DevOpsDelivery";
 import CloudWellArchitectedReview from "./pages/CloudWellArchitectedReview";
 import CloudConsulting from "./pages/CloudConsulting";
 import CloudPartnersAws from "./pages/CloudPartnersAws";
@@ -76,6 +77,7 @@ export default function App() {
           <Route path="/cloud/solution-architecture" element={<CloudSolutionArchitecture />} />
           <Route path="/cloud/solution-architecture/application-modernisation" element={<ApplicationModernisation />} />
           <Route path="/devops-consulting-services-solutions" element={<DevOpsConsulting />} />
+          <Route path="/devops-delivery-services" element={<DevOpsDelivery />} />
           <Route path="/cloud/cloud-migration" element={<CloudMigration />} />
           <Route path="/cloud/cloud-partners/aws" element={<CloudPartnersAws />} />
           <Route path="/cloud/alibaba-cloud" element={<CloudAlibabaCloud />} />
