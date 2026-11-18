@@ -89,7 +89,7 @@ const SERVICES = [
           { label: "AWS", to: "/support/aws-support" },
           { label: "Azure", to: "/support/azure-support" },
           { label: "GCP", to: "/support/gcp-support" },
-          { label: "Alibaba Cloud", to: "/support/alibaba-cloud-support" },
+          { label: "Alibaba Cloud", to: "/cloud/alibaba-cloud" },
         ],
       },
       {
