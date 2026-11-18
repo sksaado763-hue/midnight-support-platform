@@ -217,17 +217,62 @@ export default function CloudAlibabaCloud() {
   return (
     <>
       {/* SECTION 1: HERO BANNER */}
-      <section className="cloud-hero cloud-hero--photo cp-aws-hero" style={{ background: "#0d1d3d" }} aria-labelledby="cp-ali-title">
+      <section
+        className="cloud-hero cloud-hero--photo cp-aws-hero"
+        style={{
+          background: "#0d1d3d url('/icons/alibaba-hero-bg.jpg') center bottom / cover no-repeat",
+          padding: "calc(var(--header-h) + 64px) 0 100px",
+          position: "relative",
+        }}
+        aria-labelledby="cp-ali-title"
+      >
         <div className="cost-container">
-          <div className="cloud-hero__text reveal">
-            <h1 id="cp-ali-title"><strong>Managed Alibaba Cloud</strong></h1>
-            <p className="cloud-hero__sub">Grow your business in Asia and beyond</p>
+          <div className="cloud-hero__text reveal" style={{ maxWidth: "620px" }}>
+            <h1 id="cp-ali-title" style={{ fontSize: "50px", lineHeight: 1.15, fontWeight: 900, marginBottom: "16px" }}>
+              <span style={{ color: "#ffffff" }}>
+                <strong>Managed Alibaba Cloud</strong>
+              </span>
+            </h1>
+            <p className="cloud-hero__sub" style={{ fontSize: "18px", color: "#ffffff", fontWeight: 400, marginBottom: "28px" }}>
+              <span style={{ color: "#ffffff" }}>Grow your business in Asia and beyond</span>
+            </p>
             <div className="buttons">
-              <a href="#site-footer" className="btn btn-primary" style={{ backgroundColor: "#fabd14", color: "#12203f" }}>
+              <a
+                href="#site-footer"
+                className="btn btn-primary"
+                style={{
+                  backgroundColor: "#fabd14",
+                  color: "#12203f",
+                  padding: "14px 32px",
+                  fontWeight: 700,
+                  borderRadius: "6px",
+                  display: "inline-block",
+                  textDecoration: "none",
+                  border: "none",
+                }}
+              >
                 Speak to our team
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Bottom wave curve */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-1px",
+            left: 0,
+            width: "100%",
+            overflow: "hidden",
+            lineHeight: 0,
+            pointerEvents: "none",
+          }}
+          aria-hidden="true"
+        >
+          <svg viewBox="0 0 1920 73" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: "48px" }}>
+            <path d="M0 73H1920V33.77L1750.82 51.39C1544.17 72.92 1335.83 72.92 1129.18 51.39L790.82 16.15C584.17 -5.38 375.84 -5.38 169.18 16.15L0 33.77Z" fill="#ffffff" />
+          </svg>
         </div>
       </section>
 

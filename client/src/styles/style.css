@@ -6354,9 +6354,13 @@ section.case-feature--detail { padding: 40px 0; }
    Shares the Azure band skin above where the reference repeats it; only the
    hero, intro list, icon-grid and capability field diverge. */
 
-.gcp-hero,
-.alibaba-hero {
+.gcp-hero {
   background: #0d1d3d;
+  padding: calc(var(--header-h) + 72px) 0 88px;
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 89% 98%, 82% 99.4%, 75% 99.8%, 69% 99.5%, 60% 97.8%, 40% 92%, 29% 90.3%, 20% 90.3%, 10% 92.1%, 0 95%);
+}
+.alibaba-hero {
+  background: #0d1d3d url("/icons/alibaba-hero-bg.jpg") center bottom / cover no-repeat;
   padding: calc(var(--header-h) + 72px) 0 88px;
   clip-path: polygon(0 0, 100% 0, 100% 95%, 89% 98%, 82% 99.4%, 75% 99.8%, 69% 99.5%, 60% 97.8%, 40% 92%, 29% 90.3%, 20% 90.3%, 10% 92.1%, 0 95%);
 }
