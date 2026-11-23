@@ -30,13 +30,19 @@ const SUBMENUS = {
   platforms: {
     label: "Platforms",
     key: "platforms",
-    heading: "Support for Platforms & Tools",
     to: "/platforms",
-    blurb: "Care and maintenance for the CMS, commerce and experience platforms behind your product.",
-    rows: [
-      { label: "Experience platforms", to: "/platforms", links: [["Sitecore", "/platforms/sitecore"], ["Kentico", "/platforms/kentico"], ["Umbraco", "/platforms/umbraco"], ["AEM", "/platforms/aem"]] },
-      { label: "Commerce & content", to: "/platforms", links: [["Magento", "/platforms/magento"], ["Optimizely", "/platforms/optimizely"], ["WordPress", "/platforms/wordpress"]] },
-      { label: "Everything else", to: "/platforms", links: [["Cloudflare", "/platforms/cloudflare"], ["Custom Applications", "/platforms/custom-applications"], ["All platforms", "/platforms"]] },
+    blurb: "Managed support services for all major platforms, guaranteeing uptime for both your application and infrastructure.",
+    offerHeading: "Support for Platforms & Tools",
+    flat: [
+      ["Cloudflare", "/platforms/cloudflare"],
+      ["Sitecore", "/platforms/sitecore"],
+      ["Kentico", "/platforms/kentico"],
+      ["Umbraco", "/platforms/umbraco"],
+      ["AEM", "/platforms/aem"],
+      ["Optimizely", "/platforms/optimizely"],
+      ["Magento", "/platforms/magento"],
+      ["WordPress", "/platforms/wordpress"],
+      ["Custom Applications", "/platforms/custom-applications"],
     ],
   },
   /* Rendered as a single list rather than the offer/flyout grid: the About
@@ -202,6 +208,7 @@ export default function Header() {
   }
 
   function activeRowFor(menu) {
+    if (!menu?.rows) return { links: [] };
     return menu.rows.find((row) => row.label === activeRows[menu.key])
       ?? menu.rows.find((row) => row.links.length > 0)
       ?? menu.rows[0];
@@ -298,7 +305,7 @@ export default function Header() {
                   <div className={`mega-links${menu.flat ? " mega-links--flat" : ""}`}>
                     {menu.flat ? (
                       <div className="mega-links-main">
-                        <p className="mega-offer">{menu.label}</p>
+                        <p className="mega-offer">{menu.offerHeading ?? menu.label}</p>
                         <ul className="mega-flat-list">
                           {menu.flat.map(([label, to]) => (
                             <li className="mega-row" key={`${to}-${label}`}>

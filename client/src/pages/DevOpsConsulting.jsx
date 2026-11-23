@@ -378,17 +378,19 @@ export default function DevOpsConsulting() {
       </section>
 
       <section className="dv-logos" aria-label="Technology we work with">
-        <div className="dv-logos__viewport">
-          <div className="dv-logos__track">
-            <div className="dv-logos__group">
-              {TECH_LOGOS.map((logo) => (
-                <img key={logo.alt} src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
-              ))}
-            </div>
-            <div className="dv-logos__group" aria-hidden="true">
-              {TECH_LOGOS.map((logo) => (
-                <img key={`${logo.alt}-copy`} src={logo.src} alt="" loading="lazy" decoding="async" />
-              ))}
+        <div className="cost-container">
+          <div className="dv-logos__viewport">
+            <div className="dv-logos__track">
+              <div className="dv-logos__group">
+                {TECH_LOGOS.map((logo) => (
+                  <img key={logo.alt} src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+                ))}
+              </div>
+              <div className="dv-logos__group" aria-hidden="true">
+                {TECH_LOGOS.map((logo) => (
+                  <img key={`${logo.alt}-copy`} src={logo.src} alt="" loading="lazy" decoding="async" />
+                ))}
+              </div>
             </div>
           </div>
         </div>
