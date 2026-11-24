@@ -19,6 +19,7 @@ import CloudConsulting from "./pages/CloudConsulting";
 import CloudPartnersAws from "./pages/CloudPartnersAws";
 import CloudAlibabaCloud from "./pages/CloudAlibabaCloud";
 import CloudflareServices from "./pages/CloudflareServices";
+import SitecoreSupport from "./pages/SitecoreSupport";
 import Platforms from "./pages/Platforms";
 import PlatformDetail from "./pages/PlatformDetail";
 import CaseStudies from "./pages/CaseStudies";
@@ -85,6 +86,8 @@ export default function App() {
           <Route path="/cloud/cloud-partners/alibaba-cloud" element={<CloudAlibabaCloud />} />
           <Route path="/cloudflare-services" element={<CloudflareServices />} />
           <Route path="/platforms/cloudflare" element={<CloudflareServices />} />
+          <Route path="/platforms/sitecore" element={<SitecoreSupport />} />
+          <Route path="/platforms/sitecore-support-maintenance-hosting" element={<SitecoreSupport />} />
           <Route path="/platforms" element={<Platforms />} />
           <Route path="/platforms/:slug" element={<PlatformDetail />} />
           <Route path="/case-studies" element={<CaseStudies />} />
