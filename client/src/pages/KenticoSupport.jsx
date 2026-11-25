@@ -39,21 +39,22 @@ const HERO_FEATURES = [
     desc: "No piece of the puzzle is too small, too big or too complex for us to handle. From your core Kentico application to the shopping cart microservice, we cover the whole stack.",
   },
   {
-    icon: "/icons/why-cloud-strategy.svg",
+    icon: "/images/kentico/icon-handshake.webp",
     title: "Tech-enabled; person-led",
     desc: "We're not a SaaS-based, self-service factory. And we're not an old-guard hardware company that pivoted to cloud. We supply a tech-enabled service led by Kentico gurus.",
   },
   {
-    icon: "/icons/cloud-web-application.svg",
+    icon: "/images/kentico/icon-cog.png",
     title: "DevOps Supported",
     desc: "We can accelerate an existing DevOps function or manage your full CI/CD pipeline. We build a DevOps function that suits your Kentico application and your industry.",
   },
   {
-    icon: "/icons/cloud-design.svg",
+    icon: "/images/kentico/icon-hand-tick.png",
     title: "Backed by best-in-show design",
     desc: "If you have a Kentico application hosted on legacy architecture, we can help you modernise. We can consult on fully composable designs and support them around the clock.",
   },
   {
+    icon: "/images/kentico/icon-target.png",
     isCta: true,
     title: "Hitting the mark?",
     desc: "If you like what you're hearing, there's plenty more where that came from. Get in touch with one of our Kentico experts today and have your solution protected come rain or shine.",
@@ -494,10 +495,24 @@ export default function KenticoSupport() {
 
       {/* 5. NOT YOUR NEIGHBOURHOOD KENTICO SUPPORT */}
       <section className="kt-section kt-icon-grid">
-        <div className="kt-container">
+        <div className="kt-icon-grid__moon" aria-hidden="true">
+          <svg viewBox="0 0 120 120" width="120" height="120" fill="none">
+            <path
+              d="M72 14C44.4 14 22 36.4 22 64C22 91.6 44.4 114 72 114C87.2 114 100.8 107.2 110 96.4C103.5 98.4 96.6 99.4 89.4 99.4C58.6 99.4 33.6 74.4 33.6 43.6C33.6 32.8 36.7 22.8 42 14.3C51.3 14.1 61.5 14 72 14Z"
+              stroke="#fabd14"
+              strokeWidth="12"
+              strokeLinejoin="round"
+              fill="#fabd14"
+            />
+          </svg>
+        </div>
+
+        <div className="kt-container kt-icon-grid__inner">
           <div className="kt-icon-grid__header">
             <h2 className="kt-icon-grid__title">
-              Not your neighbourhood Kentico support
+              Not your neighbourhood
+              <br />
+              Kentico support
             </h2>
             <p className="kt-icon-grid__subtitle">
               But still pretty heroic. Just After Midnight is the partner who
@@ -512,7 +527,7 @@ export default function KenticoSupport() {
                 key={idx}
                 className={`kt-feature-card ${feat.isCta ? "kt-feature-card--cta" : ""}`}
               >
-                {!feat.isCta && feat.icon && (
+                {feat.icon && (
                   <div className="kt-feature-card__icon-wrap">
                     <img
                       src={feat.icon}
@@ -524,7 +539,7 @@ export default function KenticoSupport() {
                 <h3 className="kt-feature-card__heading">{feat.title}</h3>
                 <p className="kt-feature-card__text">{feat.desc}</p>
                 {feat.isCta && (
-                  <Link to="/contact" className="kt-btn-primary kt-feature-card__btn">
+                  <Link to="/contact" className="kt-btn-navy kt-feature-card__btn">
                     Get in touch
                   </Link>
                 )}
