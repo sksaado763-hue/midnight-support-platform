@@ -454,20 +454,39 @@ export default function KenticoSupport() {
       <section className="kt-video-banner">
         <div className="kt-container">
           <div className="kt-video-banner__row">
+            <div className="kt-video-banner__media">
+              <div className="kt-video-thumb">
+                <img
+                  src={DOWNTIME_GIF}
+                  alt="Kentico Downtime support animation"
+                  className="kt-downtime-gif"
+                />
+                <a
+                  href="#packages"
+                  className="kt-video-play"
+                  aria-label="Play Kentico support overview video"
+                >
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="#ffffff" aria-hidden="true">
+                    <polygon points="7,4 20,12 7,20" />
+                  </svg>
+                </a>
+              </div>
+            </div>
             <div className="kt-video-banner__text">
               <h2 className="kt-video-banner__title">
                 See how we support your Kentico solution
               </h2>
-              <a href="#packages" className="kt-btn-primary">
+              <p className="kt-video-banner__desc">
+                This video will explain how we cover your Kentico infrastructure,
+                application and integrations 24/7, out of hours or whenever you
+                need.
+              </p>
+              <p className="kt-video-banner__sub">
+                To take a closer look at your support options and SLAs…
+              </p>
+              <a href="#packages" className="kt-btn-navy">
                 View our packages!
               </a>
-            </div>
-            <div className="kt-video-banner__media">
-              <img
-                src={DOWNTIME_GIF}
-                alt="Kentico Downtime support animation"
-                className="kt-downtime-gif"
-              />
             </div>
           </div>
         </div>

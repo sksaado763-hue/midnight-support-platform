@@ -10579,42 +10579,94 @@ section.case-feature--detail { padding: 40px 0; }
 /* 3. VIDEO / DOWNTIME BANNER */
 .kt-video-banner {
   background-color: #eaeaea;
+  padding: 64px 0;
 }
 
 .kt-video-banner__row {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 40px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 48px;
   align-items: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.kt-video-thumb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+}
+
+.kt-downtime-gif {
+  width: 100%;
+  display: block;
+}
+
+.kt-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: #fabd14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+  padding-left: 4px;
+}
+
+.kt-video-play:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+  background: #f5a11d;
 }
 
 .kt-video-banner__title {
   font-family: var(--font-head);
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 30px;
+  line-height: 38px;
   font-weight: 800;
   color: #12203f;
-  margin: 0 0 16px;
+  margin: 0 0 18px;
 }
 
 .kt-video-banner__desc {
-  font-size: 16px;
-  line-height: 26px;
-  color: #475569;
-  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 22px;
+  color: #334155;
+  margin: 0 0 14px;
 }
 
 .kt-video-banner__sub {
-  font-size: 15px;
-  font-weight: 600;
-  color: #12203f;
+  font-size: 14px;
+  line-height: 22px;
+  color: #334155;
   margin: 0 0 24px;
 }
 
-.kt-video-banner__visual img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+.kt-btn-navy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #12203f;
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 14px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.kt-btn-navy:hover {
+  background: #1b2d52;
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 /* 4. NOT YOUR NEIGHBOURHOOD SITECORE SUPPORT */
