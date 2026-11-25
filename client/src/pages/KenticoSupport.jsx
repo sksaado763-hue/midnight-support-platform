@@ -281,28 +281,39 @@ export default function KenticoSupport() {
       </section>
 
       {/* 1. OVERVIEW & ROCKET */}
-      <section className="kt-section kt-overview">
-        <div className="kt-container">
-          <div className="kt-overview__row">
-            <div className="kt-overview__content">
-              <h2 className="kt-heading-primary">
-                Kentico support, DevOps & consulting
-              </h2>
-              <p className="kt-overview__body">
-                We’re the go-to support people for Kentico brands and agencies.
-                We provide end-to-end 24/7 support to ensure uptime and smooth
-                delivery. We lead on cloud-native consulting and building – and
-                we manage your DevOps process by either supplying DevOps as a
-                managed service or filling the out-of-hours gaps with our own
-                engineers. Here's how:
-              </p>
-            </div>
-            <div className="kt-overview__visual">
-              <img
-                src={ROCKET_STACK}
-                alt="Rocket stack illustration"
-                className="kt-rocket-img"
-              />
+      <section className="kt-overview">
+        {/* Wave from dark hero into white */}
+        <div className="kt-overview__wave" aria-hidden="true">
+          <svg viewBox="0 0 1920 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0 C480 80 1440 80 1920 0 L1920 80 L0 80 Z" fill="#ffffff" />
+          </svg>
+        </div>
+        <div className="kt-overview__body-wrap">
+          <div className="kt-container">
+            <div className="kt-overview__row">
+              <div className="kt-overview__content">
+                <h2 className="kt-overview__title">
+                  Kentico support, DevOps &amp; consulting
+                </h2>
+                <p className="kt-overview__text">
+                  We’re the go-to support people for Kentico brands and agencies.
+                  We provide end-to-end 24/7 support to ensure uptime and smooth
+                  delivery. We lead on cloud-native consulting and building – and
+                  we manage your DevOps process by either supplying DevOps as a
+                  managed service or filling the out-of-hours gaps with our own
+                  engineers.
+                </p>
+                <p className="kt-overview__howto">
+                  <strong>Here’s how:</strong>
+                </p>
+              </div>
+              <div className="kt-overview__visual">
+                <img
+                  src={ROCKET_STACK}
+                  alt="Kentico rocket stack illustration"
+                  className="kt-rocket-img"
+                />
+              </div>
             </div>
           </div>
         </div>
