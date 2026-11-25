@@ -21,7 +21,27 @@ const WHY_STARS = Array.from({ length: 140 }, (_, i) => {
 /* Reference `.icon-grid`: the starfield band of reason cards, on /support at the
    wide scale and on its sub-pages at the narrower detail scale — the same block
    the reference itself ships twice. */
-export default function WhyBand({ title, intro, cards, accent, variant = "wide" }) {
+const DEFAULT_WHY_TITLE = "Protect the work your team has built";
+const DEFAULT_WHY_INTRO = "24/7 support, cloud-native DevOps and incident management — so your platform stays up, your team stays focused, and your customers never notice a thing.";
+const DEFAULT_WHY_CARDS = [
+  {
+    icon: "/images/sitecore/icon-clock.webp",
+    title: "Protect revenue and reputation",
+    text: "Every minute of downtime costs money and erodes trust. We monitor, triage and resolve around the clock so your platform never lets customers down.",
+  },
+  {
+    icon: "/images/sitecore/icon-bed.webp",
+    title: "Save your team from burnout",
+    text: "On-call rotas drain engineers and slow delivery. Hand the overnight watch to us — your team wakes up to a written handover, not a pager at 3am.",
+  },
+  {
+    icon: "/images/sitecore/icon-route.webp",
+    title: "Innovate with confidence",
+    text: "Stable foundations let you ship faster. With us on the operational layer, your engineers can focus on features instead of firefighting.",
+  },
+];
+
+export default function WhyBand({ title = DEFAULT_WHY_TITLE, intro = DEFAULT_WHY_INTRO, cards = DEFAULT_WHY_CARDS, accent, variant = "wide" }) {
   const detail = variant === "detail";
   return (
     <section className={`why-band${detail ? " why-band--detail" : ""}`}>
