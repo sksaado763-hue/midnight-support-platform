@@ -64,11 +64,11 @@ const HERO_FEATURES = [
 const PACKAGES = [
   {
     tier: "SIMPLE REASSURANCE",
-    featured: true,
     name: "FIRST-LINE SUPPORT",
     features: ["Monitoring", "L1 Communications", "<30 Minute Response Time"],
   },
   {
+    tier: "OVERNIGHT & WEEKENDS",
     name: "OUT-OF-HOURS SUPPORT",
     features: [
       "Monitoring",
@@ -80,6 +80,7 @@ const PACKAGES = [
     ],
   },
   {
+    tier: "COMPLETE COVER",
     name: "24/7 SUPPORT",
     features: [
       "Monitoring",
@@ -91,6 +92,7 @@ const PACKAGES = [
     ],
   },
   {
+    tier: "A TAILORED SERVICE",
     name: "CUSTOM & ADD-ONS",
     features: [
       "Infrastructure or Application Only",
