@@ -63,23 +63,34 @@ const HERO_FEATURES = [
 
 const PACKAGES = [
   {
-    tier: "Simple Reassurance",
+    tier: "SIMPLE REASSURANCE",
+    featured: true,
     name: "FIRST-LINE SUPPORT",
-    features: ["Monitoring", "L1 Communications"],
+    features: ["Monitoring", "L1 Communications", "<30 Minute Response Time"],
   },
   {
-    tier: "Overnight & weekends",
     name: "OUT-OF-HOURS SUPPORT",
-    features: ["Monitoring", "L1 Communications", "L2 Resolution", "Incident Reporting", "Recommendations"],
+    features: [
+      "Monitoring",
+      "L1 Communications",
+      "L2 Resolution",
+      "Incident Reporting",
+      "Recommendations",
+      "<30 Minute Response Time",
+    ],
   },
   {
-    tier: "Complete cover",
     name: "24/7 SUPPORT",
-    popular: true,
-    features: ["Monitoring", "L1 Communications", "L2 Resolution", "Incident Reporting", "Recommendations"],
+    features: [
+      "Monitoring",
+      "L1 Communications",
+      "L2 Resolution",
+      "Incident Reporting",
+      "Recommendations",
+      "<30 Minute Response Time",
+    ],
   },
   {
-    tier: "A tailored service",
     name: "CUSTOM & ADD-ONS",
     features: [
       "Infrastructure or Application Only",
@@ -233,7 +244,7 @@ const CASE_STUDY_CARDS = [
 
 export default function KenticoSupport() {
   useTitle("Kentico Support, Hosting & DevOps Management | Just After Midnight");
-  const [openFaq, setOpenFaq] = useState(null);
+  const [openFaq, setOpenFaq] = useState(0);
 
   const toggleFaq = (idx) => {
     setOpenFaq((prev) => (prev === idx ? null : idx));
@@ -558,42 +569,35 @@ export default function KenticoSupport() {
             </h2>
             <p className="kt-packages__sub">
               It's simple – you pick the level of support you need and we provide
-              it. If you're in need of something bespoke,{" "}
+              it. If you're in need of something bespoke, just{" "}
               <Link to="/contact" className="kt-inline-link">
-                just get in touch
+                get in touch
               </Link>
               .
             </p>
           </div>
 
-          <div className="kt-packages__grid">
+          <div className="kt-packages__table">
             {PACKAGES.map((pkg, idx) => (
               <div
                 key={idx}
-                className={`kt-pkg-card ${pkg.popular ? "kt-pkg-card--popular" : ""}`}
+                className={`kt-pkg-col ${pkg.featured ? "kt-pkg-col--featured" : ""}`}
               >
-                {pkg.popular && (
-                  <div className="kt-pkg-popular-tag">Most Popular</div>
+                {pkg.tier && (
+                  <div className="kt-pkg-col__ribbon">{pkg.tier}</div>
                 )}
-                <div className="kt-pkg-tier">{pkg.tier}</div>
-                <h3 className="kt-pkg-name">{pkg.name}</h3>
+                <div className="kt-pkg-col__head">
+                  <h3 className="kt-pkg-col__name">{pkg.name}</h3>
+                </div>
 
-                <ul className="kt-pkg-features">
+                <ul className="kt-pkg-col__features">
                   {pkg.features.map((f, fi) => (
-                    <li key={fi}>
-                      <span className="kt-pkg-check">✓</span>
-                      <span>{f}</span>
-                    </li>
+                    <li key={fi}>{f}</li>
                   ))}
                 </ul>
 
-                <div className="kt-pkg-actions">
-                  <Link
-                    to="/contact"
-                    className={
-                      pkg.popular ? "kt-btn-primary" : "kt-pkg-btn-outline"
-                    }
-                  >
+                <div className="kt-pkg-col__actions">
+                  <Link to="/contact" className="kt-pkg-col__btn">
                     {pkg.name === "CUSTOM & ADD-ONS"
                       ? "Learn more"
                       : "Select package"}
@@ -602,55 +606,78 @@ export default function KenticoSupport() {
               </div>
             ))}
           </div>
+
+          <p className="kt-packages__note">
+            <strong>Need build solutions, not support?</strong> If you're more
+            interested in refactoring or modernising your infrastructure, check
+            out{" "}
+            <Link to="/cloud" className="kt-inline-link">
+              our solutions page
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
       {/* 9. FAQ ACCORDION */}
       <section className="kt-section kt-faq-section">
         <div className="kt-container">
-          <div className="kt-faq-header">
-            <h2 className="kt-heading-primary">FAQ</h2>
-            <p className="kt-faq-intro">
-              For a no-nonsense look at what we support, take a look at our
-              packages. Still have questions about how our support services
-              work? Take a look below.
-            </p>
-          </div>
+          <div className="kt-faq-layout">
+            <div className="kt-faq-left">
+              <div className="kt-faq-header">
+                <h2 className="kt-heading-primary kt-faq-title">FAQ</h2>
+                <p className="kt-faq-intro">
+                  For a no-nonsense look at what we support, take a look at our
+                  packages. Still have questions about how our support services
+                  work? Take a look below.
+                </p>
+              </div>
 
-          <div className="kt-faq-list">
-            {FAQS.map((item, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div
-                  key={idx}
-                  className={`kt-faq-item ${isOpen ? "is-open" : ""}`}
-                >
-                  <button
-                    type="button"
-                    className="kt-faq-question"
-                    onClick={() => toggleFaq(idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <span>{item.q}</span>
-                    <span className="kt-faq-arrow">{isOpen ? "−" : "+"}</span>
-                  </button>
-                  {isOpen && (
-                    <div className="kt-faq-answer">
-                      {item.a && <p>{item.a}</p>}
-                      {item.glossary && (
-                        <div className="kt-faq-glossary">
-                          {item.glossary.map((g, gi) => (
-                            <div key={gi} className="kt-faq-glossary__row">
-                              <strong>{g.term}:</strong> <span>{g.desc}</span>
+              <div className="kt-faq-list">
+                {FAQS.map((item, idx) => {
+                  const isOpen = openFaq === idx;
+                  return (
+                    <div
+                      key={idx}
+                      className={`kt-faq-row ${isOpen ? "is-open" : ""}`}
+                    >
+                      <button
+                        type="button"
+                        className="kt-faq-question"
+                        onClick={() => toggleFaq(idx)}
+                        aria-expanded={isOpen}
+                      >
+                        <span>{item.q}</span>
+                        <span className="kt-faq-arrow">{isOpen ? "−" : "+"}</span>
+                      </button>
+                      {isOpen && (
+                        <div className="kt-faq-answer">
+                          {item.a && <p>{item.a}</p>}
+                          {item.glossary && (
+                            <div className="kt-faq-glossary">
+                              {item.glossary.map((g, gi) => (
+                                <div key={gi} className="kt-faq-glossary__row">
+                                  <strong>{g.term}:</strong>{" "}
+                                  <span>{g.desc}</span>
+                                </div>
+                              ))}
                             </div>
-                          ))}
+                          )}
                         </div>
                       )}
                     </div>
-                  )}
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="kt-faq-right">
+              <img
+                src={ROCKET_STACK}
+                alt="Kentico rocket stack illustration"
+                className="kt-faq-rocket"
+              />
+            </div>
           </div>
         </div>
       </section>
