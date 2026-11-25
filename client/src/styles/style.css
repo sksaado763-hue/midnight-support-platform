@@ -10817,6 +10817,97 @@ section.case-feature--detail { padding: 40px 0; }
   margin: 16px 0 0;
 }
 
+/* CASE STUDY PREVIEW CARDS GRID */
+.kt-case-cards-section {
+  background: #f0f2f5;
+  padding: 60px 0;
+}
+
+.kt-case-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.kt-case-card-item {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.2s ease;
+}
+
+.kt-case-card-item:hover {
+  transform: translateY(-4px);
+}
+
+.kt-case-card-item__logo-box {
+  background: #1b2d52;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  padding: 28px 20px;
+  position: relative;
+  box-shadow: 0 4px 18px rgba(18, 32, 63, 0.18);
+}
+
+.kt-case-card-item__logo-box::before {
+  content: \'\';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+.kt-case-card-item__logo-box img {
+  width: 100%;
+  max-width: 200px;
+  max-height: 90px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: brightness(0) invert(1);
+}
+
+.kt-case-card-item__body {
+  text-align: center;
+  padding: 0 4px;
+}
+
+.kt-case-card-item__title {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 800;
+  color: #12203f;
+  margin: 0 0 6px;
+}
+
+.kt-case-card-item__headline {
+  font-size: 13px;
+  line-height: 20px;
+  color: #64748b;
+  font-style: italic;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .kt-case-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .kt-case-cards-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* 7 & 9. CASE STUDY BOXES */
 .kt-case-box {
   background: #ffffff;

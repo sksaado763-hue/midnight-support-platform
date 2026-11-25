@@ -576,7 +576,7 @@ export default function KenticoSupport() {
           <div className="kt-case-cards-grid">
             {CASE_STUDY_CARDS.map((card, idx) => (
               <Link key={idx} to={card.to} className="kt-case-card-item">
-                <div className="kt-case-card-item__img-wrap">
+                <div className="kt-case-card-item__logo-box">
                   <img src={card.img} alt={card.name} />
                 </div>
                 <div className="kt-case-card-item__body">
