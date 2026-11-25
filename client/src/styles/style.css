@@ -10486,50 +10486,48 @@ section.case-feature--detail { padding: 40px 0; }
   background: #f8fafc;
 }
 
+.kt-ps-section {
+  background: #ffffff;
+  padding: 56px 0 80px;
+}
+
 .kt-ps-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px;
+  gap: 0;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-.kt-ps-card {
-  border-radius: 12px;
-  padding: 36px 32px;
+.kt-ps-col {
+  padding: 8px 44px;
   display: flex;
   flex-direction: column;
-  border: 1px solid #e2e8f0;
 }
 
-.kt-ps-card--problem {
-  background: #fdf2f2;
-  border-color: #fecaca;
+.kt-ps-col--problem {
+  border-right: 1px solid #f1f5f9;
+  padding-left: 0;
 }
 
-.kt-ps-card--solution {
-  background: #f0fdf4;
-  border-color: #bbf7d0;
+.kt-ps-col--solution {
+  padding-right: 0;
 }
 
-.kt-ps-card__heading {
+.kt-ps-title {
   font-family: var(--font-head);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
-  margin: 0 0 8px;
+  color: #12203f;
+  margin: 0 0 18px;
 }
 
-.kt-ps-card--problem .kt-ps-card__heading {
-  color: #991b1b;
-}
-
-.kt-ps-card--solution .kt-ps-card__heading {
-  color: #166534;
-}
-
-.kt-ps-card__sub {
-  font-size: 16px;
-  font-weight: 600;
-  color: #475569;
-  margin: 0 0 24px;
+.kt-ps-intro {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #12203f;
+  margin: 0 0 22px;
 }
 
 .kt-ps-list {
@@ -10537,50 +10535,45 @@ section.case-feature--detail { padding: 40px 0; }
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 16px;
+  gap: 20px;
 }
 
 .kt-ps-list li {
   display: flex;
-  gap: 12px;
-  font-size: 15px;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 14px;
   line-height: 22px;
   color: #334155;
 }
 
-.kt-ps-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  font-weight: 900;
-  font-size: 12px;
+.kt-ps-svg-icon {
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
   margin-top: 2px;
+  object-fit: contain;
 }
 
-.kt-ps-icon--cross {
-  background: #fee2e2;
-  color: #dc2626;
-}
-
-.kt-ps-icon--check {
-  background: #dcfce7;
-  color: #16a34a;
-}
-
-.kt-ps-summary {
-  margin-top: 36px;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 24px 30px;
-  border: 1px solid #e2e8f0;
-  font-size: 16px;
-  line-height: 26px;
-  color: #334155;
+.kt-ps-summary-text {
+  max-width: 820px;
+  margin: 52px auto 0;
+  font-size: 14px;
+  line-height: 23px;
+  color: #1e293b;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .kt-ps-col--problem {
+    border-right: none;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 0 0 32px;
+    margin-bottom: 32px;
+  }
+  .kt-ps-col--solution {
+    padding: 0;
+  }
 }
 
 /* 3. VIDEO / DOWNTIME BANNER */

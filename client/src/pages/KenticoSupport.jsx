@@ -323,90 +323,130 @@ export default function KenticoSupport() {
       <section className="kt-section kt-ps-section">
         <div className="kt-container">
           <div className="kt-ps-grid">
-            {/* Problem card */}
-            <div className="kt-ps-card kt-ps-card--problem">
-              <h2 className="kt-ps-title kt-ps-title--problem">Your problem</h2>
+            {/* Problem column */}
+            <div className="kt-ps-col kt-ps-col--problem">
+              <h2 className="kt-ps-title">Your problem</h2>
               <p className="kt-ps-intro">
-                You have a Kentico estate you can’t support and evolve. Here’s
-                why:
+                You have a Kentico estate you can’t support and evolve.
+                <br />
+                Here’s why:
               </p>
               <ul className="kt-ps-list">
                 <li>
-                  <span className="kt-ps-icon kt-ps-icon--cross">✕</span>
+                  <img
+                    src="/images/kentico/cross-icon.svg"
+                    alt=""
+                    className="kt-ps-svg-icon"
+                  />
                   <div>
-                    <strong>You’re self-hosted or using a cookie-cutter managed cloud provider:</strong>{" "}
-                    you’ve got no wiggle room and no resource for change
+                    You’re self-hosted or using a cookie-cutter managed cloud
+                    provider: you’ve got no wiggle room and no resource for
+                    change
                   </div>
                 </li>
                 <li>
-                  <span className="kt-ps-icon kt-ps-icon--cross">✕</span>
+                  <img
+                    src="/images/kentico/cross-icon.svg"
+                    alt=""
+                    className="kt-ps-svg-icon"
+                  />
                   <div>
-                    <strong>Your support solution isn’t full-stack or 24/7:</strong>{" "}
-                    incidents and downtime outside of office hours or beyond your
+                    Your support solution isn’t full-stack or 24/7: incidents
+                    and downtime outside of office hours or beyond your
                     immediate application go ignored
                   </div>
                 </li>
                 <li>
-                  <span className="kt-ps-icon kt-ps-icon--cross">✕</span>
+                  <img
+                    src="/images/kentico/cross-icon.svg"
+                    alt=""
+                    className="kt-ps-svg-icon"
+                  />
                   <div>
-                    <strong>Your provider can't keep up:</strong> you want to
-                    evolve, but your environment isn't equipped to handle
-                    modern challenges
+                    Your provider can't keep up: you want to evolve, but your
+                    environment isn't equipped to handle modern challenges
                   </div>
                 </li>
                 <li>
-                  <span className="kt-ps-icon kt-ps-icon--cross">✕</span>
+                  <img
+                    src="/images/kentico/cross-icon.svg"
+                    alt=""
+                    className="kt-ps-svg-icon"
+                  />
                   <div>
-                    <strong>Maybe you've run with Kentico Xperience for a one-vendor solution:</strong>{" "}
-                    but a 24/7 call centre and a downtime alert don't get you back
-                    online
+                    Maybe you've run with Kentico Xperience for a one-vendor
+                    solution: but a 24/7 call centre and a downtime alert don't
+                    get you back online
                   </div>
                 </li>
               </ul>
             </div>
 
-            {/* Solution card */}
-            <div className="kt-ps-card kt-ps-card--solution">
-              <h2 className="kt-ps-title kt-ps-title--solution">Our solution</h2>
+            {/* Solution column */}
+            <div className="kt-ps-col kt-ps-col--solution">
+              <h2 className="kt-ps-title">Our solution</h2>
               <p className="kt-ps-intro">
-                Customer-centric, 24/7 support and managed services for Kentico:
+                Customer-centric, 24/7 support and managed services for
+                <br />
+                Kentico:
               </p>
               <ul className="kt-ps-list">
                 <li>
-                  <span className="kt-ps-icon kt-ps-icon--check">✓</span>
+                  <img
+                    src="/images/kentico/moon-icon.svg"
+                    alt=""
+                    className="kt-ps-svg-icon"
+                  />
                   <div>
-                    <strong>We offer customer-centric solutions:</strong> want
-                    to rapidly adopt DevOps or need a lot of CMS support? We got
-                    you covered
+                    We offer customer-centric solutions: want to rapidly adopt
+                    DevOps or need a lot of CMS support? We got you covered
                   </div>
                 </li>
                 <li>
-                  <span className="kt-ps-icon kt-ps-icon--check">✓</span>
+                  <img
+                    src="/images/kentico/moon-icon.svg"
+                    alt=""
+                    className="kt-ps-svg-icon"
+                  />
                   <div>
-                    <strong>We’re 24/7 and full-stack:</strong> we’re on your
-                    tickets whether it’s an issue with your Kentico application
-                    or any stack component
+                    We’re 24/7 and full-stack: we’re on your tickets whether
+                    it’s an issue with your Kentico application or any stack
+                    component
                   </div>
                 </li>
                 <li>
-                  <span className="kt-ps-icon kt-ps-icon--check">✓</span>
+                  <img
+                    src="/images/kentico/moon-icon.svg"
+                    alt=""
+                    className="kt-ps-svg-icon"
+                  />
                   <div>
-                    <strong>We’re here for the future:</strong> we can support
-                    and manage complex and distributed Kentico applications
-                    built on Xperience 13
+                    We’re here for the future: we can support and manage complex
+                    and distributed Kentico applications built on Xperience 13
                   </div>
                 </li>
                 <li>
-                  <span className="kt-ps-icon kt-ps-icon--check">✓</span>
+                  <img
+                    src="/images/kentico/moon-icon.svg"
+                    alt=""
+                    className="kt-ps-svg-icon"
+                  />
                   <div>
-                    <strong>We monitor, support, and triage:</strong> when your
-                    application runs into an issue, we dispatch engineers in
-                    minutes and fix according to an agreed runbook
+                    We monitor, support, and triage: when your application runs
+                    into an issue, we dispatch engineers in minutes and fix
+                    according to an agreed runbook
                   </div>
                 </li>
               </ul>
             </div>
           </div>
+
+          <p className="kt-ps-summary-text">
+            <strong>All in all?</strong> We’re not a cookie-cutter SaaS-based
+            hosting service. And we’re not an old-guard hardware company that
+            pivoted to cloud. We provide a human-led, tech enabled service
+            headed up by <strong>Kentico</strong> experts to meet your needs.
+          </p>
         </div>
       </section>
 
