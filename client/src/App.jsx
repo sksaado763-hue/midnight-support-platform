@@ -20,6 +20,7 @@ import CloudPartnersAws from "./pages/CloudPartnersAws";
 import CloudAlibabaCloud from "./pages/CloudAlibabaCloud";
 import CloudflareServices from "./pages/CloudflareServices";
 import SitecoreSupport from "./pages/SitecoreSupport";
+import KenticoSupport from "./pages/KenticoSupport";
 import Platforms from "./pages/Platforms";
 import PlatformDetail from "./pages/PlatformDetail";
 import CaseStudies from "./pages/CaseStudies";
@@ -88,6 +89,8 @@ export default function App() {
           <Route path="/platforms/cloudflare" element={<CloudflareServices />} />
           <Route path="/platforms/sitecore" element={<SitecoreSupport />} />
           <Route path="/platforms/sitecore-support-maintenance-hosting" element={<SitecoreSupport />} />
+          <Route path="/platforms/kentico" element={<KenticoSupport />} />
+          <Route path="/platforms/kentico-support-hosting-devops-management" element={<KenticoSupport />} />
           <Route path="/platforms" element={<Platforms />} />
           <Route path="/platforms/:slug" element={<PlatformDetail />} />
           <Route path="/case-studies" element={<CaseStudies />} />
