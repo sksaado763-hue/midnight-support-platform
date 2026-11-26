@@ -199,6 +199,14 @@
       "destination": "/api/case-studies/gozem.json"
     },
     {
+      "source": "/api/case-studies/tesco-plc",
+      "destination": "/api/case-studies/tesco-plc.json"
+    },
+    {
+      "source": "/api/case-studies/emperor",
+      "destination": "/api/case-studies/emperor.json"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }

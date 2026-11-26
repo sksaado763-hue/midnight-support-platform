@@ -139,7 +139,7 @@ const SERVICES = [
         to: "/platforms",
         children: [
           { label: "Sitecore", to: "/platforms" },
-          { label: "Umbraco", to: "/platforms" },
+          { label: "Umbraco", to: "/platforms/umbraco" },
           { label: "WordPress", to: "/platforms" },
         ],
       },

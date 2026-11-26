@@ -105,7 +105,7 @@ function navActiveFor(pathname) {
 
 /* Pages whose hero paints the top of the document get a transparent header
    pulled over it, instead of a navy bar stacked above the hero. */
-const OVERLAY_HEADER_PATHS = ["/support/aws-support", "/support/azure-support", "/support/gcp-support", "/support/alibaba-cloud-support", "/cloud", "/cloud/cloud-consulting", "/cloud/alibaba-cloud", "/cloud/cloud-partners/alibaba-cloud", "/cloud/cloud-partners/aws", "/cloud/cloud-consulting/cost-optimisation", "/support/our-packages", "/cloudflare-services", "/platforms/cloudflare", "/platforms/sitecore", "/platforms/sitecore-support-maintenance-hosting", "/platforms/kentico", "/platforms/kentico-support-hosting-devops-management"];
+const OVERLAY_HEADER_PATHS = ["/support/aws-support", "/support/azure-support", "/support/gcp-support", "/support/alibaba-cloud-support", "/cloud", "/cloud/cloud-consulting", "/cloud/alibaba-cloud", "/cloud/cloud-partners/alibaba-cloud", "/cloud/cloud-partners/aws", "/cloud/cloud-consulting/cost-optimisation", "/support/our-packages", "/cloudflare-services", "/platforms/cloudflare", "/platforms/sitecore", "/platforms/sitecore-support-maintenance-hosting", "/platforms/kentico", "/platforms/kentico-support-hosting-devops-management", "/platforms/umbraco", "/platforms/umbraco-hosting-24-7-support"];
 
 export default function Header() {
   const { pathname } = useLocation();

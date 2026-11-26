@@ -233,6 +233,36 @@ const caseStudies = [
     tags: ["Cloud Migration", "Mobility", "AWS", "Incident Response", "24/7 Support"],
     theme: "incident",
   },
+  {
+    slug: "tesco-plc",
+    client: "Tesco PLC",
+    industry: "Retail / Investor Relations",
+    headline: "Providing 24/7 support for Tesco’s key PLC sites",
+    challenge: "Tesco required round-the-clock support for six PLC sites providing essential investor information, with availability and fast incident resolution critical to protecting the company’s reputation.",
+    approach: [
+      "Partnered with Radley Yeldar to take responsibility for the Azure-hosted Umbraco sites.",
+      "Onboarded certified Azure and Umbraco engineers into a global follow-the-sun support rota.",
+      "Established monitoring, triage and escalation paths tuned to investor-relations publishing windows.",
+    ],
+    outcomes: ["Six multinational PLC sites supported around the clock", "Incidents resolved in under 8 minutes", "Smooth operations through critical investor-information publishing"],
+    tags: ["Umbraco", "Azure", "24/7 Support", "Retail", "Incident Response"],
+    theme: "incident",
+  },
+  {
+    slug: "emperor",
+    client: "Emperor",
+    industry: "Digital Agency",
+    headline: "Migrating Emperor’s client websites to the cloud",
+    challenge: "Emperor needed to migrate more than 130 client websites from a legacy on-premise solution to a cloud platform that could improve resilience without creating an unmanageable operating burden.",
+    approach: [
+      "Designed a multi-cloud strategy across AWS and Azure for the client estate.",
+      "Migrated sites in controlled waves with fault tolerance and rollback built into the process.",
+      "Continued to provide DevOps as a service for scalable, reliable cloud infrastructure.",
+    ],
+    outcomes: ["More than 130 client websites migrated", "Cloud costs reduced by 25%", "Improved fault tolerance and ongoing high-performing infrastructure"],
+    tags: ["Umbraco", "AWS", "Azure", "Cloud Migration", "DevOps"],
+    theme: "spotlight",
+  },
 ];
 
 const packages = [
